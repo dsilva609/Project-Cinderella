@@ -5,7 +5,8 @@
 
 // Make sure the compiler doesn't complain about missing Xml comments and CLS compliance
 // 0108: suppress "Foo hides inherited member Foo. Use the new keyword if hiding was intended." when a controller and its abstract parent are both processed
-#pragma warning disable 1591, 3008, 3009, 0108
+// 0114: suppress "Foo.BarController.Baz()' hides inherited member 'Qux.BarController.Baz()'. To make the current member override that implementation, add the override keyword. Otherwise add the new keyword." when an action (with an argument) overrides an action in a parent controller
+#pragma warning disable 1591, 3008, 3009, 0108, 0114
 #region T4MVC
 
 using System;
@@ -66,14 +67,14 @@ namespace UI.Controllers
         public virtual System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> VerifyCode()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.VerifyCode);
-            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> ConfirmEmail()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ConfirmEmail);
-            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -86,14 +87,14 @@ namespace UI.Controllers
         public virtual System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> SendCode()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.SendCode);
-            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> ExternalLoginCallback()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ExternalLoginCallback);
-            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -106,7 +107,7 @@ namespace UI.Controllers
         public virtual System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> ExternalLoginConfirmation()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ExternalLoginConfirmation);
-            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -117,7 +118,7 @@ namespace UI.Controllers
         public readonly string Name = "Account";
         [GeneratedCode("T4MVC", "2.0")]
         public const string NameConst = "Account";
-
+        [GeneratedCode("T4MVC", "2.0")]
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionNamesClass ActionNames { get { return s_actions; } }
@@ -322,7 +323,7 @@ namespace UI.Controllers
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "returnUrl", returnUrl);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "rememberMe", rememberMe);
             VerifyCodeOverride(callInfo, provider, returnUrl, rememberMe);
-            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
 
         [NonAction]
@@ -346,7 +347,7 @@ namespace UI.Controllers
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "userId", userId);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "code", code);
             ConfirmEmailOverride(callInfo, userId, code);
-            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
 
         [NonAction]
@@ -404,7 +405,7 @@ namespace UI.Controllers
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "returnUrl", returnUrl);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "rememberMe", rememberMe);
             SendCodeOverride(callInfo, returnUrl, rememberMe);
-            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
 
         [NonAction]
@@ -416,7 +417,7 @@ namespace UI.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ExternalLoginCallback);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "returnUrl", returnUrl);
             ExternalLoginCallbackOverride(callInfo, returnUrl);
-            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
 
         [NonAction]
@@ -440,7 +441,7 @@ namespace UI.Controllers
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "returnUrl", returnUrl);
             LoginOverride(callInfo, model, returnUrl);
-            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
 
         [NonAction]
@@ -452,7 +453,7 @@ namespace UI.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.VerifyCode);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
             VerifyCodeOverride(callInfo, model);
-            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
 
         [NonAction]
@@ -464,7 +465,7 @@ namespace UI.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Register);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
             RegisterOverride(callInfo, model);
-            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
 
         [NonAction]
@@ -476,7 +477,7 @@ namespace UI.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ForgotPassword);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
             ForgotPasswordOverride(callInfo, model);
-            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
 
         [NonAction]
@@ -488,7 +489,7 @@ namespace UI.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ResetPassword);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
             ResetPasswordOverride(callInfo, model);
-            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
 
         [NonAction]
@@ -513,7 +514,7 @@ namespace UI.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.SendCode);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
             SendCodeOverride(callInfo, model);
-            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
 
         [NonAction]
@@ -526,7 +527,7 @@ namespace UI.Controllers
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "returnUrl", returnUrl);
             ExternalLoginConfirmationOverride(callInfo, model, returnUrl);
-            return System.Threading.Tasks.Task.FromResult(callInfo as ActionResult);
+            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
 
         [NonAction]
@@ -544,4 +545,4 @@ namespace UI.Controllers
 }
 
 #endregion T4MVC
-#pragma warning restore 1591, 3008, 3009, 0108
+#pragma warning restore 1591, 3008, 3009, 0108, 0114

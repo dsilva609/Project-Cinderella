@@ -1,8 +1,8 @@
 /*!
- * jQuery UI CSS Framework 1.11.2
+ * jQuery UI CSS Framework 1.11.4
  * http://jqueryui.com
  *
- * Copyright 2014 jQuery Foundation and other contributors
+ * Copyright jQuery Foundation and other contributors
  * Released under the MIT license.
  * http://jquery.org/license
  *
@@ -10,6 +10,7 @@
  *
  * To view and modify this theme, visit http://jqueryui.com/themeroller/
  */
+
 
 /* Component containers
 ----------------------------------*/
@@ -362,6 +363,7 @@
 .ui-icon-grip-solid-horizontal { background-position: -48px -224px; }
 .ui-icon-gripsmall-diagonal-se { background-position: -64px -224px; }
 .ui-icon-grip-diagonal-se { background-position: -80px -224px; }
+
 
 /* Misc visuals
 ----------------------------------*/
