@@ -1,15 +1,3 @@
 ﻿.jumbotron {
-	background-image: url("Images/LoveLetter.jpg");
-}
-
-@media(min-width: 1440px) {
-	.container {
-		width: 1440px;
-	}
-}
-
-@media(min-width: 1920px) {
-	.container {
-		width: 1900px;
-	}
+    background-image: url("Images/LoveLetter.jpg");
 }
