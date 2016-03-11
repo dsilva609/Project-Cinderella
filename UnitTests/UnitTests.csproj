@@ -108,6 +108,8 @@
     <Compile Include="BusinessLogic\Components\CrudComponents\GetEntityByIDComponentTests.cs" />
     <Compile Include="BusinessLogic\Components\CrudComponents\TestBases\GetEntityListComponentTestBase.cs" />
     <Compile Include="BusinessLogic\Components\CrudComponents\GetEntityListComponentTests.cs" />
+    <Compile Include="UI\Controllers\RecordControllerTests\RecordControllerTests.cs" />
+    <Compile Include="UI\Controllers\RecordControllerTests\TestBases\RecordControllerTestBase.cs" />
     <Compile Include="UI\Controllers\ControllerTestBase.cs" />
     <Compile Include="UI\Controllers\HomeControllerTests\TestBases\HomeControllerTestBase.cs" />
     <Compile Include="UI\Controllers\HomeControllerTests\HomeControllerTests.cs" />
