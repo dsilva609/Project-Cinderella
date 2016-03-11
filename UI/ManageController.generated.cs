@@ -65,16 +65,16 @@ namespace UI.Controllers
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> VerifyPhoneNumber()
+        public virtual System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> ManageLogins()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.VerifyPhoneNumber);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ManageLogins);
             return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> ManageLogins()
+        public virtual System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> RemoveLogin()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ManageLogins);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RemoveLogin);
             return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
         [NonAction]
@@ -100,14 +100,11 @@ namespace UI.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
-            public readonly string RemoveLogin = "RemoveLogin";
-            public readonly string AddPhoneNumber = "AddPhoneNumber";
-            public readonly string VerifyPhoneNumber = "VerifyPhoneNumber";
-            public readonly string RemovePhoneNumber = "RemovePhoneNumber";
             public readonly string ChangePassword = "ChangePassword";
             public readonly string SetPassword = "SetPassword";
             public readonly string ManageLogins = "ManageLogins";
             public readonly string LinkLoginCallback = "LinkLoginCallback";
+            public readonly string RemoveLogin = "RemoveLogin";
             public readonly string EnableTwoFactorAuthentication = "EnableTwoFactorAuthentication";
             public readonly string DisableTwoFactorAuthentication = "DisableTwoFactorAuthentication";
             public readonly string LinkLogin = "LinkLogin";
@@ -117,14 +114,11 @@ namespace UI.Controllers
         public class ActionNameConstants
         {
             public const string Index = "Index";
-            public const string RemoveLogin = "RemoveLogin";
-            public const string AddPhoneNumber = "AddPhoneNumber";
-            public const string VerifyPhoneNumber = "VerifyPhoneNumber";
-            public const string RemovePhoneNumber = "RemovePhoneNumber";
             public const string ChangePassword = "ChangePassword";
             public const string SetPassword = "SetPassword";
             public const string ManageLogins = "ManageLogins";
             public const string LinkLoginCallback = "LinkLoginCallback";
+            public const string RemoveLogin = "RemoveLogin";
             public const string EnableTwoFactorAuthentication = "EnableTwoFactorAuthentication";
             public const string DisableTwoFactorAuthentication = "DisableTwoFactorAuthentication";
             public const string LinkLogin = "LinkLogin";
@@ -138,15 +132,6 @@ namespace UI.Controllers
         public class ActionParamsClass_Index
         {
             public readonly string message = "message";
-        }
-        static readonly ActionParamsClass_VerifyPhoneNumber s_params_VerifyPhoneNumber = new ActionParamsClass_VerifyPhoneNumber();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_VerifyPhoneNumber VerifyPhoneNumberParams { get { return s_params_VerifyPhoneNumber; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_VerifyPhoneNumber
-        {
-            public readonly string phoneNumber = "phoneNumber";
-            public readonly string model = "model";
         }
         static readonly ActionParamsClass_ManageLogins s_params_ManageLogins = new ActionParamsClass_ManageLogins();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -164,14 +149,6 @@ namespace UI.Controllers
         {
             public readonly string loginProvider = "loginProvider";
             public readonly string providerKey = "providerKey";
-        }
-        static readonly ActionParamsClass_AddPhoneNumber s_params_AddPhoneNumber = new ActionParamsClass_AddPhoneNumber();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_AddPhoneNumber AddPhoneNumberParams { get { return s_params_AddPhoneNumber; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_AddPhoneNumber
-        {
-            public readonly string model = "model";
         }
         static readonly ActionParamsClass_ChangePassword s_params_ChangePassword = new ActionParamsClass_ChangePassword();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -207,19 +184,15 @@ namespace UI.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string AddPhoneNumber = "AddPhoneNumber";
                 public readonly string ChangePassword = "ChangePassword";
                 public readonly string Index = "Index";
                 public readonly string ManageLogins = "ManageLogins";
                 public readonly string SetPassword = "SetPassword";
-                public readonly string VerifyPhoneNumber = "VerifyPhoneNumber";
             }
-            public readonly string AddPhoneNumber = "~/Views/Manage/AddPhoneNumber.cshtml";
             public readonly string ChangePassword = "~/Views/Manage/ChangePassword.cshtml";
             public readonly string Index = "~/Views/Manage/Index.cshtml";
             public readonly string ManageLogins = "~/Views/Manage/ManageLogins.cshtml";
             public readonly string SetPassword = "~/Views/Manage/SetPassword.cshtml";
-            public readonly string VerifyPhoneNumber = "~/Views/Manage/VerifyPhoneNumber.cshtml";
         }
     }
 
@@ -237,51 +210,6 @@ namespace UI.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "message", message);
             IndexOverride(callInfo, message);
-            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
-        }
-
-        [NonAction]
-        partial void RemoveLoginOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult RemoveLogin()
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RemoveLogin);
-            RemoveLoginOverride(callInfo);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void AddPhoneNumberOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult AddPhoneNumber()
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddPhoneNumber);
-            AddPhoneNumberOverride(callInfo);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void VerifyPhoneNumberOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string phoneNumber);
-
-        [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> VerifyPhoneNumber(string phoneNumber)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.VerifyPhoneNumber);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "phoneNumber", phoneNumber);
-            VerifyPhoneNumberOverride(callInfo, phoneNumber);
-            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
-        }
-
-        [NonAction]
-        partial void RemovePhoneNumberOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
-
-        [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> RemovePhoneNumber()
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RemovePhoneNumber);
-            RemovePhoneNumberOverride(callInfo);
             return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
 
@@ -344,18 +272,6 @@ namespace UI.Controllers
         }
 
         [NonAction]
-        partial void AddPhoneNumberOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, UI.Models.AddPhoneNumberViewModel model);
-
-        [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> AddPhoneNumber(UI.Models.AddPhoneNumberViewModel model)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddPhoneNumber);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
-            AddPhoneNumberOverride(callInfo, model);
-            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
-        }
-
-        [NonAction]
         partial void EnableTwoFactorAuthenticationOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
         [NonAction]
@@ -374,18 +290,6 @@ namespace UI.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DisableTwoFactorAuthentication);
             DisableTwoFactorAuthenticationOverride(callInfo);
-            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
-        }
-
-        [NonAction]
-        partial void VerifyPhoneNumberOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, UI.Models.VerifyPhoneNumberViewModel model);
-
-        [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> VerifyPhoneNumber(UI.Models.VerifyPhoneNumberViewModel model)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.VerifyPhoneNumber);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
-            VerifyPhoneNumberOverride(callInfo, model);
             return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
 
