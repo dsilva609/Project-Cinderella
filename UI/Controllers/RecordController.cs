@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using BusinessLogic.Models;
+using System.Web.Mvc;
 
 namespace UI.Controllers
 {
@@ -11,9 +12,11 @@ namespace UI.Controllers
         }
 
         [HttpGet]
-        public virtual ActionResult Edit()
+        public virtual ActionResult Create()
         {
-            return View();
+            var model = new RecordModel();
+
+            return View(MVC.Record.Views.Edit, model);
         }
     }
 }

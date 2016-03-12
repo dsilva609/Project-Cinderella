@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using BusinessLogic.Models;
+using NUnit.Framework;
 using System.Web.Mvc;
 using UnitTests.UI.Controllers.RecordControllerTests.TestBases;
 
@@ -7,6 +8,8 @@ namespace UnitTests.UI.Controllers.RecordControllerTests
     [TestFixture]
     public class RecordControllerTests : RecordControllerTestBase
     {
+        private RecordModel _testModel = new RecordModel();
+
         [Test]
         public void ThatTheIndexActionReturnsAView()
         {
@@ -21,26 +24,29 @@ namespace UnitTests.UI.Controllers.RecordControllerTests
         }
 
         [Test]
-        public void ThatEditGetActionReturnsAView()
+        public void ThatCreateActionReturnsAView()
         {
             //--Arrange
-            _controller.Setup(mock => mock.Edit()).Returns(new ViewResult() { ViewName = MVC.Record.Views.Edit });
+            _controller.Setup(mock => mock.Create()).Returns(new ViewResult { ViewName = MVC.Record.Views.Edit });
 
             //--Act
-            var result = _controller.Object.Edit() as ViewResult;
+            var result = _controller.Object.Create() as ViewResult;
 
             //--Assert
             Assert.AreEqual(MVC.Record.Views.Edit, result.ViewName);
         }
 
         [Test]
-        public void ThatCorrectModelIsPassedIntoEditGetView()
+        public void ThatCorrectModelIsPassedIntoCreateView()
         {
             //--Arrange
+            _controller.Setup(mock => mock.Create()).Returns(new ViewResult { ViewData = new ViewDataDictionary(_testModel) });
 
             //--Act
+            var result = _controller.Object.Create() as ViewResult;
+
             //--Assert
-            Assert.AreEqual(0, 1);
+            Assert.AreEqual(_testModel, result.ViewData.Model);
         }
     }
 }
