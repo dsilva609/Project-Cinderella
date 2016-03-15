@@ -18,5 +18,17 @@ namespace UI.Controllers
 
             return View(MVC.Record.Views.Edit, model);
         }
+
+        [HttpPost]
+        public virtual ActionResult Create(RecordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                //--TODO: save model to database
+
+                RedirectToAction(MVC.Record.Index());
+            }
+            return View(MVC.Record.Views.Edit, model);
+        }
     }
 }

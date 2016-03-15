@@ -4,3 +4,44 @@
 }
 
 <h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.LabelFor(m => m.AlbumName)
+        @Html.TextBoxFor(m => m.AlbumName, new {@class = "form-control"})
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Artist)
+        @Html.TextBoxFor(m => m.Artist, new {@class = "form-control"})
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Genre)
+        @Html.TextBoxFor(m => m.Genre, new {@class = "form-control"})
+    </div>
+    <div>
+        @Html.LabelFor(m => m.AlbumYear)
+        @Html.TextBoxFor(m => m.AlbumYear, new {@class = "form-control"})
+    </div>
+    <div>
+        @Html.LabelFor(m => m.DatePurchased)
+        @Html.TextBoxFor(m => m.DatePurchased, new {@class = "form-control"})
+    </div>
+    <div>
+        @Html.LabelFor(m => m.IsNew)
+        @Html.CheckBoxFor(m => m.IsNew, new {@class = "form-control"})
+    </div>
+    <div>
+        @Html.LabelFor(m => m.IsPhysical)
+        @Html.CheckBoxFor(m => m.IsPhysical, new {@class = "form-control"})
+    </div>
+    <div>
+        @Html.LabelFor(m => m.LocationPurchased)
+        @Html.TextBoxFor(m => m.LocationPurchased, new {@class = "form-control"})
+    </div>
+    <div>
+        @Html.LabelFor(m => m.MediaType)
+        @Html.EnumDropDownListFor(m => m.MediaType, new { @class = "form-control" })
+    </div>
+}

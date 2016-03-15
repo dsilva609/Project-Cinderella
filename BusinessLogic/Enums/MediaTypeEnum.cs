@@ -4,9 +4,6 @@
     {
         CD,
         Vinyl,
-        Cassette,
-        EightTrack,
-        ReelToReel,
         Digital
     }
 }
