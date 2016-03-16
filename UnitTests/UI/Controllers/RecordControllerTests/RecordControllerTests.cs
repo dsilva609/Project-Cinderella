@@ -1,7 +1,9 @@
 ﻿using BusinessLogic.Models;
 using Moq;
 using NUnit.Framework;
+using System.Collections.Generic;
 using System.Web.Mvc;
+using UI.Models;
 using UnitTests.UI.Controllers.RecordControllerTests.TestBases;
 
 namespace UnitTests.UI.Controllers.RecordControllerTests
@@ -10,6 +12,7 @@ namespace UnitTests.UI.Controllers.RecordControllerTests
     public class RecordControllerTests : RecordControllerTestBase
     {
         private RecordModel _testModel = new RecordModel();
+        private List<RecordViewModel> _expectedIndexModels = new List<RecordViewModel>();
 
         [Test]
         public void ThatTheIndexActionReturnsAView()
@@ -22,6 +25,19 @@ namespace UnitTests.UI.Controllers.RecordControllerTests
 
             //--Assert
             Assert.AreEqual(MVC.Record.Views.Index, result.ViewName);
+        }
+
+        [Test]
+        public void ThatSpecifiedViewModelIsSentToView()
+        {
+            //--Arrange
+            base._controller.Setup(mock => mock.Index()).Returns(new ViewResult { ViewName = MVC.Record.Views.Index, ViewData = new ViewDataDictionary(this._expectedIndexModels) });
+
+            //--Act
+            var result = base._controller.Object.Index() as ViewResult;
+
+            //--Assert
+            Assert.AreEqual(this._expectedIndexModels, result.ViewData.Model);
         }
 
         [Test]

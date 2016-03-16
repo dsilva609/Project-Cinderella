@@ -1,8 +1,11 @@
-﻿using BusinessLogic.DAL;
+﻿using AutoMapper;
+using BusinessLogic.DAL;
 using BusinessLogic.Models;
 using BusinessLogic.Repositories;
 using BusinessLogic.Services;
+using System.Collections.Generic;
 using System.Web.Mvc;
+using UI.Models;
 
 namespace UI.Controllers
 {
@@ -20,7 +23,10 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Index()
         {
-            return View();
+            var viewModel = new List<RecordViewModel>();
+            var recordList = _service.GetAll();
+            Mapper.Map(recordList, viewModel);
+            return View(viewModel);
         }
 
         [HttpGet]
@@ -39,7 +45,7 @@ namespace UI.Controllers
             {
                 this._service.Add(model);
 
-                RedirectToAction(MVC.Record.Index());
+                return RedirectToAction(MVC.Record.Index());
             }
             return View(MVC.Record.Views.Edit, model);
         }
