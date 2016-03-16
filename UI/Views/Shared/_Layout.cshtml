@@ -26,11 +26,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", MVC.Home.Index())</li>
                     <li>@Html.ActionLink("Record", MVC.Record.Index())</li>
                     <li>@Html.ActionLink("About", MVC.Home.About())</li>
                     <li>@Html.ActionLink("Contact", MVC.Home.Contact())</li>
-                    
+
                     @if (User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Error Log", MVC.Elmah.Index())</li>
