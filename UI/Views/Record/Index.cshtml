@@ -5,64 +5,64 @@
 
 <h2>Current Records In Collection</h2>
 
-<div class="table">
+<div class="table text-center">
     <div class="bold row">
-        <div class="">
+        <div class="col-xs-2">
             @Html.DisplayNameFor(model => model.AlbumName)
         </div>
-        <div class="">
+        <div class="col-xs-2">
             @Html.DisplayNameFor(model => model.Artist)
         </div>
-        <div class="">
+        <div class="col-xs-1">
             @Html.DisplayNameFor(model => model.MediaType)
         </div>
-        <div class="">
+        <div class="col-xs-1">
             @Html.DisplayNameFor(model => model.Genre)
         </div>
-        <div class="">
+        <div class="col-xs-1">
             @Html.DisplayNameFor(model => model.IsNew)
         </div>
-        <div class="">
+        <div class="col-xs-1">
             @Html.DisplayNameFor(model => model.IsPhysical)
         </div>
-        <div class="">
+        <div class="col-xs-1">
             @Html.DisplayNameFor(model => model.DatePurchased)
         </div>
-        <div class="">
+        <div class="col-xs-2">
             @Html.DisplayNameFor(model => model.LocationPurchased)
         </div>
-        <div class="">
+        <div class="col-xs-1">
             @Html.DisplayNameFor(model => model.AlbumYear)
         </div>
     </div>
     @foreach (var item in Model)
     {
         <div id="record" class="row" data-id="@item.ID">
-            <div class="">
+            <div class="col-xs-2">
                 @Html.DisplayFor(modelItem => item.AlbumName)
             </div>
-            <div class="">
+            <div class="col-xs-2">
                 @Html.DisplayFor(modelItem => item.Artist)
             </div>
-            <div class="">
+            <div class="col-xs-1">
                 @Html.DisplayFor(modelItem => item.MediaType)
             </div>
-            <div class="">
+            <div class="col-xs-1">
                 @Html.DisplayFor(modelItem => item.Genre)
             </div>
-            <div class="">
+            <div class="col-xs-1">
                 @Html.DisplayFor(modelItem => item.IsNew)
             </div>
-            <div class="">
+            <div class="col-xs-1">
                 @Html.DisplayFor(modelItem => item.IsPhysical)
             </div>
-            <div class="">
+            <div class="col-xs-1">
                 @Html.DisplayFor(modelItem => item.DatePurchased)
             </div>
-            <div class="">
+            <div class="col-xs-2">
                 @Html.DisplayFor(modelItem => item.LocationPurchased)
             </div>
-            <div class="">
+            <div class="col-xs-1">
                 @Html.DisplayFor(modelItem => item.AlbumYear)
             </div>
 
