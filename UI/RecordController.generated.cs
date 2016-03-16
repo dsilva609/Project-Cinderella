@@ -28,9 +28,6 @@ namespace UI.Controllers
     public partial class RecordController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public RecordController() { }
-
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RecordController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
