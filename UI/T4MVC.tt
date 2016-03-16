@@ -1,6 +1,6 @@
 ﻿<#
 /*
-T4MVC Version 3.17.2
+T4MVC Version 3.17.3
 Find latest version and documentation at https://github.com/T4MVC/T4MVC/wiki/Documentation
 Discuss on StackOverflow or on GitHub (https://github.com/T4MVC/T4MVC/issues)
 
@@ -154,8 +154,10 @@ PushIndent("    ");
 public static partial class Bundles
 {
 <#
-            
-        foreach (string folder in settings.StaticFilesFolders.Concat(GetStaticFilesViewFolders())) {
+	foreach (string folder in settings.StaticFilesFolders
+		.Concat(GetStaticFilesViewFolders())
+		.Concat(inAreas)
+		) {
             ProcessBundles(Project, folder);
         }
     
