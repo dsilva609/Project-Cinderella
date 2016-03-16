@@ -15,8 +15,8 @@ namespace UnitTests.BusinessLogic.Components.CrudComponents.TestBases
         [SetUp]
         public virtual void Setup()
         {
-            this._addEntityComponent = new AddEntityComponent();
-            this._testRepositoryMock = new Mock<IRepository<string>>();
+            _addEntityComponent = new AddEntityComponent();
+            _testRepositoryMock = new Mock<IRepository<string>>();
         }
     }
 }

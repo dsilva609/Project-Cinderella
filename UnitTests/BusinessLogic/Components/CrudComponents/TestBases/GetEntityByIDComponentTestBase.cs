@@ -1,24 +1,22 @@
 ﻿using BusinessLogic.Components.CrudComponents;
+using BusinessLogic.Models;
+using BusinessLogic.Repositories;
+using Moq;
 using NUnit.Framework;
 
 namespace UnitTests.BusinessLogic.Components.CrudComponents.TestBases
 {
-	[TestFixture]
-	public class GetEntityByIDComponentTestBase
-	{
-		//protected IRepository<Card> _cardRepo;
-		//protected IRepository<Player> _playerRepo;
-		protected GetEntityByIDComponent _getEntityByIDComponent;
+    public class GetEntityByIDComponentTestBase
+    {
+        protected GetEntityByIDComponent _getEntityByIDComponent;
+        protected IRepository<RecordModel> _recordRepo;
+        protected Mock<IRepository<RecordModel>> _recordRepositoryMock;
 
-		//protected Mock<IRepository<Card>> _cardRepositoryMock;
-		//protected Mock<IRepository<Player>> _playerRepositoryMock;
-
-		[SetUp]
-		public virtual void Setup()
-		{
-			this._getEntityByIDComponent = new GetEntityByIDComponent();
-			//this._cardRepositoryMock = new Mock<IRepository<Card>>();
-			//this._playerRepositoryMock = new Mock<IRepository<Player>>();
-		}
-	}
+        [SetUp]
+        public virtual void Setup()
+        {
+            _getEntityByIDComponent = new GetEntityByIDComponent();
+            _recordRepositoryMock = new Mock<IRepository<RecordModel>>();
+        }
+    }
 }

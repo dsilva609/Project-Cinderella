@@ -10,18 +10,18 @@ namespace UnitTests.BusinessLogic.Components.CrudComponents
         private string _str;
 
         [Test]
-        public void ThatANewStringIsAddedToTheRepository()
+        public void ThatANewRecordIsAddedToTheRepository()
         {
             //--Arrange
             _str = "Smitty Werbenjagermanjensen";
-            base._testRepositoryMock.Setup(m => m.Add(this._str));
-            base._testRepo = base._testRepositoryMock.Object;
+            _testRepositoryMock.Setup(m => m.Add(_str));
+            _testRepo = _testRepositoryMock.Object;
 
             //--Act
-            base._addEntityComponent.Execute(base._testRepo, this._str);
+            _addEntityComponent.Execute(_testRepo, _str);
 
             //--Assert
-            base._testRepositoryMock.Verify(m => m.Add(It.Is<string>(s => s == this._str)));
+            _testRepositoryMock.Verify(m => m.Add(It.Is<string>(s => s == _str)));
         }
     }
 }

@@ -31,13 +31,13 @@ namespace UnitTests.UI.Controllers.RecordControllerTests
         public void ThatSpecifiedViewModelIsSentToView()
         {
             //--Arrange
-            base._controller.Setup(mock => mock.Index()).Returns(new ViewResult { ViewName = MVC.Record.Views.Index, ViewData = new ViewDataDictionary(this._expectedIndexModels) });
+            _controller.Setup(mock => mock.Index()).Returns(new ViewResult { ViewName = MVC.Record.Views.Index, ViewData = new ViewDataDictionary(_expectedIndexModels) });
 
             //--Act
-            var result = base._controller.Object.Index() as ViewResult;
+            var result = _controller.Object.Index() as ViewResult;
 
             //--Assert
-            Assert.AreEqual(this._expectedIndexModels, result.ViewData.Model);
+            Assert.AreEqual(_expectedIndexModels, result.ViewData.Model);
         }
 
         [Test]

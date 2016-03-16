@@ -1,64 +1,41 @@
-﻿using NUnit.Framework;
+﻿using BusinessLogic.Models;
+using Moq;
+using NUnit.Framework;
 using UnitTests.BusinessLogic.Components.CrudComponents.TestBases;
 
 namespace UnitTests.BusinessLogic.Components.CrudComponents
 {
-	[TestFixture]
-	public class EditEntityComponentTests : EditEntityComponentTestBase
-	{
-		//private Card _card;
-		//private Player _player;
+    [TestFixture]
+    public class EditEntityComponentTests : EditEntityComponentTestBase
+    {
+        private RecordModel _record;
 
-		//[TestInitialize]
-		//public override void Setup()
-		//{
-		//	base.Setup();
+        [SetUp]
+        public override void Setup()
+        {
+            base.Setup();
 
-		//	this._card = new Card
-		//	{
-		//		Name = "Bang!",
-		//		ID = 1,
-		//		Description = "Kill 'Em All",
-		//		Rank = Rank.Eight,
-		//		IsActive = true
-		//	};
+            _record = new RecordModel
+            {
+                ID = 666,
+                AlbumName = "Hypnotize",
+                Artist = "System of a Down"
+            };
+        }
 
-		//	this._player = new Player
-		//	{
-		//		ID = 1,
-		//		Name = "Smitty Werbenjagermanjensen",
-		//		IsActive = true
-		//	};
-		//}
+        [Test]
+        public void ThatRecordNameIsChanged()
+        {
+            //--Arrange
+            _recordRepositoryMock.Setup(m => m.Add(_record));
+            _recordRepo = _recordRepositoryMock.Object;
+            _record.AlbumName = "Mezmerize";
 
-		//[TestMethod]
-		//public void ThatCardNameIsChanged()
-		//{
-		//	//--Arrange
-		//	base._cardRepositoryMock.Setup(m => m.Add(this._card));
-		//	base._cardRepo = this._cardRepositoryMock.Object;
-		//	this._card.Name = "Indians!";
+            //--Act
+            _editEntityComponent.Execute(_recordRepo, _record);
 
-		//	//--Act
-		//	base._editEntityComponent.Execute(base._cardRepo, this._card);
-
-		//	//--Assert
-		//	base._cardRepositoryMock.Verify(m => m.Edit(It.Is<Card>(c => c.Name == "Indians!")));
-		//}
-
-		//[TestMethod]
-		//public void TestThatPlayerNameIsChanged()
-		//{
-		//	//--Arrange
-		//	base._playerRepositoryMock.Setup(m => m.Add(this._player));
-		//	base._playerRepo = base._playerRepositoryMock.Object;
-		//	this._player.Name = "Liam Neeson";
-
-		//	//--Act
-		//	base._editEntityComponent.Execute(base._playerRepo, this._player);
-
-		//	//--Assert
-		//	base._playerRepositoryMock.Verify(m => m.Edit(It.Is<Player>(p => p.Name == "Liam Neeson")));
-		//}
-	}
+            //--Assert
+            _recordRepositoryMock.Verify(m => m.Edit(It.Is<RecordModel>(c => c.AlbumName == "Mezmerize")));
+        }
+    }
 }
