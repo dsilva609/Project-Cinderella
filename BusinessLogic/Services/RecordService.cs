@@ -25,7 +25,7 @@ namespace BusinessLogic.Services
         }
 
         public void Add(RecordModel record) =>
-        this._addEntityComponent.Execute(this._repository, record);
+            this._addEntityComponent.Execute(this._repository, record);
 
         public List<RecordModel> GetAll(/*bool sortAscending, string sortPreference*/)
         {
