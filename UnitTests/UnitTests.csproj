@@ -57,6 +57,18 @@
       <HintPath>..\packages\NUnit.3.2.0\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <HintPath>..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StructureMap, Version=4.0.0.315, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap.automocking.4.0.0.315\lib\net40\StructureMap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StructureMap.AutoMocking, Version=4.0.0.315, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap.automocking.4.0.0.315\lib\net40\StructureMap.AutoMocking.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Web" />
@@ -108,6 +120,8 @@
     <Compile Include="BusinessLogic\Components\CrudComponents\GetEntityByIDComponentTests.cs" />
     <Compile Include="BusinessLogic\Components\CrudComponents\TestBases\GetEntityListComponentTestBase.cs" />
     <Compile Include="BusinessLogic\Components\CrudComponents\GetEntityListComponentTests.cs" />
+    <Compile Include="BusinessLogic\Services\RecordServiceTests.cs" />
+    <Compile Include="BusinessLogic\Services\TestBases\RecordServiceTestBase.cs" />
     <Compile Include="UI\Controllers\RecordControllerTests\RecordControllerTests.cs" />
     <Compile Include="UI\Controllers\RecordControllerTests\TestBases\RecordControllerTestBase.cs" />
     <Compile Include="UI\Controllers\ControllerTestBase.cs" />
@@ -130,9 +144,7 @@
       <Name>UI</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BusinessLogic\Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
