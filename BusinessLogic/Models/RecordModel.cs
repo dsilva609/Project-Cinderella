@@ -2,6 +2,7 @@
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BusinessLogic.Models
 {
@@ -9,10 +10,14 @@ namespace BusinessLogic.Models
     {
         public int ID { get; set; }
 
+        [Key]
+        [Column(Order = 1)]
         [Required]
         [DisplayName("Album Name")]
         public string AlbumName { get; set; }
 
+        [Key]
+        [Column(Order = 2)]
         [Required]
         public string Artist { get; set; }
 
@@ -21,6 +26,8 @@ namespace BusinessLogic.Models
         [DisplayName("Album Year")]
         public int AlbumYear { get; set; }
 
+        [Key]
+        [Column(Order = 3)]
         [Required]
         [DisplayName("Media Type")]
         public MediaTypeEnum MediaType { get; set; }
