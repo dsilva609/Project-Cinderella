@@ -1,15 +1,17 @@
 ﻿using AutoMapper;
 using BusinessLogic.DAL;
+using BusinessLogic.Enums;
 using BusinessLogic.Models;
 using BusinessLogic.Repositories;
 using BusinessLogic.Services;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using UI.Models;
 
 namespace UI.Controllers
 {
-	public partial class RecordController : Controller
+	public partial class RecordController : ProjectCinderellaControllerBase
 	{
 		private readonly IUnitOfWork _uow;
 		private readonly RecordService _service;
@@ -43,7 +45,15 @@ namespace UI.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				this._service.Add(model);
+				try
+				{
+					this._service.Add(model);
+				}
+				catch (Exception e)
+				{
+					ShowStatusMessage(MessageTypeEnum.error, e.Message, "Duplicate Record");
+					return View(MVC.Record.Views.Edit, model);
+				}
 
 				return RedirectToAction(MVC.Record.Index());
 			}

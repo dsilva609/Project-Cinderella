@@ -132,6 +132,8 @@ namespace Links
             public static readonly string Logout_min_js_map = Url("Logout.min.js.map");
         }
     
+        public static readonly string toastr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/toastr.min.js") ? Url("toastr.min.js") : Url("toastr.js");
+        public static readonly string toastr_min_js = Url("toastr.min.js");
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -212,6 +214,10 @@ namespace Links
         
         }
     
+        public static readonly string toastr_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/toastr.min.css") ? Url("toastr.min.css") : Url("toastr.css");
+        public static readonly string toastr_less = Url("toastr.less");
+        public static readonly string toastr_min_css = Url("toastr.min.css");
+        public static readonly string toastr_scss = Url("toastr.scss");
     }
 
     
@@ -265,6 +271,8 @@ namespace Links
                 public const string respond_matchmedia_addListener_js = "~/Scripts/respond.matchmedia.addListener.js"; 
                 public const string respond_matchmedia_addListener_min_js = "~/Scripts/respond.matchmedia.addListener.min.js"; 
                 public const string respond_min_js = "~/Scripts/respond.min.js"; 
+                public const string toastr_js = "~/Scripts/toastr.js"; 
+                public const string toastr_min_js = "~/Scripts/toastr.min.js"; 
             }
         }
         public static partial class Content 
@@ -321,6 +329,8 @@ namespace Links
                 public const string bootstrap_min_css = "~/Content/bootstrap.min.css";
                 public const string Responsive_css = "~/Content/Responsive.css";
                 public const string Site_css = "~/Content/Site.css";
+                public const string toastr_css = "~/Content/toastr.css";
+                public const string toastr_min_css = "~/Content/toastr.min.css";
             }
         }
     }
