@@ -1,6 +1,8 @@
 ﻿using BusinessLogic.Models;
 using Moq;
 using NUnit.Framework;
+using System;
+using System.Collections.Generic;
 using UnitTests.BusinessLogic.Services.TestBases;
 
 namespace UnitTests.BusinessLogic.Services
@@ -25,11 +27,27 @@ namespace UnitTests.BusinessLogic.Services
 		[Test]
 		public void ItAddsRecords()
 		{
+			//--Arrange
+			_repo.Setup(mock => mock.GetAll()).Returns(new List<RecordModel>());
+
 			//--Act
 			_service.Object.Add(_testModel1);
 
 			//--Assert
 			_repo.Verify(mock => mock.Add(It.Is<RecordModel>(x => x.Equals(_testModel1))), Times.Once);
+		}
+
+		[Test]
+		public void ItThrowsAnExceptionWhenTryingToAddADuplicateRecord()
+		{
+			//--Arrange
+			_repo.Setup(mock => mock.GetAll()).Returns(new List<RecordModel>
+			{
+				_testModel1
+			});
+
+			//--Act
+			Assert.Throws<ApplicationException>(() => _service.Object.Add(_testModel1));
 		}
 
 		[Test]
@@ -44,6 +62,11 @@ namespace UnitTests.BusinessLogic.Services
 
 			//--Assert
 			Assert.IsNull(result);
+		}
+
+		[Test]
+		public void ItUpdatesRecords()
+		{
 		}
 	}
 }
