@@ -89,6 +89,10 @@
     <Compile Include="Migrations\201603240125571_updated primary key for records.Designer.cs">
       <DependentUpon>201603240125571_updated primary key for records.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603262057523_Made ID auto generated.cs" />
+    <Compile Include="Migrations\201603262057523_Made ID auto generated.Designer.cs">
+      <DependentUpon>201603262057523_Made ID auto generated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\RecordModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -119,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603240125571_updated primary key for records.resx">
       <DependentUpon>201603240125571_updated primary key for records.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603262057523_Made ID auto generated.resx">
+      <DependentUpon>201603262057523_Made ID auto generated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

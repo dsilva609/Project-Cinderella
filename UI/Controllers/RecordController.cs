@@ -9,45 +9,54 @@ using UI.Models;
 
 namespace UI.Controllers
 {
-    public partial class RecordController : Controller
-    {
-        private readonly IUnitOfWork _uow;
-        private readonly RecordService _service;
+	public partial class RecordController : Controller
+	{
+		private readonly IUnitOfWork _uow;
+		private readonly RecordService _service;
 
-        public RecordController()
-        {
-            _uow = new UnitOfWork<ProjectCinderellaContext>();
-            _service = new RecordService(_uow);
-        }
+		public RecordController()
+		{
+			_uow = new UnitOfWork<ProjectCinderellaContext>();
+			_service = new RecordService(_uow);
+		}
 
-        [HttpGet]
-        public virtual ActionResult Index()
-        {
-            var viewModel = new List<RecordViewModel>();
-            var recordList = _service.GetAll();
-            Mapper.Map(recordList, viewModel);
-            return View(viewModel);
-        }
+		[HttpGet]
+		public virtual ActionResult Index()
+		{
+			var viewModel = new List<RecordViewModel>();
+			var recordList = _service.GetAll();
+			Mapper.Map(recordList, viewModel);
+			return View(viewModel);
+		}
 
-        [HttpGet]
-        public virtual ActionResult Create()
-        {
-            var model = new RecordModel();
+		[HttpGet]
+		public virtual ActionResult Create()
+		{
+			var model = new RecordModel();
 
-            return View(MVC.Record.Views.Edit, model);
-        }
+			return View(MVC.Record.Views.Edit, model);
+		}
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public virtual ActionResult Create(RecordModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                this._service.Add(model);
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public virtual ActionResult Create(RecordModel model)
+		{
+			if (ModelState.IsValid)
+			{
+				this._service.Add(model);
 
-                return RedirectToAction(MVC.Record.Index());
-            }
-            return View(MVC.Record.Views.Edit, model);
-        }
-    }
+				return RedirectToAction(MVC.Record.Index());
+			}
+			return View(MVC.Record.Views.Edit, model);
+		}
+
+		//	[Authorize(Roles = "Admin")]
+		[HttpGet]
+		public virtual ActionResult Delete(int id)
+		{
+			_service.Delete(id);
+
+			return RedirectToAction(MVC.Record.Index());
+		}
+	}
 }

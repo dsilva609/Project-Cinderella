@@ -5,31 +5,45 @@ using UnitTests.BusinessLogic.Services.TestBases;
 
 namespace UnitTests.BusinessLogic.Services
 {
-    [TestFixture]
-    public class RecordServiceTests : RecordServiceTestBase
-    {
-        private RecordModel _testModel1 = new RecordModel
-        {
-            ID = 1984,
-            Artist = "Dio",
-            AlbumName = "The Last In Line"
-        };
+	[TestFixture]
+	public class RecordServiceTests : RecordServiceTestBase
+	{
+		private RecordModel _testModel1 = new RecordModel
+		{
+			ID = 1984,
+			Artist = "Dio",
+			AlbumName = "The Last In Line"
+		};
 
-        private RecordModel _testModel2 = new RecordModel
-        {
-            ID = 1983,
-            Artist = "Dio",
-            AlbumName = "Holy Diver"
-        };
+		private RecordModel _testModel2 = new RecordModel
+		{
+			ID = 1983,
+			Artist = "Dio",
+			AlbumName = "Holy Diver"
+		};
 
-        [Test]
-        public void ItAddsRecords()
-        {
-            //--Act
-            _service.Object.Add(_testModel1);
+		[Test]
+		public void ItAddsRecords()
+		{
+			//--Act
+			_service.Object.Add(_testModel1);
 
-            //--Assert
-            _repo.Verify(mock => mock.Add(It.Is<RecordModel>(x => x.Equals(_testModel1))), Times.Once);
-        }
-    }
+			//--Assert
+			_repo.Verify(mock => mock.Add(It.Is<RecordModel>(x => x.Equals(_testModel1))), Times.Once);
+		}
+
+		[Test]
+		public void ItDeletesRecords()
+		{
+			//--Arrange
+			_repo.Setup(mock => mock.Add(_testModel2));
+
+			//--Act
+			_service.Object.Delete(_testModel2.ID);
+			var result = _service.Object.GetByID(_testModel2.ID);
+
+			//--Assert
+			Assert.IsNull(result);
+		}
+	}
 }
