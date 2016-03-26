@@ -46,7 +46,7 @@ namespace UnitTests.BusinessLogic.Services
 				_testModel1
 			});
 
-			//--Act
+			//--Act/Assert
 			Assert.Throws<ApplicationException>(() => _service.Object.Add(_testModel1));
 		}
 
@@ -67,6 +67,11 @@ namespace UnitTests.BusinessLogic.Services
 		[Test]
 		public void ItUpdatesRecords()
 		{
+			//--Act
+			_service.Object.Edit(_testModel2.ID, _testModel2);
+
+			//--Assert
+			_repo.Verify(mock => mock.Edit(It.Is<RecordModel>(x => x.Equals(_testModel2))));
 		}
 	}
 }
