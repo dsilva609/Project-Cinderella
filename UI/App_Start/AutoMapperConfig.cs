@@ -2,14 +2,14 @@
 using BusinessLogic.Models;
 using UI.Models;
 
-namespace UI.App_Start
+namespace UI
 {
-    public static class AutoMapperConfig
-    {
-        public static void RegisterMappings()
-        {
-            Mapper.CreateMap<RecordViewModel, RecordModel>();
-            Mapper.CreateMap<RecordModel, RecordViewModel>();
-        }
-    }
+	public static class AutoMapperConfig
+	{
+		public static void RegisterMappings()
+		{
+			Mapper.CreateMap<RecordViewModel, RecordModel>();
+			Mapper.CreateMap<RecordModel, RecordViewModel>();
+		}
+	}
 }
