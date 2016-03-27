@@ -39,6 +39,7 @@ namespace UI.Controllers
 		{
 			var model = new RecordModel();
 			ViewBag.Title = "Create";
+
 			return View(model);
 		}
 
@@ -57,7 +58,7 @@ namespace UI.Controllers
 					ShowStatusMessage(MessageTypeEnum.error, e.Message, "Duplicate Record");
 					return View(model);
 				}
-
+				ShowStatusMessage(MessageTypeEnum.success, "New Record Added Successfully.", "Add Successful");
 				return RedirectToAction(MVC.Record.Index());
 			}
 			return View(model);
@@ -86,6 +87,7 @@ namespace UI.Controllers
 				//--TODO: why is id needed?
 				_service.Edit(model.ID, model);
 
+				ShowStatusMessage(MessageTypeEnum.success, $"Record of Artist: {model.Artist}, Album: {model.AlbumName}, Media Type: {model.MediaType} updated.", "Update Successful");
 				return RedirectToAction(MVC.Record.Index());
 			}
 			return View(model);
@@ -97,6 +99,7 @@ namespace UI.Controllers
 		{
 			_service.Delete(id);
 
+			ShowStatusMessage(MessageTypeEnum.success, "", "Delete Successful");
 			return RedirectToAction(MVC.Record.Index());
 		}
 	}
