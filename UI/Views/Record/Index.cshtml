@@ -6,7 +6,7 @@
 	var detailsUrl = '@Url.Action(MVC.Record.Details())';
 	var deleteUrl = '@Url.Action(MVC.Record.Delete())';
 </script>
-<h2>Current Records In Collection</h2>
+<h2>Current Records In Collection @Html.ActionLink("Add Record", MVC.Record.Create(), new { @class = "btn btn-default" })</h2>
 
 <div class="table text-center">
 	<div class="bold row">
@@ -43,7 +43,8 @@
 		<div id="record" class="row" data-id="@item.ID">
 			<div class="col-xs-2">
 				@Html.DisplayFor(modelItem => item.Artist)
-			</div><div class="col-xs-2">
+			</div>
+			<div class="col-xs-2">
 				@Html.DisplayFor(modelItem => item.AlbumName)
 			</div>
 			<div class="col-xs-1">
@@ -78,8 +79,4 @@
 			@*}*@
 		</div>
 	}
-</div>
-
-<div>
-	@Html.ActionLink("Add Record", MVC.Record.Create(), new { @class = "btn btn-default" })
 </div>
