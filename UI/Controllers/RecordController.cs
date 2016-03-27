@@ -93,6 +93,14 @@ namespace UI.Controllers
 			return View(model);
 		}
 
+		[HttpGet]
+		public virtual ActionResult Details(int id)
+		{
+			var model = _service.GetByID(id);
+
+			return View(model);
+		}
+
 		//	[Authorize(Roles = "Admin")]
 		[HttpGet]
 		public virtual ActionResult Delete(int id)

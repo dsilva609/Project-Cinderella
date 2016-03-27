@@ -29,7 +29,8 @@ namespace UI
 				.Include("~/Scripts/Namespace.js")
 				.Include("~/Scripts/Shared/Logout.js")
 				.Include("~/Scripts/toastr.min.js")
-				.Include("~/Scripts/PageSpecific/RecordIndex.js"));
+				.Include("~/Scripts/PageSpecific/RecordIndex.js")
+				.Include("~/Scripts/PageSpecific/RecordDetails.js"));
 
 			bundles.Add(new StyleBundle("~/Content/css")
 				.Include("~/Content/bootstrap.css")

@@ -268,6 +268,9 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\PageSpecific\RecordDetails.js">
+      <DependentUpon>RecordDetails.coffee</DependentUpon>
+    </Content>
     <Content Include="Scripts\PageSpecific\RecordIndex.js">
       <DependentUpon>RecordIndex.coffee</DependentUpon>
     </Content>
@@ -279,6 +282,7 @@
     <Content Include="Scripts\Shared\Logout.js.map" />
     <Content Include="Scripts\Shared\Logout.min.js.map" />
     <Content Include="Scripts\PageSpecific\RecordIndex.coffee" />
+    <Content Include="Scripts\PageSpecific\RecordDetails.coffee" />
     <None Include="T4MVC.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>T4MVC.cs</LastGenOutput>
@@ -326,6 +330,7 @@
     <Content Include="App_Code\ToastrBuilder.cshtml" />
     <Content Include="Views\Record\_RecordFormPartial.cshtml" />
     <Content Include="Views\Record\Create.cshtml" />
+    <Content Include="Views\Record\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
