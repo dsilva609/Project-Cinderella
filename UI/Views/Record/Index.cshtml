@@ -11,10 +11,10 @@
 <div class="table text-center">
 	<div class="bold row">
 		<div class="col-xs-2">
-			@Html.DisplayNameFor(model => model.AlbumName)
+			@Html.DisplayNameFor(model => model.Artist)
 		</div>
 		<div class="col-xs-2">
-			@Html.DisplayNameFor(model => model.Artist)
+			@Html.DisplayNameFor(model => model.AlbumName)
 		</div>
 		<div class="col-xs-1">
 			@Html.DisplayNameFor(model => model.MediaType)
@@ -42,10 +42,9 @@
 	{
 		<div id="record" class="row" data-id="@item.ID">
 			<div class="col-xs-2">
-				@Html.DisplayFor(modelItem => item.AlbumName)
-			</div>
-			<div class="col-xs-2">
 				@Html.DisplayFor(modelItem => item.Artist)
+			</div><div class="col-xs-2">
+				@Html.DisplayFor(modelItem => item.AlbumName)
 			</div>
 			<div class="col-xs-1">
 				@Html.DisplayFor(modelItem => item.MediaType)
@@ -72,8 +71,8 @@
 			@*@if (User.IsInRole("Admin"))
 				{*@
 			<div class="col-xs-1 removePaddingLeftRight">
-			@Html.ActionLink("Edit", MVC.Record.Edit(item.ID), new { @id = "editRecordBtn", @class = "btn btn-link btn-link-height" })
-					<span> | </span>
+				@Html.ActionLink("Edit", MVC.Record.Edit(item.ID), new { @id = "editRecordBtn", @class = "btn btn-link btn-link-height" })
+				<span> | </span>
 				@Html.ActionLink("Delete", MVC.Record.Delete(item.ID), new { @id = "deleteRecord", @class = "btn btn-link btn-link-height", @data_id = item.ID })
 			</div>
 			@*}*@

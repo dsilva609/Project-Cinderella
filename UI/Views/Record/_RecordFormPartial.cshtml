@@ -2,16 +2,17 @@
 
 @Html.AntiForgeryToken()
 <div>
+	@Html.LabelFor(m => m.Artist)
+	@Html.TextBoxFor(m => m.Artist, new { @class = "form-control" })
+	@Html.ValidationMessageFor(m => m.Artist, "", new { @class = "text-danger" })
+</div>
+
+<div>
 	@Html.LabelFor(m => m.AlbumName)
 	@Html.TextBoxFor(m => m.AlbumName, new { @class = "form-control" })
 	@Html.ValidationMessageFor(m => m.AlbumName, "", new { @class = "text-danger" })
 </div>
 
-<div>
-	@Html.LabelFor(m => m.Artist)
-	@Html.TextBoxFor(m => m.Artist, new { @class = "form-control" })
-	@Html.ValidationMessageFor(m => m.Artist, "", new { @class = "text-danger" })
-</div>
 <div>
 	@Html.LabelFor(m => m.Genre)
 	@Html.TextBoxFor(m => m.Genre, new { @class = "form-control" })
@@ -50,6 +51,6 @@
 
 <div class="form-group">
 	<div class="col-md-offset-2 col-md-10">
-		<input id="btnSubmit" type="submit" value= @(Model.ID > 0 ?"Edit": "Create") class="btn btn-default" />
+		<input id="btnSubmit" type="submit" value=@(Model.ID > 0 ? "Edit" : "Create") class="btn btn-default" />
 	</div>
 </div>
