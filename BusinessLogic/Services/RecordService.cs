@@ -1,13 +1,14 @@
 ﻿using BusinessLogic.Components.CrudComponents;
 using BusinessLogic.Models;
 using BusinessLogic.Repositories;
+using BusinessLogic.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace BusinessLogic.Services
 {
-	public class RecordService
+	public class RecordService : IRecordService
 	{
 		private readonly IRepository<RecordModel> _repository;
 		private readonly GetEntityListComponent _getEntityListComponent;

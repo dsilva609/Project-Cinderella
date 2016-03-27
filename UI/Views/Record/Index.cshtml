@@ -69,8 +69,8 @@
 			@*@if (User.IsInRole("Admin"))
 				{*@
 			<div class="col-xs-1 removePaddingLeftRight">
-				@*@Html.ActionLink("Edit", MVC.Card.Edit(item.ID), new { @id = "editCardBtn", @class = "btn btn-link btn-link-height" })
-					<span> | </span>*@
+			@Html.ActionLink("Edit", MVC.Record.Edit(item.ID), new { @id = "editRecordBtn", @class = "btn btn-link btn-link-height" })
+					<span> | </span>
 				@Html.ActionLink("Delete", MVC.Record.Delete(item.ID), new { @id = "deleteRecord", @class = "btn btn-link btn-link-height", @data_id = item.ID })
 			</div>
 			@*}*@

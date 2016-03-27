@@ -320,6 +320,8 @@
     <Content Include="Views\Record\Edit.cshtml" />
     <None Include="T4MVC.tt.hooks.t4" />
     <Content Include="App_Code\ToastrBuilder.cshtml" />
+    <Content Include="Views\Record\_RecordFormPartial.cshtml" />
+    <Content Include="Views\Record\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

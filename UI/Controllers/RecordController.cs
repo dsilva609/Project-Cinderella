@@ -4,8 +4,10 @@ using BusinessLogic.Enums;
 using BusinessLogic.Models;
 using BusinessLogic.Repositories;
 using BusinessLogic.Services;
+using BusinessLogic.Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using UI.Models;
 
@@ -14,8 +16,9 @@ namespace UI.Controllers
 	public partial class RecordController : ProjectCinderellaControllerBase
 	{
 		private readonly IUnitOfWork _uow;
-		private readonly RecordService _service;
+		private readonly IRecordService _service;
 
+		//--TODO: needs Dependency injection
 		public RecordController()
 		{
 			_uow = new UnitOfWork<ProjectCinderellaContext>();
@@ -35,8 +38,8 @@ namespace UI.Controllers
 		public virtual ActionResult Create()
 		{
 			var model = new RecordModel();
-
-			return View(MVC.Record.Views.Edit, model);
+			ViewBag.Title = "Create";
+			return View(model);
 		}
 
 		[HttpPost]
@@ -52,12 +55,40 @@ namespace UI.Controllers
 				catch (Exception e)
 				{
 					ShowStatusMessage(MessageTypeEnum.error, e.Message, "Duplicate Record");
-					return View(MVC.Record.Views.Edit, model);
+					return View(model);
 				}
 
 				return RedirectToAction(MVC.Record.Index());
 			}
-			return View(MVC.Record.Views.Edit, model);
+			return View(model);
+		}
+
+		[HttpGet]
+		public virtual ActionResult Edit(int id)
+		{
+			ViewBag.Title = "Edit";
+			var model = _service.GetByID(id);
+
+			return View(model);
+		}
+
+		[HttpPost]
+		public virtual ActionResult Edit(RecordModel model)
+		{
+			if (ModelState.IsValid)
+			{
+				var existingRecord = _service.GetAll().Where(x => x.ID != model.ID && x.Artist == model.Artist && x.AlbumName == model.AlbumName && x.MediaType == model.MediaType).ToList();
+				if (existingRecord.Count > 0)
+				{
+					ShowStatusMessage(MessageTypeEnum.error, $"A record of Artist: {model.Artist}, Album: {model.AlbumName}, Media Type: {model.MediaType} already exists.", "Duplicate Record");
+					return View(model);
+				}
+				//--TODO: why is id needed?
+				_service.Edit(model.ID, model);
+
+				return RedirectToAction(MVC.Record.Index());
+			}
+			return View(model);
 		}
 
 		//	[Authorize(Roles = "Admin")]

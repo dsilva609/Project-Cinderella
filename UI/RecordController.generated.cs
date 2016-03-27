@@ -58,6 +58,12 @@ namespace UI.Controllers
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Edit()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Web.Mvc.ActionResult Delete()
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
@@ -80,6 +86,7 @@ namespace UI.Controllers
         {
             public readonly string Index = "Index";
             public readonly string Create = "Create";
+            public readonly string Edit = "Edit";
             public readonly string Delete = "Delete";
         }
 
@@ -88,6 +95,7 @@ namespace UI.Controllers
         {
             public const string Index = "Index";
             public const string Create = "Create";
+            public const string Edit = "Edit";
             public const string Delete = "Delete";
         }
 
@@ -98,6 +106,15 @@ namespace UI.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Create
         {
+            public readonly string model = "model";
+        }
+        static readonly ActionParamsClass_Edit s_params_Edit = new ActionParamsClass_Edit();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Edit EditParams { get { return s_params_Edit; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Edit
+        {
+            public readonly string id = "id";
             public readonly string model = "model";
         }
         static readonly ActionParamsClass_Delete s_params_Delete = new ActionParamsClass_Delete();
@@ -118,9 +135,13 @@ namespace UI.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _RecordFormPartial = "_RecordFormPartial";
+                public readonly string Create = "Create";
                 public readonly string Edit = "Edit";
                 public readonly string Index = "Index";
             }
+            public readonly string _RecordFormPartial = "~/Views/Record/_RecordFormPartial.cshtml";
+            public readonly string Create = "~/Views/Record/Create.cshtml";
             public readonly string Edit = "~/Views/Record/Edit.cshtml";
             public readonly string Index = "~/Views/Record/Index.cshtml";
         }
@@ -162,6 +183,30 @@ namespace UI.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
             CreateOverride(callInfo, model);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Edit(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            EditOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, BusinessLogic.Models.RecordModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Edit(BusinessLogic.Models.RecordModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            EditOverride(callInfo, model);
             return callInfo;
         }
 

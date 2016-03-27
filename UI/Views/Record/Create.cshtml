@@ -2,7 +2,7 @@
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm(MVC.Record.Edit(), FormMethod.Post))
+@using (Html.BeginForm(MVC.Record.Create(), FormMethod.Post))
 {
 	Html.RenderPartial(MVC.Record.Views._RecordFormPartial, Model);
 }

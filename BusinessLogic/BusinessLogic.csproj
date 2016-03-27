@@ -104,6 +104,7 @@
     <Compile Include="Repositories\IUnitOfWork.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />
+    <Compile Include="Services\Interfaces\IRecordService.cs" />
     <Compile Include="Services\RecordService.cs" />
   </ItemGroup>
   <ItemGroup>

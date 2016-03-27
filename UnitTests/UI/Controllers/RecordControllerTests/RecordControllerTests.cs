@@ -45,13 +45,13 @@ namespace UnitTests.UI.Controllers.RecordControllerTests
 		public void ThatCreateActionReturnsAView()
 		{
 			//--Arrange
-			_controller.Setup(mock => mock.Create()).Returns(new ViewResult { ViewName = MVC.Record.Views.Edit });
+			_controller.Setup(mock => mock.Create()).Returns(new ViewResult { ViewName = MVC.Record.Views.Create });
 
 			//--Act
 			var result = _controller.Object.Create() as ViewResult;
 
 			//--Assert
-			Assert.AreEqual(MVC.Record.Views.Edit, result.ViewName);
+			Assert.AreEqual(MVC.Record.Views.Create, result.ViewName);
 		}
 
 		[Test]
@@ -86,15 +86,14 @@ namespace UnitTests.UI.Controllers.RecordControllerTests
 		public void ItGoesBackToTheViewIfModelStateIsInvalid()
 		{
 			//--Arrange
-			_controller.Setup(mock => mock.Create(It.IsNotNull<RecordModel>()))
-				.Returns(new ViewResult { ViewName = MVC.Record.Views.Edit });
+			_controller.Setup(mock => mock.Create(It.IsNotNull<RecordModel>())).Returns(new ViewResult { ViewName = MVC.Record.Views.Create });
 			_controller.Object.ModelState.AddModelError(string.Empty, string.Empty);
 
 			//--Act
 			var result = _controller.Object.Create(_testModel) as ViewResult;
 
 			//--Assert
-			Assert.AreEqual(MVC.Record.Views.Edit, result.ViewName);
+			Assert.AreEqual(MVC.Record.Views.Create, result.ViewName);
 			Assert.IsFalse(_controller.Object.ModelState.IsValid);
 		}
 
@@ -110,6 +109,62 @@ namespace UnitTests.UI.Controllers.RecordControllerTests
 
 			//--Assert
 			Assert.AreEqual(MVC.Record.Views.Index, result.ViewName);
+		}
+
+		[Test]
+		public void ThatEditActionReturnsAView()
+		{
+			//--Arrange
+			_controller.Setup(mock => mock.Edit(It.IsAny<int>())).Returns(new ViewResult { ViewName = MVC.Record.Views.Edit });
+
+			//--Act
+			var result = _controller.Object.Edit(666) as ViewResult;
+
+			//--Assert
+			Assert.AreEqual(MVC.Record.Views.Edit, result.ViewName);
+		}
+
+		[Test]
+		public void ThatOnEditWhenModelStateIsValidItGoesBackToIndexView()
+		{
+			//--Arrange
+			_controller.Setup(mock => mock.Edit(It.IsNotNull<RecordModel>())).Returns(new ViewResult { ViewName = MVC.Record.Views.Index });
+
+			//--Act
+			var result = _controller.Object.Edit(_testModel) as ViewResult;
+
+			//--Assert
+			Assert.AreEqual(MVC.Record.Views.Index, result.ViewName);
+		}
+
+		[Test]
+		public void ThatWhenModelStateIsNotValidItRedirectsBackToEditView()
+		{
+			//--Arrange
+			_controller.Setup(mock => mock.Edit(It.IsNotNull<RecordModel>())).Returns(new ViewResult { ViewName = MVC.Record.Views.Edit });
+			_controller.Object.ModelState.AddModelError("", "");
+
+			//--Act
+			var result = _controller.Object.Edit(_testModel) as ViewResult;
+
+			//--Assert
+			Assert.IsFalse(_controller.Object.ModelState.IsValid);
+			Assert.AreEqual(MVC.Record.Views.Edit, result.ViewName);
+		}
+
+		[Test]
+		public void ThatOnEditADuplicateRecordIsFoundItRedirectsBackToEditView()
+		{
+			//--TODO: need to set up dependency
+			//--Arrange
+			_controller.Setup(mock => mock.Edit(It.IsNotNull<RecordModel>())).Returns(new ViewResult() { ViewName = MVC.Record.Views.Edit });
+
+			//--Act
+			var result = _controller.Object.Edit(_testModel) as ViewResult;
+
+			//--Assert
+			Assert.AreEqual(0, 1);
+			Assert.AreEqual(MVC.Record.Views.Edit, result.ViewName);
 		}
 	}
 }
