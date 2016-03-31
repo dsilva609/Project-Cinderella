@@ -4,6 +4,6 @@
 
 @using (Html.BeginForm(MVC.Record.Edit(), FormMethod.Post))
 {
-	Html.RenderPartial(MVC.Record.Views._RecordFormPartial, Model);
+    Html.RenderPartial(MVC.Record.Views._RecordFormPartial, Model);
 }
 @Html.ActionLink("Back to List", MVC.Record.Index())

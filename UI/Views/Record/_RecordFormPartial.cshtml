@@ -2,55 +2,60 @@
 
 @Html.AntiForgeryToken()
 <div>
-	@Html.LabelFor(m => m.Artist)
-	@Html.TextBoxFor(m => m.Artist, new { @class = "form-control" })
-	@Html.ValidationMessageFor(m => m.Artist, "", new { @class = "text-danger" })
-</div>
 
-<div>
-	@Html.LabelFor(m => m.AlbumName)
-	@Html.TextBoxFor(m => m.AlbumName, new { @class = "form-control" })
-	@Html.ValidationMessageFor(m => m.AlbumName, "", new { @class = "text-danger" })
-</div>
+    <div class="col-xs-12">
+        <div class="form-group col-xs-3">
+            @Html.LabelFor(m => m.Artist)
+            @Html.TextBoxFor(m => m.Artist, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Artist, "", new { @class = "text-danger" })
+        </div>
 
-<div>
-	@Html.LabelFor(m => m.Genre)
-	@Html.TextBoxFor(m => m.Genre, new { @class = "form-control" })
-	@Html.ValidationMessageFor(m => m.Genre, "", new { @class = "text-danger" })
-</div>
-<div>
-	@Html.LabelFor(m => m.AlbumYear)
-	@Html.TextBoxFor(m => m.AlbumYear, new { @class = "form-control" })
-	@Html.ValidationMessageFor(m => m.AlbumYear, "", new { @class = "text-danger" })
-</div>
-<div>
-	@Html.LabelFor(m => m.DatePurchased)
-	@Html.TextBoxFor(m => m.DatePurchased, new { @class = "form-control" })
-	@Html.ValidationMessageFor(m => m.DatePurchased, "", new { @class = "text-danger" })
-</div>
-<div>
-	@Html.LabelFor(m => m.IsNew)
-	@Html.CheckBoxFor(m => m.IsNew, new { @class = "form-control" })
-	@Html.ValidationMessageFor(m => m.IsNew, "", new { @class = "text-danger" })
-</div>
-<div>
-	@Html.LabelFor(m => m.IsPhysical)
-	@Html.CheckBoxFor(m => m.IsPhysical, new { @class = "form-control" })
-	@Html.ValidationMessageFor(m => m.IsPhysical, "", new { @class = "text-danger" })
-</div>
-<div>
-	@Html.LabelFor(m => m.LocationPurchased)
-	@Html.TextBoxFor(m => m.LocationPurchased, new { @class = "form-control" })
-	@Html.ValidationMessageFor(m => m.LocationPurchased, "", new { @class = "text-danger" })
-</div>
-<div>
-	@Html.LabelFor(m => m.MediaType)
-	@Html.EnumDropDownListFor(m => m.MediaType, new { @class = "form-control" })
-	@Html.ValidationMessageFor(m => m.MediaType, "", new { @class = "text-danger" })
-</div>
+        <div class="form-group col-xs-3">
+            @Html.LabelFor(m => m.AlbumName)
+            @Html.TextBoxFor(m => m.AlbumName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.AlbumName, "", new { @class = "text-danger" })
+        </div>
 
-<div class="form-group">
-	<div class="col-md-offset-2 col-md-10">
-		<input id="btnSubmit" type="submit" value=@(Model.ID > 0 ? "Edit" : "Create") class="btn btn-default" />
-	</div>
+        <div class="form-group col-xs-2">
+            @Html.LabelFor(m => m.MediaType)
+            @Html.EnumDropDownListFor(m => m.MediaType, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.MediaType, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group col-xs-2">
+            @Html.LabelFor(m => m.IsNew)
+            @Html.CheckBoxFor(m => m.IsNew, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.IsNew, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group col-xs-2">
+            @Html.LabelFor(m => m.IsPhysical)
+            @Html.CheckBoxFor(m => m.IsPhysical, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.IsPhysical, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group col-xs-3">
+            @Html.LabelFor(m => m.Genre)
+            @Html.TextBoxFor(m => m.Genre, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Genre, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group col-xs-3">
+            @Html.LabelFor(m => m.AlbumYear)
+            @Html.TextBoxFor(m => m.AlbumYear, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.AlbumYear, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group col-xs-3">
+            @Html.LabelFor(m => m.DatePurchased)
+            @Html.TextBoxFor(m => m.DatePurchased, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.DatePurchased, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group col-xs-3">
+            @Html.LabelFor(m => m.LocationPurchased)
+            @Html.TextBoxFor(m => m.LocationPurchased, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.LocationPurchased, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-xs-12">
+        <input id="btnSubmit" type="submit" value=@(Model.ID > 0 ? "Save" : "Create") class="btn btn-default" />
+    </div>
 </div>
