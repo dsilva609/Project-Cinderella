@@ -63,8 +63,8 @@ textarea {
 	margin-left: 30%;
 }
 
-.redText {
-	color: red !important;
+.jumbotronText {
+	color: lime !important;
 	font-family: "Arizonia";
 	font-size: large !important;
 }

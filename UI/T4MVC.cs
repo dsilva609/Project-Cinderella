@@ -160,8 +160,7 @@ namespace Links
             private const string URLPATH = "~/Content/Images";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-            public static readonly string CardFace_jpg = Url("CardFace.jpg");
-            public static readonly string LoveLetter_jpg = Url("LoveLetter.jpg");
+            public static readonly string Turntable_jpg = Url("Turntable.jpg");
         }
     
         public static readonly string Responsive_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Responsive.min.css") ? Url("Responsive.min.css") : Url("Responsive.css");
