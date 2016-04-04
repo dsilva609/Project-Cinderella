@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 namespace BusinessLogic.Services.Interfaces
 {
-	public interface IRecordService
-	{
-		void Add(RecordModel record);
+    public interface IRecordService
+    {
+        void Add(RecordModel record);
 
-		List<RecordModel> GetAll();
+        List<RecordModel> GetAll(int numToTake = 0);
 
-		RecordModel GetByID(int id);
+        RecordModel GetByID(int id);
 
-		void Edit(int id, RecordModel record);
+        void Edit(int id, RecordModel record);
 
-		void Delete(int id);
-	}
+        void Delete(int id);
+    }
 }

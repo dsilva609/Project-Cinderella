@@ -13,7 +13,7 @@ namespace UnitTests.BusinessLogic.Services.TestBases
         protected Mock<IRepository<RecordModel>> _repo;
 
         [SetUp]
-        public virtual void SetUp()
+        protected virtual void SetUp()
         {
             _uow = new Mock<IUnitOfWork>();
             _service = new Mock<RecordService>(_uow.Object);

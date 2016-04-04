@@ -7,71 +7,141 @@ using UnitTests.BusinessLogic.Services.TestBases;
 
 namespace UnitTests.BusinessLogic.Services
 {
-	[TestFixture]
-	public class RecordServiceTests : RecordServiceTestBase
-	{
-		private RecordModel _testModel1 = new RecordModel
-		{
-			ID = 1984,
-			Artist = "Dio",
-			AlbumName = "The Last In Line"
-		};
+    [TestFixture]
+    public class RecordServiceTests : RecordServiceTestBase
+    {
+        private RecordModel _testModel1;
+        private RecordModel _testModel2;
 
-		private RecordModel _testModel2 = new RecordModel
-		{
-			ID = 1983,
-			Artist = "Dio",
-			AlbumName = "Holy Diver"
-		};
+        private List<RecordModel> _recordModels;
 
-		[Test]
-		public void ItAddsRecords()
-		{
-			//--Arrange
-			_repo.Setup(mock => mock.GetAll()).Returns(new List<RecordModel>());
+        [SetUp]
+        protected override void SetUp()
+        {
+            base.SetUp();
 
-			//--Act
-			_service.Object.Add(_testModel1);
+            _testModel1 = new RecordModel
+            {
+                ID = 1984,
+                Artist = "Dio",
+                AlbumName = "The Last In Line"
+            };
+            _testModel2 = new RecordModel
+            {
+                ID = 1983,
+                Artist = "Dio",
+                AlbumName = "Holy Diver"
+            };
 
-			//--Assert
-			_repo.Verify(mock => mock.Add(It.Is<RecordModel>(x => x.Equals(_testModel1))), Times.Once);
-		}
+            _recordModels = new List<RecordModel>
+            {
+                _testModel1,
+                _testModel2,
+                new RecordModel
+                {
+                    ID = 1986,
+                    Artist = "Metallica",
+                    AlbumName = "Master Of Puppets"
+                },
+                new RecordModel
+                {
+                    ID = 2004,
+                    Artist = "Avril Lavigne",
+                    AlbumName = "Under My Skin"
+                }
+            };
+        }
 
-		[Test]
-		public void ItThrowsAnExceptionWhenTryingToAddADuplicateRecord()
-		{
-			//--Arrange
-			_repo.Setup(mock => mock.GetAll()).Returns(new List<RecordModel>
-			{
-				_testModel1
-			});
+        [Test]
+        public void ItAddsRecords()
+        {
+            //--Arrange
+            _repo.Setup(mock => mock.GetAll()).Returns(new List<RecordModel>());
 
-			//--Act/Assert
-			Assert.Throws<ApplicationException>(() => _service.Object.Add(_testModel1));
-		}
+            //--Act
+            _service.Object.Add(_testModel1);
 
-		[Test]
-		public void ItDeletesRecords()
-		{
-			//--Arrange
-			_repo.Setup(mock => mock.Add(_testModel2));
+            //--Assert
+            _repo.Verify(mock => mock.Add(It.Is<RecordModel>(x => x.Equals(_testModel1))), Times.Once);
+        }
 
-			//--Act
-			_service.Object.Delete(_testModel2.ID);
-			var result = _service.Object.GetByID(_testModel2.ID);
+        [Test]
+        public void ItThrowsAnExceptionWhenTryingToAddADuplicateRecord()
+        {
+            //--Arrange
+            _repo.Setup(mock => mock.GetAll()).Returns(new List<RecordModel>
+            {
+                _testModel1
+            });
 
-			//--Assert
-			Assert.IsNull(result);
-		}
+            //--Act/Assert
+            Assert.Throws<ApplicationException>(() => _service.Object.Add(_testModel1));
+        }
 
-		[Test]
-		public void ItUpdatesRecords()
-		{
-			//--Act
-			_service.Object.Edit(_testModel2.ID, _testModel2);
+        [Test]
+        public void ItDeletesRecords()
+        {
+            //--Arrange
+            _repo.Setup(mock => mock.Add(_testModel2));
 
-			//--Assert
-			_repo.Verify(mock => mock.Edit(It.Is<RecordModel>(x => x.Equals(_testModel2))));
-		}
-	}
+            //--Act
+            _service.Object.Delete(_testModel2.ID);
+            var result = _service.Object.GetByID(_testModel2.ID);
+
+            //--Assert
+            Assert.IsNull(result);
+        }
+
+        [Test]
+        public void ItUpdatesRecords()
+        {
+            //--Act
+            _service.Object.Edit(_testModel2.ID, _testModel2);
+
+            //--Assert
+            _repo.Verify(mock => mock.Edit(It.Is<RecordModel>(x => x.Equals(_testModel2))));
+        }
+
+        [Test]
+        [TestCase(2, 2)]
+        [TestCase(1, 1)]
+        public void ItReturnsSpecifiedNumberOfRecords(int numToTake, int expectedResult)
+        {
+            //--Arrange
+            _repo.Setup(mock => mock.GetAll()).Returns(_recordModels);
+
+            //--Act
+            var result = _service.Object.GetAll(numToTake);
+
+            //--Assert
+            Assert.AreEqual(expectedResult, result.Count);
+        }
+
+        [Test]
+        public void ItReturnsAllRecordsWhenNoParameterIsPassedIn()
+        {
+            //--Arrange
+            _repo.Setup(mock => mock.GetAll()).Returns(_recordModels);
+
+            //--Act
+            var result = _service.Object.GetAll();
+
+            //--Assert
+            Assert.AreEqual(4, result.Count);
+        }
+
+        [Test]
+        public void ItOrdersByArtistThenAlbumWhenYouGetAllRecords()
+        {
+            //--Arrange
+            _repo.Setup(mock => mock.GetAll()).Returns(_recordModels);
+
+            //--Act
+            var result = _service.Object.GetAll();
+
+            //--Assert
+            Assert.AreEqual("Avril Lavigne", result[0].Artist);
+            Assert.AreEqual("Holy Diver", result[1].AlbumName);
+        }
+    }
 }
