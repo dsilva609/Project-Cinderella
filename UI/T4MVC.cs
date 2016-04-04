@@ -129,6 +129,8 @@ namespace Links
             private const string URLPATH = "~/Scripts/Shared";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string _Layout_coffee = Url("_Layout.coffee");
+            public static readonly string _Layout_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/_Layout.min.js") ? Url("_Layout.min.js") : Url("_Layout.js");
             public static readonly string Logout_coffee = Url("Logout.coffee");
             public static readonly string Logout_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Logout.min.js") ? Url("Logout.min.js") : Url("Logout.js");
             public static readonly string Logout_js_map = Url("Logout.js.map");

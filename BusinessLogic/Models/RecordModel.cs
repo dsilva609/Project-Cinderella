@@ -45,6 +45,7 @@ namespace BusinessLogic.Models
         public string LocationPurchased { get; set; }
 
         [DisplayName("Date Purchased")]
-        public DateTime DatePurchased { get; set; }
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        public DateTime DatePurchased { get; set; } = DateTime.Now;
     }
 }

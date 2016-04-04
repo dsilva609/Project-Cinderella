@@ -19,5 +19,6 @@
 /// <reference path="pagespecific/recordindex.js" />
 /// <reference path="respond.matchmedia.addlistener.min.js" />
 /// <reference path="respond.min.js" />
+/// <reference path="shared/_layout.js" />
 /// <reference path="Shared/Logout.min.js" />
 /// <reference path="toastr.min.js" />
