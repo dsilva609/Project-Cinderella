@@ -17,6 +17,7 @@ namespace UI.Controllers
     {
         private readonly IUnitOfWork _uow;
         private readonly IRecordService _service;
+        private const int NUM_RECORDS_TO_GET = 25;
 
         //--TODO: needs Dependency injection
         public RecordController()
@@ -29,7 +30,7 @@ namespace UI.Controllers
         public virtual ActionResult Index()
         {
             var viewModel = new List<RecordViewModel>();
-            var recordList = _service.GetAll();
+            var recordList = _service.GetAll(NUM_RECORDS_TO_GET);
             Mapper.Map(recordList, viewModel);
             return View(viewModel);
         }
