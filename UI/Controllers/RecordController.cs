@@ -17,7 +17,7 @@ namespace UI.Controllers
     {
         private readonly IUnitOfWork _uow;
         private readonly IRecordService _service;
-        private const int NUM_RECORDS_TO_GET = 25;
+        private const int NUM_RECORDS_TO_GET = 2;
 
         //--TODO: needs Dependency injection
         public RecordController()
@@ -27,10 +27,10 @@ namespace UI.Controllers
         }
 
         [HttpGet]
-        public virtual ActionResult Index()
+        public virtual ActionResult Index(int? pageNum = 1)
         {
             var viewModel = new List<RecordViewModel>();
-            var recordList = _service.GetAll(NUM_RECORDS_TO_GET);
+            var recordList = _service.GetAll(NUM_RECORDS_TO_GET, pageNum.GetValueOrDefault());
             Mapper.Map(recordList, viewModel);
             return View(viewModel);
         }
