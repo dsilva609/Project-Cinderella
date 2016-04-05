@@ -143,5 +143,25 @@ namespace UnitTests.BusinessLogic.Services
             Assert.AreEqual("Avril Lavigne", result[0].Artist);
             Assert.AreEqual("Holy Diver", result[1].AlbumName);
         }
+
+        [Test]
+        [TestCase(3, 2, 1)]
+        [TestCase(4, 2, 0)]
+        [TestCase(2, 1, 2)]
+        [TestCase(2, 2, 2)]
+        [TestCase(2, 3, 0)]
+        [TestCase(5, 1, 4)]
+        [TestCase(5, 2, 0)]
+        public void ItReturnsSpecifiedNumberOfRecordsPerPage(int numToTake, int pageNum, int expectedResult)
+        {
+            //--Arrange
+            _repo.Setup(mock => mock.GetAll()).Returns(_recordModels);
+
+            //--Act
+            var result = _service.Object.GetAll(numToTake, pageNum);
+
+            //--Assert
+            Assert.AreEqual(expectedResult, result.Count);
+        }
     }
 }

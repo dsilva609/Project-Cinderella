@@ -35,10 +35,10 @@ namespace BusinessLogic.Services
             _addEntityComponent.Execute(_repository, record);
         }
 
-        public List<RecordModel> GetAll(int numToTake = 0 /*bool sortAscending, string sortPreference*/)
+        public List<RecordModel> GetAll(int numToTake = 0, int pageNum = 1 /*bool sortAscending, string sortPreference*/)
         {
             var recordList = numToTake > 0 ?
-                _getEntityListComponent.Execute(_repository).Take(numToTake).ToList()
+                _getEntityListComponent.Execute(_repository).Skip(numToTake * (pageNum - 1)).Take(numToTake).ToList()
                 : _getEntityListComponent.Execute(_repository);
 
             recordList = recordList.OrderBy(x => x.Artist).ThenBy(y => y.AlbumName).ToList();
