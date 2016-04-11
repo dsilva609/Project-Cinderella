@@ -1,6 +1,6 @@
-﻿@model IEnumerable<UI.Models.RecordViewModel>
+﻿@model UI.Models.RecordViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = @Model.ViewTitle;
 }
 <script>
     var detailsUrl = '@Url.Action(MVC.Record.Details())';
@@ -11,25 +11,25 @@
 <div class="table text-center">
     <div class="bold row">
         <div class="col-xs-3">
-            @Html.DisplayNameFor(model => model.Artist)
+            @Html.DisplayNameFor(model => model.Records[0].Artist)
         </div>
         <div class="col-xs-3">
-            @Html.DisplayNameFor(model => model.AlbumName)
+            @Html.DisplayNameFor(model => model.Records[0].AlbumName)
         </div>
         <div class="col-xs-1">
-            @Html.DisplayNameFor(model => model.MediaType)
+            @Html.DisplayNameFor(model => model.Records[0].MediaType)
         </div>
         <div class="col-xs-1">
-            @Html.DisplayNameFor(model => model.IsNew)
+            @Html.DisplayNameFor(model => model.Records[0].IsNew)
         </div>
         <div class="col-xs-1">
-            @Html.DisplayNameFor(model => model.IsPhysical)
+            @Html.DisplayNameFor(model => model.Records[0].IsPhysical)
         </div>
         <div class="col-xs-1">
-            @Html.DisplayNameFor(model => model.DatePurchased)
+            @Html.DisplayNameFor(model => model.Records[0].DatePurchased)
         </div>
     </div>
-    @foreach (var item in Model)
+    @foreach (var item in Model.Records)
     {
         <div id="record" class="row" data-id="@item.ID">
             <div class="col-xs-3">
@@ -54,11 +54,19 @@
             @*@if (User.IsInRole("Admin"))
                 {*@
             <div class="col-xs-1 removePaddingLeftRight">
-                @Html.ActionLink("Edit", MVC.Record.Edit(item.ID), new { @id = "editRecordBtn", @class = "btn btn-link btn-link-height" })
+                @Html.ActionLink("Edit", MVC.Record.Edit(item.ID), new {@id = "editRecordBtn", @class = "btn btn-link btn-link-height"})
                 <span> | </span>
-                @Html.ActionLink("Delete", MVC.Record.Delete(item.ID), new { @id = "deleteRecord", @class = "btn btn-link btn-link-height", @data_id = item.ID })
+                @Html.ActionLink("Delete", MVC.Record.Delete(item.ID), new {@id = "deleteRecord", @class = "btn btn-link btn-link-height", @data_id = item.ID})
             </div>
             @*}*@
         </div>
+    }
+    </div>
+<div class="row">
+    Page:
+    @for (var i = 0; i < Model.PageCount; i++)
+    {
+        @Html.ActionLink((i + 1).ToString(), MVC.Record.Index(i + 1), new { @class = "btn btn-link" })
+
     }
 </div>

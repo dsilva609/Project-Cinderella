@@ -68,5 +68,7 @@ namespace BusinessLogic.Services
 
         public void Delete(int id) =>
             _deleteEntityComponent.Execute(_repository, id);
+
+        public int GetCount() => _repository.GetCount();
     }
 }

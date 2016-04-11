@@ -14,5 +14,7 @@ namespace BusinessLogic.Services.Interfaces
         void Edit(int id, RecordModel record);
 
         void Delete(int id);
+
+        int GetCount();
     }
 }

@@ -163,5 +163,18 @@ namespace UnitTests.BusinessLogic.Services
             //--Assert
             Assert.AreEqual(expectedResult, result.Count);
         }
+
+        [Test]
+        public void ItGetsCountOfRecords()
+        {
+            //--Arrange
+            _repo.Setup(mock => mock.GetCount()).Returns(_recordModels.Count);
+
+            //--Act
+            var result = _service.Object.GetCount();
+
+            //--Assert
+            Assert.AreEqual(4, result);
+        }
     }
 }

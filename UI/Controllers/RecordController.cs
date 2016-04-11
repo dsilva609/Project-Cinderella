@@ -1,12 +1,10 @@
-﻿using AutoMapper;
-using BusinessLogic.DAL;
+﻿using BusinessLogic.DAL;
 using BusinessLogic.Enums;
 using BusinessLogic.Models;
 using BusinessLogic.Repositories;
 using BusinessLogic.Services;
 using BusinessLogic.Services.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using UI.Models;
@@ -17,7 +15,7 @@ namespace UI.Controllers
     {
         private readonly IUnitOfWork _uow;
         private readonly IRecordService _service;
-        private const int NUM_RECORDS_TO_GET = 2;
+        private const int NUM_RECORDS_TO_GET = 25;
 
         //--TODO: needs Dependency injection
         public RecordController()
@@ -29,9 +27,15 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Index(int? pageNum = 1)
         {
-            var viewModel = new List<RecordViewModel>();
-            var recordList = _service.GetAll(NUM_RECORDS_TO_GET, pageNum.GetValueOrDefault());
-            Mapper.Map(recordList, viewModel);
+            var viewModel = new RecordViewModel
+            {
+                ViewTitle = "Index",
+                Records = _service.GetAll(NUM_RECORDS_TO_GET, pageNum.GetValueOrDefault()),
+                PageSize = NUM_RECORDS_TO_GET,
+                TotalRecords = _service.GetCount()
+            };
+            var pages = Math.Ceiling((double)viewModel.TotalRecords / viewModel.PageSize);
+            viewModel.PageCount = (int)pages;
             return View(viewModel);
         }
 
