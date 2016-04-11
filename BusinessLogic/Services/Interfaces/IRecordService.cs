@@ -7,7 +7,7 @@ namespace BusinessLogic.Services.Interfaces
     {
         void Add(RecordModel record);
 
-        List<RecordModel> GetAll(int numToTake = 0, int? pageNum = 1);
+        List<RecordModel> GetAll(string query = "", int numToTake = 0, int? pageNum = 1);
 
         RecordModel GetByID(int id);
 

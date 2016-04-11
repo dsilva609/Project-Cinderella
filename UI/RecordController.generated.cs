@@ -58,6 +58,12 @@ namespace UI.Controllers
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Index()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Web.Mvc.ActionResult Edit()
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
@@ -114,6 +120,7 @@ namespace UI.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Index
         {
+            public readonly string query = "query";
             public readonly string pageNum = "pageNum";
         }
         static readonly ActionParamsClass_Create s_params_Create = new ActionParamsClass_Create();
@@ -179,14 +186,15 @@ namespace UI.Controllers
         public T4MVC_RecordController() : base(Dummy.Instance) { }
 
         [NonAction]
-        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int? pageNum);
+        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string query, int? pageNum);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Index(int? pageNum)
+        public override System.Web.Mvc.ActionResult Index(string query, int? pageNum)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "query", query);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "pageNum", pageNum);
-            IndexOverride(callInfo, pageNum);
+            IndexOverride(callInfo, query, pageNum);
             return callInfo;
         }
 

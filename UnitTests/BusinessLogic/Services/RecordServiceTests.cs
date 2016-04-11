@@ -111,7 +111,7 @@ namespace UnitTests.BusinessLogic.Services
             _repo.Setup(mock => mock.GetAll()).Returns(_recordModels);
 
             //--Act
-            var result = _service.Object.GetAll(numToTake);
+            var result = _service.Object.GetAll(string.Empty, numToTake);
 
             //--Assert
             Assert.AreEqual(expectedResult, result.Count);
@@ -158,7 +158,7 @@ namespace UnitTests.BusinessLogic.Services
             _repo.Setup(mock => mock.GetAll()).Returns(_recordModels);
 
             //--Act
-            var result = _service.Object.GetAll(numToTake, pageNum);
+            var result = _service.Object.GetAll(string.Empty, numToTake, pageNum);
 
             //--Assert
             Assert.AreEqual(expectedResult, result.Count);
@@ -175,6 +175,24 @@ namespace UnitTests.BusinessLogic.Services
 
             //--Assert
             Assert.AreEqual(4, result);
+        }
+
+        [Test]
+        [TestCase("Dio", 2)]
+        [TestCase("Metallica", 1)]
+        [TestCase("Avril Lavigne", 1)]
+        [TestCase("Holy Diver", 1)]
+        [TestCase("Taylor Swift", 0)]
+        public void ItReturnsRecordsOfSpecifiedName(string query, int expectedResult)
+        {
+            //--Arrange
+            _repo.Setup(mock => mock.GetAll()).Returns(_recordModels);
+
+            //--Act
+            var result = _service.Object.GetAll(query);
+
+            //--Assert
+            Assert.AreEqual(expectedResult, result.Count);
         }
     }
 }

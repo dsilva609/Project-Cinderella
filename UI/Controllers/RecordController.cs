@@ -25,12 +25,12 @@ namespace UI.Controllers
         }
 
         [HttpGet]
-        public virtual ActionResult Index(int? pageNum = 1)
+        public virtual ActionResult Index(string query, int? pageNum = 1)
         {
             var viewModel = new RecordViewModel
             {
                 ViewTitle = "Index",
-                Records = _service.GetAll(NUM_RECORDS_TO_GET, pageNum.GetValueOrDefault()),
+                Records = _service.GetAll(query, NUM_RECORDS_TO_GET, pageNum.GetValueOrDefault()),
                 PageSize = NUM_RECORDS_TO_GET,
                 TotalRecords = _service.GetCount()
             };

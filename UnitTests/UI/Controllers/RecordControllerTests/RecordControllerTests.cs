@@ -1,8 +1,6 @@
 ﻿using BusinessLogic.Models;
 using Moq;
 using NUnit.Framework;
-using Rhino.Mocks;
-using System.Collections.Generic;
 using System.Web.Mvc;
 using UI.Models;
 using UnitTests.UI.Controllers.RecordControllerTests.TestBases;
@@ -13,16 +11,16 @@ namespace UnitTests.UI.Controllers.RecordControllerTests
     public class RecordControllerTests : RecordControllerTestBase
     {
         private RecordModel _testModel = new RecordModel();
-        private List<RecordViewModel> _expectedIndexModels = new List<RecordViewModel>();
+        private RecordViewModel _expectedIndex = new RecordViewModel();
 
         [Test]
         public void ThatTheIndexActionReturnsAView()
         {
             //--Arrange
-            _controller.Setup(mock => mock.Index(Arg<int>.Is.Anything)).Returns(new ViewResult { ViewName = MVC.Record.Views.Index });
+            _controller.Setup(mock => mock.Index(It.IsAny<string>(), It.IsAny<int>())).Returns(new ViewResult { ViewName = MVC.Record.Views.Index });
 
             //--Act
-            var result = _controller.Object.Index(0) as ViewResult;
+            var result = _controller.Object.Index(string.Empty, 1) as ViewResult;
 
             //--Assert
             Assert.AreEqual(MVC.Record.Views.Index, result.ViewName);
@@ -32,14 +30,14 @@ namespace UnitTests.UI.Controllers.RecordControllerTests
         public void ThatSpecifiedViewModelIsSentToView()
         {
             //--Arrange
-            _controller.Setup(mock => mock.Index(Arg<int>.Is.Anything))
-                .Returns(new ViewResult { ViewName = MVC.Record.Views.Index, ViewData = new ViewDataDictionary(_expectedIndexModels) });
+            _controller.Setup(mock => mock.Index(It.IsAny<string>(), It.IsAny<int>()))
+                .Returns(new ViewResult { ViewName = MVC.Record.Views.Index, ViewData = new ViewDataDictionary(_expectedIndex) });
 
             //--Act
-            var result = _controller.Object.Index(0) as ViewResult;
+            var result = _controller.Object.Index(string.Empty, 0) as ViewResult;
 
             //--Assert
-            Assert.AreEqual(_expectedIndexModels, result.ViewData.Model);
+            Assert.AreEqual(_expectedIndex, result.ViewData.Model);
         }
 
         [Test]

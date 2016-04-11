@@ -6,9 +6,27 @@
     var detailsUrl = '@Url.Action(MVC.Record.Details())';
     var deleteUrl = '@Url.Action(MVC.Record.Delete())';
 </script>
-<h2>Current Records In Collection @Html.ActionLink("Add Record", MVC.Record.Create(), new { @class = "btn btn-default" })</h2>
 
-<div class="table text-center">
+<div>
+    <div class="h2 col-xs-5">
+        Current Records In Collection
+    </div>
+
+    <div class="col-xs-1" style="padding-top: 1.25em;">
+        @Html.ActionLink("Add Record", MVC.Record.Create(), new { @class = "btn btn-default" })
+    </div>
+    <div class="col-xs-6 text-right" style="padding-top: 1.25em;">
+        @using (Html.BeginForm(MVC.Record.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
+        {
+            @Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
+            <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+        }
+    </div>
+</div>
+
+<div class="table text-center" style="padding-top: 5em;">
     <div class="bold row">
         <div class="col-xs-3">
             @Html.DisplayNameFor(model => model.Records[0].Artist)
@@ -54,19 +72,19 @@
             @*@if (User.IsInRole("Admin"))
                 {*@
             <div class="col-xs-1 removePaddingLeftRight">
-                @Html.ActionLink("Edit", MVC.Record.Edit(item.ID), new {@id = "editRecordBtn", @class = "btn btn-link btn-link-height"})
+                @Html.ActionLink("Edit", MVC.Record.Edit(item.ID), new { @id = "editRecordBtn", @class = "btn btn-link btn-link-height" })
                 <span> | </span>
-                @Html.ActionLink("Delete", MVC.Record.Delete(item.ID), new {@id = "deleteRecord", @class = "btn btn-link btn-link-height", @data_id = item.ID})
+                @Html.ActionLink("Delete", MVC.Record.Delete(item.ID), new { @id = "deleteRecord", @class = "btn btn-link btn-link-height", @data_id = item.ID })
             </div>
             @*}*@
         </div>
     }
-    </div>
+</div>
 <div class="row">
     Page:
     @for (var i = 0; i < Model.PageCount; i++)
     {
-        @Html.ActionLink((i + 1).ToString(), MVC.Record.Index(i + 1), new { @class = "btn btn-link" })
+        @Html.ActionLink((i + 1).ToString(), MVC.Record.Index("", i + 1), new { @class = "btn btn-link" })
 
     }
 </div>
