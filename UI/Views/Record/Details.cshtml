@@ -54,12 +54,12 @@
 </div>
 
 <div>
-    @*@if (User.IsInRole("Admin"))
-        {*@
-    @Html.ActionLink("Edit", MVC.Record.Edit(Model.ID), new {id = Model.ID})
-    <span> | </span>
-    @Html.ActionLink("Delete", MVC.Record.Delete(Model.ID), new {id = "recordDeleteBtn", @data_id = Model.ID})
-    <span> | </span>
-    @*}*@
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Edit", MVC.Record.Edit(Model.ID), new { id = Model.ID })
+        <span> | </span>
+        @Html.ActionLink("Delete", MVC.Record.Delete(Model.ID), new { id = "recordDeleteBtn", @data_id = Model.ID })
+        <span> | </span>
+    }
     @Html.ActionLink("Back to List", MVC.Record.Index())
 </div>
