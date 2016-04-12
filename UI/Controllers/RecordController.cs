@@ -4,6 +4,7 @@ using BusinessLogic.Models;
 using BusinessLogic.Repositories;
 using BusinessLogic.Services;
 using BusinessLogic.Services.Interfaces;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Linq;
 using System.Web.Mvc;
@@ -39,19 +40,23 @@ namespace UI.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public virtual ActionResult Create()
         {
             var model = new RecordModel();
+            model.UserID = User.Identity.GetUserId();
             ViewBag.Title = "Create";
 
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public virtual ActionResult Create(RecordModel model)
-        {
+        {//TODO: need to do user checks
+            model.UserID = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
                 try
@@ -69,6 +74,7 @@ namespace UI.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public virtual ActionResult Edit(int id)
         {
@@ -78,6 +84,7 @@ namespace UI.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public virtual ActionResult Edit(RecordModel model)
         {
@@ -90,6 +97,8 @@ namespace UI.Controllers
                     return View(model);
                 }
                 //--TODO: why is id needed?
+                //TODO: make sure user id is the same so as not to change other users data
+                model.UserID = User.Identity.GetUserId();
                 _service.Edit(model.ID, model);
 
                 ShowStatusMessage(MessageTypeEnum.success, $"Record of Artist: {model.Artist}, Album: {model.AlbumName}, Media Type: {model.MediaType} updated.", "Update Successful");
@@ -106,7 +115,7 @@ namespace UI.Controllers
             return View(model);
         }
 
-        //	[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public virtual ActionResult Delete(int id)
         {

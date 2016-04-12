@@ -97,6 +97,14 @@
     <Compile Include="Migrations\201603262119567_Made primary key just ID.Designer.cs">
       <DependentUpon>201603262119567_Made primary key just ID.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604121643574_Added user id to record model.cs" />
+    <Compile Include="Migrations\201604121643574_Added user id to record model.Designer.cs">
+      <DependentUpon>201604121643574_Added user id to record model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604121645056_Made user id required.cs" />
+    <Compile Include="Migrations\201604121645056_Made user id required.Designer.cs">
+      <DependentUpon>201604121645056_Made user id required.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\RecordModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -134,6 +142,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603262119567_Made primary key just ID.resx">
       <DependentUpon>201603262119567_Made primary key just ID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604121643574_Added user id to record model.resx">
+      <DependentUpon>201604121643574_Added user id to record model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604121645056_Made user id required.resx">
+      <DependentUpon>201604121645056_Made user id required.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

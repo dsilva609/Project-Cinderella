@@ -2,7 +2,7 @@
 
 @Html.AntiForgeryToken()
 <div>
-
+    @Html.HiddenFor(m => m.UserID)
     <div class="col-xs-12">
         <div class="form-group col-xs-3">
             @Html.LabelFor(m => m.Artist)

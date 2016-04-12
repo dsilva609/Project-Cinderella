@@ -11,6 +11,9 @@ namespace BusinessLogic.Models
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
+        [Required]
+        public string UserID { get; set; }
+
         //[Key]
         [Column(Order = 1)]
         [Required]
