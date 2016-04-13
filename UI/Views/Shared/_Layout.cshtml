@@ -36,11 +36,12 @@
                     <li>@Html.ActionLink("Record", MVC.Record.Index())</li>
                     <li>@Html.ActionLink("About", MVC.Home.About())</li>
                     <li>@Html.ActionLink("Contact", MVC.Home.Contact())</li>
-                    
+
                     @if (User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Error Log", MVC.Elmah.Index())</li>
                     }
+
                     <li style="padding-top: 0.75em;">
                         @using (Html.BeginForm(MVC.Record.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
                         {

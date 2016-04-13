@@ -54,7 +54,7 @@
 </div>
 
 <div>
-    @if (User.IsInRole("Admin"))
+    @if (User.Identity.IsAuthenticated)
     {
         @Html.ActionLink("Edit", MVC.Record.Edit(Model.ID), new { id = Model.ID })
         <span> | </span>

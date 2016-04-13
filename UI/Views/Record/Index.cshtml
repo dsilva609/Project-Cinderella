@@ -11,7 +11,7 @@
     <div class="h2 col-xs-5">
         Current Records In Collection
     </div>
-    @if (User.IsInRole("Admin"))
+    @if (User.Identity.IsAuthenticated)
     {
         <div class="col-xs-1" style="padding-top: 1.25em;">
             @Html.ActionLink("Add Record", MVC.Record.Create(), new { @class = "btn btn-default" })
@@ -71,7 +71,7 @@
                 @Html.DisplayFor(modelItem => item.DatePurchased)
             </div>
 
-            @if (User.IsInRole("Admin"))
+            @if (User.Identity.IsAuthenticated)
             {
                 <div class="col-xs-1 removePaddingLeftRight">
                     @Html.ActionLink("Edit", MVC.Record.Edit(item.ID), new { @id = "editRecordBtn", @class = "btn btn-link btn-link-height" })
