@@ -40,7 +40,7 @@ namespace UI.Controllers
             return View(viewModel);
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpGet]
         public virtual ActionResult Create()
         {
@@ -50,7 +50,7 @@ namespace UI.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public virtual ActionResult Create(RecordModel model)
@@ -73,7 +73,7 @@ namespace UI.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpGet]
         public virtual ActionResult Edit(int id)
         {
@@ -83,7 +83,7 @@ namespace UI.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpPost]
         public virtual ActionResult Edit(RecordModel model)
         {
@@ -114,7 +114,7 @@ namespace UI.Controllers
             return View(model);
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpGet]
         public virtual ActionResult Delete(int id)
         {
