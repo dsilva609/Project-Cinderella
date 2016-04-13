@@ -29,18 +29,22 @@ namespace BusinessLogic.Services
 
         public void Add(RecordModel record)
         {
-            var existingRecord = _repository.GetAll().Where(x => x.AlbumName == record.AlbumName && x.Artist == record.Artist && x.MediaType == record.MediaType).ToList();
+            var existingRecord = _repository.GetAll().Where(x => x.UserID == record.UserID && x.AlbumName == record.AlbumName && x.Artist == record.Artist && x.MediaType == record.MediaType).ToList();
             if (existingRecord.Count > 0)
                 throw new ApplicationException($"An existing record of {record.Artist}, {record.AlbumName}, {record.MediaType} already exists.");
             _addEntityComponent.Execute(_repository, record);
         }
 
         //TODO: probably should split this up into separate methods
-        public List<RecordModel> GetAll(string query = "", int numToTake = 0, int? pageNum = 1 /*bool sortAscending, string sortPreference*/)
+        public List<RecordModel> GetAll(string userID = "", string query = "", int numToTake = 0, int? pageNum = 1 /*bool sortAscending, string sortPreference*/)
         {
-            var recordList = numToTake > 0 ?
-                _getEntityListComponent.Execute(_repository).Skip(numToTake * (pageNum.GetValueOrDefault() - 1)).Take(numToTake).ToList()
-                : _getEntityListComponent.Execute(_repository);
+            var recordList = _getEntityListComponent.Execute(_repository);
+
+            if (!string.IsNullOrWhiteSpace(userID))
+                recordList = recordList.Where(x => x.UserID == userID).ToList();
+
+            if (numToTake > 0)
+                recordList = recordList.Skip(numToTake * (pageNum.GetValueOrDefault() - 1)).Take(numToTake).ToList();
 
             if (!string.IsNullOrWhiteSpace(query))
                 recordList = recordList.Where(x => x.Artist.Equals(query, StringComparison.InvariantCultureIgnoreCase) || x.AlbumName.Equals(query, StringComparison.CurrentCultureIgnoreCase)).ToList();
@@ -63,14 +67,14 @@ namespace BusinessLogic.Services
             return recordList;
         }
 
-        public RecordModel GetByID(int id) =>
-            _getEntityByIDComponent.Execute(_repository, id);
+        public RecordModel GetByID(int id, string userID) =>
+            _getEntityByIDComponent.Execute(_repository, id, userID);
 
         public void Edit(int id, RecordModel record) =>
             _editEntityComponent.Execute(_repository, record);
 
-        public void Delete(int id) =>
-            _deleteEntityComponent.Execute(_repository, id);
+        public void Delete(int id, string userID) =>
+            _deleteEntityComponent.Execute(_repository, id, userID);
 
         public int GetCount() => _repository.GetCount();
     }

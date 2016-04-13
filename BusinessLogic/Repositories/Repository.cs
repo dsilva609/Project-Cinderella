@@ -24,7 +24,7 @@ namespace BusinessLogic.Repositories
             this._context.SaveChanges();
         }
 
-        public virtual void Delete(int id)
+        public virtual void Delete(int id, string userID)
         {
             var entry = this._dbSet.Find(id);
             this._dbSet.Remove(entry);
@@ -36,7 +36,7 @@ namespace BusinessLogic.Repositories
             return this._dbSet.ToList();
         }
 
-        public T GetByID(int? id)
+        public T GetByID(int? id, string userID)
         {
             return this._dbSet.Find(id);
         }

@@ -85,8 +85,8 @@ namespace UnitTests.BusinessLogic.Services
             _repo.Setup(mock => mock.Add(_testModel2));
 
             //--Act
-            _service.Object.Delete(_testModel2.ID);
-            var result = _service.Object.GetByID(_testModel2.ID);
+            _service.Object.Delete(_testModel2.ID, string.Empty);
+            var result = _service.Object.GetByID(_testModel2.ID, string.Empty);
 
             //--Assert
             Assert.IsNull(result);
@@ -111,7 +111,7 @@ namespace UnitTests.BusinessLogic.Services
             _repo.Setup(mock => mock.GetAll()).Returns(_recordModels);
 
             //--Act
-            var result = _service.Object.GetAll(string.Empty, numToTake);
+            var result = _service.Object.GetAll(string.Empty, string.Empty, numToTake);
 
             //--Assert
             Assert.AreEqual(expectedResult, result.Count);
@@ -158,7 +158,7 @@ namespace UnitTests.BusinessLogic.Services
             _repo.Setup(mock => mock.GetAll()).Returns(_recordModels);
 
             //--Act
-            var result = _service.Object.GetAll(string.Empty, numToTake, pageNum);
+            var result = _service.Object.GetAll(string.Empty, string.Empty, numToTake, pageNum);
 
             //--Assert
             Assert.AreEqual(expectedResult, result.Count);
@@ -189,7 +189,7 @@ namespace UnitTests.BusinessLogic.Services
             _repo.Setup(mock => mock.GetAll()).Returns(_recordModels);
 
             //--Act
-            var result = _service.Object.GetAll(query);
+            var result = _service.Object.GetAll(string.Empty, query);
 
             //--Assert
             Assert.AreEqual(expectedResult, result.Count);

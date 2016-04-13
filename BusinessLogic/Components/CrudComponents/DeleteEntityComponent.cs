@@ -4,9 +4,9 @@ namespace BusinessLogic.Components.CrudComponents
 {
     public class DeleteEntityComponent
     {
-        public void Execute<T>(IRepository<T> repo, int id) where T : class
+        public void Execute<T>(IRepository<T> repo, int id, string userID) where T : class
         {
-            repo.Delete(id);
+            repo.Delete(id, userID);
         }
     }
 }

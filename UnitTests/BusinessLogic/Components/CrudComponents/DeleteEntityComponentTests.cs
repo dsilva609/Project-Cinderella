@@ -30,8 +30,8 @@ namespace UnitTests.BusinessLogic.Components.CrudComponents
             _testRepo = _testRepositoryMock.Object;
 
             //--Act
-            _deleteEntityComponent.Execute(_testRepo, _testModel.ID);
-            var result = _testRepo.GetByID(666);
+            _deleteEntityComponent.Execute(_testRepo, _testModel.ID, string.Empty);
+            var result = _testRepo.GetByID(666, string.Empty);
 
             //--Assert
             Assert.IsNull(result);

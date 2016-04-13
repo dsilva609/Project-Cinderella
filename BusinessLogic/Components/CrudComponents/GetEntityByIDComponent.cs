@@ -4,9 +4,9 @@ namespace BusinessLogic.Components.CrudComponents
 {
     public class GetEntityByIDComponent
     {
-        public T Execute<T>(IRepository<T> repo, int id) where T : class
+        public T Execute<T>(IRepository<T> repo, int id, string userID) where T : class
         {
-            return repo.GetByID(id);
+            return repo.GetByID(id, userID);
         }
     }
 }

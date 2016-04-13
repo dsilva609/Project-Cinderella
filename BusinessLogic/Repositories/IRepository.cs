@@ -8,11 +8,11 @@ namespace BusinessLogic.Repositories
 
         List<T> GetAll();
 
-        T GetByID(int? id);
+        T GetByID(int? id, string userID);
 
         void Edit(T entity);
 
-        void Delete(int id);
+        void Delete(int id, string userID);
 
         int GetCount();
     }

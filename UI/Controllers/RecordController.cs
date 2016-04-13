@@ -31,7 +31,7 @@ namespace UI.Controllers
             var viewModel = new RecordViewModel
             {
                 ViewTitle = "Index",
-                Records = _service.GetAll(query, NUM_RECORDS_TO_GET, pageNum.GetValueOrDefault()),
+                Records = _service.GetAll(User.Identity.GetUserId(), query, NUM_RECORDS_TO_GET, pageNum.GetValueOrDefault()),
                 PageSize = NUM_RECORDS_TO_GET,
                 TotalRecords = _service.GetCount()
             };
@@ -44,8 +44,7 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Create()
         {
-            var model = new RecordModel();
-            model.UserID = User.Identity.GetUserId();
+            var model = new RecordModel { UserID = User.Identity.GetUserId() };
             ViewBag.Title = "Create";
 
             return View(model);
@@ -79,7 +78,7 @@ namespace UI.Controllers
         public virtual ActionResult Edit(int id)
         {
             ViewBag.Title = "Edit";
-            var model = _service.GetByID(id);
+            var model = _service.GetByID(id, User.Identity.GetUserId());
 
             return View(model);
         }
@@ -90,7 +89,7 @@ namespace UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                var existingRecord = _service.GetAll().Where(x => x.ID != model.ID && x.Artist == model.Artist && x.AlbumName == model.AlbumName && x.MediaType == model.MediaType).ToList();
+                var existingRecord = _service.GetAll(User.Identity.GetUserId()).Where(x => x.ID != model.ID && x.Artist == model.Artist && x.AlbumName == model.AlbumName && x.MediaType == model.MediaType).ToList();
                 if (existingRecord.Count > 0)
                 {
                     ShowStatusMessage(MessageTypeEnum.error, $"A record of Artist: {model.Artist}, Album: {model.AlbumName}, Media Type: {model.MediaType} already exists.", "Duplicate Record");
@@ -110,7 +109,7 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Details(int id)
         {
-            var model = _service.GetByID(id);
+            var model = _service.GetByID(id, User.Identity.GetUserId());
 
             return View(model);
         }
@@ -119,7 +118,7 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Delete(int id)
         {
-            _service.Delete(id);
+            _service.Delete(id, User.Identity.GetUserId());
 
             ShowStatusMessage(MessageTypeEnum.success, "", "Delete Successful");
             return RedirectToAction(MVC.Record.Index());
