@@ -1,4 +1,5 @@
-﻿@model UI.Models.RecordViewModel
+﻿@using Microsoft.AspNet.Identity
+@model UI.Models.RecordViewModel
 @{
     ViewBag.Title = @Model.ViewTitle;
 }
@@ -71,7 +72,7 @@
                 @Html.DisplayFor(modelItem => item.DatePurchased)
             </div>
 
-            @if (User.Identity.IsAuthenticated)
+            @if (User.Identity.IsAuthenticated && item.UserID == User.Identity.GetUserId())
             {
                 <div class="col-xs-1 removePaddingLeftRight">
                     @Html.ActionLink("Edit", MVC.Record.Edit(item.ID), new { @id = "editRecordBtn", @class = "btn btn-link btn-link-height" })
