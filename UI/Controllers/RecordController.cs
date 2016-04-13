@@ -60,6 +60,7 @@ namespace UI.Controllers
             {
                 try
                 {
+                    model.DateAdded = DateTime.Now;
                     this._service.Add(model);
                 }
                 catch (Exception e)
@@ -98,6 +99,7 @@ namespace UI.Controllers
                 //--TODO: why is id needed?
                 //TODO: make sure user id is the same so as not to change other users data
                 model.UserID = User.Identity.GetUserId();
+                model.DateUpdated = DateTime.Now;
                 _service.Edit(model.ID, model);
 
                 ShowStatusMessage(MessageTypeEnum.success, $"Record of Artist: {model.Artist}, Album: {model.AlbumName}, Media Type: {model.MediaType} updated.", "Update Successful");

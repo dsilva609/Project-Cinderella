@@ -3,6 +3,7 @@
 @Html.AntiForgeryToken()
 <div>
     @Html.HiddenFor(m => m.UserID)
+    @Html.HiddenFor(m => m.DateAdded)
     <div class="col-xs-12">
         <div class="form-group col-xs-3">
             @Html.LabelFor(m => m.Artist)
@@ -45,7 +46,7 @@
         </div>
         <div class="form-group col-xs-3">
             @Html.LabelFor(m => m.DatePurchased)
-            @Html.TextBoxFor(m => m.DatePurchased, new { @Value = Model.DatePurchased.ToString("MM/dd/yy"),  @class = "form-control datepicker" })
+            @Html.TextBoxFor(m => m.DatePurchased, new { @Value = Model.DatePurchased.ToString("MM/dd/yy"), @class = "form-control datepicker" })
             @Html.ValidationMessageFor(m => m.DatePurchased, "", new { @class = "text-danger" })
         </div>
         <div class="form-group col-xs-3">

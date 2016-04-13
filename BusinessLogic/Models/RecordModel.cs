@@ -50,5 +50,8 @@ namespace BusinessLogic.Models
         [DisplayName("Date Purchased")]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime DatePurchased { get; set; } = DateTime.Now;
+
+        public DateTime DateAdded { get; set; }
+        public DateTime DateUpdated { get; set; } = Convert.ToDateTime("1/1/1900");
     }
 }
