@@ -13,7 +13,7 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Project Cinderella.";
 
             return View();
         }
@@ -21,7 +21,7 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Find me on social media.";
 
             return View();
         }
