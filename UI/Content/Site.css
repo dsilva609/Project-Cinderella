@@ -113,6 +113,6 @@ textarea {
     transform: rotateY(180deg);
 }
 
-.row:nth-child(odd) {
+/*.table .row:nth-child(odd) {
     background-color: lightgray;
-}
+}*/
