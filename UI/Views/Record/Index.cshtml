@@ -9,16 +9,15 @@
 </script>
 
 <div>
-    <div class="h2 col-xs-5">
-        Current Records In Collection
+    <div class="h2 col-xs-7">
+        Records
     </div>
-    @if (User.Identity.IsAuthenticated)
-    {
-        <div class="col-xs-1" style="padding-top: 1.25em;">
-            @Html.ActionLink("Add Record", MVC.Record.Create(), new { @class = "btn btn-default" })
-        </div>
-    }
-    <div class="col-xs-6 text-right" style="padding-top: 1.25em;">
+
+    <div class="col-xs-5 text-right" style="padding-top: 1.25em; display: inline-flex;">
+        @if (User.Identity.IsAuthenticated)
+        {
+            @Html.ActionLink("Add Record", MVC.Record.Create(), new { @class = "btn btn-default", @style = "margin-right:1em;" })
+        }
         @using (Html.BeginForm(MVC.Record.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
         {
             @Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
@@ -29,7 +28,7 @@
     </div>
 </div>
 
-<div class="table table-responsive" style="padding-top: 5em;">
+<div class="table table-responsive" style="padding-top: 3em;">
     <div class="bold row">
         <div class="col-xs-3">
             @Html.DisplayNameFor(model => model.Records[0].Artist)
