@@ -7,50 +7,65 @@
 
 <h2>Details</h2>
 
-<div>
-    <div>
-        @Html.DisplayNameFor(m => m.Artist):
-        @Html.DisplayFor(m => m.Artist)
+<div class="row panel panel-primary">
+    <div class="panel-heading">
+        <h4>Album Information</h4>
     </div>
+    <div class="panel-body">
+        <div>
+            @Html.DisplayNameFor(m => m.Artist):
+            @Html.DisplayFor(m => m.Artist)
+        </div>
 
-    <div>
-        @Html.DisplayNameFor(m => m.AlbumName):
-        @Html.DisplayFor(m => m.AlbumName)
+        <div>
+            @Html.DisplayNameFor(m => m.AlbumName):
+            @Html.DisplayFor(m => m.AlbumName)
+        </div>
+        <div>
+            @Html.DisplayNameFor(m => m.Genre):
+            @Html.DisplayFor(m => m.Genre)
+        </div>
+        <div>
+            @Html.DisplayNameFor(m => m.AlbumYear):
+            @Html.DisplayFor(m => m.AlbumYear)
+        </div>
     </div>
-
-    <div>
-        @Html.DisplayNameFor(m => m.MediaType):
-        @Html.DisplayFor(m => m.MediaType)
+</div>
+<div class="row panel panel-primary">
+    <div class="panel-heading">
+        <h4>Media Information</h4>
     </div>
+    <div class="panel-body">
+        <div>
+            @Html.DisplayNameFor(m => m.MediaType):
+            @Html.DisplayFor(m => m.MediaType)
+        </div>
 
-    <div>
-        @Html.DisplayNameFor(m => m.Genre):
-        @Html.DisplayFor(m => m.Genre)
+        <div>
+            @Html.DisplayNameFor(m => m.IsNew):
+            @Html.DisplayFor(m => m.IsNew)
+        </div>
+
+        <div>
+            @Html.DisplayNameFor(m => m.IsPhysical):
+            @Html.DisplayFor(m => m.IsPhysical)
+        </div>
     </div>
-
-    <div>
-        @Html.DisplayNameFor(m => m.IsNew):
-        @Html.DisplayFor(m => m.IsNew)
+</div>
+<div class="row panel panel-primary">
+    <div class="panel-heading">
+        <h4>Purchase Information</h4>
     </div>
+    <div class="panel-body">
+        <div>
+            @Html.DisplayNameFor(m => m.DatePurchased):
+            @Html.DisplayFor(m => m.DatePurchased)
+        </div>
 
-    <div>
-        @Html.DisplayNameFor(m => m.IsPhysical):
-        @Html.DisplayFor(m => m.IsPhysical)
-    </div>
-
-    <div>
-        @Html.DisplayNameFor(m => m.DatePurchased):
-        @Html.DisplayFor(m => m.DatePurchased)
-    </div>
-
-    <div>
-        @Html.DisplayNameFor(m => m.LocationPurchased):
-        @Html.DisplayFor(m => m.LocationPurchased)
-    </div>
-
-    <div>
-        @Html.DisplayNameFor(m => m.AlbumYear):
-        @Html.DisplayFor(m => m.AlbumYear)
+        <div>
+            @Html.DisplayNameFor(m => m.LocationPurchased):
+            @Html.DisplayFor(m => m.LocationPurchased)
+        </div>
     </div>
 </div>
 
