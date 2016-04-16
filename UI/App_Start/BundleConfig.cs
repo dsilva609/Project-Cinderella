@@ -36,7 +36,8 @@ namespace UI
             bundles.Add(new StyleBundle("~/Content/css")
                 .Include("~/Content/bootstrap.css")
                 .Include("~/Content/site.css")
-                .Include("~/Content/toastr.min.css"));
+                .Include("~/Content/toastr.min.css")
+                .Include("~/Content/font-awesome.min.css"));
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862

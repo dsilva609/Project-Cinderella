@@ -75,9 +75,9 @@
             @if (User.Identity.IsAuthenticated && item.UserID == User.Identity.GetUserId())
             {
                 <div class="col-xs-2">
-                    @Html.ActionLink("Edit", MVC.Record.Edit(item.ID), new { @id = "editRecordBtn", @class = "btn btn-link btn-link-height" })
+                    <a href="@Url.Action(MVC.Record.Edit(item.ID))" id="editRecordBtn" class="fa fa-pencil-square-o"></a>
                     <span> | </span>
-                    @Html.ActionLink("Delete", MVC.Record.Delete(item.ID), new { @id = "deleteRecord", @class = "btn btn-link btn-link-height", @data_id = item.ID })
+                    <a href="@Url.Action(MVC.Record.Delete(item.ID))" id="deleteRecord" class="fa fa-trash"></a>
                 </div>
             }
         </div>
