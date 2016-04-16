@@ -5,5 +5,22 @@
 <div class="jumbotron img-responsive">
     <h1 class="jumbotronText title">Project Cinderella</h1>
     <p class="lead jumbotronText titleDescription">Does it make your head spin right round?</p>
-    <p><a href="https://github.com/dsilva609/Project-Cinderella" class="btn btn-primary btn-lg" target="_blank">View Project In GitHub &raquo;</a></p>
+    <p>
+        <a href="https://github.com/dsilva609/Project-Cinderella" class="btn btn-primary btn-lg" target="_blank">View Project In GitHub &raquo;</a>
+    </p>
+    <p>
+        @if (User.Identity.IsAuthenticated)
+        {
+            @Html.ActionLink("Add Record", MVC.Record.Create(), new { @class = "btn btn-default btn-lg" })
+        }
+    </p>
+    <p>
+        @using (Html.BeginForm(MVC.Record.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
+        {
+            @Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
+            <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+        }
+    </p>
 </div>

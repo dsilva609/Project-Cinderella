@@ -41,16 +41,6 @@
                     {
                         <li>@Html.ActionLink("Error Log", MVC.Elmah.Index())</li>
                     }
-
-                    <li style="padding-top: 0.75em;">
-                        @using (Html.BeginForm(MVC.Record.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
-                        {
-                            @Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
-                            <button type="submit" class="btn btn-default">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                        }
-                    </li>
                 </ul>
                 @Html.Partial(MVC.Shared.Views._LoginPartial)
             </div>
