@@ -81,6 +81,8 @@ namespace Links
         public static readonly string bootstrap_3_0_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-3.0.1.min.js") ? Url("bootstrap-3.0.1.min.js") : Url("bootstrap-3.0.1.js");
         public static readonly string bootstrap_3_0_1_min_js = Url("bootstrap-3.0.1.min.js");
         public static readonly string bootstrap_3_0_1_min_js_map = Url("bootstrap-3.0.1.min.js.map");
+        public static readonly string bootstrap_datepicker_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-datepicker.min.js") ? Url("bootstrap-datepicker.min.js") : Url("bootstrap-datepicker.js");
+        public static readonly string bootstrap_datepicker_min_js = Url("bootstrap-datepicker.min.js");
         public static readonly string bootstrap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap.min.js") ? Url("bootstrap.min.js") : Url("bootstrap.js");
         public static readonly string bootstrap_min_js = Url("bootstrap.min.js");
         public static readonly string jquery_2_1_3_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-2.1.3.intellisense.min.js") ? Url("jquery-2.1.3.intellisense.min.js") : Url("jquery-2.1.3.intellisense.js");
@@ -104,6 +106,79 @@ namespace Links
         public static readonly string jquery_validate_min_js_map = Url("jquery.validate.min.js.map");
         public static readonly string jquery_validate_unobtrusive_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate.unobtrusive.min.js") ? Url("jquery.validate.unobtrusive.min.js") : Url("jquery.validate.unobtrusive.js");
         public static readonly string jquery_validate_unobtrusive_min_js = Url("jquery.validate.unobtrusive.min.js");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class locales {
+            private const string URLPATH = "~/Scripts/locales";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string bootstrap_datepicker_ar_min_js = Url("bootstrap-datepicker.ar.min.js");
+            public static readonly string bootstrap_datepicker_az_min_js = Url("bootstrap-datepicker.az.min.js");
+            public static readonly string bootstrap_datepicker_bg_min_js = Url("bootstrap-datepicker.bg.min.js");
+            public static readonly string bootstrap_datepicker_bs_min_js = Url("bootstrap-datepicker.bs.min.js");
+            public static readonly string bootstrap_datepicker_ca_min_js = Url("bootstrap-datepicker.ca.min.js");
+            public static readonly string bootstrap_datepicker_cs_min_js = Url("bootstrap-datepicker.cs.min.js");
+            public static readonly string bootstrap_datepicker_cy_min_js = Url("bootstrap-datepicker.cy.min.js");
+            public static readonly string bootstrap_datepicker_da_min_js = Url("bootstrap-datepicker.da.min.js");
+            public static readonly string bootstrap_datepicker_de_min_js = Url("bootstrap-datepicker.de.min.js");
+            public static readonly string bootstrap_datepicker_el_min_js = Url("bootstrap-datepicker.el.min.js");
+            public static readonly string bootstrap_datepicker_en_AU_min_js = Url("bootstrap-datepicker.en-AU.min.js");
+            public static readonly string bootstrap_datepicker_en_GB_min_js = Url("bootstrap-datepicker.en-GB.min.js");
+            public static readonly string bootstrap_datepicker_eo_min_js = Url("bootstrap-datepicker.eo.min.js");
+            public static readonly string bootstrap_datepicker_es_min_js = Url("bootstrap-datepicker.es.min.js");
+            public static readonly string bootstrap_datepicker_et_min_js = Url("bootstrap-datepicker.et.min.js");
+            public static readonly string bootstrap_datepicker_eu_min_js = Url("bootstrap-datepicker.eu.min.js");
+            public static readonly string bootstrap_datepicker_fa_min_js = Url("bootstrap-datepicker.fa.min.js");
+            public static readonly string bootstrap_datepicker_fi_min_js = Url("bootstrap-datepicker.fi.min.js");
+            public static readonly string bootstrap_datepicker_fo_min_js = Url("bootstrap-datepicker.fo.min.js");
+            public static readonly string bootstrap_datepicker_fr_CH_min_js = Url("bootstrap-datepicker.fr-CH.min.js");
+            public static readonly string bootstrap_datepicker_fr_min_js = Url("bootstrap-datepicker.fr.min.js");
+            public static readonly string bootstrap_datepicker_gl_min_js = Url("bootstrap-datepicker.gl.min.js");
+            public static readonly string bootstrap_datepicker_he_min_js = Url("bootstrap-datepicker.he.min.js");
+            public static readonly string bootstrap_datepicker_hr_min_js = Url("bootstrap-datepicker.hr.min.js");
+            public static readonly string bootstrap_datepicker_hu_min_js = Url("bootstrap-datepicker.hu.min.js");
+            public static readonly string bootstrap_datepicker_hy_min_js = Url("bootstrap-datepicker.hy.min.js");
+            public static readonly string bootstrap_datepicker_id_min_js = Url("bootstrap-datepicker.id.min.js");
+            public static readonly string bootstrap_datepicker_is_min_js = Url("bootstrap-datepicker.is.min.js");
+            public static readonly string bootstrap_datepicker_it_CH_min_js = Url("bootstrap-datepicker.it-CH.min.js");
+            public static readonly string bootstrap_datepicker_it_min_js = Url("bootstrap-datepicker.it.min.js");
+            public static readonly string bootstrap_datepicker_ja_min_js = Url("bootstrap-datepicker.ja.min.js");
+            public static readonly string bootstrap_datepicker_ka_min_js = Url("bootstrap-datepicker.ka.min.js");
+            public static readonly string bootstrap_datepicker_kh_min_js = Url("bootstrap-datepicker.kh.min.js");
+            public static readonly string bootstrap_datepicker_kk_min_js = Url("bootstrap-datepicker.kk.min.js");
+            public static readonly string bootstrap_datepicker_ko_min_js = Url("bootstrap-datepicker.ko.min.js");
+            public static readonly string bootstrap_datepicker_kr_min_js = Url("bootstrap-datepicker.kr.min.js");
+            public static readonly string bootstrap_datepicker_lt_min_js = Url("bootstrap-datepicker.lt.min.js");
+            public static readonly string bootstrap_datepicker_lv_min_js = Url("bootstrap-datepicker.lv.min.js");
+            public static readonly string bootstrap_datepicker_me_min_js = Url("bootstrap-datepicker.me.min.js");
+            public static readonly string bootstrap_datepicker_mk_min_js = Url("bootstrap-datepicker.mk.min.js");
+            public static readonly string bootstrap_datepicker_mn_min_js = Url("bootstrap-datepicker.mn.min.js");
+            public static readonly string bootstrap_datepicker_ms_min_js = Url("bootstrap-datepicker.ms.min.js");
+            public static readonly string bootstrap_datepicker_nb_min_js = Url("bootstrap-datepicker.nb.min.js");
+            public static readonly string bootstrap_datepicker_nl_BE_min_js = Url("bootstrap-datepicker.nl-BE.min.js");
+            public static readonly string bootstrap_datepicker_nl_min_js = Url("bootstrap-datepicker.nl.min.js");
+            public static readonly string bootstrap_datepicker_no_min_js = Url("bootstrap-datepicker.no.min.js");
+            public static readonly string bootstrap_datepicker_pl_min_js = Url("bootstrap-datepicker.pl.min.js");
+            public static readonly string bootstrap_datepicker_pt_BR_min_js = Url("bootstrap-datepicker.pt-BR.min.js");
+            public static readonly string bootstrap_datepicker_pt_min_js = Url("bootstrap-datepicker.pt.min.js");
+            public static readonly string bootstrap_datepicker_ro_min_js = Url("bootstrap-datepicker.ro.min.js");
+            public static readonly string bootstrap_datepicker_rs_latin_min_js = Url("bootstrap-datepicker.rs-latin.min.js");
+            public static readonly string bootstrap_datepicker_rs_min_js = Url("bootstrap-datepicker.rs.min.js");
+            public static readonly string bootstrap_datepicker_ru_min_js = Url("bootstrap-datepicker.ru.min.js");
+            public static readonly string bootstrap_datepicker_sk_min_js = Url("bootstrap-datepicker.sk.min.js");
+            public static readonly string bootstrap_datepicker_sl_min_js = Url("bootstrap-datepicker.sl.min.js");
+            public static readonly string bootstrap_datepicker_sq_min_js = Url("bootstrap-datepicker.sq.min.js");
+            public static readonly string bootstrap_datepicker_sr_latin_min_js = Url("bootstrap-datepicker.sr-latin.min.js");
+            public static readonly string bootstrap_datepicker_sr_min_js = Url("bootstrap-datepicker.sr.min.js");
+            public static readonly string bootstrap_datepicker_sv_min_js = Url("bootstrap-datepicker.sv.min.js");
+            public static readonly string bootstrap_datepicker_sw_min_js = Url("bootstrap-datepicker.sw.min.js");
+            public static readonly string bootstrap_datepicker_th_min_js = Url("bootstrap-datepicker.th.min.js");
+            public static readonly string bootstrap_datepicker_tr_min_js = Url("bootstrap-datepicker.tr.min.js");
+            public static readonly string bootstrap_datepicker_uk_min_js = Url("bootstrap-datepicker.uk.min.js");
+            public static readonly string bootstrap_datepicker_vi_min_js = Url("bootstrap-datepicker.vi.min.js");
+            public static readonly string bootstrap_datepicker_zh_CN_min_js = Url("bootstrap-datepicker.zh-CN.min.js");
+            public static readonly string bootstrap_datepicker_zh_TW_min_js = Url("bootstrap-datepicker.zh-TW.min.js");
+        }
+    
         public static readonly string modernizr_2_6_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/modernizr-2.6.2.min.js") ? Url("modernizr-2.6.2.min.js") : Url("modernizr-2.6.2.js");
         public static readonly string modernizr_2_7_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/modernizr-2.7.2.min.js") ? Url("modernizr-2.7.2.min.js") : Url("modernizr-2.7.2.js");
         public static readonly string modernizr_2_8_3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/modernizr-2.8.3.min.js") ? Url("modernizr-2.8.3.min.js") : Url("modernizr-2.8.3.js");
@@ -147,6 +222,22 @@ namespace Links
         private const string URLPATH = "~/Content";
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+        public static readonly string bootstrap_datepicker_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-datepicker.min.css") ? Url("bootstrap-datepicker.min.css") : Url("bootstrap-datepicker.css");
+        public static readonly string bootstrap_datepicker_css_map = Url("bootstrap-datepicker.css.map");
+        public static readonly string bootstrap_datepicker_min_css = Url("bootstrap-datepicker.min.css");
+        public static readonly string bootstrap_datepicker_min_css_map = Url("bootstrap-datepicker.min.css.map");
+        public static readonly string bootstrap_datepicker_standalone_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-datepicker.standalone.min.css") ? Url("bootstrap-datepicker.standalone.min.css") : Url("bootstrap-datepicker.standalone.css");
+        public static readonly string bootstrap_datepicker_standalone_css_map = Url("bootstrap-datepicker.standalone.css.map");
+        public static readonly string bootstrap_datepicker_standalone_min_css = Url("bootstrap-datepicker.standalone.min.css");
+        public static readonly string bootstrap_datepicker_standalone_min_css_map = Url("bootstrap-datepicker.standalone.min.css.map");
+        public static readonly string bootstrap_datepicker3_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-datepicker3.min.css") ? Url("bootstrap-datepicker3.min.css") : Url("bootstrap-datepicker3.css");
+        public static readonly string bootstrap_datepicker3_css_map = Url("bootstrap-datepicker3.css.map");
+        public static readonly string bootstrap_datepicker3_min_css = Url("bootstrap-datepicker3.min.css");
+        public static readonly string bootstrap_datepicker3_min_css_map = Url("bootstrap-datepicker3.min.css.map");
+        public static readonly string bootstrap_datepicker3_standalone_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-datepicker3.standalone.min.css") ? Url("bootstrap-datepicker3.standalone.min.css") : Url("bootstrap-datepicker3.standalone.css");
+        public static readonly string bootstrap_datepicker3_standalone_css_map = Url("bootstrap-datepicker3.standalone.css.map");
+        public static readonly string bootstrap_datepicker3_standalone_min_css = Url("bootstrap-datepicker3.standalone.min.css");
+        public static readonly string bootstrap_datepicker3_standalone_min_css_map = Url("bootstrap-datepicker3.standalone.min.css.map");
         public static readonly string bootstrap_theme_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-theme.min.css") ? Url("bootstrap-theme.min.css") : Url("bootstrap-theme.css");
         public static readonly string bootstrap_theme_css_map = Url("bootstrap-theme.css.map");
         public static readonly string bootstrap_theme_min_css = Url("bootstrap-theme.min.css");
@@ -233,6 +324,78 @@ namespace Links
     {
         public static partial class Scripts 
         {
+            public static partial class locales 
+            {
+                public static class Assets
+                {
+                    public const string bootstrap_datepicker_ar_min_js = "~/Scripts/locales/bootstrap-datepicker.ar.min.js"; 
+                    public const string bootstrap_datepicker_az_min_js = "~/Scripts/locales/bootstrap-datepicker.az.min.js"; 
+                    public const string bootstrap_datepicker_bg_min_js = "~/Scripts/locales/bootstrap-datepicker.bg.min.js"; 
+                    public const string bootstrap_datepicker_bs_min_js = "~/Scripts/locales/bootstrap-datepicker.bs.min.js"; 
+                    public const string bootstrap_datepicker_ca_min_js = "~/Scripts/locales/bootstrap-datepicker.ca.min.js"; 
+                    public const string bootstrap_datepicker_cs_min_js = "~/Scripts/locales/bootstrap-datepicker.cs.min.js"; 
+                    public const string bootstrap_datepicker_cy_min_js = "~/Scripts/locales/bootstrap-datepicker.cy.min.js"; 
+                    public const string bootstrap_datepicker_da_min_js = "~/Scripts/locales/bootstrap-datepicker.da.min.js"; 
+                    public const string bootstrap_datepicker_de_min_js = "~/Scripts/locales/bootstrap-datepicker.de.min.js"; 
+                    public const string bootstrap_datepicker_el_min_js = "~/Scripts/locales/bootstrap-datepicker.el.min.js"; 
+                    public const string bootstrap_datepicker_en_AU_min_js = "~/Scripts/locales/bootstrap-datepicker.en-AU.min.js"; 
+                    public const string bootstrap_datepicker_en_GB_min_js = "~/Scripts/locales/bootstrap-datepicker.en-GB.min.js"; 
+                    public const string bootstrap_datepicker_eo_min_js = "~/Scripts/locales/bootstrap-datepicker.eo.min.js"; 
+                    public const string bootstrap_datepicker_es_min_js = "~/Scripts/locales/bootstrap-datepicker.es.min.js"; 
+                    public const string bootstrap_datepicker_et_min_js = "~/Scripts/locales/bootstrap-datepicker.et.min.js"; 
+                    public const string bootstrap_datepicker_eu_min_js = "~/Scripts/locales/bootstrap-datepicker.eu.min.js"; 
+                    public const string bootstrap_datepicker_fa_min_js = "~/Scripts/locales/bootstrap-datepicker.fa.min.js"; 
+                    public const string bootstrap_datepicker_fi_min_js = "~/Scripts/locales/bootstrap-datepicker.fi.min.js"; 
+                    public const string bootstrap_datepicker_fo_min_js = "~/Scripts/locales/bootstrap-datepicker.fo.min.js"; 
+                    public const string bootstrap_datepicker_fr_CH_min_js = "~/Scripts/locales/bootstrap-datepicker.fr-CH.min.js"; 
+                    public const string bootstrap_datepicker_fr_min_js = "~/Scripts/locales/bootstrap-datepicker.fr.min.js"; 
+                    public const string bootstrap_datepicker_gl_min_js = "~/Scripts/locales/bootstrap-datepicker.gl.min.js"; 
+                    public const string bootstrap_datepicker_he_min_js = "~/Scripts/locales/bootstrap-datepicker.he.min.js"; 
+                    public const string bootstrap_datepicker_hr_min_js = "~/Scripts/locales/bootstrap-datepicker.hr.min.js"; 
+                    public const string bootstrap_datepicker_hu_min_js = "~/Scripts/locales/bootstrap-datepicker.hu.min.js"; 
+                    public const string bootstrap_datepicker_hy_min_js = "~/Scripts/locales/bootstrap-datepicker.hy.min.js"; 
+                    public const string bootstrap_datepicker_id_min_js = "~/Scripts/locales/bootstrap-datepicker.id.min.js"; 
+                    public const string bootstrap_datepicker_is_min_js = "~/Scripts/locales/bootstrap-datepicker.is.min.js"; 
+                    public const string bootstrap_datepicker_it_CH_min_js = "~/Scripts/locales/bootstrap-datepicker.it-CH.min.js"; 
+                    public const string bootstrap_datepicker_it_min_js = "~/Scripts/locales/bootstrap-datepicker.it.min.js"; 
+                    public const string bootstrap_datepicker_ja_min_js = "~/Scripts/locales/bootstrap-datepicker.ja.min.js"; 
+                    public const string bootstrap_datepicker_ka_min_js = "~/Scripts/locales/bootstrap-datepicker.ka.min.js"; 
+                    public const string bootstrap_datepicker_kh_min_js = "~/Scripts/locales/bootstrap-datepicker.kh.min.js"; 
+                    public const string bootstrap_datepicker_kk_min_js = "~/Scripts/locales/bootstrap-datepicker.kk.min.js"; 
+                    public const string bootstrap_datepicker_ko_min_js = "~/Scripts/locales/bootstrap-datepicker.ko.min.js"; 
+                    public const string bootstrap_datepicker_kr_min_js = "~/Scripts/locales/bootstrap-datepicker.kr.min.js"; 
+                    public const string bootstrap_datepicker_lt_min_js = "~/Scripts/locales/bootstrap-datepicker.lt.min.js"; 
+                    public const string bootstrap_datepicker_lv_min_js = "~/Scripts/locales/bootstrap-datepicker.lv.min.js"; 
+                    public const string bootstrap_datepicker_me_min_js = "~/Scripts/locales/bootstrap-datepicker.me.min.js"; 
+                    public const string bootstrap_datepicker_mk_min_js = "~/Scripts/locales/bootstrap-datepicker.mk.min.js"; 
+                    public const string bootstrap_datepicker_mn_min_js = "~/Scripts/locales/bootstrap-datepicker.mn.min.js"; 
+                    public const string bootstrap_datepicker_ms_min_js = "~/Scripts/locales/bootstrap-datepicker.ms.min.js"; 
+                    public const string bootstrap_datepicker_nb_min_js = "~/Scripts/locales/bootstrap-datepicker.nb.min.js"; 
+                    public const string bootstrap_datepicker_nl_BE_min_js = "~/Scripts/locales/bootstrap-datepicker.nl-BE.min.js"; 
+                    public const string bootstrap_datepicker_nl_min_js = "~/Scripts/locales/bootstrap-datepicker.nl.min.js"; 
+                    public const string bootstrap_datepicker_no_min_js = "~/Scripts/locales/bootstrap-datepicker.no.min.js"; 
+                    public const string bootstrap_datepicker_pl_min_js = "~/Scripts/locales/bootstrap-datepicker.pl.min.js"; 
+                    public const string bootstrap_datepicker_pt_BR_min_js = "~/Scripts/locales/bootstrap-datepicker.pt-BR.min.js"; 
+                    public const string bootstrap_datepicker_pt_min_js = "~/Scripts/locales/bootstrap-datepicker.pt.min.js"; 
+                    public const string bootstrap_datepicker_ro_min_js = "~/Scripts/locales/bootstrap-datepicker.ro.min.js"; 
+                    public const string bootstrap_datepicker_rs_latin_min_js = "~/Scripts/locales/bootstrap-datepicker.rs-latin.min.js"; 
+                    public const string bootstrap_datepicker_rs_min_js = "~/Scripts/locales/bootstrap-datepicker.rs.min.js"; 
+                    public const string bootstrap_datepicker_ru_min_js = "~/Scripts/locales/bootstrap-datepicker.ru.min.js"; 
+                    public const string bootstrap_datepicker_sk_min_js = "~/Scripts/locales/bootstrap-datepicker.sk.min.js"; 
+                    public const string bootstrap_datepicker_sl_min_js = "~/Scripts/locales/bootstrap-datepicker.sl.min.js"; 
+                    public const string bootstrap_datepicker_sq_min_js = "~/Scripts/locales/bootstrap-datepicker.sq.min.js"; 
+                    public const string bootstrap_datepicker_sr_latin_min_js = "~/Scripts/locales/bootstrap-datepicker.sr-latin.min.js"; 
+                    public const string bootstrap_datepicker_sr_min_js = "~/Scripts/locales/bootstrap-datepicker.sr.min.js"; 
+                    public const string bootstrap_datepicker_sv_min_js = "~/Scripts/locales/bootstrap-datepicker.sv.min.js"; 
+                    public const string bootstrap_datepicker_sw_min_js = "~/Scripts/locales/bootstrap-datepicker.sw.min.js"; 
+                    public const string bootstrap_datepicker_th_min_js = "~/Scripts/locales/bootstrap-datepicker.th.min.js"; 
+                    public const string bootstrap_datepicker_tr_min_js = "~/Scripts/locales/bootstrap-datepicker.tr.min.js"; 
+                    public const string bootstrap_datepicker_uk_min_js = "~/Scripts/locales/bootstrap-datepicker.uk.min.js"; 
+                    public const string bootstrap_datepicker_vi_min_js = "~/Scripts/locales/bootstrap-datepicker.vi.min.js"; 
+                    public const string bootstrap_datepicker_zh_CN_min_js = "~/Scripts/locales/bootstrap-datepicker.zh-CN.min.js"; 
+                    public const string bootstrap_datepicker_zh_TW_min_js = "~/Scripts/locales/bootstrap-datepicker.zh-TW.min.js"; 
+                }
+            }
             public static partial class PageSpecific 
             {
                 public static class Assets
@@ -253,6 +416,8 @@ namespace Links
                 public const string bootbox_min_js = "~/Scripts/bootbox.min.js"; 
                 public const string bootstrap_3_0_1_js = "~/Scripts/bootstrap-3.0.1.js"; 
                 public const string bootstrap_3_0_1_min_js = "~/Scripts/bootstrap-3.0.1.min.js"; 
+                public const string bootstrap_datepicker_js = "~/Scripts/bootstrap-datepicker.js"; 
+                public const string bootstrap_datepicker_min_js = "~/Scripts/bootstrap-datepicker.min.js"; 
                 public const string bootstrap_js = "~/Scripts/bootstrap.js"; 
                 public const string bootstrap_min_js = "~/Scripts/bootstrap.min.js"; 
                 public const string jquery_2_1_3_intellisense_js = "~/Scripts/jquery-2.1.3.intellisense.js"; 
@@ -330,6 +495,14 @@ namespace Links
             }
             public static class Assets
             {
+                public const string bootstrap_datepicker_css = "~/Content/bootstrap-datepicker.css";
+                public const string bootstrap_datepicker_min_css = "~/Content/bootstrap-datepicker.min.css";
+                public const string bootstrap_datepicker_standalone_css = "~/Content/bootstrap-datepicker.standalone.css";
+                public const string bootstrap_datepicker_standalone_min_css = "~/Content/bootstrap-datepicker.standalone.min.css";
+                public const string bootstrap_datepicker3_css = "~/Content/bootstrap-datepicker3.css";
+                public const string bootstrap_datepicker3_min_css = "~/Content/bootstrap-datepicker3.min.css";
+                public const string bootstrap_datepicker3_standalone_css = "~/Content/bootstrap-datepicker3.standalone.css";
+                public const string bootstrap_datepicker3_standalone_min_css = "~/Content/bootstrap-datepicker3.standalone.min.css";
                 public const string bootstrap_theme_css = "~/Content/bootstrap-theme.css";
                 public const string bootstrap_theme_min_css = "~/Content/bootstrap-theme.min.css";
                 public const string bootstrap_css = "~/Content/bootstrap.css";

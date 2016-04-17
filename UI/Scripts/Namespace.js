@@ -11,19 +11,19 @@ License:
 Version:
 	1.1
 */
-var Namespace = (function() {
+var Namespace = (function () {
 	var _listeners = {};
 	var _includedIdentifiers = [];
 
 	/**
 	 * Returns an object in an array unless the object is an array
-	 *
+
 	 * @param	mixed	obj
 	 * @return	Array
 	 */
-	var _toArray = function(obj) {
+	var _toArray = function (obj) {
 		// checks if it's an array
-		if (typeof(obj) == 'object' && obj.sort) {
+		if (typeof (obj) == 'object' && obj.sort) {
 			return obj;
 		}
 		return new Array(obj);
@@ -34,14 +34,14 @@ var Namespace = (function() {
 	 *
 	 * @return XMLHttpRequest
 	 */
-	var _createXmlHttpRequest = function() {
+	var _createXmlHttpRequest = function () {
 		var xhr;
-		try { xhr = new XMLHttpRequest() } catch(e) {
-			try { xhr = new ActiveXObject("Msxml2.XMLHTTP.6.0") } catch(e) {
-				try { xhr = new ActiveXObject("Msxml2.XMLHTTP.3.0") } catch(e) {
-					try { xhr = new ActiveXObject("Msxml2.XMLHTTP") } catch(e) {
-						try { xhr = new ActiveXObject("Microsoft.XMLHTTP") } catch(e) {
-							throw new Error( "This browser does not support XMLHttpRequest." )
+		try { xhr = new XMLHttpRequest() } catch (e) {
+			try { xhr = new ActiveXObject("Msxml2.XMLHTTP.6.0") } catch (e) {
+				try { xhr = new ActiveXObject("Msxml2.XMLHTTP.3.0") } catch (e) {
+					try { xhr = new ActiveXObject("Msxml2.XMLHTTP") } catch (e) {
+						try { xhr = new ActiveXObject("Microsoft.XMLHTTP") } catch (e) {
+							throw new Error("This browser does not support XMLHttpRequest.")
 						}
 					}
 				}
@@ -57,11 +57,11 @@ var Namespace = (function() {
 	 * @param	Integer	status 	Http status code
 	 * @return	Boolean
 	 */
-	var _isHttpRequestSuccessful = function(status) {
+	var _isHttpRequestSuccessful = function (status) {
 		return (status >= 200 && status < 300) || 	// Boolean
 				status == 304 || 						// allow any 2XX response code
 				status == 1223 || 						// get it out of the cache
-				(!status && (location.protocol == "file:" || location.protocol == "chrome:") ); // Internet Explorer mangled the status code
+				(!status && (location.protocol == "file:" || location.protocol == "chrome:")); // Internet Explorer mangled the status code
 	};
 
 	/**
@@ -69,7 +69,7 @@ var Namespace = (function() {
 	 *
 	 * @param	String	data	The content of the script
 	 */
-	var _createScript = function(data) {
+	var _createScript = function (data) {
 		var script = document.createElement('script');
 		script.type = 'text/javascript';
 		script.text = data;
@@ -82,7 +82,7 @@ var Namespace = (function() {
 	 * @param	String	eventName
 	 * @param	Object	properties
 	 */
-	var _dispatchEvent = function(eventName, properties) {
+	var _dispatchEvent = function (eventName, properties) {
 		if (!_listeners[eventName]) return;
 		properties.event = eventName;
 		for (var i = 0, j = _listeners[eventName].length; i < j; i++) {
@@ -98,7 +98,7 @@ var Namespace = (function() {
 	 * @param	Object	klasses		(OPTIONAL) An object which properties will be added to the namespace
 	 * @return	Object				The most inner object
 	 */
-	var _namespace = function(identifier) {
+	var _namespace = function (identifier) {
 		var klasses = arguments[1] || false;
 		var ns = window;
 
@@ -129,7 +129,7 @@ var Namespace = (function() {
 	 * @param 	String	identifier	The namespace string
 	 * @return	Boolean
 	 */
-	_namespace.exist = function(identifier) {
+	_namespace.exist = function (identifier) {
 		if (identifier == '') return true;
 
 		var parts = identifier.split(Namespace.separator);
@@ -151,7 +151,7 @@ var Namespace = (function() {
 	 * @param	String	identifier 	The namespace identifier
 	 * @return	String				The uri
 	 */
-	_namespace.mapIdentifierToUri = function(identifier) {
+	_namespace.mapIdentifierToUri = function (identifier) {
 		var regexp = new RegExp('\\' + Namespace.separator, 'g');
 		return Namespace.baseUri + identifier.replace(regexp, '/') + '.js';
 	};
@@ -164,7 +164,7 @@ var Namespace = (function() {
 	 * @param	Function	errorCallback		Callback to be called when an error occurs
 	 * @return	Boolean							Success of failure when loading synchronously
 	 */
-	_loadScript = function(identifier) {
+	_loadScript = function (identifier) {
 		var successCallback = arguments[1] || false;
 		var errorCallback = arguments[2] || false;
 		var async = successCallback != false;
@@ -175,7 +175,7 @@ var Namespace = (function() {
 		xhr.open("GET", uri, async);
 
 		if (async) {
-			xhr.onreadystatechange = function() {
+			xhr.onreadystatechange = function () {
 				if (xhr.readyState == 4) {
 					if (_isHttpRequestSuccessful(xhr.status || 0)) {
 						_createScript(xhr.responseText);
@@ -212,7 +212,7 @@ var Namespace = (function() {
 	 * @param	String		identifier	The namespace string
 	 * @param	Function	callback	(OPTIONAL) A function to call when the remote script has been included
 	 */
-	_namespace.include = function(identifier) {
+	_namespace.include = function (identifier) {
 		var successCallback = arguments[1] || false;
 		var errorCallback = arguments[2] || false;
 
@@ -223,7 +223,7 @@ var Namespace = (function() {
 		}
 
 		if (successCallback) {
-			_loadScript(identifier, function() {
+			_loadScript(identifier, function () {
 				_includedIdentifiers[identifier] = true;
 				successCallback();
 			}, errorCallback);
@@ -250,11 +250,11 @@ var Namespace = (function() {
 	 * @param	Function	callback	(OPTIONAL) A function to call when the process is completed (including the include() if used)
 	 * @param	Boolean		autoInclude	(OPTIONAL) Whether to automatically auto include the targeted object is not found. Default is Namespace.autoInclude
 	 */
-	_namespace.use = function(identifier) {
-		var identifiers 		= _toArray(identifier);
-		var callback 			= arguments[1] || false;
-		var autoInclude 		= arguments.length > 2 ? arguments[2] : Namespace.autoInclude;
-		var event				= { 'identifier': identifier };
+	_namespace.use = function (identifier) {
+		var identifiers = _toArray(identifier);
+		var callback = arguments[1] || false;
+		var autoInclude = arguments.length > 2 ? arguments[2] : Namespace.autoInclude;
+		var event = { 'identifier': identifier };
 
 		for (var i = 0, j = identifiers.length; i < j; i++) {
 			identifier = identifiers[i];
@@ -278,7 +278,7 @@ var Namespace = (function() {
 					if (autoInclude) {
 						// try to auto include it
 						if (callback) {
-							_namespace.include(identifier, function() {
+							_namespace.include(identifier, function () {
 								window[target] = ns[target];
 
 								if (i + 1 < identifiers.length) {
@@ -312,14 +312,14 @@ var Namespace = (function() {
 	 * @param	String	identifier 	The namespace identifier
 	 * @return	Object
 	 */
-	_namespace.from = function(identifier) {
+	_namespace.from = function (identifier) {
 		return {
 			/**
 			 * Includes the identifier specified in from()
 			 *
 			 * @see Namespace.include()
 			 */
-			include: function() {
+			include: function () {
 				var callback = arguments[0] || false;
 				_namespace.include(identifier, callback);
 			},
@@ -329,14 +329,14 @@ var Namespace = (function() {
 			 *
 			 * @see Namespace.use()
 			 */
-			use: function(_identifier) {
+			use: function (_identifier) {
 				var callback = arguments[1] || false;
 				if (_identifier.charAt(0) == '.') {
 					_identifier = identifier + _identifier;
 				}
 
 				if (callback) {
-					_namespace.include(identifier, function() {
+					_namespace.include(identifier, function () {
 						_namespace.use(_identifier, callback, false);
 					});
 				} else {
@@ -354,7 +354,7 @@ var Namespace = (function() {
 	 *
 	 * @param	String|Array	identifier
 	 */
-	_namespace.provide = function(identifier) {
+	_namespace.provide = function (identifier) {
 		var identifiers = _toArray(identifier);
 
 		for (var i = 0, j = identifiers.length; i < j; i++) {
@@ -371,7 +371,7 @@ var Namespace = (function() {
 	 * @param	String		eventName
 	 * @param	Function	callback
 	 */
-	_namespace.addEventListener = function(eventName, callback) {
+	_namespace.addEventListener = function (eventName, callback) {
 		if (!_listeners[eventName]) _listeners[eventName] = [];
 		_listeners[eventName].push(callback);
 	};
@@ -382,7 +382,7 @@ var Namespace = (function() {
 	 * @param	String		eventName
 	 * @param	Function	callback
 	 */
-	_namespace.removeEventListener = function(eventName, callback) {
+	_namespace.removeEventListener = function (eventName, callback) {
 		if (!_listeners[eventName]) return;
 		for (var i = 0, j = _listeners[eventName].length; i < j; i++) {
 			if (_listeners[eventName][i] == callback) {
@@ -398,52 +398,52 @@ var Namespace = (function() {
 	 *
 	 * @public
 	 */
-	_namespace.registerNativeExtensions = function() {
+	_namespace.registerNativeExtensions = function () {
 		/**
 		 * @see Namespace()
 		 */
-		String.prototype.namespace = function() {
+		String.prototype.namespace = function () {
 			var klasses = arguments[0] || {};
 			return _namespace(this.valueOf(), klasses);
 		};
 		/**
 		 * @see Namespace.include()
 		 */
-		String.prototype.include = function() {
+		String.prototype.include = function () {
 			var callback = arguments[0] || false;
 			return _namespace.include(this.valueOf(), callback);
 		}
 		/**
 		 * @see Namespace.use()
 		 */
-		String.prototype.use = function() {
+		String.prototype.use = function () {
 			var callback = arguments[0] || false;
 			return _namespace.use(this.valueOf(), callback);
 		}
 		/**
 		 * @see Namespace.from()
 		 */
-		String.prototype.from = function() {
+		String.prototype.from = function () {
 			return _namespace.from(this.valueOf());
 		}
 		/**
 		 * @see Namespace.provide()
 		 * Idea and code submitted by Nathan Smith (http://github.com/smith)
 		 */
-		String.prototype.provide = function() {
+		String.prototype.provide = function () {
 			return _namespace.provide(this.valueOf());
 		}
 		/**
 		 * @see Namespace.use()
 		 */
-		Array.prototype.use = function() {
+		Array.prototype.use = function () {
 			var callback = arguments[0] || false;
 			return _namespace.use(this, callback);
 		}
 		/**
 		 * @see Namespace.provide()
 		 */
-		Array.prototype.provide = function() {
+		Array.prototype.provide = function () {
 			return _namespace.provide(this);
 		}
 	};

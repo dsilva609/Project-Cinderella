@@ -31,7 +31,7 @@
 		    </div>
 		    <div class="col-xs-6">
 			    @Html.LabelFor(m => m.AlbumYear)
-			    @Html.TextBoxFor(m => m.AlbumYear, new {@class = "form-control"})
+			    @Html.TextBoxFor(m => m.AlbumYear, new {@class = "form-control datepicker-year"})
 			    @Html.ValidationMessageFor(m => m.AlbumYear, "", new {@class = "text-danger"})
 		    </div>
 	    </div>
@@ -53,17 +53,13 @@
             <h4>Media Information</h4>
         </div>
         <div class="panel-body">
-            <div class="col-xs-4">
+            <div class="col-xs-6">
                 @Html.LabelFor(m => m.MediaType)
                 @Html.EnumDropDownListFor(m => m.MediaType, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.MediaType, "", new { @class = "text-danger" })
             </div>
-            <div class="col-xs-2 col-xs-offset-2">
-                @Html.LabelFor(m => m.IsNew)
-                @Html.CheckBoxFor(m => m.IsNew, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.IsNew, "", new { @class = "text-danger" })
-            </div>
-            <div class="col-xs-2">
+            
+            <div class="col-xs-6">
                 @Html.LabelFor(m => m.IsPhysical)
                 @Html.CheckBoxFor(m => m.IsPhysical, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.IsPhysical, "", new { @class = "text-danger" })
@@ -79,14 +75,20 @@
         <div class="panel-body">
             <div class="col-xs-6">
                 @Html.LabelFor(m => m.DatePurchased)
-                @Html.TextBoxFor(m => m.DatePurchased, new { @Value = Model.DatePurchased.ToString("MM/dd/yy"), @class = "form-control datepicker" })
+                @Html.TextBoxFor(m => m.DatePurchased, new { @Value = Model.DatePurchased.ToString("MM/dd/yy"), @class = "form-control datepicker date" })
                 @Html.ValidationMessageFor(m => m.DatePurchased, "", new { @class = "text-danger" })
             </div>
-            <div class="col-xs-6">
-                @Html.LabelFor(m => m.LocationPurchased)
-                @Html.TextBoxFor(m => m.LocationPurchased, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.LocationPurchased, "", new { @class = "text-danger" })
-            </div>
+	        <div class="col-xs-4">
+		        @Html.LabelFor(m => m.LocationPurchased)
+		        @Html.TextBoxFor(m => m.LocationPurchased, new {@class = "form-control"})
+		        @Html.ValidationMessageFor(m => m.LocationPurchased, "", new {@class = "text-danger"})
+	        </div>
+
+			<div class="col-xs-2">
+				@Html.LabelFor(m => m.IsNew)
+				@Html.CheckBoxFor(m => m.IsNew, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.IsNew, "", new { @class = "text-danger" })
+			</div>
         </div>
     </div>
 

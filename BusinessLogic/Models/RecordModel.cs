@@ -25,7 +25,7 @@ namespace BusinessLogic.Models
 		public string Genre { get; set; }
 
 		[DisplayName("Album Year")]
-		public int AlbumYear { get; set; }
+		public int AlbumYear { get; set; } = DateTime.Today.Year;
 
 		[Column(Order = 3)]
 		[Required]
