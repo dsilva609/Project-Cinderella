@@ -23,18 +23,30 @@
                 @Html.ValidationMessageFor(m => m.AlbumName, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="panel-body">
-            <div class="col-xs-6">
-                @Html.LabelFor(m => m.Genre)
-                @Html.TextBoxFor(m => m.Genre, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Genre, "", new { @class = "text-danger" })
-            </div>
-            <div class="col-xs-6">
-                @Html.LabelFor(m => m.AlbumYear)
-                @Html.TextBoxFor(m => m.AlbumYear, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.AlbumYear, "", new { @class = "text-danger" })
-            </div>
-        </div>
+	    <div class="panel-body">
+		    <div class="col-xs-6">
+			    @Html.LabelFor(m => m.Genre)
+			    @Html.TextBoxFor(m => m.Genre, new {@class = "form-control"})
+			    @Html.ValidationMessageFor(m => m.Genre, "", new {@class = "text-danger"})
+		    </div>
+		    <div class="col-xs-6">
+			    @Html.LabelFor(m => m.AlbumYear)
+			    @Html.TextBoxFor(m => m.AlbumYear, new {@class = "form-control"})
+			    @Html.ValidationMessageFor(m => m.AlbumYear, "", new {@class = "text-danger"})
+		    </div>
+	    </div>
+		<div class="panel-body">
+			<div class="col-xs-6">
+				@Html.LabelFor(m => m.RecordLabel)
+				@Html.TextBoxFor(m => m.RecordLabel, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.RecordLabel, "", new { @class = "text-danger" })
+			</div>
+			<div class="col-xs-6">
+				@Html.LabelFor(m => m.Notes)
+				@Html.TextAreaFor(m => m.Notes, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Notes, "", new { @class = "text-danger" })
+			</div>
+		</div>
     </div>
     <div class="row panel panel-primary">
         <div class="panel-heading">

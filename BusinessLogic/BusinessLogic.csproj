@@ -109,6 +109,10 @@
     <Compile Include="Migrations\201604130336451_Added Date Added And Date Updated.Designer.cs">
       <DependentUpon>201604130336451_Added Date Added And Date Updated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604172022125_Added record label and album notes.cs" />
+    <Compile Include="Migrations\201604172022125_Added record label and album notes.Designer.cs">
+      <DependentUpon>201604172022125_Added record label and album notes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\RecordModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -156,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604130336451_Added Date Added And Date Updated.resx">
       <DependentUpon>201604130336451_Added Date Added And Date Updated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604172022125_Added record label and album notes.resx">
+      <DependentUpon>201604172022125_Added record label and album notes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
