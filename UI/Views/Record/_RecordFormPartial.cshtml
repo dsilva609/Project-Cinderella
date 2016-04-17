@@ -2,39 +2,40 @@
 
 @Html.AntiForgeryToken()
 <div>
-    @Html.HiddenFor(m => m.UserID)
-    @Html.HiddenFor(m => m.DateAdded)
-    <div class="row panel panel-primary">
-        <div class="panel-heading">
-            <h4>
-                Album Information
-            </h4>
-        </div>
-        <div class="panel-body">
-            <div class="col-xs-6">
-                @Html.LabelFor(m => m.Artist)
-                @Html.TextBoxFor(m => m.Artist, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Artist, "", new { @class = "text-danger" })
-            </div>
+	@Html.HiddenFor(m => m.UserID)
+	@Html.HiddenFor(m => m.DateAdded)
+	<div class="row panel panel-primary">
+		<div class="panel-heading">
+			<h4>
+				Album Information
+			</h4>
+		</div>
+		<div class="panel-body">
+			<div class="col-xs-6">
+				@Html.LabelFor(m => m.Artist)
+				@Html.TextBoxFor(m => m.Artist, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Artist, "", new { @class = "text-danger" })
+			</div>
 
-            <div class="col-xs-6">
-                @Html.LabelFor(m => m.AlbumName)
-                @Html.TextBoxFor(m => m.AlbumName, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.AlbumName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-	    <div class="panel-body">
-		    <div class="col-xs-6">
-			    @Html.LabelFor(m => m.Genre)
-			    @Html.TextBoxFor(m => m.Genre, new {@class = "form-control"})
-			    @Html.ValidationMessageFor(m => m.Genre, "", new {@class = "text-danger"})
-		    </div>
-		    <div class="col-xs-6">
-			    @Html.LabelFor(m => m.AlbumYear)
-			    @Html.TextBoxFor(m => m.AlbumYear, new {@class = "form-control datepicker-year"})
-			    @Html.ValidationMessageFor(m => m.AlbumYear, "", new {@class = "text-danger"})
-		    </div>
-	    </div>
+			<div class="col-xs-6">
+				@Html.LabelFor(m => m.AlbumName)
+				@Html.TextBoxFor(m => m.AlbumName, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.AlbumName, "", new { @class = "text-danger" })
+			</div>
+		</div>
+		<div class="panel-body">
+			<div class="col-xs-6">
+				@Html.LabelFor(m => m.Genre)
+				@Html.TextBoxFor(m => m.Genre, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Genre, "", new { @class = "text-danger" })
+			</div>
+			<div class="col-xs-6">
+				@Html.LabelFor(m => m.AlbumYear)
+				@Html.DropDownListFor(model => model.AlbumYear, Enumerable.Range(1900, DateTime.Today.Year - 1900 + 1).
+					Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), Model.AlbumYear.ToString(), new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.AlbumYear, "", new { @class = "text-danger" })
+			</div>
+		</div>
 		<div class="panel-body">
 			<div class="col-xs-6">
 				@Html.LabelFor(m => m.RecordLabel)
@@ -47,52 +48,52 @@
 				@Html.ValidationMessageFor(m => m.Notes, "", new { @class = "text-danger" })
 			</div>
 		</div>
-    </div>
-    <div class="row panel panel-primary">
-        <div class="panel-heading">
-            <h4>Media Information</h4>
-        </div>
-        <div class="panel-body">
-            <div class="col-xs-6">
-                @Html.LabelFor(m => m.MediaType)
-                @Html.EnumDropDownListFor(m => m.MediaType, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.MediaType, "", new { @class = "text-danger" })
-            </div>
-            
-            <div class="col-xs-6">
-                @Html.LabelFor(m => m.IsPhysical)
-                @Html.CheckBoxFor(m => m.IsPhysical, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.IsPhysical, "", new { @class = "text-danger" })
-            </div>
-        </div>
-    </div>
-    <div class="row panel panel-primary">
-        <div class="panel-heading">
-            <h4>
-                Purchase Information
-            </h4>
-        </div>
-        <div class="panel-body">
-            <div class="col-xs-6">
-                @Html.LabelFor(m => m.DatePurchased)
-                @Html.TextBoxFor(m => m.DatePurchased, new { @Value = Model.DatePurchased.ToString("MM/dd/yy"), @class = "form-control datepicker date" })
-                @Html.ValidationMessageFor(m => m.DatePurchased, "", new { @class = "text-danger" })
-            </div>
-	        <div class="col-xs-4">
-		        @Html.LabelFor(m => m.LocationPurchased)
-		        @Html.TextBoxFor(m => m.LocationPurchased, new {@class = "form-control"})
-		        @Html.ValidationMessageFor(m => m.LocationPurchased, "", new {@class = "text-danger"})
-	        </div>
+	</div>
+	<div class="row panel panel-primary">
+		<div class="panel-heading">
+			<h4>Media Information</h4>
+		</div>
+		<div class="panel-body">
+			<div class="col-xs-6">
+				@Html.LabelFor(m => m.MediaType)
+				@Html.EnumDropDownListFor(m => m.MediaType, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.MediaType, "", new { @class = "text-danger" })
+			</div>
+
+			<div class="col-xs-6">
+				@Html.LabelFor(m => m.IsPhysical)
+				@Html.CheckBoxFor(m => m.IsPhysical, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.IsPhysical, "", new { @class = "text-danger" })
+			</div>
+		</div>
+	</div>
+	<div class="row panel panel-primary">
+		<div class="panel-heading">
+			<h4>
+				Purchase Information
+			</h4>
+		</div>
+		<div class="panel-body">
+			<div class="col-xs-6">
+				@Html.LabelFor(m => m.DatePurchased)
+				@Html.TextBoxFor(m => m.DatePurchased, new { @Value = Model.DatePurchased.ToString("MM/dd/yy"), @class = "form-control datepicker date" })
+				@Html.ValidationMessageFor(m => m.DatePurchased, "", new { @class = "text-danger" })
+			</div>
+			<div class="col-xs-4">
+				@Html.LabelFor(m => m.LocationPurchased)
+				@Html.TextBoxFor(m => m.LocationPurchased, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.LocationPurchased, "", new { @class = "text-danger" })
+			</div>
 
 			<div class="col-xs-2">
 				@Html.LabelFor(m => m.IsNew)
 				@Html.CheckBoxFor(m => m.IsNew, new { @class = "form-control" })
 				@Html.ValidationMessageFor(m => m.IsNew, "", new { @class = "text-danger" })
 			</div>
-        </div>
-    </div>
+		</div>
+	</div>
 
-    <div class="row panel-body">
-        <input id="btnSubmit" type="submit" value=@(Model.ID > 0 ? "Save" : "Create") class="btn btn-default btn-block btn-lg" />
-    </div>
+	<div class="row panel-body">
+		<input id="btnSubmit" type="submit" value=@(Model.ID > 0 ? "Save" : "Create") class="btn btn-default btn-block btn-lg" />
+	</div>
 </div>

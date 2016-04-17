@@ -6,13 +6,7 @@ Views.Shared.Layout = (function() {
   function Layout() {}
 
   Layout.prototype.init = function() {
-    $(".datepicker").datepicker();
-    return $(".datepicker-year").datepicker({
-      dateFormat: "yy",
-      changeYear: true,
-      changeMonth: false,
-      showButtonPanel: true
-    });
+    return $(".datepicker").datepicker();
   };
 
   return Layout;
