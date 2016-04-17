@@ -3,6 +3,7 @@
 /// <reference path="bootstrap.min.js" />
 /// <reference path="bootstrap-3.0.1.js" />
 /// <reference path="bootstrap-datepicker.min.js" />
+/// <reference path="jquery.mobile-1.4.5.min.js" />
 /// <reference path="jquery.validate.js" />
 /// <reference path="jquery.validate.unobtrusive.min.js" />
 /// <reference path="jquery-2.1.3.js" />

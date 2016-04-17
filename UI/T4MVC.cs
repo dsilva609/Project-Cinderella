@@ -100,6 +100,9 @@ namespace Links
         public static readonly string jquery_ui_1_11_3_min_js_map = Url("jquery-ui-1.11.3.min.js.map");
         public static readonly string jquery_ui_1_11_4_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-ui-1.11.4.min.js") ? Url("jquery-ui-1.11.4.min.js") : Url("jquery-ui-1.11.4.js");
         public static readonly string jquery_ui_1_11_4_min_js = Url("jquery-ui-1.11.4.min.js");
+        public static readonly string jquery_mobile_1_4_5_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.mobile-1.4.5.min.js") ? Url("jquery.mobile-1.4.5.min.js") : Url("jquery.mobile-1.4.5.js");
+        public static readonly string jquery_mobile_1_4_5_min_js = Url("jquery.mobile-1.4.5.min.js");
+        public static readonly string jquery_mobile_1_4_5_min_map = Url("jquery.mobile-1.4.5.min.map");
         public static readonly string jquery_validate_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate-vsdoc.min.js") ? Url("jquery.validate-vsdoc.min.js") : Url("jquery.validate-vsdoc.js");
         public static readonly string jquery_validate_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate.min.js") ? Url("jquery.validate.min.js") : Url("jquery.validate.js");
         public static readonly string jquery_validate_min_js = Url("jquery.validate.min.js");
@@ -253,9 +256,238 @@ namespace Links
             private const string URLPATH = "~/Content/Images";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string ajax_loader_gif = Url("ajax-loader.gif");
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class icons_png {
+                private const string URLPATH = "~/Content/Images/icons-png";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                public static readonly string action_black_png = Url("action-black.png");
+                public static readonly string action_white_png = Url("action-white.png");
+                public static readonly string alert_black_png = Url("alert-black.png");
+                public static readonly string alert_white_png = Url("alert-white.png");
+                public static readonly string arrow_d_black_png = Url("arrow-d-black.png");
+                public static readonly string arrow_d_l_black_png = Url("arrow-d-l-black.png");
+                public static readonly string arrow_d_l_white_png = Url("arrow-d-l-white.png");
+                public static readonly string arrow_d_r_black_png = Url("arrow-d-r-black.png");
+                public static readonly string arrow_d_r_white_png = Url("arrow-d-r-white.png");
+                public static readonly string arrow_d_white_png = Url("arrow-d-white.png");
+                public static readonly string arrow_l_black_png = Url("arrow-l-black.png");
+                public static readonly string arrow_l_white_png = Url("arrow-l-white.png");
+                public static readonly string arrow_r_black_png = Url("arrow-r-black.png");
+                public static readonly string arrow_r_white_png = Url("arrow-r-white.png");
+                public static readonly string arrow_u_black_png = Url("arrow-u-black.png");
+                public static readonly string arrow_u_l_black_png = Url("arrow-u-l-black.png");
+                public static readonly string arrow_u_l_white_png = Url("arrow-u-l-white.png");
+                public static readonly string arrow_u_r_black_png = Url("arrow-u-r-black.png");
+                public static readonly string arrow_u_r_white_png = Url("arrow-u-r-white.png");
+                public static readonly string arrow_u_white_png = Url("arrow-u-white.png");
+                public static readonly string audio_black_png = Url("audio-black.png");
+                public static readonly string audio_white_png = Url("audio-white.png");
+                public static readonly string back_black_png = Url("back-black.png");
+                public static readonly string back_white_png = Url("back-white.png");
+                public static readonly string bars_black_png = Url("bars-black.png");
+                public static readonly string bars_white_png = Url("bars-white.png");
+                public static readonly string bullets_black_png = Url("bullets-black.png");
+                public static readonly string bullets_white_png = Url("bullets-white.png");
+                public static readonly string calendar_black_png = Url("calendar-black.png");
+                public static readonly string calendar_white_png = Url("calendar-white.png");
+                public static readonly string camera_black_png = Url("camera-black.png");
+                public static readonly string camera_white_png = Url("camera-white.png");
+                public static readonly string carat_d_black_png = Url("carat-d-black.png");
+                public static readonly string carat_d_white_png = Url("carat-d-white.png");
+                public static readonly string carat_l_black_png = Url("carat-l-black.png");
+                public static readonly string carat_l_white_png = Url("carat-l-white.png");
+                public static readonly string carat_r_black_png = Url("carat-r-black.png");
+                public static readonly string carat_r_white_png = Url("carat-r-white.png");
+                public static readonly string carat_u_black_png = Url("carat-u-black.png");
+                public static readonly string carat_u_white_png = Url("carat-u-white.png");
+                public static readonly string check_black_png = Url("check-black.png");
+                public static readonly string check_white_png = Url("check-white.png");
+                public static readonly string clock_black_png = Url("clock-black.png");
+                public static readonly string clock_white_png = Url("clock-white.png");
+                public static readonly string cloud_black_png = Url("cloud-black.png");
+                public static readonly string cloud_white_png = Url("cloud-white.png");
+                public static readonly string comment_black_png = Url("comment-black.png");
+                public static readonly string comment_white_png = Url("comment-white.png");
+                public static readonly string delete_black_png = Url("delete-black.png");
+                public static readonly string delete_white_png = Url("delete-white.png");
+                public static readonly string edit_black_png = Url("edit-black.png");
+                public static readonly string edit_white_png = Url("edit-white.png");
+                public static readonly string eye_black_png = Url("eye-black.png");
+                public static readonly string eye_white_png = Url("eye-white.png");
+                public static readonly string forbidden_black_png = Url("forbidden-black.png");
+                public static readonly string forbidden_white_png = Url("forbidden-white.png");
+                public static readonly string forward_black_png = Url("forward-black.png");
+                public static readonly string forward_white_png = Url("forward-white.png");
+                public static readonly string gear_black_png = Url("gear-black.png");
+                public static readonly string gear_white_png = Url("gear-white.png");
+                public static readonly string grid_black_png = Url("grid-black.png");
+                public static readonly string grid_white_png = Url("grid-white.png");
+                public static readonly string heart_black_png = Url("heart-black.png");
+                public static readonly string heart_white_png = Url("heart-white.png");
+                public static readonly string home_black_png = Url("home-black.png");
+                public static readonly string home_white_png = Url("home-white.png");
+                public static readonly string info_black_png = Url("info-black.png");
+                public static readonly string info_white_png = Url("info-white.png");
+                public static readonly string location_black_png = Url("location-black.png");
+                public static readonly string location_white_png = Url("location-white.png");
+                public static readonly string lock_black_png = Url("lock-black.png");
+                public static readonly string lock_white_png = Url("lock-white.png");
+                public static readonly string mail_black_png = Url("mail-black.png");
+                public static readonly string mail_white_png = Url("mail-white.png");
+                public static readonly string minus_black_png = Url("minus-black.png");
+                public static readonly string minus_white_png = Url("minus-white.png");
+                public static readonly string navigation_black_png = Url("navigation-black.png");
+                public static readonly string navigation_white_png = Url("navigation-white.png");
+                public static readonly string phone_black_png = Url("phone-black.png");
+                public static readonly string phone_white_png = Url("phone-white.png");
+                public static readonly string plus_black_png = Url("plus-black.png");
+                public static readonly string plus_white_png = Url("plus-white.png");
+                public static readonly string power_black_png = Url("power-black.png");
+                public static readonly string power_white_png = Url("power-white.png");
+                public static readonly string recycle_black_png = Url("recycle-black.png");
+                public static readonly string recycle_white_png = Url("recycle-white.png");
+                public static readonly string refresh_black_png = Url("refresh-black.png");
+                public static readonly string refresh_white_png = Url("refresh-white.png");
+                public static readonly string search_black_png = Url("search-black.png");
+                public static readonly string search_white_png = Url("search-white.png");
+                public static readonly string shop_black_png = Url("shop-black.png");
+                public static readonly string shop_white_png = Url("shop-white.png");
+                public static readonly string star_black_png = Url("star-black.png");
+                public static readonly string star_white_png = Url("star-white.png");
+                public static readonly string tag_black_png = Url("tag-black.png");
+                public static readonly string tag_white_png = Url("tag-white.png");
+                public static readonly string user_black_png = Url("user-black.png");
+                public static readonly string user_white_png = Url("user-white.png");
+                public static readonly string video_black_png = Url("video-black.png");
+                public static readonly string video_white_png = Url("video-white.png");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class icons_svg {
+                private const string URLPATH = "~/Content/Images/icons-svg";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                public static readonly string action_black_svg = Url("action-black.svg");
+                public static readonly string action_white_svg = Url("action-white.svg");
+                public static readonly string alert_black_svg = Url("alert-black.svg");
+                public static readonly string alert_white_svg = Url("alert-white.svg");
+                public static readonly string arrow_d_black_svg = Url("arrow-d-black.svg");
+                public static readonly string arrow_d_l_black_svg = Url("arrow-d-l-black.svg");
+                public static readonly string arrow_d_l_white_svg = Url("arrow-d-l-white.svg");
+                public static readonly string arrow_d_r_black_svg = Url("arrow-d-r-black.svg");
+                public static readonly string arrow_d_r_white_svg = Url("arrow-d-r-white.svg");
+                public static readonly string arrow_d_white_svg = Url("arrow-d-white.svg");
+                public static readonly string arrow_l_black_svg = Url("arrow-l-black.svg");
+                public static readonly string arrow_l_white_svg = Url("arrow-l-white.svg");
+                public static readonly string arrow_r_black_svg = Url("arrow-r-black.svg");
+                public static readonly string arrow_r_white_svg = Url("arrow-r-white.svg");
+                public static readonly string arrow_u_black_svg = Url("arrow-u-black.svg");
+                public static readonly string arrow_u_l_black_svg = Url("arrow-u-l-black.svg");
+                public static readonly string arrow_u_l_white_svg = Url("arrow-u-l-white.svg");
+                public static readonly string arrow_u_r_black_svg = Url("arrow-u-r-black.svg");
+                public static readonly string arrow_u_r_white_svg = Url("arrow-u-r-white.svg");
+                public static readonly string arrow_u_white_svg = Url("arrow-u-white.svg");
+                public static readonly string audio_black_svg = Url("audio-black.svg");
+                public static readonly string audio_white_svg = Url("audio-white.svg");
+                public static readonly string back_black_svg = Url("back-black.svg");
+                public static readonly string back_white_svg = Url("back-white.svg");
+                public static readonly string bars_black_svg = Url("bars-black.svg");
+                public static readonly string bars_white_svg = Url("bars-white.svg");
+                public static readonly string bullets_black_svg = Url("bullets-black.svg");
+                public static readonly string bullets_white_svg = Url("bullets-white.svg");
+                public static readonly string calendar_black_svg = Url("calendar-black.svg");
+                public static readonly string calendar_white_svg = Url("calendar-white.svg");
+                public static readonly string camera_black_svg = Url("camera-black.svg");
+                public static readonly string camera_white_svg = Url("camera-white.svg");
+                public static readonly string carat_d_black_svg = Url("carat-d-black.svg");
+                public static readonly string carat_d_white_svg = Url("carat-d-white.svg");
+                public static readonly string carat_l_black_svg = Url("carat-l-black.svg");
+                public static readonly string carat_l_white_svg = Url("carat-l-white.svg");
+                public static readonly string carat_r_black_svg = Url("carat-r-black.svg");
+                public static readonly string carat_r_white_svg = Url("carat-r-white.svg");
+                public static readonly string carat_u_black_svg = Url("carat-u-black.svg");
+                public static readonly string carat_u_white_svg = Url("carat-u-white.svg");
+                public static readonly string check_black_svg = Url("check-black.svg");
+                public static readonly string check_white_svg = Url("check-white.svg");
+                public static readonly string clock_black_svg = Url("clock-black.svg");
+                public static readonly string clock_white_svg = Url("clock-white.svg");
+                public static readonly string cloud_black_svg = Url("cloud-black.svg");
+                public static readonly string cloud_white_svg = Url("cloud-white.svg");
+                public static readonly string comment_black_svg = Url("comment-black.svg");
+                public static readonly string comment_white_svg = Url("comment-white.svg");
+                public static readonly string delete_black_svg = Url("delete-black.svg");
+                public static readonly string delete_white_svg = Url("delete-white.svg");
+                public static readonly string edit_black_svg = Url("edit-black.svg");
+                public static readonly string edit_white_svg = Url("edit-white.svg");
+                public static readonly string eye_black_svg = Url("eye-black.svg");
+                public static readonly string eye_white_svg = Url("eye-white.svg");
+                public static readonly string forbidden_black_svg = Url("forbidden-black.svg");
+                public static readonly string forbidden_white_svg = Url("forbidden-white.svg");
+                public static readonly string forward_black_svg = Url("forward-black.svg");
+                public static readonly string forward_white_svg = Url("forward-white.svg");
+                public static readonly string gear_black_svg = Url("gear-black.svg");
+                public static readonly string gear_white_svg = Url("gear-white.svg");
+                public static readonly string grid_black_svg = Url("grid-black.svg");
+                public static readonly string grid_white_svg = Url("grid-white.svg");
+                public static readonly string heart_black_svg = Url("heart-black.svg");
+                public static readonly string heart_white_svg = Url("heart-white.svg");
+                public static readonly string home_black_svg = Url("home-black.svg");
+                public static readonly string home_white_svg = Url("home-white.svg");
+                public static readonly string info_black_svg = Url("info-black.svg");
+                public static readonly string info_white_svg = Url("info-white.svg");
+                public static readonly string location_black_svg = Url("location-black.svg");
+                public static readonly string location_white_svg = Url("location-white.svg");
+                public static readonly string lock_black_svg = Url("lock-black.svg");
+                public static readonly string lock_white_svg = Url("lock-white.svg");
+                public static readonly string mail_black_svg = Url("mail-black.svg");
+                public static readonly string mail_white_svg = Url("mail-white.svg");
+                public static readonly string minus_black_svg = Url("minus-black.svg");
+                public static readonly string minus_white_svg = Url("minus-white.svg");
+                public static readonly string navigation_black_svg = Url("navigation-black.svg");
+                public static readonly string navigation_white_svg = Url("navigation-white.svg");
+                public static readonly string phone_black_svg = Url("phone-black.svg");
+                public static readonly string phone_white_svg = Url("phone-white.svg");
+                public static readonly string plus_black_svg = Url("plus-black.svg");
+                public static readonly string plus_white_svg = Url("plus-white.svg");
+                public static readonly string power_black_svg = Url("power-black.svg");
+                public static readonly string power_white_svg = Url("power-white.svg");
+                public static readonly string recycle_black_svg = Url("recycle-black.svg");
+                public static readonly string recycle_white_svg = Url("recycle-white.svg");
+                public static readonly string refresh_black_svg = Url("refresh-black.svg");
+                public static readonly string refresh_white_svg = Url("refresh-white.svg");
+                public static readonly string search_black_svg = Url("search-black.svg");
+                public static readonly string search_white_svg = Url("search-white.svg");
+                public static readonly string shop_black_svg = Url("shop-black.svg");
+                public static readonly string shop_white_svg = Url("shop-white.svg");
+                public static readonly string star_black_svg = Url("star-black.svg");
+                public static readonly string star_white_svg = Url("star-white.svg");
+                public static readonly string tag_black_svg = Url("tag-black.svg");
+                public static readonly string tag_white_svg = Url("tag-white.svg");
+                public static readonly string user_black_svg = Url("user-black.svg");
+                public static readonly string user_white_svg = Url("user-white.svg");
+                public static readonly string video_black_svg = Url("video-black.svg");
+                public static readonly string video_white_svg = Url("video-white.svg");
+            }
+        
             public static readonly string Turntable_jpg = Url("Turntable.jpg");
         }
     
+        public static readonly string jquery_mobile_1_4_5_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.mobile-1.4.5.min.css") ? Url("jquery.mobile-1.4.5.min.css") : Url("jquery.mobile-1.4.5.css");
+        public static readonly string jquery_mobile_1_4_5_min_css = Url("jquery.mobile-1.4.5.min.css");
+        public static readonly string jquery_mobile_external_png_1_4_5_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.mobile.external-png-1.4.5.min.css") ? Url("jquery.mobile.external-png-1.4.5.min.css") : Url("jquery.mobile.external-png-1.4.5.css");
+        public static readonly string jquery_mobile_external_png_1_4_5_min_css = Url("jquery.mobile.external-png-1.4.5.min.css");
+        public static readonly string jquery_mobile_icons_1_4_5_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.mobile.icons-1.4.5.min.css") ? Url("jquery.mobile.icons-1.4.5.min.css") : Url("jquery.mobile.icons-1.4.5.css");
+        public static readonly string jquery_mobile_icons_1_4_5_min_css = Url("jquery.mobile.icons-1.4.5.min.css");
+        public static readonly string jquery_mobile_inline_png_1_4_5_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.mobile.inline-png-1.4.5.min.css") ? Url("jquery.mobile.inline-png-1.4.5.min.css") : Url("jquery.mobile.inline-png-1.4.5.css");
+        public static readonly string jquery_mobile_inline_png_1_4_5_min_css = Url("jquery.mobile.inline-png-1.4.5.min.css");
+        public static readonly string jquery_mobile_inline_svg_1_4_5_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.mobile.inline-svg-1.4.5.min.css") ? Url("jquery.mobile.inline-svg-1.4.5.min.css") : Url("jquery.mobile.inline-svg-1.4.5.css");
+        public static readonly string jquery_mobile_inline_svg_1_4_5_min_css = Url("jquery.mobile.inline-svg-1.4.5.min.css");
+        public static readonly string jquery_mobile_structure_1_4_5_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.mobile.structure-1.4.5.min.css") ? Url("jquery.mobile.structure-1.4.5.min.css") : Url("jquery.mobile.structure-1.4.5.css");
+        public static readonly string jquery_mobile_structure_1_4_5_min_css = Url("jquery.mobile.structure-1.4.5.min.css");
+        public static readonly string jquery_mobile_theme_1_4_5_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.mobile.theme-1.4.5.min.css") ? Url("jquery.mobile.theme-1.4.5.min.css") : Url("jquery.mobile.theme-1.4.5.css");
+        public static readonly string jquery_mobile_theme_1_4_5_min_css = Url("jquery.mobile.theme-1.4.5.min.css");
         public static readonly string Responsive_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Responsive.min.css") ? Url("Responsive.min.css") : Url("Responsive.css");
         public static readonly string Site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Site.min.css") ? Url("Site.min.css") : Url("Site.css");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -431,6 +663,8 @@ namespace Links
                 public const string jquery_ui_1_11_3_min_js = "~/Scripts/jquery-ui-1.11.3.min.js"; 
                 public const string jquery_ui_1_11_4_js = "~/Scripts/jquery-ui-1.11.4.js"; 
                 public const string jquery_ui_1_11_4_min_js = "~/Scripts/jquery-ui-1.11.4.min.js"; 
+                public const string jquery_mobile_1_4_5_js = "~/Scripts/jquery.mobile-1.4.5.js"; 
+                public const string jquery_mobile_1_4_5_min_js = "~/Scripts/jquery.mobile-1.4.5.min.js"; 
                 public const string jquery_validate_js = "~/Scripts/jquery.validate.js"; 
                 public const string jquery_validate_min_js = "~/Scripts/jquery.validate.min.js"; 
                 public const string jquery_validate_unobtrusive_js = "~/Scripts/jquery.validate.unobtrusive.js"; 
@@ -451,6 +685,18 @@ namespace Links
         {
             public static partial class Images 
             {
+                public static partial class icons_png 
+                {
+                    public static class Assets
+                    {
+                    }
+                }
+                public static partial class icons_svg 
+                {
+                    public static class Assets
+                    {
+                    }
+                }
                 public static class Assets
                 {
                 }
@@ -509,6 +755,20 @@ namespace Links
                 public const string bootstrap_min_css = "~/Content/bootstrap.min.css";
                 public const string font_awesome_css = "~/Content/font-awesome.css";
                 public const string font_awesome_min_css = "~/Content/font-awesome.min.css";
+                public const string jquery_mobile_1_4_5_css = "~/Content/jquery.mobile-1.4.5.css";
+                public const string jquery_mobile_1_4_5_min_css = "~/Content/jquery.mobile-1.4.5.min.css";
+                public const string jquery_mobile_external_png_1_4_5_css = "~/Content/jquery.mobile.external-png-1.4.5.css";
+                public const string jquery_mobile_external_png_1_4_5_min_css = "~/Content/jquery.mobile.external-png-1.4.5.min.css";
+                public const string jquery_mobile_icons_1_4_5_css = "~/Content/jquery.mobile.icons-1.4.5.css";
+                public const string jquery_mobile_icons_1_4_5_min_css = "~/Content/jquery.mobile.icons-1.4.5.min.css";
+                public const string jquery_mobile_inline_png_1_4_5_css = "~/Content/jquery.mobile.inline-png-1.4.5.css";
+                public const string jquery_mobile_inline_png_1_4_5_min_css = "~/Content/jquery.mobile.inline-png-1.4.5.min.css";
+                public const string jquery_mobile_inline_svg_1_4_5_css = "~/Content/jquery.mobile.inline-svg-1.4.5.css";
+                public const string jquery_mobile_inline_svg_1_4_5_min_css = "~/Content/jquery.mobile.inline-svg-1.4.5.min.css";
+                public const string jquery_mobile_structure_1_4_5_css = "~/Content/jquery.mobile.structure-1.4.5.css";
+                public const string jquery_mobile_structure_1_4_5_min_css = "~/Content/jquery.mobile.structure-1.4.5.min.css";
+                public const string jquery_mobile_theme_1_4_5_css = "~/Content/jquery.mobile.theme-1.4.5.css";
+                public const string jquery_mobile_theme_1_4_5_min_css = "~/Content/jquery.mobile.theme-1.4.5.min.css";
                 public const string Responsive_css = "~/Content/Responsive.css";
                 public const string Site_css = "~/Content/Site.css";
                 public const string toastr_css = "~/Content/toastr.css";
