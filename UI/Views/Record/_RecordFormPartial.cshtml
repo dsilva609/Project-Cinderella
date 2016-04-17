@@ -76,7 +76,7 @@
 		<div class="panel-body">
 			<div class="col-xs-6">
 				@Html.LabelFor(m => m.DatePurchased)
-				@Html.TextBoxFor(m => m.DatePurchased, new { @Value = Model.DatePurchased.ToString("MM/dd/yy"), @class = "form-control datepicker date" })
+				@Html.TextBoxFor(m => m.DatePurchased, new { @Value = Model.DatePurchased.ToString("MM/dd/yyyy"), @class = "form-control datepicker date", data_date = Model.DatePurchased })
 				@Html.ValidationMessageFor(m => m.DatePurchased, "", new { @class = "text-danger" })
 			</div>
 			<div class="col-xs-4">
