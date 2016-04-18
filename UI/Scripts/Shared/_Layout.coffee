@@ -16,7 +16,7 @@ class Views.Shared.Layout
 			changeMonth: true,
 			changeYear: true,
 			showButtonPanel: true)
-			
+		        	
 $ -> 
 	_layout = new Views.Shared.Layout
 	
