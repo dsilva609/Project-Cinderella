@@ -7,7 +7,7 @@ Views.Shared.Layout = ->
 #Implementation
 class Views.Shared.Layout 
 	init: -> 
-		$(".datepicker").datepicker(
+		$(".datepicker").datepicker
 			autoclose: true,
 			todayBtn: true,
 			todayHighlight: true,
@@ -15,8 +15,11 @@ class Views.Shared.Layout
 			dateFormat: "mm/dd/yyyy",
 			changeMonth: true,
 			changeYear: true,
-			showButtonPanel: true)
-		        	
+			showButtonPanel: true
+		
+		if $(".datepicker").val() is null
+			alert()
+			$(".datepicker").val($(this).data("date"))
 $ -> 
 	_layout = new Views.Shared.Layout
 	

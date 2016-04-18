@@ -76,8 +76,7 @@
 		<div class="panel-body">
 			<div class="col-xs-6">
 				@Html.LabelFor(m => m.DatePurchased)
-				@Html.EditorFor(m => m.DatePurchased, new { htmlattributes = new { @type = Request.Browser.Browser == "IE" || !Request.Browser.IsMobileDevice ?"text": "date", @Value = @Model.DatePurchased.ToString("MM/dd/yyyy"), @class = "form-control datepicker date", data_date = Model.DatePurchased } })
-
+				@Html.EditorFor(m => m.DatePurchased, new { htmlattributes = new { @type = Request.Browser.Browser == "IE" || !Request.Browser.IsMobileDevice ? "text" : "date", @Value = @Model.DatePurchased.ToString("MM/dd/yyyy"), @class = @Request.Browser.Browser == "IE" || !Request.Browser.IsMobileDevice ? "form-control datepicker date" : "form-control", data_date = Model.DatePurchased } })
 				@Html.ValidationMessageFor(m => m.DatePurchased, "", new { @class = "text-danger" })
 			</div>
 			<div class="col-xs-4">
