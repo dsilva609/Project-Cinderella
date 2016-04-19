@@ -6,7 +6,7 @@ Views.Shared.Layout = (function() {
   function Layout() {}
 
   Layout.prototype.init = function() {
-    $(".datepicker").datepicker({
+    return $(".datepicker").datepicker({
       autoclose: true,
       todayBtn: true,
       todayHighlight: true,
@@ -16,10 +16,6 @@ Views.Shared.Layout = (function() {
       changeYear: true,
       showButtonPanel: true
     });
-    if ($(".datepicker").val() === null) {
-      alert();
-      return $(".datepicker").val($(this).data("date"));
-    }
   };
 
   return Layout;

@@ -17,9 +17,6 @@ class Views.Shared.Layout
 			changeYear: true,
 			showButtonPanel: true
 		
-		if $(".datepicker").val() is null
-			alert()
-			$(".datepicker").val($(this).data("date"))
 $ -> 
 	_layout = new Views.Shared.Layout
 	
