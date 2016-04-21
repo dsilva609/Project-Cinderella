@@ -43,12 +43,11 @@ namespace BusinessLogic.Services
 			if (!string.IsNullOrWhiteSpace(userID))
 				recordList = recordList.Where(x => x.UserID == userID).ToList();
 
-			if (numToTake > 0)
-				recordList = recordList.Skip(numToTake * (pageNum.GetValueOrDefault() - 1)).Take(numToTake).ToList();
-
 			if (!string.IsNullOrWhiteSpace(query))
 				recordList = recordList.Where(x => x.Artist.Equals(query, StringComparison.InvariantCultureIgnoreCase) || x.AlbumName.Equals(query, StringComparison.CurrentCultureIgnoreCase)).ToList();
 
+			if (numToTake > 0)
+				recordList = recordList.Skip(numToTake * (pageNum.GetValueOrDefault() - 1)).Take(numToTake).ToList();
 			//if (sortPreference == "Name")
 			//{
 			//    if (sortAscending)
