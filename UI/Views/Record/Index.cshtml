@@ -1,92 +1,92 @@
 ﻿@using Microsoft.AspNet.Identity
 @model UI.Models.RecordViewModel
 @{
-    ViewBag.Title = @Model.ViewTitle;
+	ViewBag.Title = @Model.ViewTitle;
 }
 <script>
-    var detailsUrl = '@Url.Action(MVC.Record.Details())';
-    var deleteUrl = '@Url.Action(MVC.Record.Delete())';
+	var detailsUrl = '@Url.Action(MVC.Record.Details())';
+	var deleteUrl = '@Url.Action(MVC.Record.Delete())';
 </script>
 
 <div>
-    <div class="h2 col-xs-7">
-        Records
-    </div>
+	<div class="h2 col-xs-4 col-sm-7">
+		Records
+	</div>
 
-    <div class="col-xs-5 text-right" style="padding-top: 1.25em; display: inline-flex;">
-        @if (User.Identity.IsAuthenticated)
-        {
-            @Html.ActionLink("Add Record", MVC.Record.Create(), new { @class = "btn btn-default", @style = "margin-right:1em;" })
-        }
-        @using (Html.BeginForm(MVC.Record.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
-        {
-            @Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
-            <button type="submit" class="btn btn-default">
-                <span class="glyphicon glyphicon-search"></span>
-            </button>
-        }
-    </div>
+	<div class="col-xs-8 col-sm-5 text-right" style="padding-top: 1.25em; display: inline-flex;">
+		@if (User.Identity.IsAuthenticated)
+		{
+			@Html.ActionLink("Add Record", MVC.Record.Create(), new { @class = "btn btn-default", @style = "margin-right:1em;" })
+		}
+		@using (Html.BeginForm(MVC.Record.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
+		{
+			@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
+			<button type="submit" class="btn btn-default">
+				<span class="glyphicon glyphicon-search"></span>
+			</button>
+		}
+	</div>
 </div>
 
 <div class="table table-responsive" style="padding-top: 3em;">
-    <div class="bold row">
-        <div class="col-xs-4 col-sm-3">
-            @Html.DisplayNameFor(model => model.Records[0].Artist)
-        </div>
-        <div class="col-xs-4 col-sm-3">
-            @Html.DisplayNameFor(model => model.Records[0].AlbumName)
-        </div>
-        <div class="col-xs-4 col-sm-1">
-            @Html.DisplayNameFor(model => model.Records[0].MediaType)
-        </div>
-        <div class="col-sm-1 hidden-xs">
-            @Html.DisplayNameFor(model => model.Records[0].IsNew)
-        </div>
-        <div class="col-sm-1 hidden-xs">
-            @Html.DisplayNameFor(model => model.Records[0].IsPhysical)
-        </div>
-        <div class="col-md-1 hidden-xs hidden-sm">
-            @Html.DisplayNameFor(model => model.Records[0].DatePurchased)
-        </div>
-    </div>
-    @foreach (var item in Model.Records)
-    {
-        <div id="record" class="row info" data-id="@item.ID">
-            <div class="col-xs-4 col-sm-3">
-                @Html.DisplayFor(modelItem => item.Artist)
-            </div>
-            <div class="col-xs-4 col-sm-3">
-                @Html.DisplayFor(modelItem => item.AlbumName)
-            </div>
-            <div class="col-xs-4 col-sm-1">
-                @Html.DisplayFor(modelItem => item.MediaType)
-            </div>
-            <div class="col-sm-1 hidden-xs">
-                @Html.DisplayFor(modelItem => item.IsNew)
-            </div>
-            <div class="col-sm-1 hidden-xs">
-                @Html.DisplayFor(modelItem => item.IsPhysical)
-            </div>
-            <div class="col-md-1 hidden-xs hidden-sm">
-                @Html.DisplayFor(modelItem => item.DatePurchased)
-            </div>
+	<div class="bold row">
+		<div class="col-xs-4 col-sm-3">
+			@Html.DisplayNameFor(model => model.Records[0].Artist)
+		</div>
+		<div class="col-xs-4 col-sm-3">
+			@Html.DisplayNameFor(model => model.Records[0].AlbumName)
+		</div>
+		<div class="col-xs-4 col-sm-1">
+			@Html.DisplayNameFor(model => model.Records[0].MediaType)
+		</div>
+		<div class="col-sm-1 hidden-xs">
+			@Html.DisplayNameFor(model => model.Records[0].IsNew)
+		</div>
+		<div class="col-sm-1 hidden-xs">
+			@Html.DisplayNameFor(model => model.Records[0].IsPhysical)
+		</div>
+		<div class="col-md-1 hidden-xs hidden-sm">
+			@Html.DisplayNameFor(model => model.Records[0].DatePurchased)
+		</div>
+	</div>
+	@foreach (var item in Model.Records)
+	{
+		<div id="record" class="row info" data-id="@item.ID">
+			<div class="col-xs-4 col-sm-3">
+				@Html.DisplayFor(modelItem => item.Artist)
+			</div>
+			<div class="col-xs-4 col-sm-3">
+				@Html.DisplayFor(modelItem => item.AlbumName)
+			</div>
+			<div class="col-xs-4 col-sm-1">
+				@Html.DisplayFor(modelItem => item.MediaType)
+			</div>
+			<div class="col-sm-1 hidden-xs">
+				@Html.DisplayFor(modelItem => item.IsNew)
+			</div>
+			<div class="col-sm-1 hidden-xs">
+				@Html.DisplayFor(modelItem => item.IsPhysical)
+			</div>
+			<div class="col-md-1 hidden-xs hidden-sm">
+				@Html.DisplayFor(modelItem => item.DatePurchased)
+			</div>
 
-            @if (User.Identity.IsAuthenticated && item.UserID == User.Identity.GetUserId())
-            {
-                <div class="col-xs-2 hidden-xs">
-                    <a href="@Url.Action(MVC.Record.Edit(item.ID))" id="editRecordBtn" class="fa fa-pencil-square-o"></a>
-                    <span> | </span>
-                    <a href="@Url.Action(MVC.Record.Delete(item.ID))" id="deleteRecord" class="fa fa-trash"></a>
-                </div>
-            }
-        </div>
-    }
+			@if (User.Identity.IsAuthenticated && item.UserID == User.Identity.GetUserId())
+			{
+				<div class="col-xs-2 hidden-xs">
+					<a href="@Url.Action(MVC.Record.Edit(item.ID))" id="editRecordBtn" class="fa fa-pencil-square-o"></a>
+					<span> | </span>
+					<a href="@Url.Action(MVC.Record.Delete(item.ID))" id="deleteRecord" class="fa fa-trash"></a>
+				</div>
+			}
+		</div>
+	}
 </div>
 <div class="row">
-    Page:
-    @for (var i = 0; i < Model.PageCount; i++)
-    {
-        @Html.ActionLink((i + 1).ToString(), MVC.Record.Index("", i + 1), new { @class = "btn btn-link" })
+	Page:
+	@for (var i = 0; i < Model.PageCount; i++)
+	{
+		@Html.ActionLink((i + 1).ToString(), MVC.Record.Index("", i + 1), new { @class = "btn btn-link" })
 
-    }
+	}
 </div>
