@@ -4,7 +4,6 @@
 	ViewBag.Title = @Model.ViewTitle;
 }
 <script>
-	var detailsUrl = '@Url.Action(MVC.Record.Details())';
 	var deleteUrl = '@Url.Action(MVC.Record.Delete())';
 </script>
 
@@ -52,30 +51,29 @@
 	@foreach (var item in Model.Records)
 	{
 		<div id="record" class="row info" data-id="@item.ID">
+			<a href ="@Url.Action(User.Identity.IsAuthenticated? MVC.Record.Edit(item.ID): MVC.Record.Details(item.ID))">
 			<div class="col-xs-4 col-sm-3">
-				@Html.DisplayFor(modelItem => item.Artist)
+			@Html.DisplayFor(modelItem => item.Artist)
 			</div>
 			<div class="col-xs-4 col-sm-3">
-				@Html.DisplayFor(modelItem => item.AlbumName)
+			@Html.DisplayFor(modelItem => item.AlbumName)
 			</div>
 			<div class="col-xs-4 col-sm-1">
-				@Html.DisplayFor(modelItem => item.MediaType)
+			@Html.DisplayFor(modelItem => item.MediaType)
 			</div>
 			<div class="col-sm-1 hidden-xs">
-				@Html.DisplayFor(modelItem => item.IsNew)
+			@Html.DisplayFor(modelItem => item.IsNew)
 			</div>
 			<div class="col-sm-1 hidden-xs">
-				@Html.DisplayFor(modelItem => item.IsPhysical)
+			@Html.DisplayFor(modelItem => item.IsPhysical)
 			</div>
 			<div class="col-md-1 hidden-xs hidden-sm">
-				@Html.DisplayFor(modelItem => item.DatePurchased)
+			@Html.DisplayFor(modelItem => item.DatePurchased)
 			</div>
-
+			</a>
 			@if (User.Identity.IsAuthenticated && item.UserID == User.Identity.GetUserId())
 			{
 				<div class="col-xs-2 hidden-xs">
-					<a href="@Url.Action(MVC.Record.Edit(item.ID))" id="editRecordBtn" class="fa fa-pencil-square-o"></a>
-					<span> | </span>
 					<a href="@Url.Action(MVC.Record.Delete(item.ID))" id="deleteRecord" class="fa fa-trash"></a>
 				</div>
 			}

@@ -7,9 +7,6 @@
     function Index() {}
 
     Index.prototype.init = function() {
-      $('[id=record]').on("click", function() {
-        return window.location.href = detailsUrl + "/" + $(this).data("id");
-      });
       return $('[id=deleteRecord]').on("click", function() {
         var ID;
         ID = $(this).data("id");

@@ -13,8 +13,6 @@ class Views.Record.Index
 #		$('#rankHeader').on "click", ->
 #			$.get "/Card/SortPlayers", sortPreference: "Rank", -> location.reload()	
 #	
-		$('[id=record]').on "click", ->
-			window.location.href = detailsUrl + "/" + $(this).data "id"
 
 		$('[id=deleteRecord]').on "click", ->
 			ID = $(this).data "id"
