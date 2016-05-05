@@ -193,6 +193,8 @@ namespace Links
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
             public static readonly string RecordDetails_coffee = Url("RecordDetails.coffee");
             public static readonly string RecordDetails_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/RecordDetails.min.js") ? Url("RecordDetails.min.js") : Url("RecordDetails.js");
+            public static readonly string RecordEdit_coffee = Url("RecordEdit.coffee");
+            public static readonly string RecordEdit_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/RecordEdit.min.js") ? Url("RecordEdit.min.js") : Url("RecordEdit.js");
             public static readonly string RecordIndex_coffee = Url("RecordIndex.coffee");
             public static readonly string RecordIndex_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/RecordIndex.min.js") ? Url("RecordIndex.min.js") : Url("RecordIndex.js");
         }

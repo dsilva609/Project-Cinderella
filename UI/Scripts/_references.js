@@ -84,6 +84,7 @@
 /// <reference path="modernizr-2.8.3.js" />
 /// <reference path="namespace.js" />
 /// <reference path="pagespecific/recorddetails.js" />
+/// <reference path="pagespecific/recordedit.js" />
 /// <reference path="pagespecific/recordindex.js" />
 /// <reference path="respond.matchmedia.addlistener.min.js" />
 /// <reference path="respond.min.js" />

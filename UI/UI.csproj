@@ -581,6 +581,9 @@
     <Content Include="Scripts\PageSpecific\RecordDetails.js">
       <DependentUpon>RecordDetails.coffee</DependentUpon>
     </Content>
+    <Content Include="Scripts\PageSpecific\RecordEdit.js">
+      <DependentUpon>RecordEdit.coffee</DependentUpon>
+    </Content>
     <Content Include="Scripts\PageSpecific\RecordIndex.js">
       <DependentUpon>RecordIndex.coffee</DependentUpon>
     </Content>
@@ -601,6 +604,7 @@
       <Bare>True</Bare>
       <Iced>False</Iced>
     </Content>
+    <Content Include="Scripts\PageSpecific\RecordEdit.coffee" />
     <None Include="T4MVC.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>T4MVC.cs</LastGenOutput>
