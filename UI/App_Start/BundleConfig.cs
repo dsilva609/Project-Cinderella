@@ -22,7 +22,6 @@ namespace UI
 				"~/Scripts/modernizr-*"));
 
 			bundles.Add(new ScriptBundle("~/bundles/bootstrap")
-				.Include("~/Scripts/bootstrap.min.js")
 				.Include("~/Scripts/bootstrap-{version}.min.js")
 				.Include("~/Scripts/bootstrap-datepicker.min.js")
 				.Include("~/Scripts/respond.js"));
