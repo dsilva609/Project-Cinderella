@@ -32,8 +32,76 @@
 
 			<div>
 				@Html.LabelFor(m => m.YearPublished)
-				@Html.TextBoxFor(m => m.YearPublished, new { @class = "form-control" })
+				@Html.DropDownListFor(m => m.YearPublished, Enumerable.Range(1900, DateTime.Today.Year - 1900 + 1).
+					Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), Model.YearPublished.ToString(), new { @class = "form-control" })
 				@Html.ValidationMessageFor(m => m.YearPublished, "", new { @class = "text-danger" })
+			</div>
+
+			<div>
+				@Html.LabelFor(m => m.Type)
+				@Html.EnumDropDownListFor(m => m.Type, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger" })
+			</div>
+
+			<div>
+				@Html.LabelFor(m => m.Media)
+				@Html.EnumDropDownListFor(m => m.Media, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Media, "", new { @class = "text-danger" })
+			</div>
+
+			<div>
+				@Html.LabelFor(m => m.Hardcover)
+				@Html.TextBoxFor(m => m.Hardcover, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Hardcover, "", new { @class = "text-danger" })
+			</div>
+
+			<div>
+				@Html.LabelFor(m => m.DatePurchased)
+				@if (Request.Browser.Browser == "IE" || !Request.Browser.IsMobileDevice)
+				{
+					@Html.EditorFor(m => m.DatePurchased, new { htmlattributes = new { type = "text", Value = Model.DatePurchased.ToShortDateString(), @class = "form-control datepicker" } })
+				}
+				else
+				{
+					@Html.EditorFor(m => m.DatePurchased, new { htmlattributes = new { type = "date", Value = Model.DatePurchased.ToString("yyyy-MM-dd"), @class = "form-control" } })
+				}
+				@Html.ValidationMessageFor(m => m.DatePurchased, "", new { @class = "text-danger" })
+			</div>
+
+			<div>
+				@Html.LabelFor(m => m.LocationPurchased)
+				@Html.TextBoxFor(m => m.LocationPurchased, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.LocationPurchased, "", new { @class = "text-danger" })
+			</div>
+
+			<div>
+				@Html.LabelFor(m => m.IsNew)
+				@Html.CheckBoxFor(m => m.IsNew, new {@class = "form-control"})
+				@Html.ValidationMessageFor(m => m.IsNew, "", new {@class = "text-danger"})
+			</div>
+
+			<div>
+				@Html.LabelFor(m => m.IsReissue)
+				@Html.CheckBoxFor(m => m.IsReissue, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.IsReissue, "", new { @class = "text-danger" })
+			</div>
+
+			<div>
+				@Html.LabelFor(m => m.ISBN)
+				@Html.TextBoxFor(m => m.ISBN, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.ISBN, "", new { @class = "text-danger" })
+			</div>
+
+			<div>
+				@Html.LabelFor(m => m.Language)
+				@Html.TextBoxFor(m => m.Language, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Language, "", new { @class = "text-danger" })
+			</div>
+
+			<div>
+				@Html.LabelFor(m => m.Notes)
+				@Html.TextAreaFor(m => m.Notes, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Notes, "", new { @class = "text-danger" })
 			</div>
 		</div>
 
