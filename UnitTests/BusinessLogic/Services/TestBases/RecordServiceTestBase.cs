@@ -8,7 +8,7 @@ namespace UnitTests.BusinessLogic.Services.TestBases
 {
     public class RecordServiceTestBase
     {
-        protected Mock<RecordService> _service;
+        protected Mock<AlbumService> _service;
         protected Mock<IUnitOfWork> _uow;
         protected Mock<IRepository<RecordModel>> _repo;
 
@@ -16,7 +16,7 @@ namespace UnitTests.BusinessLogic.Services.TestBases
         protected virtual void SetUp()
         {
             _uow = new Mock<IUnitOfWork>();
-            _service = new Mock<RecordService>(_uow.Object);
+            _service = new Mock<AlbumService>(_uow.Object);
             _repo = new Mock<IRepository<RecordModel>>();
             _uow.Setup(mock => mock.GetRepository<RecordModel>()).Returns(_repo.Object);
         }

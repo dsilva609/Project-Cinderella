@@ -122,13 +122,15 @@
     <Compile Include="BusinessLogic\Components\CrudComponents\GetEntityListComponentTests.cs" />
     <Compile Include="BusinessLogic\Services\RecordServiceTests.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\RecordServiceTestBase.cs" />
-    <Compile Include="UI\Controllers\RecordControllerTests\RecordControllerTests.cs" />
-    <Compile Include="UI\Controllers\RecordControllerTests\TestBases\RecordControllerTestBase.cs" />
+    <Compile Include="UI\Controllers\BookControllerTests\BookControllerTests.cs" />
+    <Compile Include="UI\Controllers\BookControllerTests\TestBases\BookControllerTestBase.cs" />
     <Compile Include="UI\Controllers\ControllerTestBase.cs" />
     <Compile Include="UI\Controllers\HomeControllerTests\TestBases\HomeControllerTestBase.cs" />
     <Compile Include="UI\Controllers\HomeControllerTests\HomeControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\Controllers\MockHttpSession.cs" />
+    <Compile Include="UI\Controllers\AlbumControllerTests\AlbumControllerTests.cs" />
+    <Compile Include="UI\Controllers\AlbumControllerTests\TestBases\AlbumControllerTestBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -144,7 +146,9 @@
       <Name>UI</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="UI\Controllers\ControllerTests\TestBases\" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

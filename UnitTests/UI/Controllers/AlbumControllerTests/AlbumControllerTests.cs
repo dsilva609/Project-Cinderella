@@ -3,9 +3,9 @@ using Moq;
 using NUnit.Framework;
 using System.Web.Mvc;
 using UI.Models;
-using UnitTests.UI.Controllers.RecordControllerTests.TestBases;
+using UnitTests.UI.Controllers.AlbumControllerTests.TestBases;
 
-namespace UnitTests.UI.Controllers.RecordControllerTests
+namespace UnitTests.UI.Controllers.AlbumControllerTests
 {
 	[TestFixture]
 	public class RecordControllerTests : RecordControllerTestBase

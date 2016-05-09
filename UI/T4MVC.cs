@@ -29,6 +29,7 @@ public static partial class MVC
 {
     public static UI.Controllers.AccountController Account = new UI.Controllers.T4MVC_AccountController();
     public static UI.Controllers.AlbumController Album = new UI.Controllers.T4MVC_AlbumController();
+    public static UI.Controllers.BookController Book = new UI.Controllers.T4MVC_BookController();
     public static UI.Controllers.ElmahController Elmah = new UI.Controllers.T4MVC_ElmahController();
     public static UI.Controllers.HomeController Home = new UI.Controllers.T4MVC_HomeController();
     public static UI.Controllers.ManageController Manage = new UI.Controllers.T4MVC_ManageController();

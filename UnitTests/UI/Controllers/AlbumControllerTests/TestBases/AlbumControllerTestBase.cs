@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using UI.Controllers;
 
-namespace UnitTests.UI.Controllers.RecordControllerTests.TestBases
+namespace UnitTests.UI.Controllers.AlbumControllerTests.TestBases
 {
 	public class RecordControllerTestBase
 	{

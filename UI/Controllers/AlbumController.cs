@@ -15,14 +15,14 @@ namespace UI.Controllers
 	public partial class AlbumController : ProjectCinderellaControllerBase
 	{
 		private readonly IUnitOfWork _uow;
-		private readonly IRecordService _service;
+		private readonly IAlbumService _service;
 		private const int NUM_RECORDS_TO_GET = 25;
 
 		//--TODO: needs Dependency injection
 		public AlbumController()
 		{
 			_uow = new UnitOfWork<ProjectCinderellaContext>();
-			_service = new RecordService(_uow);
+			_service = new AlbumService(_uow);
 		}
 
 		[HttpGet]

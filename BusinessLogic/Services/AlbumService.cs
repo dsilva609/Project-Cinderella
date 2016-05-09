@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace BusinessLogic.Services
 {
-	public class RecordService : IRecordService
+	public class AlbumService : IAlbumService
 	{
 		private readonly IRepository<RecordModel> _repository;
 		private readonly GetEntityListComponent _getEntityListComponent;
@@ -17,7 +17,7 @@ namespace BusinessLogic.Services
 		private readonly EditEntityComponent _editEntityComponent;
 		private readonly DeleteEntityComponent _deleteEntityComponent;
 
-		public RecordService(IUnitOfWork uow)
+		public AlbumService(IUnitOfWork uow)
 		{
 			_repository = uow.GetRepository<RecordModel>();
 			_getEntityListComponent = new GetEntityListComponent();

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace BusinessLogic.Services.Interfaces
 {
-    public interface IRecordService
+    public interface IAlbumService
     {
         void Add(RecordModel record);
 

@@ -120,8 +120,8 @@
     <Compile Include="Repositories\IUnitOfWork.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />
-    <Compile Include="Services\Interfaces\IRecordService.cs" />
-    <Compile Include="Services\RecordService.cs" />
+    <Compile Include="Services\Interfaces\IAlbumService.cs" />
+    <Compile Include="Services\AlbumService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />
