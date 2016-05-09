@@ -1,6 +1,6 @@
 ﻿namespace BusinessLogic.Enums
 {
-	public enum MediaTypeEnum
+	public enum AlbumMediaTypeEnum
 	{
 		Vinyl,
 		CD,

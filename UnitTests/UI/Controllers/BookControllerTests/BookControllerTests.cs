@@ -22,5 +22,18 @@ namespace UnitTests.UI.Controllers.BookControllerTests
 			//--Assert
 			Assert.AreEqual(MVC.Book.Views.Index, result.ViewName);
 		}
+
+		[Test]
+		public void ThatCreateActionReturnsAView()
+		{
+			//--Arrange
+			_controller.Setup(mock => mock.Create()).Returns(new ViewResult { ViewName = MVC.Book.Views.Create });
+
+			//--Act
+			var result = _controller.Object.Create() as ViewResult;
+
+			//--Assert
+			Assert.AreEqual(MVC.Book.Views.Create, result.ViewName);
+		}
 	}
 }

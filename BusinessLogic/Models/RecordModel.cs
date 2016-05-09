@@ -30,7 +30,7 @@ namespace BusinessLogic.Models
 		[Column(Order = 3)]
 		[Required]
 		[DisplayName("Media Type")]
-		public MediaTypeEnum MediaType { get; set; }
+		public AlbumMediaTypeEnum MediaType { get; set; }
 
 		[Required]
 		[DisplayName("Physical?")]
