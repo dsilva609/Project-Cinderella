@@ -36,7 +36,7 @@
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li>@Html.ActionLink("Album", MVC.Album.Index())</li>
+
 							<li>@Html.ActionLink("About", MVC.Home.About())</li>
 							<li>@Html.ActionLink("Contact", MVC.Home.Contact())</li>
 							@if (User.IsInRole("Admin"))
@@ -47,11 +47,23 @@
 					</li>
 
 					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Album Menu<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li>@Html.ActionLink("View Albums", MVC.Album.Index())</li>
+							@if (User.Identity.IsAuthenticated)
+							{
+								<li>@Html.ActionLink("Add Album", MVC.Album.Create())</li>
+							}
+						</ul>
+					</li>
+					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Book Menu<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li>@Html.ActionLink("Book", MVC.Book.Index())</li>
-							@* TODO: lock down for logged in users only *@
-							<li>@Html.ActionLink("Add Book", MVC.Book.Create())</li>
+							<li>@Html.ActionLink("View Books", MVC.Book.Index())</li>
+							@if (User.Identity.IsAuthenticated)
+							{
+								<li>@Html.ActionLink("Add Book", MVC.Book.Create())</li>
+							}
 						</ul>
 					</li>
 				</ul>
