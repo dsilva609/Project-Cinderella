@@ -6,12 +6,12 @@ namespace UnitTests.UI.Controllers.RecordControllerTests.TestBases
 {
 	public class RecordControllerTestBase
 	{
-		protected Mock<RecordController> _controller;
+		protected Mock<AlbumController> _controller;
 
 		[SetUp]
 		public virtual void SetUp()
 		{
-			_controller = new Mock<RecordController>();
+			_controller = new Mock<AlbumController>();
 		}
 	}
 }

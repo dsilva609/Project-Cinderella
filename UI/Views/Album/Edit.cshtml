@@ -1,0 +1,9 @@
+﻿@model BusinessLogic.Models.RecordModel
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(MVC.Album.Edit(), FormMethod.Post))
+{
+	Html.RenderPartial(MVC.Album.Views._AlbumFormPartial, Model);
+}
+@Html.ActionLink("Back to List", MVC.Album.Index())

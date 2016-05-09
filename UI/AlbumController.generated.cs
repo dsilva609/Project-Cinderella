@@ -25,10 +25,10 @@ using System.Web.Routing;
 using T4MVC;
 namespace UI.Controllers
 {
-    public partial class RecordController
+    public partial class AlbumController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected RecordController(Dummy d) { }
+        protected AlbumController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result)
@@ -82,13 +82,13 @@ namespace UI.Controllers
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public RecordController Actions { get { return MVC.Record; } }
+        public AlbumController Actions { get { return MVC.Album; } }
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Area = "";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "Record";
+        public readonly string Name = "Album";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "Record";
+        public const string NameConst = "Album";
         [GeneratedCode("T4MVC", "2.0")]
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -166,24 +166,24 @@ namespace UI.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string _RecordFormPartial = "_RecordFormPartial";
+                public readonly string _AlbumFormPartial = "_AlbumFormPartial";
                 public readonly string Create = "Create";
                 public readonly string Details = "Details";
                 public readonly string Edit = "Edit";
                 public readonly string Index = "Index";
             }
-            public readonly string _RecordFormPartial = "~/Views/Record/_RecordFormPartial.cshtml";
-            public readonly string Create = "~/Views/Record/Create.cshtml";
-            public readonly string Details = "~/Views/Record/Details.cshtml";
-            public readonly string Edit = "~/Views/Record/Edit.cshtml";
-            public readonly string Index = "~/Views/Record/Index.cshtml";
+            public readonly string _AlbumFormPartial = "~/Views/Album/_AlbumFormPartial.cshtml";
+            public readonly string Create = "~/Views/Album/Create.cshtml";
+            public readonly string Details = "~/Views/Album/Details.cshtml";
+            public readonly string Edit = "~/Views/Album/Edit.cshtml";
+            public readonly string Index = "~/Views/Album/Index.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_RecordController : UI.Controllers.RecordController
+    public partial class T4MVC_AlbumController : UI.Controllers.AlbumController
     {
-        public T4MVC_RecordController() : base(Dummy.Instance) { }
+        public T4MVC_AlbumController() : base(Dummy.Instance) { }
 
         [NonAction]
         partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string query, int? pageNum);

@@ -1,17 +1,18 @@
 ﻿#Usings
-Namespace "Views.Record"
+Namespace "Views.Album"
 
 #Initialization
-Views.Record.Details = ->
+Views.Album.Edit = ->
 
 #Implementation
-class Views.Record.Details
+class Views.Album.Edit
 	init: ->
-		$('[id=recordDeleteBtn]').on "click", ->
+		$("#btnDelete").on "click", ->
 			ID = $(this).data "id"
-	
+			deleteUrl = $(this).data "deleteurl"
+			
 			bootbox.dialog 
-				message: "Are you sure you want to remove this record?",
+				message: "Are you sure you want to delete this album?",
 				buttons: 
 					cancel: 
 						label: "No"
@@ -22,5 +23,5 @@ class Views.Record.Details
 							window.location.href = deleteUrl + "/" + ID
 			return false
 $ ->
-	details = new Views.Record.Details
-	details.init()
+	edit = new Views.Album.Edit
+	edit.init()

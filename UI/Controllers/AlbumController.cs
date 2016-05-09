@@ -12,14 +12,14 @@ using UI.Models;
 
 namespace UI.Controllers
 {
-	public partial class RecordController : ProjectCinderellaControllerBase
+	public partial class AlbumController : ProjectCinderellaControllerBase
 	{
 		private readonly IUnitOfWork _uow;
 		private readonly IRecordService _service;
 		private const int NUM_RECORDS_TO_GET = 25;
 
 		//--TODO: needs Dependency injection
-		public RecordController()
+		public AlbumController()
 		{
 			_uow = new UnitOfWork<ProjectCinderellaContext>();
 			_service = new RecordService(_uow);
@@ -65,11 +65,11 @@ namespace UI.Controllers
 				}
 				catch (Exception e)
 				{
-					ShowStatusMessage(MessageTypeEnum.error, e.Message, "Duplicate Record");
+					ShowStatusMessage(MessageTypeEnum.error, e.Message, "Duplicate Album");
 					return View(model);
 				}
-				ShowStatusMessage(MessageTypeEnum.success, "New Record Added Successfully.", "Add Successful");
-				return RedirectToAction(MVC.Record.Index());
+				ShowStatusMessage(MessageTypeEnum.success, "New Album Added Successfully.", "Add Successful");
+				return RedirectToAction(MVC.Album.Index());
 			}
 			return View(model);
 		}
@@ -93,7 +93,7 @@ namespace UI.Controllers
 				var existingRecord = _service.GetAll(User.Identity.GetUserId()).Where(x => x.ID != model.ID && x.Artist == model.Artist && x.AlbumName == model.AlbumName && x.MediaType == model.MediaType).ToList();
 				if (existingRecord.Count > 0)
 				{
-					ShowStatusMessage(MessageTypeEnum.error, $"A record of Artist: {model.Artist}, Album: {model.AlbumName}, Media Type: {model.MediaType} already exists.", "Duplicate Record");
+					ShowStatusMessage(MessageTypeEnum.error, $"An album of Artist: {model.Artist}, Album: {model.AlbumName}, Media Type: {model.MediaType} already exists.", "Duplicate Record");
 					return View(model);
 				}
 				//--TODO: why is id needed?
@@ -102,8 +102,8 @@ namespace UI.Controllers
 				model.DateUpdated = DateTime.Now;
 				_service.Edit(model.ID, model);
 
-				ShowStatusMessage(MessageTypeEnum.success, $"Record of Artist: {model.Artist}, Album: {model.AlbumName}, Media Type: {model.MediaType} updated.", "Update Successful");
-				return RedirectToAction(MVC.Record.Index());
+				ShowStatusMessage(MessageTypeEnum.success, $"Album of Artist: {model.Artist}, Album: {model.AlbumName}, Media Type: {model.MediaType} updated.", "Update Successful");
+				return RedirectToAction(MVC.Album.Index());
 			}
 			return View(model);
 		}
@@ -123,7 +123,7 @@ namespace UI.Controllers
 			_service.Delete(id, User.Identity.GetUserId());
 
 			ShowStatusMessage(MessageTypeEnum.success, "", "Delete Successful");
-			return RedirectToAction(MVC.Record.Index());
+			return RedirectToAction(MVC.Album.Index());
 		}
 	}
 }

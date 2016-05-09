@@ -4,20 +4,20 @@
 	ViewBag.Title = @Model.ViewTitle;
 }
 <script>
-	var deleteUrl = '@Url.Action(MVC.Record.Delete())';
+	var deleteUrl = '@Url.Action(MVC.Album.Delete())';
 </script>
 
 <div>
 	<div class="h2 col-xs-4 col-sm-7">
-		Records
+		Albums
 	</div>
 
 	<div class="col-xs-8 col-sm-5 text-right" style="padding-top: 1.25em; display: inline-flex;">
 		@if (User.Identity.IsAuthenticated)
 		{
-			@Html.ActionLink("Add Record", MVC.Record.Create(), new { @class = "btn btn-default", @style = "margin-right:1em;" })
+			@Html.ActionLink("Add Album", MVC.Album.Create(), new { @class = "btn btn-default", @style = "margin-right:1em;" })
 		}
-		@using (Html.BeginForm(MVC.Record.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
+		@using (Html.BeginForm(MVC.Album.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
 		{
 			@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
 			<button type="submit" class="btn btn-default">
@@ -50,31 +50,31 @@
 	</div>
 	@foreach (var item in Model.Records)
 	{
-		<div id="record" class="row info" data-id="@item.ID">
-			<a href ="@Url.Action(User.Identity.IsAuthenticated? MVC.Record.Edit(item.ID): MVC.Record.Details(item.ID))">
-			<div class="col-xs-4 col-sm-3">
-			@Html.DisplayFor(modelItem => item.Artist)
-			</div>
-			<div class="col-xs-4 col-sm-3">
-			@Html.DisplayFor(modelItem => item.AlbumName)
-			</div>
-			<div class="col-xs-4 col-sm-1">
-			@Html.DisplayFor(modelItem => item.MediaType)
-			</div>
-			<div class="col-sm-1 hidden-xs">
-			@Html.DisplayFor(modelItem => item.IsNew)
-			</div>
-			<div class="col-sm-1 hidden-xs">
-			@Html.DisplayFor(modelItem => item.IsPhysical)
-			</div>
-			<div class="col-md-1 hidden-xs hidden-sm">
-			@Html.DisplayFor(modelItem => item.DatePurchased)
-			</div>
+		<div id="album" class="row info" data-id="@item.ID">
+			<a href="@Url.Action(User.Identity.IsAuthenticated? MVC.Album.Edit(item.ID): MVC.Album.Details(item.ID))">
+				<div class="col-xs-4 col-sm-3">
+					@Html.DisplayFor(modelItem => item.Artist)
+				</div>
+				<div class="col-xs-4 col-sm-3">
+					@Html.DisplayFor(modelItem => item.AlbumName)
+				</div>
+				<div class="col-xs-4 col-sm-1">
+					@Html.DisplayFor(modelItem => item.MediaType)
+				</div>
+				<div class="col-sm-1 hidden-xs">
+					@Html.DisplayFor(modelItem => item.IsNew)
+				</div>
+				<div class="col-sm-1 hidden-xs">
+					@Html.DisplayFor(modelItem => item.IsPhysical)
+				</div>
+				<div class="col-md-1 hidden-xs hidden-sm">
+					@Html.DisplayFor(modelItem => item.DatePurchased)
+				</div>
 			</a>
 			@if (User.Identity.IsAuthenticated && item.UserID == User.Identity.GetUserId())
 			{
 				<div class="col-xs-2 hidden-xs">
-					<a href="@Url.Action(MVC.Record.Delete(item.ID))" id="deleteRecord" class="fa fa-trash"></a>
+					<a href="@Url.Action(MVC.Album.Delete(item.ID))" id="deleteAlbum" class="fa fa-trash" data-id = @item.ID></a>
 				</div>
 			}
 		</div>
@@ -84,7 +84,7 @@
 	Page:
 	@for (var i = 0; i < Model.PageCount; i++)
 	{
-		@Html.ActionLink((i + 1).ToString(), MVC.Record.Index("", i + 1), new { @class = "btn btn-link" })
+		@Html.ActionLink((i + 1).ToString(), MVC.Album.Index("", i + 1), new { @class = "btn btn-link" })
 
 	}
 </div>

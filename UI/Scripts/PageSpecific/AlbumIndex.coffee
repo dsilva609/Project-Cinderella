@@ -1,11 +1,11 @@
 ﻿#Usings
-Namespace("Views.Record")
+Namespace("Views.Album")
 
 #Initialization
-Views.Record.Index  = ->
+Views.Album.Index  = ->
 
 #Implementation
-class Views.Record.Index
+class Views.Album.Index
 	init: ->
 #		$('#cardNameHeader').on "click", ->
 #			$.get "/Card/SortPlayers", sortPreference: "Name", -> location.reload()	
@@ -14,11 +14,11 @@ class Views.Record.Index
 #			$.get "/Card/SortPlayers", sortPreference: "Rank", -> location.reload()	
 #	
 
-		$('[id=deleteRecord]').on "click", ->
+		$('[id=deleteAlbum]').on "click", ->
 			ID = $(this).data "id"
 	
 			bootbox.dialog 
-				message: "Are you sure you want to delete this record?",
+				message: "Are you sure you want to delete this album?",
 				buttons: 
 					cancel: 
 						label: "No"
@@ -30,6 +30,6 @@ class Views.Record.Index
 			return false
 
 $ ->
-	index = new Views.Record.Index
+	index = new Views.Album.Index
 	
 	index.init()

@@ -578,14 +578,14 @@
     <Content Include="Scripts\locales\bootstrap-datepicker.vi.min.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.zh-CN.min.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.zh-TW.min.js" />
-    <Content Include="Scripts\PageSpecific\RecordDetails.js">
-      <DependentUpon>RecordDetails.coffee</DependentUpon>
+    <Content Include="Scripts\PageSpecific\AlbumDetails.js">
+      <DependentUpon>AlbumDetails.coffee</DependentUpon>
     </Content>
-    <Content Include="Scripts\PageSpecific\RecordEdit.js">
-      <DependentUpon>RecordEdit.coffee</DependentUpon>
+    <Content Include="Scripts\PageSpecific\AlbumEdit.js">
+      <DependentUpon>AlbumEdit.coffee</DependentUpon>
     </Content>
-    <Content Include="Scripts\PageSpecific\RecordIndex.js">
-      <DependentUpon>RecordIndex.coffee</DependentUpon>
+    <Content Include="Scripts\PageSpecific\AlbumIndex.js">
+      <DependentUpon>AlbumIndex.coffee</DependentUpon>
     </Content>
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
@@ -594,8 +594,8 @@
     <Content Include="Scripts\Shared\Logout.coffee" />
     <Content Include="Scripts\Shared\Logout.js.map" />
     <Content Include="Scripts\Shared\Logout.min.js.map" />
-    <Content Include="Scripts\PageSpecific\RecordIndex.coffee" />
-    <Content Include="Scripts\PageSpecific\RecordDetails.coffee" />
+    <Content Include="Scripts\PageSpecific\AlbumIndex.coffee" />
+    <Content Include="Scripts\PageSpecific\AlbumDetails.coffee" />
     <Content Include="Scripts\Shared\_Layout.coffee">
       <Compile>True</Compile>
       <Minify>True</Minify>
@@ -604,7 +604,7 @@
       <Bare>True</Bare>
       <Iced>False</Iced>
     </Content>
-    <Content Include="Scripts\PageSpecific\RecordEdit.coffee" />
+    <Content Include="Scripts\PageSpecific\AlbumEdit.coffee" />
     <None Include="T4MVC.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>T4MVC.cs</LastGenOutput>
@@ -649,13 +649,13 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js.map">
       <DependentUpon>respond.matchmedia.addListener.min.js</DependentUpon>
     </Content>
-    <Content Include="Views\Record\Index.cshtml" />
-    <Content Include="Views\Record\Edit.cshtml" />
+    <Content Include="Views\Album\Index.cshtml" />
+    <Content Include="Views\Album\Edit.cshtml" />
     <None Include="T4MVC.tt.hooks.t4" />
     <Content Include="App_Code\ToastrBuilder.cshtml" />
-    <Content Include="Views\Record\_RecordFormPartial.cshtml" />
-    <Content Include="Views\Record\Create.cshtml" />
-    <Content Include="Views\Record\Details.cshtml" />
+    <Content Include="Views\Album\_AlbumFormPartial.cshtml" />
+    <Content Include="Views\Album\Create.cshtml" />
+    <Content Include="Views\Album\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -685,6 +685,9 @@
     <Compile Include="AccountController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="AlbumController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -695,7 +698,7 @@
     <Compile Include="Common\ProjectCinderellaContextWrapper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ProjectCinderellaControllerBase.cs" />
-    <Compile Include="Controllers\RecordController.cs" />
+    <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\ElmahController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -718,9 +721,6 @@
     <Compile Include="Models\RecordViewModel.cs" />
     <Compile Include="Models\Toastr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RecordController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
     <Compile Include="SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>

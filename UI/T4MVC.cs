@@ -28,10 +28,10 @@ using T4MVC;
 public static partial class MVC
 {
     public static UI.Controllers.AccountController Account = new UI.Controllers.T4MVC_AccountController();
+    public static UI.Controllers.AlbumController Album = new UI.Controllers.T4MVC_AlbumController();
     public static UI.Controllers.ElmahController Elmah = new UI.Controllers.T4MVC_ElmahController();
     public static UI.Controllers.HomeController Home = new UI.Controllers.T4MVC_HomeController();
     public static UI.Controllers.ManageController Manage = new UI.Controllers.T4MVC_ManageController();
-    public static UI.Controllers.RecordController Record = new UI.Controllers.T4MVC_RecordController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 
@@ -191,12 +191,12 @@ namespace Links
             private const string URLPATH = "~/Scripts/PageSpecific";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-            public static readonly string RecordDetails_coffee = Url("RecordDetails.coffee");
-            public static readonly string RecordDetails_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/RecordDetails.min.js") ? Url("RecordDetails.min.js") : Url("RecordDetails.js");
-            public static readonly string RecordEdit_coffee = Url("RecordEdit.coffee");
-            public static readonly string RecordEdit_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/RecordEdit.min.js") ? Url("RecordEdit.min.js") : Url("RecordEdit.js");
-            public static readonly string RecordIndex_coffee = Url("RecordIndex.coffee");
-            public static readonly string RecordIndex_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/RecordIndex.min.js") ? Url("RecordIndex.min.js") : Url("RecordIndex.js");
+            public static readonly string AlbumDetails_coffee = Url("AlbumDetails.coffee");
+            public static readonly string AlbumDetails_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/AlbumDetails.min.js") ? Url("AlbumDetails.min.js") : Url("AlbumDetails.js");
+            public static readonly string AlbumEdit_coffee = Url("AlbumEdit.coffee");
+            public static readonly string AlbumEdit_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/AlbumEdit.min.js") ? Url("AlbumEdit.min.js") : Url("AlbumEdit.js");
+            public static readonly string AlbumIndex_coffee = Url("AlbumIndex.coffee");
+            public static readonly string AlbumIndex_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/AlbumIndex.min.js") ? Url("AlbumIndex.min.js") : Url("AlbumIndex.js");
         }
     
         public static readonly string respond_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/respond.min.js") ? Url("respond.min.js") : Url("respond.js");

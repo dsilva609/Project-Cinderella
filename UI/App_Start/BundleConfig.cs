@@ -31,9 +31,9 @@ namespace UI
 				.Include("~/Scripts/Shared/_Layout.js")
 				.Include("~/Scripts/Shared/Logout.js")
 				.Include("~/Scripts/toastr.min.js")
-				.Include("~/Scripts/PageSpecific/RecordIndex.js")
-				.Include("~/Scripts/PageSpecific/RecordDetails.js")
-				.Include("~/Scripts/PageSpecific/RecordEdit.js"));
+				.Include("~/Scripts/PageSpecific/AlbumIndex.js")
+				.Include("~/Scripts/PageSpecific/AlbumDetails.js")
+				.Include("~/Scripts/PageSpecific/AlbumEdit.js"));
 
 			bundles.Add(new StyleBundle("~/Content/css")
 				.Include("~/Content/bootstrap.css")

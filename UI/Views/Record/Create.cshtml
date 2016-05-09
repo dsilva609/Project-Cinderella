@@ -1,9 +1,0 @@
-﻿@model BusinessLogic.Models.RecordModel
-
-<h2>@ViewBag.Title</h2>
-
-@using (Html.BeginForm(MVC.Record.Create(), FormMethod.Post))
-{
-	Html.RenderPartial(MVC.Record.Views._RecordFormPartial, Model);
-}
-@Html.ActionLink("Back to List", MVC.Record.Index())
