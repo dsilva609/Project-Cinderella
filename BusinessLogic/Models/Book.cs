@@ -29,16 +29,21 @@ namespace BusinessLogic.Models
 		public string Publisher { get; set; }
 
 		[Required]
-		public int YearPublished { get; set; }
+		[Display(Name = "Year Published")]
+		public int YearPublished { get; set; } = DateTime.Today.Year;
 
-		public DateTime DatePurchased { get; set; }
+		[Display(Name = "Date Purchased")]
+		public DateTime DatePurchased { get; set; } = DateTime.Today;
 
+		[Display(Name = "Location Purchased")]
 		public string LocationPurchased { get; set; }
 
+		[Display(Name = "New?")]
 		public bool IsNew { get; set; }
 
 		public string ISBN { get; set; }
 
+		[Display(Name = "Reissue?")]
 		public bool IsReissue { get; set; }
 
 		//TODO: make enum or some auto generated value
@@ -47,6 +52,6 @@ namespace BusinessLogic.Models
 		public string Notes { get; set; }
 
 		public DateTime DateAdded { get; set; }
-		public DateTime DateUpdated { get; set; }
+		public DateTime DateUpdated { get; set; } = Convert.ToDateTime("1/1/1900");
 	}
 }

@@ -1,0 +1,53 @@
+﻿@model BusinessLogic.Models.Book
+
+@Html.AntiForgeryToken()
+
+<div>
+	@Html.HiddenFor(m => m.UserID)
+	@Html.HiddenFor(m => m.DateAdded)
+	<div class="row panel panel-primary">
+		<div class="panel-heading">
+			<h4>
+				Book Information
+			</h4>
+		</div>
+		<div class="panel-body">
+			<div>
+				@Html.LabelFor(m => m.Title)
+				@Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+			</div>
+
+			<div>
+				@Html.LabelFor(m => m.Author)
+				@Html.TextBoxFor(m => m.Author, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Author, "", new { @class = "text-danger" })
+			</div>
+
+			<div>
+				@Html.LabelFor(m => m.Publisher)
+				@Html.TextBoxFor(m => m.Publisher, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Publisher, "", new { @class = "text-danger" })
+			</div>
+
+			<div>
+				@Html.LabelFor(m => m.YearPublished)
+				@Html.TextBoxFor(m => m.YearPublished, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.YearPublished, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="row panel-body">
+			<div class="col-xs-8 col-sm-10">
+				<input id="btnSubmit" type="submit" value=@(Model.ID > 0 ? "Save" : "Create") class="btn btn-default btn-block btn-lg" />
+			</div>
+
+			@if (Model.ID > 0)
+			{
+				<div class="col-xs-4 col-sm-2">
+					@Html.ActionLink("Delete", MVC.Album.Delete(Model.ID), new { id = "btnDelete", @class = "btn btn-danger btn-block btn-lg", data_id = Model.ID, data_deleteUrl = Url.Action(MVC.Book.Delete()) })
+				</div>
+			}
+		</div>
+	</div>
+</div>

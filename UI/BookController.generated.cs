@@ -166,11 +166,13 @@ namespace UI.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _BookFormPartial = "_BookFormPartial";
                 public readonly string Create = "Create";
                 public readonly string Details = "Details";
                 public readonly string Edit = "Edit";
                 public readonly string Index = "Index";
             }
+            public readonly string _BookFormPartial = "~/Views/Book/_BookFormPartial.cshtml";
             public readonly string Create = "~/Views/Book/Create.cshtml";
             public readonly string Details = "~/Views/Book/Details.cshtml";
             public readonly string Edit = "~/Views/Book/Edit.cshtml";

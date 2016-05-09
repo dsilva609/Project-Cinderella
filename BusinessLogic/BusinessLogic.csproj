@@ -131,8 +131,10 @@
     <Compile Include="Repositories\IUnitOfWork.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />
+    <Compile Include="Services\BookService.cs" />
     <Compile Include="Services\Interfaces\IAlbumService.cs" />
     <Compile Include="Services\AlbumService.cs" />
+    <Compile Include="Services\Interfaces\IBookService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />

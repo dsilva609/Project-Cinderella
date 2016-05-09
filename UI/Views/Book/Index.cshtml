@@ -4,6 +4,10 @@
 	ViewBag.Title = Model.ViewTitle;
 }
 
+<script>
+	var deleteUrl = '@Url.Action(MVC.Book.Delete())';
+</script>
+
 <div>
 	<div class="h2 col-xs-4 col-sm-7">
 		Books
@@ -35,7 +39,7 @@
 			<div class="col-xs-3">
 				@Html.DisplayNameFor(x => x.Books[0].Publisher)
 			</div>
-			<div class="col-xs-3">
+			<div class="col-xs-2">
 				@Html.DisplayNameFor(x => x.Books[0].YearPublished)
 			</div>
 		</div>
@@ -53,13 +57,13 @@
 					<div class="col-xs-3">
 						@Html.DisplayFor(x => book.Publisher)
 					</div>
-					<div class="col-xs-3">
+					<div class="col-xs-2">
 						@Html.DisplayFor(x => book.YearPublished)
 					</div>
 				</a>
 				@if (User.Identity.IsAuthenticated && book.UserID == User.Identity.GetUserId())
 				{
-					<div class="col-xs-2 hidden-xs">
+					<div class="col-xs-1 hidden-xs">
 						<a href="@Url.Action(MVC.Book.Delete(book.ID))" id="deleteAlbum" class="fa fa-trash" data-id=@book.ID></a>
 					</div>
 				}
