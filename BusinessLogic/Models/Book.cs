@@ -45,5 +45,8 @@ namespace BusinessLogic.Models
 		public string Language { get; set; }
 
 		public string Notes { get; set; }
+
+		public DateTime DateAdded { get; set; }
+		public DateTime DateUpdated { get; set; }
 	}
 }
