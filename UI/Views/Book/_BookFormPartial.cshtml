@@ -12,110 +12,123 @@
 			</h4>
 		</div>
 		<div class="panel-body">
-			<div>
+			<div class="col-xs-6">
 				@Html.LabelFor(m => m.Title)
 				@Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
 				@Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
 			</div>
 
-			<div>
+			<div class="col-xs-6">
 				@Html.LabelFor(m => m.Author)
 				@Html.TextBoxFor(m => m.Author, new { @class = "form-control" })
 				@Html.ValidationMessageFor(m => m.Author, "", new { @class = "text-danger" })
 			</div>
 
-			<div>
+			<div class="col-xs-6">
 				@Html.LabelFor(m => m.Publisher)
 				@Html.TextBoxFor(m => m.Publisher, new { @class = "form-control" })
 				@Html.ValidationMessageFor(m => m.Publisher, "", new { @class = "text-danger" })
 			</div>
 
-			<div>
+			<div class="col-xs-6">
 				@Html.LabelFor(m => m.YearPublished)
 				@Html.DropDownListFor(m => m.YearPublished, Enumerable.Range(1900, DateTime.Today.Year - 1900 + 1).
 					Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), Model.YearPublished.ToString(), new { @class = "form-control" })
 				@Html.ValidationMessageFor(m => m.YearPublished, "", new { @class = "text-danger" })
 			</div>
 
-			<div>
-				@Html.LabelFor(m => m.Type)
-				@Html.EnumDropDownListFor(m => m.Type, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger" })
-			</div>
-
-			<div>
-				@Html.LabelFor(m => m.Media)
-				@Html.EnumDropDownListFor(m => m.Media, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.Media, "", new { @class = "text-danger" })
-			</div>
-
-			<div>
-				@Html.LabelFor(m => m.Hardcover)
-				@Html.TextBoxFor(m => m.Hardcover, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.Hardcover, "", new { @class = "text-danger" })
-			</div>
-
-			<div>
-				@Html.LabelFor(m => m.DatePurchased)
-				@if (Request.Browser.Browser == "IE" || !Request.Browser.IsMobileDevice)
-				{
-					@Html.EditorFor(m => m.DatePurchased, new { htmlattributes = new { type = "text", Value = Model.DatePurchased.ToShortDateString(), @class = "form-control datepicker" } })
-				}
-				else
-				{
-					@Html.EditorFor(m => m.DatePurchased, new { htmlattributes = new { type = "date", Value = Model.DatePurchased.ToString("yyyy-MM-dd"), @class = "form-control" } })
-				}
-				@Html.ValidationMessageFor(m => m.DatePurchased, "", new { @class = "text-danger" })
-			</div>
-
-			<div>
-				@Html.LabelFor(m => m.LocationPurchased)
-				@Html.TextBoxFor(m => m.LocationPurchased, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.LocationPurchased, "", new { @class = "text-danger" })
-			</div>
-
-			<div>
-				@Html.LabelFor(m => m.IsNew)
-				@Html.CheckBoxFor(m => m.IsNew, new {@class = "form-control"})
-				@Html.ValidationMessageFor(m => m.IsNew, "", new {@class = "text-danger"})
-			</div>
-
-			<div>
-				@Html.LabelFor(m => m.IsReissue)
-				@Html.CheckBoxFor(m => m.IsReissue, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.IsReissue, "", new { @class = "text-danger" })
-			</div>
-
-			<div>
+			<div class="col-xs-6">
 				@Html.LabelFor(m => m.ISBN)
 				@Html.TextBoxFor(m => m.ISBN, new { @class = "form-control" })
 				@Html.ValidationMessageFor(m => m.ISBN, "", new { @class = "text-danger" })
 			</div>
 
-			<div>
-				@Html.LabelFor(m => m.Language)
-				@Html.TextBoxFor(m => m.Language, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.Language, "", new { @class = "text-danger" })
-			</div>
-
-			<div>
+			<div class="col-xs-6">
 				@Html.LabelFor(m => m.Notes)
 				@Html.TextAreaFor(m => m.Notes, new { @class = "form-control" })
 				@Html.ValidationMessageFor(m => m.Notes, "", new { @class = "text-danger" })
 			</div>
 		</div>
-
-		<div class="row panel-body">
-			<div class="col-xs-8 col-sm-10">
-				<input id="btnSubmit" type="submit" value=@(Model.ID > 0 ? "Save" : "Create") class="btn btn-default btn-block btn-lg" />
+	</div>
+	<div class="row panel panel-primary">
+		<div class="panel-heading">
+			<h4>Media Information</h4>
+		</div>
+		<div class="panel-body">
+			<div class="col-xs-6">
+				@Html.LabelFor(m => m.Type)
+				@Html.EnumDropDownListFor(m => m.Type, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger" })
 			</div>
 
-			@if (Model.ID > 0)
-			{
-				<div class="col-xs-4 col-sm-2">
-					@Html.ActionLink("Delete", MVC.Album.Delete(Model.ID), new { id = "btnDelete", @class = "btn btn-danger btn-block btn-lg", data_id = Model.ID, data_deleteUrl = Url.Action(MVC.Book.Delete()) })
-				</div>
-			}
+			<div class="col-xs-6">
+				@Html.LabelFor(m => m.Media)
+				@Html.EnumDropDownListFor(m => m.Media, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Media, "", new { @class = "text-danger" })
+			</div>
+
+			<div class="col-xs-6">
+				@Html.LabelFor(m => m.Hardcover)
+				@Html.CheckBoxFor(m => m.Hardcover, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Hardcover, "", new { @class = "text-danger" })
+			</div>
+
+			<div class="col-xs-6">
+				@Html.LabelFor(m => m.Language)
+				@Html.TextBoxFor(m => m.Language, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Language, "", new { @class = "text-danger" })
+			</div>
 		</div>
+	</div>
+
+	<div class="row panel panel-primary">
+		<div class="panel-heading">
+			<h4>Purchase Information</h4>
+		</div>
+		<div class="panel-body">
+			<div class="col-xs-6">
+				@Html.LabelFor(m => m.DatePurchased)
+				@if (Request.Browser.Browser == "IE" || !Request.Browser.IsMobileDevice)
+			{
+					@Html.EditorFor(m => m.DatePurchased, new { htmlattributes = new { type = "text", Value = Model.DatePurchased.ToShortDateString(), @class = "form-control datepicker" } })
+			}
+			else
+			{
+					@Html.EditorFor(m => m.DatePurchased, new { htmlattributes = new { type = "date", Value = Model.DatePurchased.ToString("yyyy-MM-dd"), @class = "form-control" } })
+			}
+				@Html.ValidationMessageFor(m => m.DatePurchased, "", new { @class = "text-danger" })
+			</div>
+
+			<div class="col-xs-6">
+				@Html.LabelFor(m => m.LocationPurchased)
+				@Html.TextBoxFor(m => m.LocationPurchased, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.LocationPurchased, "", new { @class = "text-danger" })
+			</div>
+
+			<div class="col-xs-6">
+				@Html.LabelFor(m => m.IsNew)
+				@Html.CheckBoxFor(m => m.IsNew, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.IsNew, "", new { @class = "text-danger" })
+			</div>
+
+			<div class="col-xs-6">
+				@Html.LabelFor(m => m.IsReissue)
+				@Html.CheckBoxFor(m => m.IsReissue, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.IsReissue, "", new { @class = "text-danger" })
+			</div>
+		</div>
+	</div>
+
+	<div class="row panel-body">
+		<div class="col-xs-8 col-sm-10">
+			<input id="btnSubmit" type="submit" value=@(Model.ID > 0 ? "Save" : "Create") class="btn btn-default btn-block btn-lg" />
+		</div>
+
+		@if (Model.ID > 0)
+			{
+			<div class="col-xs-4 col-sm-2">
+				@Html.ActionLink("Delete", MVC.Album.Delete(Model.ID), new { id = "btnDelete", @class = "btn btn-danger btn-block btn-lg", data_id = Model.ID, data_deleteUrl = Url.Action(MVC.Book.Delete()) })
+			</div>
+			}
 	</div>
 </div>
