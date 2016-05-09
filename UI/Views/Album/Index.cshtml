@@ -48,33 +48,33 @@
 			@Html.DisplayNameFor(model => model.Records[0].DatePurchased)
 		</div>
 	</div>
-	@foreach (var item in Model.Records)
+	@foreach (var record in Model.Records)
 	{
-		<div id="album" class="row info" data-id="@item.ID">
-			<a href="@Url.Action(User.Identity.IsAuthenticated? MVC.Album.Edit(item.ID): MVC.Album.Details(item.ID))">
+		<div id="album" class="row info" data-id="@record.ID">
+			<a href="@Url.Action(User.Identity.IsAuthenticated? MVC.Album.Edit(record.ID): MVC.Album.Details(record.ID))">
 				<div class="col-xs-4 col-sm-3">
-					@Html.DisplayFor(modelItem => item.Artist)
+					@Html.DisplayFor(modelItem => record.Artist)
 				</div>
 				<div class="col-xs-4 col-sm-3">
-					@Html.DisplayFor(modelItem => item.AlbumName)
+					@Html.DisplayFor(modelItem => record.AlbumName)
 				</div>
 				<div class="col-xs-4 col-sm-1">
-					@Html.DisplayFor(modelItem => item.MediaType)
+					@Html.DisplayFor(modelItem => record.MediaType)
 				</div>
 				<div class="col-sm-1 hidden-xs">
-					@Html.DisplayFor(modelItem => item.IsNew)
+					@Html.DisplayFor(modelItem => record.IsNew)
 				</div>
 				<div class="col-sm-1 hidden-xs">
-					@Html.DisplayFor(modelItem => item.IsPhysical)
+					@Html.DisplayFor(modelItem => record.IsPhysical)
 				</div>
 				<div class="col-md-1 hidden-xs hidden-sm">
-					@Html.DisplayFor(modelItem => item.DatePurchased)
+					@Html.DisplayFor(modelItem => record.DatePurchased)
 				</div>
 			</a>
-			@if (User.Identity.IsAuthenticated && item.UserID == User.Identity.GetUserId())
+			@if (User.Identity.IsAuthenticated && record.UserID == User.Identity.GetUserId())
 			{
 				<div class="col-xs-2 hidden-xs">
-					<a href="@Url.Action(MVC.Album.Delete(item.ID))" id="deleteAlbum" class="fa fa-trash" data-id = @item.ID></a>
+					<a href="@Url.Action(MVC.Album.Delete(record.ID))" id="deleteAlbum" class="fa fa-trash" data-id=@record.ID></a>
 				</div>
 			}
 		</div>

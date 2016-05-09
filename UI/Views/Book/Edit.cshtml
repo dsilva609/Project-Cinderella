@@ -1,0 +1,8 @@
+﻿@model BusinessLogic.Models.Book
+<h2>@ViewBag.Title</h2>
+
+@*@using (Html.BeginForm(MVC.Book.Edit(), FormMethod.Post))
+	{
+		Html.RenderPartial(MVC.Book.Views._BookFormPartial, Model);
+	}*@
+@Html.ActionLink("Back to List", MVC.Book.Index())

@@ -1,4 +1,5 @@
-﻿@model UI.Models.BookViewModel
+﻿@using Microsoft.AspNet.Identity
+@model UI.Models.BookViewModel
 @{
 	ViewBag.Title = Model.ViewTitle;
 }
@@ -21,4 +22,59 @@
 			</button>
 		}
 	</div>
+
+	<div class="table table-responsive" style="padding-top: 3em;">
+		<div class="bold row">
+			<div class="col-xs-3">
+				@Html.DisplayNameFor(x => x.Books[0].Title)
+			</div>
+
+			<div class="col-xs-3">
+				@Html.DisplayNameFor(x => x.Books[0].Author)
+			</div>
+			<div class="col-xs-3">
+				@Html.DisplayNameFor(x => x.Books[0].Publisher)
+			</div>
+			<div class="col-xs-3">
+				@Html.DisplayNameFor(x => x.Books[0].YearPublished)
+			</div>
+		</div>
+		@foreach (var book in Model.Books)
+		{
+			<div id="book" class="row" data-id="@book.ID">
+				<a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Book.Edit(book.ID) : MVC.Book.Details(book.ID))">
+					<div class="col-xs-3">
+						@Html.DisplayFor(x => book.Title)
+					</div>
+
+					<div class="col-xs-3">
+						@Html.DisplayFor(x => book.Author)
+					</div>
+					<div class="col-xs-3">
+						@Html.DisplayFor(x => book.Publisher)
+					</div>
+					<div class="col-xs-3">
+						@Html.DisplayFor(x => book.YearPublished)
+					</div>
+				</a>
+				@if (User.Identity.IsAuthenticated && book.UserID == User.Identity.GetUserId())
+				{
+					<div class="col-xs-2 hidden-xs">
+						<a href="@Url.Action(MVC.Book.Delete(book.ID))" id="deleteAlbum" class="fa fa-trash" data-id=@book.ID></a>
+					</div>
+				}
+			</div>
+		}
+		<div>
+		</div>
+	</div>
 </div>
+
+@*<div class="row">
+		Page:
+		@for (var i = 0; i < Model.PageCount; i++)
+		{
+			@Html.ActionLink((i + 1).ToString(), MVC.Album.Index("", i + 1), new { @class = "btn btn-link" })
+
+		}
+	</div>*@
