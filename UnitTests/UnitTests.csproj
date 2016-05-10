@@ -131,6 +131,8 @@
     <Compile Include="UI\Controllers\MockHttpSession.cs" />
     <Compile Include="UI\Controllers\AlbumControllerTests\AlbumControllerTests.cs" />
     <Compile Include="UI\Controllers\AlbumControllerTests\TestBases\AlbumControllerTestBase.cs" />
+    <Compile Include="UI\Controllers\MovieControllerTests\MovieControllerTests.cs" />
+    <Compile Include="UI\Controllers\MovieControllerTests\TestBases\MovieControllerTestBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
