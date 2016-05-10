@@ -79,6 +79,8 @@
     <Compile Include="Enums\AlbumMediaTypeEnum.cs" />
     <Compile Include="Enums\BookMediaTypeEnum.cs" />
     <Compile Include="Enums\BookTypeEnum.cs" />
+    <Compile Include="Enums\MovieMediaTypeEnum.cs" />
+    <Compile Include="Enums\MovieRatingEnum.cs" />
     <Compile Include="Migrations\201603160133505_Initial Create.cs" />
     <Compile Include="Migrations\201603160133505_Initial Create.Designer.cs">
       <DependentUpon>201603160133505_Initial Create.cs</DependentUpon>
@@ -131,8 +133,13 @@
     <Compile Include="Migrations\201605101648287_Added is first edition to book.Designer.cs">
       <DependentUpon>201605101648287_Added is first edition to book.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605101712177_Created Movie Model.cs" />
+    <Compile Include="Migrations\201605101712177_Created Movie Model.Designer.cs">
+      <DependentUpon>201605101712177_Created Movie Model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\RecordModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IRepository.cs" />
@@ -196,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605101648287_Added is first edition to book.resx">
       <DependentUpon>201605101648287_Added is first edition to book.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605101712177_Created Movie Model.resx">
+      <DependentUpon>201605101712177_Created Movie Model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
