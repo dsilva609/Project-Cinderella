@@ -27,6 +27,9 @@ namespace BusinessLogic.Models
 
 		public bool Hardcover { get; set; }
 
+		[Display(Name = "First Edition?")]
+		public bool IsFirstEdition { get; set; }
+
 		[Required]
 		public string Publisher { get; set; }
 

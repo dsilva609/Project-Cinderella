@@ -127,6 +127,10 @@
     <Compile Include="Migrations\201605101640166_Added Genre to book model.Designer.cs">
       <DependentUpon>201605101640166_Added Genre to book model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605101648287_Added is first edition to book.cs" />
+    <Compile Include="Migrations\201605101648287_Added is first edition to book.Designer.cs">
+      <DependentUpon>201605101648287_Added is first edition to book.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\RecordModel.cs" />
@@ -189,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605101640166_Added Genre to book model.resx">
       <DependentUpon>201605101640166_Added Genre to book model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605101648287_Added is first edition to book.resx">
+      <DependentUpon>201605101648287_Added is first edition to book.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

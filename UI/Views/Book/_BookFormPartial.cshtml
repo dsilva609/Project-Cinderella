@@ -80,6 +80,12 @@
 			</div>
 
 			<div class="col-xs-6">
+				@Html.LabelFor(m => m.IsFirstEdition)
+				@Html.CheckBoxFor(m => m.IsFirstEdition, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.IsFirstEdition, "", new { @class = "text-danger" })
+			</div>
+
+			<div class="col-xs-6">
 				@Html.LabelFor(m => m.Language)
 				@Html.TextBoxFor(m => m.Language, new { @class = "form-control" })
 				@Html.ValidationMessageFor(m => m.Language, "", new { @class = "text-danger" })
