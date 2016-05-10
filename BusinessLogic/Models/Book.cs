@@ -17,6 +17,8 @@ namespace BusinessLogic.Models
 		[Required]
 		public string Author { get; set; }
 
+		public string Genre { get; set; }
+
 		[Required]
 		public BookTypeEnum Type { get; set; }
 

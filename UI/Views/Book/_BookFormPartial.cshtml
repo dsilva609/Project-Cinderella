@@ -38,6 +38,12 @@
 			</div>
 
 			<div class="col-xs-6">
+				@Html.LabelFor(m => m.Genre)
+				@Html.TextBoxFor(m => m.Genre, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Genre, "", new { @class = "text-danger" })
+			</div>
+
+			<div class="col-xs-6">
 				@Html.LabelFor(m => m.ISBN)
 				@Html.TextBoxFor(m => m.ISBN, new { @class = "form-control" })
 				@Html.ValidationMessageFor(m => m.ISBN, "", new { @class = "text-danger" })
