@@ -24,18 +24,18 @@ namespace UI.Controllers
 		}
 
 		[HttpGet]
-		public virtual ActionResult Index(string query, int pageNum)
+		public virtual ActionResult Index(string query, int? pageNum)
 		{
 			var viewModel = new MovieViewModel
 			{
 				ViewTitle = "Index",
-				Movies = _service.GetAll(User.Identity.GetUserId())
-				//, query, NUM_RECORDS_TO_GET, pageNum.GetValueOrDefault()),
-				//PageSize = NUM_RECORDS_TO_GET,
-				//TotalBooks = _service.GetCount()
+				Movies = _service.GetAll(User.Identity.GetUserId()),//query, NUM_RECORDS_TO_GET,pageNum.GetValueOrDefault()),
+																	//PageSize = NUM_RECORDS_TO_GET,
+				TotalMovies = _service.GetCount()
 			};
-			//var pages = Math.Ceiling((double)viewModel.TotalRecords / viewModel.PageSize);
+			//var pages = Math.Ceiling((double)viewModel.TotalMovies / viewModel.PageSize);
 			//viewModel.PageCount = (int)pages;
+
 			return View(viewModel);
 		}
 

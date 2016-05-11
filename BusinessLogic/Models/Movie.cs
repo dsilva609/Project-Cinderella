@@ -26,18 +26,18 @@ namespace BusinessLogic.Models
 		public MovieRatingEnum Rating { get; set; }
 
 		[DisplayName("Year Released")]
-		public int YearReleased { get; set; }
+		public int YearReleased { get; set; } = DateTime.Today.Year;
 
 		public string Language { get; set; }
 		public string Notes { get; set; }
 
 		[DisplayName("Date Purchased")]
-		public DateTime DatePurchased { get; set; }
+		public DateTime DatePurchased { get; set; } = DateTime.Today;
 
 		[DisplayName("Location Purchased")]
 		public string LocationPurchased { get; set; }
 
 		public DateTime DateAdded { get; set; }
-		public DateTime DateUpdated { get; set; }
+		public DateTime DateUpdated { get; set; } = Convert.ToDateTime("1/1/1900");
 	}
 }

@@ -47,7 +47,7 @@
 					</li>
 
 					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Album Menu<span class="caret"></span></a>
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Albums<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li>@Html.ActionLink("View Albums", MVC.Album.Index())</li>
 							@if (User.Identity.IsAuthenticated)
@@ -57,12 +57,23 @@
 						</ul>
 					</li>
 					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Book Menu<span class="caret"></span></a>
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Books<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li>@Html.ActionLink("View Books", MVC.Book.Index())</li>
 							@if (User.Identity.IsAuthenticated)
 							{
 								<li>@Html.ActionLink("Add Book", MVC.Book.Create())</li>
+							}
+						</ul>
+					</li>
+
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Movies<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li>@Html.ActionLink("View Movies", MVC.Movie.Index())</li>
+							@if (User.Identity.IsAuthenticated)
+							{
+								<li>@Html.ActionLink("Add Movie", MVC.Movie.Create())</li>
 							}
 						</ul>
 					</li>

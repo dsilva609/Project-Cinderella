@@ -64,7 +64,7 @@
 				@if (User.Identity.IsAuthenticated && book.UserID == User.Identity.GetUserId())
 				{
 					<div class="col-xs-1 hidden-xs">
-						<a href="@Url.Action(MVC.Book.Delete(book.ID))" id="deleteAlbum" class="fa fa-trash" data-id=@book.ID></a>
+						<a href="@Url.Action(MVC.Book.Delete(book.ID))" id="deleteBook" class="fa fa-trash" data-id=@book.ID></a>
 					</div>
 				}
 			</div>
