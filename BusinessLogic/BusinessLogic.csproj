@@ -150,6 +150,8 @@
     <Compile Include="Services\Interfaces\IAlbumService.cs" />
     <Compile Include="Services\AlbumService.cs" />
     <Compile Include="Services\Interfaces\IBookService.cs" />
+    <Compile Include="Services\Interfaces\IMovieService.cs" />
+    <Compile Include="Services\MovieService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />

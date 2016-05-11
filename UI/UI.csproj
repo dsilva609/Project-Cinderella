@@ -734,6 +734,7 @@
     <Compile Include="Models\BookViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MovieViewModel.cs" />
     <Compile Include="Models\RecordViewModel.cs" />
     <Compile Include="Models\Toastr.cs" />
     <Compile Include="MovieController.generated.cs">

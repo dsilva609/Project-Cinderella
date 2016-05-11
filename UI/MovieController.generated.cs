@@ -28,9 +28,6 @@ namespace UI.Controllers
     public partial class MovieController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public MovieController() { }
-
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected MovieController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -77,6 +74,12 @@ namespace UI.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Delete()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public MovieController Actions { get { return MVC.Movie; } }
@@ -97,6 +100,7 @@ namespace UI.Controllers
             public readonly string Details = "Details";
             public readonly string Create = "Create";
             public readonly string Edit = "Edit";
+            public readonly string Delete = "Delete";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -106,6 +110,7 @@ namespace UI.Controllers
             public const string Details = "Details";
             public const string Create = "Create";
             public const string Edit = "Edit";
+            public const string Delete = "Delete";
         }
 
 
@@ -126,11 +131,28 @@ namespace UI.Controllers
         {
             public readonly string id = "id";
         }
+        static readonly ActionParamsClass_Create s_params_Create = new ActionParamsClass_Create();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Create CreateParams { get { return s_params_Create; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Create
+        {
+            public readonly string movie = "movie";
+        }
         static readonly ActionParamsClass_Edit s_params_Edit = new ActionParamsClass_Edit();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionParamsClass_Edit EditParams { get { return s_params_Edit; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Edit
+        {
+            public readonly string id = "id";
+            public readonly string movie = "movie";
+        }
+        static readonly ActionParamsClass_Delete s_params_Delete = new ActionParamsClass_Delete();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Delete DeleteParams { get { return s_params_Delete; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Delete
         {
             public readonly string id = "id";
         }
@@ -200,6 +222,18 @@ namespace UI.Controllers
         }
 
         [NonAction]
+        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, BusinessLogic.Models.Movie movie);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Create(BusinessLogic.Models.Movie movie)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "movie", movie);
+            CreateOverride(callInfo, movie);
+            return callInfo;
+        }
+
+        [NonAction]
         partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
 
         [NonAction]
@@ -208,6 +242,30 @@ namespace UI.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             EditOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, BusinessLogic.Models.Movie movie);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Edit(BusinessLogic.Models.Movie movie)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "movie", movie);
+            EditOverride(callInfo, movie);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void DeleteOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Delete(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            DeleteOverride(callInfo, id);
             return callInfo;
         }
 
