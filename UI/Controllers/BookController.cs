@@ -116,7 +116,7 @@ namespace UI.Controllers
 		{
 			_service.Delete(id, User.Identity.GetUserId());
 
-			ShowStatusMessage(MessageTypeEnum.success, "", "Delete Successful");
+			ShowStatusMessage(MessageTypeEnum.success, "", "Book Deleted Successfully");
 
 			return RedirectToAction(MVC.Book.Index());
 		}

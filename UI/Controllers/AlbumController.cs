@@ -122,7 +122,7 @@ namespace UI.Controllers
 		{
 			_service.Delete(id, User.Identity.GetUserId());
 
-			ShowStatusMessage(MessageTypeEnum.success, "", "Delete Successful");
+			ShowStatusMessage(MessageTypeEnum.success, "", "Album Deleted Successfully");
 			return RedirectToAction(MVC.Album.Index());
 		}
 	}

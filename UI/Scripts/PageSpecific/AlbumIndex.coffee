@@ -14,19 +14,20 @@ class Views.Album.Index
 #			$.get "/Card/SortPlayers", sortPreference: "Rank", -> location.reload()	
 #	
 
-		$('[id=deleteAlbum]').on "click", ->
-			ID = $(this).data "id"
-	
-			bootbox.dialog 
-				message: "Are you sure you want to delete this album?",
-				buttons: 
-					cancel: 
-						label: "No"
-					confirm: 
-						label: "Yes"
-						className: "btn-danger"
-						callback: ->
-							window.location.href = deleteUrl + "/" + ID
+#		$('[id=deleteBtn]').on "click", ->
+#			alert "nope"
+#			ID = $(this).data "id"
+#	
+#			bootbox.dialog 
+#				message: "Are you sure you want to delete this item?",
+#				buttons: 
+#					cancel: 
+#						label: "No"
+#					confirm: 
+#						label: "Yes"
+#						className: "btn-danger"
+#						callback: ->
+#							window.location.href = deleteUrl + "/" + ID
 			return false
 
 $ ->

@@ -99,7 +99,6 @@ namespace UI.Controllers
 			var existingMovie = _service.GetAll(User.Identity.GetUserId()).Where(x => x.ID != movie.ID && x.Title == movie.Title && x.Type == movie.Type).ToList();
 			if (existingMovie.Count > 0)
 			{
-				ShowStatusMessage(MessageTypeEnum.error, $"A movie of Title: {movie.Title}, Media Type: {movie.Type} already exists.", "Duplicate Movie");
 				return View(movie);
 			}
 			//--TODO: why is id needed?
@@ -118,7 +117,7 @@ namespace UI.Controllers
 		{
 			_service.Delete(id, User.Identity.GetUserId());
 
-			ShowStatusMessage(MessageTypeEnum.success, "", "Delete Successful");
+			ShowStatusMessage(MessageTypeEnum.success, "", "Movie Deleted Successfully");
 
 			return RedirectToAction(MVC.Movie.Index());
 		}

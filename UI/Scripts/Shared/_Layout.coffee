@@ -6,6 +6,22 @@ Views.Shared.Layout = ->
 		
 #Implementation
 class Views.Shared.Layout 
+
+	deleteItem = (item) -> 
+		ID = $(item).data "id"
+		
+		bootbox.dialog 
+			message: "Are you sure you want to delete this item?",
+			buttons: 
+				cancel: 
+					label: "No"
+				confirm: 
+					label: "Yes"
+					className: "btn-danger"
+					callback: ->
+						window.location.href = deleteUrl + "/" + ID
+		return false
+	
 	init: -> 
 		$(".datepicker").datepicker
 			autoclose: true,
@@ -17,6 +33,16 @@ class Views.Shared.Layout
 			changeYear: true,
 			showButtonPanel: true
 		
+		$('[class~=deleteBtn]').on "click", ->
+			deleteItem($(this))
+
+			return false
+		
+		$('#deleteBtn').on "click", ->
+			deleteItem($(this))
+
+			return false
+	
 $ -> 
 	_layout = new Views.Shared.Layout
 	

@@ -64,7 +64,7 @@
 				@if (User.Identity.IsAuthenticated && movie.UserID == User.Identity.GetUserId())
 				{
 					<div class="col-xs-1 hidden-xs">
-						<a href="@Url.Action(MVC.Movie.Delete(movie.ID))" id="deleteMovie" class="fa fa-trash" data-id=@movie.ID></a>
+						<a href="#" class="deleteBtn fa fa-trash" data-id=@movie.ID></a>
 					</div>
 				}
 			</div>
