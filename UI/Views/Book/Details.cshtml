@@ -2,4 +2,103 @@
 
 <h2>Details</h2>
 
-<h3>Coming soon</h3>
+<div class="row panel panel-primary">
+	<div class="panel-heading">
+		<h4>
+			Book Information
+		</h4>
+	</div>
+	<div class="panel-body">
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.Title):
+			@Html.DisplayFor(m => m.Title, new { @class = "form-control" })
+		</div>
+
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.Author):
+			@Html.DisplayFor(m => m.Author, new { @class = "form-control" })
+		</div>
+
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.Publisher):
+			@Html.DisplayFor(m => m.Publisher, new { @class = "form-control" })
+		</div>
+
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.YearPublished):
+			@Html.DisplayFor(m => m.YearPublished)
+		</div>
+
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.Genre):
+			@Html.DisplayFor(m => m.Genre, new { @class = "form-control" })
+		</div>
+
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.ISBN):
+			@Html.DisplayFor(m => m.ISBN, new { @class = "form-control" })
+		</div>
+
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.Notes):
+			@Html.DisplayFor(m => m.Notes, new { @class = "form-control" })
+		</div>
+	</div>
+</div>
+<div class="row panel panel-primary">
+	<div class="panel-heading">
+		<h4>Media Information</h4>
+	</div>
+	<div class="panel-body">
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.Type):
+			@Html.DisplayFor(m => m.Type, new { @class = "form-control" })
+		</div>
+
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.Media):
+			@Html.DisplayFor(m => m.Media, new { @class = "form-control" })
+		</div>
+
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.Hardcover):
+			@Html.DisplayFor(m => m.Hardcover, new { @class = "form-control" })
+		</div>
+
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.IsFirstEdition):
+			@Html.DisplayFor(m => m.IsFirstEdition, new { @class = "form-control" })
+		</div>
+
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.Language):
+			@Html.DisplayFor(m => m.Language, new { @class = "form-control" })
+		</div>
+	</div>
+</div>
+<div class="row panel panel-primary">
+	<div class="panel-heading">
+		<h4>Purchase Information</h4>
+	</div>
+	<div class="panel-body">
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.DatePurchased):
+			@Html.DisplayFor(m => m.DatePurchased)
+		</div>
+
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.LocationPurchased):
+			@Html.DisplayFor(m => m.LocationPurchased, new { @class = "form-control" })
+		</div>
+
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.IsNew):
+			@Html.DisplayFor(m => m.IsNew, new { @class = "form-control" })
+		</div>
+
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.IsReissue):
+			@Html.DisplayFor(m => m.IsReissue, new { @class = "form-control" })
+		</div>
+	</div>
+</div>

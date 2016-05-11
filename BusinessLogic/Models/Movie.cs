@@ -32,6 +32,7 @@ namespace BusinessLogic.Models
 		public string Notes { get; set; }
 
 		[DisplayName("Date Purchased")]
+		[DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
 		public DateTime DatePurchased { get; set; } = DateTime.Today;
 
 		[DisplayName("Location Purchased")]

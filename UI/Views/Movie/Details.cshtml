@@ -1,5 +1,85 @@
 ﻿@model BusinessLogic.Models.Movie
 
-	<h2>Details</h2>
+<h2>Details</h2>
 
-	<h3>Coming soon</h3>
+<div class="row panel panel-primary">
+	<div class="panel-heading">
+		<h4>
+			Movie Information
+		</h4>
+	</div>
+	<div class="panel-body">
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.Title):
+			@Html.DisplayFor(m => m.Title, new { @class = "form-control" })
+		</div>
+
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.Director):
+			@Html.DisplayFor(m => m.Director, new { @class = "form-control" })
+		</div>
+
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.Distributor):
+			@Html.DisplayFor(m => m.Distributor, new { @class = "form-control" })
+		</div>
+
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.YearReleased):
+			@Html.DisplayFor(m => m.YearReleased)
+		</div>
+
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.Genre):
+			@Html.DisplayFor(m => m.Genre, new { @class = "form-control" })
+		</div>
+
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.Notes)
+			@Html.DisplayFor(m => m.Notes, new { @class = "form-control" })
+		</div>
+	</div>
+</div>
+<div class="row panel panel-primary">
+	<div class="panel-heading">
+		<h4>Media Information</h4>
+	</div>
+	<div class="panel-body">
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.Type):
+			@Html.DisplayFor(m => m.Type, new { @class = "form-control" })
+		</div>
+
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.Rating):
+			@Html.DisplayFor(m => m.Rating, new { @class = "form-control" })
+		</div>
+
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.Language):
+			@Html.DisplayFor(m => m.Language, new { @class = "form-control" })
+		</div>
+	</div>
+</div>
+
+<div class="row panel panel-primary">
+	<div class="panel-heading">
+		<h4>Purchase Information</h4>
+	</div>
+	<div class="panel-body">
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.DatePurchased):
+			@Html.DisplayFor(m => m.DatePurchased)
+		</div>
+
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.LocationPurchased):
+			@Html.DisplayFor(m => m.LocationPurchased, new { @class = "form-control" })
+		</div>
+
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.IsNew):
+			@Html.DisplayFor(m => m.IsNew, new { @class = "form-control" })
+		</div>
+	</div>
+</div>

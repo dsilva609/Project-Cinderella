@@ -38,6 +38,7 @@ namespace BusinessLogic.Models
 		public int YearPublished { get; set; } = DateTime.Today.Year;
 
 		[Display(Name = "Date Purchased")]
+		[DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
 		public DateTime DatePurchased { get; set; } = DateTime.Today;
 
 		[Display(Name = "Location Purchased")]
