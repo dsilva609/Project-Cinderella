@@ -45,7 +45,7 @@
 		</div>
 		@foreach (var book in Model.Books)
 		{
-			<div id="book" class="row" data-id="@book.ID">
+			<div id="book" class="row info" data-id="@book.ID">
 				<a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Book.Edit(book.ID) : MVC.Book.Details(book.ID))">
 					<div class="col-xs-3">
 						@Html.DisplayFor(x => book.Title)
@@ -64,7 +64,6 @@
 				@if (User.Identity.IsAuthenticated && book.UserID == User.Identity.GetUserId())
 				{
 					<div class="col-xs-1 hidden-xs">
-						@* @Url.Action(MVC.Book.Delete(book.ID)) *@
 						<a href="#" id="deleteBtn" class="fa fa-trash" data-id=@book.ID></a>
 					</div>
 				}

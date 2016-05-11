@@ -43,8 +43,9 @@ namespace UI.Controllers
 		public virtual ActionResult Details(int id)
 		{
 			ViewBag.Title = "Details";
+			var model = _service.GetByID(id, User.Identity.GetUserId());
 
-			return View();
+			return View(model);
 		}
 
 		[Authorize]

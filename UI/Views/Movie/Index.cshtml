@@ -45,7 +45,7 @@
 		</div>
 		@foreach (var movie in Model.Movies)
 			{
-			<div id="Movie" class="row" data-id="@movie.ID">
+			<div id="movie" class="row info" data-id="@movie.ID">
 				<a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Movie.Edit(movie.ID) : MVC.Movie.Details(movie.ID))">
 					<div class="col-xs-3">
 						@Html.DisplayFor(x => movie.Title)
