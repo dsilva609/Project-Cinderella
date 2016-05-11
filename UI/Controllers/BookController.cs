@@ -1,8 +1,5 @@
-﻿using BusinessLogic.DAL;
-using BusinessLogic.Enums;
+﻿using BusinessLogic.Enums;
 using BusinessLogic.Models;
-using BusinessLogic.Repositories;
-using BusinessLogic.Services;
 using BusinessLogic.Services.Interfaces;
 using Microsoft.AspNet.Identity;
 using System;
@@ -14,13 +11,11 @@ namespace UI.Controllers
 {
 	public partial class BookController : ProjectCinderellaControllerBase
 	{
-		private readonly IUnitOfWork _uow;
 		private readonly IBookService _service;
 
-		public BookController()
+		public BookController(IBookService service)
 		{
-			_uow = new UnitOfWork<ProjectCinderellaContext>();
-			_service = new BookService(_uow);
+			_service = service;
 		}
 
 		[HttpGet]

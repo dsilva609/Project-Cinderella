@@ -1,8 +1,5 @@
-﻿using BusinessLogic.DAL;
-using BusinessLogic.Enums;
+﻿using BusinessLogic.Enums;
 using BusinessLogic.Models;
-using BusinessLogic.Repositories;
-using BusinessLogic.Services;
 using BusinessLogic.Services.Interfaces;
 using Microsoft.AspNet.Identity;
 using System;
@@ -14,15 +11,13 @@ namespace UI.Controllers
 {
 	public partial class AlbumController : ProjectCinderellaControllerBase
 	{
-		private readonly IUnitOfWork _uow;
 		private readonly IAlbumService _service;
 		private const int NUM_RECORDS_TO_GET = 25;
 
 		//--TODO: needs Dependency injection
-		public AlbumController()
+		public AlbumController(IAlbumService service)
 		{
-			_uow = new UnitOfWork<ProjectCinderellaContext>();
-			_service = new AlbumService(_uow);
+			_service = service;
 		}
 
 		[HttpGet]
