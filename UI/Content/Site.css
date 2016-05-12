@@ -1,22 +1,22 @@
 ﻿/* latin */
 @font-face {
-    font-family: 'Arizonia';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Arizonia'), local('Arizonia-Regular'), url(http://fonts.gstatic.com/s/arizonia/v6/PwrsyFTYH2Wmsvpn0dx4s_esZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+	font-family: 'Arizonia';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Arizonia'), local('Arizonia-Regular'), url(http://fonts.gstatic.com/s/arizonia/v6/PwrsyFTYH2Wmsvpn0dx4s_esZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
 
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+	padding-top: 50px;
+	padding-bottom: 20px;
 }
 
 /* Set padding to keep content from hitting the edges */
 
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists
@@ -24,7 +24,7 @@ body {
 */
 
 .dl-horizontal dt {
-    white-space: normal;
+	white-space: normal;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -32,94 +32,113 @@ body {
 input,
 select,
 textarea {
-    max-width: 280px;
+	max-width: 280px;
 }
 
 .bold {
-    font-weight: bold !important;
+	font-weight: bold !important;
 }
 
 .removePaddingLeftRight {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
 }
 
 .table .row:not(:first-child):hover {
-    background-color: ButtonShadow;
-    cursor: pointer;
+	background-color: ButtonShadow;
+	cursor: pointer;
 }
 
 .btn-link {
-    height: 20px;
-    vertical-align: top;
-    padding: 0;
-    margin-top: -1px;
+	height: 20px;
+	vertical-align: top;
+	padding: 0;
+	margin-top: -1px;
 }
 
 .mainPlayer {
-    text-align: center;
-    width: 800px;
-    height: 200px;
-    margin-left: 30%;
+	text-align: center;
+	width: 800px;
+	height: 200px;
+	margin-left: 30%;
 }
 
 .jumbotronText {
-    color: lime !important;
-    font-family: "Arizonia";
-    font-size: large !important;
+	color: lime !important;
+	font-family: "Arizonia";
+	font-size: large !important;
 }
 
 .title {
-    font-size: 75px !important;
+	font-size: 75px !important;
 }
 
 .titleDescription {
-    font-size: 30px !important;
-    margin-left: 200px !important;
+	font-size: 30px !important;
+	margin-left: 200px !important;
 }
 
 #topBar {
-    height: 250px;
-    margin-bottom: 25px;
+	height: 250px;
+	margin-bottom: 25px;
 }
 
 .front, .back {
-    width: 100px;
-    height: 150px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-transition: transform 0.5s;
-    -moz-transition: transform 0.5s;
-    -o-transition: transform 0.5s;
-    transition: transform 0.5s;
+	width: 100px;
+	height: 150px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transition: transform 0.5s;
+	-moz-transition: transform 0.5s;
+	-o-transition: transform 0.5s;
+	transition: transform 0.5s;
 }
 
 .front {
-    background-image: url("Images/CardFace.jpg");
-    background-size: cover;
-    max-width: 100%;
-    max-height: 100%;
+	background-image: url("Images/CardFace.jpg");
+	background-size: cover;
+	max-width: 100%;
+	max-height: 100%;
 }
 
 .back {
-    -o-transform: rotateY(180deg);
-    -moz-transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg);
-    -ms-transform: rotateY(180deg);
-    transform: rotateY(180deg);
+	-o-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	-webkit-transform: rotateY(180deg);
+	-ms-transform: rotateY(180deg);
+	transform: rotateY(180deg);
 }
 
 .table-responsive {
-    overflow-x: hidden;
+	overflow-x: hidden;
 }
+
 a.fa {
-	text-decoration: none !important; 
+	text-decoration: none !important;
 }
 
 /*.table .row:nth-child(odd) {
     background-color: lightgray;
 }*/
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+	.dropdown:hover {
+		background-color: #303030;
+	}
+
+.dropdown-menu {
+	display: none;
+	position: absolute;
+}
+
+.dropdown:hover .dropdown-menu {
+	display: block;
+}

@@ -34,9 +34,8 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu<span class="caret"></span></a>
+						<a class="dropdownBtn">Menu<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-
 							<li>@Html.ActionLink("About", MVC.Home.About())</li>
 							<li>@Html.ActionLink("Contact", MVC.Home.Contact())</li>
 							@if (User.IsInRole("Admin"))
