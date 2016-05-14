@@ -5,6 +5,7 @@ using BusinessLogic.Services.Interfaces;
 using SimpleInjector;
 using SimpleInjector.Integration.Web;
 using SimpleInjector.Integration.Web.Mvc;
+using System.Reflection;
 using System.Web.Mvc;
 using UI;
 
@@ -21,8 +22,7 @@ namespace UI
 			container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
 
 			InitializeContainer(container);
-			//TODO: add this back later
-			//container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
+			container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
 			container.Verify();
 
 			DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));

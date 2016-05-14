@@ -28,6 +28,9 @@ namespace UI.Controllers
     public partial class ManageController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ManageController() { }
+
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected ManageController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
