@@ -4,6 +4,7 @@ using BusinessLogic.Repositories;
 using BusinessLogic.Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BusinessLogic.Services
 {
@@ -28,32 +29,28 @@ namespace BusinessLogic.Services
 
 		public void Add(Game game)
 		{
-			throw new NotImplementedException();
+			var existingGame = _repository.GetAll().Where(x => x.UserID == game.UserID && x.Title == game.Title && x.MediaType == game.MediaType).ToList();
+			if (existingGame.Count > 0)
+				throw new ApplicationException($"An existing game of {game.Title}, {game.MediaType} already exists.");
+			_addEntityComponent.Execute(_repository, game);
 		}
 
 		public List<Game> GetAll(string userID = "", string query = "")
 		{
-			throw new NotImplementedException();
+			var gameList = _getEntityListComponent.Execute(_repository);
+
+			if (!string.IsNullOrWhiteSpace(userID))
+				gameList = gameList.Where(x => x.UserID == userID).ToList();
+
+			return gameList;
 		}
 
-		public Game GetByID(int id, string userID)
-		{
-			throw new NotImplementedException();
-		}
+		public Game GetByID(int id, string userID) => _getEntityByIDComponent.Execute(_repository, id, userID);
 
-		public void Edit(int id, Game game)
-		{
-			throw new NotImplementedException();
-		}
+		public void Edit(int id, Game game) => _editEntityComponent.Execute(_repository, game);
 
-		public void Delete(int id, string userID)
-		{
-			throw new NotImplementedException();
-		}
+		public void Delete(int id, string userID) => _deleteEntityComponent.Execute(_repository, id, userID);
 
-		public int GetCount()
-		{
-			throw new NotImplementedException();
-		}
+		public int GetCount() => _repository.GetCount();
 	}
 }
