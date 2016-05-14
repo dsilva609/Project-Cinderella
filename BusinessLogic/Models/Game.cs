@@ -24,6 +24,8 @@ namespace BusinessLogic.Models
 		[Required]
 		public GameTypeEnum Type { get; set; }
 
+		public GameRatingEnum Rating { get; set; }
+
 		[Required]
 		public GameMediaTypeEnum MediaType { get; set; }
 
@@ -39,6 +41,8 @@ namespace BusinessLogic.Models
 		[Display(Name = "Date Purchased")]
 		[DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
 		public DateTime DatePurchased { get; set; } = DateTime.Today;
+
+		public string Country { get; set; }
 
 		[Display(Name = "Location Purchased")]
 		public string LocationPurchased { get; set; }
