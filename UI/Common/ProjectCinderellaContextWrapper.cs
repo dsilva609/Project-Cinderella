@@ -22,5 +22,7 @@ namespace UI.Common
 		public IDbSet<RecordModel> Records() => Database.Records;
 
 		public IDbSet<Book> Books() => Database.Books;
+
+		public IDbSet<Game> Games() => Database.Games;
 	}
 }

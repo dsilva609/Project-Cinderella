@@ -79,6 +79,10 @@
     <Compile Include="Enums\AlbumMediaTypeEnum.cs" />
     <Compile Include="Enums\BookMediaTypeEnum.cs" />
     <Compile Include="Enums\BookTypeEnum.cs" />
+    <Compile Include="Enums\GameMediaTypeEnum.cs" />
+    <Compile Include="Enums\GamePlatformEnum.cs" />
+    <Compile Include="Enums\GameRatingEnum.cs" />
+    <Compile Include="Enums\GameTypeEnum.cs" />
     <Compile Include="Enums\MovieMediaTypeEnum.cs" />
     <Compile Include="Enums\MovieRatingEnum.cs" />
     <Compile Include="Migrations\201603160133505_Initial Create.cs" />
@@ -137,8 +141,13 @@
     <Compile Include="Migrations\201605101712177_Created Movie Model.Designer.cs">
       <DependentUpon>201605101712177_Created Movie Model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605140228122_Added Game Model.cs" />
+    <Compile Include="Migrations\201605140228122_Added Game Model.Designer.cs">
+      <DependentUpon>201605140228122_Added Game Model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\Game.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\RecordModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -208,6 +217,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605101712177_Created Movie Model.resx">
       <DependentUpon>201605101712177_Created Movie Model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605140228122_Added Game Model.resx">
+      <DependentUpon>201605140228122_Added Game Model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

@@ -9,11 +9,12 @@ namespace BusinessLogic.DAL
 		public DbSet<RecordModel> Records { get; set; }
 		public DbSet<Book> Books { get; set; }
 		public DbSet<Movie> Movies { get; set; }
+		public DbSet<Game> Games { get; set; }
 
 		public ProjectCinderellaContext()
 			: base("ProjectCinderella")
 		{
-			this.Configuration.LazyLoadingEnabled = false;
+			Configuration.LazyLoadingEnabled = false;
 		}
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
