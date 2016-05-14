@@ -146,6 +146,7 @@
       <DependentUpon>201605140228122_Added Game Model.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\BaseItem.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\Movie.cs" />
