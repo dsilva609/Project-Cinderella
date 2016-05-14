@@ -36,6 +36,7 @@ namespace UI
 			container.Register<IAlbumService>(() => new AlbumService(container.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
 			container.Register<IBookService>(() => new BookService(container.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
 			container.Register<IMovieService>(() => new MovieService(container.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
+			container.Register<IGameService>(() => new GameService(container.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
 		}
 	}
 }

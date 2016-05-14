@@ -125,6 +125,8 @@
     <Compile Include="UI\Controllers\BookControllerTests\BookControllerTests.cs" />
     <Compile Include="UI\Controllers\BookControllerTests\TestBases\BookControllerTestBase.cs" />
     <Compile Include="UI\Controllers\ControllerTestBase.cs" />
+    <Compile Include="UI\Controllers\GameControllerTests\GameControllerTests.cs" />
+    <Compile Include="UI\Controllers\GameControllerTests\TestBases\GameControllerTestBase.cs" />
     <Compile Include="UI\Controllers\HomeControllerTests\TestBases\HomeControllerTestBase.cs" />
     <Compile Include="UI\Controllers\HomeControllerTests\HomeControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

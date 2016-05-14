@@ -31,6 +31,7 @@ public static partial class MVC
     public static UI.Controllers.AlbumController Album = new UI.Controllers.T4MVC_AlbumController();
     public static UI.Controllers.BookController Book = new UI.Controllers.T4MVC_BookController();
     public static UI.Controllers.ElmahController Elmah = new UI.Controllers.T4MVC_ElmahController();
+    public static UI.Controllers.GameController Game = new UI.Controllers.T4MVC_GameController();
     public static UI.Controllers.HomeController Home = new UI.Controllers.T4MVC_HomeController();
     public static UI.Controllers.ManageController Manage = new UI.Controllers.T4MVC_ManageController();
     public static UI.Controllers.MovieController Movie = new UI.Controllers.T4MVC_MovieController();
