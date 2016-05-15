@@ -1,7 +1,7 @@
 ﻿@model BusinessLogic.Models.Game
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm(MVC.Book.Edit(), FormMethod.Post))
+@using (Html.BeginForm(MVC.Game.Edit(), FormMethod.Post))
 {
 	Html.RenderPartial(MVC.Game.Views._GameFormPartial, Model);
 }
