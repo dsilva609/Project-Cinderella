@@ -76,6 +76,17 @@
 							}
 						</ul>
 					</li>
+
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Games<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li>@Html.ActionLink("View Games", MVC.Game.Index())</li>
+							@if (User.Identity.IsAuthenticated)
+							{
+								<li>@Html.ActionLink("Add Game", MVC.Game.Create())</li>
+							}
+						</ul>
+					</li>
 				</ul>
 				@Html.Partial(MVC.Shared.Views._LoginPartial)
 			</div>
