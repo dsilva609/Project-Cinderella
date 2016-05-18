@@ -15,7 +15,7 @@ namespace UI
 {
 	public static class SimpleInjectorInitializer
 	{
-		/// <summary>Initialize the container and register it as MVC3 Dependency Resolver.</summary>
+		/// <summary>Initialize the c and register it as MVC3 Dependency Resolver.</summary>
 		public static void Initialize()
 		{
 			var container = new Container();
@@ -28,15 +28,16 @@ namespace UI
 			DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
 		}
 
-		private static void InitializeContainer(Container container)
+		private static void InitializeContainer(Container c)
 		{
 			// For instance:
-			// container.Register<IUserRepository, SqlUserRepository>(Lifestyle.Scoped);
-			container.Register<IUnitOfWork, UnitOfWork<ProjectCinderellaContext>>(Lifestyle.Singleton);
-			container.Register<IAlbumService>(() => new AlbumService(container.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
-			container.Register<IBookService>(() => new BookService(container.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
-			container.Register<IMovieService>(() => new MovieService(container.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
-			container.Register<IGameService>(() => new GameService(container.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
+			// c.Register<IUserRepository, SqlUserRepository>(Lifestyle.Scoped);
+			c.Register<IUnitOfWork, UnitOfWork<ProjectCinderellaContext>>(Lifestyle.Singleton);
+			c.Register<IAlbumService>(() => new AlbumService(c.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
+			c.Register<IBookService>(() => new BookService(c.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
+			c.Register<IMovieService>(() => new MovieService(c.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
+			c.Register<IGameService>(() => new GameService(c.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
+			c.Register<IDiscogsService, DiscogsService>();
 		}
 	}
 }

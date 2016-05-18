@@ -3,13 +3,9 @@ using BusinessLogic.Models;
 using BusinessLogic.Models.DiscogsModels;
 using BusinessLogic.Services.Interfaces;
 using Microsoft.AspNet.Identity;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Web.Mvc;
 using UI.Models;
 
@@ -18,15 +14,17 @@ namespace UI.Controllers
 	public partial class AlbumController : ProjectCinderellaControllerBase
 	{
 		private readonly IAlbumService _service;
+		private readonly IDiscogsService _discogsService;
 		private const int NUM_RECORDS_TO_GET = 25;
 		private string test;
 		private List<DiscogsResult> results;
 
-		public AlbumController(IAlbumService service)
+		public AlbumController(IAlbumService service, IDiscogsService discogsService)
 		{
 			_service = service;
-			test = SearchDiscogs();
-			results = JsonConvert.DeserializeObject<List<DiscogsResult>>(test);
+			_discogsService = discogsService;
+
+			results = _discogsService.Search();
 		}
 
 		[HttpGet]
@@ -129,22 +127,6 @@ namespace UI.Controllers
 
 			ShowStatusMessage(MessageTypeEnum.success, "", "Album Deleted Successfully");
 			return RedirectToAction(MVC.Album.Index());
-		}
-
-		private string SearchDiscogs()
-		{
-			var client = new HttpClient();
-
-			client.BaseAddress = new Uri("https://api.discogs.com/");
-			client.DefaultRequestHeaders.Add("Authorization", "Discogs token=VihLsjGHOaqfiRLhNZMZydxTWUTcidbHkuZgCALD");
-			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-			client.DefaultRequestHeaders.Add("User-Agent", "Project-Cinderella/1.0 +projectcinderella.azurewebsites.net");
-			var response = client.GetAsync("database/search?q=dio&type=artist");
-			var result = JObject.Parse(response.Result.Content.ReadAsStringAsync().Result);
-			//	if (result.IsSuccessStatusCode)
-			//{
-			return result["results"].ToString();
-			//}
 		}
 	}
 }
