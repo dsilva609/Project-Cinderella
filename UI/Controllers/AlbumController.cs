@@ -1,9 +1,15 @@
 ﻿using BusinessLogic.Enums;
 using BusinessLogic.Models;
+using BusinessLogic.Models.DiscogsModels;
 using BusinessLogic.Services.Interfaces;
 using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web.Mvc;
 using UI.Models;
 
@@ -13,11 +19,14 @@ namespace UI.Controllers
 	{
 		private readonly IAlbumService _service;
 		private const int NUM_RECORDS_TO_GET = 25;
+		private string test;
+		private List<DiscogsResult> results;
 
-		//--TODO: needs Dependency injection
 		public AlbumController(IAlbumService service)
 		{
 			_service = service;
+			test = SearchDiscogs();
+			results = JsonConvert.DeserializeObject<List<DiscogsResult>>(test);
 		}
 
 		[HttpGet]
@@ -30,6 +39,7 @@ namespace UI.Controllers
 				PageSize = NUM_RECORDS_TO_GET,
 				TotalRecords = _service.GetCount()
 			};
+			var result = test;
 			var pages = Math.Ceiling((double)viewModel.TotalRecords / viewModel.PageSize);
 			viewModel.PageCount = (int)pages;
 			return View(viewModel);
@@ -119,6 +129,22 @@ namespace UI.Controllers
 
 			ShowStatusMessage(MessageTypeEnum.success, "", "Album Deleted Successfully");
 			return RedirectToAction(MVC.Album.Index());
+		}
+
+		private string SearchDiscogs()
+		{
+			var client = new HttpClient();
+
+			client.BaseAddress = new Uri("https://api.discogs.com/");
+			client.DefaultRequestHeaders.Add("Authorization", "Discogs token=VihLsjGHOaqfiRLhNZMZydxTWUTcidbHkuZgCALD");
+			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+			client.DefaultRequestHeaders.Add("User-Agent", "Project-Cinderella/1.0 +projectcinderella.azurewebsites.net");
+			var response = client.GetAsync("database/search?q=dio&type=artist");
+			var result = JObject.Parse(response.Result.Content.ReadAsStringAsync().Result);
+			//	if (result.IsSuccessStatusCode)
+			//{
+			return result["results"].ToString();
+			//}
 		}
 	}
 }
