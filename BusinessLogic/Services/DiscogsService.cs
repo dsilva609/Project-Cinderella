@@ -11,14 +11,14 @@ namespace BusinessLogic.Services
 {
 	public class DiscogsService : IDiscogsService
 	{
-		public List<DiscogsResult> Search()
+		public List<DiscogsResult> Search(string artist, string album)
 		{
 			var client = new HttpClient { BaseAddress = new Uri("https://api.discogs.com/") };
 
 			client.DefaultRequestHeaders.Add("Authorization", "Discogs token=VihLsjGHOaqfiRLhNZMZydxTWUTcidbHkuZgCALD");
 			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 			client.DefaultRequestHeaders.Add("User-Agent", "Project-Cinderella/1.0 +projectcinderella.azurewebsites.net");
-			var response = client.GetAsync("database/search?q=dio&type=artist");
+			var response = client.GetAsync($"database/search?artist={artist}&release_title={album}&type=release");
 			var result = JObject.Parse(response.Result.Content.ReadAsStringAsync().Result);
 			//	if (result.IsSuccessStatusCode)
 			//{

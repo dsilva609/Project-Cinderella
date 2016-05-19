@@ -10,7 +10,7 @@
 		public string uri { get; set; }
 		public string[] label { get; set; }
 		public string catno { get; set; }
-		public string year { get; set; }
+		public int year { get; set; }
 		public string[] genre { get; set; }
 		public string resource_url { get; set; }
 		public string type { get; set; }

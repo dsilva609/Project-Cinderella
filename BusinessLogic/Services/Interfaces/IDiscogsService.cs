@@ -5,6 +5,6 @@ namespace BusinessLogic.Services.Interfaces
 {
 	public interface IDiscogsService
 	{
-		List<DiscogsResult> Search();
+		List<DiscogsResult> Search(string artist, string album);
 	}
 }

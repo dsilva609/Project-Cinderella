@@ -52,6 +52,7 @@
 							@if (User.Identity.IsAuthenticated)
 							{
 								<li>@Html.ActionLink("Add Album", MVC.Album.Create())</li>
+								<li>@Html.ActionLink("Search", MVC.Album.Search())</li>
 							}
 						</ul>
 					</li>

@@ -4,7 +4,6 @@ using BusinessLogic.Models.DiscogsModels;
 using BusinessLogic.Services.Interfaces;
 using Microsoft.AspNet.Identity;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using UI.Models;
@@ -16,15 +15,15 @@ namespace UI.Controllers
 		private readonly IAlbumService _service;
 		private readonly IDiscogsService _discogsService;
 		private const int NUM_RECORDS_TO_GET = 25;
-		private string test;
-		private List<DiscogsResult> results;
+		//private string test;
+		//	private List<DiscogsResult> results;
 
 		public AlbumController(IAlbumService service, IDiscogsService discogsService)
 		{
 			_service = service;
 			_discogsService = discogsService;
 
-			results = _discogsService.Search();
+			//			results = _discogsService.Search();
 		}
 
 		[HttpGet]
@@ -37,7 +36,7 @@ namespace UI.Controllers
 				PageSize = NUM_RECORDS_TO_GET,
 				TotalRecords = _service.GetCount()
 			};
-			var result = test;
+			//	var result = test;
 			var pages = Math.Ceiling((double)viewModel.TotalRecords / viewModel.PageSize);
 			viewModel.PageCount = (int)pages;
 			return View(viewModel);
@@ -47,10 +46,33 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult Create()
 		{
-			var model = new RecordModel { UserID = User.Identity.GetUserId() };
+			var model = Session["albumResult"] ?? new RecordModel { UserID = User.Identity.GetUserId() };
 			ViewBag.Title = "Create";
+			Session["albumResult"] = null;
 
 			return View(model);
+		}
+
+		[Authorize]
+		[HttpGet]
+		public virtual ActionResult CreateFromSearchResult(DiscogsResult result)
+		{
+			var info = result.title.Split('-').ToList();
+			var model = new RecordModel
+			{
+				UserID = User.Identity.GetUserId(),
+				Artist = info[0],
+				AlbumName = info[1],
+				AlbumYear = result.year,
+				//RecordLabel = string.Join(", ", result.label.ToArray()),
+				//	Genre = string.Join(",", result.genre.ToArray())
+			};
+
+			ViewBag.Title = "Create";
+
+			Session["albumResult"] = model;
+
+			return RedirectToAction(MVC.Album.Create());
 		}
 
 		[Authorize]
@@ -128,5 +150,29 @@ namespace UI.Controllers
 			ShowStatusMessage(MessageTypeEnum.success, "", "Album Deleted Successfully");
 			return RedirectToAction(MVC.Album.Index());
 		}
+
+		//TODO: add tests and validation
+		[Authorize]
+		[HttpGet]
+		public virtual ActionResult Search(DiscogsSearchModel searchModel)
+		{
+			if (searchModel == null)
+				searchModel = new DiscogsSearchModel();
+			if (!string.IsNullOrWhiteSpace(searchModel.Artist) && !string.IsNullOrWhiteSpace(searchModel.AlbumName))
+			{
+				//model.Artist = artist;
+				//model.AlbumName = album;
+				searchModel.Results = _discogsService.Search(searchModel.Artist, searchModel.AlbumName);
+			}
+			ViewBag.Title = "Album Search";
+			return View(searchModel);
+		}
+
+		//[Authorize]
+		//[HttpPost]
+		//public virtual ActionResult Search(DiscogsSearchModel model)
+		//{
+		//	return RedirectToAction(MVC.Album.Search(model.Artist, model.AlbumName));
+		//}
 	}
 }

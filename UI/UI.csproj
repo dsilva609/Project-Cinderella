@@ -687,6 +687,7 @@
     <Content Include="Views\Game\Details.cshtml" />
     <Content Include="Views\Game\Edit.cshtml" />
     <Content Include="Views\Game\Index.cshtml" />
+    <Content Include="Views\Album\Search.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -758,6 +759,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BookViewModel.cs" />
+    <Compile Include="Models\DiscogsSearchModel.cs" />
     <Compile Include="Models\GameViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
