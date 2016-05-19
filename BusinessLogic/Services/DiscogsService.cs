@@ -22,7 +22,16 @@ namespace BusinessLogic.Services
 			var result = JObject.Parse(response.Result.Content.ReadAsStringAsync().Result);
 			//	if (result.IsSuccessStatusCode)
 			//{
-			return JsonConvert.DeserializeObject<List<DiscogsResult>>(result["results"].ToString());
+			var resultList = JsonConvert.DeserializeObject<List<DiscogsResult>>(result["results"].ToString());
+
+			foreach (var t in resultList)
+			{
+				t.FormatString = string.Join(", ", t.Format);
+				t.GenreString = string.Join(", ", t.Genre);
+				t.LabelString = string.Join(", ", t.Label);
+			}
+
+			return resultList;
 			//}
 		}
 	}

@@ -57,19 +57,20 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult CreateFromSearchResult(DiscogsResult result)
 		{
-			var info = result.title.Split('-').ToList();
+			var info = result.Title.Split('-').ToList();
 			var model = new RecordModel
 			{
 				UserID = User.Identity.GetUserId(),
 				Artist = info[0],
 				AlbumName = info[1],
-				AlbumYear = result.year,
-				//RecordLabel = string.Join(", ", result.label.ToArray()),
-				//	Genre = string.Join(",", result.genre.ToArray())
+				AlbumYear = result.Year,
+				RecordLabel = result.LabelString,
+				Genre = result.GenreString
 			};
 
 			ViewBag.Title = "Create";
 
+			//TODO: is this still needed?
 			Session["albumResult"] = model;
 
 			return RedirectToAction(MVC.Album.Create());

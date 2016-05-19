@@ -3,18 +3,21 @@
 	public class DiscogsResult
 	{
 		public string[] Style { get; set; }
-		public string thumb { get; set; }
-		public string title { get; set; }
-		public string country { get; set; }
-		public string[] format { get; set; }
-		public string uri { get; set; }
-		public string[] label { get; set; }
-		public string catno { get; set; }
-		public int year { get; set; }
-		public string[] genre { get; set; }
-		public string resource_url { get; set; }
-		public string type { get; set; }
+		public string Thumb { get; set; }
+		public string Title { get; set; }
+		public string Country { get; set; }
+		public string[] Format { get; set; }
+		public string FormatString { get; set; }
+		public string Uri { get; set; }
+		public string[] Label { get; set; }
+		public string LabelString { get; set; }
+		public string Catno { get; set; }
+		public int Year { get; set; }
+		public string[] Genre { get; set; }
+		public string GenreString { get; set; }
+		public string ResourceUrl { get; set; }
+		public string Type { get; set; }
 		public int ID { get; set; }
-		public string[] barcode { get; set; }
+		public string[] Barcode { get; set; }
 	}
 }

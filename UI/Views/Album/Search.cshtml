@@ -13,20 +13,20 @@
 		<div class="panel-body">
 			<div class="col-xs-6">
 				@Html.LabelFor(m => m.Artist)
-				@Html.TextBoxFor(m => m.Artist, new {@class = "form-control"})
-				@Html.ValidationMessageFor(m => m.Artist, "", new {@class = "text-danger"})
+				@Html.TextBoxFor(m => m.Artist, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Artist, "", new { @class = "text-danger" })
 			</div>
 
 			<div class="col-xs-6">
 				@Html.LabelFor(m => m.AlbumName)
-				@Html.TextBoxFor(m => m.AlbumName, new {@class = "form-control"})
-				@Html.ValidationMessageFor(m => m.AlbumName, "", new {@class = "text-danger"})
+				@Html.TextBoxFor(m => m.AlbumName, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.AlbumName, "", new { @class = "text-danger" })
 			</div>
 		</div>
 
 		<div class="row panel-body">
 			<div class="col-xs-8 col-sm-10">
-				<input id="btnSubmit" type="submit" value="Search" class="btn btn-default btn-block btn-lg"/>
+				<input id="btnSubmit" type="submit" value="Search" class="btn btn-default btn-block btn-lg" />
 			</div>
 		</div>
 	}
@@ -48,34 +48,33 @@
 					<div id="album" class="row info" data-id="@result.ID">
 						@*<a href="@Url.Action(User.Identity.IsAuthenticated? MVC.Album.Edit(record.ID): MVC.Album.Details(record.ID))">*@
 						<div class="col-xs-3">
-							@Html.DisplayFor(modelItem => result.title)
-							@Html.HiddenFor(modelItem => result.title)
+							@Html.DisplayFor(modelItem => result.Title)
+							@Html.HiddenFor(modelItem => result.Title)
 						</div>
 						<div class="col-xs-3">
-							@Html.DisplayFor(modelItem => result.type)
-							@Html.HiddenFor(modelItem => result.type)
+							@Html.DisplayFor(modelItem => result.Type)
+							@Html.HiddenFor(modelItem => result.Type)
 						</div>
 						<div class="col-xs-3">
-							@Html.DisplayFor(modelItem => result.format)
-							@Html.HiddenFor(modelItem => result.format)
+							@Html.DisplayFor(modelItem => result.FormatString)
+							@Html.HiddenFor(modelItem => result.FormatString)
 						</div>
 
 						<div class="col-xs-2">
-							@Html.DisplayFor(modelItem => result.year)
-							@Html.HiddenFor(modelItem => result.year)
+							@Html.DisplayFor(modelItem => result.Year)
+							@Html.HiddenFor(modelItem => result.Year)
 						</div>
 
-						@*@Html.HiddenFor(modelItem => string.Join(", ", result.genre))
-						@Html.HiddenFor(modelItem => result.label)*@
+						@Html.HiddenFor(modelItem => result.GenreString)
+						@Html.HiddenFor(modelItem => result.LabelString)
 
 						<div class="col-xs-1">
-							<input id="" type="submit" value="Add" class="btn"/>
+							<input id="" type="submit" value="Add" class="btn" />
 						</div>
 						@*	</a>*@
 					</div>
 				}
 			}
 		</div>
-
 	</div>
 }
