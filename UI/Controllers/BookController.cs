@@ -1,6 +1,8 @@
 ﻿using BusinessLogic.Enums;
 using BusinessLogic.Models;
+using BusinessLogic.Services;
 using BusinessLogic.Services.Interfaces;
+using Google.Apis.Books.v1.Data;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Linq;
@@ -12,6 +14,7 @@ namespace UI.Controllers
 	public partial class BookController : ProjectCinderellaControllerBase
 	{
 		private readonly IBookService _service;
+		private Volumes result;
 
 		public BookController(IBookService service)
 		{
@@ -21,6 +24,8 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult Index(string query, int pageNum = 1)
 		{
+			var bookservice = new GoogleBookService();
+			result = bookservice.Search("", "");
 			var viewModel = new BookViewModel
 			{
 				ViewTitle = "Index",
