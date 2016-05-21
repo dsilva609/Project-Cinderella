@@ -9,11 +9,18 @@
 </script>
 
 <div>
-	<div class="h2 col-xs-4 col-sm-7">
+	<div class="h2 col-xs-3 col-sm-5">
 		Books
 	</div>
 
-	<div class="col-xs-8 col-sm-5 text-right" style="padding-top: 1.25em; display: inline-flex;">
+	<div class="col-xs-3 col-sm-2" style="padding-top: 1.25em;">
+		@if (User.Identity.IsAuthenticated)
+		{
+			@Html.ActionLink("Search Google Books", MVC.Book.Search(), new { @class = "btn btn-default" })
+		}
+	</div>
+
+	<div class="col-xs-6 col-sm-5 text-right" style="padding-top: 1.25em; display: inline-flex;">
 		@if (User.Identity.IsAuthenticated)
 		{
 			@Html.ActionLink("Add Book", MVC.Book.Create(), new { @class = "btn btn-default", @style = "margin-right:1em;" })

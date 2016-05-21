@@ -63,6 +63,7 @@
 							@if (User.Identity.IsAuthenticated)
 							{
 								<li>@Html.ActionLink("Add Book", MVC.Book.Create())</li>
+								<li>@Html.ActionLink("Search Google for Book", MVC.Book.Search())</li>
 							}
 						</ul>
 					</li>

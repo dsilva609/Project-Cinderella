@@ -1,10 +1,10 @@
 ﻿using BusinessLogic.Enums;
 using BusinessLogic.Models;
-using BusinessLogic.Services;
 using BusinessLogic.Services.Interfaces;
 using Google.Apis.Books.v1.Data;
 using Microsoft.AspNet.Identity;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using UI.Models;
@@ -14,18 +14,18 @@ namespace UI.Controllers
 	public partial class BookController : ProjectCinderellaControllerBase
 	{
 		private readonly IBookService _service;
-		private Volumes result;
+		private readonly IGoogleBookService _googleBookService;
+		private List<Volume> result;
 
-		public BookController(IBookService service)
+		public BookController(IBookService service, IGoogleBookService googleBookService)
 		{
 			_service = service;
+			_googleBookService = googleBookService;
 		}
 
 		[HttpGet]
 		public virtual ActionResult Index(string query, int pageNum = 1)
 		{
-			var bookservice = new GoogleBookService();
-			result = bookservice.Search("", "");
 			var viewModel = new BookViewModel
 			{
 				ViewTitle = "Index",
@@ -53,7 +53,8 @@ namespace UI.Controllers
 		public virtual ActionResult Create()
 		{
 			ViewBag.Title = "Create";
-			var model = new Book { UserID = User.Identity.GetUserId() };
+			var model = Session["BookResult"] ?? new Book { UserID = User.Identity.GetUserId() };
+			Session["BookResult"] = null;
 
 			return View(model);
 		}
@@ -120,6 +121,63 @@ namespace UI.Controllers
 			ShowStatusMessage(MessageTypeEnum.success, "", "Book Deleted Successfully");
 
 			return RedirectToAction(MVC.Book.Index());
+		}
+
+		//TODO: add tests and validation
+		[Authorize]
+		[HttpGet]
+		public virtual ActionResult Search(GoogleBooksSearchModel searchModel)
+		{
+			if (searchModel == null)
+				searchModel = new GoogleBooksSearchModel();
+			if (!string.IsNullOrWhiteSpace(searchModel.Author) && !string.IsNullOrWhiteSpace(searchModel.Title))
+			{
+				//model.Artist = artist;
+				//model.AlbumName = album;
+				//TODO: change this to local variable
+				result = new List<Volume>();
+				result = (List<Volume>)_googleBookService.Search(searchModel.Author, searchModel.Title)?.Items;
+
+				searchModel.Volumes = new List<Book>();
+
+				if (result?.Count > 0)
+					foreach (var volume in result)
+					{
+						searchModel.Volumes.Add(new Book
+						{
+							UserID = User.Identity.GetUserId(),
+							//ID = Convert.ToInt32(x.VolumeInfo.IndustryIdentifiers.First().Identifier),
+							Title = volume.VolumeInfo.Title,
+							Author = string.Join(", ", volume.VolumeInfo.Authors),
+							YearPublished = string.IsNullOrWhiteSpace(volume.VolumeInfo.PublishedDate) ? 0 : Convert.ToInt32(volume.VolumeInfo.PublishedDate.Substring(0, 4)),
+							Publisher = volume.VolumeInfo.Publisher
+						});
+					}
+			}
+			ViewBag.Title = "Book Search";
+			return View(searchModel);
+		}
+
+		[Authorize]
+		[HttpGet]
+		public virtual ActionResult CreateFromSearchModel(Book book)
+		{
+			//var model = new Book
+			//{
+			//	UserID = User.Identity.GetUserId(),
+			//	Author = string.Join(", ", volume.VolumeInfo.Authors.ToString()),
+			//	Title = volume.VolumeInfo.Title,
+			//	YearPublished = DateTime.Parse(volume.VolumeInfo.PublishedDate).Year,
+			//	Publisher = volume.VolumeInfo.Publisher,
+			//	//Genre = volume.SearchInfo.GenreString
+			//};
+
+			ViewBag.Title = "Create";
+
+			//TODO: is this still needed?
+			Session["BookResult"] = book;
+
+			return RedirectToAction(MVC.Book.Create());
 		}
 	}
 }

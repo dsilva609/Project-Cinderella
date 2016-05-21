@@ -168,12 +168,5 @@ namespace UI.Controllers
 			ViewBag.Title = "Album Search";
 			return View(searchModel);
 		}
-
-		//[Authorize]
-		//[HttpPost]
-		//public virtual ActionResult Search(DiscogsSearchModel model)
-		//{
-		//	return RedirectToAction(MVC.Album.Search(model.Artist, model.AlbumName));
-		//}
 	}
 }

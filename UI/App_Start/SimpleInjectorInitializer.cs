@@ -38,6 +38,7 @@ namespace UI
 			c.Register<IMovieService>(() => new MovieService(c.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
 			c.Register<IGameService>(() => new GameService(c.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
 			c.Register<IDiscogsService, DiscogsService>();
+			c.Register<IGoogleBookService, GoogleBookService>();
 		}
 	}
 }

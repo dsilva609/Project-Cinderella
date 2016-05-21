@@ -9,7 +9,7 @@ namespace BusinessLogic.Services
 		public Volumes Search(string author, string title)
 		{
 			Google.Apis.Books.v1.VolumesResource service = new VolumesResource(new BooksService());
-			var result = service.List("civil+war+inauthor:Mark+Millar");
+			var result = service.List($"inauthor:{author}+intitle:{title}");
 			return result.Execute();
 		}
 	}

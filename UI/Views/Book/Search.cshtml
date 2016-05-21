@@ -1,0 +1,78 @@
+﻿@using Microsoft.AspNet.Identity
+@model UI.Models.GoogleBooksSearchModel
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row panel panel-primary">
+	<div class="panel-heading">
+		<h4>
+			Book Information
+		</h4>
+	</div>
+	@using (Html.BeginForm(MVC.Book.Search(), FormMethod.Get))
+	{
+		<div class="panel-body">
+			<div class="col-xs-6">
+				@Html.LabelFor(m => m.Author)
+				@Html.TextBoxFor(m => m.Author, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Author, "", new { @class = "text-danger" })
+			</div>
+
+			<div class="col-xs-6">
+				@Html.LabelFor(m => m.Title)
+				@Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="row panel-body">
+			<div class="col-xs-8 col-sm-10">
+				<input id="btnSubmit" type="submit" value="Search" class="btn btn-default btn-block btn-lg" />
+			</div>
+		</div>
+	}
+</div>
+@if (Model.Volumes != null && Model.Volumes.Count > 0)
+{
+	<div class="row panel panel-primary">
+		<div class="panel-heading">
+			<h4>
+				Search Results
+			</h4>
+		</div>
+
+		<div class="panel-body">
+			@foreach (var book in Model.Volumes)
+				{
+					using (Html.BeginForm(MVC.Book.CreateFromSearchModel(book), FormMethod.Get))
+					{
+					<div id="book" class="row info" data-id="@book.ID">
+						@*<a href="@Url.Action(User.Identity.IsAuthenticated? MVC.Album.Edit(record.ID): MVC.Album.Details(record.ID))">*@
+						<div class="col-xs-3">
+							@Html.DisplayFor(modelItem => book.Author)
+							@Html.HiddenFor(modelItem => book.Author)
+						</div>
+						<div class="col-xs-3">
+							@Html.DisplayFor(modelItem => book.Title)
+							@Html.HiddenFor(modelItem => book.Title)
+						</div>
+						<div class="col-xs-3">
+							@Html.DisplayFor(modelItem => book.Publisher)
+							@Html.HiddenFor(modelItem => book.Publisher)
+						</div>
+
+						<div class="col-xs-2">
+							@Html.DisplayFor(modelItem => book.YearPublished)
+							@Html.HiddenFor(modelItem => book.YearPublished)
+						</div>
+						@Html.HiddenFor(x =>book.UserID)
+						<div class="col-xs-1">
+							<input id="" type="submit" value="Add" class="btn" />
+						</div>
+						@*	</a>*@
+					</div>
+					}
+				}
+		</div>
+	</div>
+}
