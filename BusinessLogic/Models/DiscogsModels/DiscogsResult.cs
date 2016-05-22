@@ -1,4 +1,6 @@
-﻿namespace BusinessLogic.Models.DiscogsModels
+﻿using System.ComponentModel;
+
+namespace BusinessLogic.Models.DiscogsModels
 {
 	public class DiscogsResult
 	{
@@ -7,10 +9,16 @@
 		public string Title { get; set; }
 		public string Country { get; set; }
 		public string[] Format { get; set; }
+
+		[DisplayName("Format")]
 		public string FormatString { get; set; }
+
 		public string Uri { get; set; }
 		public string[] Label { get; set; }
+
+		[DisplayName("Label")]
 		public string LabelString { get; set; }
+
 		public string Catno { get; set; }
 		public int Year { get; set; }
 		public string[] Genre { get; set; }

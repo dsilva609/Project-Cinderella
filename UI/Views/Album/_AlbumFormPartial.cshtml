@@ -103,7 +103,7 @@
 			</div>
 		</div>
 	</div>
-
+	@Html.HiddenFor(m=> m.DiscogsID)
 	<div class="row panel-body">
 		<div class="col-xs-8 col-sm-10">
 			<input id="btnSubmit" type="submit" value=@(Model.ID > 0 ? "Save" : "Create") class="btn btn-default btn-block btn-lg" />

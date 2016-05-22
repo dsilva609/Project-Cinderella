@@ -194,6 +194,10 @@
     <Compile Include="Migrations\201605220234387_Added ISBN 10 and 13 to book model.Designer.cs">
       <DependentUpon>201605220234387_Added ISBN 10 and 13 to book model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605220316228_Added DiscogsID to album model.cs" />
+    <Compile Include="Migrations\201605220316228_Added DiscogsID to album model.Designer.cs">
+      <DependentUpon>201605220316228_Added DiscogsID to album model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseItem.cs" />
     <Compile Include="Models\Book.cs" />
@@ -283,6 +287,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605220234387_Added ISBN 10 and 13 to book model.resx">
       <DependentUpon>201605220234387_Added ISBN 10 and 13 to book model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605220316228_Added DiscogsID to album model.resx">
+      <DependentUpon>201605220316228_Added DiscogsID to album model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

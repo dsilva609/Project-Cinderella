@@ -29,7 +29,7 @@ namespace BusinessLogic.Services
 			foreach (var t in resultList)
 			{
 				t.FormatString = string.Join(", ", t.Format);
-				t.GenreString = string.Join(", ", t.Genre);
+				t.GenreString = t.Style.Length == 0 ? string.Join(", ", t.Genre) : string.Join(", ", t.Style);
 				t.LabelString = string.Join(", ", t.Label);
 			}
 

@@ -54,5 +54,7 @@ namespace BusinessLogic.Models
 
 		[DisplayName("Record Label")]
 		public string RecordLabel { get; set; }
+
+		public int DiscogsID { get; set; }
 	}
 }

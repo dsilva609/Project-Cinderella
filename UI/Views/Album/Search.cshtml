@@ -39,7 +39,30 @@
 				Search Results
 			</h4>
 		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				@Html.DisplayNameFor(x => Model.Results[0].Title)
+				
+			</div>
+			<div class="col-xs-2">
+				@Html.DisplayNameFor(x => Model.Results[0].LabelString)
+				
+			</div>
+			<div class="col-xs-2">
+				@Html.DisplayNameFor(x => Model.Results[0].FormatString)
+				
+			</div>
 
+			<div class="col-xs-1">
+				@Html.DisplayNameFor(x => Model.Results[0].Country)
+				
+			</div>
+
+			<div class="col-xs-1">
+				@Html.DisplayNameFor(x => Model.Results[0].Year)
+				
+			</div>
+		</div>
 		<div class="panel-body">
 			@foreach (var result in Model.Results)
 			{
@@ -48,26 +71,31 @@
 					<div id="album" class="row info" data-id="@result.ID">
 						@*<a href="@Url.Action(User.Identity.IsAuthenticated? MVC.Album.Edit(album.ID): MVC.Album.Details(album.ID))">*@
 						<div class="col-xs-3">
-							@Html.DisplayFor(modelItem => result.Title)
-							@Html.HiddenFor(modelItem => result.Title)
+							@Html.DisplayFor(x => result.Title)
+							@Html.HiddenFor(x => result.Title)
 						</div>
-						<div class="col-xs-3">
-							@Html.DisplayFor(modelItem => result.Type)
-							@Html.HiddenFor(modelItem => result.Type)
-						</div>
-						<div class="col-xs-3">
-							@Html.DisplayFor(modelItem => result.FormatString)
-							@Html.HiddenFor(modelItem => result.FormatString)
-						</div>
-
 						<div class="col-xs-2">
-							@Html.DisplayFor(modelItem => result.Year)
-							@Html.HiddenFor(modelItem => result.Year)
+							@Html.DisplayFor(x => result.LabelString)
+							@Html.HiddenFor(x => result.LabelString)
+						</div>
+						<div class="col-xs-2">
+							@Html.DisplayFor(x => result.FormatString)
+							@Html.HiddenFor(x => result.FormatString)
 						</div>
 
-						@Html.HiddenFor(modelItem => result.GenreString)
-						@Html.HiddenFor(modelItem => result.LabelString)
+						<div class="col-xs-1">
+							@Html.DisplayFor(x => result.Country)
+							@Html.HiddenFor(x => result.Country)
+						</div>
 
+						<div class="col-xs-1">
+							@Html.DisplayFor(x => result.Year)
+							@Html.HiddenFor(x => result.Year)
+						</div>
+
+						@Html.HiddenFor(x => result.GenreString)
+						@Html.HiddenFor(x => result.LabelString)
+						@Html.HiddenFor(x => result.ID)
 						<div class="col-xs-1">
 							<input id="" type="submit" value="Add" class="btn" />
 						</div>

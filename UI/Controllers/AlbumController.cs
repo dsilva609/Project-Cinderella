@@ -37,8 +37,8 @@ namespace UI.Controllers
 				TotalRecords = _service.GetCount()
 			};
 			//	var result = test;
-			var pages = Math.Ceiling((double) viewModel.TotalRecords/viewModel.PageSize);
-			viewModel.PageCount = (int) pages;
+			var pages = Math.Ceiling((double)viewModel.TotalRecords / viewModel.PageSize);
+			viewModel.PageCount = (int)pages;
 			return View(viewModel);
 		}
 
@@ -46,7 +46,7 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult Create()
 		{
-			var model = Session["albumResult"] ?? new Album {UserID = User.Identity.GetUserId()};
+			var model = Session["albumResult"] ?? new Album { UserID = User.Identity.GetUserId() };
 			ViewBag.Title = "Create";
 			Session["albumResult"] = null;
 
@@ -61,11 +61,12 @@ namespace UI.Controllers
 			var model = new Album
 			{
 				UserID = User.Identity.GetUserId(),
-				Artist = info[0],
-				AlbumName = info[1],
+				Artist = info[0].Trim(),
+				AlbumName = info[1].Trim(),
 				AlbumYear = result.Year,
 				RecordLabel = result.LabelString,
-				Genre = result.GenreString
+				Genre = result.GenreString,
+				DiscogsID = result.ID
 			};
 
 			ViewBag.Title = "Create";
@@ -165,6 +166,7 @@ namespace UI.Controllers
 				//model.Artist = artist;
 				//model.AlbumName = album;
 				searchModel.Results = _discogsService.Search(searchModel.Artist, searchModel.AlbumName);
+				searchModel.Results = searchModel.Results.OrderByDescending(x => x.Year).ToList();
 			}
 			ViewBag.Title = "Album Search";
 			return View(searchModel);
