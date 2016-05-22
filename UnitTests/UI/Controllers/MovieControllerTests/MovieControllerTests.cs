@@ -15,7 +15,7 @@ namespace UnitTests.UI.Controllers.MovieControllerTests
 		public void ThatIndexActionReturnsAView()
 		{
 			//--Arrange
-			_controller.Setup(mock => mock.Index(It.IsAny<string>(), It.IsAny<int>())).Returns(new ViewResult { ViewName = MVC.Movie.Views.Index });
+			_controller.Setup(mock => mock.Index(It.IsAny<string>(), It.IsAny<int>())).Returns(new ViewResult {ViewName = MVC.Movie.Views.Index});
 
 			//--Act
 			var result = _controller.Object.Index(string.Empty, 1) as ViewResult;
@@ -28,7 +28,7 @@ namespace UnitTests.UI.Controllers.MovieControllerTests
 		public void ThatDetailsActionRetunsAView()
 		{
 			//--Arrange
-			_controller.Setup(mock => mock.Details(It.IsNotNull<int>())).Returns(new ViewResult { ViewName = MVC.Movie.Views.Details });
+			_controller.Setup(mock => mock.Details(It.IsNotNull<int>())).Returns(new ViewResult {ViewName = MVC.Movie.Views.Details});
 
 			//--Act
 			var result = _controller.Object.Details(72) as ViewResult;
@@ -41,7 +41,7 @@ namespace UnitTests.UI.Controllers.MovieControllerTests
 		public void ThatCreateActionReturnsAView()
 		{
 			//--Arrange
-			_controller.Setup(mock => mock.Create()).Returns(new ViewResult { ViewName = MVC.Movie.Views.Create });
+			_controller.Setup(mock => mock.Create()).Returns(new ViewResult {ViewName = MVC.Movie.Views.Create});
 
 			//--Act
 			var result = _controller.Object.Create() as ViewResult;
@@ -55,7 +55,7 @@ namespace UnitTests.UI.Controllers.MovieControllerTests
 		{
 			//--Arrange
 			_controller.Setup(mock => mock.Create(It.IsNotNull<Movie>()))
-				.Returns(new ViewResult { ViewName = MVC.Movie.Views.Index });
+				.Returns(new ViewResult {ViewName = MVC.Movie.Views.Index});
 
 			//--Act
 			var result = _controller.Object.Create(_testModel) as ViewResult;
@@ -69,7 +69,7 @@ namespace UnitTests.UI.Controllers.MovieControllerTests
 		public void ItGoesBackToTheViewIfModelStateIsInvalid()
 		{
 			//--Arrange
-			_controller.Setup(mock => mock.Create(It.IsNotNull<Movie>())).Returns(new ViewResult { ViewName = MVC.Book.Views.Create });
+			_controller.Setup(mock => mock.Create(It.IsNotNull<Movie>())).Returns(new ViewResult {ViewName = MVC.Book.Views.Create});
 			_controller.Object.ModelState.AddModelError(string.Empty, string.Empty);
 
 			//--Act
@@ -84,7 +84,7 @@ namespace UnitTests.UI.Controllers.MovieControllerTests
 		public void ThatEditActionReturnsAView()
 		{
 			//--Arrange
-			_controller.Setup(mock => mock.Edit(It.IsNotNull<int>())).Returns(new ViewResult { ViewName = MVC.Movie.Views.Edit });
+			_controller.Setup(mock => mock.Edit(It.IsNotNull<int>())).Returns(new ViewResult {ViewName = MVC.Movie.Views.Edit});
 
 			//--Act
 			var result = _controller.Object.Edit(42) as ViewResult;
@@ -97,7 +97,7 @@ namespace UnitTests.UI.Controllers.MovieControllerTests
 		public void ThatOnEditWhenModelStateIsValidItGoesBackToIndexView()
 		{
 			//--Arrange
-			_controller.Setup(mock => mock.Edit(It.IsNotNull<Movie>())).Returns(new ViewResult { ViewName = MVC.Movie.Views.Index });
+			_controller.Setup(mock => mock.Edit(It.IsNotNull<Movie>())).Returns(new ViewResult {ViewName = MVC.Movie.Views.Index});
 
 			//--Act
 			var result = _controller.Object.Edit(_testModel) as ViewResult;
@@ -110,7 +110,7 @@ namespace UnitTests.UI.Controllers.MovieControllerTests
 		public void ThatWhenModelStateIsNotValidItRedirectsBackToEditView()
 		{
 			//--Arrange
-			_controller.Setup(mock => mock.Edit(It.IsNotNull<Movie>())).Returns(new ViewResult { ViewName = MVC.Movie.Views.Edit });
+			_controller.Setup(mock => mock.Edit(It.IsNotNull<Movie>())).Returns(new ViewResult {ViewName = MVC.Movie.Views.Edit});
 			_controller.Object.ModelState.AddModelError("", "");
 
 			//--Act
@@ -126,7 +126,7 @@ namespace UnitTests.UI.Controllers.MovieControllerTests
 		{
 			//--TODO: need to set up dependency
 			//--Arrange
-			_controller.Setup(mock => mock.Edit(It.IsNotNull<Movie>())).Returns(new ViewResult { ViewName = MVC.Movie.Views.Edit });
+			_controller.Setup(mock => mock.Edit(It.IsNotNull<Movie>())).Returns(new ViewResult {ViewName = MVC.Movie.Views.Edit});
 
 			//--Act
 			var result = _controller.Object.Edit(_testModel) as ViewResult;
@@ -140,7 +140,7 @@ namespace UnitTests.UI.Controllers.MovieControllerTests
 		public void ThatItGoesToIndexViewAfterDelete()
 		{
 			//--Arrange
-			_controller.Setup(mock => mock.Delete(It.IsNotNull<int>())).Returns(new ViewResult { ViewName = MVC.Movie.Views.Index });
+			_controller.Setup(mock => mock.Delete(It.IsNotNull<int>())).Returns(new ViewResult {ViewName = MVC.Movie.Views.Index});
 
 			//--Act
 			var result = _controller.Object.Delete(666) as ViewResult;

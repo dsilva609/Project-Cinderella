@@ -1,4 +1,5 @@
 ﻿using BusinessLogic.Models;
+using BusinessLogic.Models.DiscogsModels;
 using Moq;
 using NUnit.Framework;
 using System.Web.Mvc;
@@ -190,6 +191,32 @@ namespace UnitTests.UI.Controllers.AlbumControllerTests
 
 			//--Assert
 			Assert.AreEqual(_testModel, result.ViewData.Model);
+		}
+
+		[Test]
+		public void ThatSearchActionReturnsAView()
+		{
+			//--Arrange
+			_controller.Setup(mock => mock.Search()).Returns(new ViewResult { ViewName = MVC.Book.Views.Search });
+
+			//--Act
+			var result = _controller.Object.Search() as ViewResult;
+
+			//--Assert
+			Assert.AreEqual(MVC.Book.Views.Search, result.ViewName);
+		}
+
+		[Test]
+		public void ThatCreateFromSearchModelActionReturnsAView()
+		{
+			//--Arrange
+			_controller.Setup(mock => mock.CreateFromSearchResult(It.IsAny<DiscogsResult>())).Returns(new ViewResult { ViewName = MVC.Album.Views.Create });
+
+			//--Act
+			var result = _controller.Object.CreateFromSearchResult(It.IsAny<DiscogsResult>()) as ViewResult;
+
+			//--Assert
+			Assert.AreEqual(MVC.Album.Views.Create, result.ViewName);
 		}
 	}
 }

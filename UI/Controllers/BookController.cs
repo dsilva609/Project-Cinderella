@@ -15,6 +15,8 @@ namespace UI.Controllers
 	{
 		private readonly IBookService _service;
 		private readonly IGoogleBookService _googleBookService;
+
+		//TODO: remove this
 		private List<Volume> result;
 
 		public BookController(IBookService service, IGoogleBookService googleBookService)
@@ -64,6 +66,7 @@ namespace UI.Controllers
 		[ValidateAntiForgeryToken]
 		public virtual ActionResult Create(Book book)
 		{
+			//TODO: is this needed?
 			book.UserID = User.Identity.GetUserId();
 			if (!ModelState.IsValid) return View(book);
 			try

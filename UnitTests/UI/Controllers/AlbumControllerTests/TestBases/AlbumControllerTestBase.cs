@@ -9,12 +9,14 @@ namespace UnitTests.UI.Controllers.AlbumControllerTests.TestBases
 	{
 		protected Mock<AlbumController> _controller;
 		protected IAlbumService _service;
+		protected IDiscogsService _discogsService;
 
 		[SetUp]
 		public virtual void SetUp()
 		{
 			_service = Mock.Of<IAlbumService>();
-			_controller = new Mock<AlbumController>(_service);
+			_discogsService = Mock.Of<IDiscogsService>();
+			_controller = new Mock<AlbumController>(_service, _discogsService);
 		}
 	}
 }
