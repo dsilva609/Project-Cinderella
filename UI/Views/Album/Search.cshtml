@@ -46,7 +46,7 @@
 				using (Html.BeginForm(MVC.Album.CreateFromSearchResult(result), FormMethod.Get))
 				{
 					<div id="album" class="row info" data-id="@result.ID">
-						@*<a href="@Url.Action(User.Identity.IsAuthenticated? MVC.Album.Edit(record.ID): MVC.Album.Details(record.ID))">*@
+						@*<a href="@Url.Action(User.Identity.IsAuthenticated? MVC.Album.Edit(album.ID): MVC.Album.Details(album.ID))">*@
 						<div class="col-xs-3">
 							@Html.DisplayFor(modelItem => result.Title)
 							@Html.HiddenFor(modelItem => result.Title)

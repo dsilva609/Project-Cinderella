@@ -1,4 +1,4 @@
-/*!
+﻿/*!
 * jQuery Mobile 1.4.5
 * Git HEAD hash: 68e55e78b292634d3991c795f06f5e37a512decc <> Date: Fri Oct 31 2014 17:33:30 UTC
 * http://jquerymobile.com
@@ -2892,7 +2892,7 @@ if ( !$.support.boxShadow ) {
 			var newActiveIndex = this.closest( opts.url ), a = this.activeIndex;
 
 			// save new page index, null check to prevent falsey 0 result
-			// record the previous index for reference
+			// album the previous index for reference
 			if ( newActiveIndex !== undefined ) {
 				this.activeIndex = newActiveIndex;
 				this.previousIndex = a;
@@ -3044,7 +3044,7 @@ if ( !$.support.boxShadow ) {
 				}
 			}
 
-			// record the history entry so that the information can be included
+			// album the history entry so that the information can be included
 			// in hashchange event driven navigate events in a similar fashion to
 			// the state that's provided by popstate
 			this.history.add( state.url, state );
@@ -3109,7 +3109,7 @@ if ( !$.support.boxShadow ) {
 				// also grab the resulting state object for storage
 				state = this.squash( hash );
 
-				// record the new hash as an additional history entry
+				// album the new hash as an additional history entry
 				// to match the browser's treatment of hash assignment
 				this.history.add( state.url, state );
 
@@ -3123,7 +3123,7 @@ if ( !$.support.boxShadow ) {
 			}
 
 			// If all else fails this is a popstate that comes from the back or forward buttons
-			// make sure to set the state of our history stack properly, and record the directionality
+			// make sure to set the state of our history stack properly, and album the directionality
 			this.history.direct({
 				url: (event.originalEvent.state || {}).url || hash,
 
@@ -3177,7 +3177,7 @@ if ( !$.support.boxShadow ) {
 				},
 
 				// When we don't find a hash in our history clearly we're aiming to go there
-				// record the entry as new for future traversal
+				// album the entry as new for future traversal
 				//
 				// NOTE it's not entirely clear that this is the right thing to do given that we
 				//      can't know the users intention. It might be better to explicitly _not_
@@ -11714,7 +11714,7 @@ $.widget( "mobile.selectmenu", $.mobile.selectmenu, {
 				needPlaceholder = false;
 				isPlaceholderItem = true;
 
-				// If we have identified a placeholder, record the fact that it was
+				// If we have identified a placeholder, album the fact that it was
 				// us who have added the placeholder to the option and mark it
 				// retroactively in the select as well
 				if ( null === option.getAttribute( dataPlaceholderAttr ) ) {
@@ -13815,7 +13815,7 @@ $.widget( "mobile.table", $.mobile.table, {
 
 					// The column header associated with /this/ checkbox is still present in the
 					// post-refresh table and the checkbox is not checked, so the column associated
-					// with this column header is currently hidden. Let's record that.
+					// with this column header is currently hidden. Let's album that.
 					hiddenColumns.push( index );
 				}
 			});
@@ -15390,7 +15390,7 @@ $.widget( "ui.tabs", {
 					fromHashChange: true
 				});
 			} else {
-				// trigger hashchange or navigate to squash and record the correct
+				// trigger hashchange or navigate to squash and album the correct
 				// history entry for an initial hash path
 				if ( !$.event.special.navigate.isPushStateEnabled() ) {
 					$window.trigger( "hashchange", [true] );

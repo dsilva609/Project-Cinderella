@@ -14,7 +14,7 @@ namespace UI.Controllers
 	{
 		private readonly IAlbumService _service;
 		private readonly IDiscogsService _discogsService;
-		private const int NUM_RECORDS_TO_GET = 25;
+		private const int NUM_ALBUMS_TO_GET = 25;
 		//private string test;
 		//	private List<DiscogsResult> results;
 
@@ -29,11 +29,11 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult Index(string query, int? pageNum = 1)
 		{
-			var viewModel = new RecordViewModel
+			var viewModel = new AlbumViewModel
 			{
 				ViewTitle = "Index",
-				Records = _service.GetAll(User.Identity.GetUserId(), query, NUM_RECORDS_TO_GET, pageNum.GetValueOrDefault()),
-				PageSize = NUM_RECORDS_TO_GET,
+				Albums = _service.GetAll(User.Identity.GetUserId(), query, NUM_ALBUMS_TO_GET, pageNum.GetValueOrDefault()),
+				PageSize = NUM_ALBUMS_TO_GET,
 				TotalRecords = _service.GetCount()
 			};
 			//	var result = test;
@@ -81,7 +81,7 @@ namespace UI.Controllers
 		[ValidateAntiForgeryToken]
 		public virtual ActionResult Create(Album model)
 		{
-//TODO: need to do user checks
+			//TODO: need to do user checks
 			model.UserID = User.Identity.GetUserId();
 			if (ModelState.IsValid)
 			{
@@ -117,8 +117,8 @@ namespace UI.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				var existingRecord = _service.GetAll(User.Identity.GetUserId()).Where(x => x.ID != model.ID && x.Artist == model.Artist && x.AlbumName == model.AlbumName && x.MediaType == model.MediaType).ToList();
-				if (existingRecord.Count > 0)
+				var existingAlbums = _service.GetAll(User.Identity.GetUserId()).Where(x => x.ID != model.ID && x.Artist == model.Artist && x.AlbumName == model.AlbumName && x.MediaType == model.MediaType).ToList();
+				if (existingAlbums.Count > 0)
 				{
 					ShowStatusMessage(MessageTypeEnum.error, $"An album of Artist: {model.Artist}, Album: {model.AlbumName}, Media Type: {model.MediaType} already exists.", "Duplicate Record");
 					return View(model);

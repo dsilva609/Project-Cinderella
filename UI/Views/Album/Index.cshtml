@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
-@model UI.Models.RecordViewModel
+@model UI.Models.AlbumViewModel
 @{
 	ViewBag.Title = @Model.ViewTitle;
 }
@@ -35,25 +35,25 @@
 <div class="table table-responsive" style="padding-top: 3em;">
 	<div class="bold row">
 		<div class="col-xs-4 col-sm-3">
-			@Html.DisplayNameFor(model => model.Records[0].Artist)
+			@Html.DisplayNameFor(model => model.Albums[0].Artist)
 		</div>
 		<div class="col-xs-4 col-sm-3">
-			@Html.DisplayNameFor(model => model.Records[0].AlbumName)
+			@Html.DisplayNameFor(model => model.Albums[0].AlbumName)
 		</div>
 		<div class="col-xs-4 col-sm-1">
-			@Html.DisplayNameFor(model => model.Records[0].MediaType)
+			@Html.DisplayNameFor(model => model.Albums[0].MediaType)
 		</div>
 		<div class="col-sm-1 hidden-xs">
-			@Html.DisplayNameFor(model => model.Records[0].IsNew)
+			@Html.DisplayNameFor(model => model.Albums[0].IsNew)
 		</div>
 		<div class="col-sm-1 hidden-xs">
-			@Html.DisplayNameFor(model => model.Records[0].IsPhysical)
+			@Html.DisplayNameFor(model => model.Albums[0].IsPhysical)
 		</div>
 		<div class="col-md-1 hidden-xs hidden-sm">
-			@Html.DisplayNameFor(model => model.Records[0].DatePurchased)
+			@Html.DisplayNameFor(model => model.Albums[0].DatePurchased)
 		</div>
 	</div>
-	@foreach (var record in Model.Records)
+	@foreach (var record in Model.Albums)
 	{
 		<div id="album" class="row info" data-id="@record.ID">
 			<a href="@Url.Action(User.Identity.IsAuthenticated? MVC.Album.Edit(record.ID): MVC.Album.Details(record.ID))">

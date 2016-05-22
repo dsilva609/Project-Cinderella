@@ -12,7 +12,7 @@ namespace UnitTests.UI.Controllers.AlbumControllerTests
 	public class RecordControllerTests : RecordControllerTestBase
 	{
 		private Album _testModel = new Album();
-		private RecordViewModel _expectedIndex = new RecordViewModel();
+		private AlbumViewModel _expectedIndex = new AlbumViewModel();
 
 		[Test]
 		public void ThatTheIndexActionReturnsAView()

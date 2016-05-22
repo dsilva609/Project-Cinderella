@@ -27,27 +27,27 @@ namespace BusinessLogic.Services
 			_deleteEntityComponent = new DeleteEntityComponent();
 		}
 
-		public void Add(Album record)
+		public void Add(Album album)
 		{
-			var existingRecord = _repository.GetAll().Where(x => x.UserID == record.UserID && x.AlbumName == record.AlbumName && x.Artist == record.Artist && x.MediaType == record.MediaType).ToList();
-			if (existingRecord.Count > 0)
-				throw new ApplicationException($"An existing record of {record.Artist}, {record.AlbumName}, {record.MediaType} already exists.");
-			_addEntityComponent.Execute(_repository, record);
+			var existingAlbum = _repository.GetAll().Where(x => x.UserID == album.UserID && x.AlbumName == album.AlbumName && x.Artist == album.Artist && x.MediaType == album.MediaType).ToList();
+			if (existingAlbum.Count > 0)
+				throw new ApplicationException($"An existing album of {album.Artist}, {album.AlbumName}, {album.MediaType} already exists.");
+			_addEntityComponent.Execute(_repository, album);
 		}
 
 		//TODO: probably should split this up into separate methods
 		public List<Album> GetAll(string userID = "", string query = "", int numToTake = 0, int? pageNum = 1 /*bool sortAscending, string sortPreference*/)
 		{
-			var recordList = _getEntityListComponent.Execute(_repository).OrderBy(x => x.Artist).ThenBy(y => y.AlbumName).ToList();
+			var albumList = _getEntityListComponent.Execute(_repository).OrderBy(x => x.Artist).ThenBy(y => y.AlbumName).ToList();
 
 			if (!string.IsNullOrWhiteSpace(userID))
-				recordList = recordList.Where(x => x.UserID == userID).ToList();
+				albumList = albumList.Where(x => x.UserID == userID).ToList();
 
 			if (!string.IsNullOrWhiteSpace(query))
-				recordList = recordList.Where(x => x.Artist.Equals(query, StringComparison.InvariantCultureIgnoreCase) || x.AlbumName.Equals(query, StringComparison.CurrentCultureIgnoreCase)).ToList();
+				albumList = albumList.Where(x => x.Artist.Equals(query, StringComparison.InvariantCultureIgnoreCase) || x.AlbumName.Equals(query, StringComparison.CurrentCultureIgnoreCase)).ToList();
 
 			if (numToTake > 0)
-				recordList = recordList.Skip(numToTake * (pageNum.GetValueOrDefault() - 1)).Take(numToTake).ToList();
+				albumList = albumList.Skip(numToTake * (pageNum.GetValueOrDefault() - 1)).Take(numToTake).ToList();
 			//if (sortPreference == "Name")
 			//{
 			//    if (sortAscending)
@@ -63,14 +63,14 @@ namespace BusinessLogic.Services
 			//        cardList = cardList.OrderByDescending(x => x.Rank).ToList();
 			//}
 
-			return recordList;
+			return albumList;
 		}
 
 		public Album GetByID(int id, string userID) =>
 			_getEntityByIDComponent.Execute(_repository, id, userID);
 
-		public void Edit(int id, Album record) =>
-			_editEntityComponent.Execute(_repository, record);
+		public void Edit(int id, Album album) =>
+			_editEntityComponent.Execute(_repository, album);
 
 		public void Delete(int id, string userID) =>
 			_deleteEntityComponent.Execute(_repository, id, userID);
