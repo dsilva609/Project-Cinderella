@@ -6,7 +6,7 @@ namespace BusinessLogic.DAL
 {
 	public class ProjectCinderellaContext : DbContext
 	{
-		public DbSet<RecordModel> Records { get; set; }
+		public DbSet<Album> Albums { get; set; }
 		public DbSet<Book> Books { get; set; }
 		public DbSet<Movie> Movies { get; set; }
 		public DbSet<Game> Games { get; set; }

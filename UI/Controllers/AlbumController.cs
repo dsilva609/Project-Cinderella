@@ -37,8 +37,8 @@ namespace UI.Controllers
 				TotalRecords = _service.GetCount()
 			};
 			//	var result = test;
-			var pages = Math.Ceiling((double)viewModel.TotalRecords / viewModel.PageSize);
-			viewModel.PageCount = (int)pages;
+			var pages = Math.Ceiling((double) viewModel.TotalRecords/viewModel.PageSize);
+			viewModel.PageCount = (int) pages;
 			return View(viewModel);
 		}
 
@@ -46,7 +46,7 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult Create()
 		{
-			var model = Session["albumResult"] ?? new RecordModel { UserID = User.Identity.GetUserId() };
+			var model = Session["albumResult"] ?? new Album {UserID = User.Identity.GetUserId()};
 			ViewBag.Title = "Create";
 			Session["albumResult"] = null;
 
@@ -58,7 +58,7 @@ namespace UI.Controllers
 		public virtual ActionResult CreateFromSearchResult(DiscogsResult result)
 		{
 			var info = result.Title.Split('-').ToList();
-			var model = new RecordModel
+			var model = new Album
 			{
 				UserID = User.Identity.GetUserId(),
 				Artist = info[0],
@@ -79,8 +79,9 @@ namespace UI.Controllers
 		[Authorize]
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public virtual ActionResult Create(RecordModel model)
-		{//TODO: need to do user checks
+		public virtual ActionResult Create(Album model)
+		{
+//TODO: need to do user checks
 			model.UserID = User.Identity.GetUserId();
 			if (ModelState.IsValid)
 			{
@@ -112,7 +113,7 @@ namespace UI.Controllers
 
 		[Authorize]
 		[HttpPost]
-		public virtual ActionResult Edit(RecordModel model)
+		public virtual ActionResult Edit(Album model)
 		{
 			if (ModelState.IsValid)
 			{

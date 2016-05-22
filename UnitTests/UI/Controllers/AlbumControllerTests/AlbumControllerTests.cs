@@ -11,7 +11,7 @@ namespace UnitTests.UI.Controllers.AlbumControllerTests
 	[TestFixture]
 	public class RecordControllerTests : RecordControllerTestBase
 	{
-		private RecordModel _testModel = new RecordModel();
+		private Album _testModel = new Album();
 		private RecordViewModel _expectedIndex = new RecordViewModel();
 
 		[Test]
@@ -71,7 +71,7 @@ namespace UnitTests.UI.Controllers.AlbumControllerTests
 		public void ItRedirectsToIndexActionWhenModelIsValid()
 		{
 			//--Arrange
-			_controller.Setup(mock => mock.Create(It.IsNotNull<RecordModel>()))
+			_controller.Setup(mock => mock.Create(It.IsNotNull<Album>()))
 				.Returns(new ViewResult { ViewName = MVC.Album.Views.Index });
 
 			//--Act
@@ -86,7 +86,7 @@ namespace UnitTests.UI.Controllers.AlbumControllerTests
 		public void ItGoesBackToTheViewIfModelStateIsInvalid()
 		{
 			//--Arrange
-			_controller.Setup(mock => mock.Create(It.IsNotNull<RecordModel>())).Returns(new ViewResult { ViewName = MVC.Album.Views.Create });
+			_controller.Setup(mock => mock.Create(It.IsNotNull<Album>())).Returns(new ViewResult { ViewName = MVC.Album.Views.Create });
 			_controller.Object.ModelState.AddModelError(string.Empty, string.Empty);
 
 			//--Act
@@ -128,7 +128,7 @@ namespace UnitTests.UI.Controllers.AlbumControllerTests
 		public void ThatOnEditWhenModelStateIsValidItGoesBackToIndexView()
 		{
 			//--Arrange
-			_controller.Setup(mock => mock.Edit(It.IsNotNull<RecordModel>())).Returns(new ViewResult { ViewName = MVC.Album.Views.Index });
+			_controller.Setup(mock => mock.Edit(It.IsNotNull<Album>())).Returns(new ViewResult { ViewName = MVC.Album.Views.Index });
 
 			//--Act
 			var result = _controller.Object.Edit(_testModel) as ViewResult;
@@ -141,7 +141,7 @@ namespace UnitTests.UI.Controllers.AlbumControllerTests
 		public void ThatWhenModelStateIsNotValidItRedirectsBackToEditView()
 		{
 			//--Arrange
-			_controller.Setup(mock => mock.Edit(It.IsNotNull<RecordModel>())).Returns(new ViewResult { ViewName = MVC.Album.Views.Edit });
+			_controller.Setup(mock => mock.Edit(It.IsNotNull<Album>())).Returns(new ViewResult { ViewName = MVC.Album.Views.Edit });
 			_controller.Object.ModelState.AddModelError("", "");
 
 			//--Act
@@ -157,7 +157,7 @@ namespace UnitTests.UI.Controllers.AlbumControllerTests
 		{
 			//--TODO: need to set up dependency
 			//--Arrange
-			_controller.Setup(mock => mock.Edit(It.IsNotNull<RecordModel>())).Returns(new ViewResult() { ViewName = MVC.Album.Views.Edit });
+			_controller.Setup(mock => mock.Edit(It.IsNotNull<Album>())).Returns(new ViewResult() { ViewName = MVC.Album.Views.Edit });
 
 			//--Act
 			var result = _controller.Object.Edit(_testModel) as ViewResult;

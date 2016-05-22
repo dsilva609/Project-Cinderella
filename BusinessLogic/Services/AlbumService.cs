@@ -10,7 +10,7 @@ namespace BusinessLogic.Services
 {
 	public class AlbumService : IAlbumService
 	{
-		private readonly IRepository<RecordModel> _repository;
+		private readonly IRepository<Album> _repository;
 		private readonly GetEntityListComponent _getEntityListComponent;
 		private readonly AddEntityComponent _addEntityComponent;
 		private readonly GetEntityByIDComponent _getEntityByIDComponent;
@@ -19,7 +19,7 @@ namespace BusinessLogic.Services
 
 		public AlbumService(IUnitOfWork uow)
 		{
-			_repository = uow.GetRepository<RecordModel>();
+			_repository = uow.GetRepository<Album>();
 			_getEntityListComponent = new GetEntityListComponent();
 			_addEntityComponent = new AddEntityComponent();
 			_getEntityByIDComponent = new GetEntityByIDComponent();
@@ -27,7 +27,7 @@ namespace BusinessLogic.Services
 			_deleteEntityComponent = new DeleteEntityComponent();
 		}
 
-		public void Add(RecordModel record)
+		public void Add(Album record)
 		{
 			var existingRecord = _repository.GetAll().Where(x => x.UserID == record.UserID && x.AlbumName == record.AlbumName && x.Artist == record.Artist && x.MediaType == record.MediaType).ToList();
 			if (existingRecord.Count > 0)
@@ -36,7 +36,7 @@ namespace BusinessLogic.Services
 		}
 
 		//TODO: probably should split this up into separate methods
-		public List<RecordModel> GetAll(string userID = "", string query = "", int numToTake = 0, int? pageNum = 1 /*bool sortAscending, string sortPreference*/)
+		public List<Album> GetAll(string userID = "", string query = "", int numToTake = 0, int? pageNum = 1 /*bool sortAscending, string sortPreference*/)
 		{
 			var recordList = _getEntityListComponent.Execute(_repository).OrderBy(x => x.Artist).ThenBy(y => y.AlbumName).ToList();
 
@@ -66,10 +66,10 @@ namespace BusinessLogic.Services
 			return recordList;
 		}
 
-		public RecordModel GetByID(int id, string userID) =>
+		public Album GetByID(int id, string userID) =>
 			_getEntityByIDComponent.Execute(_repository, id, userID);
 
-		public void Edit(int id, RecordModel record) =>
+		public void Edit(int id, Album record) =>
 			_editEntityComponent.Execute(_repository, record);
 
 		public void Delete(int id, string userID) =>

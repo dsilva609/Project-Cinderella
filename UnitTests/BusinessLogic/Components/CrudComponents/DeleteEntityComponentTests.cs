@@ -7,14 +7,14 @@ namespace UnitTests.BusinessLogic.Components.CrudComponents
     [TestFixture]
     public class DeleteEntityComponentTests : DeleteEntityComponentTestBase
     {
-        private RecordModel _testModel;
+        private Album _testModel;
 
         [SetUp]
         public override void Setup()
         {
             base.Setup();
 
-            _testModel = new RecordModel
+            _testModel = new Album
             {
                 ID = 666,
                 AlbumName = "Toxicity",

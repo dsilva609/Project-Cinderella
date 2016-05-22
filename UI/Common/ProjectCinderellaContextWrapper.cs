@@ -5,6 +5,7 @@ using System.Data.Entity;
 
 namespace UI.Common
 {
+	//TODO: is this needed?
 	public class ProjectCinderellaContextWrapper : IDisposable
 	{
 		public ProjectCinderellaContext Database { private get; set; }
@@ -19,7 +20,7 @@ namespace UI.Common
 			return Database.SaveChanges();
 		}
 
-		public IDbSet<RecordModel> Records() => Database.Records;
+		public IDbSet<Album> Records() => Database.Albums;
 
 		public IDbSet<Book> Books() => Database.Books;
 

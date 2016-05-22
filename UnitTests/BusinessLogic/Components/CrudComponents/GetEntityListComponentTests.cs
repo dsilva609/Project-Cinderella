@@ -12,23 +12,23 @@ namespace UnitTests.BusinessLogic.Components.CrudComponents
         public void ThatRepositoryReturnsAllRecords()
         {
             //--Arrange
-            _recordRepositoryMock.Setup(m => m.GetAll()).Returns(new List<RecordModel>
+            _recordRepositoryMock.Setup(m => m.GetAll()).Returns(new List<Album>
             {
-                new RecordModel
+                new Album
                 {
                     ID = 1981,
                     AlbumName = "Kill 'em All!",
                     Artist = "Metallica"
                 },
 
-                new RecordModel
+                new Album
                 {
                     ID = 1984,
                     AlbumName = "Ride The Lightning",
                     Artist = "Metallica"
                 },
 
-                new RecordModel
+                new Album
                 {
                     ID = 1986,
                     AlbumName = "Master of Puppets",

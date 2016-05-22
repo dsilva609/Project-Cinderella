@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BusinessLogic.Models
 {
-	public class RecordModel
+	public class Album
 	{
 		public int ID { get; set; }
 

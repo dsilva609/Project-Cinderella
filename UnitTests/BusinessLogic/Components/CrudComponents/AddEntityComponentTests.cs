@@ -8,13 +8,13 @@ namespace UnitTests.BusinessLogic.Components.CrudComponents
     [TestFixture]
     public class AddEntityComponentTests : AddEntityComponentTestBase
     {
-        private RecordModel _record;
+        private Album _record;
 
         [Test]
         public void ThatANewRecordIsAddedToTheRepository()
         {
             //--Arrange
-            _record = new RecordModel { Artist = "Smitty Werbenjagermanjensen" };
+            _record = new Album { Artist = "Smitty Werbenjagermanjensen" };
             _testRepositoryMock.Setup(m => m.Add(_record));
             _testRepo = _testRepositoryMock.Object;
 
@@ -22,7 +22,7 @@ namespace UnitTests.BusinessLogic.Components.CrudComponents
             _addEntityComponent.Execute(_testRepo, _record);
 
             //--Assert
-            _testRepositoryMock.Verify(m => m.Add(It.Is<RecordModel>(s => s == _record)));
+            _testRepositoryMock.Verify(m => m.Add(It.Is<Album>(s => s == _record)));
         }
     }
 }

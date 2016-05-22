@@ -9,14 +9,14 @@ namespace UnitTests.BusinessLogic.Components.CrudComponents.TestBases
     public class GetEntityListComponentTestBase
     {
         protected GetEntityListComponent _getEntityListComponent;
-        protected IRepository<RecordModel> _recordRepo;
-        protected Mock<IRepository<RecordModel>> _recordRepositoryMock;
+        protected IRepository<Album> _recordRepo;
+        protected Mock<IRepository<Album>> _recordRepositoryMock;
 
         [SetUp]
         public virtual void Setup()
         {
             _getEntityListComponent = new GetEntityListComponent();
-            _recordRepositoryMock = new Mock<IRepository<RecordModel>>();
+            _recordRepositoryMock = new Mock<IRepository<Album>>();
         }
     }
 }

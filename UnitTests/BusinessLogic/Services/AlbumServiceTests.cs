@@ -10,40 +10,40 @@ namespace UnitTests.BusinessLogic.Services
 	[TestFixture]
 	public class AlbumServiceTests : AlbumServiceTestBase
 	{
-		private RecordModel _testModel1;
-		private RecordModel _testModel2;
+		private Album _testModel1;
+		private Album _testModel2;
 
-		private List<RecordModel> _recordModels;
+		private List<Album> _recordModels;
 
 		[SetUp]
 		protected override void SetUp()
 		{
 			base.SetUp();
 
-			_testModel1 = new RecordModel
+			_testModel1 = new Album
 			{
 				ID = 1984,
 				Artist = "Dio",
 				AlbumName = "The Last In Line"
 			};
-			_testModel2 = new RecordModel
+			_testModel2 = new Album
 			{
 				ID = 1983,
 				Artist = "Dio",
 				AlbumName = "Holy Diver"
 			};
 
-			_recordModels = new List<RecordModel>
+			_recordModels = new List<Album>
 			{
 				_testModel1,
 				_testModel2,
-				new RecordModel
+				new Album
 				{
 					ID = 1986,
 					Artist = "Metallica",
 					AlbumName = "Master Of Puppets"
 				},
-				new RecordModel
+				new Album
 				{
 					ID = 2004,
 					Artist = "Avril Lavigne",
@@ -56,20 +56,20 @@ namespace UnitTests.BusinessLogic.Services
 		public void ItAddsRecords()
 		{
 			//--Arrange
-			_repo.Setup(mock => mock.GetAll()).Returns(new List<RecordModel>());
+			_repo.Setup(mock => mock.GetAll()).Returns(new List<Album>());
 
 			//--Act
 			_service.Object.Add(_testModel1);
 
 			//--Assert
-			_repo.Verify(mock => mock.Add(It.Is<RecordModel>(x => x.Equals(_testModel1))), Times.Once);
+			_repo.Verify(mock => mock.Add(It.Is<Album>(x => x.Equals(_testModel1))), Times.Once);
 		}
 
 		[Test]
 		public void ItThrowsAnExceptionWhenTryingToAddADuplicateRecord()
 		{
 			//--Arrange
-			_repo.Setup(mock => mock.GetAll()).Returns(new List<RecordModel>
+			_repo.Setup(mock => mock.GetAll()).Returns(new List<Album>
 			{
 				_testModel1
 			});
@@ -99,7 +99,7 @@ namespace UnitTests.BusinessLogic.Services
 			_service.Object.Edit(_testModel2.ID, _testModel2);
 
 			//--Assert
-			_repo.Verify(mock => mock.Edit(It.Is<RecordModel>(x => x.Equals(_testModel2))));
+			_repo.Verify(mock => mock.Edit(It.Is<Album>(x => x.Equals(_testModel2))));
 		}
 
 		[Test]

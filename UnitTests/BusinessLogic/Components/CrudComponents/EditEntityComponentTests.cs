@@ -8,14 +8,14 @@ namespace UnitTests.BusinessLogic.Components.CrudComponents
     [TestFixture]
     public class EditEntityComponentTests : EditEntityComponentTestBase
     {
-        private RecordModel _record;
+        private Album _record;
 
         [SetUp]
         public override void Setup()
         {
             base.Setup();
 
-            _record = new RecordModel
+            _record = new Album
             {
                 ID = 666,
                 AlbumName = "Hypnotize",
@@ -35,7 +35,7 @@ namespace UnitTests.BusinessLogic.Components.CrudComponents
             _editEntityComponent.Execute(_recordRepo, _record);
 
             //--Assert
-            _recordRepositoryMock.Verify(m => m.Edit(It.Is<RecordModel>(c => c.AlbumName == "Mezmerize")));
+            _recordRepositoryMock.Verify(m => m.Edit(It.Is<Album>(c => c.AlbumName == "Mezmerize")));
         }
     }
 }

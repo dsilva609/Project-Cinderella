@@ -8,8 +8,8 @@ namespace UI
 	{
 		public static void RegisterMappings()
 		{
-			Mapper.CreateMap<RecordViewModel, RecordModel>();
-			Mapper.CreateMap<RecordModel, RecordViewModel>();
+			Mapper.CreateMap<RecordViewModel, Album>();
+			Mapper.CreateMap<Album, RecordViewModel>();
 		}
 	}
 }

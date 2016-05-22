@@ -186,13 +186,17 @@
     <Compile Include="Migrations\201605140228122_Added Game Model.Designer.cs">
       <DependentUpon>201605140228122_Added Game Model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605220126098_Renamed RecordModel To Album.cs" />
+    <Compile Include="Migrations\201605220126098_Renamed RecordModel To Album.Designer.cs">
+      <DependentUpon>201605220126098_Renamed RecordModel To Album.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseItem.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\DiscogsModels\DiscogsResult.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\Movie.cs" />
-    <Compile Include="Models\RecordModel.cs" />
+    <Compile Include="Models\Album.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\IUnitOfWork.cs" />
@@ -269,6 +273,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605140228122_Added Game Model.resx">
       <DependentUpon>201605140228122_Added Game Model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605220126098_Renamed RecordModel To Album.resx">
+      <DependentUpon>201605220126098_Renamed RecordModel To Album.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
