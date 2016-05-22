@@ -1,5 +1,6 @@
 ﻿using BusinessLogic.Enums;
 using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace BusinessLogic.Models
@@ -47,7 +48,11 @@ namespace BusinessLogic.Models
 		[Display(Name = "New?")]
 		public bool IsNew { get; set; }
 
-		public string ISBN { get; set; }
+		[DisplayName("ISBN 10")]
+		public string ISBN10 { get; set; }
+
+		[DisplayName("ISBN 13")]
+		public string ISBN13 { get; set; }
 
 		[Display(Name = "Reissue?")]
 		public bool IsReissue { get; set; }

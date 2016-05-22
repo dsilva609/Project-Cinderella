@@ -42,37 +42,56 @@
 		</div>
 
 		<div class="panel-body">
-			@foreach (var book in Model.Volumes)
-				{
-					using (Html.BeginForm(MVC.Book.CreateFromSearchModel(book), FormMethod.Get))
-					{
-					<div id="book" class="row info" data-id="@book.ID">
-						@*<a href="@Url.Action(User.Identity.IsAuthenticated? MVC.Album.Edit(album.ID): MVC.Album.Details(album.ID))">*@
-						<div class="col-xs-3">
-							@Html.DisplayFor(modelItem => book.Author)
-							@Html.HiddenFor(modelItem => book.Author)
-						</div>
-						<div class="col-xs-3">
-							@Html.DisplayFor(modelItem => book.Title)
-							@Html.HiddenFor(modelItem => book.Title)
-						</div>
-						<div class="col-xs-3">
-							@Html.DisplayFor(modelItem => book.Publisher)
-							@Html.HiddenFor(modelItem => book.Publisher)
-						</div>
+			<div class="row">
+				<div class="col-xs-3">
+					@Html.DisplayNameFor(x => Model.Volumes[0].Author)
+				</div>
+				<div class="col-xs-3">
+					@Html.DisplayNameFor(x => Model.Volumes[0].Title)
+				</div>
+				<div class="col-xs-3">
+					@Html.DisplayNameFor(x => Model.Volumes[0].Publisher)
+				</div>
 
-						<div class="col-xs-2">
-							@Html.DisplayFor(modelItem => book.YearPublished)
-							@Html.HiddenFor(modelItem => book.YearPublished)
-						</div>
-						@Html.HiddenFor(x => book.UserID)
-						<div class="col-xs-1">
-							<input id="" type="submit" value="Add" class="btn" />
-						</div>
-						@*	</a>*@
-					</div>
-					}
-				}
+				<div class="col-xs-2">
+					@Html.DisplayNameFor(x => Model.Volumes[0].YearPublished)
+				</div>
+			</div>
 		</div>
+		@foreach (var book in Model.Volumes)
+		{
+			using (Html.BeginForm(MVC.Book.CreateFromSearchModel(book), FormMethod.Get))
+			{
+				<div id="book" class="row info" data-id="@book.ID">
+					@*<a href="@Url.Action(User.Identity.IsAuthenticated? MVC.Album.Edit(album.ID): MVC.Album.Details(album.ID))">*@
+					<div class="col-xs-3">
+						@Html.DisplayFor(x => book.Author)
+						@Html.HiddenFor(x => book.Author)
+					</div>
+					<div class="col-xs-3">
+						@Html.DisplayFor(x => book.Title)
+						@Html.HiddenFor(x => book.Title)
+					</div>
+					<div class="col-xs-3">
+						@Html.DisplayFor(x => book.Publisher)
+						@Html.HiddenFor(x => book.Publisher)
+					</div>
+
+					<div class="col-xs-2">
+						@Html.DisplayFor(x => book.YearPublished)
+						@Html.HiddenFor(x => book.YearPublished)
+					</div>
+					@Html.HiddenFor(x => book.UserID)
+					@Html.HiddenFor(x => book.Genre)
+					@Html.HiddenFor(x => book.ISBN10)
+					@Html.HiddenFor(x => book.ISBN13)
+					@Html.HiddenFor(x => book.Language)
+					<div class="col-xs-1">
+						<input id="" type="submit" value="Add" class="btn" />
+					</div>
+					@*	</a>*@
+				</div>
+			}
+		}
 	</div>
 }

@@ -144,6 +144,7 @@ namespace UI.Controllers
 				searchModel.Volumes = new List<Book>();
 
 				if (result?.Count > 0)
+				{
 					foreach (var volume in result)
 					{
 						searchModel.Volumes.Add(new Book
@@ -153,9 +154,14 @@ namespace UI.Controllers
 							Title = volume.VolumeInfo.Title,
 							Author = string.Join(", ", volume.VolumeInfo.Authors),
 							YearPublished = string.IsNullOrWhiteSpace(volume.VolumeInfo.PublishedDate) ? 0 : Convert.ToInt32(volume.VolumeInfo.PublishedDate.Substring(0, 4)),
-							Publisher = volume.VolumeInfo.Publisher
+							Publisher = volume.VolumeInfo.Publisher,
+							Genre = string.Join(", ", volume.VolumeInfo.Categories),
+							ISBN10 = volume.VolumeInfo.IndustryIdentifiers.SingleOrDefault(x => x.Type == "ISBN_10")?.Identifier,
+							ISBN13 = volume.VolumeInfo.IndustryIdentifiers.SingleOrDefault(x => x.Type == "ISBN_13")?.Identifier,
+							Language = volume.VolumeInfo.Language
 						});
 					}
+				}
 			}
 			ViewBag.Title = "Book Search";
 			return View(searchModel);
