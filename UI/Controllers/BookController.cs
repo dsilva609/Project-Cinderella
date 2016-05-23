@@ -131,8 +131,8 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult Search(GoogleBooksSearchModel searchModel)
 		{
-			if (searchModel == null)
-				searchModel = new GoogleBooksSearchModel();
+			//if (searchModel == null)
+			//	searchModel = new GoogleBooksSearchModel();
 			if (!string.IsNullOrWhiteSpace(searchModel.Author) && !string.IsNullOrWhiteSpace(searchModel.Title))
 			{
 				//model.Artist = artist;
@@ -153,7 +153,10 @@ namespace UI.Controllers
 							//ID = Convert.ToInt32(x.VolumeInfo.IndustryIdentifiers.First().Identifier),
 							Title = volume.VolumeInfo.Title,
 							Author = string.Join(", ", volume.VolumeInfo.Authors),
-							YearPublished = string.IsNullOrWhiteSpace(volume.VolumeInfo.PublishedDate) ? 0 : Convert.ToInt32(volume.VolumeInfo.PublishedDate.Substring(0, 4)),
+							YearPublished =
+								string.IsNullOrWhiteSpace(volume.VolumeInfo.PublishedDate)
+									? 0
+									: Convert.ToInt32(volume.VolumeInfo.PublishedDate.Substring(0, 4)),
 							Publisher = volume.VolumeInfo.Publisher,
 							Genre = string.Join(", ", volume.VolumeInfo.Categories),
 							ISBN10 = volume.VolumeInfo.IndustryIdentifiers.SingleOrDefault(x => x.Type == "ISBN_10")?.Identifier,
@@ -163,6 +166,7 @@ namespace UI.Controllers
 					}
 				}
 			}
+
 			ViewBag.Title = "Book Search";
 			return View(searchModel);
 		}

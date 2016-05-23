@@ -159,8 +159,6 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult Search(DiscogsSearchModel searchModel)
 		{
-			if (searchModel == null)
-				searchModel = new DiscogsSearchModel();
 			if (!string.IsNullOrWhiteSpace(searchModel.Artist) && !string.IsNullOrWhiteSpace(searchModel.AlbumName))
 			{
 				//model.Artist = artist;
