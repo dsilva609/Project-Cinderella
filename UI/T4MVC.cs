@@ -88,6 +88,22 @@ namespace Links
         public static readonly string bootstrap_datepicker_min_js = Url("bootstrap-datepicker.min.js");
         public static readonly string bootstrap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap.min.js") ? Url("bootstrap.min.js") : Url("bootstrap.js");
         public static readonly string bootstrap_min_js = Url("bootstrap.min.js");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class Hydrogen {
+            private const string URLPATH = "~/Scripts/Hydrogen";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string bootstrap_min_js = Url("bootstrap.min.js");
+            public static readonly string jquery_easing_1_3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.easing.1.3.min.js") ? Url("jquery.easing.1.3.min.js") : Url("jquery.easing.1.3.js");
+            public static readonly string jquery_magnific_popup_min_js = Url("jquery.magnific-popup.min.js");
+            public static readonly string jquery_min_js = Url("jquery.min.js");
+            public static readonly string jquery_waypoints_min_js = Url("jquery.waypoints.min.js");
+            public static readonly string main_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/main.min.js") ? Url("main.min.js") : Url("main.js");
+            public static readonly string modernizr_2_6_2_min_js = Url("modernizr-2.6.2.min.js");
+            public static readonly string respond_min_js = Url("respond.min.js");
+            public static readonly string salvattore_min_js = Url("salvattore.min.js");
+        }
+    
         public static readonly string jquery_2_1_3_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-2.1.3.intellisense.min.js") ? Url("jquery-2.1.3.intellisense.min.js") : Url("jquery-2.1.3.intellisense.js");
         public static readonly string jquery_2_1_3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-2.1.3.min.js") ? Url("jquery-2.1.3.min.js") : Url("jquery-2.1.3.js");
         public static readonly string jquery_2_1_3_min_js = Url("jquery-2.1.3.min.js");
@@ -547,6 +563,18 @@ namespace Links
                 public static readonly string tooltip_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/tooltip.min.css") ? Url("tooltip.min.css") : Url("tooltip.css");
             }
         
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class Hydrogen {
+                private const string URLPATH = "~/Content/themes/Hydrogen";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                public static readonly string animate_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/animate.min.css") ? Url("animate.min.css") : Url("animate.css");
+                public static readonly string icomoon_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/icomoon.min.css") ? Url("icomoon.min.css") : Url("icomoon.css");
+                public static readonly string magnific_popup_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/magnific-popup.min.css") ? Url("magnific-popup.min.css") : Url("magnific-popup.css");
+                public static readonly string salvattore_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/salvattore.min.css") ? Url("salvattore.min.css") : Url("salvattore.css");
+                public static readonly string style_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/style.min.css") ? Url("style.min.css") : Url("style.css");
+            }
+        
         }
     
         public static readonly string toastr_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/toastr.min.css") ? Url("toastr.min.css") : Url("toastr.css");
@@ -561,6 +589,21 @@ namespace Links
     {
         public static partial class Scripts 
         {
+            public static partial class Hydrogen 
+            {
+                public static class Assets
+                {
+                    public const string bootstrap_min_js = "~/Scripts/Hydrogen/bootstrap.min.js"; 
+                    public const string jquery_easing_1_3_js = "~/Scripts/Hydrogen/jquery.easing.1.3.js"; 
+                    public const string jquery_magnific_popup_min_js = "~/Scripts/Hydrogen/jquery.magnific-popup.min.js"; 
+                    public const string jquery_min_js = "~/Scripts/Hydrogen/jquery.min.js"; 
+                    public const string jquery_waypoints_min_js = "~/Scripts/Hydrogen/jquery.waypoints.min.js"; 
+                    public const string main_js = "~/Scripts/Hydrogen/main.js"; 
+                    public const string modernizr_2_6_2_min_js = "~/Scripts/Hydrogen/modernizr-2.6.2.min.js"; 
+                    public const string respond_min_js = "~/Scripts/Hydrogen/respond.min.js"; 
+                    public const string salvattore_min_js = "~/Scripts/Hydrogen/salvattore.min.js"; 
+                }
+            }
             public static partial class locales 
             {
                 public static class Assets
@@ -738,6 +781,17 @@ namespace Links
                         public const string tabs_css = "~/Content/themes/base/tabs.css";
                         public const string theme_css = "~/Content/themes/base/theme.css";
                         public const string tooltip_css = "~/Content/themes/base/tooltip.css";
+                    }
+                }
+                public static partial class Hydrogen 
+                {
+                    public static class Assets
+                    {
+                        public const string animate_css = "~/Content/themes/Hydrogen/animate.css";
+                        public const string icomoon_css = "~/Content/themes/Hydrogen/icomoon.css";
+                        public const string magnific_popup_css = "~/Content/themes/Hydrogen/magnific-popup.css";
+                        public const string salvattore_css = "~/Content/themes/Hydrogen/salvattore.css";
+                        public const string style_css = "~/Content/themes/Hydrogen/style.css";
                     }
                 }
                 public static class Assets

@@ -2,28 +2,34 @@
 
 namespace UI.Controllers
 {
-    public partial class HomeController : Controller
-    {
-        [HttpGet]
-        public virtual ActionResult Index()
-        {
-            return View();
-        }
+	public partial class HomeController : Controller
+	{
+		[HttpGet]
+		public virtual ActionResult Index()
+		{
+			return View();
+		}
 
-        [HttpGet]
-        public virtual ActionResult About()
-        {
-            ViewBag.Message = "Project Cinderella.";
+		[HttpGet]
+		public virtual ActionResult About()
+		{
+			ViewBag.Message = "Project Cinderella.";
 
-            return View();
-        }
+			return View();
+		}
 
-        [HttpGet]
-        public virtual ActionResult Contact()
-        {
-            ViewBag.Message = "Find me on social media.";
+		[HttpGet]
+		public virtual ActionResult Contact()
+		{
+			ViewBag.Message = "Find me on social media.";
 
-            return View();
-        }
-    }
+			return View();
+		}
+
+		[HttpGet]
+		public virtual ActionResult Test()
+		{
+			return View();
+		}
+	}
 }
