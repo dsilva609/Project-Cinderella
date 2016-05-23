@@ -53,6 +53,15 @@
 							{
 								<li>@Html.ActionLink("Add Album", MVC.Album.Create())</li>
 								<li>@Html.ActionLink("Search Discogs for Album", MVC.Album.Search())</li>
+								<li>
+									@using (Html.BeginForm(MVC.Album.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
+									{
+									@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
+									<button type="submit" class="btn btn-default">
+										<span class="glyphicon glyphicon-search"></span>
+									</button>
+									}
+								</li>
 							}
 						</ul>
 					</li>
@@ -64,6 +73,17 @@
 							{
 								<li>@Html.ActionLink("Add Book", MVC.Book.Create())</li>
 								<li>@Html.ActionLink("Search Google for Book", MVC.Book.Search())</li>
+								<li>
+									@using (Html.BeginForm(MVC.Book.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
+									{
+
+									@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
+									<button type="submit" class="btn btn-default">
+										<span class="glyphicon glyphicon-search"></span>
+									</button>
+
+									}
+								</li>
 							}
 						</ul>
 					</li>
@@ -75,6 +95,17 @@
 							@if (User.Identity.IsAuthenticated)
 							{
 								<li>@Html.ActionLink("Add Movie", MVC.Movie.Create())</li>
+								<li>
+									@using (Html.BeginForm(MVC.Movie.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
+									{
+
+										@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
+										<button type="submit" class="btn btn-default">
+											<span class="glyphicon glyphicon-search"></span>
+										</button>
+
+									}
+								</li>
 							}
 						</ul>
 					</li>
@@ -86,6 +117,17 @@
 							@if (User.Identity.IsAuthenticated)
 							{
 								<li>@Html.ActionLink("Add Game", MVC.Game.Create())</li>
+								<li>
+									@using (Html.BeginForm(MVC.Game.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
+									{
+
+										@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
+										<button type="submit" class="btn btn-default">
+											<span class="glyphicon glyphicon-search"></span>
+										</button>
+
+									}
+								</li>
 							}
 						</ul>
 					</li>
