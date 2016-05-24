@@ -262,10 +262,6 @@ namespace Links
         public static readonly string bootstrap_datepicker3_standalone_css_map = Url("bootstrap-datepicker3.standalone.css.map");
         public static readonly string bootstrap_datepicker3_standalone_min_css = Url("bootstrap-datepicker3.standalone.min.css");
         public static readonly string bootstrap_datepicker3_standalone_min_css_map = Url("bootstrap-datepicker3.standalone.min.css.map");
-        public static readonly string bootstrap_theme_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-theme.min.css") ? Url("bootstrap-theme.min.css") : Url("bootstrap-theme.css");
-        public static readonly string bootstrap_theme_css_map = Url("bootstrap-theme.css.map");
-        public static readonly string bootstrap_theme_min_css = Url("bootstrap-theme.min.css");
-        public static readonly string bootstrap_theme_min_css_map = Url("bootstrap-theme.min.css.map");
         public static readonly string bootstrap_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap.min.css") ? Url("bootstrap.min.css") : Url("bootstrap.css");
         public static readonly string bootstrap_css_map = Url("bootstrap.css.map");
         public static readonly string bootstrap_min_css = Url("bootstrap.min.css");
@@ -808,8 +804,6 @@ namespace Links
                 public const string bootstrap_datepicker3_min_css = "~/Content/bootstrap-datepicker3.min.css";
                 public const string bootstrap_datepicker3_standalone_css = "~/Content/bootstrap-datepicker3.standalone.css";
                 public const string bootstrap_datepicker3_standalone_min_css = "~/Content/bootstrap-datepicker3.standalone.min.css";
-                public const string bootstrap_theme_css = "~/Content/bootstrap-theme.css";
-                public const string bootstrap_theme_min_css = "~/Content/bootstrap-theme.min.css";
                 public const string bootstrap_css = "~/Content/bootstrap.css";
                 public const string bootstrap_min_css = "~/Content/bootstrap.min.css";
                 public const string font_awesome_css = "~/Content/font-awesome.css";
