@@ -1,0 +1,55 @@
+﻿$cinderellaBlue: #007aac;
+$belleYellow: #ffff66;
+$bodyColor: #00AEE8;
+$footerColor: #f51515;
+
+body {
+	background-color: $bodyColor;
+	font-family: sans-serif;
+}
+
+footer {
+	color: $belleYellow;
+}
+
+input[type=text] {
+	border: 0 ;
+	border-bottom: 1px solid black;
+}
+
+.form-control{
+	
+	color:antiquewhite;
+
+	
+}
+
+/*.form-control:hover{
+	border-color: $belleYellow;
+}*/
+
+#fh5co-header {
+	.navbar-brand {
+		color: $cinderellaBlue;
+	}
+
+	.navbar-brand:hover {
+		color: $belleYellow;
+	}
+}
+
+.panel-primary .panel-heading {
+	background-color: $cinderellaBlue;
+}
+
+.form-control {
+	border-color: $cinderellaBlue;
+
+	.form-control:hover {
+		border-color: $belleYellow;
+	}
+}
+
+.btn-primary {
+	background: $cinderellaBlue;
+}

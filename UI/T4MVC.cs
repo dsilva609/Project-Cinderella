@@ -506,6 +506,16 @@ namespace Links
         public static readonly string jquery_mobile_theme_1_4_5_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.mobile.theme-1.4.5.min.css") ? Url("jquery.mobile.theme-1.4.5.min.css") : Url("jquery.mobile.theme-1.4.5.css");
         public static readonly string jquery_mobile_theme_1_4_5_min_css = Url("jquery.mobile.theme-1.4.5.min.css");
         public static readonly string Responsive_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Responsive.min.css") ? Url("Responsive.min.css") : Url("Responsive.css");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class Sass {
+            private const string URLPATH = "~/Content/Sass";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string Main_scss = Url("Main.scss");
+            public static readonly string Main_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Main.min.css") ? Url("Main.min.css") : Url("Main.css");
+            public static readonly string Main_min_css = Url("Main.min.css");
+        }
+    
         public static readonly string Site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Site.min.css") ? Url("Site.min.css") : Url("Site.css");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class themes {
@@ -741,6 +751,12 @@ namespace Links
                     {
                     }
                 }
+                public static class Assets
+                {
+                }
+            }
+            public static partial class Sass 
+            {
                 public static class Assets
                 {
                 }

@@ -1,0 +1,34 @@
+﻿body {
+  background-color: #00AEE8;
+  font-family: sans-serif; }
+
+footer {
+  color: #ffff66; }
+
+input[type=text] {
+  border: 0;
+  border-bottom: 1px solid black; }
+
+.form-control {
+  color: antiquewhite; }
+
+/*.form-control:hover{
+	border-color: $belleYellow;
+}*/
+#fh5co-header .navbar-brand {
+  color: #007aac; }
+
+#fh5co-header .navbar-brand:hover {
+  color: #ffff66; }
+
+.panel-primary .panel-heading {
+  background-color: #007aac; }
+
+.form-control {
+  border-color: #007aac; }
+  .form-control .form-control:hover {
+    border-color: #ffff66; }
+
+.btn-primary {
+  background: #007aac; }
+

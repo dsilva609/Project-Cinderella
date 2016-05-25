@@ -9,15 +9,16 @@
 	@Scripts.Render("~/bundles/modernizr")
 	@Styles.Render(Links.Content.Responsive_css)
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="@Links.Content.themes.Hydrogen.animate_css">
+	@Styles.Render(Links.Content.themes.Hydrogen.animate_css)
 	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="@Links.Content.themes.Hydrogen.icomoon_css">
+	@Styles.Render(Links.Content.themes.Hydrogen.icomoon_css)
 	<!-- Magnific Popup -->
-	<link rel="stylesheet" href="@Links.Content.themes.Hydrogen.magnific_popup_css">
+	@Styles.Render(Links.Content.themes.Hydrogen.magnific_popup_css)
 	<!-- Salvattore -->
-	<link rel="stylesheet" href="@Links.Content.themes.Hydrogen.salvattore_css">
+	@Styles.Render(Links.Content.themes.Hydrogen.salvattore_css)
 	<!-- Theme Style -->
-	<link rel="stylesheet" href="@Links.Content.themes.Hydrogen.style_css">
+	@Styles.Render(Links.Content.themes.Hydrogen.style_css)
+	@Styles.Render(Links.Content.Sass.Main_css)
 	<!-- Modernizr JS -->
 	@*	<script src="@Links.Scripts.Hydrogen.modernizr_2_6_2_min_js"></script>*@
 
@@ -54,8 +55,7 @@
 			@Html.ActionLink("Project Cinderella", MVC.Home.Index(), new { @class = "navbar-brand" })
 		</h1>
 		<ul>
-			<li class="active">@Html.ActionLink("Home", MVC.Home.Index())</li>
-			<li>@Html.ActionLink("About", MVC.Home.About())</li>
+		<li>@Html.ActionLink("About", MVC.Home.About())</li>
 			<li>@Html.ActionLink("Contact", MVC.Home.Contact())</li>
 			@if (User.IsInRole("Admin"))
 			{

@@ -455,6 +455,12 @@
     <Content Include="Content\jquery.mobile.structure-1.4.5.min.css" />
     <Content Include="Content\jquery.mobile.theme-1.4.5.css" />
     <Content Include="Content\jquery.mobile.theme-1.4.5.min.css" />
+    <Content Include="Content\Sass\Main.css">
+      <DependentUpon>Main.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\Sass\Main.min.css">
+      <DependentUpon>Main.css</DependentUpon>
+    </Content>
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -526,6 +532,11 @@
     <Content Include="Content\bootstrap-datepicker.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\Sass\Main.scss" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="Properties\PublishProfiles\ProjectCinderella - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
