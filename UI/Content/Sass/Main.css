@@ -12,9 +12,10 @@ input[type=text] {
 .form-control {
   color: antiquewhite; }
 
-/*.form-control:hover{
-	border-color: $belleYellow;
-}*/
+.form-control:hover {
+  /*border: 0;
+	border-bottom: 1px solid black;*/ }
+
 #fh5co-header .navbar-brand {
   color: #007aac; }
 
