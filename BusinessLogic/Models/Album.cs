@@ -56,5 +56,8 @@ namespace BusinessLogic.Models
 		public string RecordLabel { get; set; }
 
 		public int DiscogsID { get; set; }
+
+		[DisplayName("Image Url")]
+		public string ImageUrl { get; set; }
 	}
 }

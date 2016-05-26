@@ -198,6 +198,10 @@
     <Compile Include="Migrations\201605220316228_Added DiscogsID to album model.Designer.cs">
       <DependentUpon>201605220316228_Added DiscogsID to album model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605260033073_Added Image Url field to album.cs" />
+    <Compile Include="Migrations\201605260033073_Added Image Url field to album.Designer.cs">
+      <DependentUpon>201605260033073_Added Image Url field to album.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseItem.cs" />
     <Compile Include="Models\Book.cs" />
@@ -290,6 +294,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605220316228_Added DiscogsID to album model.resx">
       <DependentUpon>201605220316228_Added DiscogsID to album model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605260033073_Added Image Url field to album.resx">
+      <DependentUpon>201605260033073_Added Image Url field to album.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

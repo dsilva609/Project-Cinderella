@@ -66,7 +66,8 @@ namespace UI.Controllers
 				AlbumYear = result.Year,
 				RecordLabel = result.LabelString,
 				Genre = result.GenreString,
-				DiscogsID = result.ID
+				DiscogsID = result.ID,
+				ImageUrl = result.Thumb
 			};
 
 			ViewBag.Title = "Create";

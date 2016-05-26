@@ -48,8 +48,14 @@
 			</div>
 			<div class="col-xs-6">
 				@Html.LabelFor(m => m.Notes)
-				@Html.TextAreaFor(m => m.Notes, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.Notes, "", new { @class = "text-danger" })
+				@Html.TextAreaFor(m => m.Notes, new {@class = "form-control"})
+				@Html.ValidationMessageFor(m => m.Notes, "", new {@class = "text-danger"})
+			</div>
+
+			<div class="col-xs-6">
+				@Html.LabelFor(m => m.ImageUrl)
+				@Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.ImageUrl, "", new { @class = "text-danger" })
 			</div>
 		</div>
 	</div>
@@ -103,7 +109,7 @@
 			</div>
 		</div>
 	</div>
-	@Html.HiddenFor(m=> m.DiscogsID)
+	@Html.HiddenFor(m => m.DiscogsID)
 	<div class="row panel-body">
 		<div class="col-xs-8 col-sm-10">
 			<input id="btnSubmit" type="submit" value=@(Model.ID > 0 ? "Save" : "Create") class="btn btn-default btn-block btn-lg" />

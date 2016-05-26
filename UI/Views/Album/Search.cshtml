@@ -42,25 +42,20 @@
 		<div class="row">
 			<div class="col-xs-3">
 				@Html.DisplayNameFor(x => Model.Results[0].Title)
-				
 			</div>
 			<div class="col-xs-2">
 				@Html.DisplayNameFor(x => Model.Results[0].LabelString)
-				
 			</div>
 			<div class="col-xs-2">
 				@Html.DisplayNameFor(x => Model.Results[0].FormatString)
-				
 			</div>
 
 			<div class="col-xs-1">
 				@Html.DisplayNameFor(x => Model.Results[0].Country)
-				
 			</div>
 
 			<div class="col-xs-1">
 				@Html.DisplayNameFor(x => Model.Results[0].Year)
-				
 			</div>
 		</div>
 		<div class="panel-body">
@@ -96,6 +91,7 @@
 						@Html.HiddenFor(x => result.GenreString)
 						@Html.HiddenFor(x => result.LabelString)
 						@Html.HiddenFor(x => result.ID)
+						@Html.HiddenFor(x => result.Thumb)
 						<div class="col-xs-1">
 							<input id="" type="submit" value="Add" class="btn" />
 						</div>
