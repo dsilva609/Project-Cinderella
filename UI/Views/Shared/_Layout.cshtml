@@ -35,11 +35,11 @@
 }
 <body>
 	@*<div class="navbar navbar-default navbar-fixed-top">*@
-	<div class="">
+	<div class="row">
 		<div id="fh5co-header" role="banner">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-12">
+					<div class="col-xs-12">
 						<a href="#" class="fh5co-menu-btn js-fh5co-menu-btn">Menu <span class="fa fa-bars"></span></a>
 						<h1 class="fh5co-logo">
 							@Html.ActionLink("Project Cinderella", MVC.Home.Index(), new { @class = "navbar-brand" })
@@ -86,7 +86,7 @@
 							{
 								@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
 								<button type="submit" class="btn btn-default">
-									<span class="glyphicon glyphicon-search"></span>
+									<span class="fa fa-search"></span>
 								</button>
 							}
 						</li>
@@ -107,7 +107,7 @@
 
 								@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
 								<button type="submit" class="btn btn-default">
-									<span class="glyphicon glyphicon-search"></span>
+									<span class="fa fa-search"></span>
 								</button>
 
 							}
@@ -129,7 +129,7 @@
 
 								@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
 								<button type="submit" class="btn btn-default">
-									<span class="glyphicon glyphicon-search"></span>
+									<span class="fa fa-search"></span>
 								</button>
 
 							}
@@ -151,7 +151,7 @@
 
 								@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
 								<button type="submit" class="btn btn-default">
-									<span class="glyphicon glyphicon-search"></span>
+									<span class="fa fa-search"></span>
 								</button>
 
 							}
@@ -161,14 +161,6 @@
 			</li>
 			<li>@Html.Partial(MVC.Shared.Views._LoginPartial)</li>
 		</ul>
-		@*<h3 class="fh5co-lead">Connect with us</h3>
-			<p class="fh5co-social-icons">
-				<a href="#"><i class="icon-twitter"></i></a>
-				<a href="#"><i class="icon-facebook"></i></a>
-				<a href="#"><i class="icon-instagram"></i></a>
-				<a href="#"><i class="icon-dribbble"></i></a>
-				<a href="#"><i class="icon-youtube"></i></a>
-			</p>*@
 	</div>
 
 	<div class="container body-content">

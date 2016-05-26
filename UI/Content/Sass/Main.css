@@ -12,6 +12,10 @@ input[type=text] {
   border: 0;
   border-bottom: 1px solid black; }
 
+.jumbotronText {
+  font-size: 30px;
+  color: #007aac; }
+
 .form-control {
   color: antiquewhite; }
 
