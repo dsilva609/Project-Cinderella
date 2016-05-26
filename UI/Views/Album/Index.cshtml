@@ -94,39 +94,41 @@
 				<div id="fh5co-board" data-columns>
 					<div class="item">
 						<div class="animate-box">
-							<a href="@Links.Content.Images.Turntable_jpg" class="image-popup fh5co-board-img" title="Test title: @record.AlbumName"><img src="@Links.Content.Images.Turntable_jpg" alt="Free HTML5 Bootstrap template"></a>
+							<a href="@Links.Content.Images.Turntable_jpg" class="image-popup fh5co-board-img" title="@record.Artist - @record.AlbumName (@record.AlbumYear)">
+								<img src="@Links.Content.Images.Turntable_jpg">
+							</a>
 						</div>
 
-						<div id="album" class="row info" data-id="@record.ID">
+						<div id="album" class="row info fh5co-desc" data-id="@record.ID">
 							<a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Album.Edit(record.ID) : MVC.Album.Details(record.ID))">
-								<div class="col-xs-4 col-sm-3">
+								<div class="col-xs-4">
 									@Html.DisplayFor(modelItem => record.Artist)
 								</div>
-								<div class="col-xs-4 col-sm-3">
+								<div class="col-xs-4">
 									@Html.DisplayFor(modelItem => record.AlbumName)
 								</div>
-								<div class="col-xs-4 col-sm-1">
+								<div class="col-xs-4">
 									@Html.DisplayFor(modelItem => record.MediaType)
 								</div>
-								<div class="col-sm-1 hidden-xs">
-									@Html.DisplayFor(modelItem => record.IsNew)
-								</div>
-								<div class="col-sm-1 hidden-xs">
-									@Html.DisplayFor(modelItem => record.IsPhysical)
-								</div>
-								<div class="col-md-1 hidden-xs hidden-sm">
-									@Html.DisplayFor(modelItem => record.DatePurchased)
-								</div>
+								@*<div class="col-sm-1 hidden-xs">
+										@Html.DisplayFor(modelItem => record.IsNew)
+									</div>
+									<div class="col-sm-1 hidden-xs">
+										@Html.DisplayFor(modelItem => record.IsPhysical)
+									</div>
+									<div class="col-md-1 hidden-xs hidden-sm">
+										@Html.DisplayFor(modelItem => record.DatePurchased)
+									</div>*@
 							</a>
-							@if (User.Identity.IsAuthenticated && record.UserID == User.Identity.GetUserId())
-							{
-								<div class="col-xs-2 hidden-xs">
-									<a href="@Url.Action(MVC.Album.Delete(record.ID))" class="deleteBtn fa fa-trash" data-id=@record.ID></a>
-								</div>
-							}
+							@*@if (User.Identity.IsAuthenticated && record.UserID == User.Identity.GetUserId())
+								{
+									<div class="col-xs-2 hidden-xs">
+										<a href="@Url.Action(MVC.Album.Delete(record.ID))" class="deleteBtn fa fa-trash" data-id=@record.ID></a>
+									</div>
+								}*@
 						</div>
 
-						<div class="fh5co-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, eos? Description</div>
+						@*	<div class="fh5co-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, eos? Description</div>*@
 					</div>
 				</div>
 			}
