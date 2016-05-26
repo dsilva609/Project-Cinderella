@@ -78,7 +78,6 @@ namespace UI.Controllers
             public readonly string Index = "Index";
             public readonly string About = "About";
             public readonly string Contact = "Contact";
-            public readonly string Test = "Test";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -87,7 +86,6 @@ namespace UI.Controllers
             public const string Index = "Index";
             public const string About = "About";
             public const string Contact = "Contact";
-            public const string Test = "Test";
         }
 
 
@@ -104,12 +102,10 @@ namespace UI.Controllers
                 public readonly string About = "About";
                 public readonly string Contact = "Contact";
                 public readonly string Index = "Index";
-                public readonly string Test = "Test";
             }
             public readonly string About = "~/Views/Home/About.cshtml";
             public readonly string Contact = "~/Views/Home/Contact.cshtml";
             public readonly string Index = "~/Views/Home/Index.cshtml";
-            public readonly string Test = "~/Views/Home/Test.cshtml";
         }
     }
 
@@ -148,17 +144,6 @@ namespace UI.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Contact);
             ContactOverride(callInfo);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void TestOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult Test()
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Test);
-            TestOverride(callInfo);
             return callInfo;
         }
 

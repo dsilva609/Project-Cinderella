@@ -25,11 +25,5 @@ namespace UI.Controllers
 
 			return View();
 		}
-
-		[HttpGet]
-		public virtual ActionResult Test()
-		{
-			return View();
-		}
 	}
 }

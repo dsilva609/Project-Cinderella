@@ -741,7 +741,6 @@
     <Content Include="Views\Game\Index.cshtml" />
     <Content Include="Views\Album\Search.cshtml" />
     <Content Include="Views\Book\Search.cshtml" />
-    <Content Include="Views\Home\Test.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
