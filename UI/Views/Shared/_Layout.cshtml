@@ -35,7 +35,7 @@
 }
 <body>
 	@*<div class="navbar navbar-default navbar-fixed-top">*@
-	<div class="row">
+	<div class="">
 		<div id="fh5co-header" role="banner">
 			<div class="container">
 				<div class="row">
@@ -55,7 +55,7 @@
 			@Html.ActionLink("Project Cinderella", MVC.Home.Index(), new { @class = "navbar-brand" })
 		</h1>
 		<ul>
-		<li>@Html.ActionLink("About", MVC.Home.About())</li>
+			<li>@Html.ActionLink("About", MVC.Home.About())</li>
 			<li>@Html.ActionLink("Contact", MVC.Home.Contact())</li>
 			@if (User.IsInRole("Admin"))
 			{

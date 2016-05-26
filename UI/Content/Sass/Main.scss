@@ -6,6 +6,7 @@ $footerColor: #f51515;
 a {
 	color: $cinderellaBlue;
 }
+
 body {
 	background-color: $bodyColor;
 	font-family: sans-serif;
@@ -20,13 +21,18 @@ input[type=text] {
 	border-bottom: 1px solid black;
 }
 
-.form-control{
-	color:antiquewhite;
+.form-control {
+	color: antiquewhite;
 }
 
-.form-control:hover{
+.form-control:hover {
 	/*border: 0;
 	border-bottom: 1px solid black;*/
+}
+
+.row {
+	margin-left: 0;
+	margin-right: 0;
 }
 
 #fh5co-header {

@@ -19,6 +19,10 @@ input[type=text] {
   /*border: 0;
 	border-bottom: 1px solid black;*/ }
 
+.row {
+  margin-left: 0;
+  margin-right: 0; }
+
 #fh5co-header .navbar-brand {
   color: #007aac; }
 

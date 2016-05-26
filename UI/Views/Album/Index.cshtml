@@ -88,7 +88,7 @@
 	</div>*@
 <div id="fh5co-main">
 	<div class="container">
-		<div class="row">
+		<div class="rows">
 			@foreach (var record in Model.Albums)
 			{
 				<div id="fh5co-board" data-columns>
@@ -99,7 +99,7 @@
 							</a>
 						</div>
 
-						<div id="album" class="row info fh5co-desc" data-id="@record.ID">
+						<div id="album" class="info fh5co-desc" data-id="@record.ID">
 							<a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Album.Edit(record.ID) : MVC.Album.Details(record.ID))">
 								<div class="col-xs-4">
 									@Html.DisplayFor(modelItem => record.Artist)
