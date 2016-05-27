@@ -40,6 +40,7 @@
 			</h4>
 		</div>
 		<div class="row">
+			<div class="col-xs-2"></div>
 			<div class="col-xs-3">
 				@Html.DisplayNameFor(x => Model.Results[0].Title)
 			</div>
@@ -64,7 +65,10 @@
 				using (Html.BeginForm(MVC.Album.CreateFromSearchResult(result.ID), FormMethod.Get))
 				{
 					<div id="album" class="row info" data-id="@result.ID">
-						@*<a href="@Url.Action(User.Identity.IsAuthenticated? MVC.Album.Edit(album.releaseID): MVC.Album.Details(album.releaseID))">*@
+
+						<div class="col-xs-2">
+							<img src="@result.Thumb" />
+						</div>
 						<div class="col-xs-3">
 							@Html.DisplayFor(x => result.Title)
 						</div>
