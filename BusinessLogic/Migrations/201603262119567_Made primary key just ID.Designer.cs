@@ -13,7 +13,7 @@ namespace BusinessLogic.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201603262119567_Made primary key just ID"; }
+            get { return "201603262119567_Made primary key just releaseID"; }
         }
         
         string IMigrationMetadata.Source

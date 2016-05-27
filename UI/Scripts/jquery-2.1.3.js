@@ -676,7 +676,7 @@
 
 			rnative = /^[^{]+\{\s*\[native \w/,
 
-			// Easily-parseable/retrievable ID or TAG or CLASS selectors
+			// Easily-parseable/retrievable releaseID or TAG or CLASS selectors
 			rquickExpr = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,
 
 			rsibling = /[+~]/,
@@ -757,7 +757,7 @@
 			if (!seed && documentIsHTML) {
 				// Try to shortcut find operations when possible (e.g., not under DocumentFragment)
 				if (nodeType !== 11 && (match = rquickExpr.exec(selector))) {
-					// Speed-up: Sizzle("#ID")
+					// Speed-up: Sizzle("#releaseID")
 					if ((m = match[1])) {
 						if (nodeType === 9) {
 							elem = context.getElementById(m);
@@ -765,7 +765,7 @@
 							// nodes that are no longer in the document (jQuery #6963)
 							if (elem && elem.parentNode) {
 								// Handle the case where IE, Opera, and Webkit return items
-								// by name instead of ID
+								// by name instead of releaseID
 								if (elem.id === m) {
 									results.push(elem);
 									return results;
@@ -801,7 +801,7 @@
 					newSelector = nodeType !== 1 && selector;
 
 					// qSA works strangely on Element-rooted queries
-					// We can work around this by specifying an extra ID on the root
+					// We can work around this by specifying an extra releaseID on the root
 					// and working up from there (Thanks to Andrew Dupont for the technique)
 					// IE 8 doesn't work on object elements
 					if (nodeType === 1 && context.nodeName.toLowerCase() !== "object") {
@@ -1071,7 +1071,7 @@
 				return !doc.getElementsByName || !doc.getElementsByName(expando).length;
 			});
 
-			// ID find and filter
+			// releaseID find and filter
 			if (support.getById) {
 				Expr.find["ID"] = function (id, context) {
 					if (typeof context.getElementById !== "undefined" && documentIsHTML) {
@@ -2454,9 +2454,9 @@
 
 			// Try to minimize operations if there is no seed and only one group
 			if (match.length === 1) {
-				// Take a shortcut and set the context if the root selector is an ID
+				// Take a shortcut and set the context if the root selector is an releaseID
 				tokens = match[0] = match[0].slice(0);
-				if (tokens.length > 2 && (token = tokens[0]).type === "ID" &&
+				if (tokens.length > 2 && (token = tokens[0]).type === "releaseID" &&
 						support.getById && context.nodeType === 9 && documentIsHTML &&
 						Expr.relative[tokens[1].type]) {
 					context = (Expr.find["ID"](token.matches[0].replace(runescape, funescape), context) || [])[0];
@@ -4028,7 +4028,7 @@
 				selector = handleObjIn.selector;
 			}
 
-			// Make sure that the handler has a unique ID, used to find/remove it later
+			// Make sure that the handler has a unique releaseID, used to find/remove it later
 			if (!handler.guid) {
 				handler.guid = jQuery.guid++;
 			}

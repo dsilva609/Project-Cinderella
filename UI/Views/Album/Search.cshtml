@@ -61,37 +61,30 @@
 		<div class="panel-body">
 			@foreach (var result in Model.Results)
 			{
-				using (Html.BeginForm(MVC.Album.CreateFromSearchResult(result), FormMethod.Get))
+				using (Html.BeginForm(MVC.Album.CreateFromSearchResult(result.ID), FormMethod.Get))
 				{
 					<div id="album" class="row info" data-id="@result.ID">
-						@*<a href="@Url.Action(User.Identity.IsAuthenticated? MVC.Album.Edit(album.ID): MVC.Album.Details(album.ID))">*@
+						@*<a href="@Url.Action(User.Identity.IsAuthenticated? MVC.Album.Edit(album.releaseID): MVC.Album.Details(album.releaseID))">*@
 						<div class="col-xs-3">
 							@Html.DisplayFor(x => result.Title)
-							@Html.HiddenFor(x => result.Title)
 						</div>
 						<div class="col-xs-2">
 							@Html.DisplayFor(x => result.LabelString)
-							@Html.HiddenFor(x => result.LabelString)
 						</div>
 						<div class="col-xs-2">
 							@Html.DisplayFor(x => result.FormatString)
-							@Html.HiddenFor(x => result.FormatString)
 						</div>
 
 						<div class="col-xs-1">
 							@Html.DisplayFor(x => result.Country)
-							@Html.HiddenFor(x => result.Country)
 						</div>
 
 						<div class="col-xs-1">
 							@Html.DisplayFor(x => result.Year)
-							@Html.HiddenFor(x => result.Year)
 						</div>
 
-						@Html.HiddenFor(x => result.GenreString)
-						@Html.HiddenFor(x => result.LabelString)
-						@Html.HiddenFor(x => result.ID)
-						@Html.HiddenFor(x => result.Thumb)
+						@Html.Hidden("releaseID", result.ID)
+
 						<div class="col-xs-1">
 							<input id="" type="submit" value="Add" class="btn" />
 						</div>

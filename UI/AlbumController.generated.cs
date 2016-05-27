@@ -145,7 +145,7 @@ namespace UI.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_CreateFromSearchResult
         {
-            public readonly string result = "result";
+            public readonly string releaseID = "releaseID";
         }
         static readonly ActionParamsClass_Create s_params_Create = new ActionParamsClass_Create();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -244,14 +244,14 @@ namespace UI.Controllers
         }
 
         [NonAction]
-        partial void CreateFromSearchResultOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, BusinessLogic.Models.DiscogsModels.DiscogsResult result);
+        partial void CreateFromSearchResultOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int releaseID);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult CreateFromSearchResult(BusinessLogic.Models.DiscogsModels.DiscogsResult result)
+        public override System.Web.Mvc.ActionResult CreateFromSearchResult(int releaseID)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CreateFromSearchResult);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "result", result);
-            CreateFromSearchResultOverride(callInfo, result);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "releaseID", releaseID);
+            CreateFromSearchResultOverride(callInfo, releaseID);
             return callInfo;
         }
 

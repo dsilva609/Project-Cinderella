@@ -1,6 +1,5 @@
 ﻿using BusinessLogic.Enums;
 using BusinessLogic.Models;
-using BusinessLogic.Models.DiscogsModels;
 using BusinessLogic.Services.Interfaces;
 using Microsoft.AspNet.Identity;
 using System;
@@ -15,15 +14,11 @@ namespace UI.Controllers
 		private readonly IAlbumService _service;
 		private readonly IDiscogsService _discogsService;
 		private const int NUM_ALBUMS_TO_GET = 25;
-		//private string test;
-		//	private List<DiscogsResult> results;
 
 		public AlbumController(IAlbumService service, IDiscogsService discogsService)
 		{
 			_service = service;
 			_discogsService = discogsService;
-
-			//			results = _discogsService.Search();
 		}
 
 		[HttpGet]
@@ -36,7 +31,7 @@ namespace UI.Controllers
 				PageSize = NUM_ALBUMS_TO_GET,
 				TotalRecords = _service.GetCount()
 			};
-			//	var result = test;
+
 			var pages = Math.Ceiling((double)viewModel.TotalRecords / viewModel.PageSize);
 			viewModel.PageCount = (int)pages;
 			return View(viewModel);
@@ -55,19 +50,20 @@ namespace UI.Controllers
 
 		[Authorize]
 		[HttpGet]
-		public virtual ActionResult CreateFromSearchResult(DiscogsResult result)
+		public virtual ActionResult CreateFromSearchResult(int releaseID)
 		{
-			var info = result.Title.Split('-').ToList();
+			var release = _discogsService.GetRelease(releaseID);
+
 			var model = new Album
 			{
 				UserID = User.Identity.GetUserId(),
-				Artist = info[0].Trim(),
-				AlbumName = info[1].Trim(),
-				AlbumYear = result.Year,
-				RecordLabel = result.LabelString,
-				Genre = result.GenreString,
-				DiscogsID = result.ID,
-				ImageUrl = result.Thumb
+				Artist = release.artists.First().name,//info[0].Trim(),
+				AlbumName = release.title,//info[1].Trim(),
+				AlbumYear = release.year,//result.Year,
+				RecordLabel = release.LabelString,//result.LabelString,
+				Genre = release.GenreString,
+				DiscogsID = release.id,
+				ImageUrl = release.images?.First().uri
 			};
 
 			ViewBag.Title = "Create";
@@ -162,8 +158,6 @@ namespace UI.Controllers
 		{
 			if (!string.IsNullOrWhiteSpace(searchModel.Artist) && !string.IsNullOrWhiteSpace(searchModel.AlbumName))
 			{
-				//model.Artist = artist;
-				//model.AlbumName = album;
 				searchModel.Results = _discogsService.Search(searchModel.Artist, searchModel.AlbumName);
 				searchModel.Results = searchModel.Results.OrderByDescending(x => x.Year).ToList();
 			}

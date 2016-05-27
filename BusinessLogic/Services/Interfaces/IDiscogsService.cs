@@ -6,5 +6,7 @@ namespace BusinessLogic.Services.Interfaces
 	public interface IDiscogsService
 	{
 		List<DiscogsResult> Search(string artist, string album);
+
+		DiscogsRelease GetRelease(int releaseID);
 	}
 }

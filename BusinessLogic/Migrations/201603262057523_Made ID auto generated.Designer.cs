@@ -13,7 +13,7 @@ namespace BusinessLogic.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201603262057523_Made ID auto generated"; }
+            get { return "201603262057523_Made releaseID auto generated"; }
         }
         
         string IMigrationMetadata.Source

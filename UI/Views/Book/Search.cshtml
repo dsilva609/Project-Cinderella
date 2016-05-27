@@ -63,7 +63,7 @@
 			using (Html.BeginForm(MVC.Book.CreateFromSearchModel(book), FormMethod.Get))
 			{
 				<div id="book" class="row info" data-id="@book.ID">
-					@*<a href="@Url.Action(User.Identity.IsAuthenticated? MVC.Album.Edit(album.ID): MVC.Album.Details(album.ID))">*@
+					@*<a href="@Url.Action(User.Identity.IsAuthenticated? MVC.Album.Edit(album.releaseID): MVC.Album.Details(album.releaseID))">*@
 					<div class="col-xs-3">
 						@Html.DisplayFor(x => book.Author)
 						@Html.HiddenFor(x => book.Author)

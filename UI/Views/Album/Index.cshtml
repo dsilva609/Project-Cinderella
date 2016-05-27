@@ -66,10 +66,10 @@
 										@Html.DisplayFor(modelItem => record.DatePurchased)
 									</div>*@
 							</a>
-							@*@if (User.Identity.IsAuthenticated && record.UserID == User.Identity.GetUserId())
+							@*@if (User.Identity.IsAuthenticated && record.UserreleaseID == User.Identity.GetUserId())
 								{
 									<div class="col-xs-2 hidden-xs">
-										<a href="@Url.Action(MVC.Album.Delete(record.ID))" class="deleteBtn fa fa-trash" data-id=@record.ID></a>
+										<a href="@Url.Action(MVC.Album.Delete(record.releaseID))" class="deleteBtn fa fa-trash" data-id=@record.releaseID></a>
 									</div>
 								}*@
 						</div>

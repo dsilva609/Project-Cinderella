@@ -10,7 +10,7 @@ namespace BusinessLogic.Migrations
             DropPrimaryKey("dbo.RecordModel");
             AlterColumn("dbo.RecordModel", "AlbumName", c => c.String(nullable: false));
             AlterColumn("dbo.RecordModel", "Artist", c => c.String(nullable: false));
-            AddPrimaryKey("dbo.RecordModel", "ID");
+            AddPrimaryKey("dbo.RecordModel", "releaseID");
         }
         
         public override void Down()

@@ -205,6 +205,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseItem.cs" />
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\DiscogsModels\DiscogsRelease.cs" />
     <Compile Include="Models\DiscogsModels\DiscogsResult.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\Movie.cs" />

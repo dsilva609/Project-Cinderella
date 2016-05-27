@@ -1,5 +1,4 @@
 ﻿using BusinessLogic.Models;
-using BusinessLogic.Models.DiscogsModels;
 using Moq;
 using NUnit.Framework;
 using System.Web.Mvc;
@@ -210,10 +209,10 @@ namespace UnitTests.UI.Controllers.AlbumControllerTests
 		public void ThatCreateFromSearchModelActionReturnsAView()
 		{
 			//--Arrange
-			_controller.Setup(mock => mock.CreateFromSearchResult(It.IsAny<DiscogsResult>())).Returns(new ViewResult { ViewName = MVC.Album.Views.Create });
+			_controller.Setup(mock => mock.CreateFromSearchResult(It.IsAny<int>())).Returns(new ViewResult { ViewName = MVC.Album.Views.Create });
 
 			//--Act
-			var result = _controller.Object.CreateFromSearchResult(It.IsAny<DiscogsResult>()) as ViewResult;
+			var result = _controller.Object.CreateFromSearchResult(It.IsAny<int>()) as ViewResult;
 
 			//--Assert
 			Assert.AreEqual(MVC.Album.Views.Create, result.ViewName);

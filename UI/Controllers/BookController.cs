@@ -150,7 +150,7 @@ namespace UI.Controllers
 						searchModel.Volumes.Add(new Book
 						{
 							UserID = User.Identity.GetUserId(),
-							//ID = Convert.ToInt32(x.VolumeInfo.IndustryIdentifiers.First().Identifier),
+							//releaseID = Convert.ToInt32(x.VolumeInfo.IndustryIdentifiers.First().Identifier),
 							Title = volume.VolumeInfo.Title,
 							Author = string.Join(", ", volume.VolumeInfo.Authors),
 							YearPublished =
