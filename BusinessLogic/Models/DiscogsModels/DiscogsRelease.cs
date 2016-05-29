@@ -6,6 +6,7 @@ namespace BusinessLogic.Models.DiscogsModels
 	{
 		public string status { get; set; }
 		public string[] styles { get; set; }
+		public string StylesString { get; set; }
 		public Video[] videos { get; set; }
 		public object[] series { get; set; }
 		public string released_formatted { get; set; }

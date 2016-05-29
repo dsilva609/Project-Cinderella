@@ -52,12 +52,16 @@ namespace BusinessLogic.Services
 		public DiscogsRelease GetRelease(int releaseID)
 		{
 			var response = _client.GetAsync($"releases/{releaseID}");
-			var result = JsonConvert.DeserializeObject<DiscogsRelease>(response.Result.Content.ReadAsStringAsync().Result);
+			var result = response.Result.Content.ReadAsStringAsync().Result;
+			var release = JsonConvert.DeserializeObject<DiscogsRelease>(result);
 
-			result.LabelString = string.Join(", ", result.labels.Select(x => x.name).ToList());
-			result.GenreString = $"{string.Join(", ", result.genres.ToList())} - {string.Join(", ", result.styles.ToList())}";
+			release.LabelString = release.labels != null ? string.Join(", ", release.labels.Select(x => x.name).ToList()) : string.Empty;
+			release.GenreString = release.genres != null ? string.Join(", ", release.genres.ToList()) : string.Empty;
+			release.StylesString = release.styles != null ? string.Join(", ", release.styles) : string.Empty;
+			if (!string.IsNullOrWhiteSpace(release.StylesString))
+				release.GenreString += $" - {release.StylesString}";
 
-			return result;
+			return release;
 		}
 	}
 }
