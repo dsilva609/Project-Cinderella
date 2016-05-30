@@ -1,6 +1,9 @@
 ﻿.jumbotron {
 	background-image: url("Images/Turntable.jpg");
+	background-position: center;
+	height: 500px !important;
 }
+
 
 @media screen and (min-width: 1920px) {
 	.container {

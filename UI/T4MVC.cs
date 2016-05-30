@@ -483,6 +483,7 @@ namespace Links
             }
         
             public static readonly string Turntable_jpg = Url("Turntable.jpg");
+            public static readonly string Turntable2_jpg = Url("Turntable2.jpg");
         }
     
         public static readonly string jquery_mobile_1_4_5_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.mobile-1.4.5.min.css") ? Url("jquery.mobile-1.4.5.min.css") : Url("jquery.mobile-1.4.5.css");
