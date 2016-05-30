@@ -8,10 +8,10 @@ body {
 footer {
   color: #ffff66; }
 
-input[type=text] {
-  border: 0;
-  border-bottom: 1px solid black; }
-
+/*input[type=text] {
+	border: 0;
+	border-bottom: 1px solid black;
+}*/
 .jumbotronText {
   font-size: 30px;
   color: #add8e6; }
@@ -31,6 +31,9 @@ input[type=text] {
   color: #007aac; }
 #fh5co-header .navbar-brand:hover {
   color: #ffff66; }
+
+.fh5co-desc {
+  float: none !important; }
 
 .panel-primary .panel-heading {
   background-color: #007aac; }

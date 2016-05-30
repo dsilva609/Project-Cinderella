@@ -16,10 +16,10 @@ footer {
 	color: $belleYellow;
 }
 
-input[type=text] {
+/*input[type=text] {
 	border: 0;
 	border-bottom: 1px solid black;
-}
+}*/
 
 .jumbotronText {
 	font-size: 30px;
@@ -50,6 +50,9 @@ input[type=text] {
 	}
 }
 
+.fh5co-desc{
+	float: none !important;
+}
 .panel-primary .panel-heading {
 	background-color: $bodyColor;
 }

@@ -40,41 +40,22 @@
 				<div id="fh5co-board" data-columns>
 					<div class="item text-xs-center">
 						<div class="animate-box">
-							<a href="@(string.IsNullOrWhiteSpace(record.ImageUrl)? Links.Content.Images.Turntable_jpg:record.ImageUrl)" alt class="image-popup img-thumbnail img-responsive fh5co-board-img" title="@record.Artist - @record.AlbumName (@record.AlbumYear)">
-								<img src="@(string.IsNullOrWhiteSpace(record.ImageUrl)? Links.Content.Images.Turntable_jpg:record.ImageUrl)">
+							<a href="@(string.IsNullOrWhiteSpace(record.ImageUrl) ? Links.Content.Images.Turntable_jpg : record.ImageUrl)" alt class="image-popup img-thumbnail img-responsive fh5co-board-img" title="@record.Artist - @record.AlbumName (@record.AlbumYear)">
+								<img src="@(string.IsNullOrWhiteSpace(record.ImageUrl) ? Links.Content.Images.Turntable_jpg : record.ImageUrl)">
 							</a>
 						</div>
 
 						<div id="album" class="info fh5co-desc" data-id="@record.ID">
 							<a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Album.Edit(record.ID) : MVC.Album.Details(record.ID))">
-								<div class="col-xs-4">
-									@Html.DisplayFor(modelItem => record.Artist)
+								<div class="row">
+									@Html.DisplayFor(modelItem => record.Artist) - @Html.DisplayFor(modelItem => record.AlbumName)
 								</div>
-								<div class="col-xs-4">
-									@Html.DisplayFor(modelItem => record.AlbumName)
-								</div>
-								<div class="col-xs-2">
+
+								<div class="row">
 									@Html.DisplayFor(modelItem => record.MediaType)
 								</div>
-								@*<div class="col-sm-1 hidden-xs">
-										@Html.DisplayFor(modelItem => record.IsNew)
-									</div>
-									<div class="col-sm-1 hidden-xs">
-										@Html.DisplayFor(modelItem => record.IsPhysical)
-									</div>
-									<div class="col-md-1 hidden-xs hidden-sm">
-										@Html.DisplayFor(modelItem => record.DatePurchased)
-									</div>*@
 							</a>
-							@*@if (User.Identity.IsAuthenticated && record.UserreleaseID == User.Identity.GetUserId())
-								{
-									<div class="col-xs-2 hidden-xs">
-										<a href="@Url.Action(MVC.Album.Delete(record.releaseID))" class="deleteBtn fa fa-trash" data-id=@record.releaseID></a>
-									</div>
-								}*@
 						</div>
-
-						@*	<div class="fh5co-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, eos? Description</div>*@
 					</div>
 				</div>
 			}
@@ -87,6 +68,5 @@
 	@for (var i = 0; i < Model.PageCount; i++)
 	{
 		@Html.ActionLink((i + 1).ToString(), MVC.Album.Index("", i + 1), new { @class = "btn btn-link" })
-
 	}
 </div>
