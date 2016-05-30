@@ -1,8 +1,8 @@
-﻿a {
+a {
   color: #007aac; }
 
 body {
-  background-color: #00AEE8;
+  background-color: #add8e6;
   font-family: sans-serif; }
 
 footer {
@@ -14,14 +14,14 @@ input[type=text] {
 
 .jumbotronText {
   font-size: 30px;
-  color: #007aac; }
+  color: #add8e6; }
 
 .form-control {
-  color: antiquewhite; }
+  color: black; }
 
 .form-control:hover {
   /*border: 0;
-	border-bottom: 1px solid black;*/ }
+  border-bottom: 1px solid black;*/ }
 
 .row {
   margin-left: 0;
@@ -29,7 +29,6 @@ input[type=text] {
 
 #fh5co-header .navbar-brand {
   color: #007aac; }
-
 #fh5co-header .navbar-brand:hover {
   color: #ffff66; }
 
@@ -42,5 +41,6 @@ input[type=text] {
     border-color: #ffff66; }
 
 .btn-primary {
-  background: #007aac; }
+  background: #add8e6; }
 
+/*# sourceMappingURL=Main.css.map */

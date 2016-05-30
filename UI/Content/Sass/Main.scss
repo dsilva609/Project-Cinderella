@@ -1,14 +1,14 @@
-﻿$cinderellaBlue: #007aac;
+﻿$cinderellaBlue: #add8e6;
 $belleYellow: #ffff66;
-$bodyColor: #00AEE8;
+$bodyColor: #007aac;
 $footerColor: #f51515;
 
 a {
-	color: $cinderellaBlue;
+	color: $bodyColor;
 }
 
 body {
-	background-color: $bodyColor;
+	background-color: $cinderellaBlue;
 	font-family: sans-serif;
 }
 
@@ -27,7 +27,7 @@ input[type=text] {
 }
 
 .form-control {
-	color: antiquewhite;
+	color: black;
 }
 
 .form-control:hover {
@@ -42,7 +42,7 @@ input[type=text] {
 
 #fh5co-header {
 	.navbar-brand {
-		color: $cinderellaBlue;
+		color: $bodyColor;
 	}
 
 	.navbar-brand:hover {
@@ -51,11 +51,11 @@ input[type=text] {
 }
 
 .panel-primary .panel-heading {
-	background-color: $cinderellaBlue;
+	background-color: $bodyColor;
 }
 
 .form-control {
-	border-color: $cinderellaBlue;
+	border-color: $bodyColor;
 
 	.form-control:hover {
 		border-color: $belleYellow;
