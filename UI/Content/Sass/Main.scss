@@ -26,7 +26,7 @@ footer {
 	border-color: $bodyColor;
 
 	.form-control:hover {
-		border-color: $belleYellow;
+		border-color: $belleYellow !important;
 	}
 }
 

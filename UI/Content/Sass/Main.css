@@ -16,7 +16,7 @@ footer {
   color: black;
   border-color: #007aac; }
   .form-control .form-control:hover {
-    border-color: #ffff66; }
+    border-color: #ffff66 !important; }
 
 .row {
   margin-left: 0;
