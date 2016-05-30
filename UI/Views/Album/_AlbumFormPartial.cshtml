@@ -5,64 +5,73 @@
 </script>
 
 @Html.AntiForgeryToken()
-<div>
-	@Html.HiddenFor(m => m.UserID)
-	@Html.HiddenFor(m => m.DateAdded)
-	<div class="row panel panel-primary">
+
+
+@Html.HiddenFor(m => m.UserID)
+@Html.HiddenFor(m => m.DateAdded)
+<div data-toggle="collapse" data-parent="#accordion" href="#album-info">
+	<div class="row panel panel-primary panel-collapse">
 		<div class="panel-heading">
 			<h4>
 				Album Information
+
 			</h4>
 		</div>
-		<div class="panel-body">
-			<div class="col-xs-6">
-				@Html.LabelFor(m => m.Artist)
-				@Html.TextBoxFor(m => m.Artist, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.Artist, "", new { @class = "text-danger" })
-			</div>
-
-			<div class="col-xs-6">
-				@Html.LabelFor(m => m.AlbumName)
-				@Html.TextBoxFor(m => m.AlbumName, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.AlbumName, "", new { @class = "text-danger" })
-			</div>
+	</div>
+</div>
+<div id="album-info" class="collapse in">
+	<div class="panel-body">
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.Artist)
+			@Html.TextBoxFor(m => m.Artist, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.Artist, "", new { @class = "text-danger" })
 		</div>
-		<div class="panel-body">
-			<div class="col-xs-6">
-				@Html.LabelFor(m => m.Genre)
-				@Html.TextBoxFor(m => m.Genre, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.Genre, "", new { @class = "text-danger" })
-			</div>
-			<div class="col-xs-6">
-				@Html.LabelFor(m => m.AlbumYear)
-				@Html.DropDownListFor(model => model.AlbumYear, Enumerable.Range(1900, DateTime.Today.Year - 1900 + 1).
-					Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), Model.AlbumYear.ToString(), new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.AlbumYear, "", new { @class = "text-danger" })
-			</div>
-		</div>
-		<div class="panel-body">
-			<div class="col-xs-6">
-				@Html.LabelFor(m => m.RecordLabel)
-				@Html.TextBoxFor(m => m.RecordLabel, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.RecordLabel, "", new { @class = "text-danger" })
-			</div>
-			<div class="col-xs-6">
-				@Html.LabelFor(m => m.Notes)
-				@Html.TextAreaFor(m => m.Notes, new {@class = "form-control"})
-				@Html.ValidationMessageFor(m => m.Notes, "", new {@class = "text-danger"})
-			</div>
 
-			<div class="col-xs-6">
-				@Html.LabelFor(m => m.ImageUrl)
-				@Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.ImageUrl, "", new { @class = "text-danger" })
-			</div>
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.AlbumName)
+			@Html.TextBoxFor(m => m.AlbumName, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.AlbumName, "", new { @class = "text-danger" })
 		</div>
 	</div>
-	<div class="row panel panel-primary">
+	<div class="panel-body">
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.Genre)
+			@Html.TextBoxFor(m => m.Genre, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.Genre, "", new { @class = "text-danger" })
+		</div>
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.AlbumYear)
+			@Html.DropDownListFor(model => model.AlbumYear, Enumerable.Range(1900, DateTime.Today.Year - 1900 + 1).
+					Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), Model.AlbumYear.ToString(), new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.AlbumYear, "", new { @class = "text-danger" })
+		</div>
+	</div>
+	<div class="panel-body">
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.RecordLabel)
+			@Html.TextBoxFor(m => m.RecordLabel, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.RecordLabel, "", new { @class = "text-danger" })
+		</div>
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.Notes)
+			@Html.TextAreaFor(m => m.Notes, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.Notes, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.ImageUrl)
+			@Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.ImageUrl, "", new { @class = "text-danger" })
+		</div>
+	</div>
+</div>
+<div data-toggle="collapse" data-parent="#accordion" href="#media-info">
+	<div class="row panel panel-primary panel-collapse">
 		<div class="panel-heading">
 			<h4>Media Information</h4>
 		</div>
+	</div>
+	<div id="media-info" class="collapse in">
 		<div class="panel-body">
 			<div class="col-xs-6">
 				@Html.LabelFor(m => m.MediaType)
@@ -77,12 +86,17 @@
 			</div>
 		</div>
 	</div>
-	<div class="row panel panel-primary">
+</div>
+<div data-toggle="collapse" data-parent="#accordion" href="#purchase-info">
+
+	<div class="row panel panel-primary panel-collapse">
 		<div class="panel-heading">
 			<h4>
 				Purchase Information
 			</h4>
 		</div>
+	</div>
+	<div id="purchase-info" class="collapse in">
 		<div class="panel-body">
 			<div class="col-xs-6">
 				@Html.LabelFor(m => m.DatePurchased)
@@ -109,17 +123,18 @@
 			</div>
 		</div>
 	</div>
+
 	@Html.HiddenFor(m => m.DiscogsID)
+</div>
 	<div class="row panel-body">
 		<div class="col-xs-8 col-sm-10">
 			<input id="btnSubmit" type="submit" value=@(Model.ID > 0 ? "Save" : "Create") class="btn btn-default btn-block btn-lg" />
 		</div>
 
 		@if (Model.ID > 0)
-		{
+			{
 			<div class="col-xs-4 col-sm-2">
 				@Html.ActionLink("Delete", MVC.Album.Delete(Model.ID), new { id = "deleteBtn", @class = "btn btn-danger btn-block btn-lg", data_id = Model.ID, data_deleteUrl = Url.Action(MVC.Album.Delete()) })
 			</div>
-		}
+			}
 	</div>
-</div>
