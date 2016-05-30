@@ -1,9 +1,11 @@
 ﻿@model BusinessLogic.Models.Album
 
-	<h2>@ViewBag.Title</h2>
+<h2>@ViewBag.Title</h2>
 
-	@using (Html.BeginForm(MVC.Album.Create(), FormMethod.Post))
-	{
-		Html.RenderPartial(MVC.Album.Views._AlbumFormPartial, Model);
-	}
-	@Html.ActionLink("Back to List", MVC.Album.Index())
+@Html.ActionLink("Search Discogs", MVC.Album.Search(), new {@class = "btn btn-default"})
+
+@using (Html.BeginForm(MVC.Album.Create(), FormMethod.Post))
+{
+	Html.RenderPartial(MVC.Album.Views._AlbumFormPartial, Model);
+}
+@Html.ActionLink("Back to List", MVC.Album.Index())
