@@ -35,7 +35,6 @@
 	;
 }
 <body>
-	@*<div class="navbar navbar-default navbar-fixed-top">*@
 	<div class="row">
 		<div id="fh5co-header" role="banner">
 			<div class="container">
@@ -55,98 +54,151 @@
 		<h1 class="fh5co-logo">
 			@Html.ActionLink("Project Cinderella", MVC.Home.Index(), new { @class = "navbar-brand" })
 		</h1>
+		<ul id="accordion">
+			<li class="panel-heading">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#Menu">
+						Menu
+					</a>
+				</h4>
+			</li>
+			<li id="Menu" class="panel-collapse collapse">
+				<div class="panel-body">
+					<div class="table">
+						<div>
+							@Html.ActionLink("About", MVC.Home.About())
+						</div>
+
+						<div>
+							@Html.ActionLink("Contact", MVC.Home.Contact())
+						</div>
+
+						@if (User.IsInRole("Admin"))
+						{
+							<div>
+								<div>@Html.ActionLink("Error Log", MVC.Elmah.Index(), new { target = "_blank" })</div>
+							</div>
+						}
+					</div>
+				</div>
+			</li>
+
+			<li class="panel-heading">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#Albums">
+						Albums
+					</a>
+				</h4>
+			</li>
+			<li id="Albums" class="panel-collapse collapse">
+				<div class="panel-body">
+					<div class="table">
+						<div>@Html.ActionLink("View Albums", MVC.Album.Index())</div>
+						@if (User.Identity.IsAuthenticated)
+						{
+							<div>@Html.ActionLink("Add Album", MVC.Album.Create())</div>
+							<div>@Html.ActionLink("Search Discogs for Album", MVC.Album.Search())</div>
+							<div>
+								@using (Html.BeginForm(MVC.Album.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
+								{
+									@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
+									<button type="submit" class="btn btn-default">
+										<span class="fa fa-search"></span>
+									</button>
+								}
+							</div>
+						}
+					</div>
+				</div>
+			</li>
+
+			<li class="panel-heading">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#Books">
+						Books
+					</a>
+				</h4>
+			</li>
+			<li id="Books" class="panel-collapse collapse">
+				<div class="panel-body">
+					<div class="table">
+						<div>@Html.ActionLink("View Books", MVC.Book.Index())</div>
+						@if (User.Identity.IsAuthenticated)
+						{
+							<div>@Html.ActionLink("Add Book", MVC.Book.Create())</div>
+							<div>@Html.ActionLink("Search Google for Book", MVC.Book.Search())</div>
+							<div>
+								@using (Html.BeginForm(MVC.Book.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
+								{
+									@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
+									<button type="submit" class="btn btn-default">
+										<span class="fa fa-search"></span>
+									</button>
+								}
+							</div>
+						}
+					</div>
+				</div>
+			</li>
+
+			<li class="panel-heading">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#Movies">
+						Movies
+					</a>
+				</h4>
+			</li>
+			<li id="Movies" class="panel-collapse collapse">
+				<div class="panel-body">
+					<div class="table">
+						<div>@Html.ActionLink("View Movies", MVC.Movie.Index())</div>
+						@if (User.Identity.IsAuthenticated)
+						{
+							<div>@Html.ActionLink("Add Movie", MVC.Movie.Create())</div>
+							<div>
+								@using (Html.BeginForm(MVC.Movie.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
+								{
+									@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
+									<button type="submit" class="btn btn-default">
+										<span class="fa fa-search"></span>
+									</button>
+								}
+							</div>
+						}
+					</div>
+				</div>
+			</li>
+
+			<li class="panel-heading">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#Games">
+						Games
+					</a>
+				</h4>
+			</li>
+			<li id="Games" class="panel-collapse collapse">
+				<div class="panel-body">
+					<div class="table">
+						<div>@Html.ActionLink("View Games", MVC.Game.Index())</div>
+						@if (User.Identity.IsAuthenticated)
+						{
+							<div>@Html.ActionLink("Add Game", MVC.Game.Create())</div>
+							<div>
+								@using (Html.BeginForm(MVC.Game.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
+								{
+									@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
+									<button type="submit" class="btn btn-default">
+										<span class="fa fa-search"></span>
+									</button>
+								}
+							</div>
+						}
+					</div>
+				</div>
+			</li>
+		</ul>
 		<ul>
-			<li class="dropdown" style="display: inline;">
-				<a class="dropdownBtn">Menu<span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li>@Html.ActionLink("About", MVC.Home.About())</li>
-					<li>@Html.ActionLink("Contact", MVC.Home.Contact())</li>
-					@if (User.IsInRole("Admin"))
-					{
-						<li>@Html.ActionLink("Error Log", MVC.Elmah.Index(), new { target = "_blank" })</li>
-					}
-				</ul>
-			</li>
-			<li class="dropdown"style="display: inline;">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Albums<span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li>@Html.ActionLink("View Albums", MVC.Album.Index())</li>
-					@if (User.Identity.IsAuthenticated)
-					{
-						<li>@Html.ActionLink("Add Album", MVC.Album.Create())</li>
-						<li>@Html.ActionLink("Search Discogs for Album", MVC.Album.Search())</li>
-						<li>
-							@using (Html.BeginForm(MVC.Album.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
-							{
-								@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
-								<button type="submit" class="btn btn-default">
-									<span class="fa fa-search"></span>
-								</button>
-							}
-						</li>
-					}
-				</ul>
-			</li>
-			<li class="dropdown"style="display: inline;">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Books<span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li>@Html.ActionLink("View Books", MVC.Book.Index())</li>
-					@if (User.Identity.IsAuthenticated)
-					{
-						<li>@Html.ActionLink("Add Book", MVC.Book.Create())</li>
-						<li>@Html.ActionLink("Search Google for Book", MVC.Book.Search())</li>
-						<li>
-							@using (Html.BeginForm(MVC.Book.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
-							{
-								@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
-								<button type="submit" class="btn btn-default">
-									<span class="fa fa-search"></span>
-								</button>
-							}
-						</li>
-					}
-				</ul>
-			</li>
 
-			<li class="dropdown"style="display: inline;">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Movies<span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li>@Html.ActionLink("View Movies", MVC.Movie.Index())</li>
-					@if (User.Identity.IsAuthenticated)
-					{
-						<li>@Html.ActionLink("Add Movie", MVC.Movie.Create())</li>
-						<li>
-							@using (Html.BeginForm(MVC.Movie.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
-							{
-								@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
-								<button type="submit" class="btn btn-default">
-									<span class="fa fa-search"></span>
-								</button>
-							}
-						</li>
-					}
-				</ul>
-			</li>
-
-			<li class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Games<span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li>@Html.ActionLink("View Games", MVC.Game.Index())</li>
-					@if (User.Identity.IsAuthenticated)
-					{
-						<li>@Html.ActionLink("Add Game", MVC.Game.Create())</li>
-						<li>
-							@using (Html.BeginForm(MVC.Game.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
-							{
-								@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
-								<button type="submit" class="btn btn-default">
-									<span class="fa fa-search"></span>
-								</button>
-							}
-						</li>
-					}
-				</ul>
-			</li>
 			<li>@Html.Partial(MVC.Shared.Views._LoginPartial)</li>
 		</ul>
 	</div>
