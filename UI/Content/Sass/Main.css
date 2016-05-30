@@ -5,8 +5,9 @@ body {
   background-color: #add8e6;
   font-family: sans-serif; }
 
-footer {
-  color: #ffff66; }
+.footer {
+  margin-top: 5em;
+  background-color: #BBEAFA; }
 
 .jumbotronText {
   font-size: 30px;
@@ -24,7 +25,6 @@ footer {
 
 #fh5co-header .navbar-brand {
   color: #007aac; }
-
 #fh5co-header .navbar-brand:hover {
   color: #ffff66; }
 
@@ -43,3 +43,4 @@ footer {
 .btn-primary {
   background: #007aac; }
 
+/*# sourceMappingURL=Main.css.map */

@@ -1,33 +1,35 @@
-﻿$cinderellaBlue: #add8e6;
-$belleYellow: #ffff66;
-$bodyColor: #007aac;
-$footerColor: #f51515;
+﻿$cinderella-blue: #add8e6;
+$belle-yellow: #ffff66;
+$body-color: #007aac;
+$footer-color: #BBEAFA;
 $side-menu-color: #F9FAD9;
 
 a {
-	color: $bodyColor;
+	color: $body-color;
 }
 
 body {
-	background-color: $cinderellaBlue;
+	background-color: $cinderella-blue;
 	font-family: sans-serif;
 }
 
-footer {
-	color: $belleYellow;
+.footer {
+	margin-top: 5em;
+
+	background-color: $footer-color;
 }
 
 .jumbotronText {
 	font-size: 30px;
-	color: $cinderellaBlue;
+	color: $cinderella-blue;
 }
 
 .form-control {
 	color: black;
-	border-color: $bodyColor;
+	border-color: $body-color;
 
 	.form-control:hover {
-		border-color: $belleYellow !important;
+		border-color: $belle-yellow !important;
 	}
 }
 
@@ -38,11 +40,11 @@ footer {
 
 #fh5co-header {
 	.navbar-brand {
-		color: $bodyColor;
+		color: $body-color;
 	}
 
 	.navbar-brand:hover {
-		color: $belleYellow;
+		color: $belle-yellow;
 	}
 }
 
@@ -51,7 +53,7 @@ footer {
 }
 
 .navbar-brand{
-	color: $bodyColor !important;
+	color: $body-color !important;
 }
 
 .fh5co-desc {
@@ -59,9 +61,9 @@ footer {
 }
 
 .panel-primary .panel-heading {
-	background-color: $bodyColor;
+	background-color: $body-color;
 }
 
 .btn-primary {
-	background: $bodyColor;
+	background: $body-color;
 }

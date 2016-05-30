@@ -43,7 +43,7 @@
 					<h1 class="fh5co-logo">
 						@Html.ActionLink("Project Cinderella", MVC.Home.Index(), new { @class = "navbar-brand" })
 					</h1>
-</nav>
+				</nav>
 			</div>
 		</div>
 	</div>
@@ -218,10 +218,29 @@
 		<script src="@Links.Scripts.Hydrogen.salvattore_min_js"></script>
 		<!-- Main JS -->
 		<script src="@Links.Scripts.Hydrogen.main_js"></script>
-		<footer>
-			<br />
-			<p>&copy; @DateTime.Now.Year - Project Cinderella - Designed By Dennis D. Silva</p>
-		</footer>
+
 	</div>
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<ul>
+								<li>@Html.ActionLink("About", MVC.Home.About())</li>
+								<li>@Html.ActionLink("Contact", MVC.Home.Contact())</li>
+							</ul>
+						</div>
+						<div class="panel-body">
+
+						</div>
+					</div>
+				</div></div>
+			<div class="row">
+				&copy; @DateTime.Now.Year - Project Cinderella - Designed By Dennis D. Silva
+			</div>
+		</div>
+
+	</footer>
 </body>
 </html>
