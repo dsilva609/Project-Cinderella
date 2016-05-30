@@ -1,4 +1,4 @@
-﻿a {
+a {
   color: #007aac; }
 
 body {
@@ -31,6 +31,9 @@ footer {
 #fh5co-offcanvass {
   background-color: #F9FAD9; }
 
+.navbar-brand {
+  color: #007aac !important; }
+
 .fh5co-desc {
   float: none !important; }
 
@@ -38,5 +41,5 @@ footer {
   background-color: #007aac; }
 
 .btn-primary {
-  background: #add8e6; }
+  background: #007aac; }
 

@@ -50,6 +50,10 @@ footer {
 	background-color: $side-menu-color;
 }
 
+.navbar-brand{
+	color: $bodyColor !important;
+}
+
 .fh5co-desc {
 	float: none !important;
 }
@@ -59,5 +63,5 @@ footer {
 }
 
 .btn-primary {
-	background: $cinderellaBlue;
+	background: $bodyColor;
 }
