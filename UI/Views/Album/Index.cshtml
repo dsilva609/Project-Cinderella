@@ -8,16 +8,16 @@
 </script>
 
 <div class="row">
-	<div class="h2 col-md-4">
+	<div class="h2 col-md-5">
 		Albums
 		<a class="btn btn-default" href="@Url.Action(MVC.Album.Create())" style="padding-top: 1.25em;" contenteditable="false">
 			<span class="fa fa-plus"></span>
 		</a>
 	</div>
-	<div class="col-md-4" style="padding-top: 1.25em;">
+	<div class="col-md-3" style="padding-top: 1.25em;">
 		@if (User.Identity.IsAuthenticated)
 		{
-			@Html.ActionLink("Search Discogs", MVC.Album.Search(), new { @class = "btn btn-default" })
+			<a href="@Url.Action(MVC.Album.Search())" class="btn btn-default">Discogs <span class="fa fa-search"></span></a>
 		}
 	</div>
 	<div class="col-md-4" style="padding-top: 1.25em;">
@@ -30,7 +30,6 @@
 	</div>
 </div>
 <div class="row">
-	
 </div>
 
 <div id="fh5co-main">
