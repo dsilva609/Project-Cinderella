@@ -2,11 +2,19 @@
 	ViewBag.Title = "Home Page";
 }
 
-@if (!User.Identity.IsAuthenticated)
-{<div class="text-right">
-	@Html.ActionLink("Login", MVC.Account.Login(), new {@class = "btn btn-default"})
+<div class="h3 row">
+	<div class="col-sm-12 text-sm-center col-md-8 text-md-center text-lg-right" style="padding-top: 0.5em;">@Html.ActionLink("Albums", MVC.Album.Index()) |
+		@Html.ActionLink("Books", MVC.Book.Index()) |
+		@Html.ActionLink("Movies", MVC.Movie.Index()) |
+		@Html.ActionLink("Games", MVC.Game.Index())</div>
+	@if (!User.Identity.IsAuthenticated)
+	{<div class="hidden-xs hidden-sm col-md-4 text-right">
+		@Html.ActionLink("Login", MVC.Account.Login(), new { @class = "btn btn-default" })
+	</div>
+	}
 </div>
-}
+
+
 <div class="jumbotron img-responsive">
 	<div class="lead jumbotronText">Gotta Collect 'Em All</div>
 	<div>
