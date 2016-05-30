@@ -97,7 +97,7 @@
 						@if (User.Identity.IsAuthenticated)
 						{
 							<div>@Html.ActionLink("Add Album", MVC.Album.Create())</div>
-							<div>@Html.ActionLink("Search Discogs for Album", MVC.Album.Search())</div>
+							<div>@Html.ActionLink("Search Discogs", MVC.Album.Search())</div>
 							<div>
 								@using (Html.BeginForm(MVC.Album.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
 								{

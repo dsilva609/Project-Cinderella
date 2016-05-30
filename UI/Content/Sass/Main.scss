@@ -2,6 +2,7 @@
 $belleYellow: #ffff66;
 $bodyColor: #007aac;
 $footerColor: #f51515;
+$side-menu-color: #F9FAD9;
 
 a {
 	color: $bodyColor;
@@ -43,6 +44,10 @@ footer {
 	.navbar-brand:hover {
 		color: $belleYellow;
 	}
+}
+
+#fh5co-offcanvass {
+	background-color: $side-menu-color;
 }
 
 .fh5co-desc {
