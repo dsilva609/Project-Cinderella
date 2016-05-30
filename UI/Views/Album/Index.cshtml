@@ -64,9 +64,13 @@
 </div>
 
 <div class="row">
-	Page:
-	@for (var i = 0; i < Model.PageCount; i++)
-	{
-		@Html.ActionLink((i + 1).ToString(), MVC.Album.Index("", i + 1), new { @class = "btn btn-link" })
-	}
+	<div class="pagination-lg">
+
+		@for (var i = 0; i < Model.PageCount; i++)
+		{
+			<div class="page-item">
+				<a href="@Url.Action(MVC.Album.Index("", i + 1))" class="page-link">@(i + 1)</a>
+			</div>
+		}
+	</div>
 </div>
