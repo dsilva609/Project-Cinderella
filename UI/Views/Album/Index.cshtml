@@ -7,29 +7,30 @@
 	var deleteUrl = '@Url.Action(MVC.Album.Delete())';
 </script>
 
-<div>
-	<div class="h2 col-xs-3 col-sm-3">
+<div class="row">
+	<div class="h2 col-md-4">
 		Albums
+		<a class="btn btn-default" href="@Url.Action(MVC.Album.Create())" style="padding-top: 1.25em;" contenteditable="false">
+			<span class="fa fa-plus"></span>
+		</a>
 	</div>
-	<div class="col-xs-3 col-sm-4" style="padding-top: 1.25em;">
+	<div class="col-md-4" style="padding-top: 1.25em;">
 		@if (User.Identity.IsAuthenticated)
 		{
-			@Html.ActionLink("Search on Discogs", MVC.Album.Search(), new { @class = "btn btn-default" })
+			@Html.ActionLink("Search Discogs", MVC.Album.Search(), new { @class = "btn btn-default" })
 		}
 	</div>
-	<div class="col-xs-6 col-sm-5 text-right" style="padding-top: 1.25em; display: inline-flex;">
-		@if (User.Identity.IsAuthenticated)
-		{
-			@Html.ActionLink("Add Album", MVC.Album.Create(), new { @class = "btn btn-default", @style = "margin-right:1em;" })
-		}
-		@using (Html.BeginForm(MVC.Album.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
-		{
-			@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
+	<div class="col-md-4" style="padding-top: 1.25em;">
+		<form action="@Url.Action(MVC.Album.Index())" method="get" style="display: inline-flex;">
+			<input class="form-control" id="query" name="query" placeholder="Search" type="text" value="">
 			<button type="submit" class="btn btn-default">
 				<span class="fa fa-search"></span>
 			</button>
-		}
+		</form>
 	</div>
+</div>
+<div class="row">
+	
 </div>
 
 <div id="fh5co-main">
