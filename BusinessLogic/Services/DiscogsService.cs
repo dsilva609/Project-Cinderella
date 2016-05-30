@@ -21,8 +21,8 @@ namespace BusinessLogic.Services
 		}
 
 		public List<DiscogsResult> Search(string artist, string album)
-		{
-			var response = _client.GetAsync($"database/search?artist={artist}&release_title={album}&type=release");
+		{//artist={artist}&release_title={album}&
+			var response = _client.GetAsync($"database/search?type=release&q={artist}+{album}");
 
 			var result = JObject.Parse(response.Result.Content.ReadAsStringAsync().Result);
 			//	if (result.IsSuccessStatusCode)

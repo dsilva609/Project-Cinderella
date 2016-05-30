@@ -32,8 +32,8 @@ namespace UI.Controllers
 				TotalRecords = _service.GetCount()
 			};
 
-			var pages = Math.Ceiling((double)viewModel.TotalRecords / viewModel.PageSize);
-			viewModel.PageCount = (int)pages;
+			var pages = Math.Ceiling((double) viewModel.TotalRecords/viewModel.PageSize);
+			viewModel.PageCount = (int) pages;
 			return View(viewModel);
 		}
 
@@ -41,7 +41,7 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult Create()
 		{
-			var model = Session["albumResult"] ?? new Album { UserID = User.Identity.GetUserId() };
+			var model = Session["albumResult"] ?? new Album {UserID = User.Identity.GetUserId()};
 			ViewBag.Title = "Create";
 			Session["albumResult"] = null;
 
@@ -57,10 +57,10 @@ namespace UI.Controllers
 			var model = new Album
 			{
 				UserID = User.Identity.GetUserId(),
-				Artist = release.artists.First().name,//info[0].Trim(),
-				AlbumName = release.title,//info[1].Trim(),
-				AlbumYear = release.year,//result.Year,
-				RecordLabel = release.LabelString,//result.LabelString,
+				Artist = release.artists.First().name, //info[0].Trim(),
+				AlbumName = release.title, //info[1].Trim(),
+				AlbumYear = release.year, //result.Year,
+				RecordLabel = release.LabelString, //result.LabelString,
 				Genre = release.GenreString,
 				DiscogsID = release.id,
 				ImageUrl = release.images?.First().uri
@@ -156,7 +156,7 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult Search(DiscogsSearchModel searchModel)
 		{
-			if (!string.IsNullOrWhiteSpace(searchModel.Artist) && !string.IsNullOrWhiteSpace(searchModel.AlbumName))
+			if (!string.IsNullOrWhiteSpace(searchModel.Artist) || !string.IsNullOrWhiteSpace(searchModel.AlbumName))
 			{
 				searchModel.Results = _discogsService.Search(searchModel.Artist, searchModel.AlbumName);
 				searchModel.Results = searchModel.Results.OrderByDescending(x => x.Year).ToList();
