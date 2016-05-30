@@ -2,8 +2,13 @@
 	ViewBag.Title = "Home Page";
 }
 
+@if (!User.Identity.IsAuthenticated)
+{<div class="text-right">
+	@Html.ActionLink("Login", MVC.Account.Login(), new {@class = "btn btn-default"})
+</div>
+}
 <div class="jumbotron img-responsive">
-	<div class="lead jumbotronText">Does it make your head spin right round?</div>
+	<div class="lead jumbotronText">Gotta Collect 'Em All</div>
 	<div>
 		<a href="https://github.com/dsilva609/Project-Cinderella" class="btn btn-primary btn-lg" target="_blank">View Project In GitHub &raquo;</a>
 	</div>

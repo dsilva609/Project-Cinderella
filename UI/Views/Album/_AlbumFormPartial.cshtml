@@ -21,16 +21,23 @@
 </div>
 <div id="album-info" class="collapse in">
 	<div class="panel-body">
+		@if(!string.IsNullOrWhiteSpace(Model.ImageUrl)){
+		<div class="animate-box item col-sm-6">
+			<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Artist - @Model.AlbumName (@Model.AlbumYear)">
+				<img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="img-rounded" style="height: 200px; width: 200px;">
+			</a>
+		</div>
+}
 		<div class="col-xs-6">
 			@Html.LabelFor(m => m.Artist)
-			@Html.TextBoxFor(m => m.Artist, new { @class = "form-control" })
-			@Html.ValidationMessageFor(m => m.Artist, "", new { @class = "text-danger" })
+			@Html.TextBoxFor(m => m.Artist, new {@class = "form-control"})
+			@Html.ValidationMessageFor(m => m.Artist, "", new {@class = "text-danger"})
 		</div>
 
 		<div class="col-xs-6">
 			@Html.LabelFor(m => m.AlbumName)
-			@Html.TextBoxFor(m => m.AlbumName, new { @class = "form-control" })
-			@Html.ValidationMessageFor(m => m.AlbumName, "", new { @class = "text-danger" })
+			@Html.TextBoxFor(m => m.AlbumName, new {@class = "form-control"})
+			@Html.ValidationMessageFor(m => m.AlbumName, "", new {@class = "text-danger"})
 		</div>
 	</div>
 	<div class="panel-body">

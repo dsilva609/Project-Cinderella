@@ -12,6 +12,11 @@
 			<h4>Album Information</h4>
 		</div>
 		<div class="panel-body">
+			<div class="animate-box item col-sm-6" >
+				<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Artist - @Model.AlbumName (@Model.AlbumYear)">
+					<img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="img-rounded"style="height: 200px; width: 200px;">
+				</a>
+			</div>
 			<div>
 				@Html.DisplayNameFor(m => m.Artist):
 				@Html.DisplayFor(m => m.Artist)
