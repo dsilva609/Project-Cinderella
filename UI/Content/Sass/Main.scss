@@ -16,11 +16,6 @@ footer {
 	color: $belleYellow;
 }
 
-/*input[type=text] {
-	border: 0;
-	border-bottom: 1px solid black;
-}*/
-
 .jumbotronText {
 	font-size: 30px;
 	color: $cinderellaBlue;
@@ -28,11 +23,11 @@ footer {
 
 .form-control {
 	color: black;
-}
+	border-color: $bodyColor;
 
-.form-control:hover {
-	/*border: 0;
-	border-bottom: 1px solid black;*/
+	.form-control:hover {
+		border-color: $belleYellow;
+	}
 }
 
 .row {
@@ -50,19 +45,12 @@ footer {
 	}
 }
 
-.fh5co-desc{
+.fh5co-desc {
 	float: none !important;
 }
+
 .panel-primary .panel-heading {
 	background-color: $bodyColor;
-}
-
-.form-control {
-	border-color: $bodyColor;
-
-	.form-control:hover {
-		border-color: $belleYellow;
-	}
 }
 
 .btn-primary {
