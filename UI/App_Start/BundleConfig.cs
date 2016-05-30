@@ -30,10 +30,7 @@ namespace UI
 				.Include("~/Scripts/Namespace.js")
 				.Include("~/Scripts/Shared/_Layout.js")
 				.Include("~/Scripts/Shared/Logout.js")
-				.Include("~/Scripts/toastr.min.js")
-				.Include("~/Scripts/PageSpecific/AlbumIndex.js")
-				.Include("~/Scripts/PageSpecific/AlbumDetails.js")
-				.Include("~/Scripts/PageSpecific/AlbumEdit.js"));
+				.Include("~/Scripts/toastr.min.js"));
 
 			bundles.Add(new StyleBundle("~/Content/css")
 				.Include("~/Content/bootstrap.css")
