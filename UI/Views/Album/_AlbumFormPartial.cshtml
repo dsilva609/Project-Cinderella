@@ -8,6 +8,7 @@
 
 @Html.HiddenFor(m => m.UserID)
 @Html.HiddenFor(m => m.DateAdded)
+@Html.HiddenFor(m => m.DiscogsID)
 <div data-toggle="collapse" data-parent="#accordion" href="#album-info">
 	<div class="row panel panel-primary panel-collapse">
 		<div class="panel-heading">
@@ -77,24 +78,23 @@
 			<h4>Media Information</h4>
 		</div>
 	</div>
-	<div id="media-info" class="collapse in">
-		<div class="panel-body">
-			<div class="col-xs-6">
-				@Html.LabelFor(m => m.MediaType)
-				@Html.EnumDropDownListFor(m => m.MediaType, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.MediaType, "", new { @class = "text-danger" })
-			</div>
+</div>
+<div id="media-info" class="collapse in">
+	<div class="panel-body">
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.MediaType)
+			@Html.EnumDropDownListFor(m => m.MediaType, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.MediaType, "", new { @class = "text-danger" })
+		</div>
 
-			<div class="col-xs-6">
-				@Html.LabelFor(m => m.IsPhysical)
-				@Html.CheckBoxFor(m => m.IsPhysical, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.IsPhysical, "", new { @class = "text-danger" })
-			</div>
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.IsPhysical)
+			@Html.CheckBoxFor(m => m.IsPhysical, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.IsPhysical, "", new { @class = "text-danger" })
 		</div>
 	</div>
 </div>
 <div data-toggle="collapse" data-parent="#accordion" href="#purchase-info">
-
 	<div class="row panel panel-primary panel-collapse">
 		<div class="panel-heading">
 			<h4>
@@ -102,36 +102,35 @@
 			</h4>
 		</div>
 	</div>
-	<div id="purchase-info" class="collapse in">
-		<div class="panel-body">
-			<div class="col-xs-6">
-				@Html.LabelFor(m => m.DatePurchased)
-				@if (Request.Browser.Browser == "IE" || !Request.Browser.IsMobileDevice)
-				{
-					@Html.EditorFor(m => m.DatePurchased, new { htmlattributes = new { type = "text", Value = Model.DatePurchased.ToShortDateString(), @class = "form-control datepicker" } })
-				}
-				else
-				{
-					@Html.EditorFor(m => m.DatePurchased, new { htmlattributes = new { type = "date", Value = Model.DatePurchased.ToString("yyyy-MM-dd"), @class = "form-control" } })
-				}
-				@Html.ValidationMessageFor(m => m.DatePurchased, "", new { @class = "text-danger" })
-			</div>
-			<div class="col-xs-4">
-				@Html.LabelFor(m => m.LocationPurchased)
-				@Html.TextBoxFor(m => m.LocationPurchased, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.LocationPurchased, "", new { @class = "text-danger" })
-			</div>
+</div>
+<div id="purchase-info" class="collapse in">
+	<div class="panel-body">
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.DatePurchased)
+			@if (Request.Browser.Browser == "IE" || !Request.Browser.IsMobileDevice)
+			{
+				@Html.EditorFor(m => m.DatePurchased, new { htmlattributes = new { type = "text", Value = Model.DatePurchased.ToShortDateString(), @class = "form-control datepicker" } })
+			}
+			else
+			{
+				@Html.EditorFor(m => m.DatePurchased, new { htmlattributes = new { type = "date", Value = Model.DatePurchased.ToString("yyyy-MM-dd"), @class = "form-control" } })
+			}
+			@Html.ValidationMessageFor(m => m.DatePurchased, "", new { @class = "text-danger" })
+		</div>
+		<div class="col-xs-4">
+			@Html.LabelFor(m => m.LocationPurchased)
+			@Html.TextBoxFor(m => m.LocationPurchased, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.LocationPurchased, "", new { @class = "text-danger" })
+		</div>
 
-			<div class="col-xs-2">
-				@Html.LabelFor(m => m.IsNew)
-				@Html.CheckBoxFor(m => m.IsNew, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.IsNew, "", new { @class = "text-danger" })
-			</div>
+		<div class="col-xs-2">
+			@Html.LabelFor(m => m.IsNew)
+			@Html.CheckBoxFor(m => m.IsNew, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.IsNew, "", new { @class = "text-danger" })
 		</div>
 	</div>
-
-	@Html.HiddenFor(m => m.DiscogsID)
 </div>
+
 <div class="row panel-body">
 	<div class="col-md-8">
 		<input id="btnSubmit" type="submit" value=@(Model.ID > 0 ? "Save" : "Create") class="btn btn-default btn-block btn-lg" />
