@@ -64,7 +64,7 @@
 			{
 				using (Html.BeginForm(MVC.Album.CreateFromSearchResult(result.ID), FormMethod.Get))
 				{
-					<div id="album" class="row info" data-id="@result.ID">
+					<div id="album" class="row info" style="padding-bottom: 1em;" data-id="@result.ID">
 
 						<div class="col-xs-2">
 							<img src="@result.Thumb" />
