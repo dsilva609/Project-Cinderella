@@ -44,7 +44,15 @@ namespace BusinessLogic.Services
 				albumList = albumList.Where(x => x.UserID == userID).ToList();
 
 			if (!string.IsNullOrWhiteSpace(query))
-				albumList = albumList.Where(x => x.Artist.Equals(query, StringComparison.InvariantCultureIgnoreCase) || x.AlbumName.Equals(query, StringComparison.CurrentCultureIgnoreCase)).ToList();
+			{
+				var currentList = new List<Album>();
+				currentList.AddRange(albumList);
+				albumList = currentList.Where(x =>
+							 x.Artist.Equals(query, StringComparison.InvariantCultureIgnoreCase) ||
+							 x.AlbumName.Equals(query, StringComparison.InvariantCultureIgnoreCase)).ToList();
+				var partialMatches = currentList.Where(x => x.Artist.IndexOf(query, StringComparison.InvariantCultureIgnoreCase) != -1 || x.AlbumName.IndexOf(query, StringComparison.InvariantCultureIgnoreCase) != -1).ToList();
+				albumList = albumList.Concat(partialMatches).Distinct().ToList();
+			}
 
 			if (numToTake > 0)
 				albumList = albumList.Skip(numToTake * (pageNum.GetValueOrDefault() - 1)).Take(numToTake).ToList();
