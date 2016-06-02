@@ -10,10 +10,16 @@ body {
   background-color: #BBEAFA; }
 
 .jumbotron {
-  width: 1900px !important; }
+  width: 1900px !important;
+  padding-top: 0; }
+  .jumbotron input[type="text"] {
+    color: antiquewhite; }
 
 .jumbotronText {
   font-size: 30px;
+  color: #add8e6; }
+
+.nav a {
   color: #add8e6; }
 
 .form-control {
