@@ -32,8 +32,8 @@ namespace UI.Controllers
 				TotalRecords = _service.GetCount()
 			};
 
-			var pages = Math.Ceiling((double) viewModel.TotalRecords/viewModel.PageSize);
-			viewModel.PageCount = (int) pages;
+			var pages = Math.Ceiling((double)viewModel.TotalRecords / viewModel.PageSize);
+			viewModel.PageCount = (int)pages;
 			return View(viewModel);
 		}
 
@@ -41,7 +41,7 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult Create()
 		{
-			var model = Session["albumResult"] ?? new Album {UserID = User.Identity.GetUserId()};
+			var model = Session["albumResult"] ?? new Album { UserID = User.Identity.GetUserId() };
 			ViewBag.Title = "Create";
 			Session["albumResult"] = null;
 
@@ -57,10 +57,10 @@ namespace UI.Controllers
 			var model = new Album
 			{
 				UserID = User.Identity.GetUserId(),
-				Artist = release.artists.First().name, //info[0].Trim(),
-				AlbumName = release.title, //info[1].Trim(),
-				AlbumYear = release.year, //result.Year,
-				RecordLabel = release.LabelString, //result.LabelString,
+				Artist = release.artists.First().name,
+				AlbumName = release.title,
+				AlbumYear = release.year,
+				RecordLabel = release.LabelString,
 				Genre = release.GenreString,
 				DiscogsID = release.id,
 				ImageUrl = release.images?.First().uri
@@ -80,7 +80,6 @@ namespace UI.Controllers
 		public virtual ActionResult Create(Album model)
 		{
 			//TODO: need to do user checks
-			model.UserID = User.Identity.GetUserId();
 			if (ModelState.IsValid)
 			{
 				try
@@ -123,7 +122,6 @@ namespace UI.Controllers
 				}
 				//--TODO: why is id needed?
 				//TODO: make sure user id is the same so as not to change other users data
-				model.UserID = User.Identity.GetUserId();
 				model.DateUpdated = DateTime.Now;
 				_service.Edit(model.ID, model);
 
