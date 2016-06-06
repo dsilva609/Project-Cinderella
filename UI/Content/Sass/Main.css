@@ -1,55 +1,6 @@
-﻿a {
-  color: #007aac; }
-
-body {
-  background-color: #add8e6;
-  font-family: sans-serif; }
-
-.footer {
-  margin-top: 5em;
-  background-color: #BBEAFA; }
-
-.jumbotron {
-  width: 1900px !important;
-  padding-top: 0; }
-  .jumbotron input[type="text"] {
-    color: antiquewhite; }
-
-.jumbotronText {
-  font-size: 30px;
-  color: #add8e6; }
-
-.nav a {
-  color: #add8e6; }
-
-.form-control {
-  color: black;
-  border-color: #007aac; }
-  .form-control .form-control:hover {
-    border-color: #ffff66 !important; }
-
-.row {
-  margin-left: 0;
-  margin-right: 0; }
-
-#fh5co-header .navbar-brand {
-  color: #007aac; }
-
-#fh5co-header .navbar-brand:hover {
-  color: #ffff66; }
-
-#fh5co-offcanvass {
-  background-color: #F9FAD9; }
-
-.navbar-brand {
-  color: #007aac !important; }
-
-.fh5co-desc {
-  float: none !important; }
-
-.panel-primary .panel-heading {
-  background-color: #007aac; }
-
-.btn-primary {
-  background: #007aac; }
-
+/* System.IO.IOException: The process cannot access the file 'C:\GitSandbox\Project-Cinderella\UI\Content\Sass\Main.css' because it is being used by another process.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at Mindscape.VisualSass.Integration.Compilation.ScssCompiler.CompileCore(String scss, String sourceFilePath, String rootPath, IEnumerable`1 additionalPaths, ICompilationSettings settings, ICompilerContext context, CompilationResult result)
+   at Mindscape.VisualSass.Integration.Compilation.CompilerWithMinification.Compile(String text, String sourceFilePath, String rootPath, IEnumerable`1 additionalPaths, ICompilationSettings settings, ICompilerContext context, CompilationResult result) */

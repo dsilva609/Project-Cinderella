@@ -11,11 +11,13 @@ a {
 body {
 	background-color: $cinderella-blue;
 	font-family: sans-serif;
+padding-bottom: 0;
 }
 
 .footer {
 	margin-top: 5em;
 	background-color: $footer-color;
+padding-bottom: 2em;
 }
 
 .jumbotron{
