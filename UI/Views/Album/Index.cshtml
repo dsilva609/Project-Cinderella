@@ -39,31 +39,31 @@
 	<div class="container">
 		@foreach (var record in Model.Albums)
 			{
-				<div id="fh5co-board" data-columns>
-					<div class="item">
-						<div class="animate-box text-center">
-							<a href="@(string.IsNullOrWhiteSpace(record.ImageUrl) ? Links.Content.Images.Turntable_jpg : record.ImageUrl)" class="image-popup img-thumbnail img-responsive fh5co-board-img" title="@record.Artist - @record.AlbumName (@record.AlbumYear)">
-								<img src="@(string.IsNullOrWhiteSpace(record.ImageUrl) ? Links.Content.Images.Turntable_jpg : record.ImageUrl)">
-							</a>
-						</div>
+			<div id="fh5co-board" data-columns>
+				<div class="item">
+					<div class="animate-box text-center">
+						<a href="@(string.IsNullOrWhiteSpace(record.ImageUrl) ? Links.Content.Images.Turntable_jpg : record.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@record.Artist - @record.AlbumName (@record.AlbumYear)">
+							<img src="@(string.IsNullOrWhiteSpace(record.ImageUrl) ? Links.Content.Images.Turntable_jpg : record.ImageUrl)">
+						</a>
+					</div>
 
-						<div id="album" class="info fh5co-desc" data-id="@record.ID">
-							<a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Album.Edit(record.ID) : MVC.Album.Details(record.ID))">
-								<div class="row">
-									@Html.DisplayFor(modelItem => record.Artist)
-								</div>
-								<div class="row">
-									@Html.DisplayFor(modelItem => record.AlbumName)
-								</div>
-								<div class="row">
-									@Html.DisplayFor(modelItem => record.MediaType)
-								</div>
-							</a>
-						</div>
+					<div id="album" class="info fh5co-desc" data-id="@record.ID">
+						<a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Album.Edit(record.ID) : MVC.Album.Details(record.ID))">
+							<div class="row">
+								@Html.DisplayFor(modelItem => record.Artist)
+							</div>
+							<div class="row">
+								@Html.DisplayFor(modelItem => record.AlbumName)
+							</div>
+							<div class="row">
+								@Html.DisplayFor(modelItem => record.MediaType)
+							</div>
+						</a>
 					</div>
 				</div>
+			</div>
 			}
-		</div>
+	</div>
 </div>
 
 <div class="row">

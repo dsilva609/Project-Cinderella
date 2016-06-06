@@ -6,9 +6,9 @@
 	$("#main-body").removeClass("container");
 </script>
 
-<div class="jumbotron img-responsive">
+<div class="jumbotron img-fluid">
 	<div class="h3 container nav">
-		<div class="row" >
+		<div class="row">
 			<div class="col-sm-12 text-sm-center col-md-8 text-md-center text-lg-right" style="padding-top: 0.5em;">
 				@Html.ActionLink("Albums", MVC.Album.Index()) |
 				@Html.ActionLink("Books", MVC.Book.Index()) |
@@ -17,16 +17,16 @@
 			</div>
 			@if (!User.Identity.IsAuthenticated)
 			{<div class="hidden-xs hidden-sm col-md-4 text-right">
-				 @Html.ActionLink("Login", MVC.Account.Login(), new {@class = "btn btn-default"})
-			 </div>
+				@Html.ActionLink("Login", MVC.Account.Login(), new { @class = "btn btn-default" })
+			</div>
 			}
 		</div>
 
 		<div class="row text-center" style="padding-top: 5em;">
 			<div class="col-xs-6">
-				@using (Html.BeginForm(MVC.Album.Index(), FormMethod.Get, new {@style = "display:inline-flex;"}))
+				@using (Html.BeginForm(MVC.Album.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
 				{
-					@Html.TextBox("query", null, new {@class = "form-control", @placeholder = "Search"})
+					@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
 					<button type="submit" class="btn btn-default">
 						<span class="fa fa-search"></span>
 					</button>
@@ -35,7 +35,7 @@
 			<div class="col-xs-6">
 				@if (User.Identity.IsAuthenticated)
 				{
-					@Html.ActionLink("Add Album", MVC.Album.Create(), new {@class = "btn btn-default btn-lg"})
+					@Html.ActionLink("Add Album", MVC.Album.Create(), new { @class = "btn btn-default btn-lg" })
 				}
 			</div>
 		</div>
