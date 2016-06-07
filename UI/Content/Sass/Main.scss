@@ -20,20 +20,23 @@ body {
 	padding-bottom: 2em;
 }
 
-.jumbotron{
+.jumbotron {
 	width: 1900px !important;
-	padding-top:0;
+	padding-top: 0;
+
 	input[type="text"] {
-color: antiquewhite;
+		color: antiquewhite;
 	}
 }
+
 .jumbotronText {
 	font-size: 30px;
 	color: $cinderella-blue;
 }
+
 .nav {
-	a{
-	color: $cinderella-blue;
+	a {
+		color: $cinderella-blue;
 	}
 }
 
@@ -65,7 +68,7 @@ color: antiquewhite;
 	background-color: $side-menu-color;
 }
 
-.navbar-brand{
+.navbar-brand {
 	color: $body-color !important;
 }
 
