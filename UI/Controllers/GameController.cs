@@ -58,7 +58,6 @@ namespace UI.Controllers
 		[ValidateAntiForgeryToken]
 		public virtual ActionResult Create(Game game)
 		{
-			game.UserID = User.Identity.GetUserId();
 			if (!ModelState.IsValid) return View(game);
 			try
 			{
@@ -98,7 +97,6 @@ namespace UI.Controllers
 			}
 			//--TODO: why is id needed?
 			//TODO: make sure user id is the same so as not to change other users data
-			game.UserID = User.Identity.GetUserId();
 			game.DateUpdated = DateTime.Now;
 			_service.Edit(game.ID, game);
 

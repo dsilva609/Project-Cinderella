@@ -66,8 +66,6 @@ namespace UI.Controllers
 		[ValidateAntiForgeryToken]
 		public virtual ActionResult Create(Book book)
 		{
-			//TODO: is this needed?
-			book.UserID = User.Identity.GetUserId();
 			if (!ModelState.IsValid) return View(book);
 			try
 			{
@@ -107,7 +105,6 @@ namespace UI.Controllers
 			}
 			//--TODO: why is id needed?
 			//TODO: make sure user id is the same so as not to change other users data
-			book.UserID = User.Identity.GetUserId();
 			book.DateUpdated = DateTime.Now;
 			_service.Edit(book.ID, book);
 
