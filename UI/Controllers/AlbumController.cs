@@ -112,23 +112,20 @@ namespace UI.Controllers
 		[HttpPost]
 		public virtual ActionResult Edit(Album model)
 		{
-			if (ModelState.IsValid)
+			if (!ModelState.IsValid) return View(model);
+			var existingAlbums = _service.GetAll(User.Identity.GetUserId()).Where(x => x.ID != model.ID && x.Artist == model.Artist && x.AlbumName == model.AlbumName && x.MediaType == model.MediaType).ToList();
+			if (existingAlbums.Count > 0)
 			{
-				var existingAlbums = _service.GetAll(User.Identity.GetUserId()).Where(x => x.ID != model.ID && x.Artist == model.Artist && x.AlbumName == model.AlbumName && x.MediaType == model.MediaType).ToList();
-				if (existingAlbums.Count > 0)
-				{
-					ShowStatusMessage(MessageTypeEnum.error, $"An album of Artist: {model.Artist}, Album: {model.AlbumName}, Media Type: {model.MediaType} already exists.", "Duplicate Record");
-					return View(model);
-				}
-				//--TODO: why is id needed?
-				//TODO: make sure user id is the same so as not to change other users data
-				model.DateUpdated = DateTime.Now;
-				_service.Edit(model.ID, model);
-
-				ShowStatusMessage(MessageTypeEnum.success, $"Album of Artist: {model.Artist}, Album: {model.AlbumName}, Media Type: {model.MediaType} updated.", "Update Successful");
-				return RedirectToAction(MVC.Album.Index());
+				ShowStatusMessage(MessageTypeEnum.error, $"An album of Artist: {model.Artist}, Album: {model.AlbumName}, Media Type: {model.MediaType} already exists.", "Duplicate Record");
+				return View(model);
 			}
-			return View(model);
+			//--TODO: why is id needed?
+			//TODO: make sure user id is the same so as not to change other users data
+			model.DateUpdated = DateTime.Now;
+			_service.Edit(model.ID, model);
+
+			ShowStatusMessage(MessageTypeEnum.success, $"Album of Artist: {model.Artist}, Album: {model.AlbumName}, Media Type: {model.MediaType} updated.", "Update Successful");
+			return RedirectToAction(MVC.Album.Index());
 		}
 
 		[HttpGet]
