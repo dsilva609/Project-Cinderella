@@ -126,6 +126,7 @@
     <Compile Include="Enums\GameTypeEnum.cs" />
     <Compile Include="Enums\MovieMediaTypeEnum.cs" />
     <Compile Include="Enums\MovieRatingEnum.cs" />
+    <Compile Include="Enums\SpeedEnum.cs" />
     <Compile Include="Migrations\201603160133505_Initial Create.cs" />
     <Compile Include="Migrations\201603160133505_Initial Create.Designer.cs">
       <DependentUpon>201603160133505_Initial Create.cs</DependentUpon>
@@ -201,6 +202,10 @@
     <Compile Include="Migrations\201605260033073_Added Image Url field to album.cs" />
     <Compile Include="Migrations\201605260033073_Added Image Url field to album.Designer.cs">
       <DependentUpon>201605260033073_Added Image Url field to album.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606130039583_added speed to album model.cs" />
+    <Compile Include="Migrations\201606130039583_added speed to album model.Designer.cs">
+      <DependentUpon>201606130039583_added speed to album model.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseItem.cs" />
@@ -298,6 +303,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605260033073_Added Image Url field to album.resx">
       <DependentUpon>201605260033073_Added Image Url field to album.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606130039583_added speed to album model.resx">
+      <DependentUpon>201606130039583_added speed to album model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
