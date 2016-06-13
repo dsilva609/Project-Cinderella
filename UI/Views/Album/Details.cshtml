@@ -65,6 +65,11 @@
 			@Html.DisplayNameFor(m => m.Speed):
 			@Html.DisplayFor(m => m.Speed)
 		</div>
+
+		<div>
+			@Html.DisplayNameFor(m => m.Size):
+			@Html.DisplayFor(m => m.Size)
+		</div>
 	</div>
 </div>
 <div class="row panel panel-primary">
@@ -94,8 +99,8 @@
 	{
 		@Html.ActionLink("Edit", MVC.Album.Edit(Model.ID), new { id = Model.ID })
 		<span> | </span>
-			@Html.ActionLink("Delete", MVC.Album.Delete(Model.ID), new { id = "albumDeleteBtn", @data_id = Model.ID })
-			<span> | </span>
+		@Html.ActionLink("Delete", MVC.Album.Delete(Model.ID), new { id = "albumDeleteBtn", @data_id = Model.ID })
+		<span> | </span>
 	}
 	@Html.ActionLink("Back to List", MVC.Album.Index())
 </div>

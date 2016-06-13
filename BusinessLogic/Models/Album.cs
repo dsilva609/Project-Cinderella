@@ -33,6 +33,7 @@ namespace BusinessLogic.Models
 		public AlbumMediaTypeEnum MediaType { get; set; }
 
 		public SpeedEnum Speed { get; set; }
+		public SizeEnum Size { get; set; }
 
 		[Required]
 		[DisplayName("Physical?")]
