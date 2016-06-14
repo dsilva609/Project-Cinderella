@@ -151,6 +151,8 @@ namespace UI.Controllers
 				model.YearReleased = release.year;
 				model.RecordLabel = release.LabelString;
 				model.Genre = release.GenreString;
+				if (string.IsNullOrWhiteSpace(model.ImageUrl))
+					model.ImageUrl = release.images.First().uri;
 			}
 
 			//--TODO: why is id needed?
