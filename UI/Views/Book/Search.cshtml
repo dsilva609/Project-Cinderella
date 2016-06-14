@@ -54,7 +54,7 @@
 				</div>
 
 				<div class="col-xs-2">
-					@Html.DisplayNameFor(x => Model.Volumes[0].YearPublished)
+					@Html.DisplayNameFor(x => Model.Volumes[0].YearReleased)
 				</div>
 			</div>
 		</div>
@@ -78,8 +78,8 @@
 					</div>
 
 					<div class="col-xs-2">
-						@Html.DisplayFor(x => book.YearPublished)
-						@Html.HiddenFor(x => book.YearPublished)
+						@Html.DisplayFor(x => book.YearReleased)
+						@Html.HiddenFor(x => book.YearReleased)
 					</div>
 					@Html.HiddenFor(x => book.UserID)
 					@Html.HiddenFor(x => book.Genre)

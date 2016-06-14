@@ -29,16 +29,16 @@ namespace BusinessLogic.Services
 
 		public void Add(Album album)
 		{
-			var existingAlbum = _repository.GetAll().Where(x => x.UserID == album.UserID && x.AlbumName == album.AlbumName && x.Artist == album.Artist && x.MediaType == album.MediaType).ToList();
+			var existingAlbum = _repository.GetAll().Where(x => x.UserID == album.UserID && x.Title == album.Title && x.Artist == album.Artist && x.MediaType == album.MediaType).ToList();
 			if (existingAlbum.Count > 0)
-				throw new ApplicationException($"An existing album of {album.Artist}, {album.AlbumName}, {album.MediaType} already exists.");
+				throw new ApplicationException($"An existing album of {album.Artist}, {album.Title}, {album.MediaType} already exists.");
 			_addEntityComponent.Execute(_repository, album);
 		}
 
 		//TODO: probably should split this up into separate methods
 		public List<Album> GetAll(string userID = "", string query = "", int numToTake = 0, int? pageNum = 1 /*bool sortAscending, string sortPreference*/)
 		{
-			var albumList = _getEntityListComponent.Execute(_repository).OrderBy(x => x.Artist).ThenBy(y => y.AlbumName).ToList();
+			var albumList = _getEntityListComponent.Execute(_repository).OrderBy(x => x.Artist).ThenBy(y => y.Title).ToList();
 
 			if (!string.IsNullOrWhiteSpace(userID))
 				albumList = albumList.Where(x => x.UserID == userID).ToList();
@@ -49,8 +49,8 @@ namespace BusinessLogic.Services
 				currentList.AddRange(albumList);
 				albumList = currentList.Where(x =>
 							 x.Artist.Equals(query, StringComparison.InvariantCultureIgnoreCase) ||
-							 x.AlbumName.Equals(query, StringComparison.InvariantCultureIgnoreCase)).ToList();
-				var partialMatches = currentList.Where(x => x.Artist.IndexOf(query, StringComparison.InvariantCultureIgnoreCase) != -1 || x.AlbumName.IndexOf(query, StringComparison.InvariantCultureIgnoreCase) != -1).ToList();
+							 x.Title.Equals(query, StringComparison.InvariantCultureIgnoreCase)).ToList();
+				var partialMatches = currentList.Where(x => x.Artist.IndexOf(query, StringComparison.InvariantCultureIgnoreCase) != -1 || x.Title.IndexOf(query, StringComparison.InvariantCultureIgnoreCase) != -1).ToList();
 				albumList = albumList.Concat(partialMatches).Distinct().ToList();
 			}
 

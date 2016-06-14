@@ -42,7 +42,7 @@
 			<div id="fh5co-board" data-columns>
 				<div class="item">
 					<div class="animate-box text-center">
-						<a href="@(string.IsNullOrWhiteSpace(record.ImageUrl) ? Links.Content.Images.Turntable_jpg : record.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@record.Artist - @record.AlbumName (@record.AlbumYear)">
+						<a href="@(string.IsNullOrWhiteSpace(record.ImageUrl) ? Links.Content.Images.Turntable_jpg : record.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@record.Artist - @record.Title (@record.YearReleased)">
 							<img src="@(string.IsNullOrWhiteSpace(record.ImageUrl) ? Links.Content.Images.Turntable_jpg : record.ImageUrl)">
 						</a>
 					</div>
@@ -53,7 +53,7 @@
 								@Html.DisplayFor(modelItem => record.Artist)
 							</div>
 							<div class="row">
-								@Html.DisplayFor(modelItem => record.AlbumName)
+								@Html.DisplayFor(modelItem => record.Title)
 							</div>
 							<div class="row">
 								@Html.DisplayFor(modelItem => record.MediaType)

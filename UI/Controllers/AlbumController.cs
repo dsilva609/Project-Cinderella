@@ -58,8 +58,8 @@ namespace UI.Controllers
 			{
 				UserID = User.Identity.GetUserId(),
 				Artist = release.artists.First().name,
-				AlbumName = release.title,
-				AlbumYear = release.year,
+				Title = release.title,
+				YearReleased = release.year,
 				RecordLabel = release.LabelString,
 				Genre = release.GenreString,
 				DiscogsID = release.id,
@@ -113,10 +113,10 @@ namespace UI.Controllers
 		public virtual ActionResult Edit(Album model)
 		{
 			if (!ModelState.IsValid) return View(model);
-			var existingAlbums = _service.GetAll(User.Identity.GetUserId()).Where(x => x.ID != model.ID && x.Artist == model.Artist && x.AlbumName == model.AlbumName && x.MediaType == model.MediaType).ToList();
+			var existingAlbums = _service.GetAll(User.Identity.GetUserId()).Where(x => x.ID != model.ID && x.Artist == model.Artist && x.Title == model.Title && x.MediaType == model.MediaType).ToList();
 			if (existingAlbums.Count > 0)
 			{
-				ShowStatusMessage(MessageTypeEnum.error, $"An album of Artist: {model.Artist}, Album: {model.AlbumName}, Media Type: {model.MediaType} already exists.", "Duplicate Record");
+				ShowStatusMessage(MessageTypeEnum.error, $"An album of Artist: {model.Artist}, Album: {model.Title}, Media Type: {model.MediaType} already exists.", "Duplicate Record");
 				return View(model);
 			}
 			//--TODO: why is id needed?
@@ -124,7 +124,7 @@ namespace UI.Controllers
 			model.DateUpdated = DateTime.Now;
 			_service.Edit(model.ID, model);
 
-			ShowStatusMessage(MessageTypeEnum.success, $"Album of Artist: {model.Artist}, Album: {model.AlbumName}, Media Type: {model.MediaType} updated.", "Update Successful");
+			ShowStatusMessage(MessageTypeEnum.success, $"Album of Artist: {model.Artist}, Album: {model.Title}, Media Type: {model.MediaType} updated.", "Update Successful");
 			return RedirectToAction(MVC.Album.Index());
 		}
 

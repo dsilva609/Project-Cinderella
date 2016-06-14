@@ -24,13 +24,13 @@ namespace UnitTests.BusinessLogic.Services
 			{
 				ID = 1984,
 				Artist = "Dio",
-				AlbumName = "The Last In Line"
+				Title = "The Last In Line"
 			};
 			_testModel2 = new Album
 			{
 				ID = 1983,
 				Artist = "Dio",
-				AlbumName = "Holy Diver"
+				Title = "Holy Diver"
 			};
 
 			_recordModels = new List<Album>
@@ -41,13 +41,13 @@ namespace UnitTests.BusinessLogic.Services
 				{
 					ID = 1986,
 					Artist = "Metallica",
-					AlbumName = "Master Of Puppets"
+					Title = "Master Of Puppets"
 				},
 				new Album
 				{
 					ID = 2004,
 					Artist = "Avril Lavigne",
-					AlbumName = "Under My Skin"
+					Title = "Under My Skin"
 				}
 			};
 		}
@@ -141,7 +141,7 @@ namespace UnitTests.BusinessLogic.Services
 
 			//--Assert
 			Assert.AreEqual("Avril Lavigne", result[0].Artist);
-			Assert.AreEqual("Holy Diver", result[1].AlbumName);
+			Assert.AreEqual("Holy Diver", result[1].Title);
 		}
 
 		[Test]

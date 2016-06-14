@@ -4,37 +4,37 @@ using UnitTests.BusinessLogic.Components.CrudComponents.TestBases;
 
 namespace UnitTests.BusinessLogic.Components.CrudComponents
 {
-    [TestFixture]
-    public class DeleteEntityComponentTests : DeleteEntityComponentTestBase
-    {
-        private Album _testModel;
+	[TestFixture]
+	public class DeleteEntityComponentTests : DeleteEntityComponentTestBase
+	{
+		private Album _testModel;
 
-        [SetUp]
-        public override void Setup()
-        {
-            base.Setup();
+		[SetUp]
+		public override void Setup()
+		{
+			base.Setup();
 
-            _testModel = new Album
-            {
-                ID = 666,
-                AlbumName = "Toxicity",
-                Artist = "System of a Down"
-            };
-        }
+			_testModel = new Album
+			{
+				ID = 666,
+				Title = "Toxicity",
+				Artist = "System of a Down"
+			};
+		}
 
-        [Test]
-        public void ThatRecordIsRemovedFromTheRepository()
-        {
-            //--Arrange
-            _testRepositoryMock.Setup(m => m.Add(_testModel));
-            _testRepo = _testRepositoryMock.Object;
+		[Test]
+		public void ThatRecordIsRemovedFromTheRepository()
+		{
+			//--Arrange
+			_testRepositoryMock.Setup(m => m.Add(_testModel));
+			_testRepo = _testRepositoryMock.Object;
 
-            //--Act
-            _deleteEntityComponent.Execute(_testRepo, _testModel.ID, string.Empty);
-            var result = _testRepo.GetByID(666, string.Empty);
+			//--Act
+			_deleteEntityComponent.Execute(_testRepo, _testModel.ID, string.Empty);
+			var result = _testRepo.GetByID(666, string.Empty);
 
-            //--Assert
-            Assert.IsNull(result);
-        }
-    }
+			//--Assert
+			Assert.IsNull(result);
+		}
+	}
 }

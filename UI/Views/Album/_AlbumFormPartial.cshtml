@@ -23,7 +23,7 @@
 		@if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
 		{
 			<div class="animate-box item col-sm-6">
-				<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Artist - @Model.AlbumName (@Model.AlbumYear)">
+				<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Artist - @Model.Title (@Model.YearReleased)">
 					<img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="img-rounded" style="height: 200px; width: 200px;">
 				</a>
 			</div>
@@ -35,9 +35,9 @@
 		</div>
 
 		<div class="col-xs-6">
-			@Html.LabelFor(m => m.AlbumName)
-			@Html.TextBoxFor(m => m.AlbumName, new { @class = "form-control" })
-			@Html.ValidationMessageFor(m => m.AlbumName, "", new { @class = "text-danger" })
+			@Html.LabelFor(m => m.Title)
+			@Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
 		</div>
 	</div>
 	<div class="panel-body">
@@ -47,10 +47,10 @@
 			@Html.ValidationMessageFor(m => m.Genre, "", new { @class = "text-danger" })
 		</div>
 		<div class="col-xs-6">
-			@Html.LabelFor(m => m.AlbumYear)
-			@Html.DropDownListFor(model => model.AlbumYear, Enumerable.Range(1900, DateTime.Today.Year - 1900 + 1).
-				Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), Model.AlbumYear.ToString(), new { @class = "form-control" })
-			@Html.ValidationMessageFor(m => m.AlbumYear, "", new { @class = "text-danger" })
+			@Html.LabelFor(m => m.YearReleased)
+			@Html.DropDownListFor(model => model.YearReleased, Enumerable.Range(1900, DateTime.Today.Year - 1900 + 1).
+				Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), Model.YearReleased.ToString(), new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.YearReleased, "", new { @class = "text-danger" })
 		</div>
 	</div>
 	<div class="panel-body">

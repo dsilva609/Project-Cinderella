@@ -150,7 +150,7 @@ namespace UI.Controllers
 							//releaseID = Convert.ToInt32(x.VolumeInfo.IndustryIdentifiers.First().Identifier),
 							Title = volume.VolumeInfo.Title,
 							Author = string.Join(", ", volume.VolumeInfo.Authors),
-							YearPublished =
+							YearReleased =
 								string.IsNullOrWhiteSpace(volume.VolumeInfo.PublishedDate)
 									? 0
 									: Convert.ToInt32(volume.VolumeInfo.PublishedDate.Substring(0, 4)),

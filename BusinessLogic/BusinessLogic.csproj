@@ -212,6 +212,18 @@
     <Compile Include="Migrations\201606130052392_added size to album.Designer.cs">
       <DependentUpon>201606130052392_added size to album.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606140048456_movie now inherits from base item.cs" />
+    <Compile Include="Migrations\201606140048456_movie now inherits from base item.Designer.cs">
+      <DependentUpon>201606140048456_movie now inherits from base item.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606140055050_updated book model from base model.cs" />
+    <Compile Include="Migrations\201606140055050_updated book model from base model.Designer.cs">
+      <DependentUpon>201606140055050_updated book model from base model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606140115272_album now inherits from base item.cs" />
+    <Compile Include="Migrations\201606140115272_album now inherits from base item.Designer.cs">
+      <DependentUpon>201606140115272_album now inherits from base item.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseItem.cs" />
     <Compile Include="Models\Book.cs" />
@@ -314,6 +326,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606130052392_added size to album.resx">
       <DependentUpon>201606130052392_added size to album.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606140048456_movie now inherits from base item.resx">
+      <DependentUpon>201606140048456_movie now inherits from base item.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606140055050_updated book model from base model.resx">
+      <DependentUpon>201606140055050_updated book model from base model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606140115272_album now inherits from base item.resx">
+      <DependentUpon>201606140115272_album now inherits from base item.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

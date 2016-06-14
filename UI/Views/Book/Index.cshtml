@@ -47,7 +47,7 @@
 				@Html.DisplayNameFor(x => x.Books[0].Publisher)
 			</div>
 			<div class="col-xs-2">
-				@Html.DisplayNameFor(x => x.Books[0].YearPublished)
+				@Html.DisplayNameFor(x => x.Books[0].YearReleased)
 			</div>
 		</div>
 		@foreach (var book in Model.Books)
@@ -65,7 +65,7 @@
 						@Html.DisplayFor(x => book.Publisher)
 					</div>
 					<div class="col-xs-2">
-						@Html.DisplayFor(x => book.YearPublished)
+						@Html.DisplayFor(x => book.YearReleased)
 					</div>
 				</a>
 				@if (User.Identity.IsAuthenticated && book.UserID == User.Identity.GetUserId())
