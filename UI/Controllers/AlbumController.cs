@@ -143,6 +143,16 @@ namespace UI.Controllers
 				ShowStatusMessage(MessageTypeEnum.error, $"An album of Artist: {model.Artist}, Album: {model.Title}, Media Type: {model.MediaType} already exists.", "Duplicate Record");
 				return View(model);
 			}
+			if (model.DiscogsID != 0)
+			{
+				var release = _discogsService.GetRelease(model.DiscogsID);
+				model.Artist = release.artists.First().name;
+				model.Title = release.title;
+				model.YearReleased = release.year;
+				model.RecordLabel = release.LabelString;
+				model.Genre = release.GenreString;
+			}
+
 			//--TODO: why is id needed?
 			//TODO: make sure user id is the same so as not to change other users data
 			model.DateUpdated = DateTime.Now;
