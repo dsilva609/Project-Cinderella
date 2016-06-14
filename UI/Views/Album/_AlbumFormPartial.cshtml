@@ -8,7 +8,6 @@
 
 @Html.HiddenFor(m => m.UserID)
 @Html.HiddenFor(m => m.DateAdded)
-@Html.HiddenFor(m => m.DiscogsID)
 <div data-toggle="collapse" data-parent="#accordion" href="#album-info">
 	<div class="row panel panel-primary panel-collapse">
 		<div class="panel-heading">
@@ -69,6 +68,12 @@
 			@Html.LabelFor(m => m.ImageUrl)
 			@Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control" })
 			@Html.ValidationMessageFor(m => m.ImageUrl, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.DiscogsID)
+			@Html.TextBoxFor(m => m.DiscogsID, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.DiscogsID, "", new { @class = "text-danger" })
 		</div>
 	</div>
 </div>
