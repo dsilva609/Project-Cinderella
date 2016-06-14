@@ -109,6 +109,28 @@ namespace UI.Controllers
 		}
 
 		[Authorize]
+		[HttpGet]
+		public virtual ActionResult Update(int id)
+		{
+			var model = _service.GetByID(id, User.Identity.GetUserId());
+			//TODO--check if id exists
+			if (model.DiscogsID == 0)
+			{
+				ShowStatusMessage(MessageTypeEnum.error, "No ID found to update.", "Missing ID");
+				return RedirectToAction(MVC.Album.Edit(id));
+			}
+			var release = _discogsService.GetRelease(model.DiscogsID);
+
+			model.Artist = release.artists.First().name;
+			model.Title = release.title;
+			model.YearReleased = release.year;
+			model.RecordLabel = release.LabelString;
+			model.Genre = release.GenreString;
+
+			return View(MVC.Album.Views.Edit, model);
+		}
+
+		[Authorize]
 		[HttpPost]
 		public virtual ActionResult Edit(Album model)
 		{

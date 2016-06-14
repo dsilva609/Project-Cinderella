@@ -76,6 +76,12 @@ namespace UI.Controllers
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Update()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Update);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Web.Mvc.ActionResult Details()
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Details);
@@ -112,6 +118,7 @@ namespace UI.Controllers
             public readonly string Create = "Create";
             public readonly string CreateFromSearchResult = "CreateFromSearchResult";
             public readonly string Edit = "Edit";
+            public readonly string Update = "Update";
             public readonly string Details = "Details";
             public readonly string Delete = "Delete";
             public readonly string Search = "Search";
@@ -124,6 +131,7 @@ namespace UI.Controllers
             public const string Create = "Create";
             public const string CreateFromSearchResult = "CreateFromSearchResult";
             public const string Edit = "Edit";
+            public const string Update = "Update";
             public const string Details = "Details";
             public const string Delete = "Delete";
             public const string Search = "Search";
@@ -163,6 +171,14 @@ namespace UI.Controllers
         {
             public readonly string id = "id";
             public readonly string model = "model";
+        }
+        static readonly ActionParamsClass_Update s_params_Update = new ActionParamsClass_Update();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Update UpdateParams { get { return s_params_Update; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Update
+        {
+            public readonly string id = "id";
         }
         static readonly ActionParamsClass_Details s_params_Details = new ActionParamsClass_Details();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -276,6 +292,18 @@ namespace UI.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             EditOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void UpdateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Update(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Update);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            UpdateOverride(callInfo, id);
             return callInfo;
         }
 
