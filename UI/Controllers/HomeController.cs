@@ -18,7 +18,7 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult Index()
 		{
-			var albums = _albumService.GetAll(numToTake: NUMALBUMSTOGET).OrderByDescending(x => x.DateUpdated).ToList();
+			var albums = _albumService.GetAll(numToTake: NUMALBUMSTOGET).OrderByDescending(x => x.DateAdded).ToList();
 
 			var model = new HomeViewModel
 			{
