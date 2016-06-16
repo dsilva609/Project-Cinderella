@@ -18,6 +18,7 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult Index()
 		{
+			//TODO - update service to take latest of x amount
 			var albums = _albumService.GetAll().OrderByDescending(x => x.DateAdded).Take(NUMALBUMSTOGET).ToList();
 
 			var model = new HomeViewModel
