@@ -1,4 +1,6 @@
-﻿@{
+﻿@model UI.Models.HomeViewModel
+@{
+
 	ViewBag.Title = "Home Page";
 }
 
@@ -16,9 +18,10 @@
 				@Html.ActionLink("Games", MVC.Game.Index())
 			</div>
 			@if (!User.Identity.IsAuthenticated)
-			{<div class="hidden-xs hidden-sm col-md-4 text-right">
-				@Html.ActionLink("Login", MVC.Account.Login(), new { @class = "btn btn-default" })
-			</div>
+			{
+				<div class="hidden-xs hidden-sm col-md-4 text-right">
+					@Html.ActionLink("Login", MVC.Account.Login(), new { @class = "btn btn-default" })
+				</div>
 			}
 		</div>
 
@@ -57,4 +60,34 @@
 			</ul>
 		</div>
 	</div>
+</div>
+
+<div class="container">
+	<h2>Recently Updated Albums</h2>
+	@foreach (var album in Model.Albums)
+	{
+		<div id="fh5co-board" data-columns>
+			<div class="item">
+				<div class="animate-box text-center">
+					<a href="@(string.IsNullOrWhiteSpace(album.ImageUrl) ? Links.Content.Images.Turntable_jpg : album.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@album.Artist - @album.Title (@album.YearReleased)">
+						<img src="@(string.IsNullOrWhiteSpace(album.ImageUrl) ? Links.Content.Images.Turntable_jpg : album.ImageUrl)" alt="@album.Title">
+					</a>
+				</div>
+
+				<div id="album" class="info fh5co-desc" data-id="@album.ID">
+					<a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Album.Edit(album.ID) : MVC.Album.Details(album.ID))">
+						<div class="row">
+							@Html.DisplayFor(modelItem => album.Artist)
+						</div>
+						<div class="row">
+							@Html.DisplayFor(modelItem => album.Title)
+						</div>
+						<div class="row">
+							@Html.DisplayFor(modelItem => album.MediaType)
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	}
 </div>
