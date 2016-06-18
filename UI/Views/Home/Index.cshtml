@@ -75,7 +75,7 @@
 				</div>
 
 				<div id="album" class="info fh5co-desc" data-id="@album.ID">
-					<a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Album.Edit(album.ID) : MVC.Album.Details(album.ID))">
+					<a href="@Url.Action(MVC.Album.Details(album.ID))">
 						<div class="row">
 							@Html.DisplayFor(modelItem => album.Artist)
 						</div>
