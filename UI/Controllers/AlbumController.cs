@@ -105,6 +105,12 @@ namespace UI.Controllers
 			ViewBag.Title = "Edit";
 			var model = _service.GetByID(id, User.Identity.GetUserId());
 
+			if (model.UserID != User.Identity.GetUserId())
+			{
+				ShowStatusMessage(MessageTypeEnum.warning, "This album cannot be edited by another user.", "Edit Failure");
+				return RedirectToAction(MVC.Album.Index());
+			}
+
 			return View(model);
 		}
 
