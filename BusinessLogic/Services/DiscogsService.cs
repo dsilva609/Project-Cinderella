@@ -21,12 +21,11 @@ namespace BusinessLogic.Services
 		}
 
 		public List<DiscogsResult> Search(string artist, string album)
-		{//artist={artist}&release_title={album}&
+		{
 			var response = _client.GetAsync($"database/search?type=release&q={artist}+{album}");
 
 			var result = JObject.Parse(response.Result.Content.ReadAsStringAsync().Result);
-			//	if (result.IsSuccessStatusCode)
-			//{
+
 			var resultList = JsonConvert.DeserializeObject<List<DiscogsResult>>(result["results"].ToString());
 
 			foreach (var t in resultList)
@@ -37,16 +36,6 @@ namespace BusinessLogic.Services
 			}
 
 			return resultList;
-			//}
-		}
-
-		private void CreateClient()
-		{
-			_client = new HttpClient { BaseAddress = new Uri("https://api.discogs.com/") };
-			ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
-			_client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-			_client.DefaultRequestHeaders.Add("Authorization", "Discogs token=VihLsjGHOaqfiRLhNZMZydxTWUTcidbHkuZgCALD");
-			_client.DefaultRequestHeaders.Add("User-Agent", "Project-Cinderella/1.0 +projectcinderella.azurewebsites.net");
 		}
 
 		public DiscogsRelease GetRelease(int releaseID)
@@ -62,6 +51,15 @@ namespace BusinessLogic.Services
 				release.GenreString += $" - {release.StylesString}";
 
 			return release;
+		}
+
+		private void CreateClient()
+		{
+			_client = new HttpClient { BaseAddress = new Uri("https://api.discogs.com/") };
+			ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+			_client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+			_client.DefaultRequestHeaders.Add("Authorization", "Discogs token=VihLsjGHOaqfiRLhNZMZydxTWUTcidbHkuZgCALD");
+			_client.DefaultRequestHeaders.Add("User-Agent", "Project-Cinderella/1.0 +projectcinderella.azurewebsites.net");
 		}
 	}
 }

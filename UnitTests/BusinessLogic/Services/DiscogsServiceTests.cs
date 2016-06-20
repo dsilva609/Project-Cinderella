@@ -7,9 +7,35 @@ namespace UnitTests.BusinessLogic.Services
 	public class DiscogsServiceTests : DiscogsServiceTestBase
 	{
 		[Test]
-		public void ThereAreNoTestsYet()
+		public void ThatItIsAbleToGetARelease()
 		{
-			Assert.AreEqual(0, 1);
+			var result = _service.GetRelease(1772986);
+
+			Assert.IsNotNull(result);
+		}
+
+		[Test]
+		public void ThatReleaseReturnsNullForAnInvalidID()
+		{
+			var result = _service.GetRelease(0);
+
+			Assert.IsNotNull(result);
+		}
+
+		[Test]
+		public void ThatSearchResultsAreFound()
+		{
+			var result = _service.Search("Dio", "Holy Diver");
+
+			Assert.Greater(result.Count, 0);
+		}
+
+		[Test]
+		public void ThatNoResultsAreReturnedWhenNothingIsSearched()
+		{
+			var result = _service.Search(string.Empty, string.Empty);
+
+			Assert.AreEqual(0, result.Count);
 		}
 	}
 }
