@@ -224,6 +224,10 @@
     <Compile Include="Migrations\201606140115272_album now inherits from base item.Designer.cs">
       <DependentUpon>201606140115272_album now inherits from base item.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606231702550_Moved Image Url property to base item.cs" />
+    <Compile Include="Migrations\201606231702550_Moved Image Url property to base item.Designer.cs">
+      <DependentUpon>201606231702550_Moved Image Url property to base item.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseItem.cs" />
     <Compile Include="Models\Book.cs" />
@@ -335,6 +339,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606140115272_album now inherits from base item.resx">
       <DependentUpon>201606140115272_album now inherits from base item.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606231702550_Moved Image Url property to base item.resx">
+      <DependentUpon>201606231702550_Moved Image Url property to base item.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

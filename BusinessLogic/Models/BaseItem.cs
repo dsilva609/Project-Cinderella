@@ -19,6 +19,9 @@ namespace BusinessLogic.Models
 		public string Language { get; set; }
 		public string Notes { get; set; }
 
+		[DisplayName("Image Url")]
+		public string ImageUrl { get; set; }
+
 		[Display(Name = "Purchased New?")]
 		public bool IsNew { get; set; }
 

@@ -33,59 +33,44 @@
 			</button>
 		}
 	</div>
+</div>
 
-	<div class="table table-responsive" style="padding-top: 3em;">
-		<div class="bold row">
-			<div class="col-xs-3">
-				@Html.DisplayNameFor(x => x.Books[0].Title)
-			</div>
-
-			<div class="col-xs-3">
-				@Html.DisplayNameFor(x => x.Books[0].Author)
-			</div>
-			<div class="col-xs-3">
-				@Html.DisplayNameFor(x => x.Books[0].Publisher)
-			</div>
-			<div class="col-xs-2">
-				@Html.DisplayNameFor(x => x.Books[0].YearReleased)
-			</div>
-		</div>
+<div id="fh5co-main">
+	<div class="container">
 		@foreach (var book in Model.Books)
-		{
-			<div id="book" class="row info" data-id="@book.ID">
-				<a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Book.Edit(book.ID) : MVC.Book.Details(book.ID))">
-					<div class="col-xs-3">
-						@Html.DisplayFor(x => book.Title)
+			{
+			<div id="fh5co-board" data-columns>
+				<div class="item">
+					<div class="animate-box text-center">
+						<a href="@(string.IsNullOrWhiteSpace(book.ImageUrl) ? Links.Content.Images.Book_jpg : book.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@book.Author - @book.Title (@book.YearReleased)">
+							<img src="@(string.IsNullOrWhiteSpace(book.ImageUrl) ? Links.Content.Images.Book_jpg : book.ImageUrl)" alt="@book.Title">
+						</a>
 					</div>
 
-					<div class="col-xs-3">
-						@Html.DisplayFor(x => book.Author)
+					<div id="album" class="info fh5co-desc" data-id="@book.ID">
+						<a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Book.Edit(book.ID) : MVC.Book.Details(book.ID))">
+							<div class="row">
+								@Html.DisplayFor(modelItem => book.Author)
+							</div>
+							<div class="row">
+								@Html.DisplayFor(modelItem => book.Title)
+							</div>
+							<div class="row">
+								@Html.DisplayFor(modelItem => book.Media)
+							</div>
+						</a>
 					</div>
-					<div class="col-xs-3">
-						@Html.DisplayFor(x => book.Publisher)
-					</div>
-					<div class="col-xs-2">
-						@Html.DisplayFor(x => book.YearReleased)
-					</div>
-				</a>
-				@if (User.Identity.IsAuthenticated && book.UserID == User.Identity.GetUserId())
-				{
-					<div class="col-xs-1 hidden-xs">
-						<a href="#" id="deleteBtn" class="fa fa-trash" data-id=@book.ID></a>
-					</div>
-				}
+				</div>
 			</div>
-		}
-		<div>
-		</div>
+			}
 	</div>
 </div>
 
-@*<div class="row">
-		Page:
-		@for (var i = 0; i < Model.PageCount; i++)
-		{
-			@Html.ActionLink((i + 1).ToString(), MVC.Album.Index("", i + 1), new { @class = "btn btn-link" })
+<div class="row">
+	Page:
+	@for (var i = 0; i < Model.PageCount; i++)
+	{
+		@Html.ActionLink((i + 1).ToString(), MVC.Album.Index("", i + 1), new { @class = "btn btn-link" })
 
-		}
-	</div>*@
+	}
+</div>

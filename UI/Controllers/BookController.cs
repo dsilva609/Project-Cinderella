@@ -130,13 +130,15 @@ namespace UI.Controllers
 		{
 			//if (searchModel == null)
 			//	searchModel = new GoogleBooksSearchModel();
-			if (!string.IsNullOrWhiteSpace(searchModel.Author) && !string.IsNullOrWhiteSpace(searchModel.Title))
+			if (!string.IsNullOrWhiteSpace(searchModel.Author) || !string.IsNullOrWhiteSpace(searchModel.Title))
 			{
 				//model.Artist = artist;
 				//model.AlbumName = album;
 				//TODO: change this to local variable
 				result = new List<Volume>();
-				result = (List<Volume>)_googleBookService.Search(searchModel.Author, searchModel.Title)?.Items;
+				var response = _googleBookService.Search(searchModel.Author, searchModel.Title)?.Items;
+				if (response != null)
+					result = (List<Volume>)response;
 
 				searchModel.Volumes = new List<Book>();
 
@@ -154,11 +156,12 @@ namespace UI.Controllers
 								string.IsNullOrWhiteSpace(volume.VolumeInfo.PublishedDate)
 									? 0
 									: Convert.ToInt32(volume.VolumeInfo.PublishedDate.Substring(0, 4)),
-							Publisher = volume.VolumeInfo.Publisher,
-							Genre = string.Join(", ", volume.VolumeInfo.Categories),
+							Publisher = volume.VolumeInfo.Publisher ?? string.Empty,
+							Genre = volume.VolumeInfo.Categories == null ? string.Empty : string.Join(", ", volume.VolumeInfo.Categories),
 							ISBN10 = volume.VolumeInfo.IndustryIdentifiers.SingleOrDefault(x => x.Type == "ISBN_10")?.Identifier,
 							ISBN13 = volume.VolumeInfo.IndustryIdentifiers.SingleOrDefault(x => x.Type == "ISBN_13")?.Identifier,
-							Language = volume.VolumeInfo.Language
+							Language = volume.VolumeInfo.Language,
+							ImageUrl = volume.VolumeInfo.ImageLinks.Thumbnail
 						});
 					}
 				}

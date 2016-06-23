@@ -240,6 +240,7 @@
     <Content Include="Content\bootstrap-datepicker3.standalone.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\Images\ajax-loader.gif" />
+    <Content Include="Content\Images\Book.jpg" />
     <Content Include="Content\Images\icons-png\action-black.png" />
     <Content Include="Content\Images\icons-png\action-white.png" />
     <Content Include="Content\Images\icons-png\alert-black.png" />
