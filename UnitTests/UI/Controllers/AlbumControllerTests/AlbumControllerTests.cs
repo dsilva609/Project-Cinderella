@@ -24,7 +24,7 @@ namespace UnitTests.UI.Controllers.AlbumControllerTests
 
 			var test = result.Model;
 			//--Assert
-			Assert.AreEqual(MVC.Album.Views.Index, result.ViewName);
+			Assert.AreEqual(string.Empty, result.ViewName);
 		}
 
 		[Test]
