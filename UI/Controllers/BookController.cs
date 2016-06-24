@@ -149,19 +149,18 @@ namespace UI.Controllers
 						searchModel.Volumes.Add(new Book
 						{
 							UserID = User.Identity.GetUserId(),
-							//releaseID = Convert.ToInt32(x.VolumeInfo.IndustryIdentifiers.First().Identifier),
 							Title = volume.VolumeInfo.Title,
-							Author = string.Join(", ", volume.VolumeInfo.Authors),
+							Author = volume.VolumeInfo.Authors == null?  string.Empty: string.Join(", ", volume.VolumeInfo.Authors),
 							YearReleased =
 								string.IsNullOrWhiteSpace(volume.VolumeInfo.PublishedDate)
 									? 0
 									: Convert.ToInt32(volume.VolumeInfo.PublishedDate.Substring(0, 4)),
 							Publisher = volume.VolumeInfo.Publisher ?? string.Empty,
 							Genre = volume.VolumeInfo.Categories == null ? string.Empty : string.Join(", ", volume.VolumeInfo.Categories),
-							ISBN10 = volume.VolumeInfo.IndustryIdentifiers.SingleOrDefault(x => x.Type == "ISBN_10")?.Identifier,
-							ISBN13 = volume.VolumeInfo.IndustryIdentifiers.SingleOrDefault(x => x.Type == "ISBN_13")?.Identifier,
+							ISBN10 = volume.VolumeInfo.IndustryIdentifiers?.SingleOrDefault(x => x.Type == "ISBN_10")?.Identifier,
+							ISBN13 = volume.VolumeInfo.IndustryIdentifiers?.SingleOrDefault(x => x.Type == "ISBN_13")?.Identifier,
 							Language = volume.VolumeInfo.Language,
-							ImageUrl = volume.VolumeInfo.ImageLinks.Thumbnail
+							ImageUrl = volume.VolumeInfo.ImageLinks == null? string.Empty: (volume.VolumeInfo?.ImageLinks?.Thumbnail)
 						});
 					}
 				}
@@ -173,21 +172,26 @@ namespace UI.Controllers
 
 		[Authorize]
 		[HttpGet]
-		public virtual ActionResult CreateFromSearchModel(Book book)
+		public virtual ActionResult CreateFromSearchModel(string isbn)
 		{
-			//var model = new Book
-			//{
-			//	UserID = User.Identity.GetUserId(),
-			//	Author = string.Join(", ", volume.VolumeInfo.Authors.ToString()),
-			//	Title = volume.VolumeInfo.Title,
-			//	YearPublished = DateTime.Parse(volume.VolumeInfo.PublishedDate).Year,
-			//	Publisher = volume.VolumeInfo.Publisher,
-			//	//Genre = volume.SearchInfo.GenreString
-			//};
-
 			ViewBag.Title = "Create";
-
-			//TODO: is this still needed?
+			var volume = _googleBookService.SearchISBN(isbn);
+			var book = new Book
+			{
+				UserID = User.Identity.GetUserId(),
+				Title = volume.VolumeInfo.Title,
+				Author = string.Join(", ", volume.VolumeInfo.Authors),
+				YearReleased =
+					string.IsNullOrWhiteSpace(volume.VolumeInfo.PublishedDate)
+						? 0
+						: Convert.ToInt32(volume.VolumeInfo.PublishedDate.Substring(0, 4)),
+				Publisher = volume.VolumeInfo.Publisher ?? string.Empty,
+				Genre = volume.VolumeInfo.Categories == null ? string.Empty : string.Join(", ", volume.VolumeInfo.Categories),
+				ISBN10 = volume.VolumeInfo.IndustryIdentifiers.SingleOrDefault(x => x.Type == "ISBN_10")?.Identifier,
+				ISBN13 = volume.VolumeInfo.IndustryIdentifiers.SingleOrDefault(x => x.Type == "ISBN_13")?.Identifier,
+				Language = volume.VolumeInfo.Language,
+				ImageUrl = volume.VolumeInfo.ImageLinks.Thumbnail
+			};
 			Session["BookResult"] = book;
 
 			return RedirectToAction(MVC.Book.Create());

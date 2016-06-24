@@ -2,6 +2,7 @@ using BusinessLogic.DAL;
 using BusinessLogic.Repositories;
 using BusinessLogic.Services;
 using BusinessLogic.Services.Interfaces;
+using Google.Apis.Services;
 using SimpleInjector;
 using SimpleInjector.Integration.Web;
 using SimpleInjector.Integration.Web.Mvc;
@@ -38,7 +39,8 @@ namespace UI
 			c.Register<IMovieService>(() => new MovieService(c.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
 			c.Register<IGameService>(() => new GameService(c.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
 			c.Register<IDiscogsService, DiscogsService>();
-			c.Register<IGoogleBookService, GoogleBookService>();
+			c.Register<IClientService>(() => new Google.Apis.Books.v1.BooksService(), Lifestyle.Scoped);
+			c.Register<IGoogleBookService>(() => new GoogleBookService(c.GetInstance<IClientService>()), Lifestyle.Scoped);
 		}
 	}
 }

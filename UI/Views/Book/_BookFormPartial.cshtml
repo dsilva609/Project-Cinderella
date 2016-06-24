@@ -16,6 +16,14 @@
 			</h4>
 		</div>
 		<div class="panel-body">
+			@if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+			{
+				<div class="animate-box item col-sm-6">
+					<a href="@Model.ImageUrl" class="image-popup img-fluid fh5co-board-img">
+						<img src="@Model.ImageUrl" class="img-rounded" style="height: 200px; width: 200px;">
+					</a>
+				</div>
+			}
 			<div class="col-xs-6">
 				@Html.LabelFor(m => m.Title)
 				@Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
@@ -106,6 +114,12 @@
 				@Html.TextBoxFor(m => m.Language, new { @class = "form-control" })
 				@Html.ValidationMessageFor(m => m.Language, "", new { @class = "text-danger" })
 			</div>
+
+			<div class="col-xs-6">
+				@Html.LabelFor(m => m.IsReissue)
+				@Html.CheckBoxFor(m => m.IsReissue, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.IsReissue, "", new { @class = "text-danger" })
+			</div>
 		</div>
 	</div>
 
@@ -137,12 +151,6 @@
 				@Html.LabelFor(m => m.IsNew)
 				@Html.CheckBoxFor(m => m.IsNew, new { @class = "form-control" })
 				@Html.ValidationMessageFor(m => m.IsNew, "", new { @class = "text-danger" })
-			</div>
-
-			<div class="col-xs-6">
-				@Html.LabelFor(m => m.IsReissue)
-				@Html.CheckBoxFor(m => m.IsReissue, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.IsReissue, "", new { @class = "text-danger" })
 			</div>
 		</div>
 	</div>

@@ -60,11 +60,9 @@
 		</div>
 		@foreach (var book in Model.Volumes)
 		{
-			using (Html.BeginForm(MVC.Book.CreateFromSearchModel(book), FormMethod.Get))
+			using (Html.BeginForm(MVC.Book.CreateFromSearchModel(book.ISBN10), FormMethod.Get))
 			{
 				<div id="book" class="row info" style="padding-bottom: 1em;" data-id="@book.ID">
-					@*<a href="@Url.Action(User.Identity.IsAuthenticated? MVC.Album.Edit(album.releaseID): MVC.Album.Details(album.releaseID))">*@
-
 					<div class="col-xs-2">
 						<img src="@book.ImageUrl" />
 					</div>
@@ -85,15 +83,9 @@
 						@Html.DisplayFor(x => book.YearReleased)
 						@Html.HiddenFor(x => book.YearReleased)
 					</div>
-					@Html.HiddenFor(x => book.UserID)
-					@Html.HiddenFor(x => book.Genre)
-					@Html.HiddenFor(x => book.ISBN10)
-					@Html.HiddenFor(x => book.ISBN13)
-					@Html.HiddenFor(x => book.Language)
-					<div class="col-xs-1">
-						<input id="" type="submit" value="Add" class="btn" />
-					</div>
-					@*	</a>*@
+					@Html.Hidden("isbn", book.ISBN10)
+
+					<input id="" type="submit" value="Add" class="btn" />
 				</div>
 			}
 		}
