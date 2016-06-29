@@ -143,7 +143,7 @@ namespace UI.Controllers
 		public virtual ActionResult Edit(Album model)
 		{
 			if (!ModelState.IsValid) return View(model);
-			var existingAlbums = _service.GetAll(User.Identity.GetUserId()).Where(x => x.ID != model.ID && x.Artist == model.Artist && x.Title == model.Title && x.MediaType == model.MediaType).ToList();
+			var existingAlbums = _service.GetAll(User.Identity.GetUserId()).Where(x => x.ID != model.ID && x.Artist == model.Artist && x.Title == model.Title && x.MediaType == model.MediaType && x.DiscogsID == model.DiscogsID).ToList();
 			if (existingAlbums.Count > 0)
 			{
 				ShowStatusMessage(MessageTypeEnum.error, $"An album of Artist: {model.Artist}, Album: {model.Title}, Media Type: {model.MediaType} already exists.", "Duplicate Record");

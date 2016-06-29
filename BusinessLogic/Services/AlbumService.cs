@@ -29,7 +29,7 @@ namespace BusinessLogic.Services
 
 		public void Add(Album album)
 		{
-			var existingAlbum = _repository.GetAll().Where(x => x.UserID == album.UserID && x.Title == album.Title && x.Artist == album.Artist && x.MediaType == album.MediaType).ToList();
+			var existingAlbum = _repository.GetAll().Where(x => x.UserID == album.UserID && x.Title == album.Title && x.Artist == album.Artist && x.MediaType == album.MediaType && x.DiscogsID == album.DiscogsID).ToList();
 			if (existingAlbum.Count > 0)
 				throw new ApplicationException($"An existing album of {album.Artist}, {album.Title}, {album.MediaType} already exists.");
 			_addEntityComponent.Execute(_repository, album);
