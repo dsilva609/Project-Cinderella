@@ -15,70 +15,54 @@
 
 	<div class="col-xs-8 col-sm-5 text-right" style="padding-top: 1.25em; display: inline-flex;">
 		@if (User.Identity.IsAuthenticated)
-			{
+		{
 			@Html.ActionLink("Add Movie", MVC.Movie.Create(), new { @class = "btn btn-default", @style = "margin-right:1em;" })
-			}
+		}
 		@using (Html.BeginForm(MVC.Movie.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
-			{
+		{
 			@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
 			<button type="submit" class="btn btn-default">
 				<span class="fa fa-search"></span>
 			</button>
-			}
-	</div>
-
-	<div class="table table-responsive" style="padding-top: 3em;">
-		<div class="bold row">
-			<div class="col-xs-3">
-				@Html.DisplayNameFor(x => x.Movies[0].Title)
-			</div>
-
-			<div class="col-xs-3">
-				@Html.DisplayNameFor(x => x.Movies[0].Director)
-			</div>
-			<div class="col-xs-3">
-				@Html.DisplayNameFor(x => x.Movies[0].Distributor)
-			</div>
-			<div class="col-xs-2">
-				@Html.DisplayNameFor(x => x.Movies[0].YearReleased)
-			</div>
-		</div>
-		@foreach (var movie in Model.Movies)
-			{
-			<div id="movie" class="row info" data-id="@movie.ID">
-				<a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Movie.Edit(movie.ID) : MVC.Movie.Details(movie.ID))">
-					<div class="col-xs-3">
-						@Html.DisplayFor(x => movie.Title)
-					</div>
-
-					<div class="col-xs-3">
-						@Html.DisplayFor(x => movie.Director)
-					</div>
-					<div class="col-xs-3">
-						@Html.DisplayFor(x => movie.Distributor)
-					</div>
-					<div class="col-xs-2">
-						@Html.DisplayFor(x => movie.YearReleased)
-					</div>
-				</a>
-				@if (User.Identity.IsAuthenticated && movie.UserID == User.Identity.GetUserId())
-				{
-					<div class="col-xs-1 hidden-xs">
-						<a href="#" class="deleteBtn fa fa-trash" data-id=@movie.ID></a>
-					</div>
-				}
-			</div>
-			}
-		<div>
-		</div>
+		}
 	</div>
 </div>
 
-@*<div class="row">
-		Page:
-		@for (var i = 0; i < Model.PageCount; i++)
-				{
-			@Html.ActionLink((i + 1).ToString(), MVC.Movie.Index("", i + 1), new { @class = "btn btn-link" })
+<div id="fh5co-main">
+	<div class="container">
+		@foreach (var movie in Model.Movies)
+			{
+			<div id="fh5co-board" data-columns>
+				<div class="item">
+					<div class="animate-box text-center">
+						<a href="@(string.IsNullOrWhiteSpace(movie.ImageUrl) ? Links.Content.Images.Reel_jpg : movie.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@movie.Director - @movie.Title (@movie.YearReleased)">
+							<img src="@(string.IsNullOrWhiteSpace(movie.ImageUrl) ? Links.Content.Images.Reel_jpg : movie.ImageUrl)" alt="@movie.Title">
+						</a>
+					</div>
 
-				}
-	</div>*@
+					<div id="album" class="info fh5co-desc" data-id="@movie.ID">
+						<a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Movie.Edit(movie.ID) : MVC.Movie.Details(movie.ID))">
+							<div class="row">
+								@Html.DisplayFor(modelItem => movie.Director)
+							</div>
+							<div class="row">
+								@Html.DisplayFor(modelItem => movie.Title)
+							</div>
+							<div class="row">
+								@Html.DisplayFor(modelItem => movie.Type)
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+			}
+	</div>
+</div>
+
+<div class="row">
+	Page:
+	@for (var i = 0; i < Model.PageCount; i++)
+	{
+		@Html.ActionLink((i + 1).ToString(), MVC.Movie.Index("", i + 1), new { @class = "btn btn-link" })
+	}
+</div>

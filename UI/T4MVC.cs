@@ -269,6 +269,7 @@ namespace Links
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
             public static readonly string ajax_loader_gif = Url("ajax-loader.gif");
             public static readonly string Book_jpg = Url("Book.jpg");
+            public static readonly string Game_jpg = Url("Game.jpg");
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
             public static class icons_png {
                 private const string URLPATH = "~/Content/Images/icons-png";
@@ -483,6 +484,7 @@ namespace Links
                 public static readonly string video_white_svg = Url("video-white.svg");
             }
         
+            public static readonly string Reel_jpg = Url("Reel.jpg");
             public static readonly string Turntable_jpg = Url("Turntable.jpg");
             public static readonly string Turntable2_jpg = Url("Turntable2.jpg");
         }

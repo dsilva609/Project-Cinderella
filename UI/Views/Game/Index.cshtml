@@ -26,59 +26,43 @@
 			</button>
 		}
 	</div>
+</div>
 
-	<div class="table table-responsive" style="padding-top: 3em;">
-		<div class="bold row">
-			<div class="col-xs-3">
-				@Html.DisplayNameFor(x => x.Games[0].Title)
-			</div>
-
-			<div class="col-xs-3">
-				@Html.DisplayNameFor(x => x.Games[0].Developer)
-			</div>
-			<div class="col-xs-3">
-				@Html.DisplayNameFor(x => x.Games[0].Publisher)
-			</div>
-			<div class="col-xs-2">
-				@Html.DisplayNameFor(x => x.Games[0].YearReleased)
-			</div>
-		</div>
+<div id="fh5co-main">
+	<div class="container">
 		@foreach (var game in Model.Games)
-		{
-			<div id="Game" class="row info" data-id="@game.ID">
-				<a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Game.Edit(game.ID) : MVC.Game.Details(game.ID))">
-					<div class="col-xs-3">
-						@Html.DisplayFor(x => game.Title)
+			{
+			<div id="fh5co-board" data-columns>
+				<div class="item">
+					<div class="animate-box text-center">
+						<a href="@(string.IsNullOrWhiteSpace(game.ImageUrl) ? Links.Content.Images.Game_jpg : game.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@game.Developer - @game.Title (@game.YearReleased)">
+							<img src="@(string.IsNullOrWhiteSpace(game.ImageUrl) ? Links.Content.Images.Game_jpg : game.ImageUrl)" alt="@game.Title">
+						</a>
 					</div>
 
-					<div class="col-xs-3">
-						@Html.DisplayFor(x => game.Developer)
+					<div id="album" class="info fh5co-desc" data-id="@game.ID">
+						<a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Game.Edit(game.ID) : MVC.Game.Details(game.ID))">
+							<div class="row">
+								@Html.DisplayFor(modelItem => game.Developer)
+							</div>
+							<div class="row">
+								@Html.DisplayFor(modelItem => game.Title)
+							</div>
+							<div class="row">
+								@Html.DisplayFor(modelItem => game.MediaType)
+							</div>
+						</a>
 					</div>
-					<div class="col-xs-3">
-						@Html.DisplayFor(x => game.Publisher)
-					</div>
-					<div class="col-xs-2">
-						@Html.DisplayFor(x => game.YearReleased)
-					</div>
-				</a>
-				@if (User.Identity.IsAuthenticated && game.UserID == User.Identity.GetUserId())
-				{
-					<div class="col-xs-1 hidden-xs">
-						<a href="#" id="deleteBtn" class="fa fa-trash" data-id=@game.ID></a>
-					</div>
-				}
+				</div>
 			</div>
-		}
-		<div>
-		</div>
+			}
 	</div>
 </div>
 
-@*<div class="row">
-		Page:
-		@for (var i = 0; i < Model.PageCount; i++)
-		{
-			@Html.ActionLink((i + 1).ToString(), MVC.Album.Index("", i + 1), new { @class = "btn btn-link" })
-
-		}
-	</div>*@
+<div class="row">
+	Page:
+	@for (var i = 0; i < Model.PageCount; i++)
+	{
+		@Html.ActionLink((i + 1).ToString(), MVC.Game.Index("", i + 1), new { @class = "btn btn-link" })
+			}
+</div>
