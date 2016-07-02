@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BusinessLogic.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="TMDBKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">11bf1f41f6d42c8cd647f8ed49d037be</Value>
+    </Setting>
+    <Setting Name="DiscogsKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">VihLsjGHOaqfiRLhNZMZydxTWUTcidbHkuZgCALD</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

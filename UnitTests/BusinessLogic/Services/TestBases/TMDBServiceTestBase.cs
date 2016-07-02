@@ -4,14 +4,14 @@ using NUnit.Framework;
 
 namespace UnitTests.BusinessLogic.Services.TestBases
 {
-	public class DiscogsServiceTestBase
+	public class TMDBServiceTestBase
 	{
-		protected IDiscogsService _service;
+		protected ITMDBService _service;
 
 		[SetUp]
-		protected virtual void SetUp()
+		public virtual void SetUp()
 		{
-			_service = new DiscogsService();
+			_service = new TMDBService();
 		}
 	}
 }
