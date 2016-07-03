@@ -41,6 +41,7 @@ namespace UI
 			c.Register<IDiscogsService, DiscogsService>();
 			c.Register<IClientService>(() => new Google.Apis.Books.v1.BooksService(), Lifestyle.Scoped);
 			c.Register<IGoogleBookService>(() => new GoogleBookService(c.GetInstance<IClientService>()), Lifestyle.Scoped);
+			c.Register<ITMDBService, TMDBService>(Lifestyle.Scoped);
 		}
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using BusinessLogic.Models;
 using NUnit.Framework;
 using System.Web.Mvc;
+using UI.Models;
 using UnitTests.UI.Controllers.MovieControllerTests.TestBases;
 
 namespace UnitTests.UI.Controllers.MovieControllerTests
@@ -145,6 +146,16 @@ namespace UnitTests.UI.Controllers.MovieControllerTests
 
 			//--Assert
 			Assert.AreEqual(MVC.Movie.Views.Index, result.RouteName);
+		}
+
+		[Test]
+		public void ThatSearchActionReturnsAView()
+		{
+			//--Act
+			var result = _controller.ClassUnderTest.Search(new MovieSearchModel { Title = string.Empty }) as ViewResult;
+
+			//--Assert
+			Assert.AreEqual(string.Empty, result.ViewName);
 		}
 	}
 }

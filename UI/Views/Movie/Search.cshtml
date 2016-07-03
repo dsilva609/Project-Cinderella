@@ -1,0 +1,64 @@
+﻿@model UI.Models.MovieSearchModel
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row panel panel-primary">
+	<div class="panel-heading">
+		<h4>
+			Movie Information
+		</h4>
+	</div>
+	@using (Html.BeginForm(MVC.Movie.Search(), FormMethod.Get))
+	{
+		<div class="panel-body">
+			<div class="col-xs-6">
+				@Html.LabelFor(m => m.Title)
+				@Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="row panel-body">
+			<div class="col-xs-8 col-sm-10">
+				<input id="btnSubmit" type="submit" value="Search" class="btn btn-default btn-block btn-lg" />
+			</div>
+		</div>
+	}
+</div>
+@if (Model.Results != null && Model.Results.Count > 0)
+{
+	<div class="row panel panel-primary">
+		<div class="panel-heading">
+			<h4>
+				Search Results
+			</h4>
+		</div>
+		<div class="panel-body">
+			@foreach (var result in Model.Results)
+				{
+					using (Html.BeginForm(MVC.Movie.CreateFromSearchResult(result.id), FormMethod.Get))
+					{
+					<div id="Movie" class="row info" style="padding-bottom: 1em;" data-id="@result.id">
+						<div class="col-xs-4">
+							<img src="@(result.poster_path)" />
+						</div>
+						<div class="col-xs-4">
+							@Html.DisplayFor(x => result.title)
+						</div>
+
+						<div class="col-xs-2">
+							@Html.DisplayFor(x => result.release_date)
+						</div>
+
+						@Html.Hidden("releaseID", result.id)
+
+						<div class="col-xs-2">
+							<input id="" type="submit" value="Add" class="btn" />
+						</div>
+					</div>
+					}
+				}
+		</div>
+	</div>
+}
+@Html.ActionLink("Back to List", MVC.Movie.Index())

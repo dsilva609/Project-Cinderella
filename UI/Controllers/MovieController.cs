@@ -12,10 +12,12 @@ namespace UI.Controllers
 	public partial class MovieController : ProjectCinderellaControllerBase
 	{
 		private readonly IMovieService _service;
+		private readonly ITMDBService _tmdbService;
 
-		public MovieController(IMovieService service)
+		public MovieController(IMovieService service, ITMDBService tmdbService)
 		{
 			_service = service;
+			_tmdbService = tmdbService;
 		}
 
 		[HttpGet]
@@ -47,8 +49,9 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult Create()
 		{
+			var model = Session["movieResult"] ?? new Movie { UserID = User.Identity.GetUserId() };
 			ViewBag.Title = "Create";
-			var model = new Movie { UserID = User.Identity.GetUserId() };
+			Session["movieResult"] = null;
 
 			return View(model);
 		}
@@ -113,6 +116,45 @@ namespace UI.Controllers
 			ShowStatusMessage(MessageTypeEnum.success, "", "Movie Deleted Successfully");
 
 			return RedirectToAction(MVC.Movie.Index());
+		}
+
+		[Authorize]
+		[HttpGet]
+		public virtual ActionResult Search(MovieSearchModel searchModel)
+		{
+			if (!string.IsNullOrWhiteSpace(searchModel.Title))
+			{
+				searchModel.Results = _tmdbService.SearchMovies(searchModel.Title);
+				foreach (var result in searchModel.Results)
+					result.poster_path = string.Format("https://image.tmdb.org/t/p/w300{0}", result.poster_path);
+
+				//		searchModel.Results = searchModel.Results.for(x => x.Year).ToList();
+			}
+			ViewBag.Title = "Movie Search";
+
+			return View(searchModel);
+		}
+
+		[Authorize]
+		[HttpGet]
+		public virtual ActionResult CreateFromSearchResult(int releaseID)
+		{
+			var release = _tmdbService.SearchMovieByID(releaseID);
+
+			var model = new Movie
+			{
+				UserID = User.Identity.GetUserId(),
+				Title = release.title,
+				YearReleased = Convert.ToDateTime(release.release_date).Year,
+				ID = release.id,
+				ImageUrl = $"image.tmdb.org/t/p/w100/{release.poster_path}"
+			};
+
+			ViewBag.Title = "Create";
+
+			Session["movieResult"] = model;
+
+			return RedirectToAction(MVC.Movie.Create());
 		}
 	}
 }

@@ -29,6 +29,16 @@ namespace BusinessLogic.Services
 			return movies.results;
 		}
 
+		public TMDBMovie SearchMovieByID(int id)
+		{
+			var response = _client.GetAsync($"movie/{id}?api_key={Settings.Default.TMDBKey}");
+
+			var result = response.Result.Content.ReadAsStringAsync().Result;
+			var movie = JsonConvert.DeserializeObject<TMDBMovie>(result);
+
+			return movie;
+		}
+
 		private void CreateClient()
 		{
 			_client = new HttpClient { BaseAddress = new Uri("https://api.themoviedb.org/3/") };

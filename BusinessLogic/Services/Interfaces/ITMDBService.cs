@@ -6,5 +6,7 @@ namespace BusinessLogic.Services.Interfaces
 	public interface ITMDBService
 	{
 		List<TMDBMovie> SearchMovies(string title);
+
+		TMDBMovie SearchMovieByID(int id);
 	}
 }

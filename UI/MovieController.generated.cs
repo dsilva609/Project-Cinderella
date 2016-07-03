@@ -80,6 +80,18 @@ namespace UI.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Search()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Search);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult CreateFromSearchResult()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CreateFromSearchResult);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public MovieController Actions { get { return MVC.Movie; } }
@@ -101,6 +113,8 @@ namespace UI.Controllers
             public readonly string Create = "Create";
             public readonly string Edit = "Edit";
             public readonly string Delete = "Delete";
+            public readonly string Search = "Search";
+            public readonly string CreateFromSearchResult = "CreateFromSearchResult";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -111,6 +125,8 @@ namespace UI.Controllers
             public const string Create = "Create";
             public const string Edit = "Edit";
             public const string Delete = "Delete";
+            public const string Search = "Search";
+            public const string CreateFromSearchResult = "CreateFromSearchResult";
         }
 
 
@@ -156,6 +172,22 @@ namespace UI.Controllers
         {
             public readonly string id = "id";
         }
+        static readonly ActionParamsClass_Search s_params_Search = new ActionParamsClass_Search();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Search SearchParams { get { return s_params_Search; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Search
+        {
+            public readonly string searchModel = "searchModel";
+        }
+        static readonly ActionParamsClass_CreateFromSearchResult s_params_CreateFromSearchResult = new ActionParamsClass_CreateFromSearchResult();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_CreateFromSearchResult CreateFromSearchResultParams { get { return s_params_CreateFromSearchResult; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_CreateFromSearchResult
+        {
+            public readonly string releaseID = "releaseID";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -171,12 +203,14 @@ namespace UI.Controllers
                 public readonly string Details = "Details";
                 public readonly string Edit = "Edit";
                 public readonly string Index = "Index";
+                public readonly string Search = "Search";
             }
             public readonly string _MovieFormPartial = "~/Views/Movie/_MovieFormPartial.cshtml";
             public readonly string Create = "~/Views/Movie/Create.cshtml";
             public readonly string Details = "~/Views/Movie/Details.cshtml";
             public readonly string Edit = "~/Views/Movie/Edit.cshtml";
             public readonly string Index = "~/Views/Movie/Index.cshtml";
+            public readonly string Search = "~/Views/Movie/Search.cshtml";
         }
     }
 
@@ -266,6 +300,30 @@ namespace UI.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             DeleteOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void SearchOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, UI.Models.MovieSearchModel searchModel);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Search(UI.Models.MovieSearchModel searchModel)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Search);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "searchModel", searchModel);
+            SearchOverride(callInfo, searchModel);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void CreateFromSearchResultOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int releaseID);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult CreateFromSearchResult(int releaseID)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CreateFromSearchResult);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "releaseID", releaseID);
+            CreateFromSearchResultOverride(callInfo, releaseID);
             return callInfo;
         }
 
