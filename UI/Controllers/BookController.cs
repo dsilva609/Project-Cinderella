@@ -16,9 +16,6 @@ namespace UI.Controllers
 		private readonly IBookService _service;
 		private readonly IGoogleBookService _googleBookService;
 
-		//TODO: remove this
-		private List<Volume> result;
-
 		public BookController(IBookService service, IGoogleBookService googleBookService)
 		{
 			_service = service;
@@ -128,14 +125,10 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult Search(GoogleBooksSearchModel searchModel)
 		{
-			//if (searchModel == null)
-			//	searchModel = new GoogleBooksSearchModel();
 			if (!string.IsNullOrWhiteSpace(searchModel.Author) || !string.IsNullOrWhiteSpace(searchModel.Title))
 			{
-				//model.Artist = artist;
-				//model.AlbumName = album;
 				//TODO: change this to local variable
-				result = new List<Volume>();
+				var result = new List<Volume>();
 				var response = _googleBookService.Search(searchModel.Author, searchModel.Title)?.Items;
 				if (response != null)
 					result = (List<Volume>)response;
@@ -150,7 +143,7 @@ namespace UI.Controllers
 						{
 							UserID = User.Identity.GetUserId(),
 							Title = volume.VolumeInfo.Title,
-							Author = volume.VolumeInfo.Authors == null?  string.Empty: string.Join(", ", volume.VolumeInfo.Authors),
+							Author = volume.VolumeInfo.Authors == null ? string.Empty : string.Join(", ", volume.VolumeInfo.Authors),
 							YearReleased =
 								string.IsNullOrWhiteSpace(volume.VolumeInfo.PublishedDate)
 									? 0
@@ -160,7 +153,7 @@ namespace UI.Controllers
 							ISBN10 = volume.VolumeInfo.IndustryIdentifiers?.SingleOrDefault(x => x.Type == "ISBN_10")?.Identifier,
 							ISBN13 = volume.VolumeInfo.IndustryIdentifiers?.SingleOrDefault(x => x.Type == "ISBN_13")?.Identifier,
 							Language = volume.VolumeInfo.Language,
-							ImageUrl = volume.VolumeInfo.ImageLinks == null? string.Empty: (volume.VolumeInfo?.ImageLinks?.Thumbnail)
+							ImageUrl = volume.VolumeInfo.ImageLinks == null ? string.Empty : (volume.VolumeInfo?.ImageLinks?.Thumbnail)
 						});
 					}
 				}

@@ -18,7 +18,15 @@ namespace BusinessLogic.Services
 
 		public Volumes Search(string author, string title)
 		{
-			var result = _service.List($"inauthor:{author}+intitle:{title}");
+			var query = string.Empty;
+			if (!string.IsNullOrWhiteSpace(author) && !string.IsNullOrWhiteSpace(title))
+				query = $"inauthor:{author}+intitle:{title}";
+			else if (!string.IsNullOrWhiteSpace(author) && string.IsNullOrWhiteSpace(title))
+				query = $"inauthor:{author}";
+			else if (string.IsNullOrWhiteSpace(author) && !string.IsNullOrWhiteSpace(title))
+				query = $"intitle:{title}";
+
+			var result = _service.List(query);
 
 			return result.Execute();
 		}
