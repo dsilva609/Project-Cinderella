@@ -485,6 +485,7 @@ namespace Links
             }
         
             public static readonly string Reel_jpg = Url("Reel.jpg");
+            public static readonly string tmdb_logo_png = Url("tmdb-logo.png");
             public static readonly string Turntable_jpg = Url("Turntable.jpg");
             public static readonly string Turntable2_jpg = Url("Turntable2.jpg");
         }

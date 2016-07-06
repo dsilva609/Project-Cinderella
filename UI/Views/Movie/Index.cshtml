@@ -76,3 +76,8 @@
 		@Html.ActionLink((i + 1).ToString(), MVC.Movie.Index("", i + 1), new { @class = "btn btn-link" })
 	}
 </div>
+
+<div class="container text-center">
+	<div class="row"><img src="@Links.Content.Images.tmdb_logo_png" height="75" width="175" /></div>
+	<div class="row">This product uses the TMDb API but is not endorsed or certified by TMDb.</div>
+</div>

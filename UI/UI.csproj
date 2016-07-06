@@ -443,6 +443,7 @@
     <Content Include="Content\Images\icons-svg\video-black.svg" />
     <Content Include="Content\Images\icons-svg\video-white.svg" />
     <Content Include="Content\Images\Reel.jpg" />
+    <Content Include="Content\Images\tmdb-logo.png" />
     <Content Include="Content\Images\Turntable2.jpg" />
     <Content Include="Content\Images\Turntable.jpg" />
     <Content Include="Content\jquery.mobile-1.4.5.css" />
