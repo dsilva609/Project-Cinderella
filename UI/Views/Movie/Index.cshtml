@@ -9,15 +9,25 @@
 </script>
 
 <div>
-	<div class="h2 col-xs-4 col-sm-7">
+	<div class="h2 col-md-5">
 		Movies
-	</div>
-
-	<div class="col-xs-8 col-sm-5 text-right" style="padding-top: 1.25em; display: inline-flex;">
 		@if (User.Identity.IsAuthenticated)
 		{
-			@Html.ActionLink("Add Movie", MVC.Movie.Create(), new { @class = "btn btn-default", @style = "margin-right:1em;" })
+			<a class="btn btn-default" href="@Url.Action(MVC.Movie.Create())" style="padding-top: 1.25em;" contenteditable="false">
+				<span class="fa fa-plus"></span>
+			</a>
+
 		}
+	</div>
+
+	<div class="col-md-3" style="padding-top: 1.25em;">
+		@if (User.Identity.IsAuthenticated)
+		{
+			<a href="@Url.Action(MVC.Movie.Search())" class="btn btn-default">TMDB <span class="fa fa-search"></span></a>
+		}
+	</div>
+
+	<div class="col-md-4 text-right" style="padding-top: 1.25em; display: inline-flex;">
 		@using (Html.BeginForm(MVC.Movie.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
 		{
 			@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })

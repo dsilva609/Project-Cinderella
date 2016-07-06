@@ -85,6 +85,12 @@ namespace UI.Controllers
 			ViewBag.Title = "Edit";
 			var model = _service.GetByID(id, User.Identity.GetUserId());
 
+			if (model.UserID != User.Identity.GetUserId())
+			{
+				ShowStatusMessage(MessageTypeEnum.warning, "This book cannot be edited by another user.", "Edit Failure");
+				return RedirectToAction(MVC.Book.Index());
+			}
+
 			return View(model);
 		}
 

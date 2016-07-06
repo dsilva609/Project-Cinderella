@@ -83,6 +83,12 @@ namespace UI.Controllers
 			ViewBag.Title = "Edit";
 			var model = _service.GetByID(id, User.Identity.GetUserId());
 
+			if (model.UserID != User.Identity.GetUserId())
+			{
+				ShowStatusMessage(MessageTypeEnum.warning, "This item cannot be edited by another user.", "Edit Failure");
+				return RedirectToAction(MVC.Movie.Index());
+			}
+
 			return View(model);
 		}
 
@@ -147,7 +153,7 @@ namespace UI.Controllers
 				Title = release.title,
 				YearReleased = Convert.ToDateTime(release.release_date).Year,
 				ID = release.id,
-				ImageUrl = $"image.tmdb.org/t/p/w100/{release.poster_path}"
+				ImageUrl = string.Format("https://image.tmdb.org/t/p/w500{0}", release.poster_path)
 			};
 
 			ViewBag.Title = "Create";
