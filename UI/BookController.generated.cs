@@ -186,7 +186,7 @@ namespace UI.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_CreateFromSearchModel
         {
-            public readonly string isbn = "isbn";
+            public readonly string id = "id";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -316,14 +316,14 @@ namespace UI.Controllers
         }
 
         [NonAction]
-        partial void CreateFromSearchModelOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string isbn);
+        partial void CreateFromSearchModelOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string id);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult CreateFromSearchModel(string isbn)
+        public override System.Web.Mvc.ActionResult CreateFromSearchModel(string id)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CreateFromSearchModel);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "isbn", isbn);
-            CreateFromSearchModelOverride(callInfo, isbn);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            CreateFromSearchModelOverride(callInfo, id);
             return callInfo;
         }
 

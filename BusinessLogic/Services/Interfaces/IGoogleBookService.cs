@@ -6,6 +6,6 @@ namespace BusinessLogic.Services.Interfaces
 	{
 		Volumes Search(string author, string title);
 
-		Volume SearchISBN(string isbn);
+		Volume SearchByID(string id);
 	}
 }

@@ -60,7 +60,7 @@
 		</div>
 		@foreach (var book in Model.Volumes)
 		{
-			using (Html.BeginForm(MVC.Book.CreateFromSearchModel(book.ISBN10), FormMethod.Get))
+			using (Html.BeginForm(MVC.Book.CreateFromSearchModel(book.GoogleBookID), FormMethod.Get))
 			{
 				<div id="book" class="row info" style="padding-bottom: 1em;" data-id="@book.ID">
 					<div class="col-xs-2">
@@ -83,7 +83,7 @@
 						@Html.DisplayFor(x => book.YearReleased)
 						@Html.HiddenFor(x => book.YearReleased)
 					</div>
-					@Html.Hidden("isbn", book.ISBN10)
+					@Html.Hidden("id", book.GoogleBookID)
 
 					<input id="" type="submit" value="Add" class="btn" />
 				</div>

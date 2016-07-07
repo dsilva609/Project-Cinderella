@@ -31,5 +31,7 @@ namespace BusinessLogic.Models
 
 		[Display(Name = "Reissue?")]
 		public bool IsReissue { get; set; }
+
+		public string GoogleBookID { get; set; }
 	}
 }

@@ -2,7 +2,6 @@
 using Google.Apis.Books.v1;
 using Google.Apis.Books.v1.Data;
 using Google.Apis.Services;
-using System.Linq;
 
 namespace BusinessLogic.Services
 {
@@ -31,9 +30,9 @@ namespace BusinessLogic.Services
 			return result.Execute();
 		}
 
-		public Volume SearchISBN(string isbn)
+		public Volume SearchByID(string id)
 		{
-			var result = _service.List($"isbn:{isbn}").Execute().Items.FirstOrDefault();
+			var result = _service.Get(id).Execute();
 
 			return result;
 		}

@@ -147,6 +147,7 @@ namespace UI.Controllers
 					{
 						searchModel.Volumes.Add(new Book
 						{
+							GoogleBookID = volume.Id,
 							UserID = User.Identity.GetUserId(),
 							Title = volume.VolumeInfo.Title,
 							Author = volume.VolumeInfo.Authors == null ? string.Empty : string.Join(", ", volume.VolumeInfo.Authors),
@@ -171,12 +172,13 @@ namespace UI.Controllers
 
 		[Authorize]
 		[HttpGet]
-		public virtual ActionResult CreateFromSearchModel(string isbn)
+		public virtual ActionResult CreateFromSearchModel(string id)
 		{
 			ViewBag.Title = "Create";
-			var volume = _googleBookService.SearchISBN(isbn);
+			var volume = _googleBookService.SearchByID(id);
 			var book = new Book
 			{
+				GoogleBookID = volume.Id,
 				UserID = User.Identity.GetUserId(),
 				Title = volume.VolumeInfo.Title,
 				Author = string.Join(", ", volume.VolumeInfo.Authors),
