@@ -1,9 +1,11 @@
-﻿using BusinessLogic.Models.TMDBModels;
+﻿using BusinessLogic.Models;
+using BusinessLogic.Models.TMDBModels;
 using BusinessLogic.Properties;
 using BusinessLogic.Services.Interfaces;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -29,12 +31,13 @@ namespace BusinessLogic.Services
 			return movies.results;
 		}
 
-		public TMDBMovie SearchMovieByID(int id)
+		public Movie SearchMovieByID(int id)
 		{
 			var response = _client.GetAsync($"movie/{id}?api_key={Settings.Default.TMDBKey}");
 
 			var result = response.Result.Content.ReadAsStringAsync().Result;
-			var movie = JsonConvert.DeserializeObject<TMDBMovie>(result);
+			var tmdbMovie = JsonConvert.DeserializeObject<TMDBMovie>(result);
+			var movie = ConvertTMDDMovieToMovie(tmdbMovie);
 
 			return movie;
 		}
@@ -45,6 +48,22 @@ namespace BusinessLogic.Services
 			ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 			_client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 			_client.DefaultRequestHeaders.Add("User-Agent", "Project-Cinderella/1.0 +projectcinderella.azurewebsites.net");
+		}
+
+		private Movie ConvertTMDDMovieToMovie(TMDBMovie tmdb)
+		{
+			var movie = new Movie
+			{
+				Title = tmdb.title,
+				Distributor = tmdb.production_companies.First().name,
+				Genre = string.Join(", ", tmdb.genres.Select(x => x.name).ToList()),
+				ImageUrl = string.Format("https://image.tmdb.org/t/p/w500{0}", tmdb.poster_path),
+				Language = tmdb.original_language,
+				TMDBID = tmdb.id,
+				YearReleased = DateTime.Parse(tmdb.release_date).Year
+			};
+
+			return movie;
 		}
 	}
 }

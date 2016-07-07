@@ -145,20 +145,13 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult CreateFromSearchResult(int releaseID)
 		{
-			var release = _tmdbService.SearchMovieByID(releaseID);
+			var movie = _tmdbService.SearchMovieByID(releaseID);
 
-			var model = new Movie
-			{
-				UserID = User.Identity.GetUserId(),
-				Title = release.title,
-				YearReleased = Convert.ToDateTime(release.release_date).Year,
-				ID = release.id,
-				ImageUrl = string.Format("https://image.tmdb.org/t/p/w500{0}", release.poster_path)
-			};
+			movie.UserID = User.Identity.GetUserId();
 
 			ViewBag.Title = "Create";
 
-			Session["movieResult"] = model;
+			Session["movieResult"] = movie;
 
 			return RedirectToAction(MVC.Movie.Create());
 		}

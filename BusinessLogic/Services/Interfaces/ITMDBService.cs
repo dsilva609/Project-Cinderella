@@ -1,4 +1,5 @@
-﻿using BusinessLogic.Models.TMDBModels;
+﻿using BusinessLogic.Models;
+using BusinessLogic.Models.TMDBModels;
 using System.Collections.Generic;
 
 namespace BusinessLogic.Services.Interfaces
@@ -7,6 +8,6 @@ namespace BusinessLogic.Services.Interfaces
 	{
 		List<TMDBMovie> SearchMovies(string title);
 
-		TMDBMovie SearchMovieByID(int id);
+		Movie SearchMovieByID(int id);
 	}
 }

@@ -8,5 +8,6 @@ namespace BusinessLogic.Models
 		public MovieMediaTypeEnum Type { get; set; }
 		public string Distributor { get; set; }
 		public MovieRatingEnum Rating { get; set; }
+		public int TMDBID { get; set; }
 	}
 }

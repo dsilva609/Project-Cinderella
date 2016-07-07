@@ -228,6 +228,10 @@
     <Compile Include="Migrations\201606231702550_Moved Image Url property to base item.Designer.cs">
       <DependentUpon>201606231702550_Moved Image Url property to base item.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607070154364_added tmdb id to movie.cs" />
+    <Compile Include="Migrations\201607070154364_added tmdb id to movie.Designer.cs">
+      <DependentUpon>201607070154364_added tmdb id to movie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseItem.cs" />
     <Compile Include="Models\Book.cs" />
@@ -354,6 +358,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606231702550_Moved Image Url property to base item.resx">
       <DependentUpon>201606231702550_Moved Image Url property to base item.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607070154364_added tmdb id to movie.resx">
+      <DependentUpon>201607070154364_added tmdb id to movie.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
