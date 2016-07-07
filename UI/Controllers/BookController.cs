@@ -176,6 +176,7 @@ namespace UI.Controllers
 		{
 			ViewBag.Title = "Create";
 			var volume = _googleBookService.SearchByID(id);
+
 			var book = new Book
 			{
 				GoogleBookID = volume.Id,
@@ -191,7 +192,7 @@ namespace UI.Controllers
 				ISBN10 = volume.VolumeInfo.IndustryIdentifiers.SingleOrDefault(x => x.Type == "ISBN_10")?.Identifier,
 				ISBN13 = volume.VolumeInfo.IndustryIdentifiers.SingleOrDefault(x => x.Type == "ISBN_13")?.Identifier,
 				Language = volume.VolumeInfo.Language,
-				ImageUrl = volume.VolumeInfo.ImageLinks.Thumbnail
+				ImageUrl = string.Format("https://books.google.com/books?id={0}&printsec=frontcover&img=1&zoom=0&edge=curl&source=gbs_api", volume.Id)
 			};
 			Session["BookResult"] = book;
 
