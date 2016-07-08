@@ -1,5 +1,6 @@
 ﻿using BusinessLogic.Models;
 using NUnit.Framework;
+using Rhino.Mocks;
 using System.Web.Mvc;
 using UI.Models;
 using UnitTests.UI.Controllers.TestBases;
@@ -14,9 +15,6 @@ namespace UnitTests.UI.Controllers
 		[Test]
 		public void ThatIndexActionReturnsAView()
 		{
-			//--Arrange
-			//	_controller.Setup(mock => mock.Index(It.IsAny<string>(), It.IsAny<int>())).Returns(new ViewResult {ViewName = MVC.Movie.Views.Index});
-
 			//--Act
 			var result = _controller.ClassUnderTest.Index(string.Empty, 1) as ViewResult;
 
@@ -27,9 +25,6 @@ namespace UnitTests.UI.Controllers
 		[Test]
 		public void ThatDetailsActionRetunsAView()
 		{
-			//--Arrange
-			//	_controller.Setup(mock => mock.Details(It.IsNotNull<int>())).Returns(new ViewResult { ViewName = MVC.Movie.Views.Details });
-
 			//--Act
 			var result = _controller.ClassUnderTest.Details(72) as ViewResult;
 
@@ -40,8 +35,7 @@ namespace UnitTests.UI.Controllers
 		[Test]
 		public void ThatCreateActionReturnsAView()
 		{
-			//--Arrange
-			//_controller.Setup(mock => mock.Create()).Returns(new ViewResult { ViewName = MVC.Movie.Views.Create });
+			_controller.Stub(x => x.AddAdditionalMockFor<MockHttpSession>()["movieResult"]).Return(null);
 
 			//--Act
 			var result = _controller.ClassUnderTest.Create() as ViewResult;
@@ -53,9 +47,6 @@ namespace UnitTests.UI.Controllers
 		[Test]
 		public void ItRedirectsToIndexActionWhenModelIsValid()
 		{
-			//--Arrange
-			//	_controller.Setup(mock => mock.Create(It.IsNotNull<Movie>())).Returns(new ViewResult { ViewName = MVC.Movie.Views.Index });
-
 			//--Act
 			var result = _controller.ClassUnderTest.Create(_testModel) as ViewResult;
 
@@ -67,24 +58,19 @@ namespace UnitTests.UI.Controllers
 		[Test]
 		public void ItGoesBackToTheViewIfModelStateIsInvalid()
 		{
-			//--Arrange
-			//	_controller.Setup(mock => mock.Create(It.IsNotNull<Movie>())).Returns(new ViewResult { ViewName = MVC.Book.Views.Create });
 			_controller.ClassUnderTest.ModelState.AddModelError(string.Empty, string.Empty);
 
 			//--Act
 			var result = _controller.ClassUnderTest.Create(_testModel) as ViewResult;
 
 			//--Assert
-			Assert.AreEqual(MVC.Book.Views.Create, result.ViewName);
+			Assert.AreEqual(string.Empty, result.ViewName);
 			Assert.IsFalse(_controller.ClassUnderTest.ModelState.IsValid);
 		}
 
 		[Test]
 		public void ThatEditActionReturnsAView()
 		{
-			//--Arrange
-			//	_controller.Setup(mock => mock.Edit(It.IsNotNull<int>())).Returns(new ViewResult { ViewName = MVC.Movie.Views.Edit });
-
 			//--Act
 			var result = _controller.ClassUnderTest.Edit(42) as ViewResult;
 
@@ -95,9 +81,6 @@ namespace UnitTests.UI.Controllers
 		[Test]
 		public void ThatOnEditWhenModelStateIsValidItGoesBackToIndexView()
 		{
-			//--Arrange
-			//	_controller.Setup(mock => mock.Edit(It.IsNotNull<Movie>())).Returns(new ViewResult { ViewName = MVC.Movie.Views.Index });
-
 			//--Act
 			var result = _controller.ClassUnderTest.Edit(_testModel) as ViewResult;
 
@@ -108,8 +91,6 @@ namespace UnitTests.UI.Controllers
 		[Test]
 		public void ThatWhenModelStateIsNotValidItRedirectsBackToEditView()
 		{
-			//--Arrange
-			//	_controller.Setup(mock => mock.Edit(It.IsNotNull<Movie>())).Returns(new ViewResult { ViewName = MVC.Movie.Views.Edit });
 			_controller.ClassUnderTest.ModelState.AddModelError("", "");
 
 			//--Act
@@ -117,7 +98,7 @@ namespace UnitTests.UI.Controllers
 
 			//--Assert
 			Assert.IsFalse(_controller.ClassUnderTest.ModelState.IsValid);
-			Assert.AreEqual(MVC.Movie.Views.Edit, result.ViewName);
+			Assert.AreEqual(string.Empty, result.ViewName);
 		}
 
 		[Test]
@@ -138,9 +119,6 @@ namespace UnitTests.UI.Controllers
 		[Test]
 		public void ThatItGoesToIndexViewAfterDelete()
 		{
-			//--Arrange
-			//	_controller.Setup(mock => mock.Delete(It.IsNotNull<int>())).Returns(new ViewResult { ViewName = MVC.Movie.Views.Index });
-
 			//--Act
 			var result = _controller.ClassUnderTest.Delete(666) as RedirectToRouteResult;
 
