@@ -13,5 +13,13 @@ namespace UnitTests.BusinessLogic.Services
 
 			Assert.Greater(result.Count, 0);
 		}
+
+		[Test]
+		public void ThatSearchForMovieByIDReturnsAResult()
+		{
+			var result = _service.SearchMovieByID(8909);
+
+			Assert.IsNotNull(result);
+		}
 	}
 }

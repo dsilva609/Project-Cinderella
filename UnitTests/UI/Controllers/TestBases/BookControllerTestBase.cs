@@ -3,7 +3,7 @@ using Moq;
 using NUnit.Framework;
 using UI.Controllers;
 
-namespace UnitTests.UI.Controllers.BookControllerTests.TestBases
+namespace UnitTests.UI.Controllers.TestBases
 {
 	public class BookControllerTestBase : ControllerTestBase
 	{

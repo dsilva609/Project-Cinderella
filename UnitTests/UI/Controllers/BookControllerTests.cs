@@ -2,9 +2,9 @@
 using Moq;
 using NUnit.Framework;
 using System.Web.Mvc;
-using UnitTests.UI.Controllers.BookControllerTests.TestBases;
+using UnitTests.UI.Controllers.TestBases;
 
-namespace UnitTests.UI.Controllers.BookControllerTests
+namespace UnitTests.UI.Controllers
 {
 	public class BookControllerTests : BookControllerTestBase
 	{

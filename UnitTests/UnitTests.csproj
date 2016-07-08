@@ -174,19 +174,19 @@
     <Compile Include="BusinessLogic\Services\TestBases\MovieServiceTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\TMDBServiceTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TMDBServiceTests.cs" />
-    <Compile Include="UI\Controllers\BookControllerTests\BookControllerTests.cs" />
-    <Compile Include="UI\Controllers\BookControllerTests\TestBases\BookControllerTestBase.cs" />
-    <Compile Include="UI\Controllers\ControllerTestBase.cs" />
-    <Compile Include="UI\Controllers\GameControllerTests\GameControllerTests.cs" />
-    <Compile Include="UI\Controllers\GameControllerTests\TestBases\GameControllerTestBase.cs" />
-    <Compile Include="UI\Controllers\HomeControllerTests\TestBases\HomeControllerTestBase.cs" />
-    <Compile Include="UI\Controllers\HomeControllerTests\HomeControllerTests.cs" />
+    <Compile Include="UI\Controllers\BookControllerTests.cs" />
+    <Compile Include="UI\Controllers\GameControllerTests.cs" />
+    <Compile Include="UI\Controllers\TestBases\BookControllerTestBase.cs" />
+    <Compile Include="UI\Controllers\TestBases\ControllerTestBase.cs" />
+    <Compile Include="UI\Controllers\TestBases\GameControllerTestBase.cs" />
+    <Compile Include="UI\Controllers\TestBases\HomeControllerTestBase.cs" />
+    <Compile Include="UI\Controllers\HomeControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\Controllers\MockHttpSession.cs" />
-    <Compile Include="UI\Controllers\AlbumControllerTests\AlbumControllerTests.cs" />
-    <Compile Include="UI\Controllers\AlbumControllerTests\TestBases\AlbumControllerTestBase.cs" />
-    <Compile Include="UI\Controllers\MovieControllerTests\MovieControllerTests.cs" />
-    <Compile Include="UI\Controllers\MovieControllerTests\TestBases\MovieControllerTestBase.cs" />
+    <Compile Include="UI\Controllers\AlbumControllerTests.cs" />
+    <Compile Include="UI\Controllers\TestBases\AlbumControllerTestBase.cs" />
+    <Compile Include="UI\Controllers\MovieControllerTests.cs" />
+    <Compile Include="UI\Controllers\TestBases\MovieControllerTestBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

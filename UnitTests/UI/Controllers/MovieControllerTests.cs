@@ -2,9 +2,9 @@
 using NUnit.Framework;
 using System.Web.Mvc;
 using UI.Models;
-using UnitTests.UI.Controllers.MovieControllerTests.TestBases;
+using UnitTests.UI.Controllers.TestBases;
 
-namespace UnitTests.UI.Controllers.MovieControllerTests
+namespace UnitTests.UI.Controllers
 {
 	[TestFixture]
 	public class MovieControllerTests : MovieControllerTestBase

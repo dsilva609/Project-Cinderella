@@ -1,0 +1,49 @@
+﻿using NUnit.Framework;
+using System.Web.Mvc;
+using UnitTests.UI.Controllers.TestBases;
+
+namespace UnitTests.UI.Controllers.HomeControllerTests
+{
+	[TestFixture]
+	public class HomeControllerTests : HomeControllerTestBase
+	{
+		[Test]
+		public void ThatIndexActionReturnsAView()
+		{
+			//--Arrange
+			_homeControllerMock.Setup(mock => mock.Index()).Returns(new ViewResult { ViewName = MVC.Home.Views.Index });
+
+			//--Act
+			var result = _homeControllerMock.Object.Index() as ViewResult;
+
+			// Assert
+			Assert.AreEqual(MVC.Home.Views.Index, result.ViewName);
+		}
+
+		[Test]
+		public void ThatAboutActionReturnsAView()
+		{
+			//--Arrange
+			_homeControllerMock.Setup(mock => mock.About()).Returns(new ViewResult { ViewName = MVC.Home.Views.About });
+
+			//--Act
+			var result = _homeControllerMock.Object.About() as ViewResult;
+
+			//--Assert
+			Assert.AreEqual(MVC.Home.Views.About, result.ViewName);
+		}
+
+		[Test]
+		public void ThatContactActionReturnsAView()
+		{
+			//--Arrange
+			_homeControllerMock.Setup(mock => mock.Contact()).Returns(new ViewResult { ViewName = MVC.Home.Views.Contact });
+
+			//--Act
+			var result = _homeControllerMock.Object.Contact() as ViewResult;
+
+			//--Assert
+			Assert.AreEqual(MVC.Home.Views.Contact, result.ViewName);
+		}
+	}
+}

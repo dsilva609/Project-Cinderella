@@ -1,10 +1,10 @@
-﻿using System.Web.Mvc;
-using BusinessLogic.Models;
+﻿using BusinessLogic.Models;
 using Moq;
 using NUnit.Framework;
-using UnitTests.UI.Controllers.GameControllerTests.TestBases;
+using System.Web.Mvc;
+using UnitTests.UI.Controllers.TestBases;
 
-namespace UnitTests.UI.Controllers.GameControllerTests
+namespace UnitTests.UI.Controllers
 {
 	[TestFixture]
 	public class GameControllerTests : GameControllerTestBase
