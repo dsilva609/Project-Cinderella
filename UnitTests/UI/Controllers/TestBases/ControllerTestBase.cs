@@ -6,9 +6,16 @@ namespace UnitTests.UI.Controllers.TestBases
 {
 	public class ControllerTestBase
 	{
-		private Mock<ControllerContext> _controllerContext = new Mock<ControllerContext>();
-		private Mock<IPrincipal> _principal = new Mock<IPrincipal>();
-		private MockHttpSession _session = new MockHttpSession();
+		protected readonly MockHttpSession _session;
+		private readonly Mock<ControllerContext> _controllerContext;
+		private readonly Mock<IPrincipal> _principal;
+
+		protected ControllerTestBase()
+		{
+			_controllerContext = new Mock<ControllerContext>();
+			_principal = new Mock<IPrincipal>();
+			_session = new MockHttpSession();
+		}
 
 		public virtual Mock<ControllerContext> SetupAuthorization(string userRole, bool userIsOfRole, bool userIsAuthenticated)
 		{

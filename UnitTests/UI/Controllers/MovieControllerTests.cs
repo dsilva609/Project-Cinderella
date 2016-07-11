@@ -1,6 +1,5 @@
 ﻿using BusinessLogic.Models;
 using NUnit.Framework;
-using Rhino.Mocks;
 using System.Web.Mvc;
 using UI.Models;
 using UnitTests.UI.Controllers.TestBases;
@@ -35,7 +34,8 @@ namespace UnitTests.UI.Controllers
 		[Test]
 		public void ThatCreateActionReturnsAView()
 		{
-			_controller.Stub(x => x.AddAdditionalMockFor<MockHttpSession>()["movieResult"]).Return(null);
+			//--Arrange
+			_session["movieResult"] = null;
 
 			//--Act
 			var result = _controller.ClassUnderTest.Create() as ViewResult;
