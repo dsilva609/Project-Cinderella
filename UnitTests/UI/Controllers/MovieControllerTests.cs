@@ -1,4 +1,5 @@
 ﻿using BusinessLogic.Models;
+using BusinessLogic.Services.Interfaces;
 using NUnit.Framework;
 using Rhino.Mocks;
 using System.Web.Mvc;
@@ -69,13 +70,14 @@ namespace UnitTests.UI.Controllers
 		[Test]
 		public void ThatEditActionReturnsAView()
 		{
-			_service.Expect(x => x.GetByID(Arg<int>.Is.Equal(42), Arg<string>.Is.Anything)).Return(new Movie
+			//--Arrange
+			_controller.Get<IMovieService>().Expect(x => x.GetByID(Arg<int>.Is.Equal(42), Arg<string>.Is.Anything)).Return(new Movie
 			{
 				ID = 42
 			});
 
 			//--Act
-			var result = _test.Object.Edit(42) as ViewResult;
+			var result = _controller.ClassUnderTest.Edit(42) as ViewResult;
 
 			//--Assert
 			Assert.AreEqual(string.Empty, result.ViewName);
