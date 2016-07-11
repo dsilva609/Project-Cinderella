@@ -1,5 +1,6 @@
 ﻿using BusinessLogic.Models;
 using NUnit.Framework;
+using Rhino.Mocks;
 using System.Web.Mvc;
 using UI.Models;
 using UnitTests.UI.Controllers.TestBases;
@@ -34,9 +35,6 @@ namespace UnitTests.UI.Controllers
 		[Test]
 		public void ThatCreateActionReturnsAView()
 		{
-			//--Arrange
-			_session["movieResult"] = null;
-
 			//--Act
 			var result = _controller.ClassUnderTest.Create() as ViewResult;
 
@@ -48,11 +46,11 @@ namespace UnitTests.UI.Controllers
 		public void ItRedirectsToIndexActionWhenModelIsValid()
 		{
 			//--Act
-			var result = _controller.ClassUnderTest.Create(_testModel) as ViewResult;
+			var result = _controller.ClassUnderTest.Create(_testModel) as RedirectToRouteResult;
 
 			//--Assert
 			Assert.IsTrue(_controller.ClassUnderTest.ModelState.IsValid);
-			Assert.AreEqual(MVC.Movie.Views.Index, result.ViewName);
+			Assert.AreEqual("Index", result.RouteValues["Action"]);
 		}
 
 		[Test]
@@ -71,8 +69,13 @@ namespace UnitTests.UI.Controllers
 		[Test]
 		public void ThatEditActionReturnsAView()
 		{
+			_service.Expect(x => x.GetByID(Arg<int>.Is.Equal(42), Arg<string>.Is.Anything)).Return(new Movie
+			{
+				ID = 42
+			});
+
 			//--Act
-			var result = _controller.ClassUnderTest.Edit(42) as ViewResult;
+			var result = _test.Object.Edit(42) as ViewResult;
 
 			//--Assert
 			Assert.AreEqual(string.Empty, result.ViewName);
