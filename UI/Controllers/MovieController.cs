@@ -102,8 +102,10 @@ namespace UI.Controllers
 			var existingMovies = _service.GetAll(User.Identity.GetUserId(), movie.Title);
 
 			if (existingMovies.Count > 0 && existingMovies.Any(x => x.ID == movie.ID && x.Type == movie.Type))
+			{
+				ShowStatusMessage(MessageTypeEnum.error, $"A Game of Title: {movie.Title}, Media Type: {movie.Type} already exists.", "Duplicate Movie");
 				return View(movie);
-
+			}
 			//--TODO: why is id needed?
 			//TODO: make sure user id is the same so as not to change other users data
 			movie.DateUpdated = DateTime.Now;

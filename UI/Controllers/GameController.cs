@@ -89,8 +89,8 @@ namespace UI.Controllers
 		public virtual ActionResult Edit(Game game)
 		{
 			if (!ModelState.IsValid) return View(game);
-			var existingGame = _service.GetAll(User.Identity.GetUserId()).Where(x => x.ID != game.ID && x.Title == game.Title && x.Developer == game.Developer && x.MediaType == game.MediaType).ToList();
-			if (existingGame.Count > 0)
+			var existingGames = _service.GetAll(User.Identity.GetUserId(), game.Title);
+			if (existingGames.Count > 0 && existingGames.Any(x => x.ID == game.ID && x.Developer == game.Developer && x.MediaType == game.MediaType))
 			{
 				ShowStatusMessage(MessageTypeEnum.error, $"A Game of Title: {game.Title}, Developer: {game.Developer}, Media Type: {game.MediaType} already exists.", "Duplicate Game");
 				return View(game);

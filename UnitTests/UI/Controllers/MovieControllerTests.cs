@@ -87,7 +87,8 @@ namespace UnitTests.UI.Controllers
 
 		[Test]
 		public void ThatOnEditWhenModelStateIsValidItGoesBackToIndexView()
-		{//--Arrange
+		{
+			//--Arrange
 			_controller.Get<IMovieService>().Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything)).Return(new List<Movie>());
 
 			//--Act
