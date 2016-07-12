@@ -1,7 +1,9 @@
-﻿using BusinessLogic.Models;
+﻿using BusinessLogic.Enums;
+using BusinessLogic.Models;
 using BusinessLogic.Services.Interfaces;
 using NUnit.Framework;
 using Rhino.Mocks;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using UI.Models;
 using UnitTests.UI.Controllers.TestBases;
@@ -85,12 +87,14 @@ namespace UnitTests.UI.Controllers
 
 		[Test]
 		public void ThatOnEditWhenModelStateIsValidItGoesBackToIndexView()
-		{
+		{//--Arrange
+			_controller.Get<IMovieService>().Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything)).Return(new List<Movie>());
+
 			//--Act
-			var result = _controller.ClassUnderTest.Edit(_testModel) as ViewResult;
+			var result = _controller.ClassUnderTest.Edit(_testModel) as RedirectToRouteResult;
 
 			//--Assert
-			Assert.AreEqual(MVC.Movie.Views.Index, result.ViewName);
+			Assert.AreEqual("Index", result.RouteValues["Action"]);
 		}
 
 		[Test]
@@ -109,16 +113,17 @@ namespace UnitTests.UI.Controllers
 		[Test]
 		public void ThatOnEditADuplicateMovieIsFoundItRedirectsBackToEditView()
 		{
-			//--TODO: need to set up dependency
 			//--Arrange
-			//	_controller.Setup(mock => mock.Edit(It.IsNotNull<Movie>())).Returns(new ViewResult { ViewName = MVC.Movie.Views.Edit });
+			_controller.Get<IMovieService>().Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything)).Return(new List<Movie> { new Movie { ID = 1, Title = "Deadpool", Type = MovieMediaTypeEnum.Bluray } });
+			_testModel.ID = 1;
+			_testModel.Title = "Deadpool";
+			_testModel.Type = MovieMediaTypeEnum.Bluray;
 
 			//--Act
 			var result = _controller.ClassUnderTest.Edit(_testModel) as ViewResult;
 
 			//--Assert
-			//Assert.AreEqual(0, 1);
-			Assert.AreEqual(MVC.Movie.Views.Edit, result.ViewName);
+			Assert.AreEqual(string.Empty, result.ViewName);
 		}
 
 		[Test]
@@ -128,7 +133,7 @@ namespace UnitTests.UI.Controllers
 			var result = _controller.ClassUnderTest.Delete(666) as RedirectToRouteResult;
 
 			//--Assert
-			Assert.AreEqual(MVC.Movie.Views.Index, result.RouteName);
+			Assert.AreEqual("Index", result.RouteValues["Action"]);
 		}
 
 		[Test]

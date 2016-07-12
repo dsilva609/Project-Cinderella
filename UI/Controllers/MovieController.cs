@@ -98,12 +98,12 @@ namespace UI.Controllers
 		public virtual ActionResult Edit(Movie movie)
 		{
 			if (!ModelState.IsValid) return View(movie);
-			//TODO: can probably just refactor this for it's actual call
-			var existingMovie = _service.GetAll(User.Identity.GetUserId()).Where(x => x.ID != movie.ID && x.Title == movie.Title && x.Type == movie.Type).ToList();
-			if (existingMovie.Count > 0)
-			{
+
+			var existingMovies = _service.GetAll(User.Identity.GetUserId(), movie.Title);
+
+			if (existingMovies.Count > 0 && existingMovies.Any(x => x.ID == movie.ID && x.Type == movie.Type))
 				return View(movie);
-			}
+
 			//--TODO: why is id needed?
 			//TODO: make sure user id is the same so as not to change other users data
 			movie.DateUpdated = DateTime.Now;
