@@ -1,4 +1,5 @@
-﻿using BusinessLogic.Models.DiscogsModels;
+﻿using BusinessLogic.Models;
+using BusinessLogic.Models.DiscogsModels;
 using System.Collections.Generic;
 
 namespace BusinessLogic.Services.Interfaces
@@ -7,6 +8,6 @@ namespace BusinessLogic.Services.Interfaces
 	{
 		List<DiscogsResult> Search(string artist, string album);
 
-		DiscogsRelease GetRelease(int releaseID);
+		Album GetRelease(int releaseID);
 	}
 }

@@ -1,6 +1,9 @@
 ﻿using BusinessLogic.Models;
+using BusinessLogic.Services.Interfaces;
 using Moq;
 using NUnit.Framework;
+using Rhino.Mocks;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using UI.Models;
 using UnitTests.UI.Controllers.TestBases;
@@ -11,14 +14,10 @@ namespace UnitTests.UI.Controllers
 	public class AlbumControllerTests : AlbumControllerTestBase
 	{
 		private Album _testModel = new Album();
-		private AlbumViewModel _expectedIndex = new AlbumViewModel();
 
 		[Test]
 		public void ThatTheIndexActionReturnsAView()
 		{
-			//--Arrange
-			//	_controller.Expect(mock => mock.ClassUnderTest.Index(It.IsAny<string>(), It.IsAny<int>())).Returns(new ViewResult { ViewName = MVC.Album.Views.Index });
-
 			//--Act
 			var result = _controller.ClassUnderTest.Index(string.Empty, 1) as ViewResult;
 
@@ -28,117 +27,83 @@ namespace UnitTests.UI.Controllers
 		}
 
 		[Test]
-		public void ThatSpecifiedViewModelIsSentToView()
-		{
-			//--Arrange
-			//		_controller.Setup(mock => mock.Index(It.IsAny<string>(), It.IsAny<int>())).Returns(new ViewResult { ViewName = MVC.Album.Views.Index, ViewData = new ViewDataDictionary(_expectedIndex) });
-
-			//--Act
-			var result = _controller.ClassUnderTest.Index(string.Empty, 0) as ViewResult;
-
-			//--Assert
-			Assert.AreEqual(_expectedIndex, result.ViewData.Model);
-		}
-
-		[Test]
 		public void ThatCreateActionReturnsAView()
 		{
-			//--Arrange
-			//		_controller.Setup(mock => mock.Create()).Returns(new ViewResult { ViewName = MVC.Album.Views.Create });
-
 			//--Act
 			var result = _controller.ClassUnderTest.Create() as ViewResult;
 
 			//--Assert
-			Assert.AreEqual(MVC.Album.Views.Create, result.ViewName);
-		}
-
-		[Test]
-		public void ThatCorrectModelIsPassedIntoCreateView()
-		{
-			//--Arrange
-			//	_controller.Setup(mock => mock.Create()).Returns(new ViewResult { ViewData = new ViewDataDictionary(_testModel) });
-
-			//--Act
-			var result = _controller.ClassUnderTest.Create() as ViewResult;
-
-			//--Assert
-			Assert.AreEqual(_testModel, result.ViewData.Model);
+			Assert.AreEqual(string.Empty, result.ViewName);
 		}
 
 		[Test]
 		public void ItRedirectsToIndexActionWhenModelIsValid()
 		{
-			//--Arrange
-			//_controller.Setup(mock => mock.Create(It.IsNotNull<Album>())).Returns(new ViewResult { ViewName = MVC.Album.Views.Index });
-
 			//--Act
-			var result = _controller.ClassUnderTest.Create(_testModel) as ViewResult;
+			var result = _controller.ClassUnderTest.Create(_testModel) as RedirectToRouteResult;
 
 			//--Assert
 			Assert.IsTrue(_controller.ClassUnderTest.ModelState.IsValid);
-			Assert.AreEqual(MVC.Album.Views.Index, result.ViewName);
+			Assert.AreEqual("Index", result.RouteValues["Action"]);
 		}
 
 		[Test]
 		public void ItGoesBackToTheViewIfModelStateIsInvalid()
 		{
 			//--Arrange
-			//_controller.Setup(mock => mock.Create(It.IsNotNull<Album>())).Returns(new ViewResult { ViewName = MVC.Album.Views.Create });
 			_controller.ClassUnderTest.ModelState.AddModelError(string.Empty, string.Empty);
 
 			//--Act
 			var result = _controller.ClassUnderTest.Create(_testModel) as ViewResult;
 
 			//--Assert
-			Assert.AreEqual(MVC.Album.Views.Create, result.ViewName);
+			Assert.AreEqual(string.Empty, result.ViewName);
 			Assert.IsFalse(_controller.ClassUnderTest.ModelState.IsValid);
 		}
 
 		[Test]
 		public void ItGoesToIndexViewAfterDelete()
 		{
-			//--Arrange
-			//_controller.Setup(mock => mock.Delete(It.IsNotNull<int>())).Returns(new ViewResult { ViewName = MVC.Album.Views.Index });
-
 			//--Act
-			var result = _controller.ClassUnderTest.Delete(6213) as ViewResult;
+			var result = _controller.ClassUnderTest.Delete(6213) as RedirectToRouteResult;
 
 			//--Assert
-			Assert.AreEqual(MVC.Album.Views.Index, result.ViewName);
+			Assert.AreEqual("Index", result.RouteValues["Action"]);
 		}
 
 		[Test]
 		public void ThatEditActionReturnsAView()
 		{
 			//--Arrange
-			//_controller.Setup(mock => mock.Edit(It.IsAny<int>())).Returns(new ViewResult { ViewName = MVC.Album.Views.Edit });
+			_controller.Get<IAlbumService>().Expect(x => x.GetByID(Arg<int>.Is.Anything, Arg<string>.Is.Anything))
+				.Return(new Album { ID = 666 });
 
 			//--Act
 			var result = _controller.ClassUnderTest.Edit(666) as ViewResult;
 
 			//--Assert
-			Assert.AreEqual(MVC.Album.Views.Edit, result.ViewName);
+			Assert.AreEqual(string.Empty, result.ViewName);
 		}
 
 		[Test]
 		public void ThatOnEditWhenModelStateIsValidItGoesBackToIndexView()
 		{
 			//--Arrange
-			//		_controller.Setup(mock => mock.Edit(It.IsNotNull<Album>())).Returns(new ViewResult { ViewName = MVC.Album.Views.Index });
+			_controller.Get<IAlbumService>()
+				.Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<int>.Is.Anything, Arg<int>.Is.Anything))
+				.Return(new List<Album>());
 
 			//--Act
-			var result = _controller.ClassUnderTest.Edit(_testModel) as ViewResult;
+			var result = _controller.ClassUnderTest.Edit(_testModel) as RedirectToRouteResult;
 
 			//--Assert
-			Assert.AreEqual(MVC.Album.Views.Index, result.ViewName);
+			Assert.AreEqual("Index", result.RouteValues["Action"]);
 		}
 
 		[Test]
 		public void ThatWhenModelStateIsNotValidItRedirectsBackToEditView()
 		{
 			//--Arrange
-			//		_controller.Setup(mock => mock.Edit(It.IsNotNull<Album>())).Returns(new ViewResult { ViewName = MVC.Album.Views.Edit });
 			_controller.ClassUnderTest.ModelState.AddModelError("", "");
 
 			//--Act
@@ -146,74 +111,59 @@ namespace UnitTests.UI.Controllers
 
 			//--Assert
 			Assert.IsFalse(_controller.ClassUnderTest.ModelState.IsValid);
-			Assert.AreEqual(MVC.Album.Views.Edit, result.ViewName);
+			Assert.AreEqual(string.Empty, result.ViewName);
 		}
 
 		[Test]
 		public void ThatOnEditADuplicateRecordIsFoundItRedirectsBackToEditView()
 		{
-			//--TODO: need to set up dependency
 			//--Arrange
-			//_controller.Setup(mock => mock.Edit(It.IsNotNull<Album>())).Returns(new ViewResult() { ViewName = MVC.Album.Views.Edit });
+			_controller.Get<IAlbumService>()
+				.Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<int>.Is.Anything, Arg<int>.Is.Anything))
+				.Return(new List<Album> { new Album { ID = 1, Title = "Kill 'Em All", Artist = "Metallica" } });
+			_testModel.ID = 1;
+			_testModel.Title = "Kill 'Em All";
+			_testModel.Artist = "Metallica";
 
 			//--Act
 			var result = _controller.ClassUnderTest.Edit(_testModel) as ViewResult;
 
 			//--Assert
-			Assert.AreEqual(0, 1);
-			Assert.AreEqual(MVC.Album.Views.Edit, result.ViewName);
+			Assert.AreEqual(string.Empty, result.ViewName);
 		}
 
 		[Test]
 		public void ThatDetailsActionReturnsAView()
 		{
-			//--Arrange
-			//	_controller.Setup(mock => mock.Details(It.IsAny<int>())).Returns(new ViewResult { ViewName = MVC.Album.Views.Details });
-
 			//--Act
 			var result = _controller.ClassUnderTest.Details(72) as ViewResult;
 
 			//--Assert
-			Assert.AreEqual(MVC.Album.Views.Details, result.ViewName);
-		}
-
-		[Test]
-		public void ThatModelIsSentToDetailsView()
-		{
-			//--Arrange
-			//_controller.Setup(mock => mock.Details(It.IsAny<int>())).Returns(new ViewResult { ViewData = new ViewDataDictionary(_testModel) });
-
-			//--Act
-			var result = _controller.ClassUnderTest.Details(_testModel.ID) as ViewResult;
-
-			//--Assert
-			Assert.AreEqual(_testModel, result.ViewData.Model);
+			Assert.AreEqual(string.Empty, result.ViewName);
 		}
 
 		[Test]
 		public void ThatSearchActionReturnsAView()
 		{
-			//--Arrange
-			//_controller.Setup(mock => mock.Search()).Returns(new ViewResult { ViewName = MVC.Book.Views.Search });
-
 			//--Act
-			var result = _controller.ClassUnderTest.Search() as ViewResult;
+			var result = _controller.ClassUnderTest.Search(new DiscogsSearchModel()) as ViewResult;
 
 			//--Assert
-			Assert.AreEqual(MVC.Book.Views.Search, result.ViewName);
+			Assert.AreEqual(string.Empty, result.ViewName);
 		}
 
 		[Test]
 		public void ThatCreateFromSearchModelActionReturnsAView()
 		{
 			//--Arrange
-			//	_controller.Setup(mock => mock.CreateFromSearchResult(It.IsAny<int>())).Returns(new ViewResult { ViewName = MVC.Album.Views.Create });
+			_controller.Get<IDiscogsService>().Expect(x => x.GetRelease(Arg<int>.Is.Anything))
+				.Return(new Album());
 
 			//--Act
-			var result = _controller.ClassUnderTest.CreateFromSearchResult(It.IsAny<int>()) as ViewResult;
+			var result = _controller.ClassUnderTest.CreateFromSearchResult(It.IsAny<int>()) as RedirectToRouteResult;
 
 			//--Assert
-			Assert.AreEqual(MVC.Album.Views.Create, result.ViewName);
+			Assert.AreEqual("Create", result.RouteValues["Action"]);
 		}
 	}
 }

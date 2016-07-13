@@ -1,4 +1,5 @@
-﻿using BusinessLogic.Models.DiscogsModels;
+﻿using BusinessLogic.Models;
+using BusinessLogic.Models.DiscogsModels;
 using BusinessLogic.Properties;
 using BusinessLogic.Services.Interfaces;
 using Newtonsoft.Json;
@@ -39,7 +40,7 @@ namespace BusinessLogic.Services
 			return resultList;
 		}
 
-		public DiscogsRelease GetRelease(int releaseID)
+		public Album GetRelease(int releaseID)
 		{
 			var response = _client.GetAsync($"releases/{releaseID}");
 			var result = response.Result.Content.ReadAsStringAsync().Result;
@@ -51,7 +52,9 @@ namespace BusinessLogic.Services
 			if (!string.IsNullOrWhiteSpace(release.StylesString))
 				release.GenreString += $" - {release.StylesString}";
 
-			return release;
+			var album = ConvertFromRelease(release);
+
+			return album;
 		}
 
 		private void CreateClient()
@@ -61,6 +64,22 @@ namespace BusinessLogic.Services
 			_client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 			_client.DefaultRequestHeaders.Add("Authorization", $"Discogs token={Settings.Default.DiscogsKey}");
 			_client.DefaultRequestHeaders.Add("User-Agent", "Project-Cinderella/1.0 +projectcinderella.azurewebsites.net");
+		}
+
+		private Album ConvertFromRelease(DiscogsRelease release)
+		{
+			var album = new Album
+			{
+				Artist = release.artists.First().name,
+				Title = release.title,
+				YearReleased = release.year,
+				RecordLabel = release.LabelString,
+				Genre = release.GenreString,
+				DiscogsID = release.id,
+				ImageUrl = release.images?.First().uri
+			};
+
+			return album;
 		}
 	}
 }

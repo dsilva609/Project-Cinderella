@@ -141,7 +141,8 @@ namespace UI.Controllers
 
 				searchModel.Volumes = new List<Book>();
 
-				if (result?.Count > 0)
+				//TODO: move this to service
+				if (result.Count > 0)
 				{
 					foreach (var volume in result)
 					{

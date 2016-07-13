@@ -54,22 +54,13 @@ namespace UI.Controllers
 		{
 			var release = _discogsService.GetRelease(releaseID);
 
-			var model = new Album
-			{
-				UserID = User.Identity.GetUserId(),
-				Artist = release.artists.First().name,
-				Title = release.title,
-				YearReleased = release.year,
-				RecordLabel = release.LabelString,
-				Genre = release.GenreString,
-				DiscogsID = release.id,
-				ImageUrl = release.images?.First().uri
-			};
+			//TODO: move to service
+			release.UserID = User.Identity.GetUserId();
 
 			ViewBag.Title = "Create";
 
 			//TODO: is this still needed?
-			Session["albumResult"] = model;
+			Session["albumResult"] = release;
 
 			return RedirectToAction(MVC.Album.Create());
 		}
@@ -127,13 +118,14 @@ namespace UI.Controllers
 			}
 			var release = _discogsService.GetRelease(model.DiscogsID);
 
-			model.Artist = release.artists.First().name;
-			model.Title = release.title;
-			model.YearReleased = release.year;
-			model.RecordLabel = release.LabelString;
-			model.Genre = release.GenreString;
+			//TODO: does this have to be here?
+			model.Artist = release.Artist;
+			model.Title = release.Title;
+			model.YearReleased = release.YearReleased;
+			model.RecordLabel = release.RecordLabel;
+			model.Genre = release.Genre;
 			if (string.IsNullOrWhiteSpace(model.ImageUrl))
-				model.ImageUrl = release.images.First().uri;
+				model.ImageUrl = release.ImageUrl;
 
 			return View(MVC.Album.Views.Edit, model);
 		}
@@ -143,8 +135,8 @@ namespace UI.Controllers
 		public virtual ActionResult Edit(Album model)
 		{
 			if (!ModelState.IsValid) return View(model);
-			var existingAlbums = _service.GetAll(User.Identity.GetUserId()).Where(x => x.ID != model.ID && x.Artist == model.Artist && x.Title == model.Title && x.MediaType == model.MediaType && x.DiscogsID == model.DiscogsID).ToList();
-			if (existingAlbums.Count > 0)
+			var existingAlbums = _service.GetAll(User.Identity.GetUserId());
+			if (existingAlbums.Count > 0 && existingAlbums.Any(x => x.ID == model.ID && x.Artist == model.Artist && x.Title == model.Title && x.MediaType == model.MediaType && x.DiscogsID == model.DiscogsID))
 			{
 				ShowStatusMessage(MessageTypeEnum.error, $"An album of Artist: {model.Artist}, Album: {model.Title}, Media Type: {model.MediaType} already exists.", "Duplicate Record");
 				return View(model);
@@ -152,13 +144,14 @@ namespace UI.Controllers
 			if (model.DiscogsID != 0)
 			{
 				var release = _discogsService.GetRelease(model.DiscogsID);
-				model.Artist = release.artists.First().name;
-				model.Title = release.title;
-				model.YearReleased = release.year;
-				model.RecordLabel = release.LabelString;
-				model.Genre = release.GenreString;
+				//TODO: needs to be moved
+				model.Artist = release.Artist;
+				model.Title = release.Title;
+				model.YearReleased = release.YearReleased;
+				model.RecordLabel = release.RecordLabel;
+				model.Genre = release.Genre;
 				if (string.IsNullOrWhiteSpace(model.ImageUrl))
-					model.ImageUrl = release.images.First().uri;
+					model.ImageUrl = release.ImageUrl;
 			}
 
 			//--TODO: why is id needed?

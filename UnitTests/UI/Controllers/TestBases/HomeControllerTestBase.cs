@@ -4,7 +4,6 @@ using UI.Controllers;
 
 namespace UnitTests.UI.Controllers.TestBases
 {
-	[TestFixture]
 	public class HomeControllerTestBase
 	{
 		protected RhinoAutoMocker<HomeController> _homeControllerMock;
