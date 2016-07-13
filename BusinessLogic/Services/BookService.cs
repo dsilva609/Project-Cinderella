@@ -42,6 +42,8 @@ namespace BusinessLogic.Services
 			if (!string.IsNullOrWhiteSpace(userID))
 				bookList = bookList.Where(x => x.UserID == userID).ToList();
 
+			bookList = bookList.OrderBy(x => x.Title).ToList();
+
 			return bookList;
 		}
 

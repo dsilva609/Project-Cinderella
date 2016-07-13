@@ -2,7 +2,8 @@
 {
 	public enum BookTypeEnum
 	{
-		Book,
-		Comic
+		Novel,
+		Comic,
+		Manga
 	}
 }
