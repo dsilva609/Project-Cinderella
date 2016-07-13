@@ -1,7 +1,10 @@
 ﻿using BusinessLogic.Models;
-using Moq;
+using BusinessLogic.Services.Interfaces;
 using NUnit.Framework;
+using Rhino.Mocks;
+using System.Collections.Generic;
 using System.Web.Mvc;
+using UI.Models;
 using UnitTests.UI.Controllers.TestBases;
 
 namespace UnitTests.UI.Controllers
@@ -14,167 +17,150 @@ namespace UnitTests.UI.Controllers
 		public void ThatIndexActionReturnsAView()
 		{
 			//--Arrange
-			_controller.Setup(mock => mock.Index(It.IsAny<string>(), It.IsAny<int>())).Returns(new ViewResult
-			{
-				ViewName = MVC.Book.Views.Index
-			});
+			_controller.Get<IBookService>().Expect(x => x.GetAll(Arg<string>.Is.Anything)).Return(new List<Book>());
 
 			//--Act
-			var result = _controller.Object.Index(string.Empty, 1) as ViewResult;
+			var result = _controller.ClassUnderTest.Index(string.Empty, 1) as ViewResult;
 
 			//--Assert
-			Assert.AreEqual(MVC.Book.Views.Index, result.ViewName);
+			Assert.AreEqual(string.Empty, result.ViewName);
 		}
 
 		[Test]
 		public void ThatDetailsActionRetunsAView()
 		{
-			//--Arrange
-			_controller.Setup(mock => mock.Details(It.IsNotNull<int>())).Returns(new ViewResult { ViewName = MVC.Book.Views.Details });
-
 			//--Act
-			var result = _controller.Object.Details(72) as ViewResult;
+			var result = _controller.ClassUnderTest.Details(72) as ViewResult;
 
 			//--Assert
-			Assert.AreEqual(MVC.Book.Views.Details, result.ViewName);
+			Assert.AreEqual(string.Empty, result.ViewName);
 		}
 
 		[Test]
 		public void ThatCreateActionReturnsAView()
 		{
-			//--Arrange
-			_controller.Setup(mock => mock.Create()).Returns(new ViewResult { ViewName = MVC.Book.Views.Create });
-
 			//--Act
-			var result = _controller.Object.Create() as ViewResult;
+			var result = _controller.ClassUnderTest.Create() as ViewResult;
 
 			//--Assert
-			Assert.AreEqual(MVC.Book.Views.Create, result.ViewName);
+			Assert.AreEqual(string.Empty, result.ViewName);
 		}
 
 		[Test]
 		public void ItRedirectsToIndexActionWhenModelIsValid()
 		{
-			//--Arrange
-			_controller.Setup(mock => mock.Create(It.IsNotNull<Book>()))
-				.Returns(new ViewResult { ViewName = MVC.Book.Views.Index });
-
 			//--Act
-			var result = _controller.Object.Create(_testModel) as ViewResult;
+			var result = _controller.ClassUnderTest.Create(_testModel) as RedirectToRouteResult;
 
 			//--Assert
-			Assert.IsTrue(_controller.Object.ModelState.IsValid);
-			Assert.AreEqual(MVC.Book.Views.Index, result.ViewName);
+			Assert.IsTrue(_controller.ClassUnderTest.ModelState.IsValid);
+			Assert.AreEqual("Index", result.RouteValues["Action"]);
 		}
 
 		[Test]
 		public void ItGoesBackToTheViewIfModelStateIsInvalid()
 		{
 			//--Arrange
-			_controller.Setup(mock => mock.Create(It.IsNotNull<Book>())).Returns(new ViewResult { ViewName = MVC.Book.Views.Create });
-			_controller.Object.ModelState.AddModelError(string.Empty, string.Empty);
+			_controller.ClassUnderTest.ModelState.AddModelError(string.Empty, string.Empty);
 
 			//--Act
-			var result = _controller.Object.Create(_testModel) as ViewResult;
+			var result = _controller.ClassUnderTest.Create(_testModel) as ViewResult;
 
 			//--Assert
-			Assert.AreEqual(MVC.Book.Views.Create, result.ViewName);
-			Assert.IsFalse(_controller.Object.ModelState.IsValid);
+			Assert.AreEqual(string.Empty, result.ViewName);
+			Assert.IsFalse(_controller.ClassUnderTest.ModelState.IsValid);
 		}
 
 		[Test]
 		public void ThatEditActionReturnsAView()
 		{
 			//--Arrange
-			_controller.Setup(mock => mock.Edit(It.IsNotNull<int>())).Returns(new ViewResult { ViewName = MVC.Book.Views.Edit });
+			_controller.Get<IBookService>().Expect(x => x.GetByID(Arg<int>.Is.Anything, Arg<string>.Is.Anything)).Return(new Book { ID = 42 });
 
 			//--Act
-			var result = _controller.Object.Edit(42) as ViewResult;
+			var result = _controller.ClassUnderTest.Edit(42) as ViewResult;
 
 			//--Assert
-			Assert.AreEqual(MVC.Book.Views.Edit, result.ViewName);
+			Assert.AreEqual(string.Empty, result.ViewName);
 		}
 
 		[Test]
 		public void ThatOnEditWhenModelStateIsValidItGoesBackToIndexView()
 		{
 			//--Arrange
-			_controller.Setup(mock => mock.Edit(It.IsNotNull<Book>())).Returns(new ViewResult { ViewName = MVC.Book.Views.Index });
+			_controller.Get<IBookService>().Expect(x => x.GetAll(Arg<string>.Is.Anything)).Return(new List<Book>());
 
 			//--Act
-			var result = _controller.Object.Edit(_testModel) as ViewResult;
+			var result = _controller.ClassUnderTest.Edit(_testModel) as RedirectToRouteResult;
 
 			//--Assert
-			Assert.AreEqual(MVC.Book.Views.Index, result.ViewName);
+			Assert.AreEqual("Index", result.RouteValues["Action"]);
 		}
 
 		[Test]
 		public void ThatWhenModelStateIsNotValidItRedirectsBackToEditView()
 		{
 			//--Arrange
-			_controller.Setup(mock => mock.Edit(It.IsNotNull<Book>())).Returns(new ViewResult { ViewName = MVC.Book.Views.Edit });
-			_controller.Object.ModelState.AddModelError("", "");
+			_controller.ClassUnderTest.ModelState.AddModelError("", "");
 
 			//--Act
-			var result = _controller.Object.Edit(_testModel) as ViewResult;
+			var result = _controller.ClassUnderTest.Edit(_testModel) as ViewResult;
 
 			//--Assert
-			Assert.IsFalse(_controller.Object.ModelState.IsValid);
-			Assert.AreEqual(MVC.Book.Views.Edit, result.ViewName);
+			Assert.IsFalse(_controller.ClassUnderTest.ModelState.IsValid);
+			Assert.AreEqual(string.Empty, result.ViewName);
 		}
 
 		[Test]
 		public void ThatOnEditADuplicateBookIsFoundItRedirectsBackToEditView()
 		{
-			//--TODO: need to set up dependency
 			//--Arrange
-			_controller.Setup(mock => mock.Edit(It.IsNotNull<Book>())).Returns(new ViewResult { ViewName = MVC.Book.Views.Edit });
+			_controller.Get<IBookService>().Expect(x => x.GetAll(Arg<string>.Is.Anything)).
+				Return(new List<Book> { new Book { ID = 666, Title = "Death Note", Author = "Manga" } });
+			_testModel.ID = 666;
+			_testModel.Title = "Death Note";
+			_testModel.Author = "Manga";
 
 			//--Act
-			var result = _controller.Object.Edit(_testModel) as ViewResult;
+			var result = _controller.ClassUnderTest.Edit(_testModel) as ViewResult;
 
 			//--Assert
-			Assert.AreEqual(0, 1);
-			Assert.AreEqual(MVC.Book.Views.Edit, result.ViewName);
+			Assert.AreEqual(string.Empty, result.ViewName);
 		}
 
 		[Test]
 		public void ThatItGoesToIndexViewAfterDelete()
 		{
-			//--Arrange
-			_controller.Setup(mock => mock.Delete(It.IsNotNull<int>())).Returns(new ViewResult { ViewName = MVC.Book.Views.Index });
-
 			//--Act
-			var result = _controller.Object.Delete(666) as ViewResult;
+			var result = _controller.ClassUnderTest.Delete(666) as RedirectToRouteResult;
 
 			//--Assert
-			Assert.AreEqual(MVC.Book.Views.Index, result.ViewName);
+			Assert.AreEqual("Index", result.RouteValues["Action"]);
 		}
 
 		[Test]
 		public void ThatSearchActionReturnsAView()
 		{
 			//--Arrange
-			_controller.Setup(mock => mock.Search(null)).Returns(new ViewResult { ViewName = MVC.Book.Views.Search });
-
+			_controller.Get<IGoogleBookService>().Expect(x => x.Search(Arg<string>.Is.Anything, Arg<string>.Is.Anything)).Return(null);
 			//--Act
-			var result = _controller.Object.Search(null) as ViewResult;
+			var result = _controller.ClassUnderTest.Search(new GoogleBooksSearchModel { Author = "R.R. Martin", Title = "Game of Thrones" }) as ViewResult;
 
 			//--Assert
-			Assert.AreEqual(MVC.Book.Views.Search, result.ViewName);
+			Assert.AreEqual(string.Empty, result.ViewName);
 		}
 
 		[Test]
 		public void ThatCreateFromSearchModelActionReturnsAView()
 		{
 			//--Arrange
-			_controller.Setup(mock => mock.CreateFromSearchModel(It.IsNotNull<string>())).Returns(new ViewResult { ViewName = MVC.Book.Views.Create });
+			_controller.Get<IGoogleBookService>().Expect(x => x.SearchByID(Arg<string>.Is.Anything)).Return(new Book());
 
 			//--Act
-			var result = _controller.Object.CreateFromSearchModel("test") as ViewResult;
+			var result = _controller.ClassUnderTest.CreateFromSearchModel("test") as RedirectToRouteResult;
 
 			//--Assert
-			Assert.AreEqual(MVC.Book.Views.Create, result.ViewName);
+			Assert.AreEqual("Create", result.RouteValues["Action"]);
 		}
 	}
 }

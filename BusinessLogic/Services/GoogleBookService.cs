@@ -1,7 +1,10 @@
-﻿using BusinessLogic.Services.Interfaces;
+﻿using BusinessLogic.Models;
+using BusinessLogic.Services.Interfaces;
 using Google.Apis.Books.v1;
 using Google.Apis.Books.v1.Data;
 using Google.Apis.Services;
+using System;
+using System.Linq;
 
 namespace BusinessLogic.Services
 {
@@ -30,11 +33,28 @@ namespace BusinessLogic.Services
 			return result.Execute();
 		}
 
-		public Volume SearchByID(string id)
+		public Book SearchByID(string id)
 		{
-			var result = _service.Get(id).Execute();
+			var volume = _service.Get(id).Execute();
 
-			return result;
+			var book = new Book
+			{
+				GoogleBookID = volume.Id,
+				Title = volume.VolumeInfo.Title,
+				Author = string.Join(", ", volume.VolumeInfo.Authors),
+				YearReleased =
+					string.IsNullOrWhiteSpace(volume.VolumeInfo.PublishedDate)
+						? 0
+						: Convert.ToInt32(volume.VolumeInfo.PublishedDate.Substring(0, 4)),
+				Publisher = volume.VolumeInfo.Publisher ?? string.Empty,
+				Genre = volume.VolumeInfo.Categories == null ? string.Empty : string.Join(", ", volume.VolumeInfo.Categories),
+				ISBN10 = volume.VolumeInfo.IndustryIdentifiers.SingleOrDefault(x => x.Type == "ISBN_10")?.Identifier,
+				ISBN13 = volume.VolumeInfo.IndustryIdentifiers.SingleOrDefault(x => x.Type == "ISBN_13")?.Identifier,
+				Language = volume.VolumeInfo.Language,
+				ImageUrl = string.Format("https://books.google.com/books?id={0}&printsec=frontcover&img=1&zoom=0&edge=curl&source=gbs_api", volume.Id)
+			};
+
+			return book;
 		}
 	}
 }

@@ -100,8 +100,8 @@ namespace UI.Controllers
 		public virtual ActionResult Edit(Book book)
 		{
 			if (!ModelState.IsValid) return View(book);
-			var existingBook = _service.GetAll(User.Identity.GetUserId()).Where(x => x.ID != book.ID && x.Title == book.Title && x.Author == book.Author && x.Media == book.Media).ToList();
-			if (existingBook.Count > 0)
+			var existingBooks = _service.GetAll(User.Identity.GetUserId());
+			if (existingBooks.Count > 0 && existingBooks.Any(x => x.ID == book.ID && x.Title == book.Title && x.Author == book.Author && x.Media == book.Media))
 			{
 				ShowStatusMessage(MessageTypeEnum.error, $"A book of Title: {book.Title}, Author: {book.Author}, Media Type: {book.Media} already exists.", "Duplicate Book");
 				return View(book);
@@ -175,25 +175,9 @@ namespace UI.Controllers
 		public virtual ActionResult CreateFromSearchModel(string id)
 		{
 			ViewBag.Title = "Create";
-			var volume = _googleBookService.SearchByID(id);
+			var book = _googleBookService.SearchByID(id);
 
-			var book = new Book
-			{
-				GoogleBookID = volume.Id,
-				UserID = User.Identity.GetUserId(),
-				Title = volume.VolumeInfo.Title,
-				Author = string.Join(", ", volume.VolumeInfo.Authors),
-				YearReleased =
-					string.IsNullOrWhiteSpace(volume.VolumeInfo.PublishedDate)
-						? 0
-						: Convert.ToInt32(volume.VolumeInfo.PublishedDate.Substring(0, 4)),
-				Publisher = volume.VolumeInfo.Publisher ?? string.Empty,
-				Genre = volume.VolumeInfo.Categories == null ? string.Empty : string.Join(", ", volume.VolumeInfo.Categories),
-				ISBN10 = volume.VolumeInfo.IndustryIdentifiers.SingleOrDefault(x => x.Type == "ISBN_10")?.Identifier,
-				ISBN13 = volume.VolumeInfo.IndustryIdentifiers.SingleOrDefault(x => x.Type == "ISBN_13")?.Identifier,
-				Language = volume.VolumeInfo.Language,
-				ImageUrl = string.Format("https://books.google.com/books?id={0}&printsec=frontcover&img=1&zoom=0&edge=curl&source=gbs_api", volume.Id)
-			};
+			book.UserID = User.Identity.GetUserId();
 			Session["BookResult"] = book;
 
 			return RedirectToAction(MVC.Book.Create());

@@ -1,4 +1,5 @@
-﻿using Google.Apis.Books.v1.Data;
+﻿using BusinessLogic.Models;
+using Google.Apis.Books.v1.Data;
 
 namespace BusinessLogic.Services.Interfaces
 {
@@ -6,6 +7,6 @@ namespace BusinessLogic.Services.Interfaces
 	{
 		Volumes Search(string author, string title);
 
-		Volume SearchByID(string id);
+		Book SearchByID(string id);
 	}
 }

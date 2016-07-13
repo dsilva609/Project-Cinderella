@@ -108,9 +108,13 @@ namespace Links
         public static readonly string jquery_2_1_3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-2.1.3.min.js") ? Url("jquery-2.1.3.min.js") : Url("jquery-2.1.3.js");
         public static readonly string jquery_2_1_3_min_js = Url("jquery-2.1.3.min.js");
         public static readonly string jquery_2_1_3_min_js_map = Url("jquery-2.1.3.min.js.map");
-        public static readonly string jquery_2_2_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-2.2.1.min.js") ? Url("jquery-2.2.1.min.js") : Url("jquery-2.2.1.js");
-        public static readonly string jquery_2_2_1_min_js = Url("jquery-2.2.1.min.js");
-        public static readonly string jquery_2_2_1_min_map = Url("jquery-2.2.1.min.map");
+        public static readonly string jquery_3_0_0_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-3.0.0.intellisense.min.js") ? Url("jquery-3.0.0.intellisense.min.js") : Url("jquery-3.0.0.intellisense.js");
+        public static readonly string jquery_3_0_0_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-3.0.0.min.js") ? Url("jquery-3.0.0.min.js") : Url("jquery-3.0.0.js");
+        public static readonly string jquery_3_0_0_min_js = Url("jquery-3.0.0.min.js");
+        public static readonly string jquery_3_0_0_min_map = Url("jquery-3.0.0.min.map");
+        public static readonly string jquery_3_0_0_slim_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-3.0.0.slim.min.js") ? Url("jquery-3.0.0.slim.min.js") : Url("jquery-3.0.0.slim.js");
+        public static readonly string jquery_3_0_0_slim_min_js = Url("jquery-3.0.0.slim.min.js");
+        public static readonly string jquery_3_0_0_slim_min_map = Url("jquery-3.0.0.slim.min.map");
         public static readonly string jquery_ui_1_11_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-ui-1.11.2.min.js") ? Url("jquery-ui-1.11.2.min.js") : Url("jquery-ui-1.11.2.js");
         public static readonly string jquery_ui_1_11_2_min_js = Url("jquery-ui-1.11.2.min.js");
         public static readonly string jquery_ui_1_11_2_min_js_map = Url("jquery-ui-1.11.2.min.js.map");
@@ -125,7 +129,6 @@ namespace Links
         public static readonly string jquery_validate_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate-vsdoc.min.js") ? Url("jquery.validate-vsdoc.min.js") : Url("jquery.validate-vsdoc.js");
         public static readonly string jquery_validate_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate.min.js") ? Url("jquery.validate.min.js") : Url("jquery.validate.js");
         public static readonly string jquery_validate_min_js = Url("jquery.validate.min.js");
-        public static readonly string jquery_validate_min_js_map = Url("jquery.validate.min.js.map");
         public static readonly string jquery_validate_unobtrusive_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate.unobtrusive.min.js") ? Url("jquery.validate.unobtrusive.min.js") : Url("jquery.validate.unobtrusive.js");
         public static readonly string jquery_validate_unobtrusive_min_js = Url("jquery.validate.unobtrusive.min.js");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -708,8 +711,11 @@ namespace Links
                 public const string jquery_2_1_3_intellisense_js = "~/Scripts/jquery-2.1.3.intellisense.js"; 
                 public const string jquery_2_1_3_js = "~/Scripts/jquery-2.1.3.js"; 
                 public const string jquery_2_1_3_min_js = "~/Scripts/jquery-2.1.3.min.js"; 
-                public const string jquery_2_2_1_js = "~/Scripts/jquery-2.2.1.js"; 
-                public const string jquery_2_2_1_min_js = "~/Scripts/jquery-2.2.1.min.js"; 
+                public const string jquery_3_0_0_intellisense_js = "~/Scripts/jquery-3.0.0.intellisense.js"; 
+                public const string jquery_3_0_0_js = "~/Scripts/jquery-3.0.0.js"; 
+                public const string jquery_3_0_0_min_js = "~/Scripts/jquery-3.0.0.min.js"; 
+                public const string jquery_3_0_0_slim_js = "~/Scripts/jquery-3.0.0.slim.js"; 
+                public const string jquery_3_0_0_slim_min_js = "~/Scripts/jquery-3.0.0.slim.min.js"; 
                 public const string jquery_ui_1_11_2_js = "~/Scripts/jquery-ui-1.11.2.js"; 
                 public const string jquery_ui_1_11_2_min_js = "~/Scripts/jquery-ui-1.11.2.min.js"; 
                 public const string jquery_ui_1_11_3_js = "~/Scripts/jquery-ui-1.11.3.js"; 
