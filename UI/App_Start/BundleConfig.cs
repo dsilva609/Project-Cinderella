@@ -20,8 +20,9 @@ namespace UI
 
 			bundles.Add(new ScriptBundle("~/bundles/bootstrap")
 				.Include("~/Scripts/bootstrap-{version}.min.js")
-				.Include("~/Scripts/bootstrap-datepicker.min.js")
-				.Include("~/Scripts/respond.js"));
+				.Include("~/Scripts/bootstrap-3.0.1.min.js")
+				.Include("~/Scripts/respond.js")
+				.Include("~/Scripts/bootstrap-datepicker.min.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/custom")
 				.Include("~/Scripts/Namespace.js")
@@ -30,8 +31,8 @@ namespace UI
 				.Include("~/Scripts/toastr.min.js"));
 
 			bundles.Add(new StyleBundle("~/Content/css")
-				.Include("~/Content/bootstrap.css")
-				.Include("~/Content/bootstrap-datepicker3.min.css")
+				.Include("~/Content/bootstrap.min.css")
+				//	.Include("~/Content/bootstrap-datepicker3.css")
 				.Include("~/Content/site.css")
 				.Include("~/Content/toastr.min.css")
 				.Include("~/Content/font-awesome.min.css"));
