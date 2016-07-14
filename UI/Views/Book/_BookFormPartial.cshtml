@@ -120,6 +120,12 @@
 				@Html.CheckBoxFor(m => m.IsReissue, new { @class = "form-control" })
 				@Html.ValidationMessageFor(m => m.IsReissue, "", new { @class = "text-danger" })
 			</div>
+
+			<div class="col-xs-6">
+				@Html.LabelFor(m => m.PageCount)
+				@Html.TextBoxFor(m => m.PageCount, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.PageCount, "", new { @class = "text-danger" })
+			</div>
 		</div>
 	</div>
 

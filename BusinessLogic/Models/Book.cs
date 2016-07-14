@@ -23,6 +23,9 @@ namespace BusinessLogic.Models
 		[Required]
 		public string Publisher { get; set; }
 
+		[DisplayName("Page Count")]
+		public int PageCount { get; set; }
+
 		[DisplayName("ISBN 10")]
 		public string ISBN10 { get; set; }
 

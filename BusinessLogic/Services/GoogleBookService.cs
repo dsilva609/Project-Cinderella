@@ -41,7 +41,7 @@ namespace BusinessLogic.Services
 			{
 				GoogleBookID = volume.Id,
 				Title = volume.VolumeInfo.Title,
-				Author = string.Join(", ", volume.VolumeInfo.Authors),
+				Author = volume.VolumeInfo.Authors == null ? string.Empty : string.Join(", ", volume.VolumeInfo.Authors),
 				YearReleased =
 					string.IsNullOrWhiteSpace(volume.VolumeInfo.PublishedDate)
 						? 0
@@ -51,7 +51,8 @@ namespace BusinessLogic.Services
 				ISBN10 = volume.VolumeInfo.IndustryIdentifiers.SingleOrDefault(x => x.Type == "ISBN_10")?.Identifier,
 				ISBN13 = volume.VolumeInfo.IndustryIdentifiers.SingleOrDefault(x => x.Type == "ISBN_13")?.Identifier,
 				Language = volume.VolumeInfo.Language,
-				ImageUrl = string.Format("https://books.google.com/books?id={0}&printsec=frontcover&img=1&zoom=0&edge=curl&source=gbs_api", volume.Id)
+				ImageUrl = string.Format("https://books.google.com/books?id={0}&printsec=frontcover&img=1&zoom=0&edge=curl&source=gbs_api", volume.Id),
+				PageCount = volume.VolumeInfo.PageCount.GetValueOrDefault()
 			};
 
 			return book;
