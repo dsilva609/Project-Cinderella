@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BusinessLogic.Models.DiscogsModels
 {
@@ -38,7 +39,7 @@ namespace BusinessLogic.Models.DiscogsModels
 		public DateTime date_changed { get; set; }
 		public string resource_url { get; set; }
 		public int master_id { get; set; }
-		public Tracklist[] tracklist { get; set; }
+		public List<Tracklist> tracklist { get; set; }
 		public string data_quality { get; set; }
 	}
 
@@ -175,21 +176,12 @@ namespace BusinessLogic.Models.DiscogsModels
 
 	public class Tracklist
 	{
+		public int ID { get; set; }
+		public int ReleaseID { get; set; }
 		public string duration { get; set; }
 		public string position { get; set; }
 		public string type_ { get; set; }
-		public Extraartist1[] extraartists { get; set; }
+		public List<Extraartist> extraartists { get; set; }
 		public string title { get; set; }
-	}
-
-	public class Extraartist1
-	{
-		public string join { get; set; }
-		public string name { get; set; }
-		public string anv { get; set; }
-		public string tracks { get; set; }
-		public string role { get; set; }
-		public string resource_url { get; set; }
-		public int id { get; set; }
 	}
 }

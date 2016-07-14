@@ -53,6 +53,7 @@ namespace BusinessLogic.Services
 				release.GenreString += $" - {release.StylesString}";
 
 			var album = ConvertFromRelease(release);
+			album.Tracklist.ForEach(x => x.ReleaseID = album.DiscogsID);
 
 			return album;
 		}

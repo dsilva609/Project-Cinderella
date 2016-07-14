@@ -1,4 +1,6 @@
 ﻿using BusinessLogic.Enums;
+using BusinessLogic.Models.DiscogsModels;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -23,5 +25,7 @@ namespace BusinessLogic.Models
 		public string RecordLabel { get; set; }
 
 		public int DiscogsID { get; set; }
+
+		public List<Tracklist> Tracklist { get; set; }
 	}
 }
