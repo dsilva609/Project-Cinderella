@@ -90,7 +90,7 @@ namespace UI.Controllers
 		{
 			if (!ModelState.IsValid) return View(game);
 			var existingGames = _service.GetAll(User.Identity.GetUserId(), game.Title);
-			if (existingGames.Count > 0 && existingGames.Any(x => x.ID == game.ID && x.Developer == game.Developer && x.MediaType == game.MediaType))
+			if (existingGames.Count > 0 && existingGames.Any(x => x.ID != game.ID && x.Title == game.Title && x.Developer == game.Developer && x.MediaType == game.MediaType))
 			{
 				ShowStatusMessage(MessageTypeEnum.error, $"A Game of Title: {game.Title}, Developer: {game.Developer}, Media Type: {game.MediaType} already exists.", "Duplicate Game");
 				return View(game);

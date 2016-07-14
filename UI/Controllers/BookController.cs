@@ -101,7 +101,7 @@ namespace UI.Controllers
 		{
 			if (!ModelState.IsValid) return View(book);
 			var existingBooks = _service.GetAll(User.Identity.GetUserId());
-			if (existingBooks.Count > 0 && existingBooks.Any(x => x.ID == book.ID && x.Title == book.Title && x.Author == book.Author && x.Media == book.Media))
+			if (existingBooks.Count > 0 && existingBooks.Any(x => x.ID != book.ID && x.Title == book.Title && x.Author == book.Author && x.Media == book.Media))
 			{
 				ShowStatusMessage(MessageTypeEnum.error, $"A book of Title: {book.Title}, Author: {book.Author}, Media Type: {book.Media} already exists.", "Duplicate Book");
 				return View(book);

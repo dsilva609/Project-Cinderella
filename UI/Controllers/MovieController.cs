@@ -101,7 +101,7 @@ namespace UI.Controllers
 
 			var existingMovies = _service.GetAll(User.Identity.GetUserId(), movie.Title);
 
-			if (existingMovies.Count > 0 && existingMovies.Any(x => x.ID == movie.ID && x.Type == movie.Type))
+			if (existingMovies.Count > 0 && existingMovies.Any(x => x.ID != movie.ID && x.Title == movie.Title && x.Type == movie.Type))
 			{
 				ShowStatusMessage(MessageTypeEnum.error, $"A Game of Title: {movie.Title}, Media Type: {movie.Type} already exists.", "Duplicate Movie");
 				return View(movie);
