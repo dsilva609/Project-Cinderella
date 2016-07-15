@@ -53,7 +53,6 @@ namespace BusinessLogic.Services
 				release.GenreString += $" - {release.StylesString}";
 
 			var album = ConvertFromRelease(release);
-			album.Tracklist.ForEach(x => x.ReleaseID = album.DiscogsID);
 
 			return album;
 		}
@@ -77,7 +76,8 @@ namespace BusinessLogic.Services
 				RecordLabel = release.LabelString,
 				Genre = release.GenreString,
 				DiscogsID = release.id,
-				ImageUrl = release.images?.First().uri
+				ImageUrl = release.images?.First().uri,
+				Tracklist = release.tracklist
 			};
 
 			return album;

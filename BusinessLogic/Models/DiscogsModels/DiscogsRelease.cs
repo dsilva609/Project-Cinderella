@@ -177,7 +177,7 @@ namespace BusinessLogic.Models.DiscogsModels
 	public class Tracklist
 	{
 		public int ID { get; set; }
-		public int ReleaseID { get; set; }
+		public int AlbumID { get; set; }
 		public string duration { get; set; }
 		public string position { get; set; }
 		public string type_ { get; set; }

@@ -46,6 +46,28 @@
 		</div>
 	</div>
 </div>
+
+@if (Model.Tracklist != null)
+{
+	<div class="row panel panel-primary">
+		<div class="panel-heading">
+			<h4>
+				Track List
+			</h4>
+		</div>
+	</div>
+
+		<div class="panel-body">
+			@for (var index = 0; index < Model.Tracklist.Count; index++)
+			{
+				<div class="row">
+					<div class="col-sm-1">@Html.DisplayFor(x => x.Tracklist[index].position)</div>
+					<div class="col-sm-1">@Html.DisplayFor(x => x.Tracklist[index].duration)</div>
+					<div class="col-sm-6">@Html.DisplayFor(x => x.Tracklist[index].title)</div>
+				</div>
+			}
+		</div>
+}
 <div class="row panel panel-primary">
 	<div class="panel-heading">
 		<h4>Media Information</h4>
