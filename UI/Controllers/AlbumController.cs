@@ -126,6 +126,7 @@ namespace UI.Controllers
 			model.Genre = release.Genre;
 			if (string.IsNullOrWhiteSpace(model.ImageUrl))
 				model.ImageUrl = release.ImageUrl;
+			model.Tracklist = release.Tracklist;
 
 			return View(MVC.Album.Views.Edit, model);
 		}
@@ -152,6 +153,7 @@ namespace UI.Controllers
 				model.Genre = release.Genre;
 				if (string.IsNullOrWhiteSpace(model.ImageUrl))
 					model.ImageUrl = release.ImageUrl;
+				model.Tracklist = release.Tracklist;
 			}
 
 			//--TODO: why is id needed?
