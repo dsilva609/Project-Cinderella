@@ -114,6 +114,7 @@
     <Compile Include="Components\CrudComponents\AddEntityComponent.cs" />
     <Compile Include="Components\CrudComponents\DeleteEntityComponent.cs" />
     <Compile Include="Components\CrudComponents\EditEntityComponent.cs" />
+    <Compile Include="Components\CrudComponents\EditEntityListComponent.cs" />
     <Compile Include="Components\CrudComponents\GetEntityByIDComponent.cs" />
     <Compile Include="Components\CrudComponents\GetEntityListComponent.cs" />
     <Compile Include="DAL\ProjectCinderellaContext.cs" />

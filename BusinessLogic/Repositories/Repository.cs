@@ -7,54 +7,60 @@ using System.Linq.Expressions;
 
 namespace BusinessLogic.Repositories
 {
-    public class Repository<T> : IRepository<T> where T : class
-    {
-        private readonly DbContext _context;
-        private readonly DbSet<T> _dbSet;
+	public class Repository<T> : IRepository<T> where T : class
+	{
+		private readonly DbContext _context;
+		private readonly DbSet<T> _dbSet;
 
-        public Repository(DbContext context)
-        {
-            this._context = context;
-            this._dbSet = context.Set<T>();
-        }
+		public Repository(DbContext context)
+		{
+			this._context = context;
+			this._dbSet = context.Set<T>();
+		}
 
-        public virtual void Add(T entity)
-        {
-            this._dbSet.Add(entity);
-            this._context.SaveChanges();
-        }
+		public virtual void Add(T entity)
+		{
+			this._dbSet.Add(entity);
+			this._context.SaveChanges();
+		}
 
-        public virtual void Delete(int id, string userID)
-        {
-            var entry = this._dbSet.Find(id);
-            this._dbSet.Remove(entry);
-            this._context.SaveChanges();
-        }
+		public virtual void Delete(int id, string userID)
+		{
+			var entry = this._dbSet.Find(id);
+			this._dbSet.Remove(entry);
+			this._context.SaveChanges();
+		}
 
-        public List<T> GetAll()
-        {
-            return this._dbSet.ToList();
-        }
+		public List<T> GetAll()
+		{
+			return this._dbSet.ToList();
+		}
 
-        public T GetByID(int? id, string userID)
-        {
-            return this._dbSet.Find(id);
-        }
+		public T GetByID(int? id, string userID)
+		{
+			return this._dbSet.Find(id);
+		}
 
-        public void Edit(T entity)
-        {
-            this._context.Set<T>().AddOrUpdate(entity);
-            this._context.SaveChanges();
-        }
+		public void Edit(T entity)
+		{
+			this._context.Set<T>().AddOrUpdate(entity);
+			this._context.SaveChanges();
+		}
 
-        public int GetCount()
-        {
-            return this._dbSet.Count();
-        }
+		public void Edit(List<T> entities)
+		{
+			foreach (var entity in entities)
+				Edit(entity);
+		}
 
-        private IEnumerable<T> Find(Expression<Func<T, bool>> predicate)
-        {
-            return this._dbSet.Where(predicate);
-        }
-    }
+		public int GetCount()
+		{
+			return this._dbSet.Count();
+		}
+
+		private IEnumerable<T> Find(Expression<Func<T, bool>> predicate)
+		{
+			return this._dbSet.Where(predicate);
+		}
+	}
 }

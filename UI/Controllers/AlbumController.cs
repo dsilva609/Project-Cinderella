@@ -154,6 +154,7 @@ namespace UI.Controllers
 				if (string.IsNullOrWhiteSpace(model.ImageUrl))
 					model.ImageUrl = release.ImageUrl;
 				model.Tracklist = release.Tracklist;
+				model.Tracklist.ForEach(x => x.AlbumID = model.ID);
 			}
 
 			//--TODO: why is id needed?

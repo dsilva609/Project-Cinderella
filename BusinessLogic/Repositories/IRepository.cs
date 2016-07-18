@@ -2,18 +2,20 @@
 
 namespace BusinessLogic.Repositories
 {
-    public interface IRepository<T>
-    {
-        void Add(T entity);
+	public interface IRepository<T>
+	{
+		void Add(T entity);
 
-        List<T> GetAll();
+		List<T> GetAll();
 
-        T GetByID(int? id, string userID);
+		T GetByID(int? id, string userID);
 
-        void Edit(T entity);
+		void Edit(T entity);
 
-        void Delete(int id, string userID);
+		void Edit(List<T> entities);
 
-        int GetCount();
-    }
+		void Delete(int id, string userID);
+
+		int GetCount();
+	}
 }

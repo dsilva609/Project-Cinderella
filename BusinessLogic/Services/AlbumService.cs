@@ -1,5 +1,6 @@
 ﻿using BusinessLogic.Components.CrudComponents;
 using BusinessLogic.Models;
+using BusinessLogic.Models.DiscogsModels;
 using BusinessLogic.Repositories;
 using BusinessLogic.Services.Interfaces;
 using System;
@@ -11,19 +12,23 @@ namespace BusinessLogic.Services
 	public class AlbumService : IAlbumService
 	{
 		private readonly IRepository<Album> _repository;
+		private readonly IRepository<Tracklist> _tracksRepository;
 		private readonly GetEntityListComponent _getEntityListComponent;
 		private readonly AddEntityComponent _addEntityComponent;
 		private readonly GetEntityByIDComponent _getEntityByIDComponent;
 		private readonly EditEntityComponent _editEntityComponent;
+		private readonly EditEntityListComponent _editEntityListComponent;
 		private readonly DeleteEntityComponent _deleteEntityComponent;
 
 		public AlbumService(IUnitOfWork uow)
 		{
 			_repository = uow.GetRepository<Album>();
+			_tracksRepository = uow.GetRepository<Tracklist>();
 			_getEntityListComponent = new GetEntityListComponent();
 			_addEntityComponent = new AddEntityComponent();
 			_getEntityByIDComponent = new GetEntityByIDComponent();
 			_editEntityComponent = new EditEntityComponent();
+			_editEntityListComponent = new EditEntityListComponent();
 			_deleteEntityComponent = new DeleteEntityComponent();
 		}
 
@@ -77,8 +82,12 @@ namespace BusinessLogic.Services
 		public Album GetByID(int id, string userID) =>
 			_getEntityByIDComponent.Execute(_repository, id, userID);
 
-		public void Edit(int id, Album album) =>
+		public void Edit(int id, Album album)
+		{
 			_editEntityComponent.Execute(_repository, album);
+			if (album.Tracklist.Count > 0)
+				_editEntityListComponent.Execute(_tracksRepository, album.Tracklist);
+		}
 
 		public void Delete(int id, string userID) =>
 			_deleteEntityComponent.Execute(_repository, id, userID);
