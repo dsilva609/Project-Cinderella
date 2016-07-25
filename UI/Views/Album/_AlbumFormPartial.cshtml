@@ -47,7 +47,7 @@
 		</div>
 		<div class="col-xs-6">
 			@Html.LabelFor(m => m.YearReleased)
-			@Html.DropDownListFor(model => model.YearReleased, Enumerable.Range(1900, DateTime.Today.Year - 1900 + 1).
+			@Html.DropDownListFor(model => model.YearReleased, Enumerable.Range(1900, DateTime.Today.Year - 1900 + 1).Reverse().
 				Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), Model.YearReleased.ToString(), new { @class = "form-control" })
 			@Html.ValidationMessageFor(m => m.YearReleased, "", new { @class = "text-danger" })
 		</div>
@@ -98,7 +98,7 @@
 				<div class="row" style="padding-bottom: 0.5em;">
 					<div class="col-sm-2"><input class="form-control col-sm-1" type="text" name="@string.Format("Tracklist[{0}].position", @index)" value="@track.position" /></div>
 					<div class="col-sm-2"><input class="form-control col-sm-2" type="text" name="@string.Format("Tracklist[{0}].duration", @index)" value="@track.duration" /></div>
-					<div class="col-sm-6"><input class="form-control col-sm-2" type="text" name="@string.Format("Tracklist[{0}].title", @index)" value="@track.title"/></div >
+					<div class="col-sm-6"><input class="form-control col-sm-2" type="text" name="@string.Format("Tracklist[{0}].title", @index)" value="@track.title" /></div>
 				</div>
 			}
 		</div>
