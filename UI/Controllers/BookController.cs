@@ -15,6 +15,7 @@ namespace UI.Controllers
 	{
 		private readonly IBookService _service;
 		private readonly IGoogleBookService _googleBookService;
+		private const int NUM_BOOKS_TO_GET = 25;
 
 		public BookController(IBookService service, IGoogleBookService googleBookService)
 		{
@@ -23,18 +24,18 @@ namespace UI.Controllers
 		}
 
 		[HttpGet]
-		public virtual ActionResult Index(string query, int pageNum = 1)
+		public virtual ActionResult Index(string query, int? pageNum = 1)
 		{
 			var viewModel = new BookViewModel
 			{
 				ViewTitle = "Index",
-				Books = _service.GetAll(User.Identity.GetUserId())
-				//, query, NUM_RECORDS_TO_GET, pageNum.GetValueOrDefault()),
-				//PageSize = NUM_RECORDS_TO_GET,
-				//TotalBooks = _service.GetCount()
+				Books = _service.GetAll(User.Identity.GetUserId(), query, NUM_BOOKS_TO_GET, pageNum.GetValueOrDefault()),
+				PageSize = NUM_BOOKS_TO_GET,
+				TotalBooks = _service.GetCount()
 			};
-			//var pages = Math.Ceiling((double)viewModel.TotalRecords / viewModel.PageSize);
-			//viewModel.PageCount = (int)pages;
+			var pages = Math.Ceiling((double)viewModel.TotalBooks / viewModel.PageSize);
+			viewModel.PageCount = (int)pages;
+
 			return View(viewModel);
 		}
 

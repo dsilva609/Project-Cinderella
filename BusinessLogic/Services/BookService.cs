@@ -35,14 +35,26 @@ namespace BusinessLogic.Services
 			_addEntityComponent.Execute(_repository, book);
 		}
 
-		public List<Book> GetAll(string userID = "")
+		public List<Book> GetAll(string userID = "", string query = "", int numToTake = 0, int? pageNum = 1)
 		{
-			var bookList = _getEntityListComponent.Execute(_repository);
+			var bookList = _getEntityListComponent.Execute(_repository).OrderBy(x => x.Title).ThenBy(x => x.Author).ToList();
 
 			if (!string.IsNullOrWhiteSpace(userID))
 				bookList = bookList.Where(x => x.UserID == userID).ToList();
 
-			bookList = bookList.OrderBy(x => x.Title).ToList();
+			if (!string.IsNullOrWhiteSpace(query))
+			{
+				var currentList = new List<Book>();
+				currentList.AddRange(bookList);
+				bookList = currentList.Where(x =>
+							 x.Title.Equals(query, StringComparison.InvariantCultureIgnoreCase) ||
+							 x.Author.Equals(query, StringComparison.InvariantCultureIgnoreCase)).ToList();
+				var partialMatches = currentList.Where(x => x.Title.IndexOf(query, StringComparison.InvariantCultureIgnoreCase) != -1 || x.Author.IndexOf(query, StringComparison.InvariantCultureIgnoreCase) != -1).ToList();
+				bookList = bookList.Concat(partialMatches).Distinct().ToList();
+			}
+
+			if (numToTake > 0)
+				bookList = bookList.Skip(numToTake * (pageNum.GetValueOrDefault() - 1)).Take(numToTake).ToList();
 
 			return bookList;
 		}

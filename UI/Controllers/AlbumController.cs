@@ -34,6 +34,7 @@ namespace UI.Controllers
 
 			var pages = Math.Ceiling((double)viewModel.TotalRecords / viewModel.PageSize);
 			viewModel.PageCount = (int)pages;
+
 			return View(viewModel);
 		}
 
