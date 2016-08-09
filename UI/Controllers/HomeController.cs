@@ -5,44 +5,48 @@ using UI.Models;
 
 namespace UI.Controllers
 {
-	public partial class HomeController : Controller
-	{
-		private readonly IAlbumService _albumService;
-		private const int NUMALBUMSTOGET = 10;
+    public partial class HomeController : Controller
+    {
+        private readonly IAlbumService _albumService;
+        private readonly IBookService _bookService;
+        private const int NUMALBUMSTOGET = 10;
+        private const int NUMBOOKSTOGET = 10;
 
-		public HomeController(IAlbumService albumService)
-		{
-			_albumService = albumService;
-		}
+        public HomeController(IAlbumService albumService, IBookService bookService)
+        {
+            _albumService = albumService;
+            _bookService = bookService;
+        }
 
-		[HttpGet]
-		public virtual ActionResult Index()
-		{
-			//TODO - update service to take latest of x amount
-			var albums = _albumService.GetAll().OrderByDescending(x => x.DateAdded).Take(NUMALBUMSTOGET).ToList();
+        [HttpGet]
+        public virtual ActionResult Index()
+        {
+            //TODO - update service to take latest of x amount
+            var albums = _albumService.GetAll().OrderByDescending(x => x.DateAdded).Take(NUMALBUMSTOGET).ToList();
+            var books = _bookService.GetAll(string.Empty, string.Empty, NUMBOOKSTOGET);
+            var model = new HomeViewModel
+            {
+                Albums = albums,
+                Books = books
+            };
 
-			var model = new HomeViewModel
-			{
-				Albums = albums
-			};
+            return View(model);
+        }
 
-			return View(model);
-		}
+        [HttpGet]
+        public virtual ActionResult About()
+        {
+            ViewBag.Message = "Project Cinderella.";
 
-		[HttpGet]
-		public virtual ActionResult About()
-		{
-			ViewBag.Message = "Project Cinderella.";
+            return View();
+        }
 
-			return View();
-		}
+        [HttpGet]
+        public virtual ActionResult Contact()
+        {
+            ViewBag.Message = "Find me on social media.";
 
-		[HttpGet]
-		public virtual ActionResult Contact()
-		{
-			ViewBag.Message = "Find me on social media.";
-
-			return View();
-		}
-	}
+            return View();
+        }
+    }
 }
