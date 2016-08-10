@@ -35,12 +35,15 @@ namespace BusinessLogic.Services
 			_addEntityComponent.Execute(_repository, movie);
 		}
 
-		public List<Movie> GetAll(string userID = "", string query = "")
+		public List<Movie> GetAll(string userID = "", string query = "", int numToTake = 0, int? pageNum = 1)
 		{
 			var movieList = _getEntityListComponent.Execute(_repository);
 
 			if (!string.IsNullOrWhiteSpace(userID))
 				movieList = movieList.Where(x => x.UserID == userID).ToList();
+
+			if (numToTake > 0)
+				movieList = movieList.Skip(numToTake * (pageNum.GetValueOrDefault() - 1)).Take(numToTake).ToList();
 
 			return movieList;
 		}

@@ -35,12 +35,15 @@ namespace BusinessLogic.Services
 			_addEntityComponent.Execute(_repository, game);
 		}
 
-		public List<Game> GetAll(string userID = "", string query = "")
+		public List<Game> GetAll(string userID = "", string query = "", int numToTake = 0, int? pageNum = 1)
 		{
 			var gameList = _getEntityListComponent.Execute(_repository);
 
 			if (!string.IsNullOrWhiteSpace(userID))
 				gameList = gameList.Where(x => x.UserID == userID).ToList();
+
+			if (numToTake > 0)
+				gameList = gameList.Skip(numToTake * (pageNum.GetValueOrDefault() - 1)).Take(numToTake).ToList();
 
 			return gameList;
 		}

@@ -7,7 +7,7 @@ namespace BusinessLogic.Services.Interfaces
 	{
 		void Add(Game game);
 
-		List<Game> GetAll(string userID = "", string query = "");//, int numToTake = 0, int? pageNum = 1);
+		List<Game> GetAll(string userID = "", string query = "", int numToTake = 0, int? pageNum = 1);
 
 		Game GetByID(int id, string userID);
 

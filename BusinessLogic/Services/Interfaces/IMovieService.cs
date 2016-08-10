@@ -7,7 +7,7 @@ namespace BusinessLogic.Services.Interfaces
 	{
 		void Add(Movie movie);
 
-		List<Movie> GetAll(string userID = "", string query = "");//, int numToTake = 0, int? pageNum = 1);
+		List<Movie> GetAll(string userID = "", string query = "", int numToTake = 0, int? pageNum = 1);
 
 		Movie GetByID(int id, string userID);
 
