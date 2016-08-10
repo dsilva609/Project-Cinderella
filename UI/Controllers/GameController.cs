@@ -12,6 +12,7 @@ namespace UI.Controllers
 	public partial class GameController : ProjectCinderellaControllerBase
 	{
 		private readonly IGameService _service;
+		private const int NUM_GAMES_TO_GET = 25;
 
 		public GameController(IGameService service)
 		{
@@ -19,18 +20,17 @@ namespace UI.Controllers
 		}
 
 		[HttpGet]
-		public virtual ActionResult Index(string query, int pageNum = 1)
+		public virtual ActionResult Index(string query, int? pageNum = 1)
 		{
 			var viewModel = new GameViewModel
 			{
 				ViewTitle = "Index",
-				Games = _service.GetAll(User.Identity.GetUserId())
-				//, query, NUM_RECORDS_TO_GET, pageNum.GetValueOrDefault()),
-				//PageSize = NUM_RECORDS_TO_GET,
-				//TotalGames = _service.GetCount()
+				Games = _service.GetAll(User.Identity.GetUserId(), query, NUM_GAMES_TO_GET, pageNum.GetValueOrDefault()),
+				PageSize = NUM_GAMES_TO_GET,
+				TotalGames = _service.GetCount()
 			};
-			//var pages = Math.Ceiling((double)viewModel.TotalRecords / viewModel.PageSize);
-			//viewModel.PageCount = (int)pages;
+			var pages = Math.Ceiling((double)viewModel.TotalGames / viewModel.PageSize);
+			viewModel.PageCount = (int)pages;
 			return View(viewModel);
 		}
 

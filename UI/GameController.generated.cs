@@ -186,10 +186,10 @@ namespace UI.Controllers
         public T4MVC_GameController() : base(Dummy.Instance) { }
 
         [NonAction]
-        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string query, int pageNum);
+        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string query, int? pageNum);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Index(string query, int pageNum)
+        public override System.Web.Mvc.ActionResult Index(string query, int? pageNum)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "query", query);

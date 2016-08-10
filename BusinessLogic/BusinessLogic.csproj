@@ -246,6 +246,10 @@
     <Compile Include="Migrations\201607151608112_added track list to album.Designer.cs">
       <DependentUpon>201607151608112_added track list to album.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608100056576_Made director required for movies.cs" />
+    <Compile Include="Migrations\201608100056576_Made director required for movies.Designer.cs">
+      <DependentUpon>201608100056576_Made director required for movies.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseItem.cs" />
     <Compile Include="Models\Book.cs" />
@@ -384,6 +388,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607151608112_added track list to album.resx">
       <DependentUpon>201607151608112_added track list to album.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608100056576_Made director required for movies.resx">
+      <DependentUpon>201608100056576_Made director required for movies.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

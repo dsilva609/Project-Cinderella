@@ -42,6 +42,17 @@ namespace BusinessLogic.Services
 			if (!string.IsNullOrWhiteSpace(userID))
 				gameList = gameList.Where(x => x.UserID == userID).ToList();
 
+			if (!string.IsNullOrWhiteSpace(query))
+			{
+				var currentList = new List<Game>();
+				currentList.AddRange(gameList);
+				gameList = currentList.Where(x =>
+							 x.Title.Equals(query, StringComparison.InvariantCultureIgnoreCase) ||
+							 x.Developer.Equals(query, StringComparison.InvariantCultureIgnoreCase)).ToList();
+				var partialMatches = currentList.Where(x => x.Title.IndexOf(query, StringComparison.InvariantCultureIgnoreCase) != -1 || x.Developer.IndexOf(query, StringComparison.InvariantCultureIgnoreCase) != -1).ToList();
+				gameList = gameList.Concat(partialMatches).Distinct().ToList();
+			}
+
 			if (numToTake > 0)
 				gameList = gameList.Skip(numToTake * (pageNum.GetValueOrDefault() - 1)).Take(numToTake).ToList();
 

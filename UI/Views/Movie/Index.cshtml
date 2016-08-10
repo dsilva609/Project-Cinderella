@@ -70,11 +70,14 @@
 </div>
 
 <div class="row">
-	Page:
+	<div class="pagination-lg">
 	@for (var i = 0; i < Model.PageCount; i++)
 	{
-		@Html.ActionLink((i + 1).ToString(), MVC.Movie.Index("", i + 1), new { @class = "btn btn-link" })
+		<div class="page-item">
+		@Html.ActionLink((i + 1).ToString(), MVC.Movie.Index("", i + 1), new { @class = "page-link" })
+			</div>
 	}
+		</div>
 </div>
 
 <div class="container text-center">

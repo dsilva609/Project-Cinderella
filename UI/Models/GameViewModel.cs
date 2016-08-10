@@ -9,6 +9,6 @@ namespace UI.Models
 		public List<Game> Games { get; set; }
 		public int PageSize { get; set; }
 		public int PageCount { get; set; }
-		public int TotalGamess { get; set; }
+		public int TotalGames { get; set; }
 	}
 }

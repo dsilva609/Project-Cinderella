@@ -13,6 +13,7 @@ namespace UI.Controllers
 	{
 		private readonly IMovieService _service;
 		private readonly ITMDBService _tmdbService;
+		private const int NUM_MOVIES_TO_GET = 25;
 
 		public MovieController(IMovieService service, ITMDBService tmdbService)
 		{
@@ -26,12 +27,12 @@ namespace UI.Controllers
 			var viewModel = new MovieViewModel
 			{
 				ViewTitle = "Index",
-				Movies = _service.GetAll(User.Identity.GetUserId()),//query, NUM_RECORDS_TO_GET,pageNum.GetValueOrDefault()),
-																	//PageSize = NUM_RECORDS_TO_GET,
+				Movies = _service.GetAll(User.Identity.GetUserId(), query, NUM_MOVIES_TO_GET, pageNum.GetValueOrDefault()),
+				PageSize = NUM_MOVIES_TO_GET,
 				TotalMovies = _service.GetCount()
 			};
-			//var pages = Math.Ceiling((double)viewModel.TotalMovies / viewModel.PageSize);
-			//viewModel.PageCount = (int)pages;
+			var pages = Math.Ceiling((double)viewModel.TotalMovies / viewModel.PageSize);
+			viewModel.PageCount = (int)pages;
 
 			return View(viewModel);
 		}

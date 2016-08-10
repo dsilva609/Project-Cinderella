@@ -42,6 +42,17 @@ namespace BusinessLogic.Services
 			if (!string.IsNullOrWhiteSpace(userID))
 				movieList = movieList.Where(x => x.UserID == userID).ToList();
 
+			if (!string.IsNullOrWhiteSpace(query))
+			{
+				var currentList = new List<Movie>();
+				currentList.AddRange(movieList);
+				movieList = currentList.Where(x =>
+							 x.Title.Equals(query, StringComparison.InvariantCultureIgnoreCase) ||
+							 x.Director.Equals(query, StringComparison.InvariantCultureIgnoreCase)).ToList();
+				var partialMatches = currentList.Where(x => x.Title.IndexOf(query, StringComparison.InvariantCultureIgnoreCase) != -1 || x.Director.IndexOf(query, StringComparison.InvariantCultureIgnoreCase) != -1).ToList();
+				movieList = movieList.Concat(partialMatches).Distinct().ToList();
+			}
+
 			if (numToTake > 0)
 				movieList = movieList.Skip(numToTake * (pageNum.GetValueOrDefault() - 1)).Take(numToTake).ToList();
 
