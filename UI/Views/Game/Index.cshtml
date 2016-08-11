@@ -40,7 +40,7 @@
 						</a>
 					</div>
 
-					<div id="album" class="info fh5co-desc" data-id="@game.ID">
+					<div id="game" class="info fh5co-desc" data-id="@game.ID">
 						<a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Game.Edit(game.ID) : MVC.Game.Details(game.ID))">
 							<div class="row">
 								@Html.DisplayFor(modelItem => game.Developer)
@@ -61,11 +61,11 @@
 
 <div class="row">
 	<div class="pagination-lg">
-	@for (var i = 0; i < Model.PageCount; i++)
-	{
-		<div class="page-item">
-			@Html.ActionLink((i + 1).ToString(), MVC.Game.Index("", i + 1), new {@class = "page-link"})
-		</div>
-	}
-</div>
+		@for (var i = 0; i < Model.PageCount; i++)
+		{
+			<div class="page-item">
+				@Html.ActionLink((i + 1).ToString(), MVC.Game.Index("", i + 1), new { @class = "page-link" })
+			</div>
+		}
+	</div>
 </div>

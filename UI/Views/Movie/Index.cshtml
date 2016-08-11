@@ -50,7 +50,7 @@
 						</a>
 					</div>
 
-					<div id="album" class="info fh5co-desc" data-id="@movie.ID">
+					<div id="movie" class="info fh5co-desc" data-id="@movie.ID">
 						<a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Movie.Edit(movie.ID) : MVC.Movie.Details(movie.ID))">
 							<div class="row">
 								@Html.DisplayFor(modelItem => movie.Director)
@@ -71,13 +71,13 @@
 
 <div class="row">
 	<div class="pagination-lg">
-	@for (var i = 0; i < Model.PageCount; i++)
-	{
-		<div class="page-item">
-		@Html.ActionLink((i + 1).ToString(), MVC.Movie.Index("", i + 1), new { @class = "page-link" })
+		@for (var i = 0; i < Model.PageCount; i++)
+		{
+			<div class="page-item">
+				@Html.ActionLink((i + 1).ToString(), MVC.Movie.Index("", i + 1), new { @class = "page-link" })
 			</div>
-	}
-		</div>
+		}
+	</div>
 </div>
 
 <div class="container text-center">
