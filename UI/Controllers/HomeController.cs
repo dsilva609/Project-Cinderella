@@ -27,10 +27,11 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult Index()
 		{
-			var albums = _albumService.GetAll(string.Empty, string.Empty, NUM_ALBUMS_TO_GET).OrderByDescending(x => x.DateAdded).ToList();
-			var books = _bookService.GetAll(string.Empty, string.Empty, NUM_BOOKS_TO_GET).OrderByDescending(x => x.DateAdded).ToList();
-			var movies = _movieService.GetAll(string.Empty, string.Empty, NUM_MOVIES_TO_GET).OrderByDescending(x => x.DateAdded).ToList();
-			var games = _gameService.GetAll(string.Empty, string.Empty, NUM_GAMES_TO_GET).OrderByDescending(x => x.DateAdded).ToList();
+			//TODO: needs refactor to take asc/desc
+			var albums = _albumService.GetAll(string.Empty, string.Empty).OrderByDescending(x => x.DateAdded).Take(NUM_ALBUMS_TO_GET).ToList();
+			var books = _bookService.GetAll(string.Empty, string.Empty).OrderByDescending(x => x.DateAdded).Take(NUM_BOOKS_TO_GET).ToList();
+			var movies = _movieService.GetAll(string.Empty, string.Empty).OrderByDescending(x => x.DateAdded).Take(NUM_MOVIES_TO_GET).ToList();
+			var games = _gameService.GetAll(string.Empty, string.Empty).OrderByDescending(x => x.DateAdded).Take(NUM_GAMES_TO_GET).ToList();
 
 			var model = new HomeViewModel
 			{
