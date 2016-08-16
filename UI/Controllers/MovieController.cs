@@ -133,11 +133,9 @@ namespace UI.Controllers
 		{
 			if (!string.IsNullOrWhiteSpace(searchModel.Title))
 			{
-				searchModel.Results = _tmdbService.SearchMovies(searchModel.Title);
+				searchModel.Results = _tmdbService.Search(searchModel.Title);
 				foreach (var result in searchModel.Results)
 					result.poster_path = string.Format("https://image.tmdb.org/t/p/w300{0}", result.poster_path);
-
-				//		searchModel.Results = searchModel.Results.for(x => x.Year).ToList();
 			}
 			ViewBag.Title = "Movie Search";
 
@@ -146,9 +144,9 @@ namespace UI.Controllers
 
 		[Authorize]
 		[HttpGet]
-		public virtual ActionResult CreateFromSearchResult(int releaseID)
+		public virtual ActionResult CreateFromSearchResult(int releaseID, bool isTvShow)
 		{
-			var movie = _tmdbService.SearchMovieByID(releaseID);
+			var movie = isTvShow ? _tmdbService.SearchTVShowByID(releaseID) : _tmdbService.SearchMovieByID(releaseID);
 
 			movie.UserID = User.Identity.GetUserId();
 

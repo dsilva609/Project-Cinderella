@@ -36,21 +36,22 @@
 		<div class="panel-body">
 			@foreach (var result in Model.Results)
 				{
-					using (Html.BeginForm(MVC.Movie.CreateFromSearchResult(result.id), FormMethod.Get))
+					using (Html.BeginForm(MVC.Movie.CreateFromSearchResult(result.id, result.IsTvShow), FormMethod.Get))
 					{
 					<div id="Movie" class="row info" style="padding-bottom: 1em;" data-id="@result.id">
 						<div class="col-xs-4">
 							<img src="@(result.poster_path)" />
 						</div>
 						<div class="col-xs-4">
-							@Html.DisplayFor(x => result.title)
+							@(result.IsTvShow ? Html.DisplayFor(x => result.name) : Html.DisplayFor(x => result.title))
 						</div>
 
 						<div class="col-xs-2">
-							@Html.DisplayFor(x => result.release_date)
+							@(result.IsTvShow ? Html.DisplayFor(x => result.first_air_date) : Html.DisplayFor(x => result.release_date))
 						</div>
 
 						@Html.Hidden("releaseID", result.id)
+						@Html.Hidden("isTvShow", result.IsTvShow)
 
 						<div class="col-xs-2">
 							<input id="" type="submit" value="Add" class="btn" />
@@ -61,7 +62,6 @@
 		</div>
 	</div>
 }
-
 
 @Html.ActionLink("Back to List", MVC.Movie.Index())
 
