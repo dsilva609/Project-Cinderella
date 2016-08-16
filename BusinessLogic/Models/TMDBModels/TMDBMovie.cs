@@ -41,9 +41,15 @@ namespace BusinessLogic.Models.TMDBModels
         public int vote_count { get; set; }
 
         //TODO: refactor out to separate base model for tv shows
-        public Season Season { get; set; }
+        public string name { get; set; }
 
-        public Network Network { get; set; }
+        public string first_air_date { get; set; }
+
+        public List<Season> seasons { get; set; }
+
+        public List<Network> networks { get; set; }
+
+        public List<CreatedBy> created_by { get; set; }
     }
 
     public class Genre
@@ -83,5 +89,12 @@ namespace BusinessLogic.Models.TMDBModels
         public int id { get; set; }
         public string poster_path { get; set; }
         public int season_number { get; set; }
+    }
+
+    public class CreatedBy
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+        public string profile_path { get; set; }
     }
 }

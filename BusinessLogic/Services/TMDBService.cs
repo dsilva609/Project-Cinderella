@@ -37,7 +37,7 @@ namespace BusinessLogic.Services
 
             var result = response.Result.Content.ReadAsStringAsync().Result;
             var tmdbMovie = JsonConvert.DeserializeObject<TMDBMovie>(result);
-            var movie = ConvertTMDDMovieToMovie(tmdbMovie);
+            var movie = ConvertTMDDResultToMovie(tmdbMovie);
 
             return movie;
         }
@@ -56,12 +56,12 @@ namespace BusinessLogic.Services
         //TODO: refactor
         public Movie SearchTVShowByID(int id)
         {
-            var response = _client.GetAsync($"movie/{id}?api_key={Settings.Default.TMDBKey}");
+            var response = _client.GetAsync($"tv/{id}?api_key={Settings.Default.TMDBKey}");
 
             var result = response.Result.Content.ReadAsStringAsync().Result;
             var tmdbMovie = JsonConvert.DeserializeObject<TMDBMovie>(result);
             //TODO: create separate method for tv shows
-            var movie = ConvertTMDDMovieToMovie(tmdbMovie);
+            var movie = ConvertTMDDResultToModel(tmdbMovie);
 
             return movie;
         }
@@ -74,7 +74,7 @@ namespace BusinessLogic.Services
             _client.DefaultRequestHeaders.Add("User-Agent", "Project-Cinderella/1.0 +projectcinderella.azurewebsites.net");
         }
 
-        private Movie ConvertTMDDMovieToMovie(TMDBMovie tmdb)
+        private Movie ConvertTMDDResultToMovie(TMDBMovie tmdb)
         {
             var movie = new Movie
             {
@@ -85,6 +85,23 @@ namespace BusinessLogic.Services
                 Language = tmdb.original_language,
                 TMDBID = tmdb.id,
                 YearReleased = DateTime.Parse(tmdb.release_date).Year
+            };
+
+            return movie;
+        }
+
+        private Movie ConvertTMDDResultToModel(TMDBMovie tmdb)
+        {
+            var movie = new Movie
+            {
+                Title = tmdb.name,
+                Director = string.Join(", ", tmdb.created_by.Select(x => x.name).ToList()),
+                Distributor = tmdb.production_companies.First().name,
+                Genre = string.Join(", ", tmdb.genres.Select(x => x.name).ToList()),
+                ImageUrl = string.Format("https://image.tmdb.org/t/p/w500{0}", tmdb.poster_path),
+                Language = tmdb.original_language,
+                TMDBID = tmdb.id,
+                YearReleased = DateTime.Parse(tmdb.first_air_date).Year
             };
 
             return movie;
