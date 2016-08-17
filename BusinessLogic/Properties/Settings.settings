@@ -8,5 +8,8 @@
     <Setting Name="DiscogsKey" Type="System.String" Scope="Application">
       <Value Profile="(Default)">VihLsjGHOaqfiRLhNZMZydxTWUTcidbHkuZgCALD</Value>
     </Setting>
+    <Setting Name="ComicVineKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">10c41082ab8ec6807c72944e831c711e095010d4</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

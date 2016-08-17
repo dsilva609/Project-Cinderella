@@ -40,5 +40,14 @@ namespace BusinessLogic.Properties {
                 return ((string)(this["DiscogsKey"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10c41082ab8ec6807c72944e831c711e095010d4")]
+        public string ComicVineKey {
+            get {
+                return ((string)(this["ComicVineKey"]));
+            }
+        }
     }
 }

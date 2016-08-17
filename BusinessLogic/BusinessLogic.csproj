@@ -255,6 +255,7 @@
     <Compile Include="Models\BGGModels\BGGGame.cs" />
     <Compile Include="Models\BGGModels\BGGResult.cs" />
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\ComicVineModels\ComicVineResult.cs" />
     <Compile Include="Models\DiscogsModels\DiscogsRelease.cs" />
     <Compile Include="Models\DiscogsModels\DiscogsResult.cs" />
     <Compile Include="Models\Game.cs" />
@@ -273,6 +274,7 @@
     <Compile Include="Repositories\UnitOfWork.cs" />
     <Compile Include="Services\BGGService.cs" />
     <Compile Include="Services\BookService.cs" />
+    <Compile Include="Services\ComicVineService.cs" />
     <Compile Include="Services\DiscogsService.cs" />
     <Compile Include="Services\GameService.cs" />
     <Compile Include="Services\GoogleBookService.cs" />
@@ -280,6 +282,7 @@
     <Compile Include="Services\AlbumService.cs" />
     <Compile Include="Services\Interfaces\IBGGService.cs" />
     <Compile Include="Services\Interfaces\IBookService.cs" />
+    <Compile Include="Services\Interfaces\IComicVineService.cs" />
     <Compile Include="Services\Interfaces\IDiscogsService.cs" />
     <Compile Include="Services\Interfaces\IGameService.cs" />
     <Compile Include="Services\Interfaces\IGoogleBookService.cs" />
