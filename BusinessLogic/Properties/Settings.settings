@@ -11,5 +11,8 @@
     <Setting Name="ComicVineKey" Type="System.String" Scope="Application">
       <Value Profile="(Default)">10c41082ab8ec6807c72944e831c711e095010d4</Value>
     </Setting>
+    <Setting Name="GiantBombKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">99df2e1d0a3066ee03ed9b9638f06626ef6b34a4</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

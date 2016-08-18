@@ -49,5 +49,14 @@ namespace BusinessLogic.Properties {
                 return ((string)(this["ComicVineKey"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("99df2e1d0a3066ee03ed9b9638f06626ef6b34a4")]
+        public string GiantBombKey {
+            get {
+                return ((string)(this["GiantBombKey"]));
+            }
+        }
     }
 }

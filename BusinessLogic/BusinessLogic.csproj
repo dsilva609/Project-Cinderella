@@ -259,6 +259,8 @@
     <Compile Include="Models\DiscogsModels\DiscogsRelease.cs" />
     <Compile Include="Models\DiscogsModels\DiscogsResult.cs" />
     <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\GiantBombModels\GiantBombGame.cs" />
+    <Compile Include="Models\GiantBombModels\GiantBombResult.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\TMDBModels\TMDBMovie.cs" />
@@ -277,6 +279,7 @@
     <Compile Include="Services\ComicVineService.cs" />
     <Compile Include="Services\DiscogsService.cs" />
     <Compile Include="Services\GameService.cs" />
+    <Compile Include="Services\GiantBombService.cs" />
     <Compile Include="Services\GoogleBookService.cs" />
     <Compile Include="Services\Interfaces\IAlbumService.cs" />
     <Compile Include="Services\AlbumService.cs" />
@@ -285,6 +288,7 @@
     <Compile Include="Services\Interfaces\IComicVineService.cs" />
     <Compile Include="Services\Interfaces\IDiscogsService.cs" />
     <Compile Include="Services\Interfaces\IGameService.cs" />
+    <Compile Include="Services\Interfaces\IGiantBombService.cs" />
     <Compile Include="Services\Interfaces\IGoogleBookService.cs" />
     <Compile Include="Services\Interfaces\IMovieService.cs" />
     <Compile Include="Services\Interfaces\ITMDBService.cs" />

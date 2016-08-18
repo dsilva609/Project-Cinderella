@@ -170,6 +170,7 @@
     <Compile Include="BusinessLogic\Services\ComicVineServiceTests.cs" />
     <Compile Include="BusinessLogic\Services\DiscogsServiceTests.cs" />
     <Compile Include="BusinessLogic\Services\GameServiceTests.cs" />
+    <Compile Include="BusinessLogic\Services\GiantBombServiceTests.cs" />
     <Compile Include="BusinessLogic\Services\GoogleBookServiceTests.cs" />
     <Compile Include="BusinessLogic\Services\MovieServiceTests.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\AlbumServiceTestBase.cs" />
@@ -178,6 +179,7 @@
     <Compile Include="BusinessLogic\Services\TestBases\ComicVineTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\DiscogsServiceTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\GameServiceTestBase.cs" />
+    <Compile Include="BusinessLogic\Services\TestBases\GiantBombServiceTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\GoogleBookServiceTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\MovieServiceTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\TMDBServiceTestBase.cs" />
