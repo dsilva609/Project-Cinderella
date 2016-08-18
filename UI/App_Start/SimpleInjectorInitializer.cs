@@ -14,34 +14,36 @@ using UI;
 
 namespace UI
 {
-	public static class SimpleInjectorInitializer
-	{
-		/// <summary>Initialize the c and register it as MVC3 Dependency Resolver.</summary>
-		public static void Initialize()
-		{
-			var container = new Container();
-			container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
+    public static class SimpleInjectorInitializer
+    {
+        public static void Initialize()
+        {
+            var container = new Container();
+            container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
 
-			InitializeContainer(container);
-			container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
-			container.Verify();
+            InitializeContainer(container);
+            container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
+            container.Verify();
 
-			DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
-		}
+            DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
+        }
 
-		private static void InitializeContainer(Container c)
-		{
-			// For instance:
-			// c.Register<IUserRepository, SqlUserRepository>(Lifestyle.Scoped);
-			c.Register<IUnitOfWork, UnitOfWork<ProjectCinderellaContext>>(Lifestyle.Singleton);
-			c.Register<IAlbumService>(() => new AlbumService(c.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
-			c.Register<IBookService>(() => new BookService(c.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
-			c.Register<IMovieService>(() => new MovieService(c.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
-			c.Register<IGameService>(() => new GameService(c.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
-			c.Register<IDiscogsService, DiscogsService>();
-			c.Register<IClientService>(() => new Google.Apis.Books.v1.BooksService(), Lifestyle.Scoped);
-			c.Register<IGoogleBookService>(() => new GoogleBookService(c.GetInstance<IClientService>()), Lifestyle.Scoped);
-			c.Register<ITMDBService, TMDBService>(Lifestyle.Scoped);
-		}
-	}
+        private static void InitializeContainer(Container c)
+        {
+            // For instance:
+            // c.Register<IUserRepository, SqlUserRepository>(Lifestyle.Scoped);
+            c.Register<IUnitOfWork, UnitOfWork<ProjectCinderellaContext>>(Lifestyle.Singleton);
+            c.Register<IAlbumService>(() => new AlbumService(c.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
+            c.Register<IBookService>(() => new BookService(c.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
+            c.Register<IMovieService>(() => new MovieService(c.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
+            c.Register<IGameService>(() => new GameService(c.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
+            c.Register<IDiscogsService, DiscogsService>();
+            c.Register<IClientService>(() => new Google.Apis.Books.v1.BooksService(), Lifestyle.Scoped);
+            c.Register<IGoogleBookService>(() => new GoogleBookService(c.GetInstance<IClientService>()), Lifestyle.Scoped);
+            c.Register<ITMDBService, TMDBService>(Lifestyle.Scoped);
+            c.Register<IBGGService, BGGService>(Lifestyle.Scoped);
+            c.Register<IComicVineService, ComicVineService>(Lifestyle.Scoped);
+            c.Register<IGiantBombService, GiantBombService>(Lifestyle.Scoped);
+        }
+    }
 }

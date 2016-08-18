@@ -1,14 +1,18 @@
 ﻿using BusinessLogic.Models;
+using BusinessLogic.Models.ComicVineModels;
 using System.Collections.Generic;
 
 namespace UI.Models
 {
-	public class GoogleBooksSearchModel
-	{
-		public string Title { get; set; }
+    //TODO: refactor name
+    public class GoogleBooksSearchModel
+    {
+        public string Title { get; set; }
 
-		public string Author { get; set; }
+        public string Author { get; set; }
 
-		public List<Book> Volumes { get; set; }
-	}
+        public List<Book> Volumes { get; set; }
+
+        public ComicVineResult ComicsVineResult { get; set; }
+    }
 }
