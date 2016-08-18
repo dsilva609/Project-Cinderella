@@ -19,7 +19,8 @@ namespace BusinessLogic.Services
 
         public ComicVineResult Search(string query)
         {
-            var response = _client.GetStringAsync($"search/?api_key={Settings.Default.ComicVineKey}&resources=issue&format=json&query={query}");
+            var response =
+                _client.GetStringAsync($"search/?api_key={Settings.Default.ComicVineKey}&resources=issue&format=json&limit=25&query={query}");
             var result = response.Result;
 
             var comicVineResults = JsonConvert.DeserializeObject<ComicVineResult>(result);
