@@ -35,8 +35,8 @@ namespace BusinessLogic.Services
 			var result = response.Result;
 
 			var giantBombResult = JsonConvert.DeserializeObject<GiantBombGame>(result);
-
-			return giantBombResult;
+			var game = ConvertGiantBombGameToGame(giantBombResult);
+			return game;
 		}
 
 		private Game ConvertGiantBombGameToGame(GiantBombGame result)
