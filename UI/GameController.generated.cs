@@ -80,6 +80,18 @@ namespace UI.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Search()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Search);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult CreateFromSearchModel()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CreateFromSearchModel);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public GameController Actions { get { return MVC.Game; } }
@@ -101,6 +113,8 @@ namespace UI.Controllers
             public readonly string Create = "Create";
             public readonly string Edit = "Edit";
             public readonly string Delete = "Delete";
+            public readonly string Search = "Search";
+            public readonly string CreateFromSearchModel = "CreateFromSearchModel";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -111,6 +125,8 @@ namespace UI.Controllers
             public const string Create = "Create";
             public const string Edit = "Edit";
             public const string Delete = "Delete";
+            public const string Search = "Search";
+            public const string CreateFromSearchModel = "CreateFromSearchModel";
         }
 
 
@@ -156,6 +172,22 @@ namespace UI.Controllers
         {
             public readonly string id = "id";
         }
+        static readonly ActionParamsClass_Search s_params_Search = new ActionParamsClass_Search();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Search SearchParams { get { return s_params_Search; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Search
+        {
+            public readonly string searchModel = "searchModel";
+        }
+        static readonly ActionParamsClass_CreateFromSearchModel s_params_CreateFromSearchModel = new ActionParamsClass_CreateFromSearchModel();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_CreateFromSearchModel CreateFromSearchModelParams { get { return s_params_CreateFromSearchModel; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_CreateFromSearchModel
+        {
+            public readonly string id = "id";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -171,12 +203,14 @@ namespace UI.Controllers
                 public readonly string Details = "Details";
                 public readonly string Edit = "Edit";
                 public readonly string Index = "Index";
+                public readonly string Search = "Search";
             }
             public readonly string _GameFormPartial = "~/Views/Game/_GameFormPartial.cshtml";
             public readonly string Create = "~/Views/Game/Create.cshtml";
             public readonly string Details = "~/Views/Game/Details.cshtml";
             public readonly string Edit = "~/Views/Game/Edit.cshtml";
             public readonly string Index = "~/Views/Game/Index.cshtml";
+            public readonly string Search = "~/Views/Game/Search.cshtml";
         }
     }
 
@@ -266,6 +300,30 @@ namespace UI.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             DeleteOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void SearchOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, UI.Models.GiantBombSearchModel searchModel);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Search(UI.Models.GiantBombSearchModel searchModel)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Search);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "searchModel", searchModel);
+            SearchOverride(callInfo, searchModel);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void CreateFromSearchModelOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult CreateFromSearchModel(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CreateFromSearchModel);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            CreateFromSearchModelOverride(callInfo, id);
             return callInfo;
         }
 

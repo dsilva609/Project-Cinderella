@@ -814,6 +814,7 @@
     <Content Include="Views\Book\Search.cshtml" />
     <Content Include="Views\Movie\Search.cshtml" />
     <Content Include="T4MVC.tt.hooks.t4" />
+    <Content Include="Views\Game\Search.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -883,6 +884,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BookViewModel.cs" />
+    <Compile Include="Models\GiantBombSearchModel.cs" />
     <Compile Include="Models\MovieSearchModel.cs" />
     <Compile Include="Models\DiscogsSearchModel.cs" />
     <Compile Include="Models\GameViewModel.cs" />

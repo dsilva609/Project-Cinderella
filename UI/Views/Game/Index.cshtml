@@ -9,15 +9,23 @@
 </script>
 
 <div>
-	<div class="h2 col-xs-4 col-sm-7">
-		Games
-	</div>
+    <div class="h2 col-xs-4 col-sm-7">
+        Games
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a class="btn btn-default" href="@Url.Action(MVC.Game.Create())" style="padding-top: 1.25em;" contenteditable="false">
+                <span class="fa fa-plus"></span>
+            </a>
+        }
+    </div>
 
-	<div class="col-xs-8 col-sm-5 text-right" style="padding-top: 1.25em; display: inline-flex;">
-		@if (User.Identity.IsAuthenticated)
-		{
-			@Html.ActionLink("Add Game", MVC.Game.Create(), new { @class = "btn btn-default", @style = "margin-right:1em;" })
-		}
+    <div class="col-md-3" style="padding-top: 1.25em;">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a href="@Url.Action(MVC.Game.Search())" class="btn btn-default">Giant Bomb <span class="fa fa-search"></span></a>}
+    </div>
+
+    <div class="col-xs-8 col-sm-5 text-right" style="padding-top: 1.25em; display: inline-flex;">
 		@using (Html.BeginForm(MVC.Game.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
 		{
 			@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })

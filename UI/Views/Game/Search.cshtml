@@ -1,0 +1,61 @@
+﻿@model UI.Models.GiantBombSearchModel
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row panel panel-primary">
+    <div class="panel-heading">
+        <h4>
+            Book Information
+        </h4>
+    </div>
+    @using (Html.BeginForm(MVC.Game.Search(), FormMethod.Get))
+    {
+        <div class="panel-body">
+            <div class="col-xs-6">
+                @Html.LabelFor(m => m.Title)
+                @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row panel-body">
+            <div class="col-xs-8 col-sm-10">
+                <input id="btnSubmit" type="submit" value="Search" class="btn btn-default btn-block btn-lg"/>
+            </div>
+        </div>
+    }
+</div>
+@if (Model.Games != null && Model.Games.number_of_page_results > 0)
+{
+    <div class="row panel panel-primary">
+        <div class="panel-heading">
+            <h4>
+                Search Results
+            </h4>
+        </div>
+
+        @foreach (var game in Model.Games.results)
+        {
+            using (Html.BeginForm(MVC.Game.CreateFromSearchModel(game.id), FormMethod.Get))
+            {
+                <div id="game" class="row info" style="padding-bottom: 1em;" data-id="@game.id">
+                    <div class="col-xs-2">
+                        <img src="@game.image.thumb_url"/>
+                    </div>
+                    <div class="col-xs-3">
+                        @Html.DisplayFor(x => game.name)
+                        @Html.HiddenFor(x => game.name)
+                    </div>
+
+                    <div class="col-xs-2">
+                        @Html.DisplayFor(x => game.original_release_date)
+                        @Html.HiddenFor(x => game.original_release_date)
+                    </div>
+                    @Html.Hidden("id", game.id)
+
+                    <input id="" type="submit" value="Add" class="btn"/>
+                </div>
+            }
+        }
+    </div>
+}
