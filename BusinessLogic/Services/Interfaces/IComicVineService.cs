@@ -1,11 +1,12 @@
-﻿using BusinessLogic.Models.ComicVineModels;
+﻿using BusinessLogic.Models;
+using BusinessLogic.Models.ComicVineModels;
 
 namespace BusinessLogic.Services.Interfaces
 {
-    public interface IComicVineService
-    {
-        ComicVineResult Search(string query);
+	public interface IComicVineService
+	{
+		ComicVineResult Search(string query);
 
-        ComicVineResult SearchByID(int id);
-    }
+		Book SearchByID(string id);
+	}
 }

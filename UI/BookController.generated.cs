@@ -187,6 +187,7 @@ namespace UI.Controllers
         public class ActionParamsClass_CreateFromSearchModel
         {
             public readonly string id = "id";
+            public readonly string isComic = "isComic";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -316,14 +317,15 @@ namespace UI.Controllers
         }
 
         [NonAction]
-        partial void CreateFromSearchModelOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string id);
+        partial void CreateFromSearchModelOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string id, bool isComic);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult CreateFromSearchModel(string id)
+        public override System.Web.Mvc.ActionResult CreateFromSearchModel(string id, bool isComic)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CreateFromSearchModel);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
-            CreateFromSearchModelOverride(callInfo, id);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "isComic", isComic);
+            CreateFromSearchModelOverride(callInfo, id, isComic);
             return callInfo;
         }
 

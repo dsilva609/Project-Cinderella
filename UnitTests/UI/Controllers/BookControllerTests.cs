@@ -157,7 +157,7 @@ namespace UnitTests.UI.Controllers
 			_controller.Get<IGoogleBookService>().Expect(x => x.SearchByID(Arg<string>.Is.Anything)).Return(new Book());
 
 			//--Act
-			var result = _controller.ClassUnderTest.CreateFromSearchModel("test") as RedirectToRouteResult;
+			var result = _controller.ClassUnderTest.CreateFromSearchModel("test", false) as RedirectToRouteResult;
 
 			//--Assert
 			Assert.AreEqual("Create", result.RouteValues["Action"]);

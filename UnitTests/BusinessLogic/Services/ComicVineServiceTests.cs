@@ -3,23 +3,23 @@ using UnitTests.BusinessLogic.Services.TestBases;
 
 namespace UnitTests.BusinessLogic.Services
 {
-    [TestFixture]
-    public class ComicVineServiceTests : ComicVineTestBase
-    {
-        [Test]
-        public void ThatSearchingReturnsAResult()
-        {
-            var result = _service.Search("wonder woman rebirth");
+	[TestFixture]
+	public class ComicVineServiceTests : ComicVineTestBase
+	{
+		[Test]
+		public void ThatSearchingReturnsAResult()
+		{
+			var result = _service.Search("wonder woman rebirth");
 
-            Assert.Greater(result.results.Count, 0);
-        }
+			Assert.Greater(result.results.Count, 0);
+		}
 
-        [Test]
-        public void ThatSearchingByIDReturnsAResult()
-        {
-            var result = _service.SearchByID(133594);
+		[Test]
+		public void ThatSearchingByIDReturnsAResult()
+		{
+			var result = _service.SearchByID("4000-151290");
 
-            Assert.AreEqual(1, result.results.Count);
-        }
-    }
+			Assert.IsNotNull(result);
+		}
+	}
 }

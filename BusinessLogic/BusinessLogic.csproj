@@ -255,6 +255,7 @@
     <Compile Include="Models\BGGModels\BGGGame.cs" />
     <Compile Include="Models\BGGModels\BGGResult.cs" />
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\ComicVineModels\ComicVineComic.cs" />
     <Compile Include="Models\ComicVineModels\ComicVineResult.cs" />
     <Compile Include="Models\DiscogsModels\DiscogsRelease.cs" />
     <Compile Include="Models\DiscogsModels\DiscogsResult.cs" />

@@ -4,120 +4,122 @@
 <h2>@ViewBag.Title</h2>
 
 <div class="row panel panel-primary">
-    <div class="panel-heading">
-        <h4>
-            Book Information
-        </h4>
-    </div>
-    @using (Html.BeginForm(MVC.Book.Search(), FormMethod.Get))
-    {
-        <div class="panel-body">
-            <div class="col-xs-6">
-                @Html.LabelFor(m => m.Author)
-                @Html.TextBoxFor(m => m.Author, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Author, "", new { @class = "text-danger" })
-            </div>
+	<div class="panel-heading">
+		<h4>
+			Book Information
+		</h4>
+	</div>
+	@using (Html.BeginForm(MVC.Book.Search(), FormMethod.Get))
+	{
+		<div class="panel-body">
+			<div class="col-xs-6">
+				@Html.LabelFor(m => m.Author)
+				@Html.TextBoxFor(m => m.Author, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Author, "", new { @class = "text-danger" })
+			</div>
 
-            <div class="col-xs-6">
-                @Html.LabelFor(m => m.Title)
-                @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
-            </div>
-        </div>
+			<div class="col-xs-6">
+				@Html.LabelFor(m => m.Title)
+				@Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+			</div>
+		</div>
 
-        <div class="row panel-body">
-            <div class="col-xs-8 col-sm-10">
-                <input id="btnSubmit" type="submit" value="Search" class="btn btn-default btn-block btn-lg" />
-            </div>
-        </div>
-    }
+		<div class="row panel-body">
+			<div class="col-xs-8 col-sm-10">
+				<input id="btnSubmit" type="submit" value="Search" class="btn btn-default btn-block btn-lg" />
+			</div>
+		</div>
+	}
 </div>
 @if (Model.Volumes != null && Model.Volumes.Count > 0)
 {
-    <div class="row panel panel-primary">
-        <div class="panel-heading">
-            <h4>
-                Search Results
-            </h4>
-        </div>
+	<div class="row panel panel-primary">
+		<div class="panel-heading">
+			<h4>
+				Search Results
+			</h4>
+		</div>
 
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-xs-3">
-                    @Html.DisplayNameFor(x => Model.Volumes[0].Author)
-                </div>
-                <div class="col-xs-3">
-                    @Html.DisplayNameFor(x => Model.Volumes[0].Title)
-                </div>
-                <div class="col-xs-3">
-                    @Html.DisplayNameFor(x => Model.Volumes[0].Publisher)
-                </div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-xs-3">
+					@Html.DisplayNameFor(x => Model.Volumes[0].Author)
+				</div>
+				<div class="col-xs-3">
+					@Html.DisplayNameFor(x => Model.Volumes[0].Title)
+				</div>
+				<div class="col-xs-3">
+					@Html.DisplayNameFor(x => Model.Volumes[0].Publisher)
+				</div>
 
-                <div class="col-xs-2">
-                    @Html.DisplayNameFor(x => Model.Volumes[0].YearReleased)
-                </div>
-            </div>
-        </div>
-        @foreach (var book in Model.Volumes)
-        {
-            using (Html.BeginForm(MVC.Book.CreateFromSearchModel(book.GoogleBookID), FormMethod.Get))
-            {
-                <div id="book" class="row info" style="padding-bottom: 1em;" data-id="@book.ID">
-                    <div class="col-xs-2">
-                        <img src="@book.ImageUrl" />
-                    </div>
-                    <div class="col-xs-3">
-                        @Html.DisplayFor(x => book.Author)
-                        @Html.HiddenFor(x => book.Author)
-                    </div>
-                    <div class="col-xs-3">
-                        @Html.DisplayFor(x => book.Title)
-                        @Html.HiddenFor(x => book.Title)
-                    </div>
-                    <div class="col-xs-3">
-                        @Html.DisplayFor(x => book.Publisher)
-                        @Html.HiddenFor(x => book.Publisher)
-                    </div>
+				<div class="col-xs-2">
+					@Html.DisplayNameFor(x => Model.Volumes[0].YearReleased)
+				</div>
+			</div>
+		</div>
+		@foreach (var book in Model.Volumes)
+		{
+			using (Html.BeginForm(MVC.Book.CreateFromSearchModel(book.GoogleBookID, false), FormMethod.Get))
+			{
+				<div id="book" class="row info" style="padding-bottom: 1em;" data-id="@book.ID">
+					<div class="col-xs-2">
+						<img src="@book.ImageUrl" />
+					</div>
+					<div class="col-xs-3">
+						@Html.DisplayFor(x => book.Author)
+						@Html.HiddenFor(x => book.Author)
+					</div>
+					<div class="col-xs-3">
+						@Html.DisplayFor(x => book.Title)
+						@Html.HiddenFor(x => book.Title)
+					</div>
+					<div class="col-xs-3">
+						@Html.DisplayFor(x => book.Publisher)
+						@Html.HiddenFor(x => book.Publisher)
+					</div>
 
-                    <div class="col-xs-2">
-                        @Html.DisplayFor(x => book.YearReleased)
-                        @Html.HiddenFor(x => book.YearReleased)
-                    </div>
-                    @Html.Hidden("id", book.GoogleBookID)
+					<div class="col-xs-2">
+						@Html.DisplayFor(x => book.YearReleased)
+						@Html.HiddenFor(x => book.YearReleased)
+					</div>
+					@Html.Hidden("id", book.GoogleBookID)
+					@Html.Hidden("isComic", false)
 
-                    <input id="" type="submit" value="Add" class="btn" />
-                </div>}
-        }
+					<input id="" type="submit" value="Add" class="btn" />
+				</div>
+			}
+		}
 
-        @foreach (var comic in Model.ComicsVineResult.results)
-        {
-            using (Html.BeginForm(MVC.Book.CreateFromSearchModel(comic.id.ToString()), FormMethod.Get))
-            {
-                <div id="book" class="row info" style="padding-bottom: 1em;" data-id="@comic.id">
-                    <div class="col-xs-2">
-                        <img src="@comic.image.medium_url" />
-                    </div>
-                    @*<div class="col-xs-3">
-                            @Html.DisplayFor(x => comic.)
-                            @Html.HiddenFor(x => comic.Author)
-                        </div>*@
-                    <div class="col-xs-3">
-                        @Html.DisplayFor(x => comic.name)
-                        @Html.HiddenFor(x => comic.name)
-                    </div>
-                    <div class="col-xs-3">
-                        @Html.DisplayFor(x => comic.issue_number)
-                        @Html.HiddenFor(x => comic.issue_number)
-                    </div>
+		@foreach (var comic in Model.ComicsVineResult.results)
+		{
+			using (Html.BeginForm(MVC.Book.CreateFromSearchModel(comic.id, true), FormMethod.Get))
+			{
+				<div id="book" class="row info" style="padding-bottom: 1em;" data-id="@comic.id">
+					<div class="col-xs-2">
+						<img src="@comic.image.thumb_url" />
+					</div>
+					@*<div class="col-xs-3">
+							@Html.DisplayFor(x => comic.)
+							@Html.HiddenFor(x => comic.Author)
+						</div>*@
+					<div class="col-xs-3">
+						@Html.DisplayFor(x => comic.name)
+						@Html.HiddenFor(x => comic.name)
+					</div>
+					<div class="col-xs-3">
+						@Html.DisplayFor(x => comic.issue_number)
+						@Html.HiddenFor(x => comic.issue_number)
+					</div>
 
-                    <div class="col-xs-2">
-                        @Html.DisplayFor(x => comic.cover_date)
-                        @Html.HiddenFor(x => comic.cover_date)
-                    </div>
-                    @Html.Hidden("id", comic.id)
-
-                    <input id="" type="submit" value="Add" class="btn" />
-                </div>}
-        }
-    </div>
+					<div class="col-xs-2">
+						@Html.DisplayFor(x => comic.cover_date)
+						@Html.HiddenFor(x => comic.cover_date)
+					</div>
+					@Html.Hidden("id", comic.id)
+					@Html.Hidden("isComic", true)
+					<input id="" type="submit" value="Add" class="btn" />
+				</div>}
+		}
+	</div>
 }
