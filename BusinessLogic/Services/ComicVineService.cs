@@ -27,7 +27,7 @@ namespace BusinessLogic.Services
 			var result = response.Result;
 
 			var comicVineResults = JsonConvert.DeserializeObject<ComicVineResult>(result);
-			comicVineResults.results.ForEach(x => x.id = x.api_detail_url.Substring(x.api_detail_url.IndexOf("issue/")));
+			comicVineResults.results.ForEach(x => x.id = x.api_detail_url.Substring(x.api_detail_url.IndexOf("issue/") + 6).TrimEnd('/'));
 			return comicVineResults;
 		}
 
@@ -48,9 +48,9 @@ namespace BusinessLogic.Services
 			var comic = result.results;
 			//TODO: add field for ComicVineID
 			book.Title = comic.name;
-			book.ImageUrl = comic.image.screen_url;
-			book.GoogleBookID = comic.api_detail_url.Substring(comic.api_detail_url.IndexOf("issue/"));
-			book.Author = comic.person_credits.FirstOrDefault(x => x.role == "Writer")?.name;
+			book.ImageUrl = comic.image.super_url;
+			book.GoogleBookID = comic.api_detail_url.Substring(comic.api_detail_url.IndexOf("issue/") + 6).TrimEnd('/');
+			book.Author = comic.person_credits.FirstOrDefault(x => x.role == "writer")?.name;
 			//book.Publisher = comic.publisher.name;
 			book.Type = BookTypeEnum.Comic;
 

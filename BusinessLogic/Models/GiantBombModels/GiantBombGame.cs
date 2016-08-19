@@ -1,4 +1,6 @@
-﻿namespace BusinessLogic.Models.GiantBombModels
+﻿using System.Collections.Generic;
+
+namespace BusinessLogic.Models.GiantBombModels
 {
 	public class GiantBombGame
 	{
@@ -28,31 +30,31 @@
 		public Image image { get; set; }
 		public string name { get; set; }
 		public int number_of_user_reviews { get; set; }
-		public Original_Game_Rating[] original_game_rating { get; set; }
+		public List<Original_Game_Rating> original_game_rating { get; set; }
 		public string original_release_date { get; set; }
-		public Platform[] platforms { get; set; }
+		public List<Platform> platforms { get; set; }
 		public string site_detail_url { get; set; }
-		public Image1[] images { get; set; }
-		public Video[] videos { get; set; }
-		public Character[] characters { get; set; }
-		public Concept[] concepts { get; set; }
-		public Developer[] developers { get; set; }
-		public First_Appearance_Characters[] first_appearance_characters { get; set; }
-		public First_Appearance_Concepts[] first_appearance_concepts { get; set; }
-		public First_Appearance_Locations[] first_appearance_locations { get; set; }
-		public First_Appearance_Objects[] first_appearance_objects { get; set; }
-		public First_Appearance_People[] first_appearance_people { get; set; }
+		public List<Image1> images { get; set; }
+		public List<Video> videos { get; set; }
+		public List<Character> characters { get; set; }
+		public List<Concept> concepts { get; set; }
+		public List<Developer> developers { get; set; }
+		public List<First_Appearance_Characters> first_appearance_characters { get; set; }
+		public List<First_Appearance_Concepts> first_appearance_concepts { get; set; }
+		public List<First_Appearance_Locations> first_appearance_locations { get; set; }
+		public List<First_Appearance_Objects> first_appearance_objects { get; set; }
+		public List<First_Appearance_People> first_appearance_people { get; set; }
 		public object franchises { get; set; }
-		public Genre[] genres { get; set; }
+		public List<Genre> genres { get; set; }
 		public object killed_characters { get; set; }
-		public Location[] locations { get; set; }
-		public Object[] objects { get; set; }
-		public Person[] people { get; set; }
-		public Publisher[] publishers { get; set; }
-		public Release[] releases { get; set; }
-		public Review[] reviews { get; set; }
-		public Similar_Games[] similar_games { get; set; }
-		public Theme[] themes { get; set; }
+		public List<Location> locations { get; set; }
+		public List<Object> objects { get; set; }
+		public List<Person> people { get; set; }
+		public List<Publisher> publishers { get; set; }
+		public List<Release> releases { get; set; }
+		public List<Review> reviews { get; set; }
+		public List<Similar_Games> similar_games { get; set; }
+		public List<Theme> themes { get; set; }
 	}
 
 	public class Image

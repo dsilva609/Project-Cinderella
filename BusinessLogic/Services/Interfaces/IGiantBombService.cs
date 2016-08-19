@@ -1,4 +1,5 @@
-﻿using BusinessLogic.Models.GiantBombModels;
+﻿using BusinessLogic.Models;
+using BusinessLogic.Models.GiantBombModels;
 
 namespace BusinessLogic.Services.Interfaces
 {
@@ -6,6 +7,6 @@ namespace BusinessLogic.Services.Interfaces
 	{
 		GiantBombResult Search(string query);
 
-		GiantBombGame SearchByID(int id);
+		Game SearchByID(int id);
 	}
 }
