@@ -34,7 +34,6 @@ namespace BusinessLogic.Services
 		private void CreateClient()
 		{
 			_client = new HttpClient { BaseAddress = new Uri("http://www.boardgamegeek.com/xmlapi2/") };
-			//ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 			_client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/xml"));
 			_client.DefaultRequestHeaders.AcceptCharset.Add(new StringWithQualityHeaderValue("UTF-8"));
 			_client.DefaultRequestHeaders.Add("User-Agent", "Project-Cinderella/1.0 +projectcinderella.azurewebsites.net");
