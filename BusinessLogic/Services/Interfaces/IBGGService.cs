@@ -1,11 +1,12 @@
-﻿using BusinessLogic.Models.BGGModels;
+﻿using BusinessLogic.Models;
+using BusinessLogic.Models.BGGModels;
 
 namespace BusinessLogic.Services.Interfaces
 {
 	public interface IBGGService
 	{
-		BGGResult Search(string query);
+		BGGGame Search(string query);
 
-		BGGGame SearchByID(int id);
+		Game SearchByID(int id);
 	}
 }

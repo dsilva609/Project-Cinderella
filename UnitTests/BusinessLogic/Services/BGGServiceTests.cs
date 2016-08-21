@@ -11,7 +11,15 @@ namespace UnitTests.BusinessLogic.Services
 			var result = _service.Search("Mansions of madness");
 
 			Assert.IsNotNull(result);
-			Assert.Greater(result.item.Count, 0);
+			Assert.Greater(result.Items.Count, 0);
+		}
+
+		[Test]
+		public void ThatSearchingByIDReturnsAResult()
+		{
+			var result = _service.SearchByID(83330);
+
+			Assert.IsNotNull(result);
 		}
 	}
 }
