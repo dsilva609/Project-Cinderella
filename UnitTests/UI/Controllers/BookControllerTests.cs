@@ -144,7 +144,7 @@ namespace UnitTests.UI.Controllers
 			//--Arrange
 			_controller.Get<IGoogleBookService>().Expect(x => x.Search(Arg<string>.Is.Anything, Arg<string>.Is.Anything)).Return(null);
 			//--Act
-			var result = _controller.ClassUnderTest.Search(new GoogleBooksSearchModel { Author = "R.R. Martin", Title = "Game of Thrones" }) as ViewResult;
+			var result = _controller.ClassUnderTest.Search(new BookSearchModel { Author = "R.R. Martin", Title = "Game of Thrones" }) as ViewResult;
 
 			//--Assert
 			Assert.AreEqual(string.Empty, result.ViewName);

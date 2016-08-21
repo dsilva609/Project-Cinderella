@@ -884,11 +884,11 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BookViewModel.cs" />
-    <Compile Include="Models\GiantBombSearchModel.cs" />
+    <Compile Include="Models\GameSearchModel.cs" />
     <Compile Include="Models\MovieSearchModel.cs" />
     <Compile Include="Models\DiscogsSearchModel.cs" />
     <Compile Include="Models\GameViewModel.cs" />
-    <Compile Include="Models\GoogleBooksSearchModel.cs" />
+    <Compile Include="Models\BookSearchModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />

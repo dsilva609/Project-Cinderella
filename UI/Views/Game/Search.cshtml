@@ -1,11 +1,11 @@
-﻿@model UI.Models.GiantBombSearchModel
+﻿@model UI.Models.GameSearchModel
 
 <h2>@ViewBag.Title</h2>
 
 <div class="row panel panel-primary">
 	<div class="panel-heading">
 		<h4>
-			Book Information
+			Game Information
 		</h4>
 	</div>
 	@using (Html.BeginForm(MVC.Game.Search(), FormMethod.Get))
@@ -25,18 +25,19 @@
 		</div>
 	}
 </div>
-@if (Model.Games != null && Model.Games.number_of_page_results > 0)
-{
-	<div class="row panel panel-primary">
-		<div class="panel-heading">
-			<h4>
-				Search Results
-			</h4>
-		</div>
-		<div class="panel-body">
-			@foreach (var game in Model.Games.results)
+
+<div class="row panel panel-primary">
+	<div class="panel-heading">
+		<h4>
+			Search Results
+		</h4>
+	</div>
+	<div class="panel-body">
+		@if (Model.GiantBombResult != null && Model.GiantBombResult.number_of_page_results > 0)
+		{
+			foreach (var game in Model.GiantBombResult.results)
 			{
-				using (Html.BeginForm(MVC.Game.CreateFromSearchModel(game.id), FormMethod.Get))
+				using (Html.BeginForm(MVC.Game.CreateFromSearchModel(game.id, false), FormMethod.Get))
 				{
 					<div id="game" class="row info" style="padding-bottom: 1em;" data-id="@game.id">
 						<div class="col-xs-2">
@@ -44,19 +45,45 @@
 						</div>
 						<div class="col-xs-3">
 							@Html.DisplayFor(x => game.name)
-							@Html.HiddenFor(x => game.name)
 						</div>
 
 						<div class="col-xs-2">
 							@Html.DisplayFor(x => game.original_release_date)
-							@Html.HiddenFor(x => game.original_release_date)
-						</div>
+							</div>
 						@Html.Hidden("id", game.id)
+						@Html.Hidden("isBGG", false)
 
 						<input id="" type="submit" value="Add" class="btn" />
 					</div>
 				}
 			}
-		</div>
+		}
+
+		@if (Model.BGGResult != null && Model.BGGResult.Items.Count > 0)
+		{
+			foreach (var game in Model.BGGResult.Items)
+			{
+				using (Html.BeginForm(MVC.Game.CreateFromSearchModel(game.ID, true), FormMethod.Get))
+				{
+					<div id="game" class="row info" style="padding-bottom: 1em;" data-id="@game.ID">
+						<div class="col-xs-2">
+							<img src="@game.Thumbnail" />
+						</div>
+						<div class="col-xs-3">
+							@Html.DisplayFor(x => game.name.value)
+						</div>
+
+						<div class="col-xs-2">
+							@Html.DisplayFor(x => game.yearpublished.value)
+						</div>
+						@Html.Hidden("id", game.ID)
+
+						@Html.Hidden("isBGG", true)
+
+						<input id="" type="submit" value="Add" class="btn" />
+					</div>
+				}
+			}
+		}
 	</div>
-}
+</div>	

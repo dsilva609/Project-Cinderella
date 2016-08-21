@@ -187,6 +187,7 @@ namespace UI.Controllers
         public class ActionParamsClass_CreateFromSearchModel
         {
             public readonly string id = "id";
+            public readonly string isBGG = "isBGG";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -304,10 +305,10 @@ namespace UI.Controllers
         }
 
         [NonAction]
-        partial void SearchOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, UI.Models.GiantBombSearchModel searchModel);
+        partial void SearchOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, UI.Models.GameSearchModel searchModel);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Search(UI.Models.GiantBombSearchModel searchModel)
+        public override System.Web.Mvc.ActionResult Search(UI.Models.GameSearchModel searchModel)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Search);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "searchModel", searchModel);
@@ -316,14 +317,15 @@ namespace UI.Controllers
         }
 
         [NonAction]
-        partial void CreateFromSearchModelOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+        partial void CreateFromSearchModelOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id, bool isBGG);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult CreateFromSearchModel(int id)
+        public override System.Web.Mvc.ActionResult CreateFromSearchModel(int id, bool isBGG)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CreateFromSearchModel);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
-            CreateFromSearchModelOverride(callInfo, id);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "isBGG", isBGG);
+            CreateFromSearchModelOverride(callInfo, id, isBGG);
             return callInfo;
         }
 

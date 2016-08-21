@@ -52,7 +52,7 @@ namespace BusinessLogic.Services
 
 			game.Notes = bgg.ID.ToString();
 			game.Title = bgg.name.value;
-			game.ImageUrl = bgg.Image;
+			game.ImageUrl = bgg.Image.Substring(2);
 			game.YearReleased = bgg.yearpublished.value;
 
 			return game;

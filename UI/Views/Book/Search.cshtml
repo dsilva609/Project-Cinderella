@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
-@model UI.Models.GoogleBooksSearchModel
+@model UI.Models.BookSearchModel
 
 <h2>@ViewBag.Title</h2>
 
@@ -62,32 +62,32 @@
 		{
 			using (Html.BeginForm(MVC.Book.CreateFromSearchModel(book.GoogleBookID, false), FormMethod.Get))
 			{
-				<div id="book" class="row info" style="padding-bottom: 1em;" data-id="@book.ID">
-					<div class="col-xs-2">
-						<img src="@book.ImageUrl" />
-					</div>
-					<div class="col-xs-3">
-						@Html.DisplayFor(x => book.Author)
-						@Html.HiddenFor(x => book.Author)
-					</div>
-					<div class="col-xs-3">
-						@Html.DisplayFor(x => book.Title)
-						@Html.HiddenFor(x => book.Title)
-					</div>
-					<div class="col-xs-3">
-						@Html.DisplayFor(x => book.Publisher)
-						@Html.HiddenFor(x => book.Publisher)
-					</div>
-
-					<div class="col-xs-2">
-						@Html.DisplayFor(x => book.YearReleased)
-						@Html.HiddenFor(x => book.YearReleased)
-					</div>
-					@Html.Hidden("id", book.GoogleBookID)
-					@Html.Hidden("isComic", false)
-
-					<input id="" type="submit" value="Add" class="btn" />
+			<div id="book" class="row info" style="padding-bottom: 1em;" data-id="@book.ID">
+				<div class="col-xs-2">
+					<img src="@book.ImageUrl" />
 				</div>
+				<div class="col-xs-3">
+					@Html.DisplayFor(x => book.Author)
+					@Html.HiddenFor(x => book.Author)
+				</div>
+				<div class="col-xs-3">
+					@Html.DisplayFor(x => book.Title)
+					@Html.HiddenFor(x => book.Title)
+				</div>
+				<div class="col-xs-3">
+					@Html.DisplayFor(x => book.Publisher)
+					@Html.HiddenFor(x => book.Publisher)
+				</div>
+
+				<div class="col-xs-2">
+					@Html.DisplayFor(x => book.YearReleased)
+					@Html.HiddenFor(x => book.YearReleased)
+				</div>
+				@Html.Hidden("id", book.GoogleBookID)
+				@Html.Hidden("isComic", false)
+
+				<input id="" type="submit" value="Add" class="btn" />
+			</div>
 			}
 		}
 
@@ -95,31 +95,31 @@
 		{
 			using (Html.BeginForm(MVC.Book.CreateFromSearchModel(comic.id, true), FormMethod.Get))
 			{
-				<div id="book" class="row info" style="padding-bottom: 1em;" data-id="@comic.id">
-					<div class="col-xs-2">
-						<img src="@comic.image.thumb_url" />
-					</div>
-					@*<div class="col-xs-3">
-							@Html.DisplayFor(x => comic.)
-							@Html.HiddenFor(x => comic.Author)
-						</div>*@
-					<div class="col-xs-3">
-						@Html.DisplayFor(x => comic.name)
-						@Html.HiddenFor(x => comic.name)
-					</div>
-					<div class="col-xs-3">
-						@Html.DisplayFor(x => comic.issue_number)
-						@Html.HiddenFor(x => comic.issue_number)
-					</div>
+			<div id="book" class="row info" style="padding-bottom: 1em;" data-id="@comic.id">
+				<div class="col-xs-2">
+					<img src="@comic.image.thumb_url" />
+				</div>
+				@*<div class="col-xs-3">
+						@Html.DisplayFor(x => comic.)
+						@Html.HiddenFor(x => comic.Author)
+					</div>*@
+				<div class="col-xs-3">
+					@Html.DisplayFor(x => comic.name)
+					@Html.HiddenFor(x => comic.name)
+				</div>
+				<div class="col-xs-3">
+					@Html.DisplayFor(x => comic.issue_number)
+					@Html.HiddenFor(x => comic.issue_number)
+				</div>
 
-					<div class="col-xs-2">
-						@Html.DisplayFor(x => comic.cover_date)
-						@Html.HiddenFor(x => comic.cover_date)
-					</div>
-					@Html.Hidden("id", comic.id)
-					@Html.Hidden("isComic", true)
-					<input id="" type="submit" value="Add" class="btn" />
-				</div>}
+				<div class="col-xs-2">
+					@Html.DisplayFor(x => comic.cover_date)
+					@Html.HiddenFor(x => comic.cover_date)
+				</div>
+				@Html.Hidden("id", comic.id)
+				@Html.Hidden("isComic", true)
+				<input id="" type="submit" value="Add" class="btn" />
+			</div>}
 		}
 	</div>
 }

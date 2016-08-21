@@ -135,7 +135,7 @@ namespace UI.Controllers
 		//TODO: add tests and validation
 		[Authorize]
 		[HttpGet]
-		public virtual ActionResult Search(GoogleBooksSearchModel searchModel)
+		public virtual ActionResult Search(BookSearchModel searchModel)
 		{
 			if (!string.IsNullOrWhiteSpace(searchModel.Author) || !string.IsNullOrWhiteSpace(searchModel.Title))
 			{

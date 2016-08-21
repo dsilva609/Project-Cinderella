@@ -305,10 +305,10 @@ namespace UI.Controllers
         }
 
         [NonAction]
-        partial void SearchOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, UI.Models.GoogleBooksSearchModel searchModel);
+        partial void SearchOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, UI.Models.BookSearchModel searchModel);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Search(UI.Models.GoogleBooksSearchModel searchModel)
+        public override System.Web.Mvc.ActionResult Search(UI.Models.BookSearchModel searchModel)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Search);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "searchModel", searchModel);
