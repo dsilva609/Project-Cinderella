@@ -31,9 +31,9 @@ namespace UI.Controllers
 				ViewTitle = "Index",
 				Books = _service.GetAll(User.Identity.GetUserId(), query, NUM_BOOKS_TO_GET, pageNum.GetValueOrDefault()),
 				PageSize = NUM_BOOKS_TO_GET,
-				TotalBooks = _service.GetCount()
+				TotalItems = _service.GetCount()
 			};
-			var pages = Math.Ceiling((double)viewModel.TotalBooks / viewModel.PageSize);
+			var pages = Math.Ceiling((double)viewModel.TotalItems / viewModel.PageSize);
 			viewModel.PageCount = (int)pages;
 
 			return View(viewModel);

@@ -29,9 +29,9 @@ namespace UI.Controllers
 				ViewTitle = "Index",
 				Movies = _service.GetAll(User.Identity.GetUserId(), query, NUM_MOVIES_TO_GET, pageNum.GetValueOrDefault()),
 				PageSize = NUM_MOVIES_TO_GET,
-				TotalMovies = _service.GetCount()
+				TotalItems = _service.GetCount()
 			};
-			var pages = Math.Ceiling((double)viewModel.TotalMovies / viewModel.PageSize);
+			var pages = Math.Ceiling((double)viewModel.TotalItems / viewModel.PageSize);
 			viewModel.PageCount = (int)pages;
 
 			return View(viewModel);

@@ -886,6 +886,7 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BaseViewModel.cs" />
     <Compile Include="Models\BookViewModel.cs" />
     <Compile Include="Models\GameSearchModel.cs" />
     <Compile Include="Models\MovieSearchModel.cs" />
