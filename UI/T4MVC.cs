@@ -104,10 +104,13 @@ namespace Links
             public static readonly string salvattore_min_js = Url("salvattore.min.js");
         }
     
-        public static readonly string jquery_2_2_3_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-2.2.3.intellisense.min.js") ? Url("jquery-2.2.3.intellisense.min.js") : Url("jquery-2.2.3.intellisense.js");
-        public static readonly string jquery_2_2_3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-2.2.3.min.js") ? Url("jquery-2.2.3.min.js") : Url("jquery-2.2.3.js");
-        public static readonly string jquery_2_2_3_min_js = Url("jquery-2.2.3.min.js");
-        public static readonly string jquery_2_2_3_min_map = Url("jquery-2.2.3.min.map");
+        public static readonly string jquery_3_0_0_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-3.0.0.intellisense.min.js") ? Url("jquery-3.0.0.intellisense.min.js") : Url("jquery-3.0.0.intellisense.js");
+        public static readonly string jquery_3_0_0_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-3.0.0.min.js") ? Url("jquery-3.0.0.min.js") : Url("jquery-3.0.0.js");
+        public static readonly string jquery_3_0_0_min_js = Url("jquery-3.0.0.min.js");
+        public static readonly string jquery_3_0_0_min_map = Url("jquery-3.0.0.min.map");
+        public static readonly string jquery_3_0_0_slim_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-3.0.0.slim.min.js") ? Url("jquery-3.0.0.slim.min.js") : Url("jquery-3.0.0.slim.js");
+        public static readonly string jquery_3_0_0_slim_min_js = Url("jquery-3.0.0.slim.min.js");
+        public static readonly string jquery_3_0_0_slim_min_map = Url("jquery-3.0.0.slim.min.map");
         public static readonly string jquery_ui_1_11_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-ui-1.11.2.min.js") ? Url("jquery-ui-1.11.2.min.js") : Url("jquery-ui-1.11.2.js");
         public static readonly string jquery_ui_1_11_2_min_js = Url("jquery-ui-1.11.2.min.js");
         public static readonly string jquery_ui_1_11_2_min_js_map = Url("jquery-ui-1.11.2.min.js.map");
@@ -802,9 +805,11 @@ namespace Links
                 public const string bootstrap_datepicker_min_js = "~/Scripts/bootstrap-datepicker.min.js"; 
                 public const string bootstrap_js = "~/Scripts/bootstrap.js"; 
                 public const string bootstrap_min_js = "~/Scripts/bootstrap.min.js"; 
-                public const string jquery_2_2_3_intellisense_js = "~/Scripts/jquery-2.2.3.intellisense.js"; 
-                public const string jquery_2_2_3_js = "~/Scripts/jquery-2.2.3.js"; 
-                public const string jquery_2_2_3_min_js = "~/Scripts/jquery-2.2.3.min.js"; 
+                public const string jquery_3_0_0_intellisense_js = "~/Scripts/jquery-3.0.0.intellisense.js"; 
+                public const string jquery_3_0_0_js = "~/Scripts/jquery-3.0.0.js"; 
+                public const string jquery_3_0_0_min_js = "~/Scripts/jquery-3.0.0.min.js"; 
+                public const string jquery_3_0_0_slim_js = "~/Scripts/jquery-3.0.0.slim.js"; 
+                public const string jquery_3_0_0_slim_min_js = "~/Scripts/jquery-3.0.0.slim.min.js"; 
                 public const string jquery_ui_1_11_2_js = "~/Scripts/jquery-ui-1.11.2.js"; 
                 public const string jquery_ui_1_11_2_min_js = "~/Scripts/jquery-ui-1.11.2.min.js"; 
                 public const string jquery_ui_1_11_3_js = "~/Scripts/jquery-ui-1.11.3.js"; 
