@@ -54,7 +54,7 @@ namespace BusinessLogic.Services
 			game.BGGID = bgg.ID;
 			game.Title = bgg.name.value;
 			game.ImageUrl = $"http://{bgg.Image.Substring(2)}";
-			game.YearReleased = bgg.yearpublished.value;
+			game.YearReleased = bgg.yearpublished?.value ?? DateTime.Today.Year;
 			game.Type = bgg.type == "boardgame" ? GameTypeEnum.FullGame : GameTypeEnum.Expansion;
 			game.Developer = bgg.Links.FirstOrDefault(x => x.Type == "boardgamedesigner")?.Value;
 			game.Publisher = string.Join(", ", bgg.Links.Where(x => x.Type == "boardgamepublisher").Select(y => y.Value));

@@ -44,7 +44,7 @@ namespace BusinessLogic.Services
 				Author = volume.VolumeInfo.Authors == null ? string.Empty : string.Join(", ", volume.VolumeInfo.Authors),
 				YearReleased =
 					string.IsNullOrWhiteSpace(volume.VolumeInfo.PublishedDate)
-						? 0
+						? DateTime.Today.Year
 						: Convert.ToInt32(volume.VolumeInfo.PublishedDate.Substring(0, 4)),
 				Publisher = volume.VolumeInfo.Publisher ?? string.Empty,
 				Genre = volume.VolumeInfo.Categories == null ? string.Empty : string.Join(", ", volume.VolumeInfo.Categories),
