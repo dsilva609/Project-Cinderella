@@ -28,51 +28,51 @@
 			}
 			<div class="col-xs-6">
 				@Html.LabelFor(m => m.Title)
-				@Html.TextBoxFor(m => m.Title, new {@class = "form-control"})
-				@Html.ValidationMessageFor(m => m.Title, "", new {@class = "text-danger"})
+				@Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
 			</div>
 
 			<div class="col-xs-6">
 				@Html.LabelFor(m => m.Developer)
-				@Html.TextBoxFor(m => m.Developer, new {@class = "form-control"})
-				@Html.ValidationMessageFor(m => m.Developer, "", new {@class = "text-danger"})
+				@Html.TextBoxFor(m => m.Developer, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Developer, "", new { @class = "text-danger" })
 			</div>
 
 			<div class="col-xs-6">
 				@Html.LabelFor(m => m.Publisher)
-				@Html.TextBoxFor(m => m.Publisher, new {@class = "form-control"})
-				@Html.ValidationMessageFor(m => m.Publisher, "", new {@class = "text-danger"})
+				@Html.TextBoxFor(m => m.Publisher, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Publisher, "", new { @class = "text-danger" })
 			</div>
 
 			<div class="col-xs-6">
 				@Html.LabelFor(m => m.YearReleased)
 				@Html.DropDownListFor(m => m.YearReleased, Enumerable.Range(1900, DateTime.Today.Year - 1900 + 1).Reverse().
-					Select(i => new SelectListItem {Value = i.ToString(), Text = i.ToString()}), Model.YearReleased.ToString(), new {@class = "form-control"})
-				@Html.ValidationMessageFor(m => m.YearReleased, "", new {@class = "text-danger"})
+					Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), Model.YearReleased.ToString(), new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.YearReleased, "", new { @class = "text-danger" })
 			</div>
 
 			<div class="col-xs-6">
 				@Html.LabelFor(m => m.Genre)
-				@Html.TextBoxFor(m => m.Genre, new {@class = "form-control"})
-				@Html.ValidationMessageFor(m => m.Genre, "", new {@class = "text-danger"})
+				@Html.TextBoxFor(m => m.Genre, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Genre, "", new { @class = "text-danger" })
 			</div>
 
 			<div class="col-xs-6">
 				@Html.LabelFor(m => m.Rating)
-				@Html.EnumDropDownListFor(m => m.Rating, new {@class = "form-control"})
-				@Html.ValidationMessageFor(m => m.Rating, "", new {@class = "text-danger"})
+				@Html.EnumDropDownListFor(m => m.Rating, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Rating, "", new { @class = "text-danger" })
 			</div>
 
 			<div class="col-xs-6">
 				@Html.LabelFor(m => m.Notes)
-				@Html.TextAreaFor(m => m.Notes, new {@class = "form-control"})
-				@Html.ValidationMessageFor(m => m.Notes, "", new {@class = "text-danger"})
+				@Html.TextAreaFor(m => m.Notes, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Notes, "", new { @class = "text-danger" })
 			</div>
 
 			<div class="col-xs-6">
 				@Html.LabelFor(m => m.ImageUrl)
-				@Html.TextAreaFor(m => m.ImageUrl, new {@class = "form-control"})
-				@Html.ValidationMessageFor(m => m.ImageUrl, "", new {@class = "text-danger"})
+				@Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.ImageUrl, "", new { @class = "text-danger" })
 			</div>
 		</div>
 	</div>
