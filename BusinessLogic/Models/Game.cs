@@ -30,5 +30,8 @@ namespace BusinessLogic.Models
 
 		public string Series { get; set; }
 		public string Country { get; set; }
+
+		public int GiantBombID { get; set; }
+		public int BGGID { get; set; }
 	}
 }

@@ -250,6 +250,10 @@
     <Compile Include="Migrations\201608100056576_Made director required for movies.Designer.cs">
       <DependentUpon>201608100056576_Made director required for movies.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608220004556_added Giant Bomb and BGG ids to game model.cs" />
+    <Compile Include="Migrations\201608220004556_added Giant Bomb and BGG ids to game model.Designer.cs">
+      <DependentUpon>201608220004556_added Giant Bomb and BGG ids to game model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseItem.cs" />
     <Compile Include="Models\BGGModels\BGGGame.cs" />
@@ -403,6 +407,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608100056576_Made director required for movies.resx">
       <DependentUpon>201608100056576_Made director required for movies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608220004556_added Giant Bomb and BGG ids to game model.resx">
+      <DependentUpon>201608220004556_added Giant Bomb and BGG ids to game model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

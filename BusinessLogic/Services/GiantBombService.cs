@@ -51,8 +51,7 @@ namespace BusinessLogic.Services
 			game.ImageUrl = giantBombGame.image.super_url;
 			game.YearReleased = Convert.ToDateTime(giantBombGame.original_release_date).Year;
 			game.Genre = string.Join(", ", giantBombGame.genres.Select(x => x.name));
-			//TODO: add special id field
-			game.Notes = giantBombGame.id.ToString();
+			game.GiantBombID = giantBombGame.id;
 
 			return game;
 		}
