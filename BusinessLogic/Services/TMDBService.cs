@@ -21,7 +21,6 @@ namespace BusinessLogic.Services
             CreateClient();
         }
 
-        //TODO: refactor info model of all results in lists
         public List<TMDBMovie> Search(string title)
         {
             var results = new List<TMDBMovie>();
@@ -32,6 +31,7 @@ namespace BusinessLogic.Services
             return results;
         }
 
+        //TODO: refactor
         public List<TMDBMovie> SearchMovies(string title)
         {
             var response = _client.GetAsync($"search/movie?api_key={Settings.Default.TMDBKey}&query={title}");
@@ -48,7 +48,7 @@ namespace BusinessLogic.Services
 
             var result = response.Result.Content.ReadAsStringAsync().Result;
             var tmdbMovie = JsonConvert.DeserializeObject<TMDBMovie>(result);
-            var movie = ConvertTMDDResultToMovie(tmdbMovie);
+            var movie = ConvertTMDDResultToModelForMovie(tmdbMovie);
 
             return movie;
         }
@@ -72,8 +72,7 @@ namespace BusinessLogic.Services
 
             var result = response.Result.Content.ReadAsStringAsync().Result;
             var tmdbMovie = JsonConvert.DeserializeObject<TMDBMovie>(result);
-            //TODO: create separate method for tv shows
-            var movie = ConvertTMDDResultToModel(tmdbMovie);
+            var movie = ConvertTMDDResultToModelForTV(tmdbMovie);
 
             return movie;
         }
@@ -86,7 +85,7 @@ namespace BusinessLogic.Services
             _client.DefaultRequestHeaders.Add("User-Agent", "Project-Cinderella/1.0 +projectcinderella.azurewebsites.net");
         }
 
-        private Movie ConvertTMDDResultToMovie(TMDBMovie tmdb)
+        private Movie ConvertTMDDResultToModelForMovie(TMDBMovie tmdb)
         {
             var movie = new Movie
             {
@@ -102,7 +101,7 @@ namespace BusinessLogic.Services
             return movie;
         }
 
-        private Movie ConvertTMDDResultToModel(TMDBMovie tmdb)
+        private Movie ConvertTMDDResultToModelForTV(TMDBMovie tmdb)
         {
             var movie = new Movie
             {

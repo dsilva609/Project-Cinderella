@@ -3,9 +3,10 @@ using System.Collections.Generic;
 
 namespace UI.Models
 {
-	public class MovieSearchModel
-	{
-		public string Title { get; set; }
-		public List<TMDBMovie> Results { get; set; }
-	}
+    public class MovieSearchModel
+    {
+        public string Title { get; set; }
+        public List<TMDBMovie> MovieResults { get; set; }
+        public List<TMDBMovie> TVShowResults { get; set; }
+    }
 }
