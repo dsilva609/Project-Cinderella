@@ -52,6 +52,9 @@ namespace BusinessLogic.Models.BGGModels
 		[XmlElement("maxplaytime")]
 		public PlayingTime MaxPlayingTime { get; set; }
 
+		[XmlElement("minage")]
+		public Value MinAge { get; set; }
+
 		[XmlElement("link")]
 		public List<Link> Links { get; set; }
 	}
@@ -105,5 +108,11 @@ namespace BusinessLogic.Models.BGGModels
 
 		[XmlAttribute("value")]
 		public string Value { get; set; }
+	}
+
+	public class Value
+	{
+		[XmlAttribute("value")]
+		public string Val { get; set; }
 	}
 }

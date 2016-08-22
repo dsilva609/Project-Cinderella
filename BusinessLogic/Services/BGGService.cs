@@ -1,4 +1,5 @@
-﻿using BusinessLogic.Models;
+﻿using BusinessLogic.Enums;
+using BusinessLogic.Models;
 using BusinessLogic.Models.BGGModels;
 using BusinessLogic.Services.Interfaces;
 using System;
@@ -49,11 +50,15 @@ namespace BusinessLogic.Services
 		{
 			var game = new Game();
 			var bgg = result.Items.First();
-
+			//TODO: add BGGID field
 			game.Notes = bgg.ID.ToString();
 			game.Title = bgg.name.value;
 			game.ImageUrl = bgg.Image.Substring(2);
 			game.YearReleased = bgg.yearpublished.value;
+			game.Type = bgg.type == "boardgame" ? GameTypeEnum.FullGame : GameTypeEnum.Expansion;
+			game.Developer = bgg.Links.FirstOrDefault(x => x.Type == "boardgamedesigner")?.Value;
+			game.Publisher = string.Join(", ", bgg.Links.Where(x => x.Type == "boardgamepublisher").Select(y => y.Value));
+			game.Genre = string.Join(", ", bgg.Links.Where(x => x.Type == "boardgamecategory").Select(y => y.Value));
 
 			return game;
 		}
