@@ -3,87 +3,101 @@
 <h2>@ViewBag.Title</h2>
 
 <div class="row panel panel-primary">
-	<div class="panel-heading">
-		<h4>
-			Game Information
-		</h4>
-	</div>
-	@using (Html.BeginForm(MVC.Game.Search(), FormMethod.Get))
-	{
-		<div class="panel-body">
-			<div class="col-xs-6">
-				@Html.LabelFor(m => m.Title)
-				@Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
-			</div>
-		</div>
+    <div class="panel-heading">
+        <h4>
+            Game Information
+        </h4>
+    </div>
+    @using (Html.BeginForm(MVC.Game.Search(), FormMethod.Get))
+    {
+        <div class="panel-body">
+            <div class="col-xs-6">
+                @Html.LabelFor(m => m.Title)
+                @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-		<div class="row panel-body">
-			<div class="col-xs-8 col-sm-10">
-				<input id="btnSubmit" type="submit" value="Search" class="btn btn-default btn-block btn-lg" />
-			</div>
-		</div>
-	}
+        <div class="row panel-body">
+            <div class="col-xs-8 col-sm-10">
+                <input id="btnSubmit" type="submit" value="Search" class="btn btn-default btn-block btn-lg" />
+            </div>
+        </div>
+    }
 </div>
 
 <div class="row panel panel-primary">
-	<div class="panel-heading">
-		<h4>
-			Search Results
-		</h4>
-	</div>
-	<div class="panel-body">
-		@if (Model.GiantBombResult != null && Model.GiantBombResult.number_of_page_results > 0)
-		{
-			foreach (var game in Model.GiantBombResult.results)
-			{
-				using (Html.BeginForm(MVC.Game.CreateFromSearchModel(game.id, false), FormMethod.Get))
-				{
-					<div id="game" class="row info" style="padding-bottom: 1em;" data-id="@game.id">
-						<div class="col-xs-2">
-							<img src="@game.image.thumb_url" />
-						</div>
-						<div class="col-xs-3">
-							@Html.DisplayFor(x => game.name)
-						</div>
+    <div class="panel-heading">
+        <h4>
+            Search Results
+        </h4>
+    </div>
+    <div class="panel-body">
+        @if (Model.GiantBombResult != null && Model.GiantBombResult.number_of_page_results > 0)
+        {
+            foreach (var game in Model.GiantBombResult.results)
+            {
+                using (Html.BeginForm(MVC.Game.CreateFromSearchModel(game.id, false), FormMethod.Get))
+                {
+                    <div id="game" class="row info" style="padding-bottom: 1em;" data-id="@game.id">
+                        <div class="col-xs-2">
+                            <img src="@game.image.thumb_url" />
+                        </div>
+                        <div class="col-xs-3">
+                            @Html.DisplayFor(x => game.name)
+                        </div>
 
-						<div class="col-xs-2">
-							@Html.DisplayFor(x => game.original_release_date)
-							</div>
-						@Html.Hidden("id", game.id)
-						@Html.Hidden("isBGG", false)
+                        <div class="col-xs-2">
+                            @Html.DisplayFor(x => game.original_release_date)
+                        </div>
+                        @Html.Hidden("id", game.id)
+                        @Html.Hidden("isBGG", false)
 
-						<input id="" type="submit" value="Add" class="btn" />
-					</div>
-				}
-			}
-		}
+                        <input id="" type="submit" value="Add" class="btn" />
+                    </div>
+                }
+            }
+        }
 
-		@if (Model.BGGResult != null && Model.BGGResult.Items.Count > 0)
-		{
-			foreach (var game in Model.BGGResult.Items)
-			{
-				using (Html.BeginForm(MVC.Game.CreateFromSearchModel(game.ID, true), FormMethod.Get))
-				{
-					<div id="game" class="row info" style="padding-bottom: 1em;" data-id="@game.ID">
-						<div class="col-xs-2">
-							<img src="@game.Thumbnail" />
-						</div>
-						<div class="col-xs-3">
-							@Html.DisplayFor(x => game.name.value)
-						</div>
+        @if (Model.BGGResult != null && Model.BGGResult.Items.Count > 0)
+        {
+            foreach (var game in Model.BGGResult.Items)
+            {
+                using (Html.BeginForm(MVC.Game.CreateFromSearchModel(game.ID, true), FormMethod.Get))
+                {
+                    <div id="game" class="row info" style="padding-bottom: 1em;" data-id="@game.ID">
+                        <div class="col-xs-2">
+                            <img src="@game.Thumbnail" />
+                        </div>
+                        <div class="col-xs-3">
+                            @Html.DisplayFor(x => game.name.value)
+                        </div>
 
-						<div class="col-xs-2">
-							@Html.DisplayFor(x => game.yearpublished.value)
-						</div>
-						@Html.Hidden("id", game.ID)
+                        <div class="col-xs-2">
+                            @Html.DisplayFor(x => game.yearpublished.value)
+                        </div>
+                        @Html.Hidden("id", game.ID)
 
-						@Html.Hidden("isBGG", true)
+                        @Html.Hidden("isBGG", true)
 
-						<input id="" type="submit" value="Add" class="btn" />
-					</div>
-				}
-			}
-		}
-	</div>
-</div>	
+                        <input id="" type="submit" value="Add" class="btn" />
+                    </div>
+                }
+            }
+        }
+    </div>
+</div>
+
+<div class="container text-center">
+    <div class="row">
+        <img src="@Links.Content.Images.GiantBombLogo_jpg" height="75" width="150" />
+    </div>
+    <div class="row">This product uses the Giant Bomb API but is not endorsed or certified by Giant Bomb.</div>
+</div>
+
+<div class="container text-center">
+    <div class="row">
+        <img src="@Links.Content.Images.Geek_Head_jpg" height="75" width="75" />
+    </div>
+    <div class="row">This product uses the Board Game Geek API but is not endorsed or certified by Board Game Geek.</div>
+</div>

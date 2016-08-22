@@ -252,7 +252,11 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Images\ajax-loader.gif" />
     <Content Include="Content\Images\Book.jpg" />
+    <Content Include="Content\Images\Discogs.Logo.png" />
     <Content Include="Content\Images\Game.jpg" />
+    <Content Include="Content\Images\Geek_Head.jpg" />
+    <Content Include="Content\Images\GiantBombLogo.jpg" />
+    <Content Include="Content\Images\GoogleBooksLogo.png" />
     <Content Include="Content\Images\icons-png\action-black.png" />
     <Content Include="Content\Images\icons-png\action-white.png" />
     <Content Include="Content\Images\icons-png\alert-black.png" />
