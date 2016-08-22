@@ -61,7 +61,7 @@ namespace BusinessLogic.Services
 
 		public Game GetByID(int id, string userID) => _getEntityByIDComponent.Execute(_repository, id, userID);
 
-		public void Edit(int id, Game game) => _editEntityComponent.Execute(_repository, game);
+		public void Edit(Game game) => _editEntityComponent.Execute(_repository, game);
 
 		public void Delete(int id, string userID) => _deleteEntityComponent.Execute(_repository, id, userID);
 

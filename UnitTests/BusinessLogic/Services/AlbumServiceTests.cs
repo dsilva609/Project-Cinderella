@@ -96,7 +96,7 @@ namespace UnitTests.BusinessLogic.Services
 		public void ItUpdatesRecords()
 		{
 			//--Act
-			_service.Object.Edit(_testModel2.ID, _testModel2);
+			_service.Object.Edit(_testModel2);
 
 			//--Assert
 			_repo.Verify(mock => mock.Edit(It.Is<Album>(x => x.Equals(_testModel2))));

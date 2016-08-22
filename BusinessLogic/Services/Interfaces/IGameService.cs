@@ -11,7 +11,7 @@ namespace BusinessLogic.Services.Interfaces
 
 		Game GetByID(int id, string userID);
 
-		void Edit(int id, Game game);
+		void Edit(Game game);
 
 		void Delete(int id, string userID);
 

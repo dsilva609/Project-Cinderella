@@ -860,7 +860,6 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Common\ElmahResult.cs" />
-    <Compile Include="Common\ProjectCinderellaContextWrapper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\GameController.cs" />

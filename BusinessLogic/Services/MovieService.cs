@@ -61,7 +61,7 @@ namespace BusinessLogic.Services
 
 		public Movie GetByID(int id, string userID) => _getEntityByIDComponent.Execute(_repository, id, userID);
 
-		public void Edit(int id, Movie movie) => _editEntityComponent.Execute(_repository, movie);
+		public void Edit(Movie movie) => _editEntityComponent.Execute(_repository, movie);
 
 		public void Delete(int id, string userID) => _deleteEntityComponent.Execute(_repository, id, userID);
 

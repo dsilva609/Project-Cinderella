@@ -40,7 +40,6 @@ namespace BusinessLogic.Services
 			_addEntityComponent.Execute(_repository, album);
 		}
 
-		//TODO: probably should split this up into separate methods
 		public List<Album> GetAll(string userID = "", string query = "", int numToTake = 0, int? pageNum = 1 /*bool sortAscending, string sortPreference*/)
 		{
 			var albumList = _getEntityListComponent.Execute(_repository).OrderBy(x => x.Artist).ThenBy(y => y.Title).ToList();
@@ -82,7 +81,7 @@ namespace BusinessLogic.Services
 		public Album GetByID(int id, string userID) =>
 			_getEntityByIDComponent.Execute(_repository, id, userID);
 
-		public void Edit(int id, Album album)
+		public void Edit(Album album)
 		{
 			_editEntityComponent.Execute(_repository, album);
 			if (album.Tracklist.Count > 0)

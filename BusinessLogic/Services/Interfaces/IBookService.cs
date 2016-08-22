@@ -11,7 +11,7 @@ namespace BusinessLogic.Services.Interfaces
 
 		Book GetByID(int id, string userID);
 
-		void Edit(int id, Book book);
+		void Edit(Book book);
 
 		void Delete(int id, string userID);
 

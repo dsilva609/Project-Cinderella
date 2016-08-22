@@ -1,11 +1,11 @@
 ﻿using BusinessLogic.Models;
-using Google.Apis.Books.v1.Data;
+using System.Collections.Generic;
 
 namespace BusinessLogic.Services.Interfaces
 {
 	public interface IGoogleBookService
 	{
-		Volumes Search(string author, string title);
+		List<Book> Search(string author, string title);
 
 		Book SearchByID(string id);
 	}

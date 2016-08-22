@@ -13,7 +13,5 @@ namespace BusinessLogic.Services.Interfaces
 		List<TMDBMovie> SearchTV(string title);
 
 		Movie SearchTVShowByID(int id);
-
-		List<TMDBMovie> Search(string title);
 	}
 }

@@ -4,6 +4,7 @@ using Google.Apis.Books.v1;
 using Google.Apis.Books.v1.Data;
 using Google.Apis.Services;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace BusinessLogic.Services
@@ -18,7 +19,7 @@ namespace BusinessLogic.Services
 			_service = new VolumesResource(client);
 		}
 
-		public Volumes Search(string author, string title)
+		public List<Book> Search(string author, string title)
 		{
 			var query = string.Empty;
 			if (!string.IsNullOrWhiteSpace(author) && !string.IsNullOrWhiteSpace(title))
@@ -30,30 +31,42 @@ namespace BusinessLogic.Services
 
 			var result = _service.List(query);
 
-			return result.Execute();
+			var volumes = result.Execute().Items;
+			var books = new List<Book>();
+
+			if (volumes.Count > 0)
+				books.AddRange(volumes.Select(ConvertVolumeToBook));
+
+			return books;
 		}
 
 		public Book SearchByID(string id)
 		{
 			var volume = _service.Get(id).Execute();
 
-			var book = new Book
-			{
-				GoogleBookID = volume.Id,
-				Title = volume.VolumeInfo.Title,
-				Author = volume.VolumeInfo.Authors == null ? string.Empty : string.Join(", ", volume.VolumeInfo.Authors),
-				YearReleased =
-					string.IsNullOrWhiteSpace(volume.VolumeInfo.PublishedDate)
-						? DateTime.Today.Year
-						: Convert.ToInt32(volume.VolumeInfo.PublishedDate.Substring(0, 4)),
-				Publisher = volume.VolumeInfo.Publisher ?? string.Empty,
-				Genre = volume.VolumeInfo.Categories == null ? string.Empty : string.Join(", ", volume.VolumeInfo.Categories),
-				ISBN10 = volume.VolumeInfo.IndustryIdentifiers.SingleOrDefault(x => x.Type == "ISBN_10")?.Identifier,
-				ISBN13 = volume.VolumeInfo.IndustryIdentifiers.SingleOrDefault(x => x.Type == "ISBN_13")?.Identifier,
-				Language = volume.VolumeInfo.Language,
-				ImageUrl = string.Format("https://books.google.com/books?id={0}&printsec=frontcover&img=1&zoom=0&edge=curl&source=gbs_api", volume.Id),
-				PageCount = volume.VolumeInfo.PageCount.GetValueOrDefault()
-			};
+			var book = ConvertVolumeToBook(volume);
+
+			return book;
+		}
+
+		private Book ConvertVolumeToBook(Volume volume)
+		{
+			var book = new Book();
+
+			book.GoogleBookID = volume.Id;
+			book.Title = volume.VolumeInfo.Title;
+			book.Author = volume.VolumeInfo.Authors == null ? string.Empty : string.Join(", ", volume.VolumeInfo.Authors);
+			book.YearReleased =
+				string.IsNullOrWhiteSpace(volume.VolumeInfo.PublishedDate)
+					? DateTime.Today.Year
+					: Convert.ToInt32(volume.VolumeInfo.PublishedDate.Substring(0, 4));
+			book.Publisher = volume.VolumeInfo.Publisher ?? string.Empty;
+			book.Genre = volume.VolumeInfo.Categories == null ? string.Empty : string.Join(", ", volume.VolumeInfo.Categories);
+			book.ISBN10 = volume.VolumeInfo.IndustryIdentifiers?.SingleOrDefault(x => x.Type == "ISBN_10")?.Identifier;
+			book.ISBN13 = volume.VolumeInfo.IndustryIdentifiers?.SingleOrDefault(x => x.Type == "ISBN_13")?.Identifier;
+			book.Language = volume.VolumeInfo.Language;
+			book.ImageUrl = volume.VolumeInfo.ImageLinks == null ? string.Empty : volume.VolumeInfo?.ImageLinks?.Thumbnail;
+			book.PageCount = volume.VolumeInfo.PageCount.GetValueOrDefault();
 
 			return book;
 		}

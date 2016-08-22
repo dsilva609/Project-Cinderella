@@ -11,7 +11,7 @@ namespace BusinessLogic.Services.Interfaces
 
 		Movie GetByID(int id, string userID);
 
-		void Edit(int id, Movie movie);
+		void Edit(Movie movie);
 
 		void Delete(int id, string userID);
 

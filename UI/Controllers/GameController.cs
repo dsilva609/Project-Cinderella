@@ -103,10 +103,10 @@ namespace UI.Controllers
 					$"A Game of Title: {game.Title}, Developer: {game.Developer}, Media Type: {game.MediaType} already exists.", "Duplicate Game");
 				return View(game);
 			}
-			//--TODO: why is id needed?
+
 			//TODO: make sure user id is the same so as not to change other users data
 			game.DateUpdated = DateTime.Now;
-			_service.Edit(game.ID, game);
+			_service.Edit(game);
 
 			ShowStatusMessage(MessageTypeEnum.success,
 				$"Game of Title {game.Title}, Developer: {game.Developer}, Media Type: {game.MediaType} updated.", "Update Successful");

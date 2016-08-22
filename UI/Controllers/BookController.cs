@@ -1,10 +1,8 @@
 ﻿using BusinessLogic.Enums;
 using BusinessLogic.Models;
 using BusinessLogic.Services.Interfaces;
-using Google.Apis.Books.v1.Data;
 using Microsoft.AspNet.Identity;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using UI.Models;
@@ -111,10 +109,10 @@ namespace UI.Controllers
 					$"A book of Title: {book.Title}, Author: {book.Author}, Media Type: {book.Media} already exists.", "Duplicate Book");
 				return View(book);
 			}
-			//--TODO: why is id needed?
+
 			//TODO: make sure user id is the same so as not to change other users data
 			book.DateUpdated = DateTime.Now;
-			_service.Edit(book.ID, book);
+			_service.Edit(book);
 
 			ShowStatusMessage(MessageTypeEnum.success, $"Book of Title {book.Title}, Author: {book.Author}, Media Type: {book.Media} updated.",
 				"Update Successful");
@@ -138,46 +136,11 @@ namespace UI.Controllers
 		public virtual ActionResult Search(BookSearchModel searchModel)
 		{
 			if (!string.IsNullOrWhiteSpace(searchModel.Author) || !string.IsNullOrWhiteSpace(searchModel.Title))
-			{
-				//TODO: change this to local variable
-				var result = new List<Volume>();
-				var response = _googleBookService.Search(searchModel.Author, searchModel.Title)?.Items;
-				if (response != null)
-					result = (List<Volume>)response;
-
-				searchModel.Volumes = new List<Book>();
-
-				//TODO: move this to service
-				if (result.Count > 0)
-				{
-					foreach (var volume in result)
-					{
-						searchModel.Volumes.Add(new Book
-						{
-							GoogleBookID = volume.Id,
-							UserID = User.Identity.GetUserId(),
-							Title = volume.VolumeInfo.Title,
-							Author = volume.VolumeInfo.Authors == null ? string.Empty : string.Join(", ", volume.VolumeInfo.Authors),
-							YearReleased =
-								string.IsNullOrWhiteSpace(volume.VolumeInfo.PublishedDate)
-									? 0
-									: Convert.ToInt32(volume.VolumeInfo.PublishedDate.Substring(0, 4)),
-							Publisher = volume.VolumeInfo.Publisher ?? string.Empty,
-							Genre = volume.VolumeInfo.Categories == null ? string.Empty : string.Join(", ", volume.VolumeInfo.Categories),
-							ISBN10 = volume.VolumeInfo.IndustryIdentifiers?.SingleOrDefault(x => x.Type == "ISBN_10")?.Identifier,
-							ISBN13 = volume.VolumeInfo.IndustryIdentifiers?.SingleOrDefault(x => x.Type == "ISBN_13")?.Identifier,
-							Language = volume.VolumeInfo.Language,
-							ImageUrl = volume.VolumeInfo.ImageLinks == null ? string.Empty : (volume.VolumeInfo?.ImageLinks?.Thumbnail)
-						});
-					}
-				}
-			}
+				searchModel.Volumes = _googleBookService.Search(searchModel.Author, searchModel.Title);
 
 			//TODO: add author to search
 			if (!string.IsNullOrWhiteSpace(searchModel.Title))
-			{
 				searchModel.ComicsVineResult = _comicVineService.Search(searchModel.Title);
-			}
 
 			ViewBag.Title = "Book Search";
 			return View(searchModel);
