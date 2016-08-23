@@ -141,6 +141,12 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult Search(GameSearchModel searchModel)
 		{
+			if (Request.UrlReferrer?.LocalPath == "/Game/Search" && string.IsNullOrWhiteSpace(searchModel.Title))
+			{
+				ShowStatusMessage(MessageTypeEnum.error, "Please enter search terms.", "Search Error");
+				return View(searchModel);
+			}
+
 			if (!string.IsNullOrWhiteSpace(searchModel.Title))
 			{
 				searchModel.GiantBombResult = _giantBombService.Search(searchModel.Title);

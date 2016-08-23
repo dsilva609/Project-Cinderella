@@ -153,6 +153,7 @@
 						@if (User.Identity.IsAuthenticated)
 						{
 							<div>@Html.ActionLink("Add Movie", MVC.Movie.Create())</div>
+							<div>@Html.ActionLink("Search TMDB", MVC.Movie.Search())</div>
 							<div>
 								@using (Html.BeginForm(MVC.Movie.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
 								{
@@ -181,6 +182,7 @@
 						@if (User.Identity.IsAuthenticated)
 						{
 							<div>@Html.ActionLink("Add Game", MVC.Game.Create())</div>
+							<div>@Html.ActionLink("Search Giant Bomb/BGG", MVC.Game.Search())</div>
 							<div>
 								@using (Html.BeginForm(MVC.Game.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
 								{

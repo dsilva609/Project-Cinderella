@@ -200,6 +200,12 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult Search(DiscogsSearchModel searchModel)
 		{
+			if (Request.UrlReferrer?.LocalPath == "/Album/Search" && string.IsNullOrWhiteSpace(searchModel.Artist) && string.IsNullOrWhiteSpace(searchModel.AlbumName))
+			{
+				ShowStatusMessage(MessageTypeEnum.error, "Please enter search terms.", "Search Error");
+				return View(searchModel);
+			}
+
 			if (!string.IsNullOrWhiteSpace(searchModel.Artist) || !string.IsNullOrWhiteSpace(searchModel.AlbumName))
 			{
 				searchModel.Results = _discogsService.Search(searchModel.Artist, searchModel.AlbumName);

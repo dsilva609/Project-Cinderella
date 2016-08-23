@@ -139,6 +139,12 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult Search(MovieSearchModel searchModel)
 		{
+			if (Request.UrlReferrer?.LocalPath == "/Movie/Search" && string.IsNullOrWhiteSpace(searchModel.Title))
+			{
+				ShowStatusMessage(MessageTypeEnum.error, "Please enter search terms.", "Search Error");
+				return View(searchModel);
+			}
+
 			if (!string.IsNullOrWhiteSpace(searchModel.Title))
 			{
 				searchModel.MovieResults = _tmdbService.SearchMovies(searchModel.Title);

@@ -142,6 +142,12 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult Search(BookSearchModel searchModel)
 		{
+			if (Request.UrlReferrer?.LocalPath == "/Book/Search" && string.IsNullOrWhiteSpace(searchModel.Author) && string.IsNullOrWhiteSpace(searchModel.Title))
+			{
+				ShowStatusMessage(MessageTypeEnum.error, "Please enter search terms.", "Search Error");
+				return View(searchModel);
+			}
+
 			if (!string.IsNullOrWhiteSpace(searchModel.Author) || !string.IsNullOrWhiteSpace(searchModel.Title))
 				searchModel.Volumes = _googleBookService.Search(searchModel.Author, searchModel.Title);
 
