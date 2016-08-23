@@ -1,10 +1,10 @@
 ﻿using BusinessLogic.Models;
-using System.Collections.Generic;
+using PagedList;
 
 namespace UI.Models
 {
-	public class AlbumViewModel : BaseViewModel
-	{
-		public List<Album> Albums { get; set; }
-	}
+    public class AlbumViewModel : BaseViewModel
+    {
+        public IPagedList<Album> Albums { get; set; }
+    }
 }
