@@ -9,19 +9,25 @@
 		</h4>
 	</div>
 	<div class="panel-body">
+		<div class="animate-box item col-sm-6">
+			<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Director - @Model.Title (@Model.YearReleased)">
+				<img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" class="img-rounded" style="height: 350px; width: 250px;">
+			</a>
+		</div>
+
 		<div class="col-xs-6">
 			@Html.LabelFor(m => m.Title):
-			@Html.DisplayFor(m => m.Title, new { @class = "form-control" })
+			@Html.DisplayFor(m => m.Title, new {@class = "form-control"})
 		</div>
 
 		<div class="col-xs-6">
 			@Html.LabelFor(m => m.Director):
-			@Html.DisplayFor(m => m.Director, new { @class = "form-control" })
+			@Html.DisplayFor(m => m.Director, new {@class = "form-control"})
 		</div>
 
 		<div class="col-xs-6">
 			@Html.LabelFor(m => m.Distributor):
-			@Html.DisplayFor(m => m.Distributor, new { @class = "form-control" })
+			@Html.DisplayFor(m => m.Distributor, new {@class = "form-control"})
 		</div>
 
 		<div class="col-xs-6">
@@ -31,12 +37,12 @@
 
 		<div class="col-xs-6">
 			@Html.LabelFor(m => m.Genre):
-			@Html.DisplayFor(m => m.Genre, new { @class = "form-control" })
+			@Html.DisplayFor(m => m.Genre, new {@class = "form-control"})
 		</div>
 
 		<div class="col-xs-6">
 			@Html.LabelFor(m => m.Notes):
-			@Html.DisplayFor(m => m.Notes, new { @class = "form-control" })
+			@Html.DisplayFor(m => m.Notes, new {@class = "form-control"})
 		</div>
 	</div>
 </div>
