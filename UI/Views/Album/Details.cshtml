@@ -6,11 +6,17 @@
 </script>
 
 <h2>Details</h2>
-
-<div class="row panel panel-primary">
-	<div class="panel-heading">
-		<h4>Album Information</h4>
+<div data-toggle="collapse" data-parent="#accordion" href="#album-info">
+	<div class="row panel panel-primary panel-collapse">
+		<div class="panel-heading">
+			<h4>
+				Album Information
+				<span class="fa fa-chevron-circle-down"></span>
+			</h4>
+		</div>
 	</div>
+</div>
+<div id="album-info" class="collapse in">
 	<div class="panel-body">
 		<div class="animate-box item col-sm-6">
 			<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Artist - @Model.Title (@Model.YearReleased)">
@@ -49,14 +55,17 @@
 
 @if (Model.Tracklist != null)
 {
-	<div class="row panel panel-primary">
-		<div class="panel-heading">
-			<h4>
-				Track List
-			</h4>
+	<div data-toggle="collapse" data-parent="#accordion" href="#track-list">
+		<div class="row panel panel-primary panel-collapse">
+			<div class="panel-heading">
+				<h4>
+					Track List
+					<span class="fa fa-chevron-circle-down"></span>
+				</h4>
+			</div>
 		</div>
 	</div>
-
+	<div id="track-list" class="collapse in">
 		<div class="panel-body">
 			@for (var index = 0; index < Model.Tracklist.Count; index++)
 			{
@@ -67,11 +76,19 @@
 				</div>
 			}
 		</div>
-}
-<div class="row panel panel-primary">
-	<div class="panel-heading">
-		<h4>Media Information</h4>
 	</div>
+}
+<div data-toggle="collapse" data-parent="#accordion" href="#media-info">
+	<div class="row panel panel-primary panel-collapse">
+		<div class="panel-heading">
+			<h4>
+				Media Information
+				<span class="fa fa-chevron-circle-down"></span>
+			</h4>
+		</div>
+	</div>
+</div>
+<div id="media-info" class="collapse in">
 	<div class="panel-body">
 		<div>
 			@Html.DisplayNameFor(m => m.MediaType):
@@ -94,10 +111,17 @@
 		</div>
 	</div>
 </div>
-<div class="row panel panel-primary">
-	<div class="panel-heading">
-		<h4>Purchase Information</h4>
+<div data-toggle="collapse" data-parent="#accordion" href="#purchase-info">
+	<div class="row panel panel-primary panel-collapse">
+		<div class="panel-heading">
+			<h4>
+				Purchase Information
+				<span class="fa fa-chevron-circle-down"></span>
+			</h4>
+		</div>
 	</div>
+</div>
+<div id="purchase-info" class="collapse in">
 	<div class="panel-body">
 		<div>
 			@Html.DisplayNameFor(m => m.DatePurchased):

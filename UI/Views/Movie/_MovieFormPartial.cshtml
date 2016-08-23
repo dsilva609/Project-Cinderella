@@ -1,78 +1,89 @@
 ﻿@model BusinessLogic.Models.Movie
 
-@Html.AntiForgeryToken()
-
 <script>
 	var deleteUrl = '@Url.Action(MVC.Movie.Delete())';
 </script>
 
-<div>
-	@Html.HiddenFor(m => m.UserID)
-	@Html.HiddenFor(m => m.DateAdded)
-	<div class="row panel panel-primary">
-		<div class="panel-heading">
-			<h4>
-				Movie Information
-			</h4>
+@Html.AntiForgeryToken()
+@Html.HiddenFor(m => m.UserID)
+@Html.HiddenFor(m => m.DateAdded)
+
+<div data-toggle="collapse" data-parent="#accordion" href="#movie-info">
+<div class="row panel panel-primary panel-collapse">
+	<div class="panel-heading">
+		<h4>
+			Movie Information
+			<span class="fa fa-chevron-circle-down"></span>
+		</h4>
+	</div>
+</div>
+</div>
+	<div id="movie-info" class="collapse in">
+	<div class="panel-body">
+		@if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+		{
+			<div class="animate-box item col-sm-6">
+				<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Title (@Model.YearReleased)">
+					<img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" class="img-rounded" style="height: 350px; width: 250px;">
+				</a>
+			</div>
+		}
+
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.Title)
+			@Html.TextBoxFor(m => m.Title, new {@class = "form-control"})
+			@Html.ValidationMessageFor(m => m.Title, "", new {@class = "text-danger"})
 		</div>
-		<div class="panel-body">
-			@if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
-			{
-				<div class="animate-box item col-sm-6">
-					<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Title (@Model.YearReleased)">
-						<img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" class="img-rounded" style="height: 350px; width: 250px;">
-					</a>
-				</div>
-			}
 
-			<div class="col-xs-6">
-				@Html.LabelFor(m => m.Title)
-				@Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
-			</div>
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.Director)
+			@Html.TextBoxFor(m => m.Director, new {@class = "form-control"})
+			@Html.ValidationMessageFor(m => m.Director, "", new {@class = "text-danger"})
+		</div>
 
-			<div class="col-xs-6">
-				@Html.LabelFor(m => m.Director)
-				@Html.TextBoxFor(m => m.Director, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.Director, "", new { @class = "text-danger" })
-			</div>
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.Distributor)
+			@Html.TextBoxFor(m => m.Distributor, new {@class = "form-control"})
+			@Html.ValidationMessageFor(m => m.Distributor, "", new {@class = "text-danger"})
+		</div>
 
-			<div class="col-xs-6">
-				@Html.LabelFor(m => m.Distributor)
-				@Html.TextBoxFor(m => m.Distributor, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.Distributor, "", new { @class = "text-danger" })
-			</div>
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.YearReleased)
+			@Html.DropDownListFor(m => m.YearReleased, Enumerable.Range(1900, DateTime.Today.Year - 1900 + 1).Reverse().
+				Select(i => new SelectListItem {Value = i.ToString(), Text = i.ToString()}), Model.YearReleased.ToString(), new {@class = "form-control"})
+			@Html.ValidationMessageFor(m => m.YearReleased, "", new {@class = "text-danger"})
+		</div>
 
-			<div class="col-xs-6">
-				@Html.LabelFor(m => m.YearReleased)
-				@Html.DropDownListFor(m => m.YearReleased, Enumerable.Range(1900, DateTime.Today.Year - 1900 + 1).Reverse().
-					Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), Model.YearReleased.ToString(), new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.YearReleased, "", new { @class = "text-danger" })
-			</div>
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.Genre)
+			@Html.TextBoxFor(m => m.Genre, new {@class = "form-control"})
+			@Html.ValidationMessageFor(m => m.Genre, "", new {@class = "text-danger"})
+		</div>
 
-			<div class="col-xs-6">
-				@Html.LabelFor(m => m.Genre)
-				@Html.TextBoxFor(m => m.Genre, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.Genre, "", new { @class = "text-danger" })
-			</div>
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.Notes)
+			@Html.TextAreaFor(m => m.Notes, new {@class = "form-control"})
+			@Html.ValidationMessageFor(m => m.Notes, "", new {@class = "text-danger"})
+		</div>
 
-			<div class="col-xs-6">
-				@Html.LabelFor(m => m.Notes)
-				@Html.TextAreaFor(m => m.Notes, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.Notes, "", new { @class = "text-danger" })
-			</div>
-
-			<div class="col-xs-6">
-				@Html.LabelFor(m => m.ImageUrl)
-				@Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.ImageUrl, "", new { @class = "text-danger" })
-			</div>
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.ImageUrl)
+			@Html.TextBoxFor(m => m.ImageUrl, new {@class = "form-control"})
+			@Html.ValidationMessageFor(m => m.ImageUrl, "", new {@class = "text-danger"})
 		</div>
 	</div>
-	<div class="row panel panel-primary">
+</div>
+<div data-toggle="collapse" data-parent="#accordion" href="#media-info">
+	<div class="row panel panel-primary panel-collapse">
 		<div class="panel-heading">
-			<h4>Media Information</h4>
+			<h4>
+				Media Information
+				<span class="fa fa-chevron-circle-down"></span>
+			</h4>
 		</div>
+	</div>
+</div>
+	<div id="media-info" class="collapse in">
 		<div class="panel-body">
 			<div class="col-xs-6">
 				@Html.LabelFor(m => m.Type)
@@ -94,10 +105,17 @@
 		</div>
 	</div>
 
-	<div class="row panel panel-primary">
-		<div class="panel-heading">
-			<h4>Purchase Information</h4>
+	<div data-toggle="collapse" data-parent="#accordion" href="#purchase-info">
+		<div class="row panel panel-primary panel-collapse">
+			<div class="panel-heading">
+				<h4>
+					Purchase Information
+					<span class="fa fa-chevron-circle-down"></span>
+				</h4>
+			</div>
 		</div>
+	</div>
+	<div id="purchase-info" class="collapse in">
 		<div class="panel-body">
 			<div class="col-xs-6">
 				@Html.LabelFor(m => m.DatePurchased)
@@ -138,4 +156,3 @@
 			</div>
 			}
 	</div>
-</div>

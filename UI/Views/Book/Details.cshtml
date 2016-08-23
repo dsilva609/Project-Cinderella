@@ -1,13 +1,17 @@
 ﻿@model BusinessLogic.Models.Book
 
 <h2>Details</h2>
-
-<div class="row panel panel-primary">
-	<div class="panel-heading">
-		<h4>
-			Book Information
-		</h4>
+<div data-toggle="collapse" data-parent="#accordion" href="#book-info">
+	<div class="row panel panel-primary panel-collapse">
+		<div class="panel-heading">
+			<h4>
+				Book Information
+				<span class="fa fa-chevron-circle-down"></span>
+			</h4>
+		</div>
 	</div>
+</div>
+<div id="book-info" class="collapse in">
 	<div class="panel-body">
 		<div class="animate-box item col-sm-6">
 			<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Book_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Author - @Model.Title (@Model.YearReleased)">
@@ -55,10 +59,17 @@
 		</div>
 	</div>
 </div>
-<div class="row panel panel-primary">
-	<div class="panel-heading">
-		<h4>Media Information</h4>
+<div data-toggle="collapse" data-parent="#accordion" href="#media-info">
+	<div class="row panel panel-primary panel-collapse">
+		<div class="panel-heading">
+			<h4>
+				Media Information
+				<span class="fa fa-chevron-circle-down"></span>
+			</h4>
+		</div>
 	</div>
+</div>
+<div id="media-info" class="collapse in">
 	<div class="panel-body">
 		<div class="col-xs-6">
 			@Html.LabelFor(m => m.Type):
@@ -86,10 +97,17 @@
 		</div>
 	</div>
 </div>
-<div class="row panel panel-primary">
-	<div class="panel-heading">
-		<h4>Purchase Information</h4>
+<div data-toggle="collapse" data-parent="#accordion" href="#purchase-info">
+	<div class="row panel panel-primary panel-collapse">
+		<div class="panel-heading">
+			<h4>
+				Purchase Information
+				<span class="fa fa-chevron-circle-down"></span>
+			</h4>
+		</div>
 	</div>
+</div>
+<div id="purchase-info" class="collapse in">
 	<div class="panel-body">
 		<div class="col-xs-6">
 			@Html.LabelFor(m => m.DatePurchased):

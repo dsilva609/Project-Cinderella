@@ -43,9 +43,12 @@ Views.Shared.Layout = (function() {
       deleteItem($(this));
       return false;
     });
-    return $('#deleteBtn').on("click", function() {
+    $('#deleteBtn').on("click", function() {
       deleteItem($(this));
       return false;
+    });
+    return $('.panel-collapse').on("click", function() {
+      return $(this).find("span").toggleClass("fa-chevron-circle-down fa-chevron-circle-up");
     });
   };
 
