@@ -56,3 +56,6 @@ body {
 .btn-primary {
   background: #007aac; }
 
+select {
+  height: 5rem !important; }
+
