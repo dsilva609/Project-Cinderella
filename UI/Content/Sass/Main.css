@@ -1,4 +1,4 @@
-﻿a {
+a {
   color: #007aac; }
 
 body {
@@ -36,7 +36,6 @@ body {
 
 #fh5co-header .navbar-brand {
   color: #007aac; }
-
 #fh5co-header .navbar-brand:hover {
   color: #ffff66; }
 
@@ -55,3 +54,7 @@ body {
 .btn-primary {
   background: #007aac; }
 
+.pre-scrollable {
+  max-height: 100%; }
+
+/*# sourceMappingURL=Main.css.map */
