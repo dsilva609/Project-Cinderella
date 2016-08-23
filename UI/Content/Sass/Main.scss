@@ -66,6 +66,7 @@ body {
 
 #fh5co-offcanvass {
 	background-color: $side-menu-color;
+	max-height: 100%;
 }
 
 .navbar-brand {
@@ -82,8 +83,4 @@ body {
 
 .btn-primary {
 	background: $body-color;
-}
-
-.pre-scrollable {
-	max-height:100%;
 }

@@ -123,6 +123,13 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult Delete(int id)
 		{
+			var model = _service.GetByID(id, User.Identity.GetUserId());
+			if (model.UserID != User.Identity.GetUserId())
+			{
+				ShowStatusMessage(MessageTypeEnum.error, "This book cannot be deleted by another user", "Delete Failure");
+				return RedirectToAction(MVC.Book.Index());
+			}
+
 			_service.Delete(id, User.Identity.GetUserId());
 
 			ShowStatusMessage(MessageTypeEnum.success, "", "Book Deleted Successfully");
