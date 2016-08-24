@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
+@using PagedList.Mvc
 @model UI.Models.GameViewModel
 @{
 	ViewBag.Title = Model.ViewTitle;
@@ -28,7 +29,7 @@
 	<div class="col-md-4text-right" style="padding-top: 1.25em; display: inline-flex;">
 		@using (Html.BeginForm(MVC.Game.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
 		{
-			@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
+			<input class="form-control" id="query" name="query" placeholder="Search" type="text" value="@ViewBag.Filter">
 			<button type="submit" class="btn btn-default">
 				<span class="fa fa-search"></span>
 			</button>
@@ -67,13 +68,4 @@
 	</div>
 </div>
 
-<div class="row">
-	<div class="pagination-lg">
-		@for (var i = 0; i < Model.PageCount; i++)
-		{
-			<div class="page-item">
-				@Html.ActionLink((i + 1).ToString(), MVC.Game.Index("", i + 1), new { @class = "page-link" })
-			</div>
-		}
-	</div>
-</div>
+@Html.PagedListPager(Model.Games, page => Url.Action("Index", new { query = ViewBag.query, filter = ViewBag.Filter, page }))

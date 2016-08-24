@@ -20,7 +20,7 @@ namespace UnitTests.UI.Controllers
 			_controller.Get<IBookService>().Expect(x => x.GetAll(Arg<string>.Is.Anything)).Return(new List<Book>());
 
 			//--Act
-			var result = _controller.ClassUnderTest.Index(string.Empty, 1) as ViewResult;
+			var result = _controller.ClassUnderTest.Index(string.Empty, string.Empty, 1) as ViewResult;
 
 			//--Assert
 			Assert.AreEqual(string.Empty, result.ViewName);

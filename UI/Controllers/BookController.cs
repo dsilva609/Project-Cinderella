@@ -2,7 +2,9 @@
 using BusinessLogic.Models;
 using BusinessLogic.Services.Interfaces;
 using Microsoft.AspNet.Identity;
+using PagedList;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using UI.Models;
@@ -24,17 +26,16 @@ namespace UI.Controllers
 		}
 
 		[HttpGet]
-		public virtual ActionResult Index(string query, int? pageNum = 1)
+		public virtual ActionResult Index(string query, string filter, int? page)
 		{
+			ViewBag.Filter = string.IsNullOrWhiteSpace(query) ? filter : query;
+
 			var viewModel = new BookViewModel
 			{
 				ViewTitle = "Index",
-				Books = _service.GetAll(User.Identity.GetUserId(), query, NUM_BOOKS_TO_GET, pageNum.GetValueOrDefault()),
+				Books = (_service.GetAll(User.Identity.GetUserId(), ViewBag.Filter) as List<Book>).ToPagedList(page ?? 1, NUM_BOOKS_TO_GET),
 				PageSize = NUM_BOOKS_TO_GET,
-				TotalItems = _service.GetCount()
 			};
-			var pages = Math.Ceiling((double)viewModel.TotalItems / viewModel.PageSize);
-			viewModel.PageCount = (int)pages;
 
 			return View(viewModel);
 		}

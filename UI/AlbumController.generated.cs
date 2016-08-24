@@ -145,7 +145,8 @@ namespace UI.Controllers
         public class ActionParamsClass_Index
         {
             public readonly string query = "query";
-            public readonly string pageNum = "pageNum";
+            public readonly string filter = "filter";
+            public readonly string page = "page";
         }
         static readonly ActionParamsClass_CreateFromSearchResult s_params_CreateFromSearchResult = new ActionParamsClass_CreateFromSearchResult();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -236,15 +237,16 @@ namespace UI.Controllers
         public T4MVC_AlbumController() : base(Dummy.Instance) { }
 
         [NonAction]
-        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string query, int? pageNum);
+        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string query, string filter, int? page);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Index(string query, int? pageNum)
+        public override System.Web.Mvc.ActionResult Index(string query, string filter, int? page)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "query", query);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "pageNum", pageNum);
-            IndexOverride(callInfo, query, pageNum);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "filter", filter);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "page", page);
+            IndexOverride(callInfo, query, filter, page);
             return callInfo;
         }
 

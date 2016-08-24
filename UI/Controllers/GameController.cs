@@ -2,7 +2,9 @@
 using BusinessLogic.Models;
 using BusinessLogic.Services.Interfaces;
 using Microsoft.AspNet.Identity;
+using PagedList;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using UI.Models;
@@ -25,17 +27,17 @@ namespace UI.Controllers
 		}
 
 		[HttpGet]
-		public virtual ActionResult Index(string query, int? pageNum = 1)
+		public virtual ActionResult Index(string query, string filter, int? page = 1)
 		{
+			ViewBag.Filter = string.IsNullOrWhiteSpace(query) ? filter : query;
+
 			var viewModel = new GameViewModel
 			{
 				ViewTitle = "Index",
-				Games = _service.GetAll(User.Identity.GetUserId(), query, NUM_GAMES_TO_GET, pageNum.GetValueOrDefault()),
-				PageSize = NUM_GAMES_TO_GET,
-				TotalItems = _service.GetCount()
+				Games = (_service.GetAll(User.Identity.GetUserId(), ViewBag.Filter) as List<Game>).ToPagedList(page ?? 1, NUM_GAMES_TO_GET),
+				PageSize = NUM_GAMES_TO_GET
 			};
-			var pages = Math.Ceiling((double)viewModel.TotalItems / viewModel.PageSize);
-			viewModel.PageCount = (int)pages;
+
 			return View(viewModel);
 		}
 

@@ -1,10 +1,10 @@
 ﻿using BusinessLogic.Models;
-using System.Collections.Generic;
+using PagedList;
 
 namespace UI.Models
 {
 	public class GameViewModel : BaseViewModel
 	{
-		public List<Game> Games { get; set; }
+		public IPagedList<Game> Games { get; set; }
 	}
 }

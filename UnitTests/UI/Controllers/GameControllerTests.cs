@@ -17,7 +17,7 @@ namespace UnitTests.UI.Controllers
 		public void ThatIndexActionReturnsAView()
 		{
 			//--Act
-			var result = _controller.ClassUnderTest.Index(string.Empty, 1) as ViewResult;
+			var result = _controller.ClassUnderTest.Index(string.Empty, string.Empty, 1) as ViewResult;
 
 			//--Assert
 			Assert.AreEqual(string.Empty, result.ViewName);

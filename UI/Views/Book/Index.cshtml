@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
+@using PagedList.Mvc
 @model UI.Models.BookViewModel
 @{
 	ViewBag.Title = Model.ViewTitle;
@@ -12,28 +13,28 @@
 	<div class="h2 col-md-5">
 		Books
 		@if (User.Identity.IsAuthenticated)
-		{
+			{
 			<a class="btn btn-default" href="@Url.Action(MVC.Book.Create())" style="padding-top: 1.25em;" contenteditable="false">
 				<span class="fa fa-plus"></span>
 			</a>
-        }
+			}
 	</div>
 
 	<div class="col-md-3" style="padding-top: 1.25em;">
 		@if (User.Identity.IsAuthenticated)
-		{
+			{
 			<a href="@Url.Action(MVC.Book.Search())" class="btn btn-default">Google Books <span class="fa fa-search"></span></a>
-		}
+			}
 	</div>
 
 	<div class="col-md-4 text-right" style="padding-top: 1.25em; display: inline-flex;">
 		@using (Html.BeginForm(MVC.Book.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
-		{
-			@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
+			{
+			<input class="form-control" id="query" name="query" placeholder="Search" type="text" value="@ViewBag.Filter">
 			<button type="submit" class="btn btn-default">
 				<span class="fa fa-search"></span>
 			</button>
-		}
+			}
 	</div>
 </div>
 
@@ -68,13 +69,4 @@
 	</div>
 </div>
 
-<div class="row">
-	<div class="pagination-lg">
-		@for (var i = 0; i < Model.PageCount; i++)
-		{
-			<div class="page-item">
-				@Html.ActionLink((i + 1).ToString(), MVC.Book.Index("", i + 1), new { @class = "page-link" })
-			</div>
-		}
-	</div>
-</div>
+@Html.PagedListPager(Model.Books, page => Url.Action("Index", new { query = ViewBag.query, filter = ViewBag.Filter, page }))

@@ -1,0 +1,32 @@
+[
+  {
+    "outputFileName": "Content/PagedList.min.css",
+    "inputFiles": [
+      "Content/PagedList.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/Site.min.css",
+    "inputFiles": [
+      "Content/Site.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/Namespace.min.js",
+    "inputFiles": [
+      "Scripts/Namespace.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/Shared/_Layout.min.js",
+    "inputFiles": [
+      "Scripts/Shared/_Layout.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/Shared/Logout.min.js",
+    "inputFiles": [
+      "Scripts/Shared/Logout.js"
+    ]
+  }
+]

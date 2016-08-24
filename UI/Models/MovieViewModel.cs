@@ -1,10 +1,10 @@
 ﻿using BusinessLogic.Models;
-using System.Collections.Generic;
+using PagedList;
 
 namespace UI.Models
 {
 	public class MovieViewModel : BaseViewModel
 	{
-		public List<Movie> Movies { get; set; }
+		public IPagedList<Movie> Movies { get; set; }
 	}
 }

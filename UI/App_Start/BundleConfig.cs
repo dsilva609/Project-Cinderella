@@ -25,15 +25,15 @@ namespace UI
 				.Include("~/Scripts/bootstrap-datepicker.min.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/custom")
-				.Include("~/Scripts/Namespace.js")
-				.Include("~/Scripts/Shared/_Layout.js")
-				.Include("~/Scripts/Shared/Logout.js")
+				.Include("~/Scripts/Namespace.min.js")
+				.Include("~/Scripts/Shared/_Layout.min.js")
+				.Include("~/Scripts/Shared/Logout.min.js")
 				.Include("~/Scripts/toastr.min.js"));
 
 			bundles.Add(new StyleBundle("~/Content/css")
 				.Include("~/Content/bootstrap.min.css")
-				//	.Include("~/Content/bootstrap-datepicker3.css")
-				.Include("~/Content/site.css")
+				.Include("~/Content/bootstrap-datepicker3.min.css")
+				.Include("~/Content/Site.min.css")
 				.Include("~/Content/toastr.min.css")
 				.Include("~/Content/font-awesome.min.css"));
 

@@ -88,3 +88,17 @@ body {
 select {
 	height: 5rem !important;
 }
+
+.pagination {
+	.active {
+		a {
+			background-color: $body-color;
+		}
+	}
+
+	li {
+		a {
+			color: black;
+		}
+	}
+}

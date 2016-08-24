@@ -1,4 +1,4 @@
-﻿a {
+a {
   color: #007aac; }
 
 body {
@@ -58,4 +58,10 @@ body {
 
 select {
   height: 5rem !important; }
+
+.pagination .active a {
+  background-color: #007aac; }
+
+.pagination li a {
+  color: black; }
 

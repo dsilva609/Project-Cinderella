@@ -204,6 +204,7 @@ namespace Links
         public static readonly string modernizr_2_7_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/modernizr-2.7.2.min.js") ? Url("modernizr-2.7.2.min.js") : Url("modernizr-2.7.2.js");
         public static readonly string modernizr_2_8_3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/modernizr-2.8.3.min.js") ? Url("modernizr-2.8.3.min.js") : Url("modernizr-2.8.3.js");
         public static readonly string Namespace_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Namespace.min.js") ? Url("Namespace.min.js") : Url("Namespace.js");
+        public static readonly string Namespace_min_js = Url("Namespace.min.js");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class PageSpecific {
             private const string URLPATH = "~/Scripts/PageSpecific";
@@ -223,10 +224,11 @@ namespace Links
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
             public static readonly string _Layout_coffee = Url("_Layout.coffee");
             public static readonly string _Layout_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/_Layout.min.js") ? Url("_Layout.min.js") : Url("_Layout.js");
+            public static readonly string _Layout_min_js = Url("_Layout.min.js");
             public static readonly string Logout_coffee = Url("Logout.coffee");
             public static readonly string Logout_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Logout.min.js") ? Url("Logout.min.js") : Url("Logout.js");
-            public static readonly string Logout_js_map = Url("Logout.js.map");
             public static readonly string Logout_min_js = Url("Logout.min.js");
+            public static readonly string Logout_js_map = Url("Logout.js.map");
             public static readonly string Logout_min_js_map = Url("Logout.min.js.map");
         }
     
@@ -604,6 +606,8 @@ namespace Links
         public static readonly string jquery_mobile_structure_1_4_5_min_css = Url("jquery.mobile.structure-1.4.5.min.css");
         public static readonly string jquery_mobile_theme_1_4_5_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.mobile.theme-1.4.5.min.css") ? Url("jquery.mobile.theme-1.4.5.min.css") : Url("jquery.mobile.theme-1.4.5.css");
         public static readonly string jquery_mobile_theme_1_4_5_min_css = Url("jquery.mobile.theme-1.4.5.min.css");
+        public static readonly string PagedList_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/PagedList.min.css") ? Url("PagedList.min.css") : Url("PagedList.css");
+        public static readonly string PagedList_min_css = Url("PagedList.min.css");
         public static readonly string Responsive_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Responsive.min.css") ? Url("Responsive.min.css") : Url("Responsive.css");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class Sass {
@@ -616,6 +620,7 @@ namespace Links
         }
     
         public static readonly string Site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Site.min.css") ? Url("Site.min.css") : Url("Site.css");
+        public static readonly string Site_min_css = Url("Site.min.css");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class themes {
             private const string URLPATH = "~/Content/themes";
@@ -791,7 +796,6 @@ namespace Links
             {
                 public static class Assets
                 {
-                    public const string Logout_min_js = "~/Scripts/Shared/Logout.min.js"; 
                 }
             }
             public static class Assets
@@ -955,6 +959,7 @@ namespace Links
                 public const string jquery_mobile_structure_1_4_5_min_css = "~/Content/jquery.mobile.structure-1.4.5.min.css";
                 public const string jquery_mobile_theme_1_4_5_css = "~/Content/jquery.mobile.theme-1.4.5.css";
                 public const string jquery_mobile_theme_1_4_5_min_css = "~/Content/jquery.mobile.theme-1.4.5.min.css";
+                public const string PagedList_css = "~/Content/PagedList.css";
                 public const string Responsive_css = "~/Content/Responsive.css";
                 public const string Site_css = "~/Content/Site.css";
                 public const string toastr_css = "~/Content/toastr.css";

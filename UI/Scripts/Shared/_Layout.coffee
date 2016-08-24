@@ -40,7 +40,6 @@ class Views.Shared.Layout
 		
 		$('#deleteBtn').on "click", ->
 			deleteItem($(this))
-
 			return false
 			
 		$('.panel-collapse').on "click", ->

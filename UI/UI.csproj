@@ -484,11 +484,17 @@
     <Content Include="Content\jquery.mobile.theme-1.4.5.css" />
     <Content Include="Content\jquery.mobile.theme-1.4.5.min.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\PagedList.min.css">
+      <DependentUpon>PagedList.css</DependentUpon>
+    </Content>
     <Content Include="Content\Sass\Main.css">
       <DependentUpon>Main.scss</DependentUpon>
     </Content>
     <Content Include="Content\Sass\Main.min.css">
       <DependentUpon>Main.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.min.css">
+      <DependentUpon>Site.css</DependentUpon>
     </Content>
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -552,6 +558,7 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="Content\Sass\Main.scss" />
+    <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -748,6 +755,9 @@
     <Content Include="Scripts\locales\bootstrap-datepicker.vi.min.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.zh-CN.min.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.zh-TW.min.js" />
+    <Content Include="Scripts\Namespace.min.js">
+      <DependentUpon>Namespace.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
@@ -765,6 +775,9 @@
     </Content>
     <Content Include="Scripts\Shared\_Layout.js">
       <DependentUpon>_Layout.coffee</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Shared\_Layout.min.js">
+      <DependentUpon>_Layout.js</DependentUpon>
     </Content>
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
@@ -850,7 +863,9 @@
     <Content Include="Scripts\Shared\Logout.js">
       <DependentUpon>Logout.coffee</DependentUpon>
     </Content>
-    <Content Include="Scripts\Shared\Logout.min.js" />
+    <Content Include="Scripts\Shared\Logout.min.js">
+      <DependentUpon>Logout.js</DependentUpon>
+    </Content>
     <None Include="Scripts\_references.js" />
     <Content Include="Web.config" />
   </ItemGroup>
