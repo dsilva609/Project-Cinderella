@@ -1,8 +1,8 @@
 ﻿@model BusinessLogic.Models.Album
 
-<h2>@ViewBag.Title</h2>
+<h2>@ViewBag.Title @Html.ActionLink("Search Discogs", MVC.Album.Search(), new { @class = "btn btn-default" })</h2>
 
-@Html.ActionLink("Search Discogs", MVC.Album.Search(), new {@class = "btn btn-default"})
+
 
 @using (Html.BeginForm(MVC.Album.Create(), FormMethod.Post))
 {
