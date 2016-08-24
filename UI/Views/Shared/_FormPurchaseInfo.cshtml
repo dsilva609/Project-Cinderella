@@ -1,0 +1,39 @@
+﻿@model UI.Models.PurchaseInfoViewModel
+
+<div data-toggle="collapse" data-parent="#accordion" href="#purchase-info">
+	<div class="row panel panel-primary panel-collapse">
+		<div class="panel-heading">
+			<h4>
+				Purchase Information
+				<span class="fa fa-chevron-circle-down"></span>
+			</h4>
+		</div>
+	</div>
+</div>
+<div id="purchase-info" class="collapse in">
+	<div class="panel-body">
+		<div class="col-xs-6">
+			@Html.LabelFor(m => m.DatePurchased)
+			@if (Request.Browser.Browser == "IE" || !Request.Browser.IsMobileDevice)
+			{
+				@Html.EditorFor(m => m.DatePurchased, new { htmlattributes = new { type = "text", Value = Model.DatePurchased.ToShortDateString(), @class = "form-control datepicker" } })
+			}
+			else
+			{
+				@Html.EditorFor(m => m.DatePurchased, new { htmlattributes = new { type = "date", Value = Model.DatePurchased.ToString("yyyy-MM-dd"), @class = "form-control" } })
+			}
+			@Html.ValidationMessageFor(m => m.DatePurchased, "", new { @class = "text-danger" })
+		</div>
+		<div class="col-xs-4">
+			@Html.LabelFor(m => m.LocationPurchased)
+			@Html.TextBoxFor(m => m.LocationPurchased, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.LocationPurchased, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="col-xs-2">
+			@Html.LabelFor(m => m.IsNew)
+			@Html.CheckBoxFor(m => m.IsNew, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.IsNew, "", new { @class = "text-danger" })
+		</div>
+	</div>
+</div>
