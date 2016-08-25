@@ -26,7 +26,7 @@
 		</div>
 
 		<div class="row text-center" style="padding-top: 5em;">
-			<div class="col-xs-6">
+			<div class="col-sm-6">
 				@using (Html.BeginForm(MVC.Album.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
 				{
 					@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
@@ -35,7 +35,7 @@
 					</button>
 				}
 			</div>
-			<div class="col-xs-6">
+			<div class="col-sm-6">
 				@if (User.Identity.IsAuthenticated)
 				{
 					@Html.ActionLink("Add Album", MVC.Album.Create(), new { @class = "btn btn-default btn-lg" })
