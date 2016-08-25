@@ -22,31 +22,31 @@
     <div class="panel-body">
         @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
         {
-            <div class="animate-box item col-xs-12 col-md-6">
+            <div class="animate-box item col-md-6">
                 <a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Artist - @Model.Title (@Model.YearReleased)">
                     <img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="img-rounded" style="height: 200px; width: 200px;">
                 </a>
             </div>
         }
-        <div class="col-md-6 col-xs-12">
+        <div class="col-md-6">
             @Html.LabelFor(m => m.Artist)
             @Html.TextBoxFor(m => m.Artist, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Artist, "", new { @class = "text-danger" })
         </div>
 
-        <div class="col-md-6 col-xs-12">
+        <div class="col-md-6">
             @Html.LabelFor(m => m.Title)
             @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="panel-body">
-        <div class="col-md-6 col-xs-12">
+        <div class="col-md-6">
             @Html.LabelFor(m => m.Genre)
             @Html.TextBoxFor(m => m.Genre, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Genre, "", new { @class = "text-danger" })
         </div>
-        <div class="col-md-6 col-xs-12">
+        <div class="col-md-6">
             @Html.LabelFor(m => m.YearReleased)
             @Html.DropDownListFor(model => model.YearReleased, Enumerable.Range(1900, DateTime.Today.Year - 1900 + 1).Reverse().
                 Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), Model.YearReleased.ToString(), new { @class = "form-control" })
@@ -54,24 +54,24 @@
         </div>
     </div>
     <div class="panel-body">
-        <div class="col-md-6 col-xs-12">
+        <div class="col-md-6">
             @Html.LabelFor(m => m.RecordLabel)
             @Html.TextBoxFor(m => m.RecordLabel, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.RecordLabel, "", new { @class = "text-danger" })
         </div>
-        <div class="col-md-6 col-xs-12">
+        <div class="col-md-6">
             @Html.LabelFor(m => m.Notes)
             @Html.TextAreaFor(m => m.Notes, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Notes, "", new { @class = "text-danger" })
         </div>
 
-        <div class="col-md-6 col-xs-12">
+        <div class="col-md-6">
             @Html.LabelFor(m => m.ImageUrl)
             @Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.ImageUrl, "", new { @class = "text-danger" })
         </div>
 
-        <div class="col-md-6 col-xs-12">
+        <div class="col-md-6">
             @Html.LabelFor(m => m.DiscogsID)
             @Html.TextBoxFor(m => m.DiscogsID, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.DiscogsID, "", new { @class = "text-danger" })
@@ -124,25 +124,25 @@
 </div>
 <div id="media-info" class="collapse in">
     <div class="panel-body">
-        <div class="col-md-6 col-xs-12">
+        <div class="col-md-6">
             @Html.LabelFor(m => m.MediaType)
             @Html.EnumDropDownListFor(m => m.MediaType, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.MediaType, "", new { @class = "text-danger" })
         </div>
 
-        <div class="col-md-6 col-xs-12">
+        <div class="col-md-6">
             @Html.LabelFor(m => m.IsPhysical)
             @Html.CheckBoxFor(m => m.IsPhysical, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.IsPhysical, "", new { @class = "text-danger" })
         </div>
 
-        <div class="col-md-6 col-xs-12">
+        <div class="col-md-6">
             @Html.LabelFor(m => m.Speed)
             @Html.EnumDropDownListFor(m => m.Speed, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Speed, "", new { @class = "text-danger" })
         </div>
 
-        <div class="col-md-6 col-xs-12">
+        <div class="col-md-6">
             @Html.LabelFor(m => m.Size)
             @Html.EnumDropDownListFor(m => m.Size, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Size, "", new { @class = "text-danger" })
@@ -161,7 +161,7 @@
 </div>
 <div id="purchase-info" class="collapse in">
     <div class="panel-body">
-        <div class="col-md-6 col-xs-12">
+        <div class="col-md-6">
             @Html.LabelFor(m => m.DatePurchased)
             @if (Request.Browser.Browser == "IE" || !Request.Browser.IsMobileDevice)
             {
@@ -173,13 +173,13 @@
             }
             @Html.ValidationMessageFor(m => m.DatePurchased, "", new { @class = "text-danger" })
         </div>
-        <div class="col-md-4 col-xs-12">
+        <div class="col-md-4">
             @Html.LabelFor(m => m.LocationPurchased)
             @Html.TextBoxFor(m => m.LocationPurchased, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.LocationPurchased, "", new { @class = "text-danger" })
         </div>
 
-        <div class="col-md-2 col-xs-12">
+        <div class="col-md-2">
             @Html.LabelFor(m => m.IsNew)
             @Html.CheckBoxFor(m => m.IsNew, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.IsNew, "", new { @class = "text-danger" })
@@ -188,13 +188,13 @@
 </div>
 
 <div class="row panel-body">
-    <div class="col-md-8 col-xs-12">
+    <div class="col-md-8">
         <input id="btnSubmit" type="submit" value=@(Model.ID > 0 ? "Save" : "Create") class="btn btn-default btn-block btn-lg" />
     </div>
 
     @if (Model.ID > 0)
     {
-        <div class="col-md-4 col-xs-12">
+        <div class="col-md-4">
             @Html.ActionLink("Delete", MVC.Album.Delete(Model.ID), new { id = "deleteBtn", @class = "btn btn-danger btn-block btn-lg", data_id = Model.ID, data_deleteUrl = Url.Action(MVC.Album.Delete()) })
         </div>
     }

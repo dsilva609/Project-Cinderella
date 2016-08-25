@@ -12,13 +12,13 @@
     @using (Html.BeginForm(MVC.Book.Search(), FormMethod.Get))
     {
         <div class="panel-body">
-            <div class="col-xs-6">
+            <div class="col-sm-6">
                 @Html.LabelFor(m => m.Author)
                 @Html.TextBoxFor(m => m.Author, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Author, "", new { @class = "text-danger" })
             </div>
 
-            <div class="col-xs-6">
+            <div class="col-sm-6">
                 @Html.LabelFor(m => m.Title)
                 @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
@@ -40,24 +40,7 @@
                 Search Results
             </h4>
         </div>
-
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-xs-3">
-                    @Html.DisplayNameFor(x => Model.Volumes[0].Author)
-                </div>
-                <div class="col-xs-3">
-                    @Html.DisplayNameFor(x => Model.Volumes[0].Title)
-                </div>
-                <div class="col-xs-3">
-                    @Html.DisplayNameFor(x => Model.Volumes[0].Publisher)
-                </div>
-
-                <div class="col-xs-2">
-                    @Html.DisplayNameFor(x => Model.Volumes[0].YearReleased)
-                </div>
-            </div>
-        </div>
+      
         @foreach (var book in Model.Volumes)
         {
             using (Html.BeginForm(MVC.Book.CreateFromSearchModel(book.GoogleBookID, false), FormMethod.Get))
