@@ -142,17 +142,17 @@
 			<li class="panel-heading">
 				<h4 class="panel-title">
 					<a data-toggle="collapse" data-parent="#accordion" href="#Movies">
-						<span class="fa fa-film"></span> Movies
+						<span class="fa fa-film"></span> Movies/TV
 					</a>
 				</h4>
 			</li>
 			<li id="Movies" class="panel-collapse collapse">
 				<div class="panel-body">
 					<div class="table">
-						<div>@Html.ActionLink("View Movies", MVC.Movie.Index())</div>
+						<div>@Html.ActionLink("View Movies/TV", MVC.Movie.Index())</div>
 						@if (User.Identity.IsAuthenticated)
 						{
-							<div>@Html.ActionLink("Add Movie", MVC.Movie.Create())</div>
+							<div>@Html.ActionLink("Add Movie/TV", MVC.Movie.Create())</div>
 							<div>@Html.ActionLink("Search TMDB", MVC.Movie.Search())</div>
 							<div>
 								@using (Html.BeginForm(MVC.Movie.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
