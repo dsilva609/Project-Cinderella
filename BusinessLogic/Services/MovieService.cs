@@ -29,7 +29,7 @@ namespace BusinessLogic.Services
 
 		public void Add(Movie movie)
 		{
-			var existingMovie = _repository.GetAll().Where(x => x.UserID == movie.UserID && x.Title == movie.Title && x.Type == movie.Type).OrderBy(x => x.Title).ToList();
+			var existingMovie = _repository.GetAll().Where(x => x.UserID == movie.UserID && x.Title == movie.Title && x.Type == movie.Type).ToList();
 			if (existingMovie.Count > 0)
 				throw new ApplicationException($"An existing movie of {movie.Title}, {movie.Type} already exists.");
 			_addEntityComponent.Execute(_repository, movie);
@@ -37,7 +37,7 @@ namespace BusinessLogic.Services
 
 		public List<Movie> GetAll(string userID = "", string query = "", int numToTake = 0, int? pageNum = 1)
 		{
-			var movieList = _getEntityListComponent.Execute(_repository);
+			var movieList = _getEntityListComponent.Execute(_repository).OrderBy(x => x.Title).ToList();
 
 			if (!string.IsNullOrWhiteSpace(userID))
 				movieList = movieList.Where(x => x.UserID == userID).ToList();
