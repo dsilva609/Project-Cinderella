@@ -2,12 +2,12 @@
 
 namespace BusinessLogic.Enums
 {
-	public enum GameTypeEnum
-	{
-		[Display(Name = "Full Game")]
-		FullGame,
+    public enum GameTypeEnum
+    {
+        [Display(Name = "Full Game")]
+        FullGame,
 
-		DLC,
-		Expansion
-	}
+        DLC,
+        Expansion
+    }
 }
