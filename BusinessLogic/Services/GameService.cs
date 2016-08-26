@@ -29,7 +29,7 @@ namespace BusinessLogic.Services
 
 		public void Add(Game game)
 		{
-			var existingGame = _repository.GetAll().Where(x => x.UserID == game.UserID && x.Title == game.Title && x.MediaType == game.MediaType).ToList();
+			var existingGame = _repository.GetAll().Where(x => x.UserID == game.UserID && x.Title == game.Title && x.MediaType == game.MediaType).OrderBy(x => x.Title).ToList();
 			if (existingGame.Count > 0)
 				throw new ApplicationException($"An existing game of {game.Title}, {game.MediaType} already exists.");
 			_addEntityComponent.Execute(_repository, game);
