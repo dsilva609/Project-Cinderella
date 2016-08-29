@@ -68,4 +68,4 @@
 	</div>
 </div>
 
-@Html.PagedListPager(Model.Games, page => Url.Action("Index", new { query = ViewBag.query, filter = ViewBag.Filter, page }))
+@Html.PagedListPager(Model.Games, page => Url.Action("Index", new { gameQuery = ViewBag.query, filter = ViewBag.Filter, page }))
