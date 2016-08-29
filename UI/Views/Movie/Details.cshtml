@@ -66,12 +66,12 @@
     <div class="panel-body">
         <div class="col-xs-6">
             @Html.LabelFor(m => m.Type):
-            @Html.DisplayFor(m => m.Type.GetDisplayName(), new { @class = "form-control" })
+            @Model.Type.GetDisplayName()
         </div>
 
         <div class="col-xs-6">
             @Html.LabelFor(m => m.Rating):
-            @Html.DisplayFor(m => m.Rating.GetDisplayName(), new { @class = "form-control" })
+            @Model.Rating.GetDisplayName()
         </div>
 
         <div class="col-xs-6">

@@ -1,4 +1,5 @@
-﻿@model UI.Models.HomeViewModel
+﻿@using UI.Enums
+@model UI.Models.HomeViewModel
 @{
 
 	ViewBag.Title = "Home Page";
@@ -143,7 +144,7 @@
 							@Html.DisplayFor(modelItem => movie.Title)
 						</div>
 						<div class="row">
-							@Html.DisplayFor(modelItem => movie.Type)
+							@movie.Type.GetDisplayName()
 						</div>
 					</a>
 				</div>
@@ -173,7 +174,7 @@
 							@Html.DisplayFor(modelItem => game.Title)
 						</div>
 						<div class="row">
-							@Html.DisplayFor(modelItem => game.Type)
+							@game.Type.GetDisplayName()
 						</div>
 					</a>
 				</div>

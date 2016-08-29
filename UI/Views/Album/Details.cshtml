@@ -3,151 +3,151 @@
 @model BusinessLogic.Models.Album
 
 <script>
-    var deleteUrl = '@Url.Action(MVC.Album.Delete())';
+	var deleteUrl = '@Url.Action(MVC.Album.Delete())';
 </script>
 
 <h2>Details</h2>
 <div data-toggle="collapse" data-parent="#accordion" href="#album-info">
-    <div class="row panel panel-primary panel-collapse">
-        <div class="panel-heading">
-            <h4>
-                Album Information
-                <span class="fa fa-chevron-circle-down"></span>
-            </h4>
-        </div>
-    </div>
+	<div class="row panel panel-primary panel-collapse">
+		<div class="panel-heading">
+			<h4>
+				Album Information
+				<span class="fa fa-chevron-circle-down"></span>
+			</h4>
+		</div>
+	</div>
 </div>
 <div id="album-info" class="collapse in">
-    <div class="panel-body">
-        <div class="animate-box item col-sm-6">
-            <a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Artist - @Model.Title (@Model.YearReleased)">
-                <img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="img-rounded" style="height: 200px; width: 200px;">
-            </a>
-        </div>
-        <div>
-            @Html.DisplayNameFor(m => m.Artist):
-            @Html.DisplayFor(m => m.Artist)
-        </div>
+	<div class="panel-body">
+		<div class="animate-box item col-sm-6">
+			<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Artist - @Model.Title (@Model.YearReleased)">
+				<img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="img-rounded" style="height: 200px; width: 200px;">
+			</a>
+		</div>
+		<div>
+			@Html.DisplayNameFor(m => m.Artist):
+			@Html.DisplayFor(m => m.Artist)
+		</div>
 
-        <div>
-            @Html.DisplayNameFor(m => m.Title):
-            @Html.DisplayFor(m => m.Title)
-        </div>
-        <div>
-            @Html.DisplayNameFor(m => m.Genre):
-            @Html.DisplayFor(m => m.Genre)
-        </div>
-        <div>
-            @Html.DisplayNameFor(m => m.YearReleased):
-            @Html.DisplayFor(m => m.YearReleased)
-        </div>
+		<div>
+			@Html.DisplayNameFor(m => m.Title):
+			@Html.DisplayFor(m => m.Title)
+		</div>
+		<div>
+			@Html.DisplayNameFor(m => m.Genre):
+			@Html.DisplayFor(m => m.Genre)
+		</div>
+		<div>
+			@Html.DisplayNameFor(m => m.YearReleased):
+			@Html.DisplayFor(m => m.YearReleased)
+		</div>
 
-        <div>
-            @Html.DisplayNameFor(m => m.RecordLabel):
-            @Html.DisplayFor(m => m.RecordLabel)
-        </div>
+		<div>
+			@Html.DisplayNameFor(m => m.RecordLabel):
+			@Html.DisplayFor(m => m.RecordLabel)
+		</div>
 
-        <div>
-            @Html.DisplayNameFor(m => m.Notes):
-            @Html.DisplayFor(m => m.Notes)
-        </div>
-    </div>
+		<div>
+			@Html.DisplayNameFor(m => m.Notes):
+			@Html.DisplayFor(m => m.Notes)
+		</div>
+	</div>
 </div>
 
 @if (Model.Tracklist != null)
 {
-    <div data-toggle="collapse" data-parent="#accordion" href="#track-list">
-        <div class="row panel panel-primary panel-collapse">
-            <div class="panel-heading">
-                <h4>
-                    Track List
-                    <span class="fa fa-chevron-circle-down"></span>
-                </h4>
-            </div>
-        </div>
-    </div>
-    <div id="track-list" class="collapse in">
-        <div class="panel-body">
-            @for (var index = 0; index < Model.Tracklist.Count; index++)
-            {
-                <div class="row">
-                    <div class="col-sm-1">@Html.DisplayFor(x => x.Tracklist[index].position)</div>
-                    <div class="col-sm-1">@Html.DisplayFor(x => x.Tracklist[index].duration)</div>
-                    <div class="col-sm-6">@Html.DisplayFor(x => x.Tracklist[index].title)</div>
-                </div>
-            }
-        </div>
-    </div>
+	<div data-toggle="collapse" data-parent="#accordion" href="#track-list">
+		<div class="row panel panel-primary panel-collapse">
+			<div class="panel-heading">
+				<h4>
+					Track List
+					<span class="fa fa-chevron-circle-down"></span>
+				</h4>
+			</div>
+		</div>
+	</div>
+	<div id="track-list" class="collapse in">
+		<div class="panel-body">
+			@for (var index = 0; index < Model.Tracklist.Count; index++)
+			{
+				<div class="row">
+					<div class="col-sm-1">@Html.DisplayFor(x => x.Tracklist[index].position)</div>
+					<div class="col-sm-1">@Html.DisplayFor(x => x.Tracklist[index].duration)</div>
+					<div class="col-sm-6">@Html.DisplayFor(x => x.Tracklist[index].title)</div>
+				</div>
+			}
+		</div>
+	</div>
 }
 <div data-toggle="collapse" data-parent="#accordion" href="#media-info">
-    <div class="row panel panel-primary panel-collapse">
-        <div class="panel-heading">
-            <h4>
-                Media Information
-                <span class="fa fa-chevron-circle-down"></span>
-            </h4>
-        </div>
-    </div>
+	<div class="row panel panel-primary panel-collapse">
+		<div class="panel-heading">
+			<h4>
+				Media Information
+				<span class="fa fa-chevron-circle-down"></span>
+			</h4>
+		</div>
+	</div>
 </div>
 <div id="media-info" class="collapse in">
-    <div class="panel-body">
-        <div>
-            @Html.DisplayNameFor(m => m.MediaType):
-            @Html.DisplayFor(m => m.MediaType)
-        </div>
+	<div class="panel-body">
+		<div>
+			@Html.DisplayNameFor(m => m.MediaType):
+			@Html.DisplayFor(m => m.MediaType)
+		</div>
 
-        <div>
-            @Html.DisplayNameFor(m => m.IsPhysical):
-            @Html.DisplayFor(m => m.IsPhysical)
-        </div>
+		<div>
+			@Html.DisplayNameFor(m => m.IsPhysical):
+			@Html.DisplayFor(m => m.IsPhysical)
+		</div>
 
-        <div>
-            @Html.DisplayNameFor(m => m.Speed):
-            @Model.Speed.GetDisplayName()   
-        </div>
+		<div>
+			@Html.DisplayNameFor(m => m.Speed):
+			@Model.Speed.GetDisplayName()
+		</div>
 
-        <div>
-            @Html.DisplayNameFor(m => m.Size):
-            @Model.Size.GetDisplayName()
-        </div>
-    </div>
+		<div>
+			@Html.DisplayNameFor(m => m.Size):
+			@Model.Size.GetDisplayName()
+		</div>
+	</div>
 </div>
 <div data-toggle="collapse" data-parent="#accordion" href="#purchase-info">
-    <div class="row panel panel-primary panel-collapse">
-        <div class="panel-heading">
-            <h4>
-                Purchase Information
-                <span class="fa fa-chevron-circle-down"></span>
-            </h4>
-        </div>
-    </div>
+	<div class="row panel panel-primary panel-collapse">
+		<div class="panel-heading">
+			<h4>
+				Purchase Information
+				<span class="fa fa-chevron-circle-down"></span>
+			</h4>
+		</div>
+	</div>
 </div>
 <div id="purchase-info" class="collapse in">
-    <div class="panel-body">
-        <div>
-            @Html.DisplayNameFor(m => m.DatePurchased):
-            @Html.DisplayFor(m => m.DatePurchased)
-        </div>
+	<div class="panel-body">
+		<div>
+			@Html.DisplayNameFor(m => m.DatePurchased):
+			@Html.DisplayFor(m => m.DatePurchased)
+		</div>
 
-        <div>
-            @Html.DisplayNameFor(m => m.LocationPurchased):
-            @Html.DisplayFor(m => m.LocationPurchased)
-        </div>
+		<div>
+			@Html.DisplayNameFor(m => m.LocationPurchased):
+			@Html.DisplayFor(m => m.LocationPurchased)
+		</div>
 
-        <div>
-            @Html.DisplayNameFor(m => m.IsNew):
-            @Html.DisplayFor(m => m.IsNew)
-        </div>
-    </div>
+		<div>
+			@Html.DisplayNameFor(m => m.IsNew):
+			@Html.DisplayFor(m => m.IsNew)
+		</div>
+	</div>
 </div>
 
 <div>
-    @if (User.Identity.IsAuthenticated && Model.UserID == User.Identity.GetUserId())
-    {
-        @Html.ActionLink("Edit", MVC.Album.Edit(Model.ID), new { id = Model.ID })
-        <span> | </span>
-        @Html.ActionLink("Delete", MVC.Album.Delete(Model.ID), new { id = "albumDeleteBtn", @data_id = Model.ID })
-        <span> | </span>
-    }
-    @Html.ActionLink("Back to List", MVC.Album.Index())
+	@if (User.Identity.IsAuthenticated && Model.UserID == User.Identity.GetUserId())
+	{
+		@Html.ActionLink("Edit", MVC.Album.Edit(Model.ID), new { id = Model.ID })
+		<span> | </span>
+		@Html.ActionLink("Delete", MVC.Album.Delete(Model.ID), new { id = "albumDeleteBtn", @data_id = Model.ID })
+		<span> | </span>
+	}
+	@Html.ActionLink("Back to List", MVC.Album.Index())
 </div>
