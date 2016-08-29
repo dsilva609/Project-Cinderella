@@ -1,4 +1,5 @@
-﻿@model BusinessLogic.Models.Game
+﻿@using UI.Enums
+@model BusinessLogic.Models.Game
 
 <h2>Details</h2>
 
@@ -47,7 +48,7 @@
 
         <div class="col-xs-6">
             @Html.LabelFor(m => m.Rating):
-            @Html.DisplayFor(m => m.Rating, new { @class = "form-control" })
+            @Html.DisplayFor(m => m.Rating.GetDisplayName(), new { @class = "form-control" })
         </div>
 
         <div class="col-xs-6">
@@ -70,7 +71,7 @@
     <div class="panel-body">
         <div class="col-xs-6">
             @Html.LabelFor(m => m.Type):
-            @Html.DisplayFor(m => m.Type, new { @class = "form-control" })
+            @Html.DisplayFor(m => m.Type.GetDisplayName(), new { @class = "form-control" })
         </div>
 
         <div class="col-xs-6">
@@ -80,7 +81,7 @@
 
         <div class="col-xs-6">
             @Html.LabelFor(m => m.Platform):
-            @Html.DisplayFor(m => m.Platform, new { @class = "form-control" })
+            @Html.DisplayFor(m => m.Platform.GetDisplayName(), new { @class = "form-control" })
         </div>
 
         <div class="col-xs-6">

@@ -122,6 +122,7 @@
     <Compile Include="Enums\AlbumMediaTypeEnum.cs" />
     <Compile Include="Enums\BookMediaTypeEnum.cs" />
     <Compile Include="Enums\BookTypeEnum.cs" />
+    <Compile Include="Enums\CompletionStatus.cs" />
     <Compile Include="Enums\GameMediaTypeEnum.cs" />
     <Compile Include="Enums\GamePlatformEnum.cs" />
     <Compile Include="Enums\GameRatingEnum.cs" />
@@ -253,6 +254,10 @@
     <Compile Include="Migrations\201608220004556_added Giant Bomb and BGG ids to game model.cs" />
     <Compile Include="Migrations\201608220004556_added Giant Bomb and BGG ids to game model.Designer.cs">
       <DependentUpon>201608220004556_added Giant Bomb and BGG ids to game model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608291606030_added completion status to base model.cs" />
+    <Compile Include="Migrations\201608291606030_added completion status to base model.Designer.cs">
+      <DependentUpon>201608291606030_added completion status to base model.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseItem.cs" />
@@ -410,6 +415,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608220004556_added Giant Bomb and BGG ids to game model.resx">
       <DependentUpon>201608220004556_added Giant Bomb and BGG ids to game model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608291606030_added completion status to base model.resx">
+      <DependentUpon>201608291606030_added completion status to base model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

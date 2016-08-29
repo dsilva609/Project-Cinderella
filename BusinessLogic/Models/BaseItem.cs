@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLogic.Enums;
+using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -41,5 +42,7 @@ namespace BusinessLogic.Models
 
         public DateTime DateAdded { get; set; }
         public DateTime DateUpdated { get; set; } = Convert.ToDateTime("1/1/1900");
+
+        public CompletionStatus CompletionStatus { get; set; }
     }
 }

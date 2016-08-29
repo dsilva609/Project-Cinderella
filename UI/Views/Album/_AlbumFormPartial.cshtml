@@ -76,6 +76,12 @@
             @Html.TextBoxFor(m => m.DiscogsID, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.DiscogsID, "", new { @class = "text-danger" })
         </div>
+
+        <div class="col-md-6">
+            @Html.LabelFor(m => m.CompletionStatus)
+            @Html.EnumDropDownListFor(m => m.CompletionStatus, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CompletionStatus, "", new { @class = "text-danger" })
+        </div>
     </div>
 </div>
 
