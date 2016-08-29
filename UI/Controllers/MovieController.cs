@@ -24,9 +24,9 @@ namespace UI.Controllers
 		}
 
 		[HttpGet]
-		public virtual ActionResult Index(string query, string filter, int? page)
+		public virtual ActionResult Index(string movieQuery, string filter, int? page)
 		{
-			ViewBag.Filter = string.IsNullOrWhiteSpace(query) ? filter : query;
+			ViewBag.Filter = string.IsNullOrWhiteSpace(movieQuery) ? filter : movieQuery;
 
 			var viewModel = new MovieViewModel
 			{

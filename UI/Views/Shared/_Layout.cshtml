@@ -99,7 +99,7 @@
 							<div>
 								@using (Html.BeginForm(MVC.Album.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
 								{
-									@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
+									@Html.TextBox("albumQuery", null, new { @class = "form-control", @placeholder = "Search" })
 									<button type="submit" class="btn btn-default">
 										<span class="fa fa-search"></span>
 									</button>
@@ -128,7 +128,7 @@
 							<div>
 								@using (Html.BeginForm(MVC.Book.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
 								{
-									@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
+									@Html.TextBox("bookQuery", null, new { @class = "form-control", @placeholder = "Search" })
 									<button type="submit" class="btn btn-default">
 										<span class="fa fa-search"></span>
 									</button>
@@ -157,7 +157,7 @@
 							<div>
 								@using (Html.BeginForm(MVC.Movie.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
 								{
-									@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
+									@Html.TextBox("movieQuery", null, new { @class = "form-control", @placeholder = "Search" })
 									<button type="submit" class="btn btn-default">
 										<span class="fa fa-search"></span>
 									</button>
@@ -186,7 +186,7 @@
 							<div>
 								@using (Html.BeginForm(MVC.Game.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
 								{
-									@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
+									@Html.TextBox("gameQuery", null, new { @class = "form-control", @placeholder = "Search" })
 									<button type="submit" class="btn btn-default">
 										<span class="fa fa-search"></span>
 									</button>

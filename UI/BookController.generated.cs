@@ -136,7 +136,7 @@ namespace UI.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Index
         {
-            public readonly string query = "query";
+            public readonly string bookQuery = "bookQuery";
             public readonly string filter = "filter";
             public readonly string page = "page";
         }
@@ -222,16 +222,16 @@ namespace UI.Controllers
         public T4MVC_BookController() : base(Dummy.Instance) { }
 
         [NonAction]
-        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string query, string filter, int? page);
+        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string bookQuery, string filter, int? page);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Index(string query, string filter, int? page)
+        public override System.Web.Mvc.ActionResult Index(string bookQuery, string filter, int? page)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "query", query);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "bookQuery", bookQuery);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "filter", filter);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "page", page);
-            IndexOverride(callInfo, query, filter, page);
+            IndexOverride(callInfo, bookQuery, filter, page);
             return callInfo;
         }
 

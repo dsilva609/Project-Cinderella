@@ -27,9 +27,9 @@ namespace UI.Controllers
 		}
 
 		[HttpGet]
-		public virtual ActionResult Index(string query, string filter, int? page = 1)
+		public virtual ActionResult Index(string gameQuery, string filter, int? page = 1)
 		{
-			ViewBag.Filter = string.IsNullOrWhiteSpace(query) ? filter : query;
+			ViewBag.Filter = string.IsNullOrWhiteSpace(gameQuery) ? filter : gameQuery;
 
 			var viewModel = new GameViewModel
 			{
