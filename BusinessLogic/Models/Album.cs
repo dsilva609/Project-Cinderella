@@ -26,6 +26,6 @@ namespace BusinessLogic.Models
 
 		public int DiscogsID { get; set; }
 
-		public List<Tracklist> Tracklist { get; set; }
+		public List<Tracklist> Tracklist { get; set; } = new List<Tracklist>();
 	}
 }
