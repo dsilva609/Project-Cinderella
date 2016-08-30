@@ -4,6 +4,5 @@
 	{
 		Vinyl,
 		CD,
-		Digital
 	}
 }

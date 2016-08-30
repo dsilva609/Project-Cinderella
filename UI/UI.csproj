@@ -758,6 +758,12 @@
     <Content Include="Scripts\Namespace.min.js">
       <DependentUpon>Namespace.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\PageSpecific\AlbumEdit.js">
+      <DependentUpon>AlbumEdit.coffee</DependentUpon>
+    </Content>
+    <Content Include="Scripts\PageSpecific\AlbumEdit.min.js">
+      <DependentUpon>AlbumEdit.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
@@ -781,6 +787,7 @@
     </Content>
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Scripts\PageSpecific\AlbumEdit.coffee" />
     <None Include="T4MVC.tt.settings.xml" />
     <Content Include="T4MVC.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -959,9 +966,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Scripts\PageSpecific\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

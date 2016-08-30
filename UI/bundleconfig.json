@@ -28,5 +28,11 @@
     "inputFiles": [
       "Scripts/Shared/Logout.js"
     ]
+  },
+  {
+    "outputFileName": "Scripts/PageSpecific/AlbumEdit.min.js",
+    "inputFiles": [
+      "Scripts/PageSpecific/AlbumEdit.js"
+    ]
   }
 ]

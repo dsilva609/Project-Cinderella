@@ -2,48 +2,51 @@
 
 namespace BusinessLogic.Enums
 {
-    public enum GamePlatformEnum
-    {
-        PC,
+	public enum GamePlatformEnum
+	{
+		[Display(Name = "Board Game")]
+		Boardgame,
 
-        PlayStation,
+		PC,
 
-        [Display(Name = "Playstation 2")]
-        PlayStation2,
+		PlayStation,
 
-        [Display(Name = "Playstation 3")]
-        PlayStation3,
+		[Display(Name = "Playstation 2")]
+		PlayStation2,
 
-        [Display(Name = "Playstation 4")]
-        PlayStation4,
+		[Display(Name = "Playstation 3")]
+		PlayStation3,
 
-        Xbox,
+		[Display(Name = "Playstation 4")]
+		PlayStation4,
 
-        [Display(Name = "Xbox 360")]
-        Xbox360,
+		Xbox,
 
-        [Display(Name = "Xbox One")]
-        XboxOne,
+		[Display(Name = "Xbox 360")]
+		Xbox360,
 
-        [Display(Name = "Nintendo 64")]
-        Nintendo64,
+		[Display(Name = "Xbox One")]
+		XboxOne,
 
-        GameCube,
-        Wii,
+		[Display(Name = "Nintendo 64")]
+		Nintendo64,
 
-        [Display(Name = "Wii U")]
-        WiiU,
+		GameCube,
+		Wii,
 
-        [Display(Name = "Game Boy")]
-        GameBoy,
+		[Display(Name = "Wii U")]
+		WiiU,
 
-        [Display(Name = "Game Boy Advance")]
-        GameBoyAdvance,
+		[Display(Name = "Game Boy")]
+		GameBoy,
 
-        [Display(Name = "Nintendo DS")]
-        NintendoDS,
+		[Display(Name = "Game Boy Advance")]
+		GameBoyAdvance,
 
-        [Display(Name = "Nintendo 3DS")]
-        Nintendo3DS,
-    }
+		[Display(Name = "Nintendo DS")]
+		NintendoDS,
+
+		[Display(Name = "Nintendo 3DS")]
+		Nintendo3DS,
+	}
 }

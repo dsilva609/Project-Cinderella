@@ -1,4 +1,5 @@
-﻿@model BusinessLogic.Models.Album
+﻿@using BusinessLogic.Enums
+@model BusinessLogic.Models.Album
 
 <script>
     var deleteUrl = '@Url.Action(MVC.Album.Delete())';
@@ -132,7 +133,7 @@
     <div class="panel-body">
         <div class="col-md-6">
             @Html.LabelFor(m => m.MediaType)
-            @Html.EnumDropDownListFor(m => m.MediaType, new { @class = "form-control" })
+            @Html.EnumDropDownListFor(m => m.MediaType, new { @class = "form-control", @id="ddlAlbumType"})
             @Html.ValidationMessageFor(m => m.MediaType, "", new { @class = "text-danger" })
         </div>
 
@@ -141,18 +142,19 @@
             @Html.CheckBoxFor(m => m.IsPhysical, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.IsPhysical, "", new { @class = "text-danger" })
         </div>
+		<div id="vinylInfo" class="@(Model.MediaType == AlbumMediaTypeEnum.Vinyl ? "": "hidden")">
+			<div class="col-md-6">
+				@Html.LabelFor(m => m.Speed)
+				@Html.EnumDropDownListFor(m => m.Speed, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Speed, "", new { @class = "text-danger" })
+			</div>
 
-        <div class="col-md-6">
-            @Html.LabelFor(m => m.Speed)
-            @Html.EnumDropDownListFor(m => m.Speed, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Speed, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="col-md-6">
-            @Html.LabelFor(m => m.Size)
-            @Html.EnumDropDownListFor(m => m.Size, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Size, "", new { @class = "text-danger" })
-        </div>
+			<div class="col-md-6">
+				@Html.LabelFor(m => m.Size)
+				@Html.EnumDropDownListFor(m => m.Size, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Size, "", new { @class = "text-danger" })
+			</div>
+		</div>
     </div>
 </div>
 <div data-toggle="collapse" data-parent="#accordion" href="#purchase-info">
