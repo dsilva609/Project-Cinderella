@@ -37,7 +37,7 @@ namespace BusinessLogic.Services
 
 		public List<Book> GetAll(string userID = "", string query = "", int numToTake = 0, int? pageNum = 1)
 		{
-			var bookList = _getEntityListComponent.Execute(_repository).OrderBy(x => x.Title).ThenBy(x => x.Author).ToList();
+			var bookList = _getEntityListComponent.Execute(_repository).OrderBy(x => x.Author).ThenBy(x => x.Title).ToList();
 
 			if (!string.IsNullOrWhiteSpace(userID))
 				bookList = bookList.Where(x => x.UserID == userID).ToList();
