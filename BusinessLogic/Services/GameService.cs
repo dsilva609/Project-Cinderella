@@ -37,7 +37,7 @@ namespace BusinessLogic.Services
 
 		public List<Game> GetAll(string userID = "", string query = "", int numToTake = 0, int? pageNum = 1)
 		{
-			var gameList = _getEntityListComponent.Execute(_repository).OrderBy(x => x.Title).ToList();
+			var gameList = _getEntityListComponent.Execute(_repository).OrderBy(x => x.Developer).ThenBy(x => x.Title).ToList();
 
 			if (!string.IsNullOrWhiteSpace(userID))
 				gameList = gameList.Where(x => x.UserID == userID).ToList();
