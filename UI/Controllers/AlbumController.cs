@@ -136,29 +136,12 @@ namespace UI.Controllers
 		{
 			if (!ModelState.IsValid) return View(model);
 			var existingAlbums = _service.GetAll(User.Identity.GetUserId());
-			if (existingAlbums.Count > 0 &&
-				existingAlbums.Any(
-					x =>
-						x.ID != model.ID && x.Artist == model.Artist && x.Title == model.Title && x.MediaType == model.MediaType &&
-						x.DiscogsID == model.DiscogsID))
+			if (existingAlbums.Count > 0 && existingAlbums.Any(x => x.ID != model.ID && x.Artist == model.Artist && x.Title == model.Title
+				&& x.MediaType == model.MediaType && x.DiscogsID == model.DiscogsID))
 			{
 				ShowStatusMessage(MessageTypeEnum.error,
 					$"An album of Artist: {model.Artist}, Album: {model.Title}, Media Type: {model.MediaType} already exists.", "Duplicate Record");
 				return View(model);
-			}
-			if (model.DiscogsID != 0)
-			{
-				var release = _discogsService.GetRelease(model.DiscogsID);
-				//TODO: needs to be moved
-				model.Artist = release.Artist;
-				model.Title = release.Title;
-				model.YearReleased = release.YearReleased;
-				model.RecordLabel = release.RecordLabel;
-				model.Genre = release.Genre;
-				if (string.IsNullOrWhiteSpace(model.ImageUrl))
-					model.ImageUrl = release.ImageUrl;
-				model.Tracklist = release.Tracklist;
-				model.Tracklist.ForEach(x => x.AlbumID = model.ID);
 			}
 
 			//TODO: make sure user id is the same so as not to change other users data
