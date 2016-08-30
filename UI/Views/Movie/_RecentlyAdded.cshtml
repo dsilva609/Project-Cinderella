@@ -1,0 +1,32 @@
+﻿@using UI.Enums
+@model List<BusinessLogic.Models.Movie>
+
+<div class="container">
+    <h2>Recently Added Movies</h2>
+    @foreach (var movie in Model)
+    {
+        <div id="fh5co-board" data-columns>
+            <div class="item">
+                <div class="animate-box text-center">
+                    <a href="@(string.IsNullOrWhiteSpace(movie.ImageUrl) ? Links.Content.Images.Reel_jpg : movie.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@movie.Director - @movie.Title (@movie.YearReleased)">
+                        <img src="@(string.IsNullOrWhiteSpace(movie.ImageUrl) ? Links.Content.Images.Reel_jpg : movie.ImageUrl)" alt="@movie.Title">
+                    </a>
+                </div>
+
+                <div id="movie" class="info fh5co-desc" data-id="@movie.ID">
+                    <a href="@Url.Action(MVC.Movie.Details(movie.ID))">
+                        <div class="row">
+                            @Html.DisplayFor(modelItem => movie.Director)
+                        </div>
+                        <div class="row">
+                            @Html.DisplayFor(modelItem => movie.Title)
+                        </div>
+                        <div class="row">
+                            @movie.Type.GetDisplayName()
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

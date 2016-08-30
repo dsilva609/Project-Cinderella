@@ -1,0 +1,31 @@
+﻿@model List<BusinessLogic.Models.Album>
+
+<div class="container">
+    <h2>Recently Added Albums</h2>
+    @foreach (var album in Model)
+    {
+        <div id="fh5co-board" data-columns>
+            <div class="item">
+                <div class="animate-box text-center">
+                    <a href="@(string.IsNullOrWhiteSpace(album.ImageUrl) ? Links.Content.Images.Turntable_jpg : album.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@album.Artist - @album.Title (@album.YearReleased)">
+                        <img src="@(string.IsNullOrWhiteSpace(album.ImageUrl) ? Links.Content.Images.Turntable_jpg : album.ImageUrl)" alt="@album.Title">
+                    </a>
+                </div>
+
+                <div id="album" class="info fh5co-desc" data-id="@album.ID">
+                    <a href="@Url.Action(MVC.Album.Details(album.ID))">
+                        <div class="row">
+                            @Html.DisplayFor(modelItem => album.Artist)
+                        </div>
+                        <div class="row">
+                            @Html.DisplayFor(modelItem => album.Title)
+                        </div>
+                        <div class="row">
+                            @Html.DisplayFor(modelItem => album.MediaType)
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

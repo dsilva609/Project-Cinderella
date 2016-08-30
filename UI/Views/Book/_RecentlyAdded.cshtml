@@ -1,0 +1,31 @@
+﻿@model List<BusinessLogic.Models.Book>
+
+<div class="container">
+    <h2>Recently Added Books</h2>
+    @foreach (var book in Model)
+    {
+        <div id="fh5co-board" data-columns>
+            <div class="item">
+                <div class="animate-box text-center">
+                    <a href="@(string.IsNullOrWhiteSpace(book.ImageUrl) ? Links.Content.Images.Book_jpg : book.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@book.Author - @book.Title (@book.YearReleased)">
+                        <img src="@(string.IsNullOrWhiteSpace(book.ImageUrl) ? Links.Content.Images.Book_jpg : book.ImageUrl)" alt="@book.Title">
+                    </a>
+                </div>
+
+                <div id="book" class="info fh5co-desc" data-id="@book.ID">
+                    <a href="@Url.Action(MVC.Book.Details(book.ID))">
+                        <div class="row">
+                            @Html.DisplayFor(modelItem => book.Author)
+                        </div>
+                        <div class="row">
+                            @Html.DisplayFor(modelItem => book.Title)
+                        </div>
+                        <div class="row">
+                            @Html.DisplayFor(modelItem => book.Type)
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

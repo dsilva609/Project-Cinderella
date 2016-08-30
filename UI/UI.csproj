@@ -845,6 +845,10 @@
     <Content Include="T4MVC.tt.hooks.t4" />
     <Content Include="Views\Game\Search.cshtml" />
     <Content Include="Views\Shared\_FormPurchaseInfo.cshtml" />
+    <Content Include="Views\Album\_RecentlyAdded.cshtml" />
+    <Content Include="Views\Book\_RecentlyAdded.cshtml" />
+    <Content Include="Views\Movie\_RecentlyAdded.cshtml" />
+    <Content Include="Views\Game\_RecentlyAdded.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

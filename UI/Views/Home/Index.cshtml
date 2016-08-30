@@ -1,184 +1,70 @@
-﻿@using UI.Enums
-@model UI.Models.HomeViewModel
+﻿@model UI.Models.HomeViewModel
 @{
-
-	ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home Page";
 }
 
 <script>
-	$("#main-body").removeClass("container");
+    $("#main-body").removeClass("container");
 </script>
 
 <div class="jumbotron img-fluid">
-	<div class="h3 container nav">
-		<div class="row">
-			<div class="col-sm-12 text-sm-center col-md-8 text-md-center text-lg-right" style="padding-top: 0.5em;">
-				@Html.ActionLink("Albums", MVC.Album.Index()) |
-				@Html.ActionLink("Books", MVC.Book.Index()) |
-				@Html.ActionLink("Movies/TV", MVC.Movie.Index()) |
-				@Html.ActionLink("Games", MVC.Game.Index())
-			</div>
-			@if (!User.Identity.IsAuthenticated)
-			{
-				<div class="hidden-xs hidden-sm col-md-4 text-right">
-					@Html.ActionLink("Login", MVC.Account.Login(), new { @class = "btn btn-default" })
-				</div>
-			}
-		</div>
+    <div class="h3 container nav">
+        <div class="row">
+            <div class="col-sm-12 text-sm-center col-md-8 text-md-center text-lg-right" style="padding-top: 0.5em;">
+                @Html.ActionLink("Albums", MVC.Album.Index()) |
+                @Html.ActionLink("Books", MVC.Book.Index()) |
+                @Html.ActionLink("Movies/TV", MVC.Movie.Index()) |
+                @Html.ActionLink("Games", MVC.Game.Index())
+            </div>
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <div class="hidden-xs hidden-sm col-md-4 text-right">
+                    @Html.ActionLink("Login", MVC.Account.Login(), new { @class = "btn btn-default" })
+                </div>
+            }
+        </div>
 
-		<div class="row text-center" style="padding-top: 5em;">
-			<div class="col-sm-6">
-				@using (Html.BeginForm(MVC.Album.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
-				{
-					@Html.TextBox("albumQuery", null, new { @class = "form-control", @placeholder = "Search" })
-					<button type="submit" class="btn btn-default">
-						<span class="fa fa-search"></span>
-					</button>
-				}
-			</div>
-			<div class="col-sm-6">
-				@if (User.Identity.IsAuthenticated)
-				{
-					@Html.ActionLink("Add Album", MVC.Album.Create(), new { @class = "btn btn-default btn-lg" })
-				}
-			</div>
-		</div>
+        <div class="row text-center" style="padding-top: 5em;">
+            <div class="col-sm-6">
+                @using (Html.BeginForm(MVC.Album.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
+                {
+                    @Html.TextBox("albumQuery", null, new { @class = "form-control", @placeholder = "Search" })
+                    <button type="submit" class="btn btn-default">
+                        <span class="fa fa-search"></span>
+                    </button>
+                }
+            </div>
+            <div class="col-sm-6">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @Html.ActionLink("Add Album", MVC.Album.Create(), new { @class = "btn btn-default btn-lg" })
+                }
+            </div>
+        </div>
 
-		<div class="row jumbotronText text-right" style="padding-top: 7em;">Always know what's playing in your collection.</div>
-	</div>
+        <div class="row jumbotronText text-right" style="padding-top: 7em;">Always know what's playing in your collection.</div>
+    </div>
 </div>
 <div class="container">
-	<div class="row panel panel-default">
-		<div class="panel-body">
-			<ul class="col-sm-6">
-				<li>Project Cinderella is a site designed to keep track of your personal media collection (Music, Books, Movies, Games)...digital versions too.</li>
-				<li>Having large collections makes it hard to remember what you actually have. Why remember it all?</li>
-			</ul>
-			<ul class="col-sm-6">
-				<li>Find something in a really cool place? Use it to remember where you found certain items.</li>
-				<li>Don't know if you already own something? Use it to prevent getting duplicates when you're out searching.</li>
-				<li>Happy hunting!</li>
-			</ul>
-		</div>
-	</div>
+    <div class="row panel panel-default">
+        <div class="panel-body">
+            <ul class="col-sm-6">
+                <li>Project Cinderella is a site designed to keep track of your personal media collection (Music, Books, Movies, Games)...digital versions too.</li>
+                <li>Having large collections makes it hard to remember what you actually have. Why remember it all?</li>
+            </ul>
+            <ul class="col-sm-6">
+                <li>Find something in a really cool place? Use it to remember where you found certain items.</li>
+                <li>Don't know if you already own something? Use it to prevent getting duplicates when you're out searching.</li>
+                <li>Happy hunting!</li>
+            </ul>
+        </div>
+    </div>
 </div>
 
-<div class="container">
-	<h2>Recently Added Albums</h2>
-	@foreach (var album in Model.Albums)
-	{
-		<div id="fh5co-board" data-columns>
-			<div class="item">
-				<div class="animate-box text-center">
-					<a href="@(string.IsNullOrWhiteSpace(album.ImageUrl) ? Links.Content.Images.Turntable_jpg : album.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@album.Artist - @album.Title (@album.YearReleased)">
-						<img src="@(string.IsNullOrWhiteSpace(album.ImageUrl) ? Links.Content.Images.Turntable_jpg : album.ImageUrl)" alt="@album.Title">
-					</a>
-				</div>
+@Html.Partial(MVC.Album.Views._RecentlyAdded, Model.Albums)
 
-				<div id="album" class="info fh5co-desc" data-id="@album.ID">
-					<a href="@Url.Action(MVC.Album.Details(album.ID))">
-						<div class="row">
-							@Html.DisplayFor(modelItem => album.Artist)
-						</div>
-						<div class="row">
-							@Html.DisplayFor(modelItem => album.Title)
-						</div>
-						<div class="row">
-							@Html.DisplayFor(modelItem => album.MediaType)
-						</div>
-					</a>
-				</div>
-			</div>
-		</div>
-	}
-</div>
+@Html.Partial(MVC.Book.Views._RecentlyAdded, Model.Books)
 
-<div class="container">
-	<h2>Recently Added Books</h2>
-	@foreach (var book in Model.Books)
-	{
-		<div id="fh5co-board" data-columns>
-			<div class="item">
-				<div class="animate-box text-center">
-					<a href="@(string.IsNullOrWhiteSpace(book.ImageUrl) ? Links.Content.Images.Book_jpg : book.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@book.Author - @book.Title (@book.YearReleased)">
-						<img src="@(string.IsNullOrWhiteSpace(book.ImageUrl) ? Links.Content.Images.Book_jpg : book.ImageUrl)" alt="@book.Title">
-					</a>
-				</div>
+@Html.Partial(MVC.Movie.Views._RecentlyAdded, Model.Movies)
 
-				<div id="book" class="info fh5co-desc" data-id="@book.ID">
-					<a href="@Url.Action(MVC.Book.Details(book.ID))">
-						<div class="row">
-							@Html.DisplayFor(modelItem => book.Author)
-						</div>
-						<div class="row">
-							@Html.DisplayFor(modelItem => book.Title)
-						</div>
-						<div class="row">
-							@Html.DisplayFor(modelItem => book.Type)
-						</div>
-					</a>
-				</div>
-			</div>
-		</div>
-	}
-</div>
-
-<div class="container">
-	<h2>Recently Added Movies</h2>
-	@foreach (var movie in Model.Movies)
-	{
-		<div id="fh5co-board" data-columns>
-			<div class="item">
-				<div class="animate-box text-center">
-					<a href="@(string.IsNullOrWhiteSpace(movie.ImageUrl) ? Links.Content.Images.Reel_jpg : movie.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@movie.Director - @movie.Title (@movie.YearReleased)">
-						<img src="@(string.IsNullOrWhiteSpace(movie.ImageUrl) ? Links.Content.Images.Reel_jpg : movie.ImageUrl)" alt="@movie.Title">
-					</a>
-				</div>
-
-				<div id="movie" class="info fh5co-desc" data-id="@movie.ID">
-					<a href="@Url.Action(MVC.Movie.Details(movie.ID))">
-						<div class="row">
-							@Html.DisplayFor(modelItem => movie.Director)
-						</div>
-						<div class="row">
-							@Html.DisplayFor(modelItem => movie.Title)
-						</div>
-						<div class="row">
-							@movie.Type.GetDisplayName()
-						</div>
-					</a>
-				</div>
-			</div>
-		</div>
-	}
-</div>
-
-<div class="container">
-	<h2>Recently Added Games</h2>
-	@foreach (var game in Model.Games)
-	{
-		<div id="fh5co-board" data-columns>
-			<div class="item">
-				<div class="animate-box text-center">
-					<a href="@(string.IsNullOrWhiteSpace(game.ImageUrl) ? Links.Content.Images.Game_jpg : game.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@game.Developer - @game.Title (@game.YearReleased)">
-						<img src="@(string.IsNullOrWhiteSpace(game.ImageUrl) ? Links.Content.Images.Game_jpg : game.ImageUrl)" alt="@game.Title">
-					</a>
-				</div>
-
-				<div id="game" class="info fh5co-desc" data-id="@game.ID">
-					<a href="@Url.Action(MVC.Game.Details(game.ID))">
-						<div class="row">
-							@Html.DisplayFor(modelItem => game.Developer)
-						</div>
-						<div class="row">
-							@Html.DisplayFor(modelItem => game.Title)
-						</div>
-						<div class="row">
-							@game.Type.GetDisplayName()
-						</div>
-					</a>
-				</div>
-			</div>
-		</div>
-	}
-</div>
+@Html.Partial(MVC.Game.Views._RecentlyAdded, Model.Games)

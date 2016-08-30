@@ -216,6 +216,7 @@ namespace UI.Controllers
             public class _ViewNamesClass
             {
                 public readonly string _AlbumFormPartial = "_AlbumFormPartial";
+                public readonly string _RecentlyAdded = "_RecentlyAdded";
                 public readonly string Create = "Create";
                 public readonly string Details = "Details";
                 public readonly string Edit = "Edit";
@@ -223,6 +224,7 @@ namespace UI.Controllers
                 public readonly string Search = "Search";
             }
             public readonly string _AlbumFormPartial = "~/Views/Album/_AlbumFormPartial.cshtml";
+            public readonly string _RecentlyAdded = "~/Views/Album/_RecentlyAdded.cshtml";
             public readonly string Create = "~/Views/Album/Create.cshtml";
             public readonly string Details = "~/Views/Album/Details.cshtml";
             public readonly string Edit = "~/Views/Album/Edit.cshtml";
