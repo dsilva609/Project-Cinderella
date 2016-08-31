@@ -105,14 +105,19 @@
             {
                 var track = Model.Tracklist[index];
                 <div class="row" style="padding-bottom: 0.5em;">
+                    @Html.Hidden(string.Format("Tracklist[{0}].AlbumID", index), track.AlbumID)
+                    @Html.Hidden(string.Format("Tracklist[{0}].ID", index), track.ID)
                     <div class="col-sm-2">
                         <input class="form-control col-sm-1" type="text" name="@string.Format("Tracklist[{0}].position", @index)" value="@track.position" />
+                        @Html.Hidden(string.Format("Tracklist[{0}].position", index), track.position)
                     </div>
                     <div class="col-sm-2">
                         <input class="form-control col-sm-2" type="text" name="@string.Format("Tracklist[{0}].duration", @index)" value="@track.duration" />
+                        @Html.Hidden(string.Format("Tracklist[{0}].duration", index), track.duration)
                     </div>
                     <div class="col-sm-6">
                         <input class="form-control col-sm-2" type="text" name="@string.Format("Tracklist[{0}].title", @index)" value="@track.title" />
+                        @Html.Hidden(string.Format("Tracklist[{0}].title", index), track.title)
                     </div>
                 </div>
             }
@@ -133,7 +138,7 @@
     <div class="panel-body">
         <div class="col-md-6">
             @Html.LabelFor(m => m.MediaType)
-            @Html.EnumDropDownListFor(m => m.MediaType, new { @class = "form-control", @id="ddlAlbumType"})
+            @Html.EnumDropDownListFor(m => m.MediaType, new { @class = "form-control", @id = "ddlAlbumType" })
             @Html.ValidationMessageFor(m => m.MediaType, "", new { @class = "text-danger" })
         </div>
 
@@ -142,19 +147,19 @@
             @Html.CheckBoxFor(m => m.IsPhysical, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.IsPhysical, "", new { @class = "text-danger" })
         </div>
-		<div id="vinylInfo" class="@(Model.MediaType == AlbumMediaTypeEnum.Vinyl ? "": "hidden")">
-			<div class="col-md-6">
-				@Html.LabelFor(m => m.Speed)
-				@Html.EnumDropDownListFor(m => m.Speed, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.Speed, "", new { @class = "text-danger" })
-			</div>
+        <div id="vinylInfo" class="@(Model.MediaType == AlbumMediaTypeEnum.Vinyl ? "" : "hidden")">
+            <div class="col-md-6">
+                @Html.LabelFor(m => m.Speed)
+                @Html.EnumDropDownListFor(m => m.Speed, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Speed, "", new { @class = "text-danger" })
+            </div>
 
-			<div class="col-md-6">
-				@Html.LabelFor(m => m.Size)
-				@Html.EnumDropDownListFor(m => m.Size, new { @class = "form-control" })
-				@Html.ValidationMessageFor(m => m.Size, "", new { @class = "text-danger" })
-			</div>
-		</div>
+            <div class="col-md-6">
+                @Html.LabelFor(m => m.Size)
+                @Html.EnumDropDownListFor(m => m.Size, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Size, "", new { @class = "text-danger" })
+            </div>
+        </div>
     </div>
 </div>
 <div data-toggle="collapse" data-parent="#accordion" href="#purchase-info">
