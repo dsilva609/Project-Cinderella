@@ -26,7 +26,11 @@ body {
 
 	input[type="text"] {
 		color: antiquewhite;
-	}
+		
+		&:focus {
+			color: black;
+		}
+	}		
 }
 
 .jumbotronText {
@@ -44,7 +48,7 @@ body {
 	color: black;
 	border-color: $body-color;
 
-	.form-control:hover {
+	&:hover {
 		border-color: $belle-yellow !important;
 	}
 }
@@ -57,10 +61,12 @@ body {
 #fh5co-header {
 	.navbar-brand {
 		color: $body-color;
+		&:hover {
+			color: $belle-yellow !important;
+		}
 	}
-
-	.navbar-brand:hover {
-		color: $belle-yellow;
+	a:hover {
+		color: $belle-yellow !important;
 	}
 }
 
@@ -71,6 +77,10 @@ body {
 
 .navbar-brand {
 	color: $body-color !important;
+
+	&:hover {
+		color: $belle-yellow;
+	}
 }
 
 .fh5co-desc {
