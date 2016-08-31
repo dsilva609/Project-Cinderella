@@ -9,22 +9,19 @@
 
 <div class="jumbotron img-fluid">
     <div class="h3 container nav">
-        <div class="row">
-            <div class="col-sm-12 text-sm-center col-md-8 text-md-center text-lg-right" style="padding-top: 0.5em;">
-                @Html.ActionLink("Albums", MVC.Album.Index()) |
-                @Html.ActionLink("Books", MVC.Book.Index()) |
-                @Html.ActionLink("Movies/TV", MVC.Movie.Index()) |
-                @Html.ActionLink("Games", MVC.Game.Index())
-            </div>
-            @if (!User.Identity.IsAuthenticated)
-            {
-                <div class="hidden-xs hidden-sm col-md-4 text-right">
-                    @Html.ActionLink("Login", MVC.Account.Login(), new { @class = "btn btn-default" })
-                </div>
-            }
-        </div>
+	    <div class="row text-right" style="padding-top: 1em;">
+			<div class="jumbotronText text-center">Always know what's playing in your collection.</div>
+		    @if (!User.Identity.IsAuthenticated)
+		    {
+			    <div class="hidden-xs hidden-sm" style="padding-top: 0;">
+				    @Html.ActionLink("Login", MVC.Account.Login(), new { @class = "btn btn-default" })
+			    </div>
+		    }
+	    </div>
+		
+		
 
-        <div class="row text-center" style="padding-top: 5em;">
+	    <div class="row text-center" style="padding-top: 5em;">
             <div class="col-sm-6">
                 @using (Html.BeginForm(MVC.Album.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
                 {
@@ -41,8 +38,6 @@
                 }
             </div>
         </div>
-
-        <div class="row jumbotronText text-right" style="padding-top: 7em;">Always know what's playing in your collection.</div>
     </div>
 </div>
 <div class="container">
