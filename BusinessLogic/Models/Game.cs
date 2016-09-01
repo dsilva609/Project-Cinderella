@@ -6,6 +6,7 @@ namespace BusinessLogic.Models
 {
 	public class Game : BaseItem
 	{
+		[Required]
 		public string Developer { get; set; }
 
 		[Required]

@@ -267,6 +267,10 @@
     <Compile Include="Migrations\201609010023336_removed type from tracklist.Designer.cs">
       <DependentUpon>201609010023336_removed type from tracklist.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609010216493_made developer required for games.cs" />
+    <Compile Include="Migrations\201609010216493_made developer required for games.Designer.cs">
+      <DependentUpon>201609010216493_made developer required for games.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseItem.cs" />
     <Compile Include="Models\BGGModels\BGGGame.cs" />
@@ -432,6 +436,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609010023336_removed type from tracklist.resx">
       <DependentUpon>201609010023336_removed type from tracklist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609010216493_made developer required for games.resx">
+      <DependentUpon>201609010216493_made developer required for games.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
