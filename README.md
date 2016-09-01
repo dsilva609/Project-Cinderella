@@ -1,2 +1,2 @@
 # Project-Cinderella
-Duplicate Albums Be Gone!
+Catalog Everything
