@@ -2,71 +2,68 @@
 @using PagedList.Mvc
 @model UI.Models.BookViewModel
 @{
-	ViewBag.Title = Model.ViewTitle;
+    ViewBag.Title = Model.ViewTitle;
 }
 
 <script>
-	var deleteUrl = '@Url.Action(MVC.Book.Delete())';
+    var deleteUrl = '@Url.Action(MVC.Book.Delete())';
 </script>
 
 <div>
-	<div class="h2 col-md-5">
-		Books
-		@if (User.Identity.IsAuthenticated)
-			{
-			<a class="btn btn-default" href="@Url.Action(MVC.Book.Create())" style="padding-top: 1.25em;" contenteditable="false">
-				<span class="fa fa-plus"></span>
-			</a>
-			}
-	</div>
+    <div class="h2 col-md-5">
+        Books
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a class="btn btn-default" href="@Url.Action(MVC.Book.Create())" style="padding-top: 1.25em;" contenteditable="false">
+                <span class="fa fa-plus"></span>
+            </a>
+        }
+    </div>
 
-	<div class="col-md-3" style="padding-top: 1.25em;">
-		@if (User.Identity.IsAuthenticated)
-			{
-			<a href="@Url.Action(MVC.Book.Search())" class="btn btn-default">Google Books <span class="fa fa-search"></span></a>
-			}
-	</div>
+    <div class="col-md-3" style="padding-top: 1.25em;">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a href="@Url.Action(MVC.Book.Search())" class="btn btn-default">Google Books <span class="fa fa-search"></span></a>
+        }
+    </div>
 
-	<div class="col-md-4 text-right" style="padding-top: 1.25em; display: inline-flex;">
-		@using (Html.BeginForm(MVC.Book.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
-			{
-			<input class="form-control" id="query" name="bookQuery" placeholder="Search" type="text" value="@ViewBag.Filter">
-			<button type="submit" class="btn btn-default">
-				<span class="fa fa-search"></span>
-			</button>
-			}
-	</div>
+    <div class="col-md-4 text-right" style="padding-top: 1.25em; display: inline-flex;">
+        @using (Html.BeginForm(MVC.Book.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
+        {
+            <input class="form-control" id="query" name="bookQuery" placeholder="Search" type="text" value="@ViewBag.Filter">
+            <button type="submit" class="btn btn-default">
+                <span class="fa fa-search"></span>
+            </button>
+        }
+    </div>
 </div>
 
 <div id="fh5co-main">
-	<div class="container" style="padding-top: 2em;">
-		@foreach (var book in Model.Books)
-			{
-			<div id="fh5co-board" data-columns>
-				<div class="item">
-					<div class="animate-box text-center">
-						<a href="@(string.IsNullOrWhiteSpace(book.ImageUrl) ? Links.Content.Images.Book_jpg : book.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@book.Author - @book.Title (@book.YearReleased)">
-							<img src="@(string.IsNullOrWhiteSpace(book.ImageUrl) ? Links.Content.Images.Book_jpg : book.ImageUrl)" alt="@book.Title">
-						</a>
-					</div>
+    <div class="container" style="padding-top: 2em;">
+        @foreach (var book in Model.Books)
+        {
+            <div id="fh5co-board" data-columns>
+                <div class="item">
+                    <div class="animate-box text-center">
+                        <a href="@(string.IsNullOrWhiteSpace(book.ImageUrl) ? Links.Content.Images.Book_jpg : book.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@book.Author - @book.Title (@book.YearReleased)">
+                            <img src="@(string.IsNullOrWhiteSpace(book.ImageUrl) ? Links.Content.Images.Book_jpg : book.ImageUrl)" alt="@book.Title">
+                        </a>
+                    </div>
 
-					<div id="book" class="info fh5co-desc" data-id="@book.ID">
-						<a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Book.Edit(book.ID) : MVC.Book.Details(book.ID))">
-							<div class="row">
-								@Html.DisplayFor(modelItem => book.Author)
-							</div>
-							<div class="row">
-								@Html.DisplayFor(modelItem => book.Title)
-							</div>
-							<div class="row">
-								@Html.DisplayFor(modelItem => book.Media)
-							</div>
-						</a>
-					</div>
-				</div>
-			</div>
-			}
-	</div>
+                    <div id="book" class="info fh5co-desc" data-id="@book.ID">
+                        <a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Book.Edit(book.ID) : MVC.Book.Details(book.ID))">
+                            <div class="row">
+                                @Html.DisplayFor(modelItem => book.Author)
+                            </div>
+                            <div class="row">
+                                @Html.DisplayFor(modelItem => book.Title)
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
 
 @Html.PagedListPager(Model.Books, page => Url.Action("Index", new { bookQuery = ViewBag.query, filter = ViewBag.Filter, page }))

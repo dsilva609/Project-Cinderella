@@ -2,13 +2,11 @@
 
 namespace BusinessLogic.Enums
 {
-	public enum MovieMediaTypeEnum
-	{
-		DVD,
+    public enum MovieMediaTypeEnum
+    {
+        DVD,
 
-		[Display(Name = "Blu-ray")]
-		Bluray,
-
-		Digital
-	}
+        [Display(Name = "Blu-ray")]
+        Bluray
+    }
 }

@@ -2,70 +2,68 @@
 @using PagedList.Mvc
 @model UI.Models.GameViewModel
 @{
-	ViewBag.Title = Model.ViewTitle;
+    ViewBag.Title = Model.ViewTitle;
 }
 
 <script>
-	var deleteUrl = '@Url.Action(MVC.Game.Delete())';
+    var deleteUrl = '@Url.Action(MVC.Game.Delete())';
 </script>
 
 <div>
-	<div class="h2 col-md-5">
-		Games
-		@if (User.Identity.IsAuthenticated)
-		{
-			<a class="btn btn-default" href="@Url.Action(MVC.Game.Create())" style="padding-top: 1.25em;" contenteditable="false">
-				<span class="fa fa-plus"></span>
-			</a>
-		}
-	</div>
+    <div class="h2 col-md-5">
+        Games
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a class="btn btn-default" href="@Url.Action(MVC.Game.Create())" style="padding-top: 1.25em;" contenteditable="false">
+                <span class="fa fa-plus"></span>
+            </a>
+        }
+    </div>
 
-	<div class="col-md-3" style="padding-top: 1.25em;">
-		@if (User.Identity.IsAuthenticated)
-		{
-			<a href="@Url.Action(MVC.Game.Search())" class="btn btn-default">Giant Bomb/BGG <span class="fa fa-search"></span></a>}
-	</div>
+    <div class="col-md-3" style="padding-top: 1.25em;">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a href="@Url.Action(MVC.Game.Search())" class="btn btn-default">Giant Bomb/BGG <span class="fa fa-search"></span></a>
+        }
+    </div>
 
-	<div class="col-md-4text-right" style="padding-top: 1.25em; display: inline-flex;">
-		@using (Html.BeginForm(MVC.Game.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
-		{
-			<input class="form-control" id="query" name="gameQuery" placeholder="Search" type="text" value="@ViewBag.Filter">
-			<button type="submit" class="btn btn-default">
-				<span class="fa fa-search"></span>
-			</button>
-		}
-	</div>
+    <div class="col-md-4text-right" style="padding-top: 1.25em; display: inline-flex;">
+        @using (Html.BeginForm(MVC.Game.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
+        {
+            <input class="form-control" id="query" name="gameQuery" placeholder="Search" type="text" value="@ViewBag.Filter">
+            <button type="submit" class="btn btn-default">
+                <span class="fa fa-search"></span>
+            </button>
+        }
+    </div>
 </div>
 
 <div id="fh5co-main">
-	<div class="container">
-		@foreach (var game in Model.Games)
-			{
-			<div id="fh5co-board" data-columns>
-				<div class="item">
-					<div class="animate-box text-center">
-						<a href="@(string.IsNullOrWhiteSpace(game.ImageUrl) ? Links.Content.Images.Game_jpg : game.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@game.Developer - @game.Title (@game.YearReleased)">
-							<img src="@(string.IsNullOrWhiteSpace(game.ImageUrl) ? Links.Content.Images.Game_jpg : game.ImageUrl)" alt="@game.Title">
-						</a>
-					</div>
+    <div class="container">
+        @foreach (var game in Model.Games)
+        {
+            <div id="fh5co-board" data-columns>
+                <div class="item">
+                    <div class="animate-box text-center">
+                        <a href="@(string.IsNullOrWhiteSpace(game.ImageUrl) ? Links.Content.Images.Game_jpg : game.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@game.Developer - @game.Title (@game.YearReleased)">
+                            <img src="@(string.IsNullOrWhiteSpace(game.ImageUrl) ? Links.Content.Images.Game_jpg : game.ImageUrl)" alt="@game.Title">
+                        </a>
+                    </div>
 
-					<div id="game" class="info fh5co-desc" data-id="@game.ID">
-						<a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Game.Edit(game.ID) : MVC.Game.Details(game.ID))">
-							<div class="row">
-								@Html.DisplayFor(modelItem => game.Developer)
-							</div>
-							<div class="row">
-								@Html.DisplayFor(modelItem => game.Title)
-							</div>
-							<div class="row">
-								@Html.DisplayFor(modelItem => game.MediaType)
-							</div>
-						</a>
-					</div>
-				</div>
-			</div>
-			}
-	</div>
+                    <div id="game" class="info fh5co-desc" data-id="@game.ID">
+                        <a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Game.Edit(game.ID) : MVC.Game.Details(game.ID))">
+                            <div class="row">
+                                @Html.DisplayFor(modelItem => game.Developer)
+                            </div>
+                            <div class="row">
+                                @Html.DisplayFor(modelItem => game.Title)
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
 
 @Html.PagedListPager(Model.Games, page => Url.Action("Index", new { gameQuery = ViewBag.query, filter = ViewBag.Filter, page }))

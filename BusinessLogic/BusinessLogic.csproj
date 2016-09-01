@@ -120,10 +120,8 @@
     <Compile Include="DAL\ProjectCinderellaContext.cs" />
     <Compile Include="DAL\ProjectCinderellaInitializer.cs" />
     <Compile Include="Enums\AlbumMediaTypeEnum.cs" />
-    <Compile Include="Enums\BookMediaTypeEnum.cs" />
     <Compile Include="Enums\BookTypeEnum.cs" />
     <Compile Include="Enums\CompletionStatus.cs" />
-    <Compile Include="Enums\GameMediaTypeEnum.cs" />
     <Compile Include="Enums\GamePlatformEnum.cs" />
     <Compile Include="Enums\GameRatingEnum.cs" />
     <Compile Include="Enums\GameTypeEnum.cs" />
@@ -270,6 +268,10 @@
     <Compile Include="Migrations\201609010216493_made developer required for games.cs" />
     <Compile Include="Migrations\201609010216493_made developer required for games.Designer.cs">
       <DependentUpon>201609010216493_made developer required for games.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609011628239_made models use IsPhysical for media type.cs" />
+    <Compile Include="Migrations\201609011628239_made models use IsPhysical for media type.Designer.cs">
+      <DependentUpon>201609011628239_made models use IsPhysical for media type.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseItem.cs" />
@@ -439,6 +441,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609010216493_made developer required for games.resx">
       <DependentUpon>201609010216493_made developer required for games.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609011628239_made models use IsPhysical for media type.resx">
+      <DependentUpon>201609011628239_made models use IsPhysical for media type.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

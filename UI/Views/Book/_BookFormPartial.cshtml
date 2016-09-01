@@ -21,7 +21,7 @@
 <div id="book-info" class="collapse in">
     <div class="panel-body">
         @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
-		{
+        {
             <div class="animate-box item col-sm-6">
                 <a href="@Model.ImageUrl" class="image-popup img-fluid fh5co-board-img">
                     <img src="@Model.ImageUrl" class="img-rounded" style="height: 300px; width: 200px;">
@@ -108,9 +108,9 @@
         </div>
 
         <div class="col-sm-6">
-            @Html.LabelFor(m => m.Media)
-            @Html.EnumDropDownListFor(m => m.Media, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Media, "", new { @class = "text-danger" })
+            @Html.LabelFor(m => m.IsPhysical)
+            @Html.CheckBoxFor(m => m.IsPhysical, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.IsPhysical, "", new { @class = "text-danger" })
         </div>
 
         <div class="col-sm-6">
