@@ -109,6 +109,7 @@ namespace UI.Controllers
 		public virtual ActionResult Update(int id)
 		{
 			var model = _service.GetByID(id, User.Identity.GetUserId());
+
 			//TODO--check if id exists
 			if (model.DiscogsID == 0)
 			{
@@ -125,7 +126,8 @@ namespace UI.Controllers
 			model.Genre = release.Genre;
 			if (string.IsNullOrWhiteSpace(model.ImageUrl))
 				model.ImageUrl = release.ImageUrl;
-			model.Tracklist = release.Tracklist;
+			//model.Tracklist = release.Tracklist;
+			//model.Tracklist.ForEach(x => x.AlbumID = model.ID);
 
 			return View(MVC.Album.Views.Edit, model);
 		}

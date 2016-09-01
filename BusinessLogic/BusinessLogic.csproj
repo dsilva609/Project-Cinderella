@@ -259,6 +259,14 @@
     <Compile Include="Migrations\201608291606030_added completion status to base model.Designer.cs">
       <DependentUpon>201608291606030_added completion status to base model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609010014063_removed extra artists from tracklist.cs" />
+    <Compile Include="Migrations\201609010014063_removed extra artists from tracklist.Designer.cs">
+      <DependentUpon>201609010014063_removed extra artists from tracklist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609010023336_removed type from tracklist.cs" />
+    <Compile Include="Migrations\201609010023336_removed type from tracklist.Designer.cs">
+      <DependentUpon>201609010023336_removed type from tracklist.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseItem.cs" />
     <Compile Include="Models\BGGModels\BGGGame.cs" />
@@ -418,6 +426,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608291606030_added completion status to base model.resx">
       <DependentUpon>201608291606030_added completion status to base model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609010014063_removed extra artists from tracklist.resx">
+      <DependentUpon>201609010014063_removed extra artists from tracklist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609010023336_removed type from tracklist.resx">
+      <DependentUpon>201609010023336_removed type from tracklist.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

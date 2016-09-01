@@ -84,8 +84,8 @@ namespace BusinessLogic.Services
 		public void Edit(Album album)
 		{
 			_editEntityComponent.Execute(_repository, album);
-			if (album.Tracklist.Count > 0)
-				_editEntityListComponent.Execute(_tracksRepository, album.Tracklist);
+			//if (album.Tracklist.Count > 0)
+			//	_editEntityListComponent.Execute(_tracksRepository, album.Tracklist);
 		}
 
 		public void Delete(int id, string userID) =>

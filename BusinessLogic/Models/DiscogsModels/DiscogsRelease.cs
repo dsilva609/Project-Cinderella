@@ -180,8 +180,9 @@ namespace BusinessLogic.Models.DiscogsModels
 		public int AlbumID { get; set; }
 		public string duration { get; set; }
 		public string position { get; set; }
-		public string type_ { get; set; }
-		public List<Extraartist> extraartists { get; set; }
+		//public string type_ { get; set; }
+
+		//public List<Extraartist> extraartists { get; set; }
 		public string title { get; set; }
 	}
 }
