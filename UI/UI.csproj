@@ -911,6 +911,7 @@
     <Compile Include="ElmahController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Enums\CompletionStatusHelper.cs" />
     <Compile Include="Enums\EnumHelpers.cs" />
     <Compile Include="Enums\MessageTypeEnum.cs" />
     <Compile Include="GameController.generated.cs">

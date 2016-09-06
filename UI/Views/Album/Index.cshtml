@@ -1,68 +1,70 @@
 ﻿@using Microsoft.AspNet.Identity
 @using PagedList.Mvc
+@using UI.Enums
 @model UI.Models.AlbumViewModel
 @{
-	ViewBag.Title = @Model.ViewTitle;
+    ViewBag.Title = @Model.ViewTitle;
 }
 <script>
-	var deleteUrl = '@Url.Action(MVC.Album.Delete())';
+    var deleteUrl = '@Url.Action(MVC.Album.Delete())';
 </script>
 
 <div class="row">
-	<div class="h2 col-md-5">
-		Albums
-		@if (User.Identity.IsAuthenticated)
-		{
-			<a class="btn btn-default" href="@Url.Action(MVC.Album.Create())" style="padding-top: 1.25em;" contenteditable="false">
-				<span class="fa fa-plus"></span>
-			</a>
-		}
-	</div>
-	<div class="col-md-3" style="padding-top: 1.25em;">
-		@if (User.Identity.IsAuthenticated)
-		{
-			<a href="@Url.Action(MVC.Album.Search())" class="btn btn-default">Discogs <span class="fa fa-search"></span></a>
-		}
-	</div>
-	<div class="col-md-4" style="padding-top: 1.25em;">
-		<form action="@Url.Action(MVC.Album.Index())" method="get" style="display: inline-flex;">
-			<input class="form-control" id="query" name="albumQuery" placeholder="Search" type="text" value="@ViewBag.Filter">
-			<button type="submit" class="btn btn-default">
-				<span class="fa fa-search"></span>
-			</button>
-		</form>
-	</div>
+    <div class="h2 col-md-5">
+        Albums
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a class="btn btn-default" href="@Url.Action(MVC.Album.Create())" style="padding-top: 1.25em;" contenteditable="false">
+                <span class="fa fa-plus"></span>
+            </a>}
+    </div>
+    <div class="col-md-3" style="padding-top: 1.25em;">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a href="@Url.Action(MVC.Album.Search())" class="btn btn-default">Discogs <span class="fa fa-search"></span></a>}
+    </div>
+    <div class="col-md-4" style="padding-top: 1.25em;">
+        <form action="@Url.Action(MVC.Album.Index())" method="get" style="display: inline-flex;">
+            <input class="form-control" id="query" name="albumQuery" placeholder="Search" type="text" value="@ViewBag.Filter">
+            <button type="submit" class="btn btn-default">
+                <span class="fa fa-search"></span>
+            </button>
+        </form>
+    </div>
 </div>
 
 <div id="fh5co-main">
-	<div class="container">
-		@foreach (var album in Model.Albums)
-		{
-			<div id="fh5co-board" data-columns>
-				<div class="item">
-					<div class="animate-box text-center">
-						<a href="@(string.IsNullOrWhiteSpace(album.ImageUrl) ? Links.Content.Images.Turntable_jpg : album.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@album.Artist - @album.Title (@album.YearReleased)">
-							<img src="@(string.IsNullOrWhiteSpace(album.ImageUrl) ? Links.Content.Images.Turntable_jpg : album.ImageUrl)" alt="@album.Title">
-						</a>
-					</div>
+    <div class="container">
+        @foreach (var album in Model.Albums)
+        {
+            <div id="fh5co-board" data-columns>
+                <div class="item">
+                    <div class="animate-box text-center">
+                        <a href="@(string.IsNullOrWhiteSpace(album.ImageUrl) ? Links.Content.Images.Turntable_jpg : album.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@album.Artist - @album.Title (@album.YearReleased)">
+                            <img src="@(string.IsNullOrWhiteSpace(album.ImageUrl) ? Links.Content.Images.Turntable_jpg : album.ImageUrl)" alt="@album.Title">
+                        </a>
+                    </div>
 
-					<div id="album" class="info fh5co-desc" data-id="@album.ID">
-						<a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Album.Edit(album.ID) : MVC.Album.Details(album.ID))">
-							<div class="row">
-								@Html.DisplayFor(modelItem => album.Artist)
-							</div>
-							<div class="row">
-								@Html.DisplayFor(modelItem => album.Title)
-							</div>
-							<div class="row">
-								@Html.DisplayFor(modelItem => album.MediaType)
-							</div>
-						</a>
-					</div>
-				</div>
-			</div>
-		}
-	</div>
+                    <div id="album" class="info fh5co-desc" data-id="@album.ID">
+                        <a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Album.Edit(album.ID) : MVC.Album.Details(album.ID))">
+                            <div class="row">
+                                @Html.DisplayFor(modelItem => album.Artist)
+                            </div>
+                            <div class="row">
+                                @Html.DisplayFor(modelItem => album.Title)
+                            </div>
+                            <div class="row">
+                                @Html.DisplayFor(modelItem => album.MediaType)
+                            </div>
+
+                            <div class="row">
+                                <span class="@CompletionStatusHelper.GetStatusClass(album.CompletionStatus)"></span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>}
+    </div>
 </div>
 
 @Html.PagedListPager(Model.Albums, page => Url.Action("Index", new { albumQuery = ViewBag.query, filter = ViewBag.Filter, page }))
