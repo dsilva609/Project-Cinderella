@@ -1,5 +1,10 @@
-﻿@using UI.Enums
+﻿@using Microsoft.AspNet.Identity
+@using UI.Enums
 @model BusinessLogic.Models.Game
+
+<script>
+	var deleteUrl = '@Url.Action(MVC.Game.Delete())';
+</script>
 
 <h2>Details</h2>
 
@@ -133,4 +138,15 @@
             @Html.DisplayFor(m => m.IsNew, new { @class = "form-control" })
         </div>
     </div>
+</div>
+
+<div>
+    @if (User.Identity.IsAuthenticated && Model.UserID == User.Identity.GetUserId())
+    {
+        @Html.ActionLink("Edit", MVC.Game.Edit(Model.ID), new { id = Model.ID })
+        <span> | </span>
+        @Html.ActionLink("Delete", MVC.Game.Delete(Model.ID), new { @class = "deleteBtn", @data_id = Model.ID })
+        <span> | </span>
+    }
+    @Html.ActionLink("Back to List", MVC.Game.Index())
 </div>

@@ -1,4 +1,9 @@
-﻿@model BusinessLogic.Models.Book
+﻿@using Microsoft.AspNet.Identity
+@model BusinessLogic.Models.Book
+
+<script>
+	var deleteUrl = '@Url.Action(MVC.Book.Delete())';
+</script>
 
 <h2>Details</h2>
 <div data-toggle="collapse" data-parent="#accordion" href="#book-info">
@@ -108,25 +113,36 @@
 	</div>
 </div>
 <div id="purchase-info" class="collapse in">
-	<div class="panel-body">
-		<div class="col-xs-6">
-			@Html.LabelFor(m => m.DatePurchased):
-			@Html.DisplayFor(m => m.DatePurchased)
-		</div>
+    <div class="panel-body">
+        <div class="col-xs-6">
+            @Html.LabelFor(m => m.DatePurchased):
+            @Html.DisplayFor(m => m.DatePurchased)
+        </div>
 
-		<div class="col-xs-6">
-			@Html.LabelFor(m => m.LocationPurchased):
-			@Html.DisplayFor(m => m.LocationPurchased, new { @class = "form-control" })
-		</div>
+        <div class="col-xs-6">
+            @Html.LabelFor(m => m.LocationPurchased):
+            @Html.DisplayFor(m => m.LocationPurchased, new { @class = "form-control" })
+        </div>
 
-		<div class="col-xs-6">
-			@Html.LabelFor(m => m.IsNew):
-			@Html.DisplayFor(m => m.IsNew, new { @class = "form-control" })
-		</div>
+        <div class="col-xs-6">
+            @Html.LabelFor(m => m.IsNew):
+            @Html.DisplayFor(m => m.IsNew, new { @class = "form-control" })
+        </div>
 
-		<div class="col-xs-6">
-			@Html.LabelFor(m => m.IsReissue):
-			@Html.DisplayFor(m => m.IsReissue, new { @class = "form-control" })
-		</div>
-	</div>
+        <div class="col-xs-6">
+            @Html.LabelFor(m => m.IsReissue):
+            @Html.DisplayFor(m => m.IsReissue, new { @class = "form-control" })
+        </div>
+    </div>
+</div>
+
+<div>
+    @if (User.Identity.IsAuthenticated && Model.UserID == User.Identity.GetUserId())
+    {
+        @Html.ActionLink("Edit", MVC.Book.Edit(Model.ID), new { id = Model.ID })
+        <span> | </span>
+        @Html.ActionLink("Delete", MVC.Book.Delete(Model.ID), new { @class = "deleteBtn", @data_id = Model.ID })
+        <span> | </span>
+    }
+    @Html.ActionLink("Back to List", MVC.Book.Index())
 </div>

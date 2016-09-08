@@ -208,7 +208,7 @@
     @if (Model.ID > 0)
     {
         <div class="col-md-4">
-            @Html.ActionLink("Delete", MVC.Album.Delete(Model.ID), new { id = "deleteBtn", @class = "btn btn-danger btn-block btn-lg", data_id = Model.ID, data_deleteUrl = Url.Action(MVC.Album.Delete()) })
+            @Html.ActionLink("Delete", MVC.Album.Delete(Model.ID), new { @class = "deleteBtn btn btn-danger btn-block btn-lg", data_id = Model.ID, data_deleteUrl = Url.Action(MVC.Album.Delete()) })
         </div>
     }
 </div>

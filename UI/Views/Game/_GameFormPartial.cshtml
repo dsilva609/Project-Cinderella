@@ -186,7 +186,7 @@
     @if (Model.ID > 0)
     {
         <div class="col-sm-6">
-            @Html.ActionLink("Delete", MVC.Game.Delete(Model.ID), new { id = "deleteBtn", @class = "btn btn-danger btn-block btn-lg", data_id = Model.ID, data_deleteUrl = Url.Action(MVC.Game.Delete()) })
+            @Html.ActionLink("Delete", MVC.Game.Delete(Model.ID), new { @class = "deleteBtn btn btn-danger btn-block btn-lg", data_id = Model.ID, data_deleteUrl = Url.Action(MVC.Game.Delete()) })
         </div>
     }
 </div>

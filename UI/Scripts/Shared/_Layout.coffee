@@ -37,11 +37,7 @@ class Views.Shared.Layout
 			deleteItem($(this))
 
 			return false
-		
-		$('#deleteBtn').on "click", ->
-			deleteItem($(this))
-			return false
-			
+					
 		$('.panel-collapse').on "click", ->
 			$(this).find("span").toggleClass( "fa-chevron-circle-down fa-chevron-circle-up")	
 	

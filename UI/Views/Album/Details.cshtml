@@ -146,7 +146,7 @@
 	{
 		@Html.ActionLink("Edit", MVC.Album.Edit(Model.ID), new { id = Model.ID })
 		<span> | </span>
-		@Html.ActionLink("Delete", MVC.Album.Delete(Model.ID), new { id = "albumDeleteBtn", @data_id = Model.ID })
+		@Html.ActionLink("Delete", MVC.Album.Delete(Model.ID), new { @class = "deleteBtn", @data_id = Model.ID })
 		<span> | </span>
 	}
 	@Html.ActionLink("Back to List", MVC.Album.Index())

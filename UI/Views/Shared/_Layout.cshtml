@@ -42,11 +42,25 @@
                 <div class="h1 fh5co-logo">
                     @Html.ActionLink("Project Cinderella", MVC.Home.Index(), new { @class = "navbar-brand" })
                 </div>
-                <div class="h4 text-center">
-                    <span class="fa fa-music"></span> @Html.ActionLink("Albums", MVC.Album.Index()) |
-                    <span class="fa fa-book"></span> @Html.ActionLink("Books", MVC.Book.Index()) |
-                    <span class="fa fa-film"></span>/<span class="fa fa-television"></span> @Html.ActionLink("Movies/TV", MVC.Movie.Index()) |
-                    <span class="fa fa-gamepad"></span> @Html.ActionLink("Games", MVC.Game.Index())
+                <div class="h4 text-center hidden-xs">
+                    <a href="@Url.Action(MVC.Album.Index())">
+                        <span class="fa fa-music"></span>
+                        <span>Album</span>
+                    </a> |
+
+                    <a href="@Url.Action(MVC.Book.Index())">
+                        <span class="fa fa-book"></span>
+                        <span>Books</span>
+                    </a> |
+                    
+                    <a href="@Url.Action(MVC.Movie.Index())">
+                        <span class="fa fa-film"></span>/<span class="fa fa-television"></span>
+                        <span>Movies/TV</span>
+                    </a> |
+                    <a href="@Url.Action(MVC.Game.Index())">
+                        <span class="fa fa-gamepad"></span>
+                        <span>Games</span>
+                    </a> 
                 </div>
             </div>
         </div>
