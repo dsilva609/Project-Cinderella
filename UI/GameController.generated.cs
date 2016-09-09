@@ -200,6 +200,7 @@ namespace UI.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _Game = "_Game";
                 public readonly string _GameFormPartial = "_GameFormPartial";
                 public readonly string _RecentlyAdded = "_RecentlyAdded";
                 public readonly string Create = "Create";
@@ -208,6 +209,7 @@ namespace UI.Controllers
                 public readonly string Index = "Index";
                 public readonly string Search = "Search";
             }
+            public readonly string _Game = "~/Views/Game/_Game.cshtml";
             public readonly string _GameFormPartial = "~/Views/Game/_GameFormPartial.cshtml";
             public readonly string _RecentlyAdded = "~/Views/Game/_RecentlyAdded.cshtml";
             public readonly string Create = "~/Views/Game/Create.cshtml";

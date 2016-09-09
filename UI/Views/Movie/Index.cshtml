@@ -43,32 +43,7 @@
     <div class="container" style="padding-top: 2em;">
         @foreach (var movie in Model.Movies)
         {
-            <div id="fh5co-board" data-columns>
-                <div class="item">
-                    <div class="animate-box text-center">
-                        <a href="@(string.IsNullOrWhiteSpace(movie.ImageUrl) ? Links.Content.Images.Reel_jpg : movie.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@movie.Director - @movie.Title (@movie.YearReleased)">
-                            <img src="@(string.IsNullOrWhiteSpace(movie.ImageUrl) ? Links.Content.Images.Reel_jpg : movie.ImageUrl)" alt="@movie.Title">
-                        </a>
-                    </div>
-
-                    <div id="movie" class="info fh5co-desc" data-id="@movie.ID">
-                        <a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Movie.Edit(movie.ID) : MVC.Movie.Details(movie.ID))">
-                            <div class="row">
-                                @Html.DisplayFor(modelItem => movie.Director)
-                            </div>
-                            <div class="row">
-                                @Html.DisplayFor(modelItem => movie.Title)
-                            </div>
-                            <div class="row">
-                                @Html.DisplayFor(modelItem => movie.Type)
-                            </div>
-                            <div class="row">
-                                <span class="@CompletionStatusHelper.GetStatusClass(movie.CompletionStatus)"></span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            @Html.Partial(MVC.Movie.Views._Movie, movie)
         }
     </div>
 </div>

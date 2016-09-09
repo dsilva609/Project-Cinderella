@@ -5,28 +5,6 @@
     <h2>Recently Added Games</h2>
     @foreach (var game in Model)
     {
-        <div id="fh5co-board" data-columns>
-            <div class="item">
-                <div class="animate-box text-center">
-                    <a href="@(string.IsNullOrWhiteSpace(game.ImageUrl) ? Links.Content.Images.Game_jpg : game.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@game.Developer - @game.Title (@game.YearReleased)">
-                        <img src="@(string.IsNullOrWhiteSpace(game.ImageUrl) ? Links.Content.Images.Game_jpg : game.ImageUrl)" alt="@game.Title">
-                    </a>
-                </div>
-
-                <div id="game" class="info fh5co-desc" data-id="@game.ID">
-                    <a href="@Url.Action(MVC.Game.Details(game.ID))">
-                        <div class="row">
-                            @Html.DisplayFor(modelItem => game.Developer)
-                        </div>
-                        <div class="row">
-                            @Html.DisplayFor(modelItem => game.Title)
-                        </div>
-                        <div class="row">
-                            @game.Type.GetDisplayName()
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
+        @Html.Partial(MVC.Game.Views._Game, game)
     }
 </div>
