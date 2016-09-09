@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>@ViewBag.Title - Project Cinderella</title>
 	@Styles.Render("~/Content/css")
-	@Scripts.Render("~/bundles/modernizr")
+	
 	@Styles.Render(Links.Content.Responsive_min_css)
 	<!-- Animate.css -->
 	@Styles.Render(Links.Content.themes.Hydrogen.animate_min_css)
@@ -20,19 +20,12 @@
 	@Styles.Render(Links.Content.themes.Hydrogen.style_min_css)
 	@Styles.Render(Links.Content.Sass.Main_min_css)
 
-	<!-- Modernizr JS -->
-	@*	<script src="@Links.Scripts.Hydrogen.modernizr_2_6_2_min_js"></script>*@
-
-	@Scripts.Render("~/bundles/jquery")
-	@Scripts.Render("~/bundles/bootstrap")
-	@Scripts.Render(Links.Scripts.bootbox_min_js)
-	@RenderSection("scripts", required: false)
+	
 </head>
 @if (TempData.ContainsKey("Toastr"))
 {
 	var toastr = TempData["Toastr"] as Toastr;
-	@ToastrBuilder.ShowToastMessages(toastr)
-	;
+	@ToastrBuilder.ShowToastMessages(toastr);
 }
 <body>
 	<div class="row">
@@ -222,14 +215,21 @@
 	</div>
 
 	<div id="main-body" class="container">
+		@Scripts.Render("~/bundles/modernizr")
+		@Scripts.Render("~/bundles/jquery")
+		@Scripts.Render("~/bundles/bootstrap")
+		@RenderSection("scripts", required: false)
+
 		@RenderBody()
 
+		<!-- Modernizr JS -->
+		@*	<script src="@Links.Scripts.Hydrogen.modernizr_2_6_2_min_js"></script>*@
+
+		@Scripts.Render(Links.Scripts.bootbox_min_js)
 		@Scripts.Render("~/bundles/custom")
 
 		<!-- jQuery Easing -->
 		<script src="@Links.Scripts.Hydrogen.jquery_easing_1_3_min_js"></script>
-		<!-- Bootstrap -->
-		@*<script src="@Links.Scripts.Hydrogen.bootstrap_min_js"></script>*@
 		<!-- Waypoints -->
 		<script src="@Links.Scripts.Hydrogen.jquery_waypoints_min_js"></script>
 		<!-- Magnific Popup -->
