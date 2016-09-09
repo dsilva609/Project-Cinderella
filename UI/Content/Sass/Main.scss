@@ -5,110 +5,113 @@ $footer-color: #BBEAFA;
 $side-menu-color: #F9FAD9;
 
 a {
-	color: $body-color;
+    color: $body-color;
 }
 
 body {
-	background-color: $cinderella-blue;
-	font-family: sans-serif;
-	padding-bottom: 0;
+    background-color: $cinderella-blue;
+    font-family: sans-serif;
+    padding-bottom: 0;
 }
 
 .footer {
-	margin-top: 5em;
-	background-color: $footer-color;
-	padding-bottom: 2em;
+    margin-top: 5em;
+    background-color: $footer-color;
+    padding-bottom: 2em;
 }
 
 .jumbotron {
-	width: 1900px !important;
-	padding-top: 0;
+    /*width: 1900px !important;*/
+    padding-top: 0;
 
-	input[type="text"] {
-		color: antiquewhite;
-		
-		&:focus {
-			color: black;
-		}
-	}		
+    input[type="text"] {
+        color: antiquewhite;
+
+        &:focus {
+            color: black;
+        }
+    }
 }
 
 .jumbotronText {
-	font-size: 30px;
-	color: $cinderella-blue;
+    font-size: 30px;
+    color: $cinderella-blue;
 }
 
 .nav {
-	a {
-		color: $cinderella-blue;
-	}
+    a {
+        color: $cinderella-blue;
+    }
 }
 
 .form-control {
-	color: black;
-	border-color: $body-color;
+    color: black;
+    border-color: $body-color;
 
-	&:hover {
-		border-color: $belle-yellow !important;
-	}
+    &:hover {
+        border-color: $belle-yellow !important;
+    }
 }
 
 .row {
-	margin-left: 0;
-	margin-right: 0;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 #fh5co-header {
-	.navbar-brand {
-		color: $body-color;
-		&:hover {
-			color: $belle-yellow !important;
-		}
-	}
-	a:hover {
-		color: $belle-yellow !important;
-	}
+    .navbar-brand {
+        color: $body-color;
+
+        &:hover {
+            color: $belle-yellow !important;
+        }
+    }
+
+    a:hover {
+        color: $belle-yellow !important;
+    }
 }
 
 #fh5co-offcanvass {
-	background-color: $side-menu-color;
-	max-height: 100%;
+    background-color: $side-menu-color;
+    max-height: 100%;
+    margin: 0;
 }
 
 .navbar-brand {
-	color: $body-color !important;
+    color: $body-color !important;
 
-	&:hover {
-		color: $belle-yellow;
-	}
+    &:hover {
+        color: $belle-yellow;
+    }
 }
 
 .fh5co-desc {
-	float: none !important;
+    float: none !important;
 }
 
 .panel-primary .panel-heading {
-	background-color: $body-color;
+    background-color: $body-color;
 }
 
 .btn-primary {
-	background: $body-color;
+    background: $body-color;
 }
 
 select {
-	height: 5rem !important;
+    height: 5rem !important;
 }
 
 .pagination {
-	.active {
-		a {
-			background-color: $body-color;
-		}
-	}
+    .active {
+        a {
+            background-color: $body-color;
+        }
+    }
 
-	li {
-		a {
-			color: black;
-		}
-	}
+    li {
+        a {
+            color: black;
+        }
+    }
 }

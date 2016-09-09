@@ -12,7 +12,7 @@ body {
   padding-bottom: 2em; }
 
 .jumbotron {
-  width: 1900px !important;
+  /*width: 1900px !important;*/
   padding-top: 0; }
   .jumbotron input[type="text"] {
     color: antiquewhite; }
@@ -46,7 +46,8 @@ body {
 
 #fh5co-offcanvass {
   background-color: #F9FAD9;
-  max-height: 100%; }
+  max-height: 100%;
+  margin: 0; }
 
 .navbar-brand {
   color: #007aac !important; }
