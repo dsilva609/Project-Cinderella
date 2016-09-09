@@ -34,5 +34,83 @@
     "inputFiles": [
       "Scripts/PageSpecific/AlbumEdit.js"
     ]
+  },
+  {
+    "outputFileName": "Content/themes/Hydrogen/animate.min.css",
+    "inputFiles": [
+      "Content/themes/Hydrogen/animate.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/themes/Hydrogen/icomoon.min.css",
+    "inputFiles": [
+      "Content/themes/Hydrogen/icomoon.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/themes/Hydrogen/magnific-popup.min.css",
+    "inputFiles": [
+      "Content/themes/Hydrogen/magnific-popup.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/themes/Hydrogen/style.min.css",
+    "inputFiles": [
+      "Content/themes/Hydrogen/style.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/themes/Hydrogen/salvattore.min.css",
+    "inputFiles": [
+      "Content/themes/Hydrogen/salvattore.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/Responsive.min.css",
+    "inputFiles": [
+      "Content/Responsive.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/toastr.min.css",
+    "inputFiles": [
+      "Content/toastr.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/Hydrogen/jquery.easing.1.3.min.js",
+    "inputFiles": [
+      "Scripts/Hydrogen/jquery.easing.1.3.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/Hydrogen/main.min.js",
+    "inputFiles": [
+      "Scripts/Hydrogen/main.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/bootbox.min.js",
+    "inputFiles": [
+      "Scripts/bootbox.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/bootstrap-3.0.1.min.js",
+    "inputFiles": [
+      "Scripts/bootstrap-3.0.1.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/bootstrap.min.css",
+    "inputFiles": [
+      "Content/bootstrap.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/respond.min.js",
+    "inputFiles": [
+      "Scripts/respond.js"
+    ]
   }
 ]

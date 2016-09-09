@@ -21,7 +21,7 @@ namespace UI
 			bundles.Add(new ScriptBundle("~/bundles/bootstrap")
 				.Include("~/Scripts/bootstrap-{version}.min.js")
 				.Include("~/Scripts/bootstrap-3.0.1.min.js")
-				.Include("~/Scripts/respond.js")
+				.Include("~/Scripts/respond.min.js")
 				.Include("~/Scripts/bootstrap-datepicker.min.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/custom")

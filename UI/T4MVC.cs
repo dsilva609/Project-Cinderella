@@ -95,10 +95,12 @@ namespace Links
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
             public static readonly string bootstrap_min_js = Url("bootstrap.min.js");
             public static readonly string jquery_easing_1_3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.easing.1.3.min.js") ? Url("jquery.easing.1.3.min.js") : Url("jquery.easing.1.3.js");
+            public static readonly string jquery_easing_1_3_min_js = Url("jquery.easing.1.3.min.js");
             public static readonly string jquery_magnific_popup_min_js = Url("jquery.magnific-popup.min.js");
             public static readonly string jquery_min_js = Url("jquery.min.js");
             public static readonly string jquery_waypoints_min_js = Url("jquery.waypoints.min.js");
             public static readonly string main_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/main.min.js") ? Url("main.min.js") : Url("main.js");
+            public static readonly string main_min_js = Url("main.min.js");
             public static readonly string modernizr_2_6_2_min_js = Url("modernizr-2.6.2.min.js");
             public static readonly string respond_min_js = Url("respond.min.js");
             public static readonly string salvattore_min_js = Url("salvattore.min.js");
@@ -216,10 +218,10 @@ namespace Links
         }
     
         public static readonly string respond_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/respond.min.js") ? Url("respond.min.js") : Url("respond.js");
+        public static readonly string respond_min_js = Url("respond.min.js");
         public static readonly string respond_matchmedia_addListener_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/respond.matchmedia.addListener.min.js") ? Url("respond.matchmedia.addListener.min.js") : Url("respond.matchmedia.addListener.js");
         public static readonly string respond_matchmedia_addListener_min_js = Url("respond.matchmedia.addListener.min.js");
         public static readonly string respond_matchmedia_addListener_min_js_map = Url("respond.matchmedia.addListener.min.js.map");
-        public static readonly string respond_min_js = Url("respond.min.js");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class Shared {
             private const string URLPATH = "~/Scripts/Shared";
@@ -346,8 +348,8 @@ namespace Links
         public static readonly string bootstrap_datepicker3_standalone_min_css = Url("bootstrap-datepicker3.standalone.min.css");
         public static readonly string bootstrap_datepicker3_standalone_min_css_map = Url("bootstrap-datepicker3.standalone.min.css.map");
         public static readonly string bootstrap_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap.min.css") ? Url("bootstrap.min.css") : Url("bootstrap.css");
-        public static readonly string bootstrap_css_map = Url("bootstrap.css.map");
         public static readonly string bootstrap_min_css = Url("bootstrap.min.css");
+        public static readonly string bootstrap_css_map = Url("bootstrap.css.map");
         public static readonly string bootstrap_min_css_map = Url("bootstrap.min.css.map");
         public static readonly string font_awesome_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/font-awesome.min.css") ? Url("font-awesome.min.css") : Url("font-awesome.css");
         public static readonly string font_awesome_min_css = Url("font-awesome.min.css");
@@ -612,6 +614,7 @@ namespace Links
         public static readonly string PagedList_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/PagedList.min.css") ? Url("PagedList.min.css") : Url("PagedList.css");
         public static readonly string PagedList_min_css = Url("PagedList.min.css");
         public static readonly string Responsive_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Responsive.min.css") ? Url("Responsive.min.css") : Url("Responsive.css");
+        public static readonly string Responsive_min_css = Url("Responsive.min.css");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class Sass {
             private const string URLPATH = "~/Content/Sass";
@@ -682,17 +685,22 @@ namespace Links
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string animate_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/animate.min.css") ? Url("animate.min.css") : Url("animate.css");
+                public static readonly string animate_min_css = Url("animate.min.css");
                 public static readonly string icomoon_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/icomoon.min.css") ? Url("icomoon.min.css") : Url("icomoon.css");
+                public static readonly string icomoon_min_css = Url("icomoon.min.css");
                 public static readonly string magnific_popup_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/magnific-popup.min.css") ? Url("magnific-popup.min.css") : Url("magnific-popup.css");
+                public static readonly string magnific_popup_min_css = Url("magnific-popup.min.css");
                 public static readonly string salvattore_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/salvattore.min.css") ? Url("salvattore.min.css") : Url("salvattore.css");
+                public static readonly string salvattore_min_css = Url("salvattore.min.css");
                 public static readonly string style_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/style.min.css") ? Url("style.min.css") : Url("style.css");
+                public static readonly string style_min_css = Url("style.min.css");
             }
         
         }
     
         public static readonly string toastr_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/toastr.min.css") ? Url("toastr.min.css") : Url("toastr.css");
-        public static readonly string toastr_less = Url("toastr.less");
         public static readonly string toastr_min_css = Url("toastr.min.css");
+        public static readonly string toastr_less = Url("toastr.less");
         public static readonly string toastr_scss = Url("toastr.scss");
     }
 
@@ -805,9 +813,7 @@ namespace Links
             {
                 public const string _references_js = "~/Scripts/_references.js"; 
                 public const string bootbox_js = "~/Scripts/bootbox.js"; 
-                public const string bootbox_min_js = "~/Scripts/bootbox.min.js"; 
                 public const string bootstrap_3_0_1_js = "~/Scripts/bootstrap-3.0.1.js"; 
-                public const string bootstrap_3_0_1_min_js = "~/Scripts/bootstrap-3.0.1.min.js"; 
                 public const string bootstrap_datepicker_js = "~/Scripts/bootstrap-datepicker.js"; 
                 public const string bootstrap_datepicker_min_js = "~/Scripts/bootstrap-datepicker.min.js"; 
                 public const string bootstrap_js = "~/Scripts/bootstrap.js"; 
@@ -836,7 +842,6 @@ namespace Links
                 public const string respond_js = "~/Scripts/respond.js"; 
                 public const string respond_matchmedia_addListener_js = "~/Scripts/respond.matchmedia.addListener.js"; 
                 public const string respond_matchmedia_addListener_min_js = "~/Scripts/respond.matchmedia.addListener.min.js"; 
-                public const string respond_min_js = "~/Scripts/respond.min.js"; 
                 public const string toastr_js = "~/Scripts/toastr.js"; 
                 public const string toastr_min_js = "~/Scripts/toastr.min.js"; 
             }
@@ -945,7 +950,6 @@ namespace Links
                 public const string bootstrap_datepicker3_standalone_css = "~/Content/bootstrap-datepicker3.standalone.css";
                 public const string bootstrap_datepicker3_standalone_min_css = "~/Content/bootstrap-datepicker3.standalone.min.css";
                 public const string bootstrap_css = "~/Content/bootstrap.css";
-                public const string bootstrap_min_css = "~/Content/bootstrap.min.css";
                 public const string font_awesome_css = "~/Content/font-awesome.css";
                 public const string font_awesome_min_css = "~/Content/font-awesome.min.css";
                 public const string jquery_mobile_1_4_5_css = "~/Content/jquery.mobile-1.4.5.css";
@@ -966,7 +970,6 @@ namespace Links
                 public const string Responsive_css = "~/Content/Responsive.css";
                 public const string Site_css = "~/Content/Site.css";
                 public const string toastr_css = "~/Content/toastr.css";
-                public const string toastr_min_css = "~/Content/toastr.min.css";
             }
         }
     }

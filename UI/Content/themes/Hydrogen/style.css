@@ -1,4 +1,4 @@
-﻿@charset "UTF-8";
+﻿/*@charset "UTF-8";*/
 
 @font-face {
 	font-family: 'icomoon';
@@ -5114,15 +5114,12 @@ tbody.collapse.in {
 }
 
 .navbar-form {
-	margin-left: -20px;
-	margin-right: -20px;
+	margin: 5px -20px;
 	padding: 10px 20px;
 	border-top: 1px solid transparent;
 	border-bottom: 1px solid transparent;
 	-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
-	margin-top: 5px;
-	margin-bottom: 5px;
 }
 
 @media (min-width: 768px) {
@@ -7856,7 +7853,7 @@ body {
 	font-weight: 300;
 	font-size: 15px;
 	line-height: 26px;
-	color: #lime;
+	color: #000000;
 	background-color: #222222;
 }
 
@@ -8079,7 +8076,7 @@ h1, h2, h3, h4, h5, h6 {
 	#fh5co-header > .navbar li a > span .border {
 		display: block;
 		height: 3px;
-		vertical-align: middle;
+		/*vertical-align: middle;*/
 		-webkit-transform: translateZ(0);
 		transform: translateZ(0);
 		box-shadow: 0 0 1px transparent;
