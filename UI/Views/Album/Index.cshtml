@@ -1,4 +1,5 @@
-﻿@using PagedList.Mvc
+﻿@using Microsoft.AspNet.Identity
+@using PagedList.Mvc
 @model UI.Models.AlbumViewModel
 @{
     ViewBag.Title = @Model.ViewTitle;
@@ -32,6 +33,11 @@
         </form>
     </div>
 </div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div>Wish List (Coming Soon)</div>
+}
 
 <div id="fh5co-main">
     <div class="container">

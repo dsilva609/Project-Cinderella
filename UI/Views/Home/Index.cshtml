@@ -1,4 +1,5 @@
-﻿@model UI.Models.HomeViewModel
+﻿@using UI.Enums
+@model UI.Models.HomeViewModel
 @{
     ViewBag.Title = "Home Page";
 }
@@ -9,21 +10,23 @@
 
 <div class="jumbotron img-fluid">
     <div class="h3 container">
-	    <div class="row text-right" style="padding-top: 1em;">
-			<div class="jumbotronText text-center">Always know what's playing in your collection.</div>
-		    @if (!User.Identity.IsAuthenticated)
-		    {
-			    <div class="hidden-xs hidden-sm" style="padding-top: 0;">
-				    @Html.ActionLink("Login", MVC.Account.Login(), new { @class = "btn btn-default" })
-			    </div>
-		    }
-	    </div>
-		
-	    <div class="row text-center" style="padding-top: 5em;">
-            <div class="@(User.Identity.IsAuthenticated ? "col-md-6 text-md-right":"") text-xs-center">
+        <div class="row text-right" style="padding-top: 1em;">
+            <div class="jumbotronText text-center">Always know what's playing in your collection.</div>
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <div class="hidden-xs hidden-sm" style="padding-top: 0;">
+                    @Html.ActionLink("Login", MVC.Account.Login(), new { @class = "btn btn-default" })
+                </div>
+            }
+        </div>
+
+        <div class="row text-center" style="padding-top: 5em;">
+            <div class="@(User.Identity.IsAuthenticated ? "col-md-6 text-md-right" : "") text-xs-center">
                 @using (Html.BeginForm(MVC.Album.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
                 {
                     @Html.TextBox("albumQuery", null, new { @class = "form-control", @placeholder = "Search" })
+
+                    @Html.DropDownList("type", Enum.GetNames(typeof(ItemType)).Select(val => new SelectListItem { Text = val, Value = val }).ToList(), new { @class = "form-control" })
                     <button type="submit" class="btn btn-default">
                         <span class="fa fa-search"></span>
                     </button>
