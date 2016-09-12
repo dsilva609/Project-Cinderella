@@ -37,7 +37,7 @@ namespace BusinessLogic.Services
 
         public List<Game> GetAll(string userID = "", string query = "", int numToTake = 0, int? pageNum = 1)
         {
-            var gameList = _getEntityListComponent.Execute(_repository).OrderBy(x => x.Developer).ThenBy(x => x.Title).ToList();
+            var gameList = _getEntityListComponent.Execute(_repository).OrderBy(x => x.Title).ThenBy(x => x.Developer).ToList();
 
             if (!string.IsNullOrWhiteSpace(userID))
                 gameList = gameList.Where(x => x.UserID == userID).ToList();
@@ -49,11 +49,9 @@ namespace BusinessLogic.Services
                 gameList = currentList.Where(x =>
                     x.Title.Equals(query, StringComparison.InvariantCultureIgnoreCase) ||
                     x.Developer.Equals(query, StringComparison.InvariantCultureIgnoreCase)).ToList();
-                var partialMatches =
-                    currentList.Where(
-                        x =>
-                            x.Title.IndexOf(query, StringComparison.InvariantCultureIgnoreCase) != -1 ||
-                            x.Developer.IndexOf(query, StringComparison.InvariantCultureIgnoreCase) != -1).ToList();
+                var partialMatches = currentList.Where(x =>
+                    x.Title.IndexOf(query, StringComparison.InvariantCultureIgnoreCase) != -1 ||
+                    x.Developer.IndexOf(query, StringComparison.InvariantCultureIgnoreCase) != -1).ToList();
                 gameList = gameList.Concat(partialMatches).Distinct().ToList();
             }
 
