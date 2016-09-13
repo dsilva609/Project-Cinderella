@@ -29,6 +29,12 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Index(string gameQuery, string filter, int? page = 1)
         {
+            if (string.IsNullOrWhiteSpace(gameQuery) && !string.IsNullOrWhiteSpace(Session["query"].ToString()))
+            {
+                gameQuery = Session["query"].ToString();
+                Session["query"] = string.Empty;
+            }
+
             ViewBag.Filter = string.IsNullOrWhiteSpace(gameQuery) ? filter : gameQuery;
 
             var viewModel = new GameViewModel

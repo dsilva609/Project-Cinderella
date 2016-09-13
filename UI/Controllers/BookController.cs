@@ -28,6 +28,11 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Index(string bookQuery, string filter, int? page)
         {
+            if (string.IsNullOrWhiteSpace(bookQuery) && !string.IsNullOrWhiteSpace(Session["query"].ToString()))
+            {
+                bookQuery = Session["query"].ToString();
+                Session["query"] = string.Empty;
+            }
             ViewBag.Filter = string.IsNullOrWhiteSpace(bookQuery) ? filter : bookQuery;
 
             var viewModel = new BookViewModel

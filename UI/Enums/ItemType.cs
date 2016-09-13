@@ -2,9 +2,9 @@
 {
     public enum ItemType
     {
-        Music,
+        Album,
         Book,
-        Video,
+        Movie,
         Game
     }
 }

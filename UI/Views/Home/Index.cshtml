@@ -22,9 +22,9 @@
 
         <div class="row text-center" style="padding-top: 5em;">
             <div class="@(User.Identity.IsAuthenticated ? "col-md-6 text-md-right" : "") text-xs-center">
-                @using (Html.BeginForm(MVC.Album.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
+                @using (Html.BeginForm("Search", "Home", FormMethod.Get, new { @style = "display:inline-flex;" }))
                 {
-                    @Html.TextBox("albumQuery", null, new { @class = "form-control", @placeholder = "Search" })
+                    @Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
 
                     @Html.DropDownList("type", Enum.GetNames(typeof(ItemType)).Select(val => new SelectListItem { Text = val, Value = val }).ToList(), new { @class = "form-control" })
                     <button type="submit" class="btn btn-default">
