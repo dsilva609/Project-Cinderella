@@ -8,41 +8,57 @@ using UnitTests.UI.Controllers.TestBases;
 
 namespace UnitTests.UI.Controllers
 {
-	[TestFixture]
-	public class HomeControllerTests : HomeControllerTestBase
-	{
-		[Test]
-		public void ThatIndexActionReturnsAView()
-		{
-			//--Arrange
-			_homeControllerMock.Get<IAlbumService>().Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<int>.Is.Anything, Arg<int>.Is.Anything))
-				.Return(new List<Album>());
+    [TestFixture]
+    public class HomeControllerTests : HomeControllerTestBase
+    {
+        [Test]
+        public void ThatIndexActionReturnsAView()
+        {
+            //--Arrange
+            _homeControllerMock.Get<IAlbumService>()
+                .Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<int>.Is.Anything, Arg<int>.Is.Anything))
+                .Return(new List<Album>());
+            _homeControllerMock.Get<IBookService>()
+                .Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<int>.Is.Anything, Arg<int>.Is.Anything))
+                .Return(new List<Book>());
+            _homeControllerMock.Get<IMovieService>()
+                .Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<int>.Is.Anything, Arg<int>.Is.Anything))
+                .Return(new List<Movie>());
+            _homeControllerMock.Get<IGameService>()
+                .Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<int>.Is.Anything, Arg<int>.Is.Anything))
+                .Return(new List<Game>());
 
-			//--Act
-			var result = _homeControllerMock.ClassUnderTest.Index() as ViewResult;
+            //--Act
+            var result = _homeControllerMock.ClassUnderTest.Index() as ViewResult;
 
-			// Assert
-			Assert.AreEqual(string.Empty, result.ViewName);
-		}
+            // Assert
+            Assert.AreEqual(string.Empty, result.ViewName);
+        }
 
-		[Test]
-		public void ThatAboutActionReturnsAView()
-		{
-			//--Act
-			var result = _homeControllerMock.ClassUnderTest.About() as ViewResult;
+        [Test]
+        public void ThatAboutActionReturnsAView()
+        {
+            //--Act
+            var result = _homeControllerMock.ClassUnderTest.About() as ViewResult;
 
-			//--Assert
-			Assert.AreEqual(string.Empty, result.ViewName);
-		}
+            //--Assert
+            Assert.AreEqual(string.Empty, result.ViewName);
+        }
 
-		[Test]
-		public void ThatContactActionReturnsAView()
-		{
-			//--Act
-			var result = _homeControllerMock.ClassUnderTest.Contact() as ViewResult;
+        [Test]
+        public void ThatContactActionReturnsAView()
+        {
+            //--Act
+            var result = _homeControllerMock.ClassUnderTest.Contact() as ViewResult;
 
-			//--Assert
-			Assert.AreEqual(string.Empty, result.ViewName);
-		}
-	}
+            //--Assert
+            Assert.AreEqual(string.Empty, result.ViewName);
+        }
+
+        [Test]
+        public void ThatSearchActionReturnsCorrectPage()
+        {
+            Assert.AreEqual(0, 1);
+        }
+    }
 }

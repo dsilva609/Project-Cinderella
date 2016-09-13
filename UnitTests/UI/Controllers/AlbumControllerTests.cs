@@ -10,160 +10,163 @@ using UnitTests.UI.Controllers.TestBases;
 
 namespace UnitTests.UI.Controllers
 {
-	[TestFixture]
-	public class AlbumControllerTests : AlbumControllerTestBase
-	{
-		private Album _testModel = new Album();
+    [TestFixture]
+    public class AlbumControllerTests : AlbumControllerTestBase
+    {
+        private Album _testModel = new Album();
 
-		[Test]
-		public void ThatTheIndexActionReturnsAView()
-		{
-			//--Act
-			var result = _controller.ClassUnderTest.Index(string.Empty, string.Empty, 1) as ViewResult;
+        [Test]
+        public void ThatTheIndexActionReturnsAView()
+        {
+            _session["query"] = string.Empty;
+            _controller.Get<IAlbumService>().Expect(x => x.GetAll()).Return(new List<Album>());
 
-			var test = result.Model;
-			//--Assert
-			Assert.AreEqual(string.Empty, result.ViewName);
-		}
+            //--Act
+            var result = _controller.ClassUnderTest.Index(string.Empty, string.Empty, 1) as ViewResult;
 
-		[Test]
-		public void ThatCreateActionReturnsAView()
-		{
-			//--Act
-			var result = _controller.ClassUnderTest.Create() as ViewResult;
+            var test = result.Model;
+            //--Assert
+            Assert.AreEqual(string.Empty, result.ViewName);
+        }
 
-			//--Assert
-			Assert.AreEqual(string.Empty, result.ViewName);
-		}
+        [Test]
+        public void ThatCreateActionReturnsAView()
+        {
+            //--Act
+            var result = _controller.ClassUnderTest.Create() as ViewResult;
 
-		[Test]
-		public void ItRedirectsToIndexActionWhenModelIsValid()
-		{
-			//--Act
-			var result = _controller.ClassUnderTest.Create(_testModel) as RedirectToRouteResult;
+            //--Assert
+            Assert.AreEqual(string.Empty, result.ViewName);
+        }
 
-			//--Assert
-			Assert.IsTrue(_controller.ClassUnderTest.ModelState.IsValid);
-			Assert.AreEqual("Index", result.RouteValues["Action"]);
-		}
+        [Test]
+        public void ItRedirectsToIndexActionWhenModelIsValid()
+        {
+            //--Act
+            var result = _controller.ClassUnderTest.Create(_testModel) as RedirectToRouteResult;
 
-		[Test]
-		public void ItGoesBackToTheViewIfModelStateIsInvalid()
-		{
-			//--Arrange
-			_controller.ClassUnderTest.ModelState.AddModelError(string.Empty, string.Empty);
+            //--Assert
+            Assert.IsTrue(_controller.ClassUnderTest.ModelState.IsValid);
+            Assert.AreEqual("Index", result.RouteValues["Action"]);
+        }
 
-			//--Act
-			var result = _controller.ClassUnderTest.Create(_testModel) as ViewResult;
+        [Test]
+        public void ItGoesBackToTheViewIfModelStateIsInvalid()
+        {
+            //--Arrange
+            _controller.ClassUnderTest.ModelState.AddModelError(string.Empty, string.Empty);
 
-			//--Assert
-			Assert.AreEqual(string.Empty, result.ViewName);
-			Assert.IsFalse(_controller.ClassUnderTest.ModelState.IsValid);
-		}
+            //--Act
+            var result = _controller.ClassUnderTest.Create(_testModel) as ViewResult;
 
-		[Test]
-		public void ItGoesToIndexViewAfterDelete()
-		{
-			//--Act
-			var result = _controller.ClassUnderTest.Delete(6213) as RedirectToRouteResult;
+            //--Assert
+            Assert.AreEqual(string.Empty, result.ViewName);
+            Assert.IsFalse(_controller.ClassUnderTest.ModelState.IsValid);
+        }
 
-			//--Assert
-			Assert.AreEqual("Index", result.RouteValues["Action"]);
-		}
+        [Test]
+        public void ItGoesToIndexViewAfterDelete()
+        {
+            //--Act
+            var result = _controller.ClassUnderTest.Delete(6213) as RedirectToRouteResult;
 
-		[Test]
-		public void ThatEditActionReturnsAView()
-		{
-			//--Arrange
-			_controller.Get<IAlbumService>().Expect(x => x.GetByID(Arg<int>.Is.Anything, Arg<string>.Is.Anything))
-				.Return(new Album { ID = 666 });
+            //--Assert
+            Assert.AreEqual("Index", result.RouteValues["Action"]);
+        }
 
-			//--Act
-			var result = _controller.ClassUnderTest.Edit(666) as ViewResult;
+        [Test]
+        public void ThatEditActionReturnsAView()
+        {
+            //--Arrange
+            _controller.Get<IAlbumService>().Expect(x => x.GetByID(Arg<int>.Is.Anything, Arg<string>.Is.Anything))
+                .Return(new Album { ID = 666 });
 
-			//--Assert
-			Assert.AreEqual(string.Empty, result.ViewName);
-		}
+            //--Act
+            var result = _controller.ClassUnderTest.Edit(666) as ViewResult;
 
-		[Test]
-		public void ThatOnEditWhenModelStateIsValidItGoesBackToIndexView()
-		{
-			//--Arrange
-			_controller.Get<IAlbumService>()
-				.Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<int>.Is.Anything, Arg<int>.Is.Anything))
-				.Return(new List<Album>());
+            //--Assert
+            Assert.AreEqual(string.Empty, result.ViewName);
+        }
 
-			//--Act
-			var result = _controller.ClassUnderTest.Edit(_testModel) as RedirectToRouteResult;
+        [Test]
+        public void ThatOnEditWhenModelStateIsValidItGoesBackToIndexView()
+        {
+            //--Arrange
+            _controller.Get<IAlbumService>()
+                .Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<int>.Is.Anything, Arg<int>.Is.Anything))
+                .Return(new List<Album>());
 
-			//--Assert
-			Assert.AreEqual("Index", result.RouteValues["Action"]);
-		}
+            //--Act
+            var result = _controller.ClassUnderTest.Edit(_testModel) as RedirectToRouteResult;
 
-		[Test]
-		public void ThatWhenModelStateIsNotValidItRedirectsBackToEditView()
-		{
-			//--Arrange
-			_controller.ClassUnderTest.ModelState.AddModelError("", "");
+            //--Assert
+            Assert.AreEqual("Index", result.RouteValues["Action"]);
+        }
 
-			//--Act
-			var result = _controller.ClassUnderTest.Edit(_testModel) as ViewResult;
+        [Test]
+        public void ThatWhenModelStateIsNotValidItRedirectsBackToEditView()
+        {
+            //--Arrange
+            _controller.ClassUnderTest.ModelState.AddModelError("", "");
 
-			//--Assert
-			Assert.IsFalse(_controller.ClassUnderTest.ModelState.IsValid);
-			Assert.AreEqual(string.Empty, result.ViewName);
-		}
+            //--Act
+            var result = _controller.ClassUnderTest.Edit(_testModel) as ViewResult;
 
-		[Test]
-		public void ThatOnEditADuplicateRecordIsFoundItRedirectsBackToEditView()
-		{
-			//--Arrange
-			_controller.Get<IAlbumService>()
-				.Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<int>.Is.Anything, Arg<int>.Is.Anything))
-				.Return(new List<Album> { new Album { ID = 1, Title = "Kill 'Em All", Artist = "Metallica" } });
-			_testModel.ID = 1;
-			_testModel.Title = "Kill 'Em All";
-			_testModel.Artist = "Metallica";
+            //--Assert
+            Assert.IsFalse(_controller.ClassUnderTest.ModelState.IsValid);
+            Assert.AreEqual(string.Empty, result.ViewName);
+        }
 
-			//--Act
-			var result = _controller.ClassUnderTest.Edit(_testModel) as ViewResult;
+        [Test]
+        public void ThatOnEditADuplicateRecordIsFoundItRedirectsBackToEditView()
+        {
+            //--Arrange
+            _controller.Get<IAlbumService>()
+                .Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<int>.Is.Anything, Arg<int>.Is.Anything))
+                .Return(new List<Album> { new Album { ID = 1, Title = "Kill 'Em All", Artist = "Metallica" } });
+            _testModel.ID = 1;
+            _testModel.Title = "Kill 'Em All";
+            _testModel.Artist = "Metallica";
 
-			//--Assert
-			Assert.AreEqual(string.Empty, result.ViewName);
-		}
+            //--Act
+            var result = _controller.ClassUnderTest.Edit(_testModel) as ViewResult;
 
-		[Test]
-		public void ThatDetailsActionReturnsAView()
-		{
-			//--Act
-			var result = _controller.ClassUnderTest.Details(72) as ViewResult;
+            //--Assert
+            Assert.AreEqual(string.Empty, result.ViewName);
+        }
 
-			//--Assert
-			Assert.AreEqual(string.Empty, result.ViewName);
-		}
+        [Test]
+        public void ThatDetailsActionReturnsAView()
+        {
+            //--Act
+            var result = _controller.ClassUnderTest.Details(72) as ViewResult;
 
-		[Test]
-		public void ThatSearchActionReturnsAView()
-		{
-			//--Act
-			var result = _controller.ClassUnderTest.Search(new DiscogsSearchModel()) as ViewResult;
+            //--Assert
+            Assert.AreEqual(string.Empty, result.ViewName);
+        }
 
-			//--Assert
-			Assert.AreEqual(string.Empty, result.ViewName);
-		}
+        [Test]
+        public void ThatSearchActionReturnsAView()
+        {
+            //--Act
+            var result = _controller.ClassUnderTest.Search(new DiscogsSearchModel()) as ViewResult;
 
-		[Test]
-		public void ThatCreateFromSearchModelActionReturnsAView()
-		{
-			//--Arrange
-			_controller.Get<IDiscogsService>().Expect(x => x.GetRelease(Arg<int>.Is.Anything))
-				.Return(new Album());
+            //--Assert
+            Assert.AreEqual(string.Empty, result.ViewName);
+        }
 
-			//--Act
-			var result = _controller.ClassUnderTest.CreateFromSearchResult(It.IsAny<int>()) as RedirectToRouteResult;
+        [Test]
+        public void ThatCreateFromSearchModelActionReturnsAView()
+        {
+            //--Arrange
+            _controller.Get<IDiscogsService>().Expect(x => x.GetRelease(Arg<int>.Is.Anything))
+                .Return(new Album());
 
-			//--Assert
-			Assert.AreEqual("Create", result.RouteValues["Action"]);
-		}
-	}
+            //--Act
+            var result = _controller.ClassUnderTest.CreateFromSearchResult(It.IsAny<int>()) as RedirectToRouteResult;
+
+            //--Assert
+            Assert.AreEqual("Create", result.RouteValues["Action"]);
+        }
+    }
 }

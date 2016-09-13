@@ -144,7 +144,7 @@ namespace UI.Controllers
             if (!ModelState.IsValid) return View(model);
             var existingAlbums = _service.GetAll(User.Identity.GetUserId());
             if (existingAlbums.Count > 0 && existingAlbums.Any(x => x.ID != model.ID && x.Artist == model.Artist && x.Title == model.Title
-                && x.MediaType == model.MediaType && x.DiscogsID == model.DiscogsID))
+                                                                    && x.MediaType == model.MediaType && x.DiscogsID == model.DiscogsID))
             {
                 ShowStatusMessage(MessageTypeEnum.error,
                     $"An album of Artist: {model.Artist}, Album: {model.Title}, Media Type: {model.MediaType} already exists.", "Duplicate Record");
