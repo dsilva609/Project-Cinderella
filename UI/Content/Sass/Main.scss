@@ -21,7 +21,6 @@ body {
 }
 
 .jumbotron {
-    /*width: 1900px !important;*/
     padding-top: 0;
 
     input[type="text"] {
@@ -31,6 +30,11 @@ body {
             color: black;
         }
     }
+    
+    select, option {
+        background-color: $cinderella-blue;
+    }
+    
 }
 
 .jumbotronText {
