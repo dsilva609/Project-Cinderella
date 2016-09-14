@@ -273,6 +273,10 @@
     <Compile Include="Migrations\201609011628239_made models use IsPhysical for media type.Designer.cs">
       <DependentUpon>201609011628239_made models use IsPhysical for media type.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609141620453_added checked out field to base item.cs" />
+    <Compile Include="Migrations\201609141620453_added checked out field to base item.Designer.cs">
+      <DependentUpon>201609141620453_added checked out field to base item.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseItem.cs" />
     <Compile Include="Models\BGGModels\BGGGame.cs" />
@@ -444,6 +448,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609011628239_made models use IsPhysical for media type.resx">
       <DependentUpon>201609011628239_made models use IsPhysical for media type.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609141620453_added checked out field to base item.resx">
+      <DependentUpon>201609141620453_added checked out field to base item.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

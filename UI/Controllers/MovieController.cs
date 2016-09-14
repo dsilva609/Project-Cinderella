@@ -26,7 +26,7 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Index(string movieQuery, string filter, int? page)
         {
-            if (string.IsNullOrWhiteSpace(movieQuery) && !string.IsNullOrWhiteSpace(Session["query"].ToString()))
+            if (string.IsNullOrWhiteSpace(movieQuery) && !string.IsNullOrWhiteSpace(Session["query"]?.ToString()))
             {
                 movieQuery = Session["query"].ToString();
                 Session["query"] = string.Empty;

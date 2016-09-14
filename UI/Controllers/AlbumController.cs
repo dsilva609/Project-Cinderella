@@ -26,7 +26,7 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Index(string albumQuery, string filter, int? page)
         {
-            if (string.IsNullOrWhiteSpace(albumQuery) && !string.IsNullOrWhiteSpace(Session["query"].ToString()))
+            if (string.IsNullOrWhiteSpace(albumQuery) && !string.IsNullOrWhiteSpace(Session["query"]?.ToString()))
             {
                 albumQuery = Session["query"].ToString();
                 Session["query"] = string.Empty;
