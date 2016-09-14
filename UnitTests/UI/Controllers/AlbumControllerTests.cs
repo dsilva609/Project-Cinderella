@@ -67,6 +67,8 @@ namespace UnitTests.UI.Controllers
         [Test]
         public void ItGoesToIndexViewAfterDelete()
         {
+            _controller.Get<IAlbumService>().Expect(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>())).Return(new Album { ID = 6213, UserID = "TestUser" });
+
             //--Act
             var result = _controller.ClassUnderTest.Delete(6213) as RedirectToRouteResult;
 
