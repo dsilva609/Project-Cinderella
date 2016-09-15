@@ -2,9 +2,7 @@
 using BusinessLogic.Models;
 using BusinessLogic.Services.Interfaces;
 using Microsoft.AspNet.Identity;
-using PagedList;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using UI.Models;
@@ -32,11 +30,12 @@ namespace UI.Controllers
                 Session["query"] = string.Empty;
             }
             ViewBag.Filter = string.IsNullOrWhiteSpace(albumQuery) ? filter : albumQuery;
+            var albums = _service.GetAll(User.Identity.GetUserId(), ViewBag.Filter);
 
             var viewModel = new AlbumViewModel
             {
                 ViewTitle = "Index",
-                Albums = (_service.GetAll(User.Identity.GetUserId(), ViewBag.Filter) as List<Album>).ToPagedList(page ?? 1, NUM_ALBUMS_TO_GET),
+                Albums = albums?.ToPagedList(page ?? 1, NUM_ALBUMS_TO_GET),
                 PageSize = NUM_ALBUMS_TO_GET
             };
 

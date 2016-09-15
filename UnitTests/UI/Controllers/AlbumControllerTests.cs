@@ -3,6 +3,7 @@ using BusinessLogic.Services.Interfaces;
 using Moq;
 using NUnit.Framework;
 using Rhino.Mocks;
+using Shouldly;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using UI.Models;
@@ -19,12 +20,10 @@ namespace UnitTests.UI.Controllers
         public void ThatTheIndexActionReturnsAView()
         {
             _session["query"] = string.Empty;
-            _controller.Get<IAlbumService>().Expect(x => x.GetAll()).Return(new List<Album>());
 
             //--Act
             var result = _controller.ClassUnderTest.Index(string.Empty, string.Empty, 1) as ViewResult;
 
-            var test = result.Model;
             //--Assert
             Assert.AreEqual(string.Empty, result.ViewName);
         }
@@ -67,7 +66,8 @@ namespace UnitTests.UI.Controllers
         [Test]
         public void ItGoesToIndexViewAfterDelete()
         {
-            _controller.Get<IAlbumService>().Expect(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>())).Return(new Album { ID = 6213, UserID = "TestUser" });
+            _controller.Get<IAlbumService>().Expect(x => x.GetByID(It.Is<int>(y => y == 6213), It.IsAny<string>()))
+                .Return(new Album { ID = 6213, UserID = "Test User" });
 
             //--Act
             var result = _controller.ClassUnderTest.Delete(6213) as RedirectToRouteResult;
@@ -131,10 +131,11 @@ namespace UnitTests.UI.Controllers
             _testModel.Artist = "Metallica";
 
             //--Act
-            var result = _controller.ClassUnderTest.Edit(_testModel) as ViewResult;
+            var result = _controller.ClassUnderTest.Edit(_testModel) as RedirectToRouteResult;
 
             //--Assert
-            Assert.AreEqual(string.Empty, result.ViewName);
+            result.RouteValues["Action"].ShouldBe("Index");
+            result.RouteValues["Controller"].ShouldBe("Album");
         }
 
         [Test]
