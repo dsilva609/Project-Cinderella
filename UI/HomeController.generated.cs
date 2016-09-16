@@ -56,6 +56,12 @@ namespace UI.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Search()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Search);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public HomeController Actions { get { return MVC.Home; } }
@@ -75,6 +81,7 @@ namespace UI.Controllers
             public readonly string Index = "Index";
             public readonly string About = "About";
             public readonly string Contact = "Contact";
+            public readonly string Search = "Search";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -83,9 +90,19 @@ namespace UI.Controllers
             public const string Index = "Index";
             public const string About = "About";
             public const string Contact = "Contact";
+            public const string Search = "Search";
         }
 
 
+        static readonly ActionParamsClass_Search s_params_Search = new ActionParamsClass_Search();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Search SearchParams { get { return s_params_Search; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Search
+        {
+            public readonly string query = "query";
+            public readonly string type = "type";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -141,6 +158,19 @@ namespace UI.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Contact);
             ContactOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void SearchOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string query, UI.Enums.ItemType type);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Search(string query, UI.Enums.ItemType type)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Search);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "query", query);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "type", type);
+            SearchOverride(callInfo, query, type);
             return callInfo;
         }
 
