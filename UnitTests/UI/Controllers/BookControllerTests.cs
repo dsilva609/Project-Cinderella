@@ -1,7 +1,9 @@
 ﻿using BusinessLogic.Models;
 using BusinessLogic.Services.Interfaces;
+using Moq;
 using NUnit.Framework;
 using Rhino.Mocks;
+using Shouldly;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using UI.Models;
@@ -9,158 +11,162 @@ using UnitTests.UI.Controllers.TestBases;
 
 namespace UnitTests.UI.Controllers
 {
-	public class BookControllerTests : BookControllerTestBase
-	{
-		private Book _testModel = new Book();
+    public class BookControllerTests : BookControllerTestBase
+    {
+        private Book _testModel = new Book();
 
-		[Test]
-		public void ThatIndexActionReturnsAView()
-		{
-			//--Arrange
-			_controller.Get<IBookService>().Expect(x => x.GetAll(Arg<string>.Is.Anything)).Return(new List<Book>());
+        [Test]
+        public void ThatIndexActionReturnsAView()
+        {
+            //--Arrange
+            _controller.Get<IBookService>().Expect(x => x.GetAll(It.IsAny<string>(), It.IsAny<string>())).Return(new List<Book>());
 
-			//--Act
-			var result = _controller.ClassUnderTest.Index(string.Empty, string.Empty, 1) as ViewResult;
+            //--Act
+            var result = _controller.ClassUnderTest.Index(string.Empty, string.Empty, 1) as ViewResult;
 
-			//--Assert
-			Assert.AreEqual(string.Empty, result.ViewName);
-		}
+            //--Assert
+            Assert.AreEqual(string.Empty, result.ViewName);
+        }
 
-		[Test]
-		public void ThatDetailsActionRetunsAView()
-		{
-			//--Act
-			var result = _controller.ClassUnderTest.Details(72) as ViewResult;
+        [Test]
+        public void ThatDetailsActionRetunsAView()
+        {
+            //--Act
+            var result = _controller.ClassUnderTest.Details(72) as ViewResult;
 
-			//--Assert
-			Assert.AreEqual(string.Empty, result.ViewName);
-		}
+            //--Assert
+            Assert.AreEqual(string.Empty, result.ViewName);
+        }
 
-		[Test]
-		public void ThatCreateActionReturnsAView()
-		{
-			//--Act
-			var result = _controller.ClassUnderTest.Create() as ViewResult;
+        [Test]
+        public void ThatCreateActionReturnsAView()
+        {
+            //--Act
+            var result = _controller.ClassUnderTest.Create() as ViewResult;
 
-			//--Assert
-			Assert.AreEqual(string.Empty, result.ViewName);
-		}
+            //--Assert
+            Assert.AreEqual(string.Empty, result.ViewName);
+        }
 
-		[Test]
-		public void ItRedirectsToIndexActionWhenModelIsValid()
-		{
-			//--Act
-			var result = _controller.ClassUnderTest.Create(_testModel) as RedirectToRouteResult;
+        [Test]
+        public void ItRedirectsToIndexActionWhenModelIsValid()
+        {
+            //--Act
+            var result = _controller.ClassUnderTest.Create(_testModel) as RedirectToRouteResult;
 
-			//--Assert
-			Assert.IsTrue(_controller.ClassUnderTest.ModelState.IsValid);
-			Assert.AreEqual("Index", result.RouteValues["Action"]);
-		}
+            //--Assert
+            Assert.IsTrue(_controller.ClassUnderTest.ModelState.IsValid);
+            Assert.AreEqual("Index", result.RouteValues["Action"]);
+        }
 
-		[Test]
-		public void ItGoesBackToTheViewIfModelStateIsInvalid()
-		{
-			//--Arrange
-			_controller.ClassUnderTest.ModelState.AddModelError(string.Empty, string.Empty);
+        [Test]
+        public void ItGoesBackToTheViewIfModelStateIsInvalid()
+        {
+            //--Arrange
+            _controller.ClassUnderTest.ModelState.AddModelError(string.Empty, string.Empty);
 
-			//--Act
-			var result = _controller.ClassUnderTest.Create(_testModel) as ViewResult;
+            //--Act
+            var result = _controller.ClassUnderTest.Create(_testModel) as ViewResult;
 
-			//--Assert
-			Assert.AreEqual(string.Empty, result.ViewName);
-			Assert.IsFalse(_controller.ClassUnderTest.ModelState.IsValid);
-		}
+            //--Assert
+            Assert.AreEqual(string.Empty, result.ViewName);
+            Assert.IsFalse(_controller.ClassUnderTest.ModelState.IsValid);
+        }
 
-		[Test]
-		public void ThatEditActionReturnsAView()
-		{
-			//--Arrange
-			_controller.Get<IBookService>().Expect(x => x.GetByID(Arg<int>.Is.Anything, Arg<string>.Is.Anything)).Return(new Book { ID = 42 });
+        [Test]
+        public void ThatEditActionReturnsAView()
+        {
+            //--Arrange
+            _controller.Get<IBookService>().Expect(x => x.GetByID(Arg<int>.Is.Anything, Arg<string>.Is.Anything)).Return(new Book { ID = 42 });
 
-			//--Act
-			var result = _controller.ClassUnderTest.Edit(42) as ViewResult;
+            //--Act
+            var result = _controller.ClassUnderTest.Edit(42) as ViewResult;
 
-			//--Assert
-			Assert.AreEqual(string.Empty, result.ViewName);
-		}
+            //--Assert
+            Assert.AreEqual(string.Empty, result.ViewName);
+        }
 
-		[Test]
-		public void ThatOnEditWhenModelStateIsValidItGoesBackToIndexView()
-		{
-			//--Arrange
-			_controller.Get<IBookService>().Expect(x => x.GetAll(Arg<string>.Is.Anything)).Return(new List<Book>());
+        [Test]
+        public void ThatOnEditWhenModelStateIsValidItGoesBackToIndexView()
+        {
+            //--Arrange
+            _controller.Get<IBookService>().Expect(x => x.GetAll(It.IsAny<string>())).Return(new List<Book>());
 
-			//--Act
-			var result = _controller.ClassUnderTest.Edit(_testModel) as RedirectToRouteResult;
+            //--Act
+            var result = _controller.ClassUnderTest.Edit(_testModel) as RedirectToRouteResult;
 
-			//--Assert
-			Assert.AreEqual("Index", result.RouteValues["Action"]);
-		}
+            //--Assert
+            Assert.AreEqual("Index", result.RouteValues["Action"]);
+        }
 
-		[Test]
-		public void ThatWhenModelStateIsNotValidItRedirectsBackToEditView()
-		{
-			//--Arrange
-			_controller.ClassUnderTest.ModelState.AddModelError("", "");
+        [Test]
+        public void ThatWhenModelStateIsNotValidItRedirectsBackToEditView()
+        {
+            //--Arrange
+            _controller.ClassUnderTest.ModelState.AddModelError("", "");
 
-			//--Act
-			var result = _controller.ClassUnderTest.Edit(_testModel) as ViewResult;
+            //--Act
+            var result = _controller.ClassUnderTest.Edit(_testModel) as ViewResult;
 
-			//--Assert
-			Assert.IsFalse(_controller.ClassUnderTest.ModelState.IsValid);
-			Assert.AreEqual(string.Empty, result.ViewName);
-		}
+            //--Assert
+            Assert.IsFalse(_controller.ClassUnderTest.ModelState.IsValid);
+            Assert.AreEqual(string.Empty, result.ViewName);
+        }
 
-		[Test]
-		public void ThatOnEditADuplicateBookIsFoundItRedirectsBackToEditView()
-		{
-			//--Arrange
-			_controller.Get<IBookService>().Expect(x => x.GetAll(Arg<string>.Is.Anything)).
-				Return(new List<Book> { new Book { ID = 666, Title = "Death Note", Author = "Manga" } });
-			_testModel.ID = 666;
-			_testModel.Title = "Death Note";
-			_testModel.Author = "Manga";
+        [Test]
+        public void ThatOnEditADuplicateBookIsFoundItRedirectsBackToEditView()
+        {
+            //--Arrange
+            _controller.Get<IBookService>().Expect(x => x.GetAll(It.IsAny<string>())).
+                Return(new List<Book> { new Book { ID = 666, Title = "Death Note", Author = "Manga" } });
+            _testModel.ID = 666;
+            _testModel.Title = "Death Note";
+            _testModel.Author = "Manga";
 
-			//--Act
-			var result = _controller.ClassUnderTest.Edit(_testModel) as ViewResult;
+            //--Act
+            var result = _controller.ClassUnderTest.Edit(_testModel) as RedirectToRouteResult;
 
-			//--Assert
-			Assert.AreEqual(string.Empty, result.ViewName);
-		}
+            //--Assert
+            result.RouteValues["Action"].ShouldBe("Index");
+            result.RouteValues["Controller"].ShouldBe("Book");
+        }
 
-		[Test]
-		public void ThatItGoesToIndexViewAfterDelete()
-		{
-			//--Act
-			var result = _controller.ClassUnderTest.Delete(666) as RedirectToRouteResult;
+        [Test]
+        public void ThatItGoesToIndexViewAfterDelete()
+        {
+            _controller.Get<IBookService>().Expect(x => x.GetByID(Arg<int>.Is.Anything, Arg<string>.Is.Anything))
+                .Return(new Book { ID = 666, UserID = "Test User" });
 
-			//--Assert
-			Assert.AreEqual("Index", result.RouteValues["Action"]);
-		}
+            //--Act
+            var result = _controller.ClassUnderTest.Delete(666) as RedirectToRouteResult;
 
-		[Test]
-		public void ThatSearchActionReturnsAView()
-		{
-			//--Arrange
-			_controller.Get<IGoogleBookService>().Expect(x => x.Search(Arg<string>.Is.Anything, Arg<string>.Is.Anything)).Return(null);
-			//--Act
-			var result = _controller.ClassUnderTest.Search(new BookSearchModel { Author = "R.R. Martin", Title = "Game of Thrones" }) as ViewResult;
+            //--Assert
+            result.RouteValues["Action"].ShouldBe("Index");
+        }
 
-			//--Assert
-			Assert.AreEqual(string.Empty, result.ViewName);
-		}
+        [Test]
+        public void ThatSearchActionReturnsAView()
+        {
+            //--Arrange
+            _controller.Get<IGoogleBookService>().Expect(x => x.Search(Arg<string>.Is.Anything, Arg<string>.Is.Anything)).Return(null);
+            //--Act
+            var result = _controller.ClassUnderTest.Search(new BookSearchModel { Author = "R.R. Martin", Title = "Game of Thrones" }) as ViewResult;
 
-		[Test]
-		public void ThatCreateFromSearchModelActionReturnsAView()
-		{
-			//--Arrange
-			_controller.Get<IGoogleBookService>().Expect(x => x.SearchByID(Arg<string>.Is.Anything)).Return(new Book());
+            //--Assert
+            Assert.AreEqual(string.Empty, result.ViewName);
+        }
 
-			//--Act
-			var result = _controller.ClassUnderTest.CreateFromSearchModel("test", false) as RedirectToRouteResult;
+        [Test]
+        public void ThatCreateFromSearchModelActionReturnsAView()
+        {
+            //--Arrange
+            _controller.Get<IGoogleBookService>().Expect(x => x.SearchByID(Arg<string>.Is.Anything)).Return(new Book());
 
-			//--Assert
-			Assert.AreEqual("Create", result.RouteValues["Action"]);
-		}
-	}
+            //--Act
+            var result = _controller.ClassUnderTest.CreateFromSearchModel("test", false) as RedirectToRouteResult;
+
+            //--Assert
+            Assert.AreEqual("Create", result.RouteValues["Action"]);
+        }
+    }
 }

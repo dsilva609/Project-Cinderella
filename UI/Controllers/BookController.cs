@@ -2,9 +2,7 @@
 using BusinessLogic.Models;
 using BusinessLogic.Services.Interfaces;
 using Microsoft.AspNet.Identity;
-using PagedList;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using UI.Models;
@@ -34,11 +32,11 @@ namespace UI.Controllers
                 Session["query"] = string.Empty;
             }
             ViewBag.Filter = string.IsNullOrWhiteSpace(bookQuery) ? filter : bookQuery;
-
+            var books = _service.GetAll(User.Identity.GetUserId(), ViewBag.Filter);
             var viewModel = new BookViewModel
             {
                 ViewTitle = "Index",
-                Books = (_service.GetAll(User.Identity.GetUserId(), ViewBag.Filter) as List<Book>).ToPagedList(page ?? 1, NUM_BOOKS_TO_GET),
+                Books = books?.ToPagedList(page ?? 1, NUM_BOOKS_TO_GET),
                 PageSize = NUM_BOOKS_TO_GET,
             };
 

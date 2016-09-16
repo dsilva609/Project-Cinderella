@@ -2,9 +2,7 @@
 using BusinessLogic.Models;
 using BusinessLogic.Services.Interfaces;
 using Microsoft.AspNet.Identity;
-using PagedList;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using UI.Models;
@@ -37,10 +35,12 @@ namespace UI.Controllers
 
             ViewBag.Filter = string.IsNullOrWhiteSpace(gameQuery) ? filter : gameQuery;
 
+            var games = _service.GetAll(User.Identity.GetUserId(), ViewBag.Filter);
+
             var viewModel = new GameViewModel
             {
                 ViewTitle = "Index",
-                Games = (_service.GetAll(User.Identity.GetUserId(), ViewBag.Filter) as List<Game>).ToPagedList(page ?? 1, NUM_GAMES_TO_GET),
+                Games = games?.ToPagedList(page ?? 1, NUM_GAMES_TO_GET),
                 PageSize = NUM_GAMES_TO_GET
             };
 
@@ -61,8 +61,8 @@ namespace UI.Controllers
         public virtual ActionResult Create()
         {
             ViewBag.Title = "Create";
-            var model = Session["GameResult"] ?? new Game { UserID = User.Identity.GetUserId() };
-            Session["GameResult"] = null;
+            var model = Session["gameResult"] ?? new Game { UserID = User.Identity.GetUserId() };
+            Session["gameResult"] = null;
 
             return View(model);
         }
@@ -108,7 +108,7 @@ namespace UI.Controllers
         public virtual ActionResult Edit(Game game)
         {
             if (!ModelState.IsValid) return View(game);
-            var existingGames = _service.GetAll(User.Identity.GetUserId(), game.Title);
+            var existingGames = _service.GetAll(User.Identity.GetUserId());
             if (existingGames.Count > 0 &&
                 existingGames.Any(x => x.ID != game.ID && x.Title == game.Title && x.Developer == game.Developer))
             {
@@ -173,7 +173,7 @@ namespace UI.Controllers
             var game = isBGG ? _bggService.SearchByID(id) : _giantBombService.SearchByID(id);
 
             game.UserID = User.Identity.GetUserId();
-            Session["GameResult"] = game;
+            Session["gameResult"] = game;
 
             return RedirectToAction(MVC.Game.Create());
         }
