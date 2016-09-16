@@ -114,7 +114,7 @@ namespace UnitTests.UI.Controllers
             //--Arrange
             _controller.Get<IGameService>().Expect(x => x.GetAll(It.IsAny<string>()))
                 .Return(new List<Game> { new Game { ID = 1, Title = "Final Fantasy", Developer = "Squeenix" } });
-            _testModel.ID = 1;
+            _testModel.ID = 2;
             _testModel.Title = "Final Fantasy";
             _testModel.Developer = "Squeenix";
 

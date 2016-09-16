@@ -119,16 +119,15 @@ namespace UnitTests.UI.Controllers
             //--Arrange
             _controller.Get<IBookService>().Expect(x => x.GetAll(It.IsAny<string>())).
                 Return(new List<Book> { new Book { ID = 666, Title = "Death Note", Author = "Manga" } });
-            _testModel.ID = 666;
+            _testModel.ID = 667;
             _testModel.Title = "Death Note";
             _testModel.Author = "Manga";
 
             //--Act
-            var result = _controller.ClassUnderTest.Edit(_testModel) as RedirectToRouteResult;
+            var result = _controller.ClassUnderTest.Edit(_testModel) as ViewResult;
 
             //--Assert
-            result.RouteValues["Action"].ShouldBe("Index");
-            result.RouteValues["Controller"].ShouldBe("Book");
+            result.ViewName.ShouldBe(string.Empty);
         }
 
         [Test]

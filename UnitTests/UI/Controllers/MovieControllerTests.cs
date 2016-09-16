@@ -119,7 +119,7 @@ namespace UnitTests.UI.Controllers
             _controller.Get<IMovieService>()
                 .Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<int>.Is.Anything, Arg<int>.Is.Anything))
                 .Return(new List<Movie> { new Movie { ID = 1, Title = "Deadpool", Type = MovieMediaTypeEnum.Bluray, UserID = "TestUser" } });
-            _testModel.ID = 1;
+            _testModel.ID = 2;
             _testModel.Title = "Deadpool";
             _testModel.Type = MovieMediaTypeEnum.Bluray;
 
