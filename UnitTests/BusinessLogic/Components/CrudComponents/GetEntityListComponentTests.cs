@@ -1,6 +1,7 @@
 ﻿using BusinessLogic.Models;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Linq;
 using UnitTests.BusinessLogic.Components.CrudComponents.TestBases;
 
 namespace UnitTests.BusinessLogic.Components.CrudComponents
@@ -34,14 +35,14 @@ namespace UnitTests.BusinessLogic.Components.CrudComponents
 					Title = "Master of Puppets",
 					Artist = "Metallica"
 				}
-			});
+			}.AsQueryable());
 			_recordRepo = _recordRepositoryMock.Object;
 
 			//--Act
 			var result = _getEntityListComponent.Execute(_recordRepo);
 
 			//--Assert
-			Assert.AreEqual(3, result.Count);
+			Assert.AreEqual(3, result.ToList().Count);
 		}
 	}
 }

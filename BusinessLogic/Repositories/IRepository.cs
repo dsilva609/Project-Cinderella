@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace BusinessLogic.Repositories
 {
@@ -6,7 +7,7 @@ namespace BusinessLogic.Repositories
 	{
 		void Add(T entity);
 
-		List<T> GetAll();
+		IQueryable<T> GetAll();
 
 		T GetByID(int? id, string userID);
 

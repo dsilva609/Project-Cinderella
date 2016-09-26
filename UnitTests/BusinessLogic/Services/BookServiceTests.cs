@@ -3,6 +3,7 @@ using Moq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnitTests.BusinessLogic.Services.TestBases;
 
 namespace UnitTests.BusinessLogic.Services
@@ -13,7 +14,7 @@ namespace UnitTests.BusinessLogic.Services
 		private Book _testModel1;
 		private Book _testModel2;
 
-		private List<Book> _BookModels;
+		private IQueryable<Book> _bookModels;
 
 		[SetUp]
 		protected override void SetUp()
@@ -33,7 +34,7 @@ namespace UnitTests.BusinessLogic.Services
 				Title = "Half Blood Prince"
 			};
 
-			_BookModels = new List<Book>
+			_bookModels = new List<Book>
 			{
 				_testModel1,
 				_testModel2,
@@ -49,14 +50,14 @@ namespace UnitTests.BusinessLogic.Services
 					Author = "Nicholas Sparks",
 					Title = "The Notebook"
 				}
-			};
+			}.AsQueryable();
 		}
 
 		[Test]
 		public void ItAddsBooks()
 		{
 			//--Arrange
-			_repo.Setup(mock => mock.GetAll()).Returns(new List<Book>());
+			_repo.Setup(mock => mock.GetAll()).Returns(new List<Book>().AsQueryable());
 
 			//--Act
 			_service.Object.Add(_testModel1);
@@ -72,7 +73,7 @@ namespace UnitTests.BusinessLogic.Services
 			_repo.Setup(mock => mock.GetAll()).Returns(new List<Book>
 			{
 				_testModel1
-			});
+			}.AsQueryable());
 
 			//--Act/Assert
 			Assert.Throws<ApplicationException>(() => _service.Object.Add(_testModel1));
@@ -108,7 +109,7 @@ namespace UnitTests.BusinessLogic.Services
 		public void ItReturnsSpecifiedNumberOfBooks(int numToTake, int expectedResult)
 		{
 			//--Arrange
-			_repo.Setup(mock => mock.GetAll()).Returns(_BookModels);
+			_repo.Setup(mock => mock.GetAll()).Returns(_bookModels);
 
 			//--Act
 			var result = _service.Object.GetAll(string.Empty, string.Empty, numToTake);
@@ -121,7 +122,7 @@ namespace UnitTests.BusinessLogic.Services
 		public void ItReturnsAllBooksWhenNoParameterIsPassedIn()
 		{
 			//--Arrange
-			_repo.Setup(mock => mock.GetAll()).Returns(_BookModels);
+			_repo.Setup(mock => mock.GetAll()).Returns(_bookModels);
 
 			//--Act
 			var result = _service.Object.GetAll();
@@ -134,7 +135,7 @@ namespace UnitTests.BusinessLogic.Services
 		public void ItOrdersByAuthorThenTitleWhenYouGetAllBooks()
 		{
 			//--Arrange
-			_repo.Setup(mock => mock.GetAll()).Returns(_BookModels);
+			_repo.Setup(mock => mock.GetAll()).Returns(_bookModels);
 
 			//--Act
 			var result = _service.Object.GetAll();
@@ -155,7 +156,7 @@ namespace UnitTests.BusinessLogic.Services
 		public void ItReturnsSpecifiedNumberOfBooksPerPage(int numToTake, int pageNum, int expectedResult)
 		{
 			//--Arrange
-			_repo.Setup(mock => mock.GetAll()).Returns(_BookModels);
+			_repo.Setup(mock => mock.GetAll()).Returns(_bookModels);
 
 			//--Act
 			var result = _service.Object.GetAll(string.Empty, string.Empty, numToTake, pageNum);
@@ -168,7 +169,7 @@ namespace UnitTests.BusinessLogic.Services
 		public void ItGetsCountOfBooks()
 		{
 			//--Arrange
-			_repo.Setup(mock => mock.GetCount()).Returns(_BookModels.Count);
+			_repo.Setup(mock => mock.GetCount()).Returns(_bookModels.Count);
 
 			//--Act
 			var result = _service.Object.GetCount();
@@ -186,7 +187,7 @@ namespace UnitTests.BusinessLogic.Services
 		public void ItReturnsBooksOfSpecifiedName(string query, int expectedResult)
 		{
 			//--Arrange
-			_repo.Setup(mock => mock.GetAll()).Returns(_BookModels);
+			_repo.Setup(mock => mock.GetAll()).Returns(_bookModels);
 
 			//--Act
 			var result = _service.Object.GetAll(string.Empty, query);

@@ -3,6 +3,7 @@ using Moq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnitTests.BusinessLogic.Services.TestBases;
 
 namespace UnitTests.BusinessLogic.Services
@@ -13,7 +14,7 @@ namespace UnitTests.BusinessLogic.Services
 		private Album _testModel1;
 		private Album _testModel2;
 
-		private List<Album> _recordModels;
+		private IQueryable<Album> _recordModels;
 
 		[SetUp]
 		protected override void SetUp()
@@ -49,14 +50,14 @@ namespace UnitTests.BusinessLogic.Services
 					Artist = "Avril Lavigne",
 					Title = "Under My Skin"
 				}
-			};
+			}.AsQueryable();
 		}
 
 		[Test]
 		public void ItAddsRecords()
 		{
 			//--Arrange
-			_repo.Setup(mock => mock.GetAll()).Returns(new List<Album>());
+			_repo.Setup(mock => mock.GetAll()).Returns(new List<Album>().AsQueryable());
 
 			//--Act
 			_service.Object.Add(_testModel1);
@@ -72,7 +73,7 @@ namespace UnitTests.BusinessLogic.Services
 			_repo.Setup(mock => mock.GetAll()).Returns(new List<Album>
 			{
 				_testModel1
-			});
+			}.AsQueryable());
 
 			//--Act/Assert
 			Assert.Throws<ApplicationException>(() => _service.Object.Add(_testModel1));

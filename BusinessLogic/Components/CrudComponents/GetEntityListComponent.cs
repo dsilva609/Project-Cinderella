@@ -1,11 +1,11 @@
 ﻿using BusinessLogic.Repositories;
-using System.Collections.Generic;
+using System.Linq;
 
 namespace BusinessLogic.Components.CrudComponents
 {
 	public class GetEntityListComponent
 	{
-		public List<T> Execute<T>(IRepository<T> repo) where T : class
+		public IQueryable<T> Execute<T>(IRepository<T> repo) where T : class
 		{
 			return repo.GetAll();
 		}
