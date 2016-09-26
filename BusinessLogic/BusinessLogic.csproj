@@ -125,6 +125,7 @@
     <Compile Include="Enums\GamePlatformEnum.cs" />
     <Compile Include="Enums\GameRatingEnum.cs" />
     <Compile Include="Enums\GameTypeEnum.cs" />
+    <Compile Include="Enums\ItemType.cs" />
     <Compile Include="Enums\MovieMediaTypeEnum.cs" />
     <Compile Include="Enums\MovieRatingEnum.cs" />
     <Compile Include="Enums\SizeEnum.cs" />
@@ -286,6 +287,7 @@
     <Compile Include="Models\BGGModels\BGGGame.cs" />
     <Compile Include="Models\BGGModels\BGGResult.cs" />
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\CollectionStatistic.cs" />
     <Compile Include="Models\ComicVineModels\ComicVineComic.cs" />
     <Compile Include="Models\ComicVineModels\ComicVineResult.cs" />
     <Compile Include="Models\DiscogsModels\DiscogsRelease.cs" />
@@ -323,8 +325,10 @@
     <Compile Include="Services\Interfaces\IGiantBombService.cs" />
     <Compile Include="Services\Interfaces\IGoogleBookService.cs" />
     <Compile Include="Services\Interfaces\IMovieService.cs" />
+    <Compile Include="Services\Interfaces\IStatisticService.cs" />
     <Compile Include="Services\Interfaces\ITMDBService.cs" />
     <Compile Include="Services\MovieService.cs" />
+    <Compile Include="Services\StatisticService.cs" />
     <Compile Include="Services\TMDBService.cs" />
   </ItemGroup>
   <ItemGroup>
