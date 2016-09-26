@@ -26,7 +26,8 @@
                 <a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Title (@Model.YearReleased)">
                     <img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" class="img-rounded" style="height: 350px; width: 250px;">
                 </a>
-            </div>}
+            </div>
+        }
 
         <div class="col-sm-6">
             @Html.LabelFor(m => m.Title)
@@ -76,11 +77,17 @@
             @Html.EnumDropDownListFor(m => m.CompletionStatus, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.CompletionStatus, "", new { @class = "text-danger" })
         </div>
-        
+
         <div class="col-md-6">
             @Html.LabelFor(m => m.CheckedOut)
             @Html.CheckBoxFor(m => m.CheckedOut, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.CheckedOut, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-6">
+            @Html.LabelFor(m => m.TimesCompleted)
+            @Html.TextBoxFor(m => m.TimesCompleted, new { @class = "form-control", type = "number" })
+            @Html.ValidationMessageFor(m => m.TimesCompleted, "", new { @class = "text-danger" })
         </div>
     </div>
 </div>

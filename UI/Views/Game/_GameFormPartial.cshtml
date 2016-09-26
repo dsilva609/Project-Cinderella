@@ -83,11 +83,17 @@
             @Html.EnumDropDownListFor(m => m.CompletionStatus, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.CompletionStatus, "", new { @class = "text-danger" })
         </div>
-        
+
         <div class="col-md-6">
             @Html.LabelFor(m => m.CheckedOut)
             @Html.CheckBoxFor(m => m.CheckedOut, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.CheckedOut, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-6">
+            @Html.LabelFor(m => m.TimesCompleted)
+            @Html.TextBoxFor(m => m.TimesCompleted, new { @class = "form-control", type = "number" })
+            @Html.ValidationMessageFor(m => m.TimesCompleted, "", new { @class = "text-danger" })
         </div>
     </div>
 </div>

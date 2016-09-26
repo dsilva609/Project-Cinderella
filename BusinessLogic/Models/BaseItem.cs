@@ -48,5 +48,8 @@ namespace BusinessLogic.Models
 
         [DisplayName("Checked Out?")]
         public bool CheckedOut { get; set; }
+
+        [DisplayName("Times Completed")]
+        public int TimesCompleted { get; set; }
     }
 }
