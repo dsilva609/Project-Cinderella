@@ -186,6 +186,7 @@
     <Compile Include="BusinessLogic\Services\TestBases\GiantBombServiceTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\GoogleBookServiceTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\MovieServiceTestBase.cs" />
+    <Compile Include="BusinessLogic\Services\TestBases\StatisticServiceTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\TMDBServiceTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TMDBServiceTests.cs" />
     <Compile Include="UI\Controllers\BookControllerTests.cs" />
