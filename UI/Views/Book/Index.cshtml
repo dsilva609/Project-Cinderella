@@ -49,3 +49,7 @@
 </div>
 
 @Html.PagedListPager(Model.Books, page => Url.Action("Index", new { bookQuery = ViewBag.query, filter = ViewBag.Filter, page }))
+
+@Html.Partial(MVC.Shared.Views._GoogleBooksDisclaimer)
+
+@Html.Partial(MVC.Shared.Views._ComicVineDisclaimer)

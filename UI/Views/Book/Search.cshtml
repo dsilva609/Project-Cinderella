@@ -27,7 +27,7 @@
 
         <div class="row panel-body">
             <div class="col-xs-8 col-sm-10">
-                <input id="btnSubmit" type="submit" value="Search" class="btn btn-default btn-block btn-lg"/>
+                <input id="btnSubmit" type="submit" value="Search" class="btn btn-default btn-block btn-lg" />
             </div>
         </div>
     }
@@ -40,14 +40,14 @@
                 Search Results
             </h4>
         </div>
-      
+
         @foreach (var book in Model.Volumes)
         {
             using (Html.BeginForm(MVC.Book.CreateFromSearchModel(book.GoogleBookID, false), FormMethod.Get))
             {
                 <div id="book" class="row info" style="padding-bottom: 1em;" data-id="@book.ID">
                     <div class="col-xs-2">
-                        <img src="@book.ImageUrl"/>
+                        <img src="@book.ImageUrl" />
                     </div>
                     <div class="col-xs-3">
                         @Html.DisplayFor(x => book.Author)
@@ -69,7 +69,7 @@
                     @Html.Hidden("id", book.GoogleBookID)
                     @Html.Hidden("isComic", false)
 
-                    <input id="" type="submit" value="Add" class="btn"/>
+                    <input id="" type="submit" value="Add" class="btn" />
                 </div>
             }
         }
@@ -80,7 +80,7 @@
             {
                 <div id="book" class="row info" style="padding-bottom: 1em;" data-id="@comic.id">
                     <div class="col-xs-2">
-                        <img src="@comic.image.thumb_url"/>
+                        <img src="@comic.image.thumb_url" />
                     </div>
                     @*<div class="col-xs-3">
                             @Html.DisplayFor(x => comic.)
@@ -101,7 +101,7 @@
                     </div>
                     @Html.Hidden("id", comic.id)
                     @Html.Hidden("isComic", true)
-                    <input id="" type="submit" value="Add" class="btn"/>
+                    <input id="" type="submit" value="Add" class="btn" />
                 </div>
             }
         }
@@ -110,9 +110,6 @@
 
 @Html.ActionLink("Back to List", MVC.Book.Index())
 
-<div class="container text-center">
-    <div class="row">
-        <img src="@Links.Content.Images.GoogleBooksLogo_png" height="75" width="200"/>
-    </div>
-    <div class="row">This product uses the Google Books API but is not endorsed or certified by Google.</div>
-</div>
+@Html.Partial(MVC.Shared.Views._GoogleBooksDisclaimer)
+
+@Html.Partial(MVC.Shared.Views._ComicVineDisclaimer)

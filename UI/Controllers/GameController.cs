@@ -2,7 +2,9 @@
 using BusinessLogic.Models;
 using BusinessLogic.Services.Interfaces;
 using Microsoft.AspNet.Identity;
+using PagedList;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using UI.Models;
@@ -35,7 +37,7 @@ namespace UI.Controllers
 
             ViewBag.Filter = string.IsNullOrWhiteSpace(gameQuery) ? filter : gameQuery;
 
-            var games = _service.GetAll(User.Identity.GetUserId(), ViewBag.Filter);
+            var games = _service.GetAll(User.Identity.GetUserId(), ViewBag.Filter) as List<Game>;
 
             var viewModel = new GameViewModel
             {

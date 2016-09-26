@@ -38,15 +38,27 @@ namespace T4MVC
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _BGGDisclaimer = "_BGGDisclaimer";
+                public readonly string _ComicVineDisclaimer = "_ComicVineDisclaimer";
+                public readonly string _DiscogsDisclaimer = "_DiscogsDisclaimer";
                 public readonly string _FormPurchaseInfo = "_FormPurchaseInfo";
+                public readonly string _GiantBombDisclaimer = "_GiantBombDisclaimer";
+                public readonly string _GoogleBooksDisclaimer = "_GoogleBooksDisclaimer";
                 public readonly string _Layout = "_Layout";
                 public readonly string _LoginPartial = "_LoginPartial";
+                public readonly string _TMDBDisclaimer = "_TMDBDisclaimer";
                 public readonly string Error = "Error";
                 public readonly string Lockout = "Lockout";
             }
+            public readonly string _BGGDisclaimer = "~/Views/Shared/_BGGDisclaimer.cshtml";
+            public readonly string _ComicVineDisclaimer = "~/Views/Shared/_ComicVineDisclaimer.cshtml";
+            public readonly string _DiscogsDisclaimer = "~/Views/Shared/_DiscogsDisclaimer.cshtml";
             public readonly string _FormPurchaseInfo = "~/Views/Shared/_FormPurchaseInfo.cshtml";
+            public readonly string _GiantBombDisclaimer = "~/Views/Shared/_GiantBombDisclaimer.cshtml";
+            public readonly string _GoogleBooksDisclaimer = "~/Views/Shared/_GoogleBooksDisclaimer.cshtml";
             public readonly string _Layout = "~/Views/Shared/_Layout.cshtml";
             public readonly string _LoginPartial = "~/Views/Shared/_LoginPartial.cshtml";
+            public readonly string _TMDBDisclaimer = "~/Views/Shared/_TMDBDisclaimer.cshtml";
             public readonly string Error = "~/Views/Shared/Error.cshtml";
             public readonly string Lockout = "~/Views/Shared/Lockout.cshtml";
         }

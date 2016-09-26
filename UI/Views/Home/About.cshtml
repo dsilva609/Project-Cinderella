@@ -10,9 +10,15 @@
 </p>
 
 <p>
-    &bull; This product uses the Discogs API, but is not endorsed or certified by Discogs.
-    <br />&bull; This product uses the Google Books API, but is not endorsed or certified by Google.
-    <br />&bull; This product uses the TMDb API, but is not endorsed or certified by TMDb.
-    <br />&bull; This product uses the Giant Bomb API, but is not endorsed or certified by Giant Bomb.
-    <br />&bull; This product used the Board Game Geek API, but is not endorsed or certified by Board Game Geek.
+    @Html.Partial(MVC.Shared.Views._DiscogsDisclaimer)
+    
+    @Html.Partial(MVC.Shared.Views._GoogleBooksDisclaimer)
+    
+    @Html.Partial(MVC.Shared.Views._ComicVineDisclaimer)
+    
+    @Html.Partial(MVC.Shared.Views._TMDBDisclaimer)
+    
+    @Html.Partial(MVC.Shared.Views._GiantBombDisclaimer)
+    
+    @Html.Partial(MVC.Shared.Views._BGGDisclaimer)
 </p>

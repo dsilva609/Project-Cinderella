@@ -262,6 +262,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Images\ajax-loader.gif" />
     <Content Include="Content\Images\Book.jpg" />
+    <Content Include="Content\Images\ComicVineLogo.png" />
     <Content Include="Content\Images\Discogs.Logo.png" />
     <Content Include="Content\Images\Game.jpg" />
     <Content Include="Content\Images\Geek_Head.jpg" />
@@ -894,6 +895,12 @@
     <Content Include="Views\Book\_Book.cshtml" />
     <Content Include="Views\Game\_Game.cshtml" />
     <Content Include="Views\Movie\_Movie.cshtml" />
+    <Content Include="Views\Shared\_DiscogsDisclaimer.cshtml" />
+    <Content Include="Views\Shared\_TMDBDisclaimer.cshtml" />
+    <Content Include="Views\Shared\_BGGDisclaimer.cshtml" />
+    <Content Include="Views\Shared\_GiantBombDisclaimer.cshtml" />
+    <Content Include="Views\Shared\_GoogleBooksDisclaimer.cshtml" />
+    <Content Include="Views\Shared\_ComicVineDisclaimer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

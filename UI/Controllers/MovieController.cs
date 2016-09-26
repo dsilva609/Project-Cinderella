@@ -2,7 +2,9 @@
 using BusinessLogic.Models;
 using BusinessLogic.Services.Interfaces;
 using Microsoft.AspNet.Identity;
+using PagedList;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using UI.Models;
@@ -32,7 +34,7 @@ namespace UI.Controllers
 
             ViewBag.Filter = string.IsNullOrWhiteSpace(movieQuery) ? filter : movieQuery;
 
-            var movies = _service.GetAll(User.Identity.GetUserId(), ViewBag.Filter);
+            var movies = _service.GetAll(User.Identity.GetUserId(), ViewBag.Filter) as List<Movie>;
             var viewModel = new MovieViewModel
             {
                 ViewTitle = "Index",

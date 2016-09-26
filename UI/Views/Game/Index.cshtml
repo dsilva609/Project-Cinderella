@@ -49,3 +49,5 @@
 </div>
 
 @Html.PagedListPager(Model.Games, page => Url.Action("Index", new { gameQuery = ViewBag.query, filter = ViewBag.Filter, page }))
+
+@Html.Partial(MVC.Shared.Views._GiantBombDisclaimer)

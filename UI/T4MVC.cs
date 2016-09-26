@@ -372,6 +372,7 @@ namespace Links
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
             public static readonly string ajax_loader_gif = Url("ajax-loader.gif");
             public static readonly string Book_jpg = Url("Book.jpg");
+            public static readonly string ComicVineLogo_png = Url("ComicVineLogo.png");
             public static readonly string Discogs_Logo_png = Url("Discogs.Logo.png");
             public static readonly string Game_jpg = Url("Game.jpg");
             public static readonly string Geek_Head_jpg = Url("Geek_Head.jpg");

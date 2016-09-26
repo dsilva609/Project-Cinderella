@@ -26,7 +26,7 @@
 
         <div class="row panel-body">
             <div class="col-xs-8 col-sm-10">
-                <input id="btnSubmit" type="submit" value="Search" class="btn btn-default btn-block btn-lg" />
+                <input id="btnSubmit" type="submit" value="Search" class="btn btn-default btn-block btn-lg"/>
             </div>
         </div>
     }
@@ -47,7 +47,7 @@
                 {
                     <div id="album" class="row info" style="padding-bottom: 1em;" data-id="@result.ID">
                         <div class="col-sm-2 ">
-                            <img src="@result.Thumb" class="img-rounded" />
+                            <img src="@result.Thumb" class="img-rounded"/>
                         </div>
 
                         <div class="col-sm-3 ">
@@ -73,7 +73,7 @@
                         @Html.Hidden("releaseID", result.ID)
 
                         <div class="col-sm-1 ">
-                            <input id="" type="submit" value="Add" class="btn" />
+                            <input id="" type="submit" value="Add" class="btn"/>
                         </div>
                     </div>
                 }
@@ -83,9 +83,4 @@
 }
 @Html.ActionLink("Back to List", MVC.Album.Index())
 
-<div class="container text-center">
-    <div class="row">
-        <img src="@Links.Content.Images.Discogs_Logo_png" height="75" width="200" />
-    </div>
-    <div class="row">This product uses the Discogs API but is not endorsed or certified by Discogs.</div>
-</div>
+@Html.Partial(MVC.Shared.Views._DiscogsDisclaimer)

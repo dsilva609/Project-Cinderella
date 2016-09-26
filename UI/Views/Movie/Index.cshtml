@@ -50,9 +50,4 @@
 
 @Html.PagedListPager(Model.Movies, page => Url.Action("Index", new { movieQuery = ViewBag.query, filter = ViewBag.Filter, page }))
 
-<div class="container text-center">
-    <div class="row">
-        <img src="@Links.Content.Images.tmdb_logo_png" height="75" width="175" />
-    </div>
-    <div class="row">This product uses the TMDb API but is not endorsed or certified by TMDb.</div>
-</div>
+@Html.Partial(MVC.Shared.Views._TMDBDisclaimer)

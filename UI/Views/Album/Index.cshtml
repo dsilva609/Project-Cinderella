@@ -49,3 +49,5 @@
 </div>
 
 @Html.PagedListPager(Model.Albums, page => Url.Action("Index", new { albumQuery = ViewBag.query, filter = ViewBag.Filter, page }))
+
+@Html.Partial(MVC.Shared.Views._DiscogsDisclaimer)
