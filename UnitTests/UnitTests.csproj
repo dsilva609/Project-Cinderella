@@ -192,6 +192,7 @@
     <Compile Include="BusinessLogic\Services\TMDBServiceTests.cs" />
     <Compile Include="UI\Controllers\BookControllerTests.cs" />
     <Compile Include="UI\Controllers\GameControllerTests.cs" />
+    <Compile Include="UI\Controllers\StatisticsControllerTests.cs" />
     <Compile Include="UI\Controllers\TestBases\BookControllerTestBase.cs" />
     <Compile Include="UI\Controllers\TestBases\ControllerTestBase.cs" />
     <Compile Include="UI\Controllers\TestBases\GameControllerTestBase.cs" />
@@ -203,6 +204,7 @@
     <Compile Include="UI\Controllers\TestBases\AlbumControllerTestBase.cs" />
     <Compile Include="UI\Controllers\MovieControllerTests.cs" />
     <Compile Include="UI\Controllers\TestBases\MovieControllerTestBase.cs" />
+    <Compile Include="UI\Controllers\TestBases\StatisticsControllerTestBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

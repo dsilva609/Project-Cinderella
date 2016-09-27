@@ -35,6 +35,7 @@ public static partial class MVC
     public static UI.Controllers.HomeController Home = new UI.Controllers.T4MVC_HomeController();
     public static UI.Controllers.ManageController Manage = new UI.Controllers.T4MVC_ManageController();
     public static UI.Controllers.MovieController Movie = new UI.Controllers.T4MVC_MovieController();
+    public static UI.Controllers.StatisticsController Statistics = new UI.Controllers.T4MVC_StatisticsController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 

@@ -901,6 +901,7 @@
     <Content Include="Views\Shared\_GiantBombDisclaimer.cshtml" />
     <Content Include="Views\Shared\_GoogleBooksDisclaimer.cshtml" />
     <Content Include="Views\Shared\_ComicVineDisclaimer.cshtml" />
+    <Content Include="Views\Statistics\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -953,6 +954,7 @@
     <Compile Include="Controllers\ElmahController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="ElmahController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -995,6 +997,9 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="StatisticsController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="T4MVC.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
       <DesignTime>True</DesignTime>
