@@ -1,23 +1,25 @@
 ﻿namespace BusinessLogic.Services.Interfaces
 {
-    public interface IStatisticService
-    {
-        int GetCollectionCount();
+	public interface IStatisticService
+	{
+		int GetCollectionCount();
 
-        int GetNumNew();
+		int GetNumNew();
 
-        int GetNumUsed();
+		int GetNumUsed();
 
-        int GetNumPhysical();
+		int GetNumPhysical();
 
-        int GetNumDigital();
+		int GetNumDigital();
 
-        int GetTimesCompleted();
+		int GetTimesCompleted();
 
-        int GetNumInProgress();
+		int GetNumInProgress();
 
-        int GetNumNotStarted();
+		int GetNumNotStarted();
 
-        int GetNumCheckedOut();
-    }
+		int GetNumCompleted();
+
+		int GetNumCheckedOut();
+	}
 }
