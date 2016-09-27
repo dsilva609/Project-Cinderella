@@ -1,1 +1,63 @@
-﻿
+﻿@model BusinessLogic.Models.CollectionStatistic
+
+<h2>
+    Collection Statistics
+</h2>
+
+<div data-toggle="collapse" data-parent="#accordion" href="#collection-info">
+    <div class="row panel panel-primary panel-collapse">
+        <div class="panel-heading">
+            <h4>
+                Global Stats
+                <span class="fa fa-chevron-circle-down"></span>
+            </h4>
+        </div>
+    </div>
+</div>
+
+<div id="collection-info" class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group col-md-6">
+            <li class="list-group-item">
+                Total number of items in collection
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.CollectionCount</span>
+            </li>
+            <li class="list-group-item">
+                Number of items purchased new
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumNew</span>
+            </li>
+            <li class="list-group-item">
+                Number of items purchased used
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumUsed</span>
+            </li>
+            <li class="list-group-item">
+                Number of physical items
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumPhysical</span>
+            </li>
+            <li class="list-group-item">
+                Number of digital items
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumDigital</span>
+            </li>
+            <li class="list-group-item">
+                Number of times an item has been completed
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.TimesCompleted</span>
+            </li>
+            <li class="list-group-item">
+                Number of items completed
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumCompleted</span>
+            </li>
+            <li class="list-group-item">
+                Number of items in progress
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumInProgress</span>
+            </li>
+            <li class="list-group-item">
+                Number of items not started
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumNotStarted</span>
+            </li>
+            <li class="list-group-item">
+                Number of items checked out
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumCheckedOut</span>
+            </li>
+        </ul>
+    </div>
+</div>

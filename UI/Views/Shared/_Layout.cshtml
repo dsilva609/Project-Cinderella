@@ -208,6 +208,11 @@
                     </div>
                 </div>
             </li>
+            <li id="Stats">
+                <a href="@Url.Action(MVC.Statistics.Index())">
+                    <span class="fa fa-trophy"></span> Stats
+                </a>
+            </li>
         </ul>
         <ul>
 
@@ -248,6 +253,9 @@
                             <ul>
                                 <li>@Html.ActionLink("About", MVC.Home.About())</li>
                                 <li>@Html.ActionLink("Contact", MVC.Home.Contact())</li>
+                                <li><a href="@Url.Action(MVC.Statistics.Index())">
+                                    <span class="fa fa-trophy"></span> Stats
+                                </a></li>
                             </ul>
                         </div>
                     </div>

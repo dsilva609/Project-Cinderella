@@ -28,9 +28,6 @@ namespace UI.Controllers
     public partial class StatisticsController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public StatisticsController() { }
-
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected StatisticsController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
