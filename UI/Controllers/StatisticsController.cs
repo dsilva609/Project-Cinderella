@@ -16,7 +16,7 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Index()
         {
-            var model = new CollectionStatistic
+            var model = new GlobalStats
             {
                 CollectionCount = _statisticService.GetCollectionCount(),
                 NumNew = _statisticService.GetNumNew(),
@@ -27,7 +27,11 @@ namespace UI.Controllers
                 NumCompleted = _statisticService.GetNumCompleted(),
                 NumInProgress = _statisticService.GetNumInProgress(),
                 NumNotStarted = _statisticService.GetNumNotStarted(),
-                NumCheckedOut = _statisticService.GetNumCheckedOut()
+                NumCheckedOut = _statisticService.GetNumCheckedOut(),
+                NumAlbums = _statisticService.GetNumAlbums(),
+                NumBooks = _statisticService.GetNumBooks(),
+                NumMoviesAndShows = _statisticService.GetNumMoviesShows(),
+                NumGames = _statisticService.GetNumGames()
             };
 
             ViewBag.Title = "Global Statistics";

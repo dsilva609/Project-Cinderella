@@ -295,6 +295,7 @@
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\GiantBombModels\GiantBombGame.cs" />
     <Compile Include="Models\GiantBombModels\GiantBombResult.cs" />
+    <Compile Include="Models\GlobalStats.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\TMDBModels\TMDBMovie.cs" />

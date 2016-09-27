@@ -1,4 +1,4 @@
-﻿@model BusinessLogic.Models.CollectionStatistic
+﻿@model BusinessLogic.Models.GlobalStats
 
 <h2>
     Collection Statistics
@@ -21,6 +21,22 @@
             <li class="list-group-item">
                 Total number of items in collection
                 <span class="tag tag-info tag-pill pull-xs-right">@Model.CollectionCount</span>
+            </li>
+            <li class="list-group-item">
+                Total number of Albums
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumAlbums</span>
+            </li>
+            <li class="list-group-item">
+                Total number of Books
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumBooks</span>
+            </li>
+            <li class="list-group-item">
+                Total number of Movies and TV Shows
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumMoviesAndShows</span>
+            </li>
+            <li class="list-group-item">
+                Total number of Games
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumGames</span>
             </li>
             <li class="list-group-item">
                 Number of items purchased new
