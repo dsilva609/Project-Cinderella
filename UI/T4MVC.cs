@@ -89,6 +89,12 @@ namespace Links
         public static readonly string bootstrap_datepicker_min_js = Url("bootstrap-datepicker.min.js");
         public static readonly string bootstrap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap.min.js") ? Url("bootstrap.min.js") : Url("bootstrap.js");
         public static readonly string bootstrap_min_js = Url("bootstrap.min.js");
+        public static readonly string c3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/c3.min.js") ? Url("c3.min.js") : Url("c3.js");
+        public static readonly string c3_min_js = Url("c3.min.js");
+        public static readonly string Chart_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Chart.min.js") ? Url("Chart.min.js") : Url("Chart.js");
+        public static readonly string Chart_min_js = Url("Chart.min.js");
+        public static readonly string d3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/d3.min.js") ? Url("d3.min.js") : Url("d3.js");
+        public static readonly string d3_min_js = Url("d3.min.js");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class Hydrogen {
             private const string URLPATH = "~/Scripts/Hydrogen";
@@ -352,6 +358,8 @@ namespace Links
         public static readonly string bootstrap_min_css = Url("bootstrap.min.css");
         public static readonly string bootstrap_css_map = Url("bootstrap.css.map");
         public static readonly string bootstrap_min_css_map = Url("bootstrap.min.css.map");
+        public static readonly string c3_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/c3.min.css") ? Url("c3.min.css") : Url("c3.css");
+        public static readonly string c3_min_css = Url("c3.min.css");
         public static readonly string font_awesome_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/font-awesome.min.css") ? Url("font-awesome.min.css") : Url("font-awesome.css");
         public static readonly string font_awesome_min_css = Url("font-awesome.min.css");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -820,6 +828,11 @@ namespace Links
                 public const string bootstrap_datepicker_min_js = "~/Scripts/bootstrap-datepicker.min.js"; 
                 public const string bootstrap_js = "~/Scripts/bootstrap.js"; 
                 public const string bootstrap_min_js = "~/Scripts/bootstrap.min.js"; 
+                public const string c3_js = "~/Scripts/c3.js"; 
+                public const string c3_min_js = "~/Scripts/c3.min.js"; 
+                public const string Chart_js = "~/Scripts/Chart.js"; 
+                public const string d3_js = "~/Scripts/d3.js"; 
+                public const string d3_min_js = "~/Scripts/d3.min.js"; 
                 public const string jquery_3_0_0_intellisense_js = "~/Scripts/jquery-3.0.0.intellisense.js"; 
                 public const string jquery_3_0_0_js = "~/Scripts/jquery-3.0.0.js"; 
                 public const string jquery_3_0_0_min_js = "~/Scripts/jquery-3.0.0.min.js"; 
@@ -952,6 +965,8 @@ namespace Links
                 public const string bootstrap_datepicker3_standalone_css = "~/Content/bootstrap-datepicker3.standalone.css";
                 public const string bootstrap_datepicker3_standalone_min_css = "~/Content/bootstrap-datepicker3.standalone.min.css";
                 public const string bootstrap_css = "~/Content/bootstrap.css";
+                public const string c3_css = "~/Content/c3.css";
+                public const string c3_min_css = "~/Content/c3.min.css";
                 public const string font_awesome_css = "~/Content/font-awesome.css";
                 public const string font_awesome_min_css = "~/Content/font-awesome.min.css";
                 public const string jquery_mobile_1_4_5_css = "~/Content/jquery.mobile-1.4.5.css";

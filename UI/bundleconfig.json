@@ -112,5 +112,11 @@
     "inputFiles": [
       "Scripts/respond.js"
     ]
+  },
+  {
+    "outputFileName": "Scripts/Chart.min.js",
+    "inputFiles": [
+      "Scripts/Chart.js"
+    ]
   }
 ]

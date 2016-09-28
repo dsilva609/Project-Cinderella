@@ -1,8 +1,57 @@
-﻿@model BusinessLogic.Models.GlobalStats
+﻿@using Chart.Mvc.ComplexChart
+@using Chart.Mvc.Extensions
+@using Chart.Mvc.SimpleChart
+@model BusinessLogic.Models.GlobalStats
 
 <h2>
     Collection Statistics
 </h2>
+
+@Styles.Render(Links.Content.c3_min_css)
+@Scripts.Render(Links.Scripts.d3_min_js)
+@Scripts.Render(Links.Scripts.c3_min_js)
+@Scripts.Render(Links.Scripts.Chart_min_js)
+<div id="chart"></div>
+
+<script>
+    c3.generate({
+        bindto: '#chart',
+        data: {
+
+            columns: [
+                ['stuffs s', 30],
+                ['data2', 50]
+            ],
+            type: 'pie'
+        }
+    });
+</script>
+
+@{
+    var barChart = new PieChart();
+    barChart.ChartConfiguration.ShowScale = true;
+    barChart.ChartConfiguration.PercentageInnerCutout = 20;
+    barChart.ChartConfiguration.AnimateScale = true;
+    barChart.ChartConfiguration.LegendTemplate = "none, none";
+    barChart.Data.AddRange(new List<SimpleData>
+    {
+        new SimpleData {
+            Label = "Thing 1",
+            Value = 30,
+            Color = "#555",
+            Highlight = "Yellow"
+        },
+        new SimpleData
+        {
+            Label = "Thing 2",
+            Value = 50,
+            Color = "Green"
+        }
+    });
+}
+
+<canvas id="myCanvas" width="400" height="400"></canvas>
+@Html.CreateChart("myCanvas", barChart)
 
 <div data-toggle="collapse" data-parent="#accordion" href="#collection-info">
     <div class="row panel panel-primary panel-collapse">
