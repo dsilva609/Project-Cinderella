@@ -91,7 +91,7 @@ namespace UnitTests.BusinessLogic.Services
         {
             var result = _service.ClassUnderTest.GetNumAlbums();
 
-            result.ShouldBe(1);
+            result.ShouldBe(6);
         }
 
         [Test]

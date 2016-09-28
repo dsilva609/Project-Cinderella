@@ -43,13 +43,13 @@ namespace BusinessLogic.Services
 
         public int GetNumCheckedOut() => _items.Count(x => x.CheckedOut);
 
-        public int GetNumAlbums() => _albumService.GetCount();
+        public int GetNumAlbums() => _items.Count(x => x.GetType() == typeof(Album));
 
-        public int GetNumBooks() => _bookService.GetCount();
+        public int GetNumBooks() => _items.Count(x => x.GetType() == typeof(Book));
 
-        public int GetNumMoviesShows() => _movieService.GetCount();
+        public int GetNumMoviesShows() => _items.Count(x => x.GetType() == typeof(Movie));
 
-        public int GetNumGames() => _gameService.GetCount();
+        public int GetNumGames() => _items.Count(x => x.GetType() == typeof(Game));
 
         private List<BaseItem> GetAllItems()
         {
