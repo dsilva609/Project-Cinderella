@@ -10,48 +10,6 @@
 @Styles.Render(Links.Content.c3_min_css)
 @Scripts.Render(Links.Scripts.d3_min_js)
 @Scripts.Render(Links.Scripts.c3_min_js)
-@Scripts.Render(Links.Scripts.Chart_min_js)
-<div id="chart"></div>
-
-<script>
-    c3.generate({
-        bindto: '#chart',
-        data: {
-
-            columns: [
-                ['stuffs s', 30],
-                ['data2', 50]
-            ],
-            type: 'pie'
-        }
-    });
-</script>
-
-@{
-    var barChart = new PieChart();
-    barChart.ChartConfiguration.ShowScale = true;
-    barChart.ChartConfiguration.PercentageInnerCutout = 20;
-    barChart.ChartConfiguration.AnimateScale = true;
-    barChart.ChartConfiguration.LegendTemplate = "none, none";
-    barChart.Data.AddRange(new List<SimpleData>
-    {
-        new SimpleData {
-            Label = "Thing 1",
-            Value = 30,
-            Color = "#555",
-            Highlight = "Yellow"
-        },
-        new SimpleData
-        {
-            Label = "Thing 2",
-            Value = 50,
-            Color = "Green"
-        }
-    });
-}
-
-<canvas id="myCanvas" width="400" height="400"></canvas>
-@Html.CreateChart("myCanvas", barChart)
 
 <div data-toggle="collapse" data-parent="#accordion" href="#collection-info">
     <div class="row panel panel-primary panel-collapse">
@@ -126,3 +84,83 @@
         </ul>
     </div>
 </div>
+
+<div id="mediaTypes"></div>
+
+<script>
+    c3.generate({
+        bindto: '#mediaTypes',
+        data: {
+            columns: [
+                ['Physical', @Model.NumPhysical],
+                ['Digital', @Model.NumDigital]
+            ],
+            type: 'donut'
+        },
+       donut: {
+            title: "Media Types"
+            //label: {
+            //    format: function (value, ratio) {
+            //        return value + " (" + ratio * 100 + "%)"; //returning here the value and not the ratio
+            //    }
+            //}
+        }
+    });
+</script>
+
+<div id="itemTypes"></div>
+
+<script>
+    c3.generate({
+        bindto: '#itemTypes',
+        data: {
+            columns: [
+                ['Album', @Model.NumAlbums],
+                ['Book', @Model.NumBooks],
+                ['Movie/TV', @Model.NumMoviesAndShows],
+                ['Games', @Model.NumGames]
+            ],
+            type: 'donut'
+        },
+        donut: {
+            title: "Item Types"
+        }
+    });
+</script>
+
+<div id="condition"></div>
+
+<script>
+    c3.generate({
+        bindto: '#condition',
+        data: {
+            columns: [
+                ['New', @Model.NumNew],
+                ['Used', @Model.NumUsed]
+            ],
+            type: 'donut'
+        },
+        donut: {
+            title: "Condition"
+        }
+    });
+</script>
+
+<div id="completionStatus"></div>
+
+<script>
+    c3.generate({
+        bindto: '#completionStatus',
+        data: {
+            columns: [
+                ['Not Started', @Model.NumNotStarted],
+                ['In Progress', @Model.NumInProgress],
+                ['Digital', @Model.NumCompleted]
+            ],
+            type: 'donut'
+        },
+        donut: {
+            title: "Completion Status"
+        }
+    });
+</script>
