@@ -73,6 +73,8 @@ namespace UI.Controllers
             if (!ModelState.IsValid) return View(book);
             try
             {
+                if (book.CompletionStatus == CompletionStatus.Completed && book.TimesCompleted == 0)
+                    book.TimesCompleted = 1;
                 book.DateAdded = DateTime.Now;
                 this._service.Add(book);
             }
@@ -114,6 +116,9 @@ namespace UI.Controllers
                 ShowStatusMessage(MessageTypeEnum.error, $"A book of Title: {book.Title}, Author: {book.Author} already exists.", "Duplicate Book");
                 return View(book);
             }
+
+            if (book.CompletionStatus == CompletionStatus.Completed && book.TimesCompleted == 0)
+                book.TimesCompleted = 1;
 
             //TODO: make sure user id is the same so as not to change other users data
             book.DateUpdated = DateTime.Now;

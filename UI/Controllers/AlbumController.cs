@@ -80,6 +80,8 @@ namespace UI.Controllers
             {
                 try
                 {
+                    if (model.CompletionStatus == CompletionStatus.Completed && model.TimesCompleted == 0)
+                        model.TimesCompleted = 1;
                     model.DateAdded = DateTime.Now;
                     this._service.Add(model);
                 }
@@ -152,6 +154,8 @@ namespace UI.Controllers
                 return View(model);
             }
 
+            if (model.CompletionStatus == CompletionStatus.Completed && model.TimesCompleted == 0)
+                model.TimesCompleted = 1;
             //TODO: make sure user id is the same so as not to change other users data
             model.DateUpdated = DateTime.Now;
             _service.Edit(model);

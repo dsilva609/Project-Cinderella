@@ -77,6 +77,8 @@ namespace UI.Controllers
             if (!ModelState.IsValid) return View(game);
             try
             {
+                if (game.CompletionStatus == CompletionStatus.Completed && game.TimesCompleted == 0)
+                    game.TimesCompleted = 1;
                 game.DateAdded = DateTime.Now;
                 this._service.Add(game);
             }
@@ -118,6 +120,9 @@ namespace UI.Controllers
                     $"A Game of Title: {game.Title}, Developer: {game.Developer} already exists.", "Duplicate Game");
                 return View(game);
             }
+
+            if (game.CompletionStatus == CompletionStatus.Completed && game.TimesCompleted == 0)
+                game.TimesCompleted = 1;
 
             //TODO: make sure user id is the same so as not to change other users data
             game.DateUpdated = DateTime.Now;

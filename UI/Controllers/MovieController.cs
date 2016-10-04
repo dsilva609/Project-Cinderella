@@ -73,6 +73,9 @@ namespace UI.Controllers
             if (!ModelState.IsValid) return View(movie);
             try
             {
+                if (movie.CompletionStatus == CompletionStatus.Completed && movie.TimesCompleted == 0)
+                    movie.TimesCompleted = 1;
+
                 movie.DateAdded = DateTime.Now;
                 this._service.Add(movie);
             }
@@ -116,6 +119,9 @@ namespace UI.Controllers
                     "Duplicate Movie");
                 return View(movie);
             }
+
+            if (movie.CompletionStatus == CompletionStatus.Completed && movie.TimesCompleted == 0)
+                movie.TimesCompleted = 1;
 
             //TODO: make sure user id is the same so as not to change other users data
             movie.DateUpdated = DateTime.Now;
