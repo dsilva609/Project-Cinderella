@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using UI.Common;
 using UI.Models;
 
 namespace UI.Controllers
@@ -26,6 +27,7 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Index(string albumQuery, string filter, int? page)
         {
+            var type = User.Identity.GetItemType();
             if (string.IsNullOrWhiteSpace(albumQuery) && !string.IsNullOrWhiteSpace(Session["query"]?.ToString()))
             {
                 albumQuery = Session["query"].ToString();
