@@ -11,13 +11,13 @@
     @using (Html.BeginForm(MVC.Album.Search(), FormMethod.Get))
     {
         <div class="panel-body">
-            <div class=" col-sm-6">
+            <div class="col-sm-6">
                 @Html.LabelFor(m => m.Artist)
                 @Html.TextBoxFor(m => m.Artist, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Artist, "", new { @class = "text-danger" })
             </div>
 
-            <div class=" col-sm-6">
+            <div class="col-sm-6">
                 @Html.LabelFor(m => m.AlbumName)
                 @Html.TextBoxFor(m => m.AlbumName, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.AlbumName, "", new { @class = "text-danger" })
@@ -26,7 +26,7 @@
 
         <div class="row panel-body">
             <div class="col-xs-8 col-sm-10">
-                <input id="btnSubmit" type="submit" value="Search" class="btn btn-default btn-block btn-lg"/>
+                <input id="btnSubmit" type="submit" value="Search" class="btn btn-default btn-block btn-lg" />
             </div>
         </div>
     }
@@ -47,7 +47,7 @@
                 {
                     <div id="album" class="row info" style="padding-bottom: 1em;" data-id="@result.ID">
                         <div class="col-sm-2 ">
-                            <img src="@result.Thumb" class="img-rounded"/>
+                            <img src="@result.Thumb" class="img-rounded" />
                         </div>
 
                         <div class="col-sm-3 ">
@@ -73,7 +73,7 @@
                         @Html.Hidden("releaseID", result.ID)
 
                         <div class="col-sm-1 ">
-                            <input id="" type="submit" value="Add" class="btn"/>
+                            <input id="" type="submit" value="Add" class="btn" />
                         </div>
                     </div>
                 }
