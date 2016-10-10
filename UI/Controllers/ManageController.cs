@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using UI.Enums;
 using UI.Models;
 
 namespace UI.Controllers
@@ -33,14 +34,17 @@ namespace UI.Controllers
                         : message == ManageMessageId.SetTwoFactorSuccess
                             ? "Your two-factor authentication provider has been set."
                             : message == ManageMessageId.Error
-                                ? "An error has occurred." : "";
+                                ? "An error has occurred."
+                                : "";
 
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(User.Identity.GetUserId()),
                 Logins = await UserManager.GetLoginsAsync(User.Identity.GetUserId()),
-                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(User.Identity.GetUserId())
+                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(User.Identity.GetUserId()),
+                //TODO: create enum like class
+                Type = ItemType.Album
             };
             return View(model);
         }

@@ -2,6 +2,7 @@
 using Microsoft.Owin.Security;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using UI.Enums;
 
 namespace UI.Models
 {
@@ -14,6 +15,8 @@ namespace UI.Models
         public bool TwoFactor { get; set; }
 
         public bool BrowserRemembered { get; set; }
+
+        public ItemType Type { get; set; }
     }
 
     public class ManageLoginsViewModel

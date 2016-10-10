@@ -12,16 +12,11 @@
     <dl class="dl-horizontal">
         <dt>Password:</dt>
         <dd>
-            [
-            @if (Model.HasPassword)
-            {
-                @Html.ActionLink("Change your password", "ChangePassword")
-            }
-            else
-            {
-                @Html.ActionLink("Create", "SetPassword")
-            }
-            ]
+            [@(Model.HasPassword ? Html.ActionLink("Change your password", MVC.Manage.ChangePassword()) : Html.ActionLink("Create", MVC.Manage.SetPassword()))]
+        </dd>
+        <dt>Default Item Search Type: </dt>
+        <dd>
+            @Html.EnumDropDownListFor(x => x.Type, new { @class = "form-control" })
         </dd>
     </dl>
 </div>
