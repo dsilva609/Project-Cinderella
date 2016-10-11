@@ -86,6 +86,12 @@ namespace UI.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.LinkLogin);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Update()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Update);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ManageController Actions { get { return MVC.Manage; } }
@@ -111,6 +117,7 @@ namespace UI.Controllers
             public readonly string EnableTwoFactorAuthentication = "EnableTwoFactorAuthentication";
             public readonly string DisableTwoFactorAuthentication = "DisableTwoFactorAuthentication";
             public readonly string LinkLogin = "LinkLogin";
+            public readonly string Update = "Update";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -125,6 +132,7 @@ namespace UI.Controllers
             public const string EnableTwoFactorAuthentication = "EnableTwoFactorAuthentication";
             public const string DisableTwoFactorAuthentication = "DisableTwoFactorAuthentication";
             public const string LinkLogin = "LinkLogin";
+            public const string Update = "Update";
         }
 
 
@@ -176,6 +184,14 @@ namespace UI.Controllers
         public class ActionParamsClass_LinkLogin
         {
             public readonly string provider = "provider";
+        }
+        static readonly ActionParamsClass_Update s_params_Update = new ActionParamsClass_Update();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Update UpdateParams { get { return s_params_Update; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Update
+        {
+            public readonly string model = "model";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -329,6 +345,18 @@ namespace UI.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.LinkLogin);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "provider", provider);
             LinkLoginOverride(callInfo, provider);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void UpdateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, UI.Models.IndexViewModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Update(UI.Models.IndexViewModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Update);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            UpdateOverride(callInfo, model);
             return callInfo;
         }
 
