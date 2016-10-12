@@ -102,6 +102,7 @@ namespace UI.Controllers
         {
             public readonly string query = "query";
             public readonly string type = "type";
+            public readonly string action = "action";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -162,15 +163,16 @@ namespace UI.Controllers
         }
 
         [NonAction]
-        partial void SearchOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string query, UI.Enums.ItemType type);
+        partial void SearchOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string query, UI.Enums.ItemType type, string action);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Search(string query, UI.Enums.ItemType type)
+        public override System.Web.Mvc.ActionResult Search(string query, UI.Enums.ItemType type, string action)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Search);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "query", query);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "type", type);
-            SearchOverride(callInfo, query, type);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "action", action);
+            SearchOverride(callInfo, query, type, action);
             return callInfo;
         }
 

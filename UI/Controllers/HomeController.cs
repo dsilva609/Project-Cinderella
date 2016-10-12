@@ -62,7 +62,7 @@ namespace UI.Controllers
         }
 
         [HttpGet]
-        public virtual ActionResult Search(string query, ItemType type)
+        public virtual ActionResult Search(string query, ItemType type, string action)
         {
             Session["query"] = query;
             return RedirectToAction("Index", type.ToString());
