@@ -999,6 +999,10 @@
     <Compile Include="Migrations\201610101614436_Added item type to application user.Designer.cs">
       <DependentUpon>201610101614436_Added item type to application user.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610121626520_added default action type.cs" />
+    <Compile Include="Migrations\201610121626520_added default action type.Designer.cs">
+      <DependentUpon>201610121626520_added default action type.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseViewModel.cs" />
@@ -1050,6 +1054,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610101614436_Added item type to application user.resx">
       <DependentUpon>201610101614436_Added item type to application user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610121626520_added default action type.resx">
+      <DependentUpon>201610121626520_added default action type.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

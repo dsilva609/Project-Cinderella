@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace UI.Enums
 {
@@ -12,12 +13,21 @@ namespace UI.Enums
         public static ActionType ViewCollection = new ActionType { Name = "View Collection", Value = "Index" };
         public static ActionType SearchOnline = new ActionType { Name = "Search Online", Value = "Search" };
 
-        public IEnumerable<ActionType> GetTypes()
+        public static IEnumerable<ActionType> GetTypes(bool authenticated)
         {
-            yield return CreateNew;
-            yield return EditExisting;
-            yield return ViewCollection;
-            yield return SearchOnline;
+            if (authenticated)
+            {
+                yield return CreateNew;
+                yield return EditExisting;
+                yield return ViewCollection;
+                yield return SearchOnline;
+            }
+            else yield return ViewCollection;
+        }
+
+        public static ActionType GetByValue(string value)
+        {
+            return string.IsNullOrWhiteSpace(value) ? ViewCollection : GetTypes(true).SingleOrDefault(x => x.Value == value);
         }
     }
 }

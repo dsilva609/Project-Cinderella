@@ -27,7 +27,7 @@
                 {
                     @Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
 
-                    @Html.DropDownList("type", Enum.GetNames(typeof(ItemType)).Select(val => new SelectListItem { Text = val, Value = val, Selected = User.Identity.GetItemType() == val }).ToList(), new { @class = "form-control" })
+                    @Html.DropDownList("type", Enum.GetNames(typeof(ItemType)).Select(val => new SelectListItem { Text = val, Value = val, Selected = User.Identity.GetDefaultItemType() == val }).ToList(), new { @class = "form-control" })
                     <button type="submit" class="btn btn-default">
                         <span class="fa fa-search"></span>
                     </button>
