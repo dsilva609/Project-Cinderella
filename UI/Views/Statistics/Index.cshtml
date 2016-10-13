@@ -1,7 +1,4 @@
-﻿@using Chart.Mvc.ComplexChart
-@using Chart.Mvc.Extensions
-@using Chart.Mvc.SimpleChart
-@model BusinessLogic.Models.GlobalStats
+﻿@model UI.Models.StatisticsViewModel
 
 <h2>
     Collection Statistics
@@ -27,73 +24,212 @@
         <ul class="list-group col-md-6">
             <li class="list-group-item">
                 Total number of items in collection
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.CollectionCount</span>
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.CollectionCount</span>
             </li>
             <li class="list-group-item">
                 Total number of Albums
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumAlbums</span>
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumAlbums</span>
             </li>
             <li class="list-group-item">
                 Total number of Books
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumBooks</span>
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumBooks</span>
             </li>
             <li class="list-group-item">
                 Total number of Movies and TV Shows
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumMoviesAndShows</span>
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumMoviesAndShows</span>
             </li>
             <li class="list-group-item">
                 Total number of Games
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumGames</span>
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumGames</span>
             </li>
             <li class="list-group-item">
                 Number of items purchased new
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumNew</span>
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumNew</span>
             </li>
             <li class="list-group-item">
                 Number of items purchased used
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumUsed</span>
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumUsed</span>
             </li>
             <li class="list-group-item">
                 Number of physical items
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumPhysical</span>
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumPhysical</span>
             </li>
             <li class="list-group-item">
                 Number of digital items
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumDigital</span>
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumDigital</span>
             </li>
             <li class="list-group-item">
                 Number of times an item has been completed
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.TimesCompleted</span>
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.TimesCompleted</span>
             </li>
             <li class="list-group-item">
                 Number of items completed
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumCompleted</span>
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumCompleted</span>
             </li>
             <li class="list-group-item">
                 Number of items in progress
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumInProgress</span>
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumInProgress</span>
             </li>
             <li class="list-group-item">
                 Number of items not started
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumNotStarted</span>
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumNotStarted</span>
             </li>
             <li class="list-group-item">
                 Number of items checked out
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumCheckedOut</span>
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumCheckedOut</span>
             </li>
         </ul>
     </div>
 </div>
+@if (Model.User != null)
+{
+    <div data-toggle="collapse" data-parent="#accordion" href="#user-collection-info">
+        <div class="row panel panel-primary panel-collapse">
+            <div class="panel-heading">
+                <h4>
+                    User Stats
+                    <span class="fa fa-chevron-circle-down"></span>
+                </h4>
+            </div>
+        </div>
+    </div>
 
-<div id="mediaTypes"></div>
+    <div id="user-collection-info" class="collapse in">
+        <div class="panel-body">
+            <ul class="list-group col-md-6">
+                <li class="list-group-item">
+                    Total number of items in collection
+                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.CollectionCount</span>
+                </li>
+                <li class="list-group-item">
+                    Total number of Albums
+                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumAlbums</span>
+                </li>
+                <li class="list-group-item">
+                    Total number of Books
+                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumBooks</span>
+                </li>
+                <li class="list-group-item">
+                    Total number of Movies and TV Shows
+                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumMoviesAndShows</span>
+                </li>
+                <li class="list-group-item">
+                    Total number of Games
+                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumGames</span>
+                </li>
+                <li class="list-group-item">
+                    Number of items purchased new
+                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumNew</span>
+                </li>
+                <li class="list-group-item">
+                    Number of items purchased used
+                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumUsed</span>
+                </li>
+                <li class="list-group-item">
+                    Number of physical items
+                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumPhysical</span>
+                </li>
+                <li class="list-group-item">
+                    Number of digital items
+                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumDigital</span>
+                </li>
+                <li class="list-group-item">
+                    Number of times an item has been completed
+                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.TimesCompleted</span>
+                </li>
+                <li class="list-group-item">
+                    Number of items completed
+                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumCompleted</span>
+                </li>
+                <li class="list-group-item">
+                    Number of items in progress
+                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumInProgress</span>
+                </li>
+                <li class="list-group-item">
+                    Number of items not started
+                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumNotStarted</span>
+                </li>
+                <li class="list-group-item">
+                    Number of items checked out
+                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumCheckedOut</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+}
 
+<div data-toggle="collapse" data-parent="#accordion" href="#global-charts">
+    <div class="row panel panel-primary panel-collapse">
+        <div class="panel-heading">
+            <h4>
+                Global Charts
+                <span class="fa fa-chevron-circle-down"></span>
+            </h4>
+        </div>
+    </div>
+</div>
+<div id="global-charts" class="collapse in">
+    <div class="panel-body">
+        <div class="table">
+            <div class="row">
+                <div id="mediaTypes" class="col-md-6" style="width: 500px; height: 500px;"></div>
+            </div>
+
+            <div class="row">
+                <div id="itemTypes" class="col-md-6" style="width: 500px; height: 500px;"></div>
+            </div>
+
+            <div class="row">
+                <div id="condition" class="col-md-6" style="width: 500px; height: 500px;"></div>
+            </div>
+
+            <div class="row">
+                <div id="completionStatus" class="col-md-6" style="width: 500px; height: 500px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+@if (Model.User != null)
+{
+    <div data-toggle="collapse" data-parent="#accordion" href="#user-charts">
+        <div class="row panel panel-primary panel-collapse">
+            <div class="panel-heading">
+                <h4>
+                    User Charts
+                    <span class="fa fa-chevron-circle-down"></span>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div id="user-charts" class="collapse in">
+        <div class="panel-body">
+            <div class="table">
+                <div class="row">
+                    <div id="usermediaTypes" class="col-md-6" style="width: 500px; height: 500px;"></div>
+                </div>
+
+                <div class="row">
+                    <div id="useritemTypes" class="col-md-6" style="width: 500px; height: 500px;"></div>
+                </div>
+
+                <div class="row">
+                    <div id="usercondition" class="col-md-6" style="width: 500px; height: 500px;"></div>
+                </div>
+
+                <div class="row">
+                    <div id="usercompletionStatus" class="col-md-6" style="width: 500px; height: 500px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
 <script>
     c3.generate({
         bindto: '#mediaTypes',
         data: {
             columns: [
-                ['Physical', @Model.NumPhysical],
-                ['Digital', @Model.NumDigital]
+                ['Physical', @Model.Universal.NumPhysical],
+                ['Digital', @Model.Universal.NumDigital]
             ],
             type: 'donut'
         },
@@ -108,17 +244,15 @@
     });
 </script>
 
-<div id="itemTypes"></div>
-
 <script>
     c3.generate({
         bindto: '#itemTypes',
         data: {
             columns: [
-                ['Album', @Model.NumAlbums],
-                ['Book', @Model.NumBooks],
-                ['Movie/TV', @Model.NumMoviesAndShows],
-                ['Games', @Model.NumGames]
+                ['Album', @Model.Universal.NumAlbums],
+                ['Book', @Model.Universal.NumBooks],
+                ['Movie/TV', @Model.Universal.NumMoviesAndShows],
+                ['Games', @Model.Universal.NumGames]
             ],
             type: 'donut'
         },
@@ -128,15 +262,13 @@
     });
 </script>
 
-<div id="condition"></div>
-
 <script>
     c3.generate({
         bindto: '#condition',
         data: {
             columns: [
-                ['New', @Model.NumNew],
-                ['Used', @Model.NumUsed]
+                ['New', @Model.Universal.NumNew],
+                ['Used', @Model.Universal.NumUsed]
             ],
             type: 'donut'
         },
@@ -146,16 +278,14 @@
     });
 </script>
 
-<div id="completionStatus"></div>
-
 <script>
     c3.generate({
         bindto: '#completionStatus',
         data: {
             columns: [
-                ['Not Started', @Model.NumNotStarted],
-                ['In Progress', @Model.NumInProgress],
-                ['Completed', @Model.NumCompleted]
+                ['Not Started', @Model.Universal.NumNotStarted],
+                ['In Progress', @Model.Universal.NumInProgress],
+                ['Completed', @Model.Universal.NumCompleted]
             ],
             type: 'donut'
         },
@@ -164,3 +294,77 @@
         }
     });
 </script>
+@if (Model.User != null)
+{
+    <script>
+        c3.generate({
+            bindto: '#usermediaTypes',
+            data: {
+                columns: [
+                    ['Physical', @Model.User.NumPhysical],
+                    ['Digital', @Model.User.NumDigital]
+                ],
+                type: 'donut'
+            },
+            donut: {
+                title: "Media Types"
+                //label: {
+                //    format: function (value, ratio) {
+                //        return value + " (" + ratio * 100 + "%)"; //returning here the value and not the ratio
+                //    }
+                //}
+            }
+        });
+    </script>
+
+    <script>
+        c3.generate({
+            bindto: '#useritemTypes',
+            data: {
+                columns: [
+                    ['Album', @Model.User.NumAlbums],
+                    ['Book', @Model.User.NumBooks],
+                    ['Movie/TV', @Model.User.NumMoviesAndShows],
+                    ['Games', @Model.User.NumGames]
+                ],
+                type: 'donut'
+            },
+            donut: {
+                title: "Item Types"
+            }
+        });
+    </script>
+
+    <script>
+        c3.generate({
+            bindto: '#usercondition',
+            data: {
+                columns: [
+                    ['New', @Model.User.NumNew],
+                    ['Used', @Model.User.NumUsed]
+                ],
+                type: 'donut'
+            },
+            donut: {
+                title: "Condition"
+            }
+        });
+    </script>
+
+    <script>
+        c3.generate({
+            bindto: '#usercompletionStatus',
+            data: {
+                columns: [
+                    ['Not Started', @Model.User.NumNotStarted],
+                    ['In Progress', @Model.User.NumInProgress],
+                    ['Completed', @Model.User.NumCompleted]
+                ],
+                type: 'donut'
+            },
+            donut: {
+                title: "Completion Status"
+            }
+        });
+    </script>
+}

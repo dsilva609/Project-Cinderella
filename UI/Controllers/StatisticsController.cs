@@ -1,6 +1,8 @@
 ﻿using BusinessLogic.Models;
 using BusinessLogic.Services.Interfaces;
+using Microsoft.AspNet.Identity;
 using System.Web.Mvc;
+using UI.Models;
 
 namespace UI.Controllers
 {
@@ -16,7 +18,7 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Index()
         {
-            var model = new GlobalStats
+            var universalStats = new GlobalStats
             {
                 CollectionCount = _statisticService.GetCollectionCount(),
                 NumNew = _statisticService.GetNumNew(),
@@ -32,6 +34,33 @@ namespace UI.Controllers
                 NumBooks = _statisticService.GetNumBooks(),
                 NumMoviesAndShows = _statisticService.GetNumMoviesShows(),
                 NumGames = _statisticService.GetNumGames()
+            };
+
+            var userID = User.Identity.GetUserId();
+            var userStats = string.IsNullOrWhiteSpace(userID)
+                ? null
+                : new GlobalStats
+                {
+                    CollectionCount = _statisticService.GetCollectionCount(userID),
+                    NumNew = _statisticService.GetNumNew(userID),
+                    NumUsed = _statisticService.GetNumUsed(userID),
+                    NumPhysical = _statisticService.GetNumPhysical(userID),
+                    NumDigital = _statisticService.GetNumDigital(userID),
+                    TimesCompleted = _statisticService.GetTimesCompleted(userID),
+                    NumCompleted = _statisticService.GetNumCompleted(userID),
+                    NumInProgress = _statisticService.GetNumInProgress(userID),
+                    NumNotStarted = _statisticService.GetNumNotStarted(userID),
+                    NumCheckedOut = _statisticService.GetNumCheckedOut(userID),
+                    NumAlbums = _statisticService.GetNumAlbums(userID),
+                    NumBooks = _statisticService.GetNumBooks(userID),
+                    NumMoviesAndShows = _statisticService.GetNumMoviesShows(userID),
+                    NumGames = _statisticService.GetNumGames(userID)
+                };
+
+            var model = new StatisticsViewModel
+            {
+                Universal = universalStats,
+                User = userStats
             };
 
             ViewBag.Title = "Global Statistics";
