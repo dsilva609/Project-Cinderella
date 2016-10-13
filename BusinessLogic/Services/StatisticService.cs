@@ -23,33 +23,63 @@ namespace BusinessLogic.Services
             _items = GetAllItems();
         }
 
-        public int GetCollectionCount() => _items.Count;
+        public int GetCollectionCount(string userID = "") =>
+            string.IsNullOrWhiteSpace(userID) ? _items.Count : _items.Count(x => x.UserID == userID);
 
-        public int GetNumNew() => _items.Count(x => x.IsNew);
+        public int GetNumNew(string userID = "")
+            => string.IsNullOrWhiteSpace(userID) ? _items.Count(x => x.IsNew) : _items.Count(x => x.UserID == userID && x.IsNew);
 
-        public int GetNumUsed() => _items.Count(x => !x.IsNew);
+        public int GetNumUsed(string userID = "")
+            => string.IsNullOrWhiteSpace(userID) ? _items.Count(x => !x.IsNew) : _items.Count(x => x.UserID == userID && !x.IsNew);
 
-        public int GetNumPhysical() => _items.Count(x => x.IsPhysical);
+        public int GetNumPhysical(string userID = "")
+            => string.IsNullOrWhiteSpace(userID) ? _items.Count(x => x.IsPhysical) : _items.Count(x => x.UserID == userID && x.IsPhysical);
 
-        public int GetNumDigital() => _items.Count(x => !x.IsPhysical);
+        public int GetNumDigital(string userID = "")
+            => string.IsNullOrWhiteSpace(userID) ? _items.Count(x => !x.IsPhysical) : _items.Count(x => x.UserID == userID && !x.IsPhysical);
 
-        public int GetTimesCompleted() => _items.Sum(x => x.TimesCompleted);
+        public int GetTimesCompleted(string userID = "")
+            => string.IsNullOrWhiteSpace(userID)
+                ? _items.Sum(x => x.TimesCompleted)
+                : _items.Where(x => x.UserID == userID).Sum(y => y.TimesCompleted);
 
-        public int GetNumInProgress() => _items.Count(x => x.CompletionStatus == CompletionStatus.InProgress);
+        public int GetNumInProgress(string userID = "")
+            => string.IsNullOrWhiteSpace(userID)
+                ? _items.Count(x => x.CompletionStatus == CompletionStatus.InProgress)
+                : _items.Count(x => x.UserID == userID && x.CompletionStatus == CompletionStatus.InProgress);
 
-        public int GetNumNotStarted() => _items.Count(x => x.CompletionStatus == CompletionStatus.NotStarted);
+        public int GetNumNotStarted(string userID = "")
+            => string.IsNullOrWhiteSpace(userID)
+                ? _items.Count(x => x.CompletionStatus == CompletionStatus.NotStarted)
+                : _items.Count(x => x.UserID == userID && x.CompletionStatus == CompletionStatus.NotStarted);
 
-        public int GetNumCompleted() => _items.Count(x => x.CompletionStatus == CompletionStatus.Completed);
+        public int GetNumCompleted(string userID = "")
+            => string.IsNullOrWhiteSpace(userID)
+                ? _items.Count(x => x.CompletionStatus == CompletionStatus.Completed)
+                : _items.Count(x => x.UserID == userID && x.CompletionStatus == CompletionStatus.Completed);
 
-        public int GetNumCheckedOut() => _items.Count(x => x.CheckedOut);
+        public int GetNumCheckedOut(string userID = "")
+            => string.IsNullOrWhiteSpace(userID) ? _items.Count(x => x.CheckedOut) : _items.Count(x => x.UserID == userID && x.CheckedOut);
 
-        public int GetNumAlbums() => _items.Count(x => x.GetType() == typeof(Album));
+        public int GetNumAlbums(string userID = "")
+            => string.IsNullOrWhiteSpace(userID)
+                ? _items.Count(x => x.GetType() == typeof(Album))
+                : _items.Count(x => x.UserID == userID && x.GetType() == typeof(Album));
 
-        public int GetNumBooks() => _items.Count(x => x.GetType() == typeof(Book));
+        public int GetNumBooks(string userID = "")
+            => string.IsNullOrWhiteSpace(userID)
+                ? _items.Count(x => x.GetType() == typeof(Book))
+                : _items.Count(x => x.UserID == userID && x.GetType() == typeof(Book));
 
-        public int GetNumMoviesShows() => _items.Count(x => x.GetType() == typeof(Movie));
+        public int GetNumMoviesShows(string userID = "")
+            => string.IsNullOrWhiteSpace(userID)
+                ? _items.Count(x => x.GetType() == typeof(Movie))
+                : _items.Count(x => x.UserID == userID && x.GetType() == typeof(Movie));
 
-        public int GetNumGames() => _items.Count(x => x.GetType() == typeof(Game));
+        public int GetNumGames(string userID = "")
+            => string.IsNullOrWhiteSpace(userID)
+                ? _items.Count(x => x.GetType() == typeof(Game))
+                : _items.Count(x => x.UserID == userID && x.GetType() == typeof(Game));
 
         private List<BaseItem> GetAllItems()
         {

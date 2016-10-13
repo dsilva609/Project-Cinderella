@@ -2,32 +2,32 @@
 {
     public interface IStatisticService
     {
-        int GetCollectionCount();
+        int GetCollectionCount(string userID = "");
 
-        int GetNumNew();
+        int GetNumNew(string userID = "");
 
-        int GetNumUsed();
+        int GetNumUsed(string userID = "");
 
-        int GetNumPhysical();
+        int GetNumPhysical(string userID = "");
 
-        int GetNumDigital();
+        int GetNumDigital(string userID = "");
 
-        int GetTimesCompleted();
+        int GetTimesCompleted(string userID = "");
 
-        int GetNumInProgress();
+        int GetNumInProgress(string userID = "");
 
-        int GetNumNotStarted();
+        int GetNumNotStarted(string userID = "");
 
-        int GetNumCompleted();
+        int GetNumCompleted(string userID = "");
 
-        int GetNumCheckedOut();
+        int GetNumCheckedOut(string userID = "");
 
-        int GetNumAlbums();
+        int GetNumAlbums(string userID = "");
 
-        int GetNumBooks();
+        int GetNumBooks(string userID = "");
 
-        int GetNumMoviesShows();
+        int GetNumMoviesShows(string userID = "");
 
-        int GetNumGames();
+        int GetNumGames(string userID = "");
     }
 }

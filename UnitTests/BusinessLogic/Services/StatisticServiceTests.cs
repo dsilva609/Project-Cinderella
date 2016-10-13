@@ -117,5 +117,23 @@ namespace UnitTests.BusinessLogic.Services
 
             result.ShouldBe(0);
         }
+
+        [Test]
+        public void ItGetsAlbumsForUser()
+        {
+            _service.ClassUnderTest.GetNumAlbums("Dio").ShouldBe(2);
+        }
+
+        [Test]
+        public void ItGetsNumPhysicalForUser()
+        {
+            _service.ClassUnderTest.GetNumPhysical("Dio").ShouldBe(1);
+        }
+
+        [Test]
+        public void ItGetsNumInProgressForUser()
+        {
+            _service.ClassUnderTest.GetNumInProgress("Dio").ShouldBe(1);
+        }
     }
 }
