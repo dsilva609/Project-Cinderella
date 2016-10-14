@@ -12,7 +12,7 @@
     <div class="row panel panel-primary panel-collapse">
         <div class="panel-heading">
             <h4>
-                Global Stats
+                Stats
                 <span class="fa fa-chevron-circle-down"></span>
             </h4>
         </div>
@@ -22,6 +22,9 @@
 <div id="collection-info" class="collapse in">
     <div class="panel-body">
         <ul class="list-group col-md-6">
+            <li class="list-group-item active">
+                Global
+            </li>
             <li class="list-group-item">
                 Total number of items in collection
                 <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.CollectionCount</span>
@@ -79,24 +82,12 @@
                 <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumCheckedOut</span>
             </li>
         </ul>
-    </div>
-</div>
-@if (Model.User != null)
-{
-    <div data-toggle="collapse" data-parent="#accordion" href="#user-collection-info">
-        <div class="row panel panel-primary panel-collapse">
-            <div class="panel-heading">
-                <h4>
-                    User Stats
-                    <span class="fa fa-chevron-circle-down"></span>
-                </h4>
-            </div>
-        </div>
-    </div>
-
-    <div id="user-collection-info" class="collapse in">
-        <div class="panel-body">
+        @if (Model.User != null)
+        {
             <ul class="list-group col-md-6">
+                <li class="list-group-item active">
+                    User
+                </li>
                 <li class="list-group-item">
                     Total number of items in collection
                     <span class="tag tag-info tag-pill pull-xs-right">@Model.User.CollectionCount</span>
@@ -154,75 +145,46 @@
                     <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumCheckedOut</span>
                 </li>
             </ul>
-        </div>
+        }
     </div>
-}
+</div>
 
 <div data-toggle="collapse" data-parent="#accordion" href="#global-charts">
     <div class="row panel panel-primary panel-collapse">
         <div class="panel-heading">
             <h4>
-                Global Charts
+                Charts
                 <span class="fa fa-chevron-circle-down"></span>
             </h4>
         </div>
     </div>
 </div>
-<div id="global-charts" class="collapse in">
+<div id="global-charts" class="collapse in charts">
     <div class="panel-body">
         <div class="table">
             <div class="row">
                 <div id="mediaTypes" class="col-md-6" style="width: 500px; height: 500px;"></div>
+                <div id="usermediaTypes" class="col-md-6" style="width: 500px; height: 500px;"></div>
             </div>
 
             <div class="row">
                 <div id="itemTypes" class="col-md-6" style="width: 500px; height: 500px;"></div>
+                <div id="useritemTypes" class="col-md-6" style="width: 500px; height: 500px;"></div>
             </div>
 
             <div class="row">
                 <div id="condition" class="col-md-6" style="width: 500px; height: 500px;"></div>
+                <div id="usercondition" class="col-md-6" style="width: 500px; height: 500px;"></div>
             </div>
 
             <div class="row">
                 <div id="completionStatus" class="col-md-6" style="width: 500px; height: 500px;"></div>
+                <div id="usercompletionStatus" class="col-md-6" style="width: 500px; height: 500px;"></div>
             </div>
         </div>
     </div>
 </div>
-@if (Model.User != null)
-{
-    <div data-toggle="collapse" data-parent="#accordion" href="#user-charts">
-        <div class="row panel panel-primary panel-collapse">
-            <div class="panel-heading">
-                <h4>
-                    User Charts
-                    <span class="fa fa-chevron-circle-down"></span>
-                </h4>
-            </div>
-        </div>
-    </div>
-    <div id="user-charts" class="collapse in">
-        <div class="panel-body">
-            <div class="table">
-                <div class="row">
-                    <div id="usermediaTypes" class="col-md-6" style="width: 500px; height: 500px;"></div>
-                </div>
 
-                <div class="row">
-                    <div id="useritemTypes" class="col-md-6" style="width: 500px; height: 500px;"></div>
-                </div>
-
-                <div class="row">
-                    <div id="usercondition" class="col-md-6" style="width: 500px; height: 500px;"></div>
-                </div>
-
-                <div class="row">
-                    <div id="usercompletionStatus" class="col-md-6" style="width: 500px; height: 500px;"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-}
 <script>
     c3.generate({
         bindto: '#mediaTypes',
@@ -234,7 +196,7 @@
             type: 'donut'
         },
         donut: {
-            title: "Media Types"
+            title: "Global Media Types"
             //label: {
             //    format: function (value, ratio) {
             //        return value + " (" + ratio * 100 + "%)"; //returning here the value and not the ratio
@@ -257,7 +219,7 @@
             type: 'donut'
         },
         donut: {
-            title: "Item Types"
+            title: "Global Item Types"
         }
     });
 </script>
@@ -273,7 +235,7 @@
             type: 'donut'
         },
         donut: {
-            title: "Condition"
+            title: "Global Item Conditions"
         }
     });
 </script>
@@ -290,7 +252,7 @@
             type: 'donut'
         },
         donut: {
-            title: "Completion Status"
+            title: "Global Completion Status"
         }
     });
 </script>
@@ -307,7 +269,7 @@
                 type: 'donut'
             },
             donut: {
-                title: "Media Types"
+                title: "User Media Types"
                 //label: {
                 //    format: function (value, ratio) {
                 //        return value + " (" + ratio * 100 + "%)"; //returning here the value and not the ratio
@@ -330,7 +292,7 @@
                 type: 'donut'
             },
             donut: {
-                title: "Item Types"
+                title: "User Item Types"
             }
         });
     </script>
@@ -346,7 +308,7 @@
                 type: 'donut'
             },
             donut: {
-                title: "Condition"
+                title: "User Item Conditions"
             }
         });
     </script>
@@ -363,7 +325,7 @@
                 type: 'donut'
             },
             donut: {
-                title: "Completion Status"
+                title: "User Completion Status"
             }
         });
     </script>

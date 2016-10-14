@@ -119,3 +119,25 @@ select {
         }
     }
 }
+
+.list-group-item.active {
+    font-weight: bold;
+    background-color: $body-color !important;
+    border-color: $body-color !important;
+}
+
+.panel-heading {
+    margin-bottom: 1em;
+}
+
+.charts {
+    .table { 
+        .row:nth-child(even) {
+	        background-color: transparent;
+        }
+        .row:not(:first-child):hover {
+            background-color: transparent;
+            cursor: default;
+        }
+    }
+}
