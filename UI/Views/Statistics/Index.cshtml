@@ -84,67 +84,67 @@
         </ul>
         @if (Model.User != null)
         {
-            <ul class="list-group col-md-6">
-                <li class="list-group-item active">
-                    User
-                </li>
-                <li class="list-group-item">
-                    Total number of items in collection
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.CollectionCount</span>
-                </li>
-                <li class="list-group-item">
-                    Total number of Albums
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumAlbums</span>
-                </li>
-                <li class="list-group-item">
-                    Total number of Books
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumBooks</span>
-                </li>
-                <li class="list-group-item">
-                    Total number of Movies and TV Shows
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumMoviesAndShows</span>
-                </li>
-                <li class="list-group-item">
-                    Total number of Games
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumGames</span>
-                </li>
-                <li class="list-group-item">
-                    Number of items purchased new
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumNew</span>
-                </li>
-                <li class="list-group-item">
-                    Number of items purchased used
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumUsed</span>
-                </li>
-                <li class="list-group-item">
-                    Number of physical items
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumPhysical</span>
-                </li>
-                <li class="list-group-item">
-                    Number of digital items
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumDigital</span>
-                </li>
-                <li class="list-group-item">
-                    Number of times an item has been completed
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.TimesCompleted</span>
-                </li>
-                <li class="list-group-item">
-                    Number of items completed
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumCompleted</span>
-                </li>
-                <li class="list-group-item">
-                    Number of items in progress
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumInProgress</span>
-                </li>
-                <li class="list-group-item">
-                    Number of items not started
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumNotStarted</span>
-                </li>
-                <li class="list-group-item">
-                    Number of items checked out
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumCheckedOut</span>
-                </li>
-            </ul>
+        <ul class="list-group col-md-6">
+            <li class="list-group-item active">
+                User
+            </li>
+            <li class="list-group-item">
+                Total number of items in collection
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.User.CollectionCount</span>
+            </li>
+            <li class="list-group-item">
+                Total number of Albums
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumAlbums</span>
+            </li>
+            <li class="list-group-item">
+                Total number of Books
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumBooks</span>
+            </li>
+            <li class="list-group-item">
+                Total number of Movies and TV Shows
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumMoviesAndShows</span>
+            </li>
+            <li class="list-group-item">
+                Total number of Games
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumGames</span>
+            </li>
+            <li class="list-group-item">
+                Number of items purchased new
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumNew</span>
+            </li>
+            <li class="list-group-item">
+                Number of items purchased used
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumUsed</span>
+            </li>
+            <li class="list-group-item">
+                Number of physical items
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumPhysical</span>
+            </li>
+            <li class="list-group-item">
+                Number of digital items
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumDigital</span>
+            </li>
+            <li class="list-group-item">
+                Number of times an item has been completed
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.User.TimesCompleted</span>
+            </li>
+            <li class="list-group-item">
+                Number of items completed
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumCompleted</span>
+            </li>
+            <li class="list-group-item">
+                Number of items in progress
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumInProgress</span>
+            </li>
+            <li class="list-group-item">
+                Number of items not started
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumNotStarted</span>
+            </li>
+            <li class="list-group-item">
+                Number of items checked out
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumCheckedOut</span>
+            </li>
+        </ul>
         }
     </div>
 </div>
@@ -166,20 +166,80 @@
                 <div id="mediaTypes" class="col-md-6" style="width: 500px; height: 500px;"></div>
                 <div id="usermediaTypes" class="col-md-6" style="width: 500px; height: 500px;"></div>
             </div>
-
+            <div data-toggle="collapse" data-parent="#accordion" href="#media-type-breakdown">
+                <div class="row panel panel-primary panel-collapse">
+                    <div class="panel-heading text-xs-center">
+                        <h4>
+                            Media Type Breakdown
+                            <span class="fa fa-chevron-circle-down"></span>
+                        </h4>
+                    </div>
+                </div>
+                <div id="media-type-breakdown" class="collapse">
+                    <div>
+                        Test
+                    </div>
+                </div>
+            </div>
+            
             <div class="row">
                 <div id="itemTypes" class="col-md-6" style="width: 500px; height: 500px;"></div>
                 <div id="useritemTypes" class="col-md-6" style="width: 500px; height: 500px;"></div>
+            </div>
+            <div data-toggle="collapse" data-parent="#accordion" href="#item-type-breakdown">
+                <div class="row panel panel-primary panel-collapse">
+                    <div class="panel-heading text-xs-center">
+                        <h4>
+                            Item Type Breakdown
+                            <span class="fa fa-chevron-circle-down"></span>
+                        </h4>
+                    </div>
+                </div>
+                <div id="item-type-breakdown" class="collapse">
+                    <div>
+                        Test
+                    </div>
+                </div>
             </div>
 
             <div class="row">
                 <div id="condition" class="col-md-6" style="width: 500px; height: 500px;"></div>
                 <div id="usercondition" class="col-md-6" style="width: 500px; height: 500px;"></div>
             </div>
+            <div data-toggle="collapse" data-parent="#accordion" href="#item-condition-breakdown">
+                <div class="row panel panel-primary panel-collapse">
+                    <div class="panel-heading text-xs-center">
+                        <h4>
+                            Item Condition Breakdown
+                            <span class="fa fa-chevron-circle-down"></span>
+                        </h4>
+                    </div>
+                </div>
+                <div id="item-condition-breakdown" class="collapse">
+                    <div>
+                        Test
+                    </div>
+                </div>
+            </div>
 
             <div class="row">
                 <div id="completionStatus" class="col-md-6" style="width: 500px; height: 500px;"></div>
                 <div id="usercompletionStatus" class="col-md-6" style="width: 500px; height: 500px;"></div>
+            </div>
+            <div data-toggle="collapse" data-parent="#accordion" href="#completion-status-breakdown">
+                <div class="row panel panel-primary panel-collapse">
+                    <div class="panel-heading text-xs-center">
+                        <h4>
+                            Completion Status Breakdown
+                            <span class="fa fa-chevron-circle-down"></span>
+                        </h4>
+                    </div>
+                </div>
+                <div id="completion-status-breakdown" class="collapse">
+                    <div>
+                        Test
+                    </div>
+                </div>
             </div>
         </div>
     </div>
