@@ -753,6 +753,7 @@
     </Compile>
     <Compile Include="Common\ElmahResult.cs" />
     <Compile Include="Common\IdentityExtensions.cs" />
+    <Compile Include="Common\ViewHelpers.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\GameController.cs" />

@@ -1,4 +1,5 @@
-﻿@model BusinessLogic.Models.Movie
+﻿@using UI.Common
+@model BusinessLogic.Models.Movie
 
 <script>
     var deleteUrl = '@Url.Action(MVC.Movie.Delete())';
@@ -49,8 +50,7 @@
 
         <div class="col-sm-6">
             @Html.LabelFor(m => m.YearReleased)
-            @Html.DropDownListFor(m => m.YearReleased, Enumerable.Range(1900, DateTime.Today.Year - 1900 + 1).Reverse().
-                Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), Model.YearReleased.ToString(), new { @class = "form-control" })
+            @Html.DropDownListFor(m => m.YearReleased, ViewHelpers.GetYearRange(1900, DateTime.Today.Year), Model.YearReleased.ToString(), new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.YearReleased, "", new { @class = "text-danger" })
         </div>
 
