@@ -141,3 +141,11 @@ select {
         }
     }
 }
+
+.form-control:focus {
+    border-color: transparent;
+}
+
+a:hover{
+    color: $belle-yellow;
+}

@@ -88,3 +88,9 @@ select {
   background-color: transparent;
   cursor: default; }
 
+.form-control:focus {
+  border-color: transparent; }
+
+a:hover {
+  color: #ffff66; }
+
