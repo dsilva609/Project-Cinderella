@@ -1,0 +1,18 @@
+﻿@model UI.Models.CompletionStatus
+
+<script>
+	c3.generate({
+		bindto: '#@Model.ID',
+		data: {
+			columns: [
+				['Not Started', @Model.NumNotStarted],
+				['In Progress', @Model.NumInProgress],
+				['Completed', @Model.NumCompleted]
+			],
+			type: 'donut'
+		},
+		donut: {
+			title: "@Model.Title"
+		}
+	});
+</script>

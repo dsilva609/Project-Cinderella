@@ -1,10 +1,8 @@
-﻿using BusinessLogic.Models;
-
-namespace UI.Models
+﻿namespace UI.Models
 {
-    public class StatisticsViewModel
-    {
-        public GlobalStats Universal { get; set; }
-        public GlobalStats User { get; set; }
-    }
+	public class StatisticsViewModel
+	{
+		public StatsViewModel Universal { get; set; }
+		public StatsViewModel User { get; set; }
+	}
 }

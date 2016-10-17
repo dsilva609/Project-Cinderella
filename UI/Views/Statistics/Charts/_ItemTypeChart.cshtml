@@ -1,0 +1,19 @@
+﻿@model UI.Models.ItemTypes
+
+<script>
+	c3.generate({
+		bindto: '#@Model.ID',
+		data: {
+			columns: [
+				['Album', @Model.NumAlbums],
+				['Book', @Model.NumBooks],
+				['Movie/TV', @Model.NumMoviesAndShows],
+				['Games', @Model.NumGames]
+			],
+			type: 'donut'
+		},
+		donut: {
+			title: "@Model.Title"
+		}
+	});
+</script>

@@ -704,6 +704,11 @@
     <Content Include="Views\Shared\_GoogleBooksDisclaimer.cshtml" />
     <Content Include="Views\Shared\_ComicVineDisclaimer.cshtml" />
     <Content Include="Views\Statistics\Index.cshtml" />
+    <Content Include="Views\Statistics\_StatsTable.cshtml" />
+    <Content Include="Views\Statistics\Charts\_CompletionStatusChart.cshtml" />
+    <Content Include="Views\Statistics\Charts\_ConditionCharts.cshtml" />
+    <Content Include="Views\Statistics\Charts\_ItemTypeChart.cshtml" />
+    <Content Include="Views\Statistics\Charts\_MediaTypesChart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -806,6 +811,7 @@
     <Compile Include="Models\AlbumViewModel.cs" />
     <Compile Include="Models\PurchaseInfoViewModel.cs" />
     <Compile Include="Models\StatisticsViewModel.cs" />
+    <Compile Include="Models\StatsViewModel.cs" />
     <Compile Include="Models\Toastr.cs" />
     <Compile Include="MovieController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
@@ -847,6 +853,7 @@
       <DependentUpon>201610121626520_added default action type.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

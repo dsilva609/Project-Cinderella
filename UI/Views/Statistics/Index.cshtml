@@ -1,7 +1,7 @@
 ﻿@model UI.Models.StatisticsViewModel
 
 <h2>
-    Collection Statistics
+	Collection Statistics
 </h2>
 
 @Styles.Render(Links.Content.c3_min_css)
@@ -9,520 +9,270 @@
 @Scripts.Render(Links.Scripts.c3_min_js)
 
 <div data-toggle="collapse" data-parent="#accordion" href="#collection-info">
-    <div class="row panel panel-primary panel-collapse">
-        <div class="panel-heading">
-            <h4>
-                Stats
-                <span class="fa fa-chevron-circle-down"></span>
-            </h4>
-        </div>
-    </div>
+	<div class="row panel panel-primary panel-collapse">
+		<div class="panel-heading">
+			<h4>
+				Stats
+				<span class="fa fa-chevron-circle-down"></span>
+			</h4>
+		</div>
+	</div>
 </div>
 
 <div id="collection-info" class="collapse in">
-    <div class="panel-body">
-        <ul class="list-group col-md-6">
-            <li class="list-group-item active">
-                Global
-            </li>
-            <li class="list-group-item">
-                Total number of items in collection
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.CollectionCount</span>
-            </li>
-            <li class="list-group-item">
-                Total number of Albums
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumAlbums</span>
-            </li>
-            <li class="list-group-item">
-                Total number of Books
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumBooks</span>
-            </li>
-            <li class="list-group-item">
-                Total number of Movies and TV Shows
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumMoviesAndShows</span>
-            </li>
-            <li class="list-group-item">
-                Total number of Games
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumGames</span>
-            </li>
-            <li class="list-group-item">
-                Number of items purchased new
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumNew</span>
-            </li>
-            <li class="list-group-item">
-                Number of items purchased used
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumUsed</span>
-            </li>
-            <li class="list-group-item">
-                Number of physical items
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumPhysical</span>
-            </li>
-            <li class="list-group-item">
-                Number of digital items
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumDigital</span>
-            </li>
-            <li class="list-group-item">
-                Number of times an item has been completed
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.TimesCompleted</span>
-            </li>
-            <li class="list-group-item">
-                Number of items completed
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumCompleted</span>
-            </li>
-            <li class="list-group-item">
-                Number of items in progress
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumInProgress</span>
-            </li>
-            <li class="list-group-item">
-                Number of items not started
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumNotStarted</span>
-            </li>
-            <li class="list-group-item">
-                Number of items checked out
-                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumCheckedOut</span>
-            </li>
-        </ul>
-        @if (Model.User != null)
-        {
-            <ul class="list-group col-md-6">
-                <li class="list-group-item active">
-                    User
-                </li>
-                <li class="list-group-item">
-                    Total number of items in collection
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.CollectionCount</span>
-                </li>
-                <li class="list-group-item">
-                    Total number of Albums
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumAlbums</span>
-                </li>
-                <li class="list-group-item">
-                    Total number of Books
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumBooks</span>
-                </li>
-                <li class="list-group-item">
-                    Total number of Movies and TV Shows
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumMoviesAndShows</span>
-                </li>
-                <li class="list-group-item">
-                    Total number of Games
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumGames</span>
-                </li>
-                <li class="list-group-item">
-                    Number of items purchased new
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumNew</span>
-                </li>
-                <li class="list-group-item">
-                    Number of items purchased used
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumUsed</span>
-                </li>
-                <li class="list-group-item">
-                    Number of physical items
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumPhysical</span>
-                </li>
-                <li class="list-group-item">
-                    Number of digital items
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumDigital</span>
-                </li>
-                <li class="list-group-item">
-                    Number of times an item has been completed
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.TimesCompleted</span>
-                </li>
-                <li class="list-group-item">
-                    Number of items completed
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumCompleted</span>
-                </li>
-                <li class="list-group-item">
-                    Number of items in progress
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumInProgress</span>
-                </li>
-                <li class="list-group-item">
-                    Number of items not started
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumNotStarted</span>
-                </li>
-                <li class="list-group-item">
-                    Number of items checked out
-                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumCheckedOut</span>
-                </li>
-            </ul>
-        }
-    </div>
+	<div class="panel-body">
+		@Html.Partial(MVC.Statistics.Views._StatsTable, Model.Universal)
+		@if (Model.User != null)
+		{
+			@Html.Partial(MVC.Statistics.Views._StatsTable, Model.User)
+		}
+	</div>
 </div>
 
 <div data-toggle="collapse" data-parent="#accordion" href="#global-charts">
-    <div class="row panel panel-primary panel-collapse">
-        <div class="panel-heading">
-            <h4>
-                Charts
-                <span class="fa fa-chevron-circle-down"></span>
-            </h4>
-        </div>
-    </div>
+	<div class="row panel panel-primary panel-collapse">
+		<div class="panel-heading">
+			<h4>
+				Charts
+				<span class="fa fa-chevron-circle-down"></span>
+			</h4>
+		</div>
+	</div>
 </div>
 <div id="global-charts" class="collapse in charts">
-    <div class="panel-body">
-        <div class="table">
-            <div class="row">
-                <div id="mediaTypes" class="col-md-6" style="width: 500px; height: 500px;"></div>
-                <div id="usermediaTypes" class="col-md-6" style="width: 500px; height: 500px;"></div>
-            </div>
-            <div data-toggle="collapse" data-parent="#accordion" href="#media-type-breakdown">
-                <div class="row panel panel-primary panel-collapse">
-                    <div class="panel-heading text-xs-center">
-                        <h4>
-                            Media Type Breakdown
-                            <span class="fa fa-chevron-circle-down"></span>
-                        </h4>
-                    </div>
-                </div>
-                <div id="media-type-breakdown" class="collapse">
-                    <div class="panel-body">
-                        <ul class="list-group col-md-6">
-                            <li class="list-group-item active">
-                                Global
-                            </li>
-                            <li class="list-group-item">
-                                Physical
-                                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumPhysical</span>
-                            </li>
-                            <li class="list-group-item">
-                                Digital
-                                <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumDigital</span>
-                            </li>
-                        </ul>
-                        @if (Model.User != null)
-                        {
-                            <ul class="list-group col-md-6">
-                                <li class="list-group-item active">
-                                    User
-                                </li>
-                                <li class="list-group-item">
-                                    Physical
-                                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumPhysical</span>
-                                </li>
-                                <li class="list-group-item">
-                                    Digital
-                                    <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumDigital</span>
-                                </li>
-                            </ul>
-                        }
-                    </div>
-                </div>
+	<div class="panel-body">
+		<div class="table">
+			<div class="row">
+				<div id="global-media-types" class="col-md-6" style="width: 500px; height: 500px;"></div>
+				<div id="user-media-types" class="col-md-6" style="width: 500px; height: 500px;"></div>
+			</div>
+			<div data-toggle="collapse" data-parent="#accordion" href="#media-type-breakdown">
+				<div class="row panel panel-primary panel-collapse">
+					<div class="panel-heading text-xs-center">
+						<h4>
+							Media Type Breakdown
+							<span class="fa fa-chevron-circle-down"></span>
+						</h4>
+					</div>
+				</div>
+				<div id="media-type-breakdown" class="collapse">
+					<div class="panel-body">
+						<ul class="list-group col-md-6">
+							<li class="list-group-item active">
+								Global
+							</li>
+							<li class="list-group-item">
+								Physical
+								<span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.MediaTypes.NumPhysical</span>
+							</li>
+							<li class="list-group-item">
+								Digital
+								<span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.MediaTypes.NumDigital</span>
+							</li>
+						</ul>
+						@if (Model.User != null)
+						{
+							<ul class="list-group col-md-6">
+								<li class="list-group-item active">
+									User
+								</li>
+								<li class="list-group-item">
+									Physical
+									<span class="tag tag-info tag-pill pull-xs-right">@Model.User.MediaTypes.NumPhysical</span>
+								</li>
+								<li class="list-group-item">
+									Digital
+									<span class="tag tag-info tag-pill pull-xs-right">@Model.User.MediaTypes.NumDigital</span>
+								</li>
+							</ul>
+						}
+					</div>
+				</div>
 
-                <div class="row">
-                    <div id="itemTypes" class="col-md-6" style="width: 500px; height: 500px;"></div>
-                    <div id="useritemTypes" class="col-md-6" style="width: 500px; height: 500px;"></div>
-                </div>
-                <div data-toggle="collapse" data-parent="#accordion" href="#item-type-breakdown">
-                    <div class="row panel panel-primary panel-collapse">
-                        <div class="panel-heading text-xs-center">
-                            <h4>
-                                Item Type Breakdown
-                                <span class="fa fa-chevron-circle-down"></span>
-                            </h4>
-                        </div>
-                    </div>
-                    <div id="item-type-breakdown" class="collapse">
-                        <div class="panel-body">
-                            <ul class="list-group col-md-6">
-                                <li class="list-group-item active">
-                                    Global
-                                </li>
-                                <li class="list-group-item">
-                                    Album
-                                    <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumAlbums</span>
-                                </li>
-                                <li class="list-group-item">
-                                    Book
-                                    <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumBooks</span>
-                                </li>
-                                <li class="list-group-item">
-                                    Movie/TV
-                                    <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumMoviesAndShows</span>
-                                </li>
-                                <li class="list-group-item">
-                                    Game
-                                    <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumGames</span>
-                                </li>
-                            </ul>
-                            @if (Model.User != null)
-                            {
-                                <ul class="list-group col-md-6">
-                                    <li class="list-group-item active">
-                                        User
-                                    </li>
-                                    <li class="list-group-item">
-                                        Album
-                                        <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumAlbums</span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Book
-                                        <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumBooks</span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Movie/TV
-                                        <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumMoviesAndShows</span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Game
-                                        <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumGames</span>
-                                    </li>
-                                </ul>
-                            }
-                        </div>
-                    </div>
-                </div>
+				<div class="row">
+					<div id="global-item-types" class="col-md-6" style="width: 500px; height: 500px;"></div>
+					<div id="user-item-types" class="col-md-6" style="width: 500px; height: 500px;"></div>
+				</div>
+				<div data-toggle="collapse" data-parent="#accordion" href="#item-type-breakdown">
+					<div class="row panel panel-primary panel-collapse">
+						<div class="panel-heading text-xs-center">
+							<h4>
+								Item Type Breakdown
+								<span class="fa fa-chevron-circle-down"></span>
+							</h4>
+						</div>
+					</div>
+					<div id="item-type-breakdown" class="collapse">
+						<div class="panel-body">
+							<ul class="list-group col-md-6">
+								<li class="list-group-item active">
+									Global
+								</li>
+								<li class="list-group-item">
+									Album
+									<span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.ItemTypes.NumAlbums</span>
+								</li>
+								<li class="list-group-item">
+									Book
+									<span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.ItemTypes.NumBooks</span>
+								</li>
+								<li class="list-group-item">
+									Movie/TV
+									<span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.ItemTypes.NumMoviesAndShows</span>
+								</li>
+								<li class="list-group-item">
+									Game
+									<span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.ItemTypes.NumGames</span>
+								</li>
+							</ul>
+							@if (Model.User != null)
+			{
+								<ul class="list-group col-md-6">
+									<li class="list-group-item active">
+										User
+									</li>
+									<li class="list-group-item">
+										Album
+										<span class="tag tag-info tag-pill pull-xs-right">@Model.User.ItemTypes.NumAlbums</span>
+									</li>
+									<li class="list-group-item">
+										Book
+										<span class="tag tag-info tag-pill pull-xs-right">@Model.User.ItemTypes.NumBooks</span>
+									</li>
+									<li class="list-group-item">
+										Movie/TV
+										<span class="tag tag-info tag-pill pull-xs-right">@Model.User.ItemTypes.NumMoviesAndShows</span>
+									</li>
+									<li class="list-group-item">
+										Game
+										<span class="tag tag-info tag-pill pull-xs-right">@Model.User.ItemTypes.NumGames</span>
+									</li>
+								</ul>
+			}
+						</div>
+					</div>
+				</div>
 
-                <div class="row">
-                    <div id="condition" class="col-md-6" style="width: 500px; height: 500px;"></div>
-                    <div id="usercondition" class="col-md-6" style="width: 500px; height: 500px;"></div>
-                </div>
-                <div data-toggle="collapse" data-parent="#accordion" href="#item-condition-breakdown">
-                    <div class="row panel panel-primary panel-collapse">
-                        <div class="panel-heading text-xs-center">
-                            <h4>
-                                Item Condition Breakdown
-                                <span class="fa fa-chevron-circle-down"></span>
-                            </h4>
-                        </div>
-                    </div>
-                    <div id="item-condition-breakdown" class="collapse">
-                        <div class="panel-body">
-                            <ul class="list-group col-md-6">
-                                <li class="list-group-item active">
-                                    Global
-                                </li>
-                                <li class="list-group-item">
-                                    New
-                                    <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumNew</span>
-                                </li>
-                                <li class="list-group-item">
-                                    Used
-                                    <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumUsed</span>
-                                </li>
-                            </ul>
+				<div class="row">
+					<div id="global-item-conditions" class="col-md-6" style="width: 500px; height: 500px;"></div>
+					<div id="user-item-conditions" class="col-md-6" style="width: 500px; height: 500px;"></div>
+				</div>
+				<div data-toggle="collapse" data-parent="#accordion" href="#item-condition-breakdown">
+					<div class="row panel panel-primary panel-collapse">
+						<div class="panel-heading text-xs-center">
+							<h4>
+								Item Condition Breakdown
+								<span class="fa fa-chevron-circle-down"></span>
+							</h4>
+						</div>
+					</div>
+					<div id="item-condition-breakdown" class="collapse">
+						<div class="panel-body">
+							<ul class="list-group col-md-6">
+								<li class="list-group-item active">
+									Global
+								</li>
+								<li class="list-group-item">
+									New
+									<span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.Condition.NumNew</span>
+								</li>
+								<li class="list-group-item">
+									Used
+									<span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.Condition.NumUsed</span>
+								</li>
+							</ul>
 
-                            @if (Model.User != null)
-                            {
-                                <ul class="list-group col-md-6">
-                                    <li class="list-group-item active">
-                                        User
-                                    </li>
-                                    <li class="list-group-item">
-                                        New
-                                        <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumNew</span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Used
-                                        <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumUsed</span>
-                                    </li>
-                                </ul>
-                            }
-                        </div>
-                    </div>
-                </div>
+							@if (Model.User != null)
+			{
+								<ul class="list-group col-md-6">
+									<li class="list-group-item active">
+										User
+									</li>
+									<li class="list-group-item">
+										New
+										<span class="tag tag-info tag-pill pull-xs-right">@Model.User.Condition.NumNew</span>
+									</li>
+									<li class="list-group-item">
+										Used
+										<span class="tag tag-info tag-pill pull-xs-right">@Model.User.Condition.NumUsed</span>
+									</li>
+								</ul>
+			}
+						</div>
+					</div>
+				</div>
 
-                <div class="row">
-                    <div id="completionStatus" class="col-md-6" style="width: 500px; height: 500px;"></div>
-                    <div id="usercompletionStatus" class="col-md-6" style="width: 500px; height: 500px;"></div>
-                </div>
-                <div data-toggle="collapse" data-parent="#accordion" href="#completion-status-breakdown">
-                    <div class="row panel panel-primary panel-collapse">
-                        <div class="panel-heading text-xs-center">
-                            <h4>
-                                Completion Status Breakdown
-                                <span class="fa fa-chevron-circle-down"></span>
-                            </h4>
-                        </div>
-                    </div>
-                    <div id="completion-status-breakdown" class="collapse">
-                        <div class="panel-body">
-                            <ul class="list-group col-md-6">
-                                <li class="list-group-item active">
-                                    Global
-                                </li>
-                                <li class="list-group-item">
-                                    Not Started
-                                    <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumNotStarted</span>
-                                </li>
-                                <li class="list-group-item">
-                                    In Progress
-                                    <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumInProgress</span>
-                                </li>
-                                <li class="list-group-item">
-                                    Completed
-                                    <span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.NumCompleted</span>
-                                </li>
-                            </ul>
-                            @if (Model.User != null)
-                            {
-                                <ul class="list-group col-md-6">
-                                    <li class="list-group-item active">
-                                        User
-                                    </li>
-                                    <li class="list-group-item">
-                                        Not Started
-                                        <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumNotStarted</span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        In Progress
-                                        <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumInProgress</span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Completed
-                                        <span class="tag tag-info tag-pill pull-xs-right">@Model.User.NumCompleted</span>
-                                    </li>
-                                </ul>
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+				<div class="row">
+					<div id="global-completion-status" class="col-md-6" style="width: 500px; height: 500px;"></div>
+					<div id="user-completion-status" class="col-md-6" style="width: 500px; height: 500px;"></div>
+				</div>
+				<div data-toggle="collapse" data-parent="#accordion" href="#completion-status-breakdown">
+					<div class="row panel panel-primary panel-collapse">
+						<div class="panel-heading text-xs-center">
+							<h4>
+								Completion Status Breakdown
+								<span class="fa fa-chevron-circle-down"></span>
+							</h4>
+						</div>
+					</div>
+					<div id="completion-status-breakdown" class="collapse">
+						<div class="panel-body">
+							<ul class="list-group col-md-6">
+								<li class="list-group-item active">
+									Global
+								</li>
+								<li class="list-group-item">
+									Not Started
+									<span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.CompletionStatus.NumNotStarted</span>
+								</li>
+								<li class="list-group-item">
+									In Progress
+									<span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.CompletionStatus.NumInProgress</span>
+								</li>
+								<li class="list-group-item">
+									Completed
+									<span class="tag tag-info tag-pill pull-xs-right">@Model.Universal.CompletionStatus.NumCompleted</span>
+								</li>
+							</ul>
+							@if (Model.User != null)
+			{
+								<ul class="list-group col-md-6">
+									<li class="list-group-item active">
+										User
+									</li>
+									<li class="list-group-item">
+										Not Started
+										<span class="tag tag-info tag-pill pull-xs-right">@Model.User.CompletionStatus.NumNotStarted</span>
+									</li>
+									<li class="list-group-item">
+										In Progress
+										<span class="tag tag-info tag-pill pull-xs-right">@Model.User.CompletionStatus.NumInProgress</span>
+									</li>
+									<li class="list-group-item">
+										Completed
+										<span class="tag tag-info tag-pill pull-xs-right">@Model.User.CompletionStatus.NumCompleted</span>
+									</li>
+								</ul>
+			}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+@Html.Partial(MVC.Statistics.Views.Charts._MediaTypesChart, Model.Universal.MediaTypes)
+@Html.Partial(MVC.Statistics.Views.Charts._ItemTypeChart, Model.Universal.ItemTypes)
+@Html.Partial(MVC.Statistics.Views.Charts._ConditionCharts, Model.Universal.Condition)
+@Html.Partial(MVC.Statistics.Views.Charts._CompletionStatusChart, Model.Universal.CompletionStatus)
 
-    <script>
-        c3.generate({
-            bindto: '#mediaTypes',
-            data: {
-                columns: [
-                    ['Physical', @Model.Universal.NumPhysical],
-                    ['Digital', @Model.Universal.NumDigital]
-                ],
-                type: 'donut'
-            },
-            donut: {
-                title: "Global Media Types"
-                //label: {
-                //    format: function (value, ratio) {
-                //        return value + " (" + ratio * 100 + "%)"; //returning here the value and not the ratio
-                //    }
-                //}
-            }
-        });
-    </script>
+@if (Model.User != null)
+{
+	@Html.Partial(MVC.Statistics.Views.Charts._MediaTypesChart, Model.User.MediaTypes)
 
-    <script>
-        c3.generate({
-            bindto: '#itemTypes',
-            data: {
-                columns: [
-                    ['Album', @Model.Universal.NumAlbums],
-                    ['Book', @Model.Universal.NumBooks],
-                    ['Movie/TV', @Model.Universal.NumMoviesAndShows],
-                    ['Games', @Model.Universal.NumGames]
-                ],
-                type: 'donut'
-            },
-            donut: {
-                title: "Global Item Types"
-            }
-        });
-    </script>
+	@Html.Partial(MVC.Statistics.Views.Charts._ItemTypeChart, Model.User.ItemTypes)
 
-    <script>
-        c3.generate({
-            bindto: '#condition',
-            data: {
-                columns: [
-                    ['New', @Model.Universal.NumNew],
-                    ['Used', @Model.Universal.NumUsed]
-                ],
-                type: 'donut'
-            },
-            donut: {
-                title: "Global Item Conditions"
-            }
-        });
-    </script>
+	@Html.Partial(MVC.Statistics.Views.Charts._ConditionCharts, Model.User.Condition)
 
-    <script>
-        c3.generate({
-            bindto: '#completionStatus',
-            data: {
-                columns: [
-                    ['Not Started', @Model.Universal.NumNotStarted],
-                    ['In Progress', @Model.Universal.NumInProgress],
-                    ['Completed', @Model.Universal.NumCompleted]
-                ],
-                type: 'donut'
-            },
-            donut: {
-                title: "Global Completion Status"
-            }
-        });
-    </script>
-    @if (Model.User != null)
-    {
-        <script>
-            c3.generate({
-                bindto: '#usermediaTypes',
-                data: {
-                    columns: [
-                        ['Physical', @Model.User.NumPhysical],
-                        ['Digital', @Model.User.NumDigital]
-                    ],
-                    type: 'donut'
-                },
-                donut: {
-                    title: "User Media Types"
-                    //label: {
-                    //    format: function (value, ratio) {
-                    //        return value + " (" + ratio * 100 + "%)"; //returning here the value and not the ratio
-                    //    }
-                    //}
-                }
-            });
-        </script>
-
-        <script>
-            c3.generate({
-                bindto: '#useritemTypes',
-                data: {
-                    columns: [
-                        ['Album', @Model.User.NumAlbums],
-                        ['Book', @Model.User.NumBooks],
-                        ['Movie/TV', @Model.User.NumMoviesAndShows],
-                        ['Games', @Model.User.NumGames]
-                    ],
-                    type: 'donut'
-                },
-                donut: {
-                    title: "User Item Types"
-                }
-            });
-        </script>
-
-        <script>
-            c3.generate({
-                bindto: '#usercondition',
-                data: {
-                    columns: [
-                        ['New', @Model.User.NumNew],
-                        ['Used', @Model.User.NumUsed]
-                    ],
-                    type: 'donut'
-                },
-                donut: {
-                    title: "User Item Conditions"
-                }
-            });
-        </script>
-
-        <script>
-            c3.generate({
-                bindto: '#usercompletionStatus',
-                data: {
-                    columns: [
-                        ['Not Started', @Model.User.NumNotStarted],
-                        ['In Progress', @Model.User.NumInProgress],
-                        ['Completed', @Model.User.NumCompleted]
-                    ],
-                    type: 'donut'
-                },
-                donut: {
-                    title: "User Completion Status"
-                }
-            });
-        </script>
-    }
+	@Html.Partial(MVC.Statistics.Views.Charts._CompletionStatusChart, Model.User.CompletionStatus)
+}

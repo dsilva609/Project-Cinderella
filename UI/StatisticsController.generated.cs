@@ -92,9 +92,30 @@ namespace UI.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _StatsTable = "_StatsTable";
                 public readonly string Index = "Index";
             }
+            public readonly string _StatsTable = "~/Views/Statistics/_StatsTable.cshtml";
             public readonly string Index = "~/Views/Statistics/Index.cshtml";
+            static readonly _ChartsClass s_Charts = new _ChartsClass();
+            public _ChartsClass Charts { get { return s_Charts; } }
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public partial class _ChartsClass
+            {
+                static readonly _ViewNamesClass s_ViewNames = new _ViewNamesClass();
+                public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
+                public class _ViewNamesClass
+                {
+                    public readonly string _CompletionStatusChart = "_CompletionStatusChart";
+                    public readonly string _ConditionCharts = "_ConditionCharts";
+                    public readonly string _ItemTypeChart = "_ItemTypeChart";
+                    public readonly string _MediaTypesChart = "_MediaTypesChart";
+                }
+                public readonly string _CompletionStatusChart = "~/Views/Statistics/Charts/_CompletionStatusChart.cshtml";
+                public readonly string _ConditionCharts = "~/Views/Statistics/Charts/_ConditionCharts.cshtml";
+                public readonly string _ItemTypeChart = "~/Views/Statistics/Charts/_ItemTypeChart.cshtml";
+                public readonly string _MediaTypesChart = "~/Views/Statistics/Charts/_MediaTypesChart.cshtml";
+            }
         }
     }
 
