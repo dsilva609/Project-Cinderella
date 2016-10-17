@@ -12,15 +12,13 @@
         <div id="game" class="info fh5co-desc" data-id="@Model.ID">
             <a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Game.Edit(Model.ID) : MVC.Game.Details(Model.ID))">
                 <div class="row">
-                    @Html.DisplayFor(modelItem => Model.Developer)
-                </div>
-                <div class="row">
                     @Html.DisplayFor(modelItem => Model.Title)
                 </div>
 
-                <div class="row">
-                    <span class="@CompletionStatusHelper.GetStatusClass(Model.CompletionStatus)"></span>
-                </div>
+	            <div class="row">
+		            @EnumHelpers.GetDisplayName(Model.Platform)
+		            <span class="@CompletionStatusHelper.GetStatusClass(Model.CompletionStatus)"></span>
+	            </div>
             </a>
         </div>
     </div>

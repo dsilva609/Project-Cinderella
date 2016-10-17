@@ -12,16 +12,11 @@
         <div id="movie" class="info fh5co-desc" data-id="@Model.ID">
             <a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Movie.Edit(Model.ID) : MVC.Movie.Details(Model.ID))">
                 <div class="row">
-                    @Html.DisplayFor(modelItem => Model.Director)
-                </div>
-                <div class="row">
                     @Html.DisplayFor(modelItem => Model.Title)
                 </div>
                 <div class="row">
                     @Html.DisplayFor(modelItem => Model.Type)
-                </div>
-                <div class="row">
-                    <span class="@CompletionStatusHelper.GetStatusClass(Model.CompletionStatus)"></span>
+					<span class="@CompletionStatusHelper.GetStatusClass(Model.CompletionStatus)"></span>
                 </div>
             </a>
         </div>
