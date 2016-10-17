@@ -65,48 +65,48 @@
             @Html.ActionLink("Project Cinderella", MVC.Home.Index(), new { @class = "navbar-brand" })
         </h1>
         <ul id="accordion">
-            <li class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#Menu">
-                        Menu
-                    </a>
-                </h4>
-            </li>
-            <li id="Menu" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <div class="table">
-                        <div>
-                            @Html.ActionLink("About", MVC.Home.About())
-                        </div>
-
-                        <div>
-                            @Html.ActionLink("Contact", MVC.Home.Contact())
-                        </div>
-
-                        @if (User.IsInRole("Admin"))
-                        {
-                            <div>
-                                <div>@Html.ActionLink("Error Log", MVC.Elmah.Index(), new { target = "_blank" })</div>
-                            </div>
-                        }
-                    </div>
+    <li class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#Menu">
+                Menu
+            </a>
+        </h4>
+    </li>
+    <li id="Menu" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="table">
+                <div>
+                    @Html.ActionLink("About", MVC.Home.About())
                 </div>
-            </li>
 
-            <li class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#Albums">
-                        <span class="fa fa-music"></span> Albums
-                    </a>
-                </h4>
-            </li>
-            <li id="Albums" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <div class="table">
-                        <div>@Html.ActionLink("View Albums", MVC.Album.Index())</div>
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <div>@Html.ActionLink("Add Album", MVC.Album.Create())</div>
+                <div>
+                    @Html.ActionLink("Contact", MVC.Home.Contact())
+                </div>
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <div>
+                        <div>@Html.ActionLink("Error Log", MVC.Elmah.Index(), new { target = "_blank" })</div>
+                    </div>
+                }
+            </div>
+        </div>
+    </li>
+
+    <li class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#Albums">
+                <span class="fa fa-music"></span> Albums
+            </a>
+        </h4>
+    </li>
+    <li id="Albums" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="table">
+                <div>@Html.ActionLink("View Albums", MVC.Album.Index())</div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div>@Html.ActionLink("Add Album", MVC.Album.Create())</div>
                             <div>@Html.ActionLink("Search Discogs", MVC.Album.Search())</div>
                             <div>
                                 @using (Html.BeginForm(MVC.Album.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
@@ -117,25 +117,25 @@
                                     </button>
                                 }
                             </div>
-                        }
-                    </div>
-                </div>
-            </li>
+                }
+            </div>
+        </div>
+    </li>
 
-            <li class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#Books">
-                        <span class="fa fa-book"></span> Books
-                    </a>
-                </h4>
-            </li>
-            <li id="Books" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <div class="table">
-                        <div>@Html.ActionLink("View Books", MVC.Book.Index())</div>
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <div>@Html.ActionLink("Add Book", MVC.Book.Create())</div>
+    <li class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#Books">
+                <span class="fa fa-book"></span> Books
+            </a>
+        </h4>
+    </li>
+    <li id="Books" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="table">
+                <div>@Html.ActionLink("View Books", MVC.Book.Index())</div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div>@Html.ActionLink("Add Book", MVC.Book.Create())</div>
                             <div>@Html.ActionLink("Search Google for Book", MVC.Book.Search())</div>
                             <div>
                                 @using (Html.BeginForm(MVC.Book.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
@@ -146,25 +146,25 @@
                                     </button>
                                 }
                             </div>
-                        }
-                    </div>
-                </div>
-            </li>
+                }
+            </div>
+        </div>
+    </li>
 
-            <li class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#Movies">
-                        <span class="fa fa-film"></span>/<span class="fa fa-television"></span> Movies/TV
-                    </a>
-                </h4>
-            </li>
-            <li id="Movies" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <div class="table">
-                        <div>@Html.ActionLink("View Movies/TV", MVC.Movie.Index())</div>
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <div>@Html.ActionLink("Add Movie/TV", MVC.Movie.Create())</div>
+    <li class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#Movies">
+                <span class="fa fa-film"></span>/<span class="fa fa-television"></span> Movies/TV
+            </a>
+        </h4>
+    </li>
+    <li id="Movies" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="table">
+                <div>@Html.ActionLink("View Movies/TV", MVC.Movie.Index())</div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div>@Html.ActionLink("Add Movie/TV", MVC.Movie.Create())</div>
                             <div>@Html.ActionLink("Search TMDB", MVC.Movie.Search())</div>
                             <div>
                                 @using (Html.BeginForm(MVC.Movie.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
@@ -175,25 +175,25 @@
                                     </button>
                                 }
                             </div>
-                        }
-                    </div>
-                </div>
-            </li>
+                }
+            </div>
+        </div>
+    </li>
 
-            <li class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#Games">
-                        <span class="fa fa-gamepad"></span> Games
-                    </a>
-                </h4>
-            </li>
-            <li id="Games" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <div class="table">
-                        <div>@Html.ActionLink("View Games", MVC.Game.Index())</div>
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <div>@Html.ActionLink("Add Game", MVC.Game.Create())</div>
+    <li class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#Games">
+                <span class="fa fa-gamepad"></span> Games
+            </a>
+        </h4>
+    </li>
+    <li id="Games" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="table">
+                <div>@Html.ActionLink("View Games", MVC.Game.Index())</div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div>@Html.ActionLink("Add Game", MVC.Game.Create())</div>
                             <div>@Html.ActionLink("Search Giant Bomb/BGG", MVC.Game.Search())</div>
                             <div>
                                 @using (Html.BeginForm(MVC.Game.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
@@ -204,18 +204,28 @@
                                     </button>
                                 }
                             </div>
-                        }
-                    </div>
-                </div>
-            </li>
-	        <li id="Stats" class="panel-heading">
-		        <h4 class="panel-title">
-					<a href="@Url.Action(MVC.Statistics.Index())">
-						<span class="fa fa-trophy"></span> Stats
-					</a>
-					</h4>
-	        </li>
-        </ul>
+                }
+            </div>
+        </div>
+    </li>
+    <li id="Stats" class="panel-heading">
+        <h4 class="panel-title">
+            <a href="@Url.Action(MVC.Statistics.Index())">
+                <span class="fa fa-trophy"></span> Stats
+            </a>
+        </h4>
+    </li>
+    @if (User.IsInRole("Admin"))
+    {
+        <li id="Elmah" class="panel-heading">
+            <h4 class="panel-title">
+                <a href="@Url.Action(MVC.Elmah.Index())">
+                    <span class="fa fa-warning"></span> Error Log
+                </a>
+            </h4>
+        </li>
+    }
+    </ul>
         <ul>
 
             <li>@Html.Partial(MVC.Shared.Views._LoginPartial)</li>
@@ -255,9 +265,11 @@
                             <ul>
                                 <li>@Html.ActionLink("About", MVC.Home.About())</li>
                                 <li>@Html.ActionLink("Contact", MVC.Home.Contact())</li>
-                                <li><a href="@Url.Action(MVC.Statistics.Index())">
-                                    <span class="fa fa-trophy"></span> Stats
-                                </a></li>
+                                <li>
+                                    <a href="@Url.Action(MVC.Statistics.Index())">
+                                        <span class="fa fa-trophy"></span> Stats
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
