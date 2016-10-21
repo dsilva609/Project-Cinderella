@@ -40,6 +40,11 @@ class Views.Shared.Layout
 					
 		$('.panel-collapse').on "click", ->
 			$(this).find("span").toggleClass( "fa-chevron-circle-down fa-chevron-circle-up")	
+			
+		$('.flip').on "click", ->
+		    $(this).find(".card").toggleClass("flipped flip")
+		    
+		    return false
 	
 $ -> 
 	_layout = new Views.Shared.Layout

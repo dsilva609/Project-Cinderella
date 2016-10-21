@@ -2,5 +2,9 @@
   {
     "outputFile": "Content/Sass/Main.css",
     "inputFile": "Content/Sass/Main.scss"
+  },
+  {
+    "outputFile": "Scripts/Shared/_Layout.js",
+    "inputFile": "Scripts/Shared/_Layout.coffee"
   }
 ]
