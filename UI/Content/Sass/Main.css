@@ -94,3 +94,13 @@ select {
 a:hover {
   color: #ffff66; }
 
+.info {
+  border: ridge;
+  border-radius: 4px; }
+  .info.NotStarted {
+    border-color: #007aac; }
+  .info.InProgress {
+    border-color: lightgreen; }
+  .info.Completed {
+    border-color: #add8e6; }
+

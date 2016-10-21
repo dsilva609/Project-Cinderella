@@ -30,11 +30,10 @@ body {
             color: black;
         }
     }
-    
+
     select, option {
         background-color: $cinderella-blue;
     }
-    
 }
 
 .jumbotronText {
@@ -131,10 +130,11 @@ select {
 }
 
 .charts {
-    .table { 
+    .table {
         .row:nth-child(even) {
-	        background-color: transparent;
+            background-color: transparent;
         }
+
         .row:not(:first-child):hover {
             background-color: transparent;
             cursor: default;
@@ -146,6 +146,23 @@ select {
     border-color: transparent;
 }
 
-a:hover{
+a:hover {
     color: $belle-yellow;
+}
+
+.info {
+    border: ridge;
+    border-radius: 4px;
+
+    &.NotStarted {
+        border-color: $body-color;
+    }
+
+    &.InProgress {
+        border-color: lightgreen;
+    }
+
+    &.Completed {
+        border-color: $cinderella-blue;
+    }
 }

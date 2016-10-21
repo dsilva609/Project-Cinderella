@@ -2,26 +2,26 @@
 @model BusinessLogic.Models.Album
 
 <div id="fh5co-board" data-columns>
-	<div class="item">
-		<div class="animate-box text-center">
-			<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@Model.Artist - @Model.Title (@Model.YearReleased)">
-				<img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" alt="@Model.Title">
-			</a>
-		</div>
+    <div class="item">
+        <div class="animate-box text-center">
+            <a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@Model.Artist - @Model.Title (@Model.YearReleased)">
+                <img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" alt="@Model.Title">
+            </a>
+        </div>
 
-		<div id="album" class="info fh5co-desc" data-id="@Model.ID">
-			<a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Album.Edit(Model.ID) : MVC.Album.Details(Model.ID))">
-				<div class="row">
-					@Html.DisplayFor(modelItem => Model.Artist)
-				</div>
-				<div class="row">
-					@Html.DisplayFor(modelItem => Model.Title)
-				</div>
-				<div class="row">
-					@Html.DisplayFor(modelItem => Model.MediaType) 
-					<span class="@CompletionStatusHelper.GetStatusClass(Model.CompletionStatus)"></span>
-				</div>
-			</a>
-		</div>
-	</div>
+        <div id="album" class="info fh5co-desc @Model.CompletionStatus.ToString()" data-id="@Model.ID">
+            <a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Album.Edit(Model.ID) : MVC.Album.Details(Model.ID))">
+                <div class="row">
+                    @Html.DisplayFor(modelItem => Model.Artist)
+                </div>
+                <div class="row">
+                    @Html.DisplayFor(modelItem => Model.Title)
+                </div>
+                <div class="row">
+                    @Html.DisplayFor(modelItem => Model.MediaType)
+                    <span class="@CompletionStatusHelper.GetStatusClass(Model.CompletionStatus)"></span>
+                </div>
+            </a>
+        </div>
+    </div>
 </div>
