@@ -104,80 +104,40 @@ a:hover {
   .info.Completed {
     border-color: #add8e6; }
 
-.flip {
-  -webkit-perspective: 800;
-  -ms-perspective: 800;
-  -moz-perspective: 800;
-  -o-perspective: 800;
-  width: 400px;
-  height: 200px;
-  position: relative;
-  margin: 50px auto; }
+.flip-container {
+  perspective: 1000px; }
 
-.flip .card.flipped {
-  transform: rotatey(-180deg);
-  -ms-transform: rotatey(-180deg);
-  /* IE 9 */
-  -moz-transform: rotatey(-180deg);
-  /* Firefox */
-  -webkit-transform: rotatey(-180deg);
-  /* Safari and Chrome */
-  -o-transform: rotatey(-180deg);
-  /* Opera */ }
+/* flip the pane when hovered */
+.flip-container:hover .flipper, .flip-container.hover .flipper {
+  transform: rotateY(180deg); }
 
-.flip .card {
-  width: 100%;
-  height: 100%;
-  -webkit-transform-style: preserve-3d;
-  -webkit-transition: 0.5s;
-  -moz-transform-style: preserve-3d;
-  -moz-transition: 0.5s;
-  -ms-transform-style: preserve-3d;
-  -ms-transition: 0.5s;
-  -o-transform-style: preserve-3d;
-  -o-transition: 0.5s;
+.flip-container, .front, .back {
+  width: 300px;
+  height: 400px; }
+
+/* flip speed goes here */
+.flipper {
+  transition: 0.6s;
   transform-style: preserve-3d;
-  transition: 0.5s; }
+  position: relative; }
 
-.flip .card .face {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: 2;
-  font-family: Georgia;
-  font-size: 3em;
-  text-align: center;
-  line-height: 200px;
+/* hide back of pane during swap */
+.front, .back {
   backface-visibility: hidden;
-  /* W3C */
-  -webkit-backface-visibility: hidden;
-  /* Safari & Chrome */
-  -moz-backface-visibility: hidden;
-  /* Firefox */
-  -ms-backface-visibility: hidden;
-  /* Internet Explorer */
-  -o-backface-visibility: hidden;
-  /* Opera */ }
-
-.flip .card .front {
   position: absolute;
-  z-index: 1;
-  background: black;
-  color: white;
-  cursor: pointer; }
+  top: 0;
+  left: 0; }
 
-.flip .card .back {
-  background: blue;
-  background: white;
-  color: black;
-  cursor: pointer;
-  transform: rotatey(-180deg);
-  -ms-transform: rotatey(-180deg);
-  /* IE 9 */
-  -moz-transform: rotatey(-180deg);
-  /* Firefox */
-  -webkit-transform: rotatey(-180deg);
-  /* Safari and Chrome */
-  -o-transform: rotatey(-180deg);
-  /* Opera */ }
+/* front pane, placed above back */
+.front {
+  z-index: 2;
+  /* for firefox 31 */
+  transform: rotateY(0deg); }
+
+/* back, initially hidden pane */
+.back {
+  transform: rotateY(180deg); }
+
+#fh5co-board .item {
+  width: 300px; }
 
