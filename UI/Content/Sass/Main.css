@@ -114,9 +114,9 @@ a:hover {
   width: 100%;
   max-width: 100%; }
   .flip-container .album, .flip-container .game, .front .album, .front .game, .back .album, .back .game {
-    height: 400px; }
+    height: 260px; }
   .flip-container .book, .flip-container .movie, .front .book, .front .movie, .back .book, .back .movie {
-    height: 475px; }
+    height: 400px; }
 
 /* flip speed goes here */
 .flipper {
