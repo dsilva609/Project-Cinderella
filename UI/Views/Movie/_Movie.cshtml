@@ -3,22 +3,69 @@
 
 <div id="fh5co-board" data-columns>
     <div class="item">
-        <div class="animate-box text-center">
-            <a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@Model.Director - @Model.Title (@Model.YearReleased)">
-                <img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" alt="@Model.Title">
-            </a>
-        </div>
+        <div class="flip-container @Model.CompletionStatus.ToString()" ontouchstart="this.classList.toggle('hover');">
+            <div class="flipper movie">
+                <div class="front">
+                    <div class="animate-box text-center">
+                        <a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@Model.Director - @Model.Title (@Model.YearReleased)">
+                            <img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" alt="@Model.Title">
+                        </a>
+                    </div>
 
-        <div id="movie" class="info fh5co-desc @Model.CompletionStatus.ToString()" data-id="@Model.ID">
-            <a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Movie.Edit(Model.ID) : MVC.Movie.Details(Model.ID))">
-                <div class="row">
-                    @Html.DisplayFor(modelItem => Model.Title)
+                    <div class="info fh5co-desc @Model.CompletionStatus.ToString()" data-id="@Model.ID">
+                        <a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Movie.Edit(Model.ID) : MVC.Movie.Details(Model.ID))">
+                            <div class="row">
+                                @Html.DisplayFor(modelItem => Model.Title)
+                            </div>
+                            <div class="row">
+                                @Html.DisplayFor(modelItem => Model.Type)
+                                <span class="@CompletionStatusHelper.GetStatusClass(Model.CompletionStatus)"></span>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-                <div class="row">
-                    @Html.DisplayFor(modelItem => Model.Type)
-                    <span class="@CompletionStatusHelper.GetStatusClass(Model.CompletionStatus)"></span>
+                <div class="back">
+                    <div class="animate-box text-center">
+                        <a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@Model.Director - @Model.Title (@Model.YearReleased)">
+                            <img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" alt="@Model.Title">
+                        </a>
+                    </div>
+
+                    <div class="info fh5co-desc @Model.CompletionStatus.ToString()" data-id="@Model.ID">
+                        <a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Movie.Edit(Model.ID) : MVC.Movie.Details(Model.ID))">
+                            <div class="row">
+                                @Html.DisplayFor(modelItem => Model.Title)
+                            </div>
+                            <div class="row">
+                                @Html.DisplayFor(modelItem => Model.Type)
+                                <span class="@CompletionStatusHelper.GetStatusClass(Model.CompletionStatus)"></span>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-            </a>
+            </div>
         </div>
     </div>
 </div>
+
+@*<div id="fh5co-board" data-columns>
+        <div class="item">
+            <div class="animate-box text-center">
+                <a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@Model.Director - @Model.Title (@Model.YearReleased)">
+                    <img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" alt="@Model.Title">
+                </a>
+            </div>
+
+            <div id="movie" class="info fh5co-desc @Model.CompletionStatus.ToString()" data-id="@Model.ID">
+                <a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Movie.Edit(Model.ID) : MVC.Movie.Details(Model.ID))">
+                    <div class="row">
+                        @Html.DisplayFor(modelItem => Model.Title)
+                    </div>
+                    <div class="row">
+                        @Html.DisplayFor(modelItem => Model.Type)
+                        <span class="@CompletionStatusHelper.GetStatusClass(Model.CompletionStatus)"></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>*@
