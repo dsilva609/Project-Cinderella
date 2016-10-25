@@ -1,4 +1,4 @@
-﻿a {
+a {
   color: #007aac; }
 
 body {
@@ -113,7 +113,9 @@ a:hover {
 .flip-container, .front, .back {
   width: 100%;
   max-width: 100%; }
-  .flip-container .album, .flip-container .game, .front .album, .front .game, .back .album, .back .game {
+  .flip-container .flipper, .front .flipper, .back .flipper {
+    height: 100%; }
+  .flip-container > .album, .flip-container .game, .front > .album, .front .game, .back > .album, .back .game {
     height: 260px; }
   .flip-container .book, .flip-container .movie, .front .book, .front .movie, .back .book, .back .movie {
     height: 400px; }
@@ -122,12 +124,14 @@ a:hover {
 .flipper {
   transition: 0.6s;
   transform-style: preserve-3d;
-  position: relative; }
+  position: relative;
+  height: 100%; }
   .flipper .info {
     max-height: 100%; }
 
 /* hide back of pane during swap */
 .front, .back {
+  height: 100%;
   backface-visibility: hidden;
   position: absolute;
   top: 0;
@@ -143,4 +147,11 @@ a:hover {
 .back {
   transform: rotateY(180deg);
   background-color: none; }
+
+.animate-box {
+  height: 100%; }
+  .animate-box a {
+    height: 100%; }
+    .animate-box a img {
+      height: 100%; }
 

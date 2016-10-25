@@ -177,7 +177,10 @@ a:hover {
 	}
 
 .flip-container, .front, .back {
-    .album, .game  {
+	.flipper {
+		height: 100%;
+	}
+    >.album, .game  {
         height: 260px;
     }
 
@@ -195,6 +198,7 @@ a:hover {
 	transform-style: preserve-3d;
 
 	position: relative;
+	height: 100%;
 	.info {
 		max-height: 100%;
 	}
@@ -202,6 +206,7 @@ a:hover {
 
 /* hide back of pane during swap */
 .front, .back {
+	height:100%;
 	backface-visibility: hidden;
 
 	position: absolute;
@@ -220,4 +225,15 @@ a:hover {
 .back {
 	transform: rotateY(180deg);
 	background-color: none;
+}
+
+.animate-box {
+	height: 100%;
+
+	a { 
+		height: 100%;
+		 img {
+			 height: 100%;
+		 }
+	}
 }
