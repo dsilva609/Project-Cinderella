@@ -12,6 +12,7 @@
                     </div>
                 </div>
                 <div class="back">
+                    <img src="@Links.Content.Images.Book_jpg" alt="Book" />
                     <div class="info fh5co-desc @Model.CompletionStatus.ToString()" data-id="@Model.ID">
                         <a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Book.Edit(Model.ID) : MVC.Book.Details(Model.ID))">
                             <div class="row">

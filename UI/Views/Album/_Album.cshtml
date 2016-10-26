@@ -7,11 +7,12 @@
                 <div class="front">
                     <div class="animate-box text-center img-fluid">
                         <a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@Model.Artist - @Model.Title (@Model.YearReleased)">
-                            <img class="" src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" alt="@Model.Title">
+                            <img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" alt="@Model.Title">
                         </a>
                     </div>
                 </div>
                 <div class="back">
+                    <img src="@Links.Content.Images.Turntable_jpg" alt="Turntable"/>
                     <div class="info fh5co-desc @Model.CompletionStatus.ToString()" data-id="@Model.ID">
                         <a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Album.Edit(Model.ID) : MVC.Album.Details(Model.ID))">
                             <div class="row">

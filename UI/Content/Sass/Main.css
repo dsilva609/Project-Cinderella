@@ -1,4 +1,4 @@
-a {
+﻿a {
   color: #007aac; }
 
 body {
@@ -115,7 +115,7 @@ a:hover {
   max-width: 100%; }
   .flip-container .flipper, .front .flipper, .back .flipper {
     height: 100%; }
-  .flip-container > .album, .flip-container .game, .front > .album, .front .game, .back > .album, .back .game {
+  .flip-container .album, .flip-container .game, .front .album, .front .game, .back .album, .back .game {
     height: 260px; }
   .flip-container .book, .flip-container .movie, .front .book, .front .movie, .back .book, .back .movie {
     height: 400px; }
@@ -147,6 +147,18 @@ a:hover {
 .back {
   transform: rotateY(180deg);
   background-color: none; }
+  .back img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0.25;
+    height: 100%;
+    padding: 5px; }
+  .back .info {
+    z-index: 100;
+    position: absolute;
+    background-color: transparent;
+    font-weight: bold; }
 
 .animate-box {
   height: 100%; }
