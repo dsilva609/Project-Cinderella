@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <div class="back">
-                    <img src="@Links.Content.Images.Game_jpg" alt="Game" />
+                    <img src="@Links.Content.Images.Game_jpg" alt="Game"/>
                     <div class="info fh5co-desc @Model.CompletionStatus.ToString()" data-id="@Model.ID">
                         <a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Game.Edit(Model.ID) : MVC.Game.Details(Model.ID))">
                             <div class="row">
@@ -24,6 +24,9 @@
                                 <span>@Model.Platform.GetDisplayName()</span>
                                 <span>@Model.Rating.GetDisplayName()</span>
                                 <span class="@CompletionStatusHelper.GetStatusClass(Model.CompletionStatus)"></span>
+                            </div>
+                            <div class="row">
+                                @Html.DisplayFor(x => x.Notes)
                             </div>
                         </a>
                     </div>

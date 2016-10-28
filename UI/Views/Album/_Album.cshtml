@@ -30,11 +30,14 @@
                                     <span>@Model.Size.GetDisplayName()</span>
                                 }
                                 <span class="@CompletionStatusHelper.GetStatusClass(Model.CompletionStatus)"></span>
-                        </div>
+                            </div>
+                            <div class="row">
+                                @Html.DisplayFor(x => x.Notes)
+                            </div>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
+</div>
