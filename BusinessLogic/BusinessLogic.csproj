@@ -287,7 +287,7 @@
     <Compile Include="Models\BGGModels\BGGGame.cs" />
     <Compile Include="Models\BGGModels\BGGResult.cs" />
     <Compile Include="Models\Book.cs" />
-    <Compile Include="Models\CollectionStatistic.cs" />
+    <Compile Include="Models\StatisticsModels\CollectionStatistic.cs" />
     <Compile Include="Models\ComicVineModels\ComicVineComic.cs" />
     <Compile Include="Models\ComicVineModels\ComicVineResult.cs" />
     <Compile Include="Models\DiscogsModels\DiscogsRelease.cs" />
@@ -295,7 +295,7 @@
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\GiantBombModels\GiantBombGame.cs" />
     <Compile Include="Models\GiantBombModels\GiantBombResult.cs" />
-    <Compile Include="Models\GlobalStats.cs" />
+    <Compile Include="Models\StatisticsModels\GlobalStats.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\TMDBModels\TMDBMovie.cs" />

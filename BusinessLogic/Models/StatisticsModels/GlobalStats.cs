@@ -1,4 +1,4 @@
-﻿namespace BusinessLogic.Models
+﻿namespace BusinessLogic.Models.StatisticsModels
 {
     public class GlobalStats : CollectionStatistic
     {
