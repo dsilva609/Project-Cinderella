@@ -1,4 +1,5 @@
-﻿@using UI.Enums
+﻿@using BusinessLogic.Enums
+@using UI.Enums
 @model BusinessLogic.Models.Album
 <div id="fh5co-board" data-columns>
     <div class="item">
@@ -12,7 +13,7 @@
                     </div>
                 </div>
                 <div class="back">
-                    <img src="@Links.Content.Images.Turntable_jpg" alt="Turntable"/>
+                    <img src="@Links.Content.Images.Turntable_jpg" alt="Turntable" />
                     <div class="info fh5co-desc @Model.CompletionStatus.ToString()" data-id="@Model.ID">
                         <a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Album.Edit(Model.ID) : MVC.Album.Details(Model.ID))">
                             <div class="row">
@@ -23,12 +24,17 @@
                             </div>
                             <div class="row">
                                 @Html.DisplayFor(modelItem => Model.MediaType)
+                                @if (Model.MediaType == AlbumMediaTypeEnum.Vinyl)
+                                {
+                                    <span>@Model.Speed.GetDisplayName()</span>
+                                    <span>@Model.Size.GetDisplayName()</span>
+                                }
                                 <span class="@CompletionStatusHelper.GetStatusClass(Model.CompletionStatus)"></span>
-                            </div>
+                        </div>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    </div>

@@ -21,6 +21,7 @@
                             </div>
                             <div class="row">
                                 @Html.DisplayFor(modelItem => Model.Type)
+                                <span>@Model.Rating.GetDisplayName()</span>
                                 <span class="@CompletionStatusHelper.GetStatusClass(Model.CompletionStatus)"></span>
                             </div>
                         </a>
