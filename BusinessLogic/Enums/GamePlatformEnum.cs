@@ -48,5 +48,8 @@ namespace BusinessLogic.Enums
 
 		[Display(Name = "Nintendo 3DS")]
 		Nintendo3DS,
+
+		[Display(Name = "PlayStation Vita")]
+		PSVita
 	}
 }
