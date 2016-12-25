@@ -282,6 +282,10 @@
     <Compile Include="Migrations\201609261605542_added times completed to base item.Designer.cs">
       <DependentUpon>201609261605542_added times completed to base item.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612252223124_added date started and completed fields.cs" />
+    <Compile Include="Migrations\201612252223124_added date started and completed fields.Designer.cs">
+      <DependentUpon>201612252223124_added date started and completed fields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseItem.cs" />
     <Compile Include="Models\BGGModels\BGGGame.cs" />
@@ -463,6 +467,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609261605542_added times completed to base item.resx">
       <DependentUpon>201609261605542_added times completed to base item.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612252223124_added date started and completed fields.resx">
+      <DependentUpon>201612252223124_added date started and completed fields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

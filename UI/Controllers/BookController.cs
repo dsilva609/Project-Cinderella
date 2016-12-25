@@ -76,7 +76,7 @@ namespace UI.Controllers
 			{
 				if (book.CompletionStatus == CompletionStatus.Completed && book.TimesCompleted == 0)
 					book.TimesCompleted = 1;
-				book.DateAdded = DateTime.Now;
+				book.DateAdded = DateTime.UtcNow;
 				this._service.Add(book);
 			}
 			catch (Exception e)
@@ -122,7 +122,7 @@ namespace UI.Controllers
 				book.TimesCompleted = 1;
 
 			//TODO: make sure user id is the same so as not to change other users data
-			book.DateUpdated = DateTime.Now;
+			book.DateUpdated = DateTime.UtcNow;
 			_service.Edit(book);
 
 			ShowStatusMessage(MessageTypeEnum.success, $"Book of Title {book.Title}, Author: {book.Author}", "Update Successful");

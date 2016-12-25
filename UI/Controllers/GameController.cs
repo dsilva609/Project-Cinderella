@@ -80,7 +80,7 @@ namespace UI.Controllers
 			{
 				if (game.CompletionStatus == CompletionStatus.Completed && game.TimesCompleted == 0)
 					game.TimesCompleted = 1;
-				game.DateAdded = DateTime.Now;
+				game.DateAdded = DateTime.UtcNow;
 				this._service.Add(game);
 			}
 			catch (Exception e)
@@ -126,7 +126,7 @@ namespace UI.Controllers
 				game.TimesCompleted = 1;
 
 			//TODO: make sure user id is the same so as not to change other users data
-			game.DateUpdated = DateTime.Now;
+			game.DateUpdated = DateTime.UtcNow;
 			_service.Edit(game);
 
 			ShowStatusMessage(MessageTypeEnum.success,

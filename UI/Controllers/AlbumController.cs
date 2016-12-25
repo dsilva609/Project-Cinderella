@@ -83,7 +83,7 @@ namespace UI.Controllers
 				{
 					if (model.CompletionStatus == CompletionStatus.Completed && model.TimesCompleted == 0)
 						model.TimesCompleted = 1;
-					model.DateAdded = DateTime.Now;
+					model.DateAdded = DateTime.UtcNow;
 					this._service.Add(model);
 				}
 				catch (Exception e)
@@ -147,6 +147,7 @@ namespace UI.Controllers
 		{
 			if (!ModelState.IsValid) return View(model);
 			var existingAlbums = _service.GetAll(User.Identity.GetUserId());
+			//TODO: update this to just use an Any() call
 			if (existingAlbums.Count > 0 && existingAlbums.Any(x => x.ID != model.ID && x.Artist == model.Artist && x.Title == model.Title
 																	&& x.MediaType == model.MediaType && x.DiscogsID == model.DiscogsID))
 			{
@@ -158,7 +159,7 @@ namespace UI.Controllers
 			if (model.CompletionStatus == CompletionStatus.Completed && model.TimesCompleted == 0)
 				model.TimesCompleted = 1;
 			//TODO: make sure user id is the same so as not to change other users data
-			model.DateUpdated = DateTime.Now;
+			model.DateUpdated = DateTime.UtcNow;
 			_service.Edit(model);
 
 			ShowStatusMessage(MessageTypeEnum.success,

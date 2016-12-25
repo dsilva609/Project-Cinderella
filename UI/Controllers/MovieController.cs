@@ -77,7 +77,7 @@ namespace UI.Controllers
 				if (movie.CompletionStatus == CompletionStatus.Completed && movie.TimesCompleted == 0)
 					movie.TimesCompleted = 1;
 
-				movie.DateAdded = DateTime.Now;
+				movie.DateAdded = DateTime.UtcNow;
 				this._service.Add(movie);
 			}
 			catch (Exception e)
@@ -125,7 +125,7 @@ namespace UI.Controllers
 				movie.TimesCompleted = 1;
 
 			//TODO: make sure user id is the same so as not to change other users data
-			movie.DateUpdated = DateTime.Now;
+			movie.DateUpdated = DateTime.UtcNow;
 			_service.Edit(movie);
 
 			ShowStatusMessage(MessageTypeEnum.success, $"Movie of Title {movie.Title}, Media Type: {movie.Type} updated.", "Update Successful");
