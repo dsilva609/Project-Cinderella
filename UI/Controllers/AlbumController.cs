@@ -84,6 +84,7 @@ namespace UI.Controllers
 					if (model.CompletionStatus == CompletionStatus.Completed && model.TimesCompleted == 0)
 						model.TimesCompleted = 1;
 					model.DateAdded = DateTime.UtcNow;
+					SetTimeStamps(model);
 					this._service.Add(model);
 				}
 				catch (Exception e)
@@ -158,6 +159,7 @@ namespace UI.Controllers
 
 			if (model.CompletionStatus == CompletionStatus.Completed && model.TimesCompleted == 0)
 				model.TimesCompleted = 1;
+			SetTimeStamps(model);
 			//TODO: make sure user id is the same so as not to change other users data
 			model.DateUpdated = DateTime.UtcNow;
 			_service.Edit(model);

@@ -22,10 +22,8 @@ namespace UI.Controllers
 
 		public void SetTimeStamps(BaseItem model)
 		{
-			if (model.ID == 0 && model.CompletionStatus == CompletionStatus.InProgress)
-			{
-				model.DateStarted = DateTime.UtcNow;
-			}
+			if (model.CompletionStatus == CompletionStatus.InProgress) model.DateStarted = DateTime.UtcNow;
+			else if (model.CompletionStatus == CompletionStatus.Completed) model.DateCompleted = DateTime.UtcNow;
 		}
 	}
 }

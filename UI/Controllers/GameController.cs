@@ -81,6 +81,7 @@ namespace UI.Controllers
 				if (game.CompletionStatus == CompletionStatus.Completed && game.TimesCompleted == 0)
 					game.TimesCompleted = 1;
 				game.DateAdded = DateTime.UtcNow;
+				SetTimeStamps(game);
 				this._service.Add(game);
 			}
 			catch (Exception e)
@@ -124,6 +125,7 @@ namespace UI.Controllers
 
 			if (game.CompletionStatus == CompletionStatus.Completed && game.TimesCompleted == 0)
 				game.TimesCompleted = 1;
+			SetTimeStamps(game);
 
 			//TODO: make sure user id is the same so as not to change other users data
 			game.DateUpdated = DateTime.UtcNow;

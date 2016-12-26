@@ -76,8 +76,8 @@ namespace UI.Controllers
 			{
 				if (movie.CompletionStatus == CompletionStatus.Completed && movie.TimesCompleted == 0)
 					movie.TimesCompleted = 1;
-
 				movie.DateAdded = DateTime.UtcNow;
+				SetTimeStamps(movie);
 				this._service.Add(movie);
 			}
 			catch (Exception e)
@@ -123,7 +123,7 @@ namespace UI.Controllers
 
 			if (movie.CompletionStatus == CompletionStatus.Completed && movie.TimesCompleted == 0)
 				movie.TimesCompleted = 1;
-
+			SetTimeStamps(movie);
 			//TODO: make sure user id is the same so as not to change other users data
 			movie.DateUpdated = DateTime.UtcNow;
 			_service.Edit(movie);

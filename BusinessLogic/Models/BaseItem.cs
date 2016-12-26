@@ -47,10 +47,10 @@ namespace BusinessLogic.Models
 		public CompletionStatus CompletionStatus { get; set; }
 
 		[DisplayName("Date Started")]
-		public DateTime DateStarted { get; set; }
+		public DateTime DateStarted { get; set; } = Convert.ToDateTime("1/1/1900");
 
 		[DisplayName("Date Completed")]
-		public DateTime DateCompleted { get; set; }
+		public DateTime DateCompleted { get; set; } = Convert.ToDateTime("1/1/1900");
 
 		[DisplayName("Checked Out?")]
 		public bool CheckedOut { get; set; }

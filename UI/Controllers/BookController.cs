@@ -77,6 +77,7 @@ namespace UI.Controllers
 				if (book.CompletionStatus == CompletionStatus.Completed && book.TimesCompleted == 0)
 					book.TimesCompleted = 1;
 				book.DateAdded = DateTime.UtcNow;
+				SetTimeStamps(book);
 				this._service.Add(book);
 			}
 			catch (Exception e)
@@ -120,6 +121,7 @@ namespace UI.Controllers
 
 			if (book.CompletionStatus == CompletionStatus.Completed && book.TimesCompleted == 0)
 				book.TimesCompleted = 1;
+			SetTimeStamps(book);
 
 			//TODO: make sure user id is the same so as not to change other users data
 			book.DateUpdated = DateTime.UtcNow;
