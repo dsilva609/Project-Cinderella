@@ -57,5 +57,7 @@ namespace BusinessLogic.Models
 
 		[DisplayName("Times Completed")]
 		public int TimesCompleted { get; set; }
+
+		public string Category { get; set; }
 	}
 }

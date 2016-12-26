@@ -62,10 +62,17 @@
 			@Html.TextBoxFor(m => m.RecordLabel, new { @class = "form-control" })
 			@Html.ValidationMessageFor(m => m.RecordLabel, "", new { @class = "text-danger" })
 		</div>
+
 		<div class="col-md-6">
 			@Html.LabelFor(m => m.Notes)
 			@Html.TextAreaFor(m => m.Notes, new { @class = "form-control" })
 			@Html.ValidationMessageFor(m => m.Notes, "", new { @class = "text-danger" })
+		</div>
+		
+		<div class="col-md-6">
+			@Html.LabelFor(m => m.Category)
+			@Html.TextAreaFor(m => m.Category, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.Category, "", new { @class = "text-danger" })
 		</div>
 
 		<div class="col-md-6">

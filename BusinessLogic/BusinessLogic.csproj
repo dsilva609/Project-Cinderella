@@ -286,6 +286,10 @@
     <Compile Include="Migrations\201612252223124_added date started and completed fields.Designer.cs">
       <DependentUpon>201612252223124_added date started and completed fields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612260030195_added category field.cs" />
+    <Compile Include="Migrations\201612260030195_added category field.Designer.cs">
+      <DependentUpon>201612260030195_added category field.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseItem.cs" />
     <Compile Include="Models\BGGModels\BGGGame.cs" />
@@ -470,6 +474,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612252223124_added date started and completed fields.resx">
       <DependentUpon>201612252223124_added date started and completed fields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612260030195_added category field.resx">
+      <DependentUpon>201612260030195_added category field.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

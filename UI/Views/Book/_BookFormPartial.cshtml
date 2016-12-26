@@ -84,6 +84,12 @@
 			@Html.TextAreaFor(m => m.Notes, new { @class = "form-control" })
 			@Html.ValidationMessageFor(m => m.Notes, "", new { @class = "text-danger" })
 		</div>
+		
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.Category)
+			@Html.TextAreaFor(m => m.Category, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.Category, "", new { @class = "text-danger" })
+		</div>
 
 		<div class="col-md-6">
 			@Html.LabelFor(m => m.CompletionStatus)
