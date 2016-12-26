@@ -185,6 +185,12 @@
 				@Html.ValidationMessageFor(m => m.Size, "", new { @class = "text-danger" })
 			</div>
 		</div>
+		
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.CountryOfOrigin)
+			@Html.TextBoxFor(m => m.CountryOfOrigin, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.CountryOfOrigin, "", new { @class = "text-danger" })
+		</div>
 	</div>
 </div>
 <div data-toggle="collapse" data-parent="#accordion" href="#purchase-info">
@@ -221,6 +227,12 @@
 			@Html.LabelFor(m => m.IsNew)
 			@Html.CheckBoxFor(m => m.IsNew, new { @class = "form-control" })
 			@Html.ValidationMessageFor(m => m.IsNew, "", new { @class = "text-danger" })
+		</div>
+		
+		<div class="col-md-6">
+			@Html.LabelFor(m => m.CountryPurchased)
+			@Html.TextBoxFor(m => m.CountryPurchased, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.CountryPurchased, "", new { @class = "text-danger" })
 		</div>
 	</div>
 </div>

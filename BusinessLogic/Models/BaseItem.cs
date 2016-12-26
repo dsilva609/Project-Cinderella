@@ -59,5 +59,11 @@ namespace BusinessLogic.Models
 		public int TimesCompleted { get; set; }
 
 		public string Category { get; set; }
+
+		[DisplayName("Country Of Origin")]
+		public string CountryOfOrigin { get; set; }
+
+		[DisplayName("Country Purchased")]
+		public string CountryPurchased { get; set; }
 	}
 }

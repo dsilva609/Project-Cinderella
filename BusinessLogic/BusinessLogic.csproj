@@ -290,6 +290,10 @@
     <Compile Include="Migrations\201612260030195_added category field.Designer.cs">
       <DependentUpon>201612260030195_added category field.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612262332508_added country of origin and purchased.cs" />
+    <Compile Include="Migrations\201612262332508_added country of origin and purchased.Designer.cs">
+      <DependentUpon>201612262332508_added country of origin and purchased.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseItem.cs" />
     <Compile Include="Models\BGGModels\BGGGame.cs" />
@@ -477,6 +481,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612260030195_added category field.resx">
       <DependentUpon>201612260030195_added category field.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612262332508_added country of origin and purchased.resx">
+      <DependentUpon>201612262332508_added country of origin and purchased.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
