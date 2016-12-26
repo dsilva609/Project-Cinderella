@@ -225,14 +225,14 @@
 	</div>
 </div>
 
-<div class="row panel-body">
-	<div class="col-md-8">
+<div class="panel-body">
+	<div class="col-md-4 col-xs-6">
 		<input id="btnSubmit" type="submit" value=@(Model.ID > 0 ? "Save" : "Create") class="btn btn-default btn-block btn-lg" />
 	</div>
 
 	@if (Model.ID > 0)
 	{
-		<div class="col-md-4">
+		<div class="col-md-4 offset-md-4 col-xs-6">
 			@Html.ActionLink("Delete", MVC.Album.Delete(Model.ID), new { @class = "deleteBtn btn btn-danger btn-block btn-lg", data_id = Model.ID, data_deleteUrl = Url.Action(MVC.Album.Delete()) })
 		</div>
 	}
