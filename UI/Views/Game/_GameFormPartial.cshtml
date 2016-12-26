@@ -14,6 +14,10 @@
 @Html.HiddenFor(m => m.GiantBombID)
 @Html.HiddenFor(m => m.BGGID)
 
+@if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
+{
+	<div class="">Last Updated: @Model.DateUpdated</div>
+}
 <div data-toggle="collapse" data-parent="#accordion" href="#game-info">
 	<div class="row panel panel-primary panel-collapse">
 		<div class="panel-heading">
