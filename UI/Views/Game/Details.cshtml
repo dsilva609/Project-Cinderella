@@ -56,10 +56,15 @@
             @Model.Rating.GetDisplayName()
         </div>
 
-        <div class="col-xs-6">
-            @Html.LabelFor(m => m.Notes):
-            @Html.DisplayFor(m => m.Notes, new { @class = "form-control" })
-        </div>
+	    <div class="col-xs-6">
+		    @Html.LabelFor(m => m.Notes):
+		    @Html.DisplayFor(m => m.Notes, new { @class = "form-control" })
+	    </div>
+		
+		<div class="col-xs-6">
+			@Html.DisplayNameFor(m => m.Category):
+			@Html.DisplayFor(m => m.Category)
+		</div>
     </div>
 </div>
 <div data-toggle="collapse" data-parent="#accordion" href="#media-info">
