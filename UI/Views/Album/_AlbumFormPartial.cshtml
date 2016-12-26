@@ -10,6 +10,8 @@
 
 @Html.HiddenFor(m => m.UserID)
 @Html.HiddenFor(m => m.DateAdded)
+@Html.HiddenFor(m => m.DateStarted)
+@Html.HiddenFor(m => m.DateCompleted)
 <div data-toggle="collapse" data-parent="#accordion" href="#album-info">
 	<div class="row panel panel-primary panel-collapse">
 		<div class="panel-heading">
@@ -23,13 +25,13 @@
 <div id="album-info" class="collapse in">
 	<div class="panel-body">
 		@if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
-        {
+			{
 			<div class="animate-box item col-md-6">
 				<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Artist - @Model.Title (@Model.YearReleased)">
-					<img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="img-rounded" style="height: 100%; width: 100%;")@*height: 200px; width: 200px;*@">
+					<img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="img-rounded" style="height: 100%; width: 100%;" )@*height: 200px; width: 200px;*@">
 				</a>
 			</div>
-		}
+			}
 		<div class="col-md-6">
 			@Html.LabelFor(m => m.Artist)
 			@Html.TextBoxFor(m => m.Artist, new { @class = "form-control" })
@@ -111,30 +113,30 @@
 		</div>
 	</div>
 
-	<div id="album-tracks" class="collapse in">
-		<div class="panel-body">
-			@for (var index = 0; index < Model.Tracklist.Count; index++)
-			{
-				var track = Model.Tracklist[index];
-				<div class="row" style="padding-bottom: 0.5em;">
-					@Html.Hidden(string.Format("Tracklist[{0}].AlbumID", index), track.AlbumID)
-					@Html.Hidden(string.Format("Tracklist[{0}].ID", index), track.ID)
-					<div class="col-sm-2">
-						<input class="form-control col-sm-1" type="text" name="@string.Format("Tracklist[{0}].position", @index)" value="@track.position" />
-						@Html.Hidden(string.Format("Tracklist[{0}].position", index), track.position)
+		<div id="album-tracks" class="collapse in">
+			<div class="panel-body">
+				@for (var index = 0; index < Model.Tracklist.Count; index++)
+				{
+					var track = Model.Tracklist[index];
+					<div class="row" style="padding-bottom: 0.5em;">
+						@Html.Hidden(string.Format("Tracklist[{0}].AlbumID", index), track.AlbumID)
+						@Html.Hidden(string.Format("Tracklist[{0}].ID", index), track.ID)
+						<div class="col-sm-2">
+							<input class="form-control col-sm-1" type="text" name="@string.Format("Tracklist[{0}].position", @index)" value="@track.position" />
+							@Html.Hidden(string.Format("Tracklist[{0}].position", index), track.position)
+						</div>
+						<div class="col-sm-2">
+							<input class="form-control col-sm-2" type="text" name="@string.Format("Tracklist[{0}].duration", @index)" value="@track.duration" />
+							@Html.Hidden(string.Format("Tracklist[{0}].duration", index), track.duration)
+						</div>
+						<div class="col-sm-6">
+							<input class="form-control col-sm-2" type="text" name="@string.Format("Tracklist[{0}].title", @index)" value="@track.title" />
+							@Html.Hidden(string.Format("Tracklist[{0}].title", index), track.title)
+						</div>
 					</div>
-					<div class="col-sm-2">
-						<input class="form-control col-sm-2" type="text" name="@string.Format("Tracklist[{0}].duration", @index)" value="@track.duration" />
-						@Html.Hidden(string.Format("Tracklist[{0}].duration", index), track.duration)
-					</div>
-					<div class="col-sm-6">
-						<input class="form-control col-sm-2" type="text" name="@string.Format("Tracklist[{0}].title", @index)" value="@track.title" />
-						@Html.Hidden(string.Format("Tracklist[{0}].title", index), track.title)
-					</div>
-				</div>
-			}
+				}
+			</div>
 		</div>
-	</div>
 }
 <div data-toggle="collapse" data-parent="#accordion" href="#media-info">
 	<div class="row panel panel-primary panel-collapse">
