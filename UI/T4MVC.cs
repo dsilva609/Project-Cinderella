@@ -521,7 +521,6 @@ namespace Links
                 public static class Assets
                 {
                     public const string d3_js = "~/Scripts/d3/d3.js"; 
-                    public const string d3_min_js = "~/Scripts/d3/d3.min.js"; 
                 }
             }
             public static partial class Hydrogen 
