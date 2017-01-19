@@ -203,6 +203,7 @@ namespace UI.Controllers
                 public readonly string _Book = "_Book";
                 public readonly string _BookFormPartial = "_BookFormPartial";
                 public readonly string _RecentlyAdded = "_RecentlyAdded";
+                public readonly string _RecentlyUpdated = "_RecentlyUpdated";
                 public readonly string Create = "Create";
                 public readonly string Details = "Details";
                 public readonly string Edit = "Edit";
@@ -212,6 +213,7 @@ namespace UI.Controllers
             public readonly string _Book = "~/Views/Book/_Book.cshtml";
             public readonly string _BookFormPartial = "~/Views/Book/_BookFormPartial.cshtml";
             public readonly string _RecentlyAdded = "~/Views/Book/_RecentlyAdded.cshtml";
+            public readonly string _RecentlyUpdated = "~/Views/Book/_RecentlyUpdated.cshtml";
             public readonly string Create = "~/Views/Book/Create.cshtml";
             public readonly string Details = "~/Views/Book/Details.cshtml";
             public readonly string Edit = "~/Views/Book/Edit.cshtml";

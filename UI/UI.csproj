@@ -714,6 +714,10 @@
     <Content Include="Views\Statistics\Charts\_ConditionCharts.cshtml" />
     <Content Include="Views\Statistics\Charts\_ItemTypeChart.cshtml" />
     <Content Include="Views\Statistics\Charts\_MediaTypesChart.cshtml" />
+    <Content Include="Views\Album\_RecentlyUpdated.cshtml" />
+    <Content Include="Views\Book\_RecentlyUpdated.cshtml" />
+    <Content Include="Views\Game\_RecentlyUpdated.cshtml" />
+    <Content Include="Views\Movie\_RecentlyUpdated.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

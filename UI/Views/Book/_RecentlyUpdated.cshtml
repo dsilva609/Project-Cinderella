@@ -1,0 +1,17 @@
+﻿@model List<BusinessLogic.Models.Book>
+
+<div class="container" data-toggle="collapse" data-parent="#accordion" href="#booksUpdated">
+    <div class="row panel panel-primary panel-collapse">
+        <h2>
+            Recently Updated Books
+            <span class="fa fa-chevron-circle-up"></span>
+        </h2>
+    </div>
+</div>
+
+<div id="booksUpdated" class="collapsed container collapse">
+    @foreach (var book in Model)
+    {
+        @Html.Partial(MVC.Book.Views._Book, book)
+    }
+</div>

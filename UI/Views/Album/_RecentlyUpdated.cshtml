@@ -1,15 +1,15 @@
 ﻿@model List<BusinessLogic.Models.Album>
 
-<div class="container" data-toggle="collapse" data-parent="#accordion" href="#albums">
+<div class="container" data-toggle="collapse" data-parent="#accordion" href="#albumsUpdated">
     <div class="row panel panel-primary panel-collapse">
         <h2>
-            Recently Added Albums
-            <span class="fa fa-chevron-circle-down"></span>
+            Recently Updated Albums
+            <span class="fa fa-chevron-circle-up"></span>
         </h2>
     </div>
 </div>
 
-<div id="albums" class="collapse in container">
+<div id="albumsUpdated" class="container collapsed collapse">
     @foreach (var album in Model)
     {
         @Html.Partial(MVC.Album.Views._Album, album)

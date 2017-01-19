@@ -58,9 +58,13 @@
 </div>
 
 @Html.Partial(MVC.Album.Views._RecentlyAdded, Model.Albums)
+@Html.Partial(MVC.Album.Views._RecentlyUpdated, Model.UpdatedAlbums)
 
 @Html.Partial(MVC.Book.Views._RecentlyAdded, Model.Books)
+@Html.Partial(MVC.Book.Views._RecentlyUpdated, Model.UpdatedBooks)
 
 @Html.Partial(MVC.Movie.Views._RecentlyAdded, Model.Movies)
+@Html.Partial(MVC.Movie.Views._RecentlyUpdated, Model.UpdatedMovies)
 
 @Html.Partial(MVC.Game.Views._RecentlyAdded, Model.Games)
+@Html.Partial(MVC.Game.Views._RecentlyUpdated, Model.UpdatedGames)

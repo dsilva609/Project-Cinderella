@@ -1,0 +1,17 @@
+﻿@model List<BusinessLogic.Models.Game>
+
+<div class="container" data-toggle="collapse" data-parent="#accordion" href="#gamesUpdated">
+    <div class="row panel panel-primary panel-collapse">
+        <h2>
+            Recently Updated Games
+            <span class="fa fa-chevron-circle-up"></span>
+        </h2>
+    </div>
+</div>
+
+<div id="gamesUpdated" class="collapsed container collapse">
+    @foreach (var game in Model)
+    {
+        @Html.Partial(MVC.Game.Views._Game, game)
+    }
+</div>
