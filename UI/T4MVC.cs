@@ -98,12 +98,9 @@ namespace Links
             public const string UrlPath = "~/Scripts/d3";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
-            public static readonly string API_md = Url("API.md");
-            public static readonly string CHANGES_md = Url("CHANGES.md");
             public static readonly string d3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/d3.min.js") ? Url("d3.min.js") : Url("d3.js");
             public static readonly string d3_min_js = Url("d3.min.js");
             public static readonly string LICENSE = Url("LICENSE");
-            public static readonly string README_md = Url("README.md");
         }
     
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -521,6 +518,7 @@ namespace Links
                 public static class Assets
                 {
                     public const string d3_js = "~/Scripts/d3/d3.js"; 
+                    public const string d3_min_js = "~/Scripts/d3/d3.min.js"; 
                 }
             }
             public static partial class Hydrogen 
