@@ -65,7 +65,8 @@ namespace BusinessLogic.Services
 			book.ISBN10 = volume.VolumeInfo.IndustryIdentifiers?.SingleOrDefault(x => x.Type == "ISBN_10")?.Identifier;
 			book.ISBN13 = volume.VolumeInfo.IndustryIdentifiers?.SingleOrDefault(x => x.Type == "ISBN_13")?.Identifier;
 			book.Language = volume.VolumeInfo.Language;
-			book.ImageUrl = volume.VolumeInfo.ImageLinks == null ? string.Empty : volume.VolumeInfo?.ImageLinks?.Thumbnail;
+			book.ImageUrl = volume.VolumeInfo.ImageLinks == null ? string.Empty : volume.VolumeInfo?.ImageLinks?.Medium;
+			book.CountryOfOrigin = volume.SaleInfo.Country;
 			book.PageCount = volume.VolumeInfo.PageCount.GetValueOrDefault();
 
 			return book;

@@ -30,6 +30,7 @@ namespace BusinessLogic.Models.ComicVineModels
 		public string name { get; set; }
 		public string site_detail_url { get; set; }
 		public string store_date { get; set; }
+		public Publisher publisher { get; set; }
 		public Volume volume { get; set; }
 		public string resource_type { get; set; }
 	}
@@ -51,5 +52,12 @@ namespace BusinessLogic.Models.ComicVineModels
 		public int id { get; set; }
 		public string name { get; set; }
 		public string site_detail_url { get; set; }
+	}
+
+	public class Publisher
+	{
+		public string api_detail_url { get; set; }
+		public int id { get; set; }
+		public string name { get; set; }
 	}
 }

@@ -47,11 +47,12 @@ namespace BusinessLogic.Services
 			var book = new Book();
 			var comic = result.results;
 			//TODO: add field for ComicVineID
-			book.Title = comic.name;
+
+			book.Title = $"{comic.name} #{comic.issue_number}";
 			book.ImageUrl = comic.image.super_url;
 			book.GoogleBookID = comic.api_detail_url.Substring(comic.api_detail_url.IndexOf("issue/") + 6).TrimEnd('/');
-			book.Author = comic.person_credits.FirstOrDefault(x => x.role == "writer")?.name;
-			//book.Publisher = comic.publisher.name;
+			book.Author = comic.person_credits?.FirstOrDefault(x => x.role == "writer")?.name;
+			book.Publisher = comic.publisher?.name;
 			book.Type = BookTypeEnum.Comic;
 
 			return book;

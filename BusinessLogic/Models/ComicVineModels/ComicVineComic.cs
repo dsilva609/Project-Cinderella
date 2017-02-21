@@ -40,6 +40,7 @@ namespace BusinessLogic.Models.ComicVineModels
 		public string site_detail_url { get; set; }
 		public object store_date { get; set; }
 		public List<Team_Credits> team_credits { get; set; }
+		public Publisher publisher { get; set; }
 	}
 
 	public class Character_Credits
