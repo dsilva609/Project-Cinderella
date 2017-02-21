@@ -199,8 +199,9 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Search(DiscogsSearchModel searchModel)
         {
-            searchModel.Artist = searchModel.Artist.Trim();
-            searchModel.AlbumName = searchModel.AlbumName.Trim();
+            if (!string.IsNullOrWhiteSpace(searchModel.Artist)) searchModel.Artist = searchModel.Artist.Trim();
+            if (!string.IsNullOrWhiteSpace(searchModel.AlbumName)) searchModel.AlbumName = searchModel.AlbumName.Trim();
+
             if (Request.UrlReferrer?.LocalPath == "/Album/Search" && string.IsNullOrWhiteSpace(searchModel.Artist) &&
                 string.IsNullOrWhiteSpace(searchModel.AlbumName))
             {

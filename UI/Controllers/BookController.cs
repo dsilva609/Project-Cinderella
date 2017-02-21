@@ -154,8 +154,8 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Search(BookSearchModel searchModel)
         {
-            searchModel.Author = searchModel.Author.Trim();
-            searchModel.Title = searchModel.Title.Trim();
+            if (!string.IsNullOrWhiteSpace(searchModel.Author)) searchModel.Author = searchModel.Author.Trim();
+            if (!string.IsNullOrWhiteSpace(searchModel.Title)) searchModel.Title = searchModel.Title.Trim();
 
             if (Request.UrlReferrer?.LocalPath == "/Book/Search" && string.IsNullOrWhiteSpace(searchModel.Author) &&
                 string.IsNullOrWhiteSpace(searchModel.Title))

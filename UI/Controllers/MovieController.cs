@@ -154,7 +154,8 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Search(MovieSearchModel searchModel)
         {
-            searchModel.Title = searchModel.Title.Trim();
+            if (!string.IsNullOrWhiteSpace(searchModel.Title)) searchModel.Title = searchModel.Title.Trim();
+
             if (Request.UrlReferrer?.LocalPath == "/Movie/Search" && string.IsNullOrWhiteSpace(searchModel.Title))
             {
                 ShowStatusMessage(MessageTypeEnum.error, "Please enter search terms.", "Search Error");
