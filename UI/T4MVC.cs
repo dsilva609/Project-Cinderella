@@ -654,7 +654,6 @@ namespace Links
                 public static class Assets
                 {
                     public const string tether_js = "~/Scripts/tether/tether.js"; 
-                    public const string tether_min_js = "~/Scripts/tether/tether.min.js"; 
                 }
             }
             public static class Assets
