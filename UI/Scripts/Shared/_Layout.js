@@ -48,10 +48,11 @@
       $('.panel-collapse').on("click", function() {
         return $(this).find("span").toggleClass("fa-chevron-circle-down fa-chevron-circle-up");
       });
-      return $('.flip').on("click", function() {
+      $('.flip').on("click", function() {
         $(this).find(".card").toggleClass("flipped flip");
         return false;
       });
+      return $('[data-toggle="tooltip"]').tooltip();
     };
 
     return Layout;

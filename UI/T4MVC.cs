@@ -142,6 +142,8 @@ namespace Links
         public static readonly string jquery_validate_min_js = Url("jquery.validate.min.js");
         public static readonly string jquery_validate_unobtrusive_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.validate.unobtrusive.min.js") ? Url("jquery.validate.unobtrusive.min.js") : Url("jquery.validate.unobtrusive.js");
         public static readonly string jquery_validate_unobtrusive_min_js = Url("jquery.validate.unobtrusive.min.js");
+        public static readonly string livestamp_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/livestamp.min.js") ? Url("livestamp.min.js") : Url("livestamp.js");
+        public static readonly string livestamp_min_js = Url("livestamp.min.js");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class locales {
             public const string UrlPath = "~/Scripts/locales";
@@ -218,6 +220,10 @@ namespace Links
         public static readonly string modernizr_2_6_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/modernizr-2.6.2.min.js") ? Url("modernizr-2.6.2.min.js") : Url("modernizr-2.6.2.js");
         public static readonly string modernizr_2_7_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/modernizr-2.7.2.min.js") ? Url("modernizr-2.7.2.min.js") : Url("modernizr-2.7.2.js");
         public static readonly string modernizr_2_8_3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/modernizr-2.8.3.min.js") ? Url("modernizr-2.8.3.min.js") : Url("modernizr-2.8.3.js");
+        public static readonly string moment_with_locales_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/moment-with-locales.min.js") ? Url("moment-with-locales.min.js") : Url("moment-with-locales.js");
+        public static readonly string moment_with_locales_min_js = Url("moment-with-locales.min.js");
+        public static readonly string moment_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/moment.min.js") ? Url("moment.min.js") : Url("moment.js");
+        public static readonly string moment_min_js = Url("moment.min.js");
         public static readonly string Namespace_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/Namespace.min.js") ? Url("Namespace.min.js") : Url("Namespace.js");
         public static readonly string Namespace_min_js = Url("Namespace.min.js");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -248,6 +254,15 @@ namespace Links
             public static readonly string Logout_min_js = Url("Logout.min.js");
             public static readonly string Logout_js_map = Url("Logout.js.map");
             public static readonly string Logout_min_js_map = Url("Logout.min.js.map");
+        }
+    
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class tether {
+            public const string UrlPath = "~/Scripts/tether";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string tether_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/tether.min.js") ? Url("tether.min.js") : Url("tether.js");
+            public static readonly string tether_min_js = Url("tether.min.js");
         }
     
         public static readonly string toastr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/toastr.min.js") ? Url("toastr.min.js") : Url("toastr.js");
@@ -431,6 +446,21 @@ namespace Links
         public static readonly string Site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/Site.min.css") ? Url("Site.min.css") : Url("Site.css");
         public static readonly string Site_min_css = Url("Site.min.css");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class tether {
+            public const string UrlPath = "~/Content/tether";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string tether_theme_arrows_dark_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/tether-theme-arrows-dark.min.css") ? Url("tether-theme-arrows-dark.min.css") : Url("tether-theme-arrows-dark.css");
+            public static readonly string tether_theme_arrows_dark_min_css = Url("tether-theme-arrows-dark.min.css");
+            public static readonly string tether_theme_arrows_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/tether-theme-arrows.min.css") ? Url("tether-theme-arrows.min.css") : Url("tether-theme-arrows.css");
+            public static readonly string tether_theme_arrows_min_css = Url("tether-theme-arrows.min.css");
+            public static readonly string tether_theme_basic_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/tether-theme-basic.min.css") ? Url("tether-theme-basic.min.css") : Url("tether-theme-basic.css");
+            public static readonly string tether_theme_basic_min_css = Url("tether-theme-basic.min.css");
+            public static readonly string tether_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/tether.min.css") ? Url("tether.min.css") : Url("tether.css");
+            public static readonly string tether_min_css = Url("tether.min.css");
+        }
+    
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class themes {
             public const string UrlPath = "~/Content/themes";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
@@ -518,7 +548,6 @@ namespace Links
                 public static class Assets
                 {
                     public const string d3_js = "~/Scripts/d3/d3.js"; 
-                    public const string d3_min_js = "~/Scripts/d3/d3.min.js"; 
                 }
             }
             public static partial class Hydrogen 
@@ -620,6 +649,14 @@ namespace Links
                 {
                 }
             }
+            public static partial class tether 
+            {
+                public static class Assets
+                {
+                    public const string tether_js = "~/Scripts/tether/tether.js"; 
+                    public const string tether_min_js = "~/Scripts/tether/tether.min.js"; 
+                }
+            }
             public static class Assets
             {
                 public const string _references_js = "~/Scripts/_references.js"; 
@@ -648,9 +685,13 @@ namespace Links
                 public const string jquery_validate_min_js = "~/Scripts/jquery.validate.min.js"; 
                 public const string jquery_validate_unobtrusive_js = "~/Scripts/jquery.validate.unobtrusive.js"; 
                 public const string jquery_validate_unobtrusive_min_js = "~/Scripts/jquery.validate.unobtrusive.min.js"; 
+                public const string livestamp_js = "~/Scripts/livestamp.js"; 
                 public const string modernizr_2_6_2_js = "~/Scripts/modernizr-2.6.2.js"; 
                 public const string modernizr_2_7_2_js = "~/Scripts/modernizr-2.7.2.js"; 
                 public const string modernizr_2_8_3_js = "~/Scripts/modernizr-2.8.3.js"; 
+                public const string moment_with_locales_js = "~/Scripts/moment-with-locales.js"; 
+                public const string moment_with_locales_min_js = "~/Scripts/moment-with-locales.min.js"; 
+                public const string moment_js = "~/Scripts/moment.js"; 
                 public const string Namespace_js = "~/Scripts/Namespace.js"; 
                 public const string respond_js = "~/Scripts/respond.js"; 
                 public const string respond_matchmedia_addListener_js = "~/Scripts/respond.matchmedia.addListener.js"; 
@@ -698,6 +739,20 @@ namespace Links
             {
                 public static class Assets
                 {
+                }
+            }
+            public static partial class tether 
+            {
+                public static class Assets
+                {
+                    public const string tether_theme_arrows_dark_css = "~/Content/tether/tether-theme-arrows-dark.css";
+                    public const string tether_theme_arrows_dark_min_css = "~/Content/tether/tether-theme-arrows-dark.min.css";
+                    public const string tether_theme_arrows_css = "~/Content/tether/tether-theme-arrows.css";
+                    public const string tether_theme_arrows_min_css = "~/Content/tether/tether-theme-arrows.min.css";
+                    public const string tether_theme_basic_css = "~/Content/tether/tether-theme-basic.css";
+                    public const string tether_theme_basic_min_css = "~/Content/tether/tether-theme-basic.min.css";
+                    public const string tether_css = "~/Content/tether/tether.css";
+                    public const string tether_min_css = "~/Content/tether/tether.min.css";
                 }
             }
             public static partial class themes 

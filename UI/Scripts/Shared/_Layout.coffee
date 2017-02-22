@@ -45,6 +45,8 @@ class Views.Shared.Layout
 		    $(this).find(".card").toggleClass("flipped flip")
 		    
 		    return false
+		    
+		$('[data-toggle="tooltip"]').tooltip(); 
 	
 $ -> 
 	_layout = new Views.Shared.Layout

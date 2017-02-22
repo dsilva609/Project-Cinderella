@@ -124,5 +124,29 @@
     "inputFiles": [
       "Scripts/d3/d3.js"
     ]
+  },
+  {
+    "outputFileName": "Scripts/jquery.timeago.min.js",
+    "inputFiles": [
+      "Scripts/jquery.timeago.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/livestamp.min.js",
+    "inputFiles": [
+      "Scripts/livestamp.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/moment.min.js",
+    "inputFiles": [
+      "Scripts/moment.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/tether/tether.min.js",
+    "inputFiles": [
+      "Scripts/tether/tether.js"
+    ]
   }
 ]

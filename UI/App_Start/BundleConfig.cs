@@ -22,13 +22,16 @@ namespace UI
                 .Include("~/Scripts/bootstrap-{version}.min.js")
                 .Include("~/Scripts/bootstrap-3.0.1.min.js")
                 .Include("~/Scripts/respond.min.js")
-                .Include("~/Scripts/bootstrap-datepicker.min.js"));
+                .Include("~/Scripts/bootstrap-datepicker.min.js")
+                .Include("~/Scripts/tether/tether.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/custom")
                 .Include("~/Scripts/Namespace.min.js")
                 .Include("~/Scripts/Shared/_Layout.min.js")
                 .Include("~/Scripts/Shared/Logout.min.js")
                 .Include("~/Scripts/toastr.min.js")
+                .Include("~/Scripts/moment.min.js")
+                .Include("~/Scripts/livestamp.min.js")
                 .Include("~/Scripts/PageSpecific/AlbumEdit.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css")

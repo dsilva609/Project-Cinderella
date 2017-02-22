@@ -1,0 +1,3 @@
+﻿@model DateTime?
+
+<span class="tooltipped" data-toggle="tooltip" data-placement="top" title="@(Model.HasValue ? Model.GetValueOrDefault().ToString() : "N/A")" data-livestamp="@(Model.HasValue ? (Model.GetValueOrDefault() - new DateTime(1970, 1, 1)).TotalSeconds.ToString() : string.Empty)">@(Model.HasValue ? "" : "N/A")</span>

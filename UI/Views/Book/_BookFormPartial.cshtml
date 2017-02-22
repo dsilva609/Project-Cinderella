@@ -13,7 +13,7 @@
 @Html.HiddenFor(m => m.DateCompleted)
 @if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
 {
-	<div class="">Last Updated: @Model.DateUpdated</div>
+	<div class="">Last Updated: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateUpdated)</div>
 }
 <div data-toggle="collapse" data-parent="#accordion" href="#book-info">
 	<div class="row panel panel-primary panel-collapse">
