@@ -256,7 +256,9 @@
       <DependentUpon>bootstrap.css</DependentUpon>
     </Content>
     <Content Include="Content\c3.css" />
-    <Content Include="Content\c3.min.css" />
+    <Content Include="Content\c3.min.css">
+      <DependentUpon>c3.css</DependentUpon>
+    </Content>
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Images\Book.jpg" />
     <Content Include="Content\Images\ComicVineLogo.png" />
@@ -296,7 +298,9 @@
     <Content Include="Content\tether\tether-theme-basic.css" />
     <Content Include="Content\tether\tether-theme-basic.min.css" />
     <Content Include="Content\tether\tether.css" />
-    <Content Include="Content\tether\tether.min.css" />
+    <Content Include="Content\tether\tether.min.css">
+      <DependentUpon>tether.css</DependentUpon>
+    </Content>
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -355,9 +359,9 @@
       <DependentUpon>toastr.css</DependentUpon>
     </Content>
     <Content Include="Content\font-awesome.css" />
-    <Content Include="Content\font-awesome.min.css" />
-    <Content Include="css\font-awesome.css" />
-    <Content Include="css\font-awesome.min.css" />
+    <Content Include="Content\font-awesome.min.css">
+      <DependentUpon>font-awesome.css</DependentUpon>
+    </Content>
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="packages.config" />
     <Content Include="Scripts\bootbox.js" />

@@ -148,5 +148,23 @@
     "inputFiles": [
       "Scripts/tether/tether.js"
     ]
+  },
+  {
+    "outputFileName": "Content/font-awesome.min.css",
+    "inputFiles": [
+      "Content/font-awesome.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/c3.min.css",
+    "inputFiles": [
+      "Content/c3.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/tether/tether.min.css",
+    "inputFiles": [
+      "Content/tether/tether.css"
+    ]
   }
 ]
