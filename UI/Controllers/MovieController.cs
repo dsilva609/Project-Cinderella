@@ -155,7 +155,7 @@ namespace UI.Controllers
         public virtual ActionResult Search(MovieSearchModel searchModel)
         {
             if (!string.IsNullOrWhiteSpace(searchModel.Title)) searchModel.Title = searchModel.Title.Trim();
-            if (!string.IsNullOrWhiteSpace(Session["query"].ToString())) searchModel.Title = Session["query"].ToString();
+            if (!string.IsNullOrWhiteSpace(Session["query"]?.ToString())) searchModel.Title = Session["query"].ToString();
 
             if (Request.UrlReferrer?.LocalPath == "/Movie/Search" && string.IsNullOrWhiteSpace(searchModel.Title))
             {

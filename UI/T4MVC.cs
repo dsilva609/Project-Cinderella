@@ -751,7 +751,6 @@ namespace Links
                     public const string tether_theme_basic_css = "~/Content/tether/tether-theme-basic.css";
                     public const string tether_theme_basic_min_css = "~/Content/tether/tether-theme-basic.min.css";
                     public const string tether_css = "~/Content/tether/tether.css";
-                    public const string tether_min_css = "~/Content/tether/tether.min.css";
                 }
             }
             public static partial class themes 
@@ -811,9 +810,7 @@ namespace Links
                 public const string bootstrap_reboot_min_css = "~/Content/bootstrap-reboot.min.css";
                 public const string bootstrap_css = "~/Content/bootstrap.css";
                 public const string c3_css = "~/Content/c3.css";
-                public const string c3_min_css = "~/Content/c3.min.css";
                 public const string font_awesome_css = "~/Content/font-awesome.css";
-                public const string font_awesome_min_css = "~/Content/font-awesome.min.css";
                 public const string jquery_mobile_1_4_5_css = "~/Content/jquery.mobile-1.4.5.css";
                 public const string jquery_mobile_1_4_5_min_css = "~/Content/jquery.mobile-1.4.5.min.css";
                 public const string jquery_mobile_inline_svg_1_4_5_css = "~/Content/jquery.mobile.inline-svg-1.4.5.css";
