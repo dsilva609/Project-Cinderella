@@ -11,10 +11,32 @@
 @Html.HiddenFor(m => m.DateStarted)
 @Html.HiddenFor(m => m.DateCompleted)
 
+<div class="row panel-body">
 @if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
 {
 	<div class="">Last Updated: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateUpdated)</div>
 }
+
+<div class="col-md-6">
+    @Html.LabelFor(m => m.CompletionStatus)
+    @Html.EnumDropDownListFor(m => m.CompletionStatus, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.CompletionStatus, "", new { @class = "text-danger" })
+</div>
+
+<div class="col-md-6">
+    @Html.LabelFor(m => m.TimesCompleted)
+    @Html.TextBoxFor(m => m.TimesCompleted, new { @class = "form-control", type = "number" })
+    @Html.ValidationMessageFor(m => m.TimesCompleted, "", new { @class = "text-danger" })
+</div>
+
+<div class="col-md-6 form-inline">
+    <label>
+        @Html.CheckBoxFor(m => m.CheckedOut) Checked Out?
+    </label>
+    @Html.ValidationMessageFor(m => m.CheckedOut, "", new { @class = "text-danger" })
+</div>
+</div>
+
 <div data-toggle="collapse" data-parent="#accordion" href="#movie-info">
 	<div class="row panel panel-primary panel-collapse">
 		<div class="panel-heading">
@@ -26,82 +48,78 @@
 	</div>
 </div>
 <div id="movie-info" class="collapse in">
-	<div class="panel-body">
-		@if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+    <div class="panel-body">
+        <div class="item-title">
+            <div class="col-sm-6">
+                @Html.LabelFor(m => m.Title)
+                @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-sm-6">
+                @Html.LabelFor(m => m.Director)
+                @Html.TextBoxFor(m => m.Director, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Director, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
         {
-			<div class="animate-box item col-sm-6">
-				<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Title (@Model.YearReleased)">
-					<img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" class="img-rounded" style="height: 100%; width: 100%;" @*style="height: 350px; width: 250px;"*@>
-				</a>
-			</div>
-		}
+            <div class="animate-box item col-sm-6">
+                <a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Title (@Model.YearReleased)">
+                    <img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" class="img-rounded" style="height: 100%; width: 100%;" @*style="height: 350px; width: 250px;"*@>
+                </a>
+            </div>
+        }
 
-		<div class="col-sm-6">
-			@Html.LabelFor(m => m.Title)
-			@Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
-			@Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
-		</div>
+        <div class="col-sm-6">
+            @Html.LabelFor(m => m.Title)
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+        </div>
 
-		<div class="col-sm-6">
-			@Html.LabelFor(m => m.Director)
-			@Html.TextBoxFor(m => m.Director, new { @class = "form-control" })
-			@Html.ValidationMessageFor(m => m.Director, "", new { @class = "text-danger" })
-		</div>
+        <div class="col-sm-6">
+            @Html.LabelFor(m => m.Director)
+            @Html.TextBoxFor(m => m.Director, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Director, "", new { @class = "text-danger" })
+        </div>
 
-		<div class="col-sm-6">
-			@Html.LabelFor(m => m.Distributor)
-			@Html.TextBoxFor(m => m.Distributor, new { @class = "form-control" })
-			@Html.ValidationMessageFor(m => m.Distributor, "", new { @class = "text-danger" })
-		</div>
+        <div class="col-sm-6">
+            @Html.LabelFor(m => m.Distributor)
+            @Html.TextBoxFor(m => m.Distributor, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Distributor, "", new { @class = "text-danger" })
+        </div>
 
-		<div class="col-sm-6">
-			@Html.LabelFor(m => m.YearReleased)
-			@Html.DropDownListFor(m => m.YearReleased, ViewHelpers.GetYearRange(1900, DateTime.Today.Year), Model.YearReleased.ToString(), new { @class = "form-control" })
-			@Html.ValidationMessageFor(m => m.YearReleased, "", new { @class = "text-danger" })
-		</div>
+        <div class="col-sm-6">
+            @Html.LabelFor(m => m.YearReleased)
+            @Html.DropDownListFor(m => m.YearReleased, ViewHelpers.GetYearRange(1900, DateTime.Today.Year), Model.YearReleased.ToString(), new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.YearReleased, "", new { @class = "text-danger" })
+        </div>
 
-		<div class="col-sm-6">
-			@Html.LabelFor(m => m.Genre)
-			@Html.TextBoxFor(m => m.Genre, new { @class = "form-control" })
-			@Html.ValidationMessageFor(m => m.Genre, "", new { @class = "text-danger" })
-		</div>
+        <div class="col-sm-6">
+            @Html.LabelFor(m => m.Genre)
+            @Html.TextBoxFor(m => m.Genre, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Genre, "", new { @class = "text-danger" })
+        </div>
 
-		<div class="col-sm-6">
-			@Html.LabelFor(m => m.Notes)
-			@Html.TextAreaFor(m => m.Notes, new { @class = "form-control" })
-			@Html.ValidationMessageFor(m => m.Notes, "", new { @class = "text-danger" })
-		</div>
-		
-		<div class="col-sm-6">
-			@Html.LabelFor(m => m.Category)
-			@Html.TextAreaFor(m => m.Category, new { @class = "form-control" })
-			@Html.ValidationMessageFor(m => m.Category, "", new { @class = "text-danger" })
-		</div>
+        <div class="col-sm-6">
+            @Html.LabelFor(m => m.Notes)
+            @Html.TextAreaFor(m => m.Notes, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Notes, "", new { @class = "text-danger" })
+        </div>
 
-		<div class="col-sm-6">
-			@Html.LabelFor(m => m.ImageUrl)
-			@Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control" })
-			@Html.ValidationMessageFor(m => m.ImageUrl, "", new { @class = "text-danger" })
-		</div>
+        <div class="col-sm-6">
+            @Html.LabelFor(m => m.Category)
+            @Html.TextAreaFor(m => m.Category, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Category, "", new { @class = "text-danger" })
+        </div>
 
-		<div class="col-md-6">
-			@Html.LabelFor(m => m.CompletionStatus)
-			@Html.EnumDropDownListFor(m => m.CompletionStatus, new { @class = "form-control" })
-			@Html.ValidationMessageFor(m => m.CompletionStatus, "", new { @class = "text-danger" })
-		</div>
-
-		<div class="col-md-6">
-			@Html.LabelFor(m => m.CheckedOut)
-			@Html.CheckBoxFor(m => m.CheckedOut, new { @class = "form-control" })
-			@Html.ValidationMessageFor(m => m.CheckedOut, "", new { @class = "text-danger" })
-		</div>
-
-		<div class="col-md-6">
-			@Html.LabelFor(m => m.TimesCompleted)
-			@Html.TextBoxFor(m => m.TimesCompleted, new { @class = "form-control", type = "number" })
-			@Html.ValidationMessageFor(m => m.TimesCompleted, "", new { @class = "text-danger" })
-		</div>
-	</div>
+        <div class="col-sm-6">
+            @Html.LabelFor(m => m.ImageUrl)
+            @Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.ImageUrl, "", new { @class = "text-danger" })
+        </div>
+    </div>
 </div>
 <div data-toggle="collapse" data-parent="#accordion" href="#media-info">
 	<div class="row panel panel-primary panel-collapse">

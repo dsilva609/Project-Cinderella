@@ -167,3 +167,8 @@ a:hover {
     .animate-box a img {
       height: 100%; }
 
+.item-title input[type=text] {
+  height: 100px;
+  font-size: 20pt;
+  min-width: 100%; }
+
