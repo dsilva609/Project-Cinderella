@@ -202,6 +202,7 @@ namespace UI.Controllers
         {
             if (!string.IsNullOrWhiteSpace(searchModel.Artist)) searchModel.Artist = searchModel.Artist.Trim();
             if (!string.IsNullOrWhiteSpace(searchModel.AlbumName)) searchModel.AlbumName = searchModel.AlbumName.Trim();
+            if (!string.IsNullOrWhiteSpace(Session["query"].ToString())) searchModel.AlbumName = Session["query"].ToString();
 
             if (Request.UrlReferrer?.LocalPath == "/Album/Search" && string.IsNullOrWhiteSpace(searchModel.Artist) &&
                 string.IsNullOrWhiteSpace(searchModel.AlbumName))
