@@ -34,7 +34,7 @@ namespace BusinessLogic.Services
             var volumes = result.Execute().Items;
             var books = new List<Book>();
 
-            if (volumes != null && volumes.Any()) books.AddRange(volumes.Select(ConvertVolumeToBook));
+            if (volumes != null && volumes.Any()) books.AddRange(volumes.Select(x => ConvertVolumeToBook(x, true)));
 
             return books;
         }
@@ -43,30 +43,32 @@ namespace BusinessLogic.Services
         {
             var volume = _service.Get(id).Execute();
 
-            var book = ConvertVolumeToBook(volume);
+            var book = ConvertVolumeToBook(volume, false);
 
             return book;
         }
 
-        private Book ConvertVolumeToBook(Volume volume)
+        private Book ConvertVolumeToBook(Volume volume, bool fromSearch)
         {
-            var book = new Book();
-
-            book.GoogleBookID = volume.Id;
-            book.Title = volume.VolumeInfo.Title;
-            book.Author = volume.VolumeInfo.Authors == null ? string.Empty : string.Join(", ", volume.VolumeInfo.Authors);
-            book.YearReleased =
-                string.IsNullOrWhiteSpace(volume.VolumeInfo.PublishedDate)
+            var book = new Book
+            {
+                GoogleBookID = volume.Id,
+                Title = volume.VolumeInfo.Title,
+                Author = volume.VolumeInfo.Authors == null ? string.Empty : string.Join(", ", volume.VolumeInfo.Authors),
+                YearReleased = string.IsNullOrWhiteSpace(volume.VolumeInfo.PublishedDate)
                     ? DateTime.Today.Year
-                    : Convert.ToInt32(volume.VolumeInfo.PublishedDate.Substring(0, 4));
-            book.Publisher = volume.VolumeInfo.Publisher ?? string.Empty;
-            book.Genre = volume.VolumeInfo.Categories == null ? string.Empty : string.Join(", ", volume.VolumeInfo.Categories);
-            book.ISBN10 = volume.VolumeInfo.IndustryIdentifiers?.SingleOrDefault(x => x.Type == "ISBN_10")?.Identifier;
-            book.ISBN13 = volume.VolumeInfo.IndustryIdentifiers?.SingleOrDefault(x => x.Type == "ISBN_13")?.Identifier;
-            book.Language = volume.VolumeInfo.Language;
-            book.ImageUrl = volume.VolumeInfo.ImageLinks == null ? string.Empty : volume.VolumeInfo?.ImageLinks?.Medium;
-            book.CountryOfOrigin = volume.SaleInfo.Country;
-            book.PageCount = volume.VolumeInfo.PageCount.GetValueOrDefault();
+                    : Convert.ToInt32(volume.VolumeInfo.PublishedDate.Substring(0, 4)),
+                Publisher = volume.VolumeInfo.Publisher ?? string.Empty,
+                Genre = volume.VolumeInfo.Categories == null ? string.Empty : string.Join(", ", volume.VolumeInfo.Categories),
+                ISBN10 = volume.VolumeInfo.IndustryIdentifiers?.SingleOrDefault(x => x.Type == "ISBN_10")?.Identifier,
+                ISBN13 = volume.VolumeInfo.IndustryIdentifiers?.SingleOrDefault(x => x.Type == "ISBN_13")?.Identifier,
+                Language = volume.VolumeInfo.Language,
+                ImageUrl = volume.VolumeInfo.ImageLinks != null && fromSearch
+                    ? volume.VolumeInfo?.ImageLinks?.Thumbnail
+                    : volume.VolumeInfo?.ImageLinks?.Medium,
+                CountryOfOrigin = volume.SaleInfo.Country,
+                PageCount = volume.VolumeInfo.PageCount.GetValueOrDefault()
+            };
 
             return book;
         }
