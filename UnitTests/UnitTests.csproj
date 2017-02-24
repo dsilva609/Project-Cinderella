@@ -189,7 +189,9 @@
     <Compile Include="BusinessLogic\Services\TestBases\MovieServiceTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\StatisticServiceTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\TMDBServiceTestBase.cs" />
+    <Compile Include="BusinessLogic\Services\TestBases\WishServiceTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TMDBServiceTests.cs" />
+    <Compile Include="BusinessLogic\Services\WishServiceTests.cs" />
     <Compile Include="UI\Controllers\BookControllerTests.cs" />
     <Compile Include="UI\Controllers\GameControllerTests.cs" />
     <Compile Include="UI\Controllers\ProjectCinderellaControllerBaseTests.cs" />
