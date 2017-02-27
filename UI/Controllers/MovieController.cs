@@ -85,6 +85,7 @@ namespace UI.Controllers
                 ShowStatusMessage(MessageTypeEnum.error, e.Message, "Duplicate Movie");
                 return View(movie);
             }
+            Session["query"] = null;
             ShowStatusMessage(MessageTypeEnum.success, "New Movie Added Successfully.", "Add Successful");
             return RedirectToAction(MVC.Movie.Index());
         }

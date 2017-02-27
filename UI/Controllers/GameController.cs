@@ -89,6 +89,7 @@ namespace UI.Controllers
                 ShowStatusMessage(MessageTypeEnum.error, e.Message, "Duplicate Game");
                 return View(game);
             }
+            Session["query"] = null;
             ShowStatusMessage(MessageTypeEnum.success, "New Game Added Successfully.", "Add Successful");
             return RedirectToAction(MVC.Game.Index());
         }

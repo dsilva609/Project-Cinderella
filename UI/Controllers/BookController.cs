@@ -85,6 +85,7 @@ namespace UI.Controllers
                 ShowStatusMessage(MessageTypeEnum.error, e.Message, "Duplicate Book");
                 return View(book);
             }
+            Session["query"] = null;
             ShowStatusMessage(MessageTypeEnum.success, "New Book Added Successfully.", "Add Successful");
             return RedirectToAction(MVC.Book.Index());
         }

@@ -93,6 +93,7 @@ namespace UI.Controllers
                     ShowStatusMessage(MessageTypeEnum.error, e.Message, "Duplicate Album");
                     return View(model);
                 }
+                Session["query"] = null;
                 ShowStatusMessage(MessageTypeEnum.success, "New Album Added Successfully.", "Add Successful");
                 return RedirectToAction(MVC.Album.Index());
             }
