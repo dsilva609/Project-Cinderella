@@ -742,6 +742,10 @@
     <Content Include="Views\Game\_RecentlyUpdated.cshtml" />
     <Content Include="Views\Movie\_RecentlyUpdated.cshtml" />
     <Content Include="Views\Shared\_Timespan.cshtml" />
+    <Content Include="Views\Wish\Index.cshtml" />
+    <Content Include="Views\Wish\Create.cshtml" />
+    <Content Include="Views\Wish\Edit.cshtml" />
+    <Content Include="Views\Wish\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -796,6 +800,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
+    <Compile Include="Controllers\WishController.cs" />
     <Compile Include="ElmahController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -846,6 +851,7 @@
     <Compile Include="Models\StatisticsViewModel.cs" />
     <Compile Include="Models\StatsViewModel.cs" />
     <Compile Include="Models\Toastr.cs" />
+    <Compile Include="Models\WishViewModel.cs" />
     <Compile Include="MovieController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -860,6 +866,9 @@
     <Compile Include="T4MVC.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WishController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
   </ItemGroup>

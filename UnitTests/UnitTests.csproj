@@ -209,6 +209,8 @@
     <Compile Include="UI\Controllers\TestBases\MovieControllerTestBase.cs" />
     <Compile Include="UI\Controllers\TestBases\ProjectCinderellaControllerBaseTestBase.cs" />
     <Compile Include="UI\Controllers\TestBases\StatisticsControllerTestBase.cs" />
+    <Compile Include="UI\Controllers\TestBases\WishControllerTestBase.cs" />
+    <Compile Include="UI\Controllers\WishControllerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
