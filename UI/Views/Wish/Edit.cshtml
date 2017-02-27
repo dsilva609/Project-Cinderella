@@ -1,1 +1,9 @@
-﻿
+﻿@model BusinessLogic.Models.Wish
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(MVC.Wish.Edit(Model.ID), FormMethod.Post))
+{
+    Html.RenderPartial(MVC.Wish.Views._WishFormPartial, Model);
+}
+@Html.ActionLink("Back to List", MVC.Wish.Index())

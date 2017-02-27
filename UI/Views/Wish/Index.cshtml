@@ -1,1 +1,37 @@
-﻿
+﻿@using PagedList.Mvc
+@model UI.Models.WishViewModel
+@{
+    ViewBag.Title = @Model.ViewTitle;
+}
+
+<div class="row">
+    <div class="h2 col-md-5">
+        Wishes
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a class="btn btn-default" href="@Url.Action(MVC.Wish.Create())" style="padding-top: 1.25em;" contenteditable="false">
+                <span class="fa fa-plus"></span>
+            </a>
+        }
+    </div>
+
+    <div class="col-md-4" style="padding-top: 1.25em;">
+        <form action="@Url.Action(MVC.Wish.Index())" method="get" style="display: inline-flex;">
+            <input class="form-control" id="query" name="wishQuery" placeholder="Search" type="text" value="@ViewBag.Filter">
+            <button type="submit" class="btn btn-default">
+                <span class="fa fa-search"></span>
+            </button>
+        </form>
+    </div>
+</div>
+
+<div id="fh5co-main">
+    <div class="container">
+        @foreach (var wish in Model.Wishes)
+        {
+            @Html.Partial(MVC.Wish.Views._Wish, wish)
+        }
+    </div>
+</div>
+
+@Html.PagedListPager(Model.Wishes, page => Url.Action("Index", new { wishQuery = ViewBag.query, filter = ViewBag.Filter, page }))

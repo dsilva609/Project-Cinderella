@@ -167,11 +167,15 @@ namespace UI.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _Wish = "_Wish";
+                public readonly string _WishFormPartial = "_WishFormPartial";
                 public readonly string Create = "Create";
                 public readonly string Details = "Details";
                 public readonly string Edit = "Edit";
                 public readonly string Index = "Index";
             }
+            public readonly string _Wish = "~/Views/Wish/_Wish.cshtml";
+            public readonly string _WishFormPartial = "~/Views/Wish/_WishFormPartial.cshtml";
             public readonly string Create = "~/Views/Wish/Create.cshtml";
             public readonly string Details = "~/Views/Wish/Details.cshtml";
             public readonly string Edit = "~/Views/Wish/Edit.cshtml";
