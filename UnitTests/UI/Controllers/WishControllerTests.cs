@@ -1,5 +1,6 @@
 ﻿using BusinessLogic.Models;
 using BusinessLogic.Services.Interfaces;
+using Moq;
 using NUnit.Framework;
 using Rhino.Mocks;
 using Shouldly;
@@ -142,6 +143,37 @@ namespace UnitTests.UI.Controllers
 
             //--Assert
             Assert.AreEqual(string.Empty, result.ViewName);
+        }
+
+        [Test]
+        public void ItRedirectsToIndexUponFinishingAWish()
+        {
+            _controller.Get<IWishService>().Expect(x => x.GetByID(Arg<int>.Is.Anything, Arg<string>.Is.Anything))
+                .Return(new Wish { ID = 666 });
+
+            //--Act
+            var result = _controller.ClassUnderTest.FinishWish(666) as RedirectToRouteResult;
+
+            //--Assert
+            Assert.IsTrue(_controller.ClassUnderTest.ModelState.IsValid);
+            Assert.AreEqual("Index", result.RouteValues["Action"]);
+        }
+
+        [Test]
+        public void ItDoesntCallEditForAUserValidationFailure()
+        {
+            SetupAuthorization("none", false, false);
+            _service.Setup(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>())).Returns(new Wish { ID = 666, UserID = "phonybologna" });
+            //_controller.Get<IWishService>().Expect(x => x.GetByID(Arg<int>.Is.Anything, Arg<string>.Is.Anything))
+            //  .Return(new Wish { ID = 666 });
+
+            //--Act
+            var result = _controller.ClassUnderTest.FinishWish(666) as RedirectToRouteResult;
+
+            //--Assert
+            Assert.IsTrue(_controller.ClassUnderTest.ModelState.IsValid);
+            Assert.AreEqual("Index", result.RouteValues["Action"]);
+            _service.AssertWasNotCalled(x => x.Object.Edit(It.IsAny<Wish>()));
         }
     }
 }
