@@ -80,6 +80,12 @@ namespace UI.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult FinishWish()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.FinishWish);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public WishController Actions { get { return MVC.Wish; } }
@@ -101,6 +107,7 @@ namespace UI.Controllers
             public readonly string Edit = "Edit";
             public readonly string Details = "Details";
             public readonly string Delete = "Delete";
+            public readonly string FinishWish = "FinishWish";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -111,6 +118,7 @@ namespace UI.Controllers
             public const string Edit = "Edit";
             public const string Details = "Details";
             public const string Delete = "Delete";
+            public const string FinishWish = "FinishWish";
         }
 
 
@@ -154,6 +162,14 @@ namespace UI.Controllers
         public ActionParamsClass_Delete DeleteParams { get { return s_params_Delete; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Delete
+        {
+            public readonly string id = "id";
+        }
+        static readonly ActionParamsClass_FinishWish s_params_FinishWish = new ActionParamsClass_FinishWish();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_FinishWish FinishWishParams { get { return s_params_FinishWish; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_FinishWish
         {
             public readonly string id = "id";
         }
@@ -270,6 +286,18 @@ namespace UI.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             DeleteOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void FinishWishOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult FinishWish(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.FinishWish);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            FinishWishOverride(callInfo, id);
             return callInfo;
         }
 

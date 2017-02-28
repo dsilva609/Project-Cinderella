@@ -1,5 +1,4 @@
-﻿@using PagedList.Mvc
-@model UI.Models.WishViewModel
+﻿@model UI.Models.WishViewModel
 @{
 	ViewBag.Title = @Model.ViewTitle;
 }
@@ -43,6 +42,7 @@
 				<thead>
 					<tr>
 						<th>#</th>
+						<th>Completed</th>
 						<th>Title</th>
 						<th>Notes</th>
 					</tr>
@@ -52,8 +52,23 @@
 				{
 						<tr>
 							<td>@(i + 1)</td>
+							@if (!Model.AlbumWishes[i].Completed)
+							{
+								<td>
+									<a href="@Url.Action(MVC.Wish.FinishWish(Model.AlbumWishes[i].ID))" class="btn btn-sm btn-info">Done</a>
+								</td>
+							}
+							else
+							{
+								<td><span class="fa fa-check-circle"></span></td>
+							}
 							<td>@Model.AlbumWishes[i].Title</td>
 							<td>@Model.AlbumWishes[i].Notes</td>
+							<td>
+								<a href="@Url.Action(MVC.Wish.Edit(Model.AlbumWishes[i].ID))">
+									<span class="fa fa-pencil"></span>
+								</a>
+							</td>
 						</tr>
 				}
 				</tbody>
@@ -80,6 +95,7 @@
 				<thead>
 					<tr>
 						<th>#</th>
+						<td>Completed</td>
 						<th>Title</th>
 						<th>Notes</th>
 					</tr>
@@ -89,8 +105,23 @@
 				{
 						<tr>
 							<td>@(i + 1)</td>
-							<td>@Model.AlbumWishes[i].Title</td>
-							<td>@Model.AlbumWishes[i].Notes</td>
+							@if (!Model.BookWishes[i].Completed)
+							{
+								<td>
+									<a href="@Url.Action(MVC.Wish.FinishWish(Model.BookWishes[i].ID))" class="btn btn-sm btn-info">Done</a>
+								</td>
+							}
+							else
+							{
+								<td><span class="fa fa-check-circle"></span></td>
+							}
+							<td>@Model.BookWishes[i].Title</td>
+							<td>@Model.BookWishes[i].Notes</td>
+							<td>
+								<a href="@Url.Action(MVC.Wish.Edit(Model.BookWishes[i].ID))">
+									<span class="fa fa-pencil"></span>
+								</a>
+							</td>
 						</tr>
 				}
 				</tbody>
@@ -117,6 +148,7 @@
 				<thead>
 					<tr>
 						<th>#</th>
+						<td>Completed</td>
 						<th>Title</th>
 						<th>Notes</th>
 					</tr>
@@ -126,8 +158,23 @@
 				{
 						<tr>
 							<td>@(i + 1)</td>
+							@if (!Model.MovieWishes[i].Completed)
+							{
+								<td>
+									<a href="@Url.Action(MVC.Wish.FinishWish(Model.MovieWishes[i].ID))" class="btn btn-sm btn-info">Done</a>
+								</td>
+							}
+							else
+							{
+								<td><span class="fa fa-check-circle"></span></td>
+							}
 							<td>@Model.MovieWishes[i].Title</td>
 							<td>@Model.MovieWishes[i].Notes</td>
+							<td>
+								<a href="@Url.Action(MVC.Wish.Edit(Model.MovieWishes[i].ID))">
+									<span class="fa fa-pencil"></span>
+								</a>
+							</td>
 						</tr>
 				}
 				</tbody>
@@ -154,6 +201,7 @@
 				<thead>
 					<tr>
 						<th>#</th>
+						<th>Completed</th>
 						<th>Title</th>
 						<th>Notes</th>
 					</tr>
@@ -163,8 +211,23 @@
 				{
 						<tr>
 							<td>@(i + 1)</td>
+							@if (!Model.GameWishes[i].Completed)
+							{
+								<td>
+									<a href="@Url.Action(MVC.Wish.FinishWish(Model.GameWishes[i].ID))" class="btn btn-sm btn-info">Done</a>
+								</td>
+							}
+							else
+							{
+								<td><span class="fa fa-check-circle"></span></td>
+							}
 							<td>@Model.GameWishes[i].Title</td>
 							<td>@Model.GameWishes[i].Notes</td>
+							<td>
+								<a href="@Url.Action(MVC.Wish.Edit(Model.GameWishes[i].ID))">
+									<span class="fa fa-pencil"></span>
+								</a>
+							</td>
 						</tr>
 				}
 				</tbody>

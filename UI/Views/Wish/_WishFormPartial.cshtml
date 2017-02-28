@@ -46,6 +46,12 @@
 		@Html.TextBoxFor(m => m.ApiID, new { @class = "form-control" })
 		@Html.ValidationMessageFor(m => m.ApiID, "", new { @class = "text-danger" })
 	</div>
+	
+	<div class="col-sm-6">
+		@Html.LabelFor(m => m.Completed)
+		@Html.CheckBoxFor(m => m.Completed, new { @class = "form-control" })
+		@Html.ValidationMessageFor(m => m.Completed, "", new { @class = "text-danger" })
+	</div>
 </div>
 
 <div class="row panel-body">

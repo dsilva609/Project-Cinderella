@@ -51,7 +51,7 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult Create()
 		{
-			var model = new Wish {UserID = User.Identity.GetUserId()};
+			var model = new Wish { UserID = User.Identity.GetUserId() };
 			ViewBag.Title = "Create";
 
 			return View(model);
@@ -150,6 +150,25 @@ namespace UI.Controllers
 			_service.Delete(id, User.Identity.GetUserId());
 
 			ShowStatusMessage(MessageTypeEnum.success, string.Empty, "Wish Deleted Successfully");
+			return RedirectToAction(MVC.Wish.Index());
+		}
+
+		[Authorize]
+		[HttpGet]
+		public virtual ActionResult FinishWish(int id)
+		{
+			var model = _service.GetByID(id, User.Identity.GetUserId());
+			if (model.UserID != User.Identity.GetUserId())
+			{
+				ShowStatusMessage(MessageTypeEnum.error, "This wish cannot be edited by another user", "Edit Failure");
+				return RedirectToAction(MVC.Wish.Index());
+			}
+			model.Completed = true;
+			model.DateModified = DateTime.UtcNow;
+
+			_service.Edit(model);
+
+			ShowStatusMessage(MessageTypeEnum.success, string.Empty, "Wish Completed");
 			return RedirectToAction(MVC.Wish.Index());
 		}
 	}

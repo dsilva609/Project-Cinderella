@@ -298,6 +298,10 @@
     <Compile Include="Migrations\201702241718349_added wish model.Designer.cs">
       <DependentUpon>201702241718349_added wish model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702280156141_added completed field to wish.cs" />
+    <Compile Include="Migrations\201702280156141_added completed field to wish.Designer.cs">
+      <DependentUpon>201702280156141_added completed field to wish.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseItem.cs" />
     <Compile Include="Models\BGGModels\BGGGame.cs" />
@@ -494,6 +498,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702241718349_added wish model.resx">
       <DependentUpon>201702241718349_added wish model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702280156141_added completed field to wish.resx">
+      <DependentUpon>201702280156141_added completed field to wish.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

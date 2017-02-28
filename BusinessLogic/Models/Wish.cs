@@ -29,5 +29,8 @@ namespace BusinessLogic.Models
 		public string Notes { get; set; }
 
 		public string Category { get; set; }
+
+		[DisplayName("Completed?")]
+		public bool Completed { get; set; }
 	}
 }
