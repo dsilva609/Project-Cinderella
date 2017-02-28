@@ -173,7 +173,7 @@ namespace UnitTests.UI.Controllers
             //--Assert
             Assert.IsTrue(_controller.ClassUnderTest.ModelState.IsValid);
             Assert.AreEqual("Index", result.RouteValues["Action"]);
-            _service.AssertWasNotCalled(x => x.Object.Edit(It.IsAny<Wish>()));
+            _service.Verify(x => x.Edit(It.IsAny<Wish>()), Times.Never);
         }
     }
 }
