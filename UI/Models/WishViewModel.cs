@@ -1,13 +1,13 @@
 ﻿using BusinessLogic.Models;
-using PagedList;
+using System.Collections.Generic;
 
 namespace UI.Models
 {
-	public class WishViewModel : BaseViewModel
-	{
-		public IPagedList<Wish> AlbumWishes { get; set; }
-		public IPagedList<Wish> BookWishes { get; set; }
-		public IPagedList<Wish> MovieWishes { get; set; }
-		public IPagedList<Wish> GameWishes { get; set; }
-	}
+    public class WishViewModel : BaseViewModel
+    {
+        public List<Wish> AlbumWishes { get; set; }
+        public List<Wish> BookWishes { get; set; }
+        public List<Wish> MovieWishes { get; set; }
+        public List<Wish> GameWishes { get; set; }
+    }
 }

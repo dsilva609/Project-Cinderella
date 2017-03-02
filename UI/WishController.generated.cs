@@ -185,6 +185,7 @@ namespace UI.Controllers
             {
                 public readonly string _Wish = "_Wish";
                 public readonly string _WishFormPartial = "_WishFormPartial";
+                public readonly string _WishTablePartial = "_WishTablePartial";
                 public readonly string Create = "Create";
                 public readonly string Details = "Details";
                 public readonly string Edit = "Edit";
@@ -192,6 +193,7 @@ namespace UI.Controllers
             }
             public readonly string _Wish = "~/Views/Wish/_Wish.cshtml";
             public readonly string _WishFormPartial = "~/Views/Wish/_WishFormPartial.cshtml";
+            public readonly string _WishTablePartial = "~/Views/Wish/_WishTablePartial.cshtml";
             public readonly string Create = "~/Views/Wish/Create.cshtml";
             public readonly string Details = "~/Views/Wish/Details.cshtml";
             public readonly string Edit = "~/Views/Wish/Edit.cshtml";

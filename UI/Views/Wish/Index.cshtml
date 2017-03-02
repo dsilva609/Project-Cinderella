@@ -1,237 +1,105 @@
 ﻿@model UI.Models.WishViewModel
 @{
-	ViewBag.Title = @Model.ViewTitle;
+    ViewBag.Title = @Model.ViewTitle;
 }
 
-<div class="row">
-	<div class="h2 col-md-8">
-		Wishes
-		@if (User.Identity.IsAuthenticated)
-		{
-			<a class="btn btn-default" href="@Url.Action(MVC.Wish.Create())" style="padding-top: 1.25em;" contenteditable="false">
-				<span class="fa fa-plus"></span>
-			</a>
-		}
-	</div>
+<script>
+    var deleteUrl = '@Url.Action(MVC.Wish.Delete())';
+</script>
 
-	<div class="col-md-4" style="padding-top: 1.25em;">
-		<form action="@Url.Action(MVC.Wish.Index())" method="get" style="display: inline-flex;">
-			<input class="form-control" id="query" name="wishQuery" placeholder="Search" type="text" value="@ViewBag.Filter">
-			<button type="submit" class="btn btn-default">
-				<span class="fa fa-search"></span>
-			</button>
-		</form>
-	</div>
+<div class="row">
+    <div class="h2 col-md-8">
+        Wishes
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a class="btn btn-default" href="@Url.Action(MVC.Wish.Create())" style="padding-top: 1.25em;" contenteditable="false">
+                <span class="fa fa-plus"></span>
+            </a>
+        }
+    </div>
+
+    <div class="col-md-4" style="padding-top: 1.25em;">
+        <form action="@Url.Action(MVC.Wish.Index())" method="get" style="display: inline-flex;">
+            <input class="form-control" id="query" name="wishQuery" placeholder="Search" type="text" value="@ViewBag.Filter">
+            <button type="submit" class="btn btn-default">
+                <span class="fa fa-search"></span>
+            </button>
+        </form>
+    </div>
 </div>
 
 @if (Model.AlbumWishes.Any())
 {
-	<div data-toggle="collapse" data-parent="#accordion" href="#albums">
-		<div class="row panel panel-primary panel-collapse">
-			<div class="panel-heading">
-				<h4>
-					Albums
-					<span class="fa fa-chevron-circle-down"></span>
-				</h4>
-			</div>
-		</div>
-	</div>
-	<div id="albums" class="collapse in">
-		<div class="panel-body">
-			<table class="table table-striped table-hover">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>Completed</th>
-						<th>Title</th>
-						<th>Notes</th>
-					</tr>
-				</thead>
-				<tbody>
-					@for (var i = 0; i < Model.AlbumWishes.Count; i++)
-				{
-						<tr>
-							<td>@(i + 1)</td>
-							@if (!Model.AlbumWishes[i].Completed)
-							{
-								<td>
-									<a href="@Url.Action(MVC.Wish.FinishWish(Model.AlbumWishes[i].ID))" class="btn btn-sm btn-info">Done</a>
-								</td>
-							}
-							else
-							{
-								<td><span class="fa fa-check-circle"></span></td>
-							}
-							<td>@Model.AlbumWishes[i].Title</td>
-							<td>@Model.AlbumWishes[i].Notes</td>
-							<td>
-								<a href="@Url.Action(MVC.Wish.Edit(Model.AlbumWishes[i].ID))">
-									<span class="fa fa-pencil"></span>
-								</a>
-							</td>
-						</tr>
-				}
-				</tbody>
-			</table>
-		</div>
-	</div>
+    <div data-toggle="collapse" data-parent="#accordion" href="#albums">
+        <div class="row panel panel-primary panel-collapse">
+            <div class="panel-heading">
+                <h4>
+                    Albums
+                    <span class="fa fa-chevron-circle-down"></span>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div id="albums" class="collapse in">
+        <div class="panel-body">
+            @Html.Partial(MVC.Wish.Views._WishTablePartial, Model.AlbumWishes)
+        </div>
+    </div>
 }
 
 @if (Model.BookWishes.Any())
 {
-	<div data-toggle="collapse" data-parent="#accordion" href="#books">
-		<div class="row panel panel-primary panel-collapse">
-			<div class="panel-heading">
-				<h4>
-					Books
-					<span class="fa fa-chevron-circle-down"></span>
-				</h4>
-			</div>
-		</div>
-	</div>
-	<div id="books" class="collapse in">
-		<div class="panel-body">
-			<table class="table table-striped table-hover">
-				<thead>
-					<tr>
-						<th>#</th>
-						<td>Completed</td>
-						<th>Title</th>
-						<th>Notes</th>
-					</tr>
-				</thead>
-				<tbody>
-					@for (var i = 0; i < Model.BookWishes.Count; i++)
-				{
-						<tr>
-							<td>@(i + 1)</td>
-							@if (!Model.BookWishes[i].Completed)
-							{
-								<td>
-									<a href="@Url.Action(MVC.Wish.FinishWish(Model.BookWishes[i].ID))" class="btn btn-sm btn-info">Done</a>
-								</td>
-							}
-							else
-							{
-								<td><span class="fa fa-check-circle"></span></td>
-							}
-							<td>@Model.BookWishes[i].Title</td>
-							<td>@Model.BookWishes[i].Notes</td>
-							<td>
-								<a href="@Url.Action(MVC.Wish.Edit(Model.BookWishes[i].ID))">
-									<span class="fa fa-pencil"></span>
-								</a>
-							</td>
-						</tr>
-				}
-				</tbody>
-			</table>
-		</div>
-	</div>
+    <div data-toggle="collapse" data-parent="#accordion" href="#books">
+        <div class="row panel panel-primary panel-collapse">
+            <div class="panel-heading">
+                <h4>
+                    Books
+                    <span class="fa fa-chevron-circle-down"></span>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div id="books" class="collapse in">
+        <div class="panel-body">
+            @Html.Partial(MVC.Wish.Views._WishTablePartial, Model.BookWishes)
+        </div>
+    </div>
 }
 
 @if (Model.MovieWishes.Any())
 {
-	<div data-toggle="collapse" data-parent="#accordion" href="#movies">
-		<div class="row panel panel-primary panel-collapse">
-			<div class="panel-heading">
-				<h4>
-					Movies
-					<span class="fa fa-chevron-circle-down"></span>
-				</h4>
-			</div>
-		</div>
-	</div>
-	<div id="movies" class="collapse in">
-		<div class="panel-body">
-			<table class="table table-striped table-hover">
-				<thead>
-					<tr>
-						<th>#</th>
-						<td>Completed</td>
-						<th>Title</th>
-						<th>Notes</th>
-					</tr>
-				</thead>
-				<tbody>
-					@for (var i = 0; i < Model.MovieWishes.Count; i++)
-				{
-						<tr>
-							<td>@(i + 1)</td>
-							@if (!Model.MovieWishes[i].Completed)
-							{
-								<td>
-									<a href="@Url.Action(MVC.Wish.FinishWish(Model.MovieWishes[i].ID))" class="btn btn-sm btn-info">Done</a>
-								</td>
-							}
-							else
-							{
-								<td><span class="fa fa-check-circle"></span></td>
-							}
-							<td>@Model.MovieWishes[i].Title</td>
-							<td>@Model.MovieWishes[i].Notes</td>
-							<td>
-								<a href="@Url.Action(MVC.Wish.Edit(Model.MovieWishes[i].ID))">
-									<span class="fa fa-pencil"></span>
-								</a>
-							</td>
-						</tr>
-				}
-				</tbody>
-			</table>
-		</div>
-	</div>
+    <div data-toggle="collapse" data-parent="#accordion" href="#movies">
+        <div class="row panel panel-primary panel-collapse">
+            <div class="panel-heading">
+                <h4>
+                    Movies
+                    <span class="fa fa-chevron-circle-down"></span>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div id="movies" class="collapse in">
+        <div class="panel-body">
+            @Html.Partial(MVC.Wish.Views._WishTablePartial, Model.MovieWishes)
+        </div>
+    </div>
 }
 
 @if (Model.GameWishes.Any())
 {
-	<div data-toggle="collapse" data-parent="#accordion" href="#games">
-		<div class="row panel panel-primary panel-collapse">
-			<div class="panel-heading">
-				<h4>
-					Games
-					<span class="fa fa-chevron-circle-down"></span>
-				</h4>
-			</div>
-		</div>
-	</div>
-	<div id="games" class="collapse in">
-		<div class="panel-body">
-			<table class="table table-striped table-hover">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>Completed</th>
-						<th>Title</th>
-						<th>Notes</th>
-					</tr>
-				</thead>
-				<tbody>
-					@for (var i = 0; i < Model.GameWishes.Count; i++)
-				{
-						<tr>
-							<td>@(i + 1)</td>
-							@if (!Model.GameWishes[i].Completed)
-							{
-								<td>
-									<a href="@Url.Action(MVC.Wish.FinishWish(Model.GameWishes[i].ID))" class="btn btn-sm btn-info">Done</a>
-								</td>
-							}
-							else
-							{
-								<td><span class="fa fa-check-circle"></span></td>
-							}
-							<td>@Model.GameWishes[i].Title</td>
-							<td>@Model.GameWishes[i].Notes</td>
-							<td>
-								<a href="@Url.Action(MVC.Wish.Edit(Model.GameWishes[i].ID))">
-									<span class="fa fa-pencil"></span>
-								</a>
-							</td>
-						</tr>
-				}
-				</tbody>
-			</table>
-		</div>
-	</div>
-}@*@Html.PagedListPager(Model.Wishes, page => Url.Action("Index", new { wishQuery = ViewBag.query, filter = ViewBag.Filter, page }))*@
+    <div data-toggle="collapse" data-parent="#accordion" href="#games">
+        <div class="row panel panel-primary panel-collapse">
+            <div class="panel-heading">
+                <h4>
+                    Games
+                    <span class="fa fa-chevron-circle-down"></span>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div id="games" class="collapse in">
+        <div class="panel-body">
+            @Html.Partial(MVC.Wish.Views._WishTablePartial, Model.GameWishes)
+        </div>
+    </div>
+}
