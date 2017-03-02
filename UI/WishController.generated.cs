@@ -183,7 +183,6 @@ namespace UI.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string _Wish = "_Wish";
                 public readonly string _WishFormPartial = "_WishFormPartial";
                 public readonly string _WishTablePartial = "_WishTablePartial";
                 public readonly string Create = "Create";
@@ -191,7 +190,6 @@ namespace UI.Controllers
                 public readonly string Edit = "Edit";
                 public readonly string Index = "Index";
             }
-            public readonly string _Wish = "~/Views/Wish/_Wish.cshtml";
             public readonly string _WishFormPartial = "~/Views/Wish/_WishFormPartial.cshtml";
             public readonly string _WishTablePartial = "~/Views/Wish/_WishTablePartial.cshtml";
             public readonly string Create = "~/Views/Wish/Create.cshtml";

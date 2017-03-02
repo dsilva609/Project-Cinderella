@@ -10,10 +10,11 @@
 @Html.HiddenFor(m => m.DateModified)
 
 <div class="row panel-body">
-	@if (Model.DateModified != Convert.ToDateTime("1/1/1900") && Model.DateModified != DateTime.MinValue)
-	{
-		<div>Last Updated: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateModified)</div>
-	}
+    <div>Date Added: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateAdded)</div>
+    @if (Model.DateModified != Convert.ToDateTime("1/1/1900") && Model.DateModified != DateTime.MinValue)
+    {
+        <div>Last Updated: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateModified)</div>
+    }
 </div>
 
 <div class="row panel-body">

@@ -746,7 +746,6 @@
     <Content Include="Views\Wish\Create.cshtml" />
     <Content Include="Views\Wish\Edit.cshtml" />
     <Content Include="Views\Wish\Details.cshtml" />
-    <Content Include="Views\Wish\_Wish.cshtml" />
     <Content Include="Views\Wish\_WishFormPartial.cshtml" />
     <Content Include="Views\Wish\_WishTablePartial.cshtml" />
     <None Include="Web.Debug.config">

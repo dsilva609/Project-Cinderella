@@ -14,23 +14,24 @@
 @Html.HiddenFor(m => m.DateCompleted)
 
 <div class="row panel-body">
+    <div>Date Added: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateAdded)</div>
     @if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
     {
-        <div class="">Last Updated: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateUpdated)</div>
+        <div>Last Updated: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateUpdated)</div>
     }
-    
+
     <div class="col-md-6">
         @Html.LabelFor(m => m.CompletionStatus)
         @Html.EnumDropDownListFor(m => m.CompletionStatus, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.CompletionStatus, "", new { @class = "text-danger" })
     </div>
-    
+
     <div class="col-md-6">
         @Html.LabelFor(m => m.TimesCompleted)
         @Html.TextBoxFor(m => m.TimesCompleted, new { @class = "form-control", type = "number" })
         @Html.ValidationMessageFor(m => m.TimesCompleted, "", new { @class = "text-danger" })
     </div>
-    
+
     <div class="col-md-6 form-inline">
         <label>
             @Html.CheckBoxFor(m => m.CheckedOut) Checked Out?
@@ -75,7 +76,6 @@
                 </div>
             </div>
         }
-
     </div>
     <div class="panel-body">
         <div class="col-md-6">
@@ -155,7 +155,8 @@
                         <input class="form-control col-sm-2" type="text" name="@string.Format("Tracklist[{0}].title", @index)" value="@track.title" />
                         @Html.Hidden(string.Format("Tracklist[{0}].title", index), track.title)
                     </div>
-                </div>}
+                </div>
+            }
         </div>
     </div>
 }
