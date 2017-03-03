@@ -1,4 +1,5 @@
-﻿using BusinessLogic.Models;
+﻿using BusinessLogic.Enums;
+using BusinessLogic.Models;
 using BusinessLogic.Services.Interfaces;
 using Moq;
 using NUnit.Framework;
@@ -174,6 +175,16 @@ namespace UnitTests.UI.Controllers
             Assert.IsTrue(_controller.ClassUnderTest.ModelState.IsValid);
             Assert.AreEqual("Index", result.RouteValues["Action"]);
             _service.Verify(x => x.Edit(It.IsAny<Wish>()), Times.Never);
+        }
+
+        [Test]
+        public void ItRedirectsToCorrectControllerOnSearch()
+        {
+            _service.Setup(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>())).Returns(new Wish { ID = 666, UserID = "phonybologna", ItemType = ItemType.Book });
+
+            var result = _controller.ClassUnderTest.Search(666) as RedirectToRouteResult;
+
+            result.RouteValues["Controller"].ShouldBe("Book");
         }
     }
 }
