@@ -1,5 +1,6 @@
 ﻿using BusinessLogic.Enums;
 using BusinessLogic.Models;
+using BusinessLogic.Models.TMDBModels;
 using BusinessLogic.Services.Interfaces;
 using Moq;
 using NUnit.Framework;
@@ -150,6 +151,23 @@ namespace UnitTests.UI.Controllers
 
             //--Assert
             Assert.AreEqual(string.Empty, result.ViewName);
+        }
+
+        [Test]
+        public void ThatSearchForWishPopulatesModelCorrectly()
+        {
+            _session["query"] = null;
+            _session["wish"] = "Notebook";
+            _controller.Get<ITMDBService>()
+                .Expect(x => x.SearchMovies(Arg<string>.Is.Anything))
+                .Return(new List<TMDBMovie>());
+            _controller.Get<ITMDBService>()
+                .Expect(x => x.SearchTV(Arg<string>.Is.Anything))
+                .Return(new List<TMDBMovie>());
+
+            var result = _controller.ClassUnderTest.Search(new MovieSearchModel()) as ViewResult;
+
+            ((MovieSearchModel)result.Model).Title.ShouldBe("Notebook");
         }
     }
 }

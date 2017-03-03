@@ -1,4 +1,5 @@
 ﻿using BusinessLogic.Models;
+using BusinessLogic.Models.ComicVineModels;
 using BusinessLogic.Services.Interfaces;
 using Moq;
 using NUnit.Framework;
@@ -166,6 +167,23 @@ namespace UnitTests.UI.Controllers
 
             //--Assert
             Assert.AreEqual("Create", result.RouteValues["Action"]);
+        }
+
+        [Test]
+        public void ThatSearchForWishPopulatesModelCorrectly()
+        {
+            _session["query"] = null;
+            _session["wish"] = "Harry Potter";
+            _controller.Get<IGoogleBookService>()
+                .Expect(x => x.Search(Arg<string>.Is.Anything, Arg<string>.Is.Anything))
+                .Return(new List<Book>());
+            _controller.Get<IComicVineService>()
+                .Expect(x => x.Search(Arg<string>.Is.Anything))
+                .Return(new ComicVineResult());
+
+            var result = _controller.ClassUnderTest.Search(new BookSearchModel()) as ViewResult;
+
+            ((BookSearchModel)result.Model).Title.ShouldBe("Harry Potter");
         }
     }
 }

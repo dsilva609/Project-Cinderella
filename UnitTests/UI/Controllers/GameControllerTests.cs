@@ -1,10 +1,14 @@
 ﻿using BusinessLogic.Models;
+using BusinessLogic.Models.BGGModels;
+using BusinessLogic.Models.GiantBombModels;
 using BusinessLogic.Services.Interfaces;
 using Moq;
 using NUnit.Framework;
 using Rhino.Mocks;
+using Shouldly;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using UI.Models;
 using UnitTests.UI.Controllers.TestBases;
 
 namespace UnitTests.UI.Controllers
@@ -136,6 +140,21 @@ namespace UnitTests.UI.Controllers
 
             //--Assert
             Assert.AreEqual("Index", result.RouteValues["Action"]);
+        }
+
+        [Test]
+        public void ThatSearchForWishPopulatesModelCorrectly()
+        {
+            _session["query"] = null;
+            _session["wish"] = "Brutal Legend";
+            _controller.Get<IGiantBombService>()
+                .Expect(x => x.Search(Arg<string>.Is.Anything))
+                .Return(new GiantBombResult());
+            _controller.Get<IBGGService>().Expect(x => x.Search(Arg<string>.Is.Anything)).Return(new BGGGame());
+
+            var result = _controller.ClassUnderTest.Search(new GameSearchModel()) as ViewResult;
+
+            ((GameSearchModel)result.Model).Title.ShouldBe("Brutal Legend");
         }
     }
 }
