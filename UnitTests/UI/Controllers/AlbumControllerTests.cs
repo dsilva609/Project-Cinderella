@@ -1,4 +1,5 @@
 ﻿using BusinessLogic.Models;
+using BusinessLogic.Models.DiscogsModels;
 using BusinessLogic.Services.Interfaces;
 using Moq;
 using NUnit.Framework;
@@ -169,6 +170,20 @@ namespace UnitTests.UI.Controllers
 
             //--Assert
             Assert.AreEqual("Create", result.RouteValues["Action"]);
+        }
+
+        [Test]
+        public void ThatSearchForWishPopulatesModelCorrectly()
+        {
+            _session["query"] = null;
+            _session["wish"] = "Another Perfect Day";
+            _controller.Get<IDiscogsService>()
+                .Expect(x => x.Search(Arg<string>.Is.Anything, Arg<string>.Is.Anything))
+                .Return(new List<DiscogsResult>());
+
+            var result = _controller.ClassUnderTest.Search(new DiscogsSearchModel()) as ViewResult;
+
+            ((DiscogsSearchModel)result.Model).AlbumName.ShouldBe("Another Perfect Day");
         }
     }
 }
