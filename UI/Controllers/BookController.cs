@@ -15,13 +15,16 @@ namespace UI.Controllers
     public partial class BookController : ProjectCinderellaControllerBase
     {
         private readonly IBookService _service;
+        private readonly IWishService _wishService;
         private readonly IGoogleBookService _googleBookService;
         private readonly IComicVineService _comicVineService;
+
         private const int NUM_BOOKS_TO_GET = 25;
 
-        public BookController(IBookService service, IGoogleBookService googleBookService, IComicVineService comicVineService)
+        public BookController(IBookService service, IWishService wishService, IGoogleBookService googleBookService, IComicVineService comicVineService)
         {
             _service = service;
+            _wishService = wishService;
             _googleBookService = googleBookService;
             _comicVineService = comicVineService;
         }
@@ -86,6 +89,13 @@ namespace UI.Controllers
                 return View(book);
             }
             Session["query"] = null;
+            Session["wish"] = null;
+            if (Convert.ToInt32(Session["wishID"].ToString()) != 0)
+            {
+                _wishService.Delete(Convert.ToInt32(Session["wishID"].ToString()), User.Identity.GetUserId());
+                ShowStatusMessage(MessageTypeEnum.info, "Wish list has been updated", "Wish list");
+            }
+
             ShowStatusMessage(MessageTypeEnum.success, "New Book Added Successfully.", "Add Successful");
             return RedirectToAction(MVC.Book.Index());
         }
@@ -158,6 +168,7 @@ namespace UI.Controllers
             if (!string.IsNullOrWhiteSpace(searchModel.Author)) searchModel.Author = searchModel.Author.Trim();
             if (!string.IsNullOrWhiteSpace(searchModel.Title)) searchModel.Title = searchModel.Title.Trim();
             if (!string.IsNullOrWhiteSpace(Session["query"]?.ToString())) searchModel.Title = Session["query"].ToString();
+            if (!string.IsNullOrWhiteSpace(Session["wish"].ToString())) searchModel.Title = Session["wish"].ToString();
 
             if (Request.UrlReferrer?.LocalPath == "/Book/Search" && string.IsNullOrWhiteSpace(searchModel.Author) &&
                 string.IsNullOrWhiteSpace(searchModel.Title))

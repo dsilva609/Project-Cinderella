@@ -86,6 +86,12 @@ namespace UI.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.FinishWish);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Search()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Search);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public WishController Actions { get { return MVC.Wish; } }
@@ -108,6 +114,7 @@ namespace UI.Controllers
             public readonly string Details = "Details";
             public readonly string Delete = "Delete";
             public readonly string FinishWish = "FinishWish";
+            public readonly string Search = "Search";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -119,6 +126,7 @@ namespace UI.Controllers
             public const string Details = "Details";
             public const string Delete = "Delete";
             public const string FinishWish = "FinishWish";
+            public const string Search = "Search";
         }
 
 
@@ -170,6 +178,14 @@ namespace UI.Controllers
         public ActionParamsClass_FinishWish FinishWishParams { get { return s_params_FinishWish; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_FinishWish
+        {
+            public readonly string id = "id";
+        }
+        static readonly ActionParamsClass_Search s_params_Search = new ActionParamsClass_Search();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Search SearchParams { get { return s_params_Search; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Search
         {
             public readonly string id = "id";
         }
@@ -298,6 +314,18 @@ namespace UI.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.FinishWish);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             FinishWishOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void SearchOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Search(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Search);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            SearchOverride(callInfo, id);
             return callInfo;
         }
 

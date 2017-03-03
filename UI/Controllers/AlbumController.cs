@@ -16,12 +16,14 @@ namespace UI.Controllers
     {
         private readonly IAlbumService _service;
         private readonly IDiscogsService _discogsService;
+        private readonly IWishService _wishService;
         private const int NUM_ALBUMS_TO_GET = 25;
 
-        public AlbumController(IAlbumService service, IDiscogsService discogsService)
+        public AlbumController(IAlbumService service, IDiscogsService discogsService, IWishService wishService)
         {
             _service = service;
             _discogsService = discogsService;
+            _wishService = wishService;
         }
 
         [HttpGet]
@@ -94,6 +96,13 @@ namespace UI.Controllers
                     return View(model);
                 }
                 Session["query"] = null;
+
+                Session["wish"] = null;
+                if (Convert.ToInt32(Session["wishID"].ToString()) != 0)
+                {
+                    _wishService.Delete(Convert.ToInt32(Session["wishID"].ToString()), User.Identity.GetUserId());
+                    ShowStatusMessage(MessageTypeEnum.info, "Wish list has been updated", "Wish list");
+                }
                 ShowStatusMessage(MessageTypeEnum.success, "New Album Added Successfully.", "Add Successful");
                 return RedirectToAction(MVC.Album.Index());
             }
@@ -204,6 +213,7 @@ namespace UI.Controllers
             if (!string.IsNullOrWhiteSpace(searchModel.Artist)) searchModel.Artist = searchModel.Artist.Trim();
             if (!string.IsNullOrWhiteSpace(searchModel.AlbumName)) searchModel.AlbumName = searchModel.AlbumName.Trim();
             if (!string.IsNullOrWhiteSpace(Session["query"]?.ToString())) searchModel.AlbumName = Session["query"].ToString();
+            if (!string.IsNullOrWhiteSpace(Session["wish"].ToString())) searchModel.AlbumName = Session["wish"].ToString();
 
             if (Request.UrlReferrer?.LocalPath == "/Album/Search" && string.IsNullOrWhiteSpace(searchModel.Artist) &&
                 string.IsNullOrWhiteSpace(searchModel.AlbumName))

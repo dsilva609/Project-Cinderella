@@ -170,5 +170,16 @@ namespace UI.Controllers
             ShowStatusMessage(MessageTypeEnum.success, string.Empty, "Wish Completed");
             return RedirectToAction(MVC.Wish.Index());
         }
+
+        [Authorize]
+        [HttpGet]
+        public virtual ActionResult Search(int id)
+        {
+            var model = _service.GetByID(id, User.Identity.GetUserId());
+            Session["wish"] = model.Title;
+            Session["wishID"] = model.ID;
+
+            return RedirectToAction("Search", model.ItemType.ToString());
+        }
     }
 }

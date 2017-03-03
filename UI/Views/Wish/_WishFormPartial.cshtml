@@ -18,41 +18,47 @@
 </div>
 
 <div class="row panel-body">
-	<div class="col-sm-6">
-		@Html.LabelFor(m => m.Title)
-		@Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
-		@Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
-	</div>
+    <div class="col-sm-6">
+        @Html.LabelFor(m => m.Title)
+        @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+    </div>
 
-	<div class="col-sm-6">
-		@Html.LabelFor(m => m.ItemType)
-		@Html.EnumDropDownListFor(m => m.ItemType, new { @class = "form-control" })
-		@Html.ValidationMessageFor(m => m.ItemType, "", new { @class = "text-danger" })
-	</div>
+    <div class="col-sm-6">
+        @Html.LabelFor(m => m.ItemType)
+        @Html.EnumDropDownListFor(m => m.ItemType, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ItemType, "", new { @class = "text-danger" })
+    </div>
 
-	<div class="col-sm-6">
-		@Html.LabelFor(m => m.Notes)
-		@Html.TextAreaFor(m => m.Notes, new { @class = "form-control" })
-		@Html.ValidationMessageFor(m => m.Notes, "", new { @class = "text-danger" })
-	</div>
+    <div class="col-sm-6">
+        @Html.LabelFor(m => m.Notes)
+        @Html.TextAreaFor(m => m.Notes, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Notes, "", new { @class = "text-danger" })
+    </div>
 
-	<div class="col-sm-6">
-		@Html.LabelFor(m => m.Category)
-		@Html.TextBoxFor(m => m.Category, new { @class = "form-control" })
-		@Html.ValidationMessageFor(m => m.Category, "", new { @class = "text-danger" })
-	</div>
+    <div class="col-sm-6">
+        @Html.LabelFor(m => m.Category)
+        @Html.TextBoxFor(m => m.Category, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Category, "", new { @class = "text-danger" })
+    </div>
 
-	<div class="col-sm-6">
-		@Html.LabelFor(m => m.ApiID)
-		@Html.TextBoxFor(m => m.ApiID, new { @class = "form-control" })
-		@Html.ValidationMessageFor(m => m.ApiID, "", new { @class = "text-danger" })
-	</div>
+    <div class="col-sm-6">
+        @Html.LabelFor(m => m.ApiID)
+        @Html.TextBoxFor(m => m.ApiID, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ApiID, "", new { @class = "text-danger" })
+    </div>
 	
-	<div class="col-sm-6">
-		@Html.LabelFor(m => m.Completed)
-		@Html.CheckBoxFor(m => m.Completed, new { @class = "form-control" })
-		@Html.ValidationMessageFor(m => m.Completed, "", new { @class = "text-danger" })
-	</div>
+    <div class="col-sm-6">
+        @Html.LabelFor(m => m.Completed)
+        @Html.CheckBoxFor(m => m.Completed, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Completed, "", new { @class = "text-danger" })
+    </div>
+    
+   
+</div>
+
+<div class="row panel-body">
+    @Html.ActionLink("Search for wish", MVC.Wish.Search(Model.ID), new { @class = "btn btn-default" })
 </div>
 
 <div class="row panel-body">

@@ -17,14 +17,16 @@ namespace UI.Controllers
         private readonly IGameService _service;
         private readonly IGiantBombService _giantBombService;
         private readonly IBGGService _bggService;
+        private readonly IWishService _wishService;
         private const int NUM_GAMES_TO_GET = 25;
 
-        public GameController(IGameService service, IGiantBombService giantBombService, IBGGService bggService)
+        public GameController(IGameService service, IGiantBombService giantBombService, IBGGService bggService, IWishService wishService)
 
         {
             _service = service;
             _giantBombService = giantBombService;
             _bggService = bggService;
+            _wishService = wishService;
         }
 
         [HttpGet]
@@ -90,6 +92,12 @@ namespace UI.Controllers
                 return View(game);
             }
             Session["query"] = null;
+            Session["wish"] = null;
+            if (Convert.ToInt32(Session["wishID"].ToString()) != 0)
+            {
+                _wishService.Delete(Convert.ToInt32(Session["wishID"].ToString()), User.Identity.GetUserId());
+                ShowStatusMessage(MessageTypeEnum.info, "Wish list has been updated", "Wish list");
+            }
             ShowStatusMessage(MessageTypeEnum.success, "New Game Added Successfully.", "Add Successful");
             return RedirectToAction(MVC.Game.Index());
         }
@@ -162,6 +170,7 @@ namespace UI.Controllers
         {
             if (!string.IsNullOrWhiteSpace(searchModel.Title)) searchModel.Title = searchModel.Title.Trim();
             if (!string.IsNullOrWhiteSpace(Session["query"]?.ToString())) searchModel.Title = Session["query"].ToString();
+            if (!string.IsNullOrWhiteSpace(Session["wish"].ToString())) searchModel.Title = Session["wish"].ToString();
 
             if (Request.UrlReferrer?.LocalPath == "/Game/Search" && string.IsNullOrWhiteSpace(searchModel.Title))
             {

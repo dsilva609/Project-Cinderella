@@ -16,12 +16,14 @@ namespace UI.Controllers
     {
         private readonly IMovieService _service;
         private readonly ITMDBService _tmdbService;
+        private readonly IWishService _wishService;
         private const int NUM_MOVIES_TO_GET = 25;
 
-        public MovieController(IMovieService service, ITMDBService tmdbService)
+        public MovieController(IMovieService service, ITMDBService tmdbService, IWishService wishService)
         {
             _service = service;
             _tmdbService = tmdbService;
+            _wishService = wishService;
         }
 
         [HttpGet]
@@ -86,6 +88,12 @@ namespace UI.Controllers
                 return View(movie);
             }
             Session["query"] = null;
+            Session["wish"] = null;
+            if (Convert.ToInt32(Session["wishID"].ToString()) != 0)
+            {
+                _wishService.Delete(Convert.ToInt32(Session["wishID"].ToString()), User.Identity.GetUserId());
+                ShowStatusMessage(MessageTypeEnum.info, "Wish list has been updated", "Wish list");
+            }
             ShowStatusMessage(MessageTypeEnum.success, "New Movie Added Successfully.", "Add Successful");
             return RedirectToAction(MVC.Movie.Index());
         }
@@ -157,6 +165,7 @@ namespace UI.Controllers
         {
             if (!string.IsNullOrWhiteSpace(searchModel.Title)) searchModel.Title = searchModel.Title.Trim();
             if (!string.IsNullOrWhiteSpace(Session["query"]?.ToString())) searchModel.Title = Session["query"].ToString();
+            if (!string.IsNullOrWhiteSpace(Session["wish"].ToString())) searchModel.Title = Session["wish"].ToString();
 
             if (Request.UrlReferrer?.LocalPath == "/Movie/Search" && string.IsNullOrWhiteSpace(searchModel.Title))
             {
