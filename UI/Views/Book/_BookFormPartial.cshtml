@@ -13,7 +13,10 @@
 @Html.HiddenFor(m => m.DateCompleted)
 
 <div class="row panel-body">
-    <div>Date Added: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateAdded)</div>
+    @if (Model.DateAdded != Convert.ToDateTime("1/1/1900") && Model.DateAdded != DateTime.MinValue)
+    {
+        <div>Date Added: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateAdded)</div>
+    }
     @if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
     {
         <div class="">Last Updated: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateUpdated)</div>
@@ -63,8 +66,8 @@
                 <a href="@Model.ImageUrl" class="image-popup img-fluid fh5co-board-img">
                     <img src="@Model.ImageUrl" class="img-rounded" style="height: 100%; width: 100%;" @*style="height: 300px; width: 200px;"*@>
                 </a>
-            </div>}
-
+            </div>
+        }
 
         <div class="col-sm-6">
             @Html.LabelFor(m => m.Author)
@@ -219,7 +222,6 @@
             @Html.CheckBoxFor(m => m.IsNew, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.IsNew, "", new { @class = "text-danger" })
         </div>
-
 
         <div class="col-md-6">
             @Html.LabelFor(m => m.CountryPurchased)

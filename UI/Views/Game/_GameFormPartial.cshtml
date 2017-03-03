@@ -15,7 +15,10 @@
 @Html.HiddenFor(m => m.BGGID)
 
 <div class="row panel-body">
-    <div>Date Added: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateAdded)</div>
+    @if (Model.DateAdded != Convert.ToDateTime("1/1/1900") && Model.DateAdded != DateTime.MinValue)
+    {
+        <div>Date Added: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateAdded)</div>
+    }
     @if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
     {
         <div class="">Last Updated: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateUpdated)</div>
@@ -208,7 +211,6 @@
             @Html.CheckBoxFor(m => m.IsNew, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.IsNew, "", new { @class = "text-danger" })
         </div>
-
 
         <div class="col-md-6">
             @Html.LabelFor(m => m.CountryPurchased)
