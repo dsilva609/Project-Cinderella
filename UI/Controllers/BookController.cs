@@ -168,7 +168,7 @@ namespace UI.Controllers
             if (!string.IsNullOrWhiteSpace(searchModel.Author)) searchModel.Author = searchModel.Author.Trim();
             if (!string.IsNullOrWhiteSpace(searchModel.Title)) searchModel.Title = searchModel.Title.Trim();
             if (!string.IsNullOrWhiteSpace(Session["query"]?.ToString())) searchModel.Title = Session["query"].ToString();
-            if (!string.IsNullOrWhiteSpace(Session["wish"].ToString())) searchModel.Title = Session["wish"].ToString();
+            if (!string.IsNullOrWhiteSpace(Session["wish"]?.ToString())) searchModel.Title = Session["wish"].ToString();
 
             if (Request.UrlReferrer?.LocalPath == "/Book/Search" && string.IsNullOrWhiteSpace(searchModel.Author) &&
                 string.IsNullOrWhiteSpace(searchModel.Title))
