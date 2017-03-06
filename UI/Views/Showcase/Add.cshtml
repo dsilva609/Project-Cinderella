@@ -1,0 +1,19 @@
+﻿@using BusinessLogic.Enums
+@using UI.Common
+
+<h2>
+    Add To Showcase
+</h2>
+
+<div class="text-xs-center">
+    @using (Html.BeginForm(MVC.Showcase.SearchItems(), FormMethod.Get, new { @style = "display:inline-flex;" }))
+    {
+        @Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
+
+        @Html.DropDownList("type", Enum.GetNames(typeof(ItemType)).Select(val => new SelectListItem { Text = val, Value = val, Selected = User.Identity.GetDefaultItemType() == val }).ToList(), new { @class = "form-control" })
+
+        <button type="submit" class="btn btn-default">
+            <span class="fa fa-arrow-right"></span>
+        </button>
+    }
+</div>

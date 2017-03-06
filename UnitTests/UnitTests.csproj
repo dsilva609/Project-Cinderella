@@ -195,6 +195,7 @@
     <Compile Include="UI\Controllers\BookControllerTests.cs" />
     <Compile Include="UI\Controllers\GameControllerTests.cs" />
     <Compile Include="UI\Controllers\ProjectCinderellaControllerBaseTests.cs" />
+    <Compile Include="UI\Controllers\ShowcaseControllerTests.cs" />
     <Compile Include="UI\Controllers\StatisticsControllerTests.cs" />
     <Compile Include="UI\Controllers\TestBases\BookControllerTestBase.cs" />
     <Compile Include="UI\Controllers\TestBases\ControllerTestBase.cs" />
@@ -208,6 +209,7 @@
     <Compile Include="UI\Controllers\MovieControllerTests.cs" />
     <Compile Include="UI\Controllers\TestBases\MovieControllerTestBase.cs" />
     <Compile Include="UI\Controllers\TestBases\ProjectCinderellaControllerBaseTestBase.cs" />
+    <Compile Include="UI\Controllers\TestBases\ShowcaseControllerTestBase.cs" />
     <Compile Include="UI\Controllers\TestBases\StatisticsControllerTestBase.cs" />
     <Compile Include="UI\Controllers\TestBases\WishControllerTestBase.cs" />
     <Compile Include="UI\Controllers\WishControllerTests.cs" />

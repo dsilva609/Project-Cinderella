@@ -748,6 +748,8 @@
     <Content Include="Views\Wish\Details.cshtml" />
     <Content Include="Views\Wish\_WishFormPartial.cshtml" />
     <Content Include="Views\Wish\_WishTablePartial.cshtml" />
+    <Content Include="Views\Showcase\Index.cshtml" />
+    <Content Include="Views\Showcase\Add.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -801,6 +803,7 @@
     <Compile Include="Controllers\ElmahController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ShowcaseController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\WishController.cs" />
     <Compile Include="ElmahController.generated.cs">
@@ -850,6 +853,7 @@
     <Compile Include="Models\MovieViewModel.cs" />
     <Compile Include="Models\AlbumViewModel.cs" />
     <Compile Include="Models\PurchaseInfoViewModel.cs" />
+    <Compile Include="Models\ShowcaseViewModel.cs" />
     <Compile Include="Models\StatisticsViewModel.cs" />
     <Compile Include="Models\StatsViewModel.cs" />
     <Compile Include="Models\Toastr.cs" />
@@ -859,6 +863,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShowcaseController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />

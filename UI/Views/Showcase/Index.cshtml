@@ -1,0 +1,16 @@
+﻿@model UI.Models.ShowcaseViewModel
+@{
+    ViewBag.Title = Model.ViewTitle;
+}
+
+<div class="row">
+    <div class="h2 col-md-5">
+        Item Showcase
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a class="btn btn-default" href="@Url.Action(MVC.Showcase.Add())" style="padding-top: 1.25em;" contenteditable="false">
+                <span class="fa fa-plus"></span>
+            </a>
+        }
+    </div>
+</div>
