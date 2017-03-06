@@ -89,7 +89,7 @@ namespace UI.Controllers
             }
             Session["query"] = null;
             Session["wish"] = null;
-            if (Convert.ToInt32(Session["wishID"].ToString()) != 0)
+            if (Convert.ToInt32(Session["wishID"]?.ToString()) != 0)
             {
                 _wishService.Delete(Convert.ToInt32(Session["wishID"].ToString()), User.Identity.GetUserId());
                 ShowStatusMessage(MessageTypeEnum.info, "Wish list has been updated", "Wish list");
