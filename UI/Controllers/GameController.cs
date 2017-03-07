@@ -200,5 +200,29 @@ namespace UI.Controllers
 
             return RedirectToAction(MVC.Game.Create());
         }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public virtual ActionResult AddToShowcase(int id)
+        {
+            var game = _service.GetByID(id, User.Identity.GetUserId());
+            game.IsShowcased = true;
+            _service.Edit(game);
+
+            ShowStatusMessage(MessageTypeEnum.info, "Game added to showcase", "Showcase");
+            return RedirectToAction(MVC.Showcase.Index());
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public virtual ActionResult RemoveFromShowcase(int id)
+        {
+            var game = _service.GetByID(id, User.Identity.GetUserId());
+            game.IsShowcased = false;
+            _service.Edit(game);
+
+            ShowStatusMessage(MessageTypeEnum.info, "Game removed from showcase", "Showcase");
+            return RedirectToAction(MVC.Showcase.Index());
+        }
     }
 }

@@ -230,5 +230,29 @@ namespace UI.Controllers
             ViewBag.Title = "Album Search";
             return View(searchModel);
         }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public virtual ActionResult AddToShowcase(int id)
+        {
+            var album = _service.GetByID(id, User.Identity.GetUserId());
+            album.IsShowcased = true;
+            _service.Edit(album);
+
+            ShowStatusMessage(MessageTypeEnum.info, "Album added to showcase", "Showcase");
+            return RedirectToAction(MVC.Showcase.Index());
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public virtual ActionResult RemoveFromShowcase(int id)
+        {
+            var album = _service.GetByID(id, User.Identity.GetUserId());
+            album.IsShowcased = false;
+            _service.Edit(album);
+
+            ShowStatusMessage(MessageTypeEnum.info, "Album removed from showcase", "Showcase");
+            return RedirectToAction(MVC.Showcase.Index());
+        }
     }
 }

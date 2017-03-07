@@ -98,6 +98,18 @@ namespace UI.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Search);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult AddToShowcase()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddToShowcase);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult RemoveFromShowcase()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RemoveFromShowcase);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public AlbumController Actions { get { return MVC.Album; } }
@@ -122,6 +134,8 @@ namespace UI.Controllers
             public readonly string Details = "Details";
             public readonly string Delete = "Delete";
             public readonly string Search = "Search";
+            public readonly string AddToShowcase = "AddToShowcase";
+            public readonly string RemoveFromShowcase = "RemoveFromShowcase";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -135,6 +149,8 @@ namespace UI.Controllers
             public const string Details = "Details";
             public const string Delete = "Delete";
             public const string Search = "Search";
+            public const string AddToShowcase = "AddToShowcase";
+            public const string RemoveFromShowcase = "RemoveFromShowcase";
         }
 
 
@@ -204,6 +220,22 @@ namespace UI.Controllers
         public class ActionParamsClass_Search
         {
             public readonly string searchModel = "searchModel";
+        }
+        static readonly ActionParamsClass_AddToShowcase s_params_AddToShowcase = new ActionParamsClass_AddToShowcase();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_AddToShowcase AddToShowcaseParams { get { return s_params_AddToShowcase; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_AddToShowcase
+        {
+            public readonly string id = "id";
+        }
+        static readonly ActionParamsClass_RemoveFromShowcase s_params_RemoveFromShowcase = new ActionParamsClass_RemoveFromShowcase();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_RemoveFromShowcase RemoveFromShowcaseParams { get { return s_params_RemoveFromShowcase; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_RemoveFromShowcase
+        {
+            public readonly string id = "id";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -360,6 +392,30 @@ namespace UI.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Search);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "searchModel", searchModel);
             SearchOverride(callInfo, searchModel);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void AddToShowcaseOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult AddToShowcase(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddToShowcase);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            AddToShowcaseOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void RemoveFromShowcaseOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult RemoveFromShowcase(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RemoveFromShowcase);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            RemoveFromShowcaseOverride(callInfo, id);
             return callInfo;
         }
 

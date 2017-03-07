@@ -169,5 +169,33 @@ namespace UnitTests.UI.Controllers
 
             ((MovieSearchModel)result.Model).Title.ShouldBe("Notebook");
         }
+
+        [Test]
+        public void ItAddsAnMovieToShowcase()
+        {
+            _service.Setup(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>())).Returns(new Movie());
+
+            var result = _controller.ClassUnderTest.AddToShowcase(1) as RedirectToRouteResult;
+
+            _service.Verify(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>()), Times.Once);
+            _service.Verify(x => x.Edit(It.IsAny<Movie>()), Times.Once);
+
+            result.RouteValues["Action"].ShouldBe("Index");
+            result.RouteValues["Controller"].ShouldBe("Showcase");
+        }
+
+        [Test]
+        public void ItRemovesAnMovieFromTheShowcase()
+        {
+            _service.Setup(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>())).Returns(new Movie());
+
+            var result = _controller.ClassUnderTest.RemoveFromShowcase(1) as RedirectToRouteResult;
+
+            _service.Verify(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>()), Times.Once);
+            _service.Verify(x => x.Edit(It.IsAny<Movie>()), Times.Once);
+
+            result.RouteValues["Action"].ShouldBe("Index");
+            result.RouteValues["Controller"].ShouldBe("Showcase");
+        }
     }
 }

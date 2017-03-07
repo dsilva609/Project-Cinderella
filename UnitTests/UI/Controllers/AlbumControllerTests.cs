@@ -185,5 +185,33 @@ namespace UnitTests.UI.Controllers
 
             ((DiscogsSearchModel)result.Model).AlbumName.ShouldBe("Another Perfect Day");
         }
+
+        [Test]
+        public void ItAddsAnAlbumToShowcase()
+        {
+            _service.Setup(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>())).Returns(new Album());
+
+            var result = _controller.ClassUnderTest.AddToShowcase(1) as RedirectToRouteResult;
+
+            _service.Verify(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>()), Times.Once);
+            _service.Verify(x => x.Edit(It.IsAny<Album>()), Times.Once);
+
+            result.RouteValues["Action"].ShouldBe("Index");
+            result.RouteValues["Controller"].ShouldBe("Showcase");
+        }
+
+        [Test]
+        public void ItRemovesAnAlbumFromTheShowcase()
+        {
+            _service.Setup(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>())).Returns(new Album());
+
+            var result = _controller.ClassUnderTest.RemoveFromShowcase(1) as RedirectToRouteResult;
+
+            _service.Verify(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>()), Times.Once);
+            _service.Verify(x => x.Edit(It.IsAny<Album>()), Times.Once);
+
+            result.RouteValues["Action"].ShouldBe("Index");
+            result.RouteValues["Controller"].ShouldBe("Showcase");
+        }
     }
 }

@@ -18,6 +18,7 @@ namespace UI.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public virtual ActionResult Add()
         {
             ViewBag.Title = "Add";
@@ -26,6 +27,7 @@ namespace UI.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public virtual ActionResult SearchItems(string query, ItemType type)
         {
             Session["query"] = query.Trim();

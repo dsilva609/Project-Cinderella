@@ -202,5 +202,29 @@ namespace UI.Controllers
 
             return RedirectToAction(MVC.Movie.Create());
         }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public virtual ActionResult AddToShowcase(int id)
+        {
+            var movie = _service.GetByID(id, User.Identity.GetUserId());
+            movie.IsShowcased = true;
+            _service.Edit(movie);
+
+            ShowStatusMessage(MessageTypeEnum.info, "Title added to showcase", "Showcase");
+            return RedirectToAction(MVC.Showcase.Index());
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public virtual ActionResult RemoveFromShowcase(int id)
+        {
+            var movie = _service.GetByID(id, User.Identity.GetUserId());
+            movie.IsShowcased = false;
+            _service.Edit(movie);
+
+            ShowStatusMessage(MessageTypeEnum.info, "Title removed from showcase", "Showcase");
+            return RedirectToAction(MVC.Showcase.Index());
+        }
     }
 }

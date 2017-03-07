@@ -165,8 +165,6 @@ namespace UnitTests.UI.Controllers
         {
             SetupAuthorization("none", false, false);
             _service.Setup(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>())).Returns(new Wish { ID = 666, UserID = "phonybologna" });
-            //_controller.Get<IWishService>().Expect(x => x.GetByID(Arg<int>.Is.Anything, Arg<string>.Is.Anything))
-            //  .Return(new Wish { ID = 666 });
 
             //--Act
             var result = _controller.ClassUnderTest.FinishWish(666) as RedirectToRouteResult;
@@ -180,7 +178,8 @@ namespace UnitTests.UI.Controllers
         [Test]
         public void ItRedirectsToCorrectControllerOnSearch()
         {
-            _service.Setup(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>())).Returns(new Wish { ID = 666, UserID = "phonybologna", ItemType = ItemType.Book });
+            _service.Setup(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>()))
+                .Returns(new Wish { ID = 666, UserID = "phonybologna", ItemType = ItemType.Book });
 
             var result = _controller.ClassUnderTest.Search(666) as RedirectToRouteResult;
 

@@ -200,5 +200,29 @@ namespace UI.Controllers
 
             return RedirectToAction(MVC.Book.Create());
         }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public virtual ActionResult AddToShowcase(int id)
+        {
+            var book = _service.GetByID(id, User.Identity.GetUserId());
+            book.IsShowcased = true;
+            _service.Edit(book);
+
+            ShowStatusMessage(MessageTypeEnum.info, "Book added to showcase", "Showcase");
+            return RedirectToAction(MVC.Showcase.Index());
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public virtual ActionResult RemoveFromShowcase(int id)
+        {
+            var book = _service.GetByID(id, User.Identity.GetUserId());
+            book.IsShowcased = false;
+            _service.Edit(book);
+
+            ShowStatusMessage(MessageTypeEnum.info, "Book removed from showcase", "Showcase");
+            return RedirectToAction(MVC.Showcase.Index());
+        }
     }
 }

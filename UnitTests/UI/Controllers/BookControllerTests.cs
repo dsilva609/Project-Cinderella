@@ -185,5 +185,33 @@ namespace UnitTests.UI.Controllers
 
             ((BookSearchModel)result.Model).Title.ShouldBe("Harry Potter");
         }
+
+        [Test]
+        public void ItAddsAnBookToShowcase()
+        {
+            _service.Setup(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>())).Returns(new Book());
+
+            var result = _controller.ClassUnderTest.AddToShowcase(1) as RedirectToRouteResult;
+
+            _service.Verify(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>()), Times.Once);
+            _service.Verify(x => x.Edit(It.IsAny<Book>()), Times.Once);
+
+            result.RouteValues["Action"].ShouldBe("Index");
+            result.RouteValues["Controller"].ShouldBe("Showcase");
+        }
+
+        [Test]
+        public void ItRemovesAnBookFromTheShowcase()
+        {
+            _service.Setup(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>())).Returns(new Book());
+
+            var result = _controller.ClassUnderTest.RemoveFromShowcase(1) as RedirectToRouteResult;
+
+            _service.Verify(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>()), Times.Once);
+            _service.Verify(x => x.Edit(It.IsAny<Book>()), Times.Once);
+
+            result.RouteValues["Action"].ShouldBe("Index");
+            result.RouteValues["Controller"].ShouldBe("Showcase");
+        }
     }
 }

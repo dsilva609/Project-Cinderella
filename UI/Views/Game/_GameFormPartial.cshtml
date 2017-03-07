@@ -36,11 +36,29 @@
         @Html.ValidationMessageFor(m => m.TimesCompleted, "", new { @class = "text-danger" })
     </div>
 
-    <div class="col-md-6 form-inline">
-        <label>
-            @Html.CheckBoxFor(m => m.CheckedOut) Checked Out?
-        </label>
-        @Html.ValidationMessageFor(m => m.CheckedOut, "", new { @class = "text-danger" })
+    <div class="row">
+        <div class="col-md-6 form-inline">
+            <label>
+                @Html.CheckBoxFor(m => m.CheckedOut) Checked Out?
+            </label>
+            @Html.ValidationMessageFor(m => m.CheckedOut, "", new { @class = "text-danger" })
+        </div>
+
+        @if (Model.ID > 0)
+        {
+            if (!Model.IsShowcased)
+            {
+                <div class="col-md-6">
+                    @Html.ActionLink("Add to Showcase", MVC.Game.AddToShowcase(Model.ID), new { @class = "btn btn-default" })
+                </div>
+            }
+            else
+            {
+                <div class="col-md-6">
+                    @Html.ActionLink("Remove from Showcase", MVC.Game.RemoveFromShowcase(Model.ID), new { @class = "btn btn-danger" })
+                </div>
+            }
+        }
     </div>
 </div>
 
