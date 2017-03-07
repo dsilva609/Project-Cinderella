@@ -28,9 +28,6 @@ namespace UI.Controllers
     public partial class ShowcaseController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ShowcaseController() { }
-
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected ShowcaseController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]

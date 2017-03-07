@@ -12,5 +12,41 @@
                 <span class="fa fa-plus"></span>
             </a>
         }
+
+        <h2>
+            Albums
+        </h2>
+        <div class="container">
+            @foreach (var album in Model.Albums)
+            {
+                @Html.Partial(MVC.Album.Views._Album, album)
+            }
+        </div>
+
+        <h2>
+            Books
+        </h2>
+        <div class="container">
+            @foreach (var book in Model.Books)
+            {
+                @Html.Partial(MVC.Book.Views._Book, book)
+            }
+        </div>
+        
+        <h2>Games</h2>
+        <div class="container">
+            @foreach (var game in Model.Games)
+            {
+                @Html.Partial(MVC.Game.Views._Game, game)
+            }
+        </div>
+
+        <h2>Movies/TV</h2>
+        <div class="container">
+            @foreach (var movie in Model.Movies)
+            {
+                @Html.Partial(MVC.Movie.Views._Movie, movie)
+            }
+        </div>
     </div>
 </div>
