@@ -50,15 +50,17 @@
                 <li>Don't know if you already own something? Use it to prevent getting duplicates when you're out searching.</li>
                 <li>Happy hunting!</li>
             </ul>
-	        <ul class="col-sm-6">
-		        <li class="h3">See what's been collected so far: <a href="@Url.Action(MVC.Statistics.Index())"><span class="fa fa-trophy"></span> Stats</a></li>
-	        </ul>
-			@if (User.Identity.IsAuthenticated)
-			{
-				<ul class="col-sm-6">
-					<li class="h3">See what's on your wish list: <a href="@Url.Action(MVC.Wish.Index())"><span class="fa fa-star"></span> Wish List</a></li>
-				</ul>
-			}
+            <ul class="col-sm-6">
+                <li class="h3">See what's been collected so far: <a href="@Url.Action(MVC.Statistics.Index())"><span class="fa fa-trophy"></span> Stats</a></li>
+            </ul>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <ul class="col-sm-6">
+                    <li class="h3">See what's on your wish list: <a href="@Url.Action(MVC.Wish.Index())"><span class="fa fa-star"></span> Wish List</a></li>
+                </ul>}
+            <ul class="col-sm-6">
+                <li class="h3">View the <a href="@Url.Action(MVC.Showcase.Index())"><span class="fa fa-certificate"></span> Showcase</a></li>
+            </ul>
         </div>
     </div>
 </div>

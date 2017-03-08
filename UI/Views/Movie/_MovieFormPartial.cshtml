@@ -95,18 +95,6 @@
         }
 
         <div class="col-sm-6">
-            @Html.LabelFor(m => m.Title)
-            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="col-sm-6">
-            @Html.LabelFor(m => m.Director)
-            @Html.TextBoxFor(m => m.Director, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Director, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="col-sm-6">
             @Html.LabelFor(m => m.Distributor)
             @Html.TextBoxFor(m => m.Distributor, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Distributor, "", new { @class = "text-danger" })

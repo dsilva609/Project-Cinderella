@@ -6,7 +6,7 @@
 <div class="row">
     <div class="h2 col-md-5">
         Item Showcase
-        @if (User.Identity.IsAuthenticated)
+        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
         {
             <a class="btn btn-default" href="@Url.Action(MVC.Showcase.Add())" style="padding-top: 1.25em;" contenteditable="false">
                 <span class="fa fa-plus"></span>
@@ -17,36 +17,120 @@
             Albums
         </h2>
         <div class="container">
-            @foreach (var album in Model.Albums)
-            {
-                @Html.Partial(MVC.Album.Views._Album, album)
-            }
+            <div id="albumCarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <a href="@Url.Action(MVC.Album.Details(Model.Albums[0].ID))">
+                            <img class="d-block img-fluid" src="@Model.Albums[0].ImageUrl" alt="@(Model.Albums[0].Artist + "-" + Model.Albums[0].Title)">
+                        </a>
+                    </div>
+                    @for (var i = 1; i < Model.Albums.Count; i++)
+                    {
+                        <div class="item">
+                            <a href="@Url.Action(MVC.Album.Details(Model.Albums[i].ID))">
+                                <img class="d-block img-fluid" src="@Model.Albums[i].ImageUrl" alt="@(Model.Albums[i].Artist + "-" + Model.Albums[i].Title)">
+                            </a>
+                        </div>
+                    }
+                </div>
+                <a class="carousel-control-prev" href="#albumCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#albumCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
         </div>
 
         <h2>
             Books
         </h2>
         <div class="container">
-            @foreach (var book in Model.Books)
-            {
-                @Html.Partial(MVC.Book.Views._Book, book)
-            }
+            <div id="bookCarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <a href="@Url.Action(MVC.Book.Details(Model.Books[0].ID))">
+                            <img class="d-block img-fluid" src="@Model.Books[0].ImageUrl" alt="@(Model.Books[0].Author + "-" + Model.Books[0].Title)">
+                        </a>
+                    </div>
+                    @for (var i = 1; i < Model.Books.Count; i++)
+                    {
+                        <div class="item">
+                            <a href="@Url.Action(MVC.Book.Details(Model.Books[i].ID))">
+                                <img class="d-block img-fluid" src="@Model.Books[i].ImageUrl" alt="@(Model.Books[i].Author + "-" + Model.Books[i].Title)">
+                            </a>
+                        </div>
+                    }
+                </div>
+                <a class="carousel-control-prev" href="#bookCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#bookCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
         </div>
-        
+
         <h2>Games</h2>
         <div class="container">
-            @foreach (var game in Model.Games)
-            {
-                @Html.Partial(MVC.Game.Views._Game, game)
-            }
+            <div id="gameCarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <a href="@Url.Action(MVC.Game.Details(Model.Games[0].ID))">
+                            <img class="d-block img-fluid" src="@Model.Games[0].ImageUrl" alt="@Model.Games[0].Title">
+                        </a>
+                    </div>
+                    @for (var i = 1; i < Model.Games.Count; i++)
+                    {
+                        <div class="item">
+                            <a href="@Url.Action(MVC.Game.Details(Model.Games[i].ID))">
+                                <img class="d-block img-fluid" src="@Model.Games[i].ImageUrl" alt="@Model.Games[i].Title">
+                            </a>
+                        </div>
+                    }
+                </div>
+                <a class="carousel-control-prev" href="#gameCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#gameCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
         </div>
 
         <h2>Movies/TV</h2>
         <div class="container">
-            @foreach (var movie in Model.Movies)
-            {
-                @Html.Partial(MVC.Movie.Views._Movie, movie)
-            }
+            <div id="movieCarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <a href="@Url.Action(MVC.Movie.Details(Model.Movies[0].ID))">
+                            <img class="d-block img-fluid" src="@Model.Movies[0].ImageUrl" alt="@Model.Albums[0].Title">
+                        </a>
+                    </div>
+                    @for (var i = 1; i < Model.Movies.Count; i++)
+                    {
+                        <div class="item">
+                            <a href="@Url.Action(MVC.Movie.Details(Model.Movies[i].ID))">
+                                <img class="d-block img-fluid" src="@Model.Movies[i].ImageUrl" alt="@Model.Movies[i].Title">
+                            </a>
+                        </div>
+                    }
+                </div>
+                <a class="carousel-control-prev" href="#movieCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#movieCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
         </div>
     </div>
 </div>

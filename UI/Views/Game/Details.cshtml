@@ -9,7 +9,7 @@
 <h2>Details</h2>
 @if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
 {
-	<div class="">Last Updated: @Model.DateUpdated</div>
+    <div class="">Last Updated: @Model.DateUpdated</div>
 }
 
 <div data-toggle="collapse" data-parent="#accordion" href="#game-info">
@@ -60,15 +60,15 @@
             @Model.Rating.GetDisplayName()
         </div>
 
-	    <div class="col-xs-6">
-		    @Html.LabelFor(m => m.Notes):
-		    @Html.DisplayFor(m => m.Notes, new { @class = "form-control" })
-	    </div>
-		
-		<div class="col-xs-6">
-			@Html.DisplayNameFor(m => m.Category):
-			@Html.DisplayFor(m => m.Category)
-		</div>
+        <div class="col-xs-6">
+            @Html.LabelFor(m => m.Notes):
+            @Html.DisplayFor(m => m.Notes, new { @class = "form-control" })
+        </div>
+
+        <div class="col-xs-6">
+            @Html.LabelFor(m => m.Category):
+            @Html.DisplayFor(m => m.Category)
+        </div>
     </div>
 </div>
 <div data-toggle="collapse" data-parent="#accordion" href="#media-info">
@@ -109,10 +109,6 @@
         <div class="col-xs-6">
             @Html.LabelFor(m => m.Series):
             @Html.DisplayFor(m => m.Series, new { @class = "form-control" })
-        </div>
-        <div class="col-xs-6">
-            @Html.LabelFor(m => m.Country):
-            @Html.DisplayFor(m => m.Country, new { @class = "form-control" })
         </div>
         <div class="col-xs-6">
             @Html.LabelFor(m => m.Language):

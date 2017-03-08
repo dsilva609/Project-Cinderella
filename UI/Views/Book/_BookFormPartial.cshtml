@@ -73,9 +73,17 @@
 <div id="book-info" class="collapse in">
     <div class="panel-body">
         <div class="item-title">
-            @Html.LabelFor(m => m.Title)
-            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+            <div class="col-sm-6">
+                @Html.LabelFor(m => m.Title)
+                @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-sm-6">
+                @Html.LabelFor(m => m.Author)
+                @Html.TextBoxFor(m => m.Author, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Author, "", new { @class = "text-danger" })
+            </div>
         </div>
 
         @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
@@ -86,12 +94,6 @@
                 </a>
             </div>
         }
-
-        <div class="col-sm-6">
-            @Html.LabelFor(m => m.Author)
-            @Html.TextBoxFor(m => m.Author, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Author, "", new { @class = "text-danger" })
-        </div>
 
         <div class="col-sm-6">
             @Html.LabelFor(m => m.Publisher)

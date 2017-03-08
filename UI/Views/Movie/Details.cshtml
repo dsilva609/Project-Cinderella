@@ -9,7 +9,7 @@
 <h2>Details</h2>
 @if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
 {
-	<div class="">Last Updated: @Model.DateUpdated</div>
+    <div class="">Last Updated: @Model.DateUpdated</div>
 }
 <div data-toggle="collapse" data-parent="#accordion" href="#movie-info">
     <div class="row panel panel-primary panel-collapse">
@@ -54,15 +54,15 @@
             @Html.DisplayFor(m => m.Genre, new { @class = "form-control" })
         </div>
 
-	    <div class="col-xs-6">
-		    @Html.LabelFor(m => m.Notes):
-		    @Html.DisplayFor(m => m.Notes, new { @class = "form-control" })
-	    </div>
-		
-		<div class="col-xs-6">
-			@Html.DisplayNameFor(m => m.Category):
-			@Html.DisplayFor(m => m.Category)
-		</div>
+        <div class="col-xs-6">
+            @Html.LabelFor(m => m.Notes):
+            @Html.DisplayFor(m => m.Notes, new { @class = "form-control" })
+        </div>
+
+        <div class="col-xs-6">
+            @Html.LabelFor(m => m.Category):
+            @Html.DisplayFor(m => m.Category)
+        </div>
     </div>
 </div>
 <div data-toggle="collapse" data-parent="#accordion" href="#media-info">

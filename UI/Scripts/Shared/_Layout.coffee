@@ -47,6 +47,10 @@ class Views.Shared.Layout
 		    return false
 		    
 		$('[data-toggle="tooltip"]').tooltip(); 
+
+        $('.carousel').carousel({
+          interval: 2000
+        })
 	
 $ -> 
 	_layout = new Views.Shared.Layout
