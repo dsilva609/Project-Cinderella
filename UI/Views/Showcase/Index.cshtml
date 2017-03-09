@@ -14,7 +14,14 @@
         }
 
         <h2>
-            Albums
+            @if (DateTime.UtcNow.DayOfWeek == DayOfWeek.Friday)
+            {
+                <span>Heavy Metal Friday</span>
+            }
+            else
+            {
+                <span>Albums</span>
+            }
         </h2>
         <div class="container">
             @if (Model.Albums.Any())
