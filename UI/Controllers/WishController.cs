@@ -104,8 +104,8 @@ namespace UI.Controllers
         {
             if (!ModelState.IsValid) return View(model);
             var existingWishes = _service.GetAll(User.Identity.GetUserId());
-            //TODO: update this to just use an Any() call
-            if (existingWishes.Count > 0 && existingWishes.Any(x => x.ID != model.ID && x.Title == model.Title && x.ItemType == model.ItemType))
+
+            if (existingWishes.Any(x => x.ID != model.ID && x.Title == model.Title && x.ItemType == model.ItemType))
             {
                 ShowStatusMessage(MessageTypeEnum.error, $"An wish of Title: {model.Title} and Type: {model.ItemType.ToString()} already exists.",
                     "Duplicate Record");

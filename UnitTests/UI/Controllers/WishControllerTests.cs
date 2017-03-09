@@ -80,8 +80,8 @@ namespace UnitTests.UI.Controllers
         [Test]
         public void ItGoesToIndexViewAfterDelete()
         {
-            _controller.Get<IWishService>().Expect(x => x.GetByID(Arg<int>.Is.Anything, Arg<string>.Is.Anything))
-                .Return(new Wish { ID = 666, UserID = "Test User" });
+            _service.Setup(x => x.GetByID(666, Arg<string>.Is.Anything))
+                .Returns(new Wish { ID = 666, UserID = "Test User" });
 
             //--Act
             var result = _controller.ClassUnderTest.Delete(666) as RedirectToRouteResult;
@@ -94,9 +94,8 @@ namespace UnitTests.UI.Controllers
         public void ThatOnEditWhenModelStateIsValidItGoesBackToIndexView()
         {
             //--Arrange
-            _controller.Get<IWishService>()
-                .Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<int>.Is.Anything, Arg<int>.Is.Anything))
-                .Return(new List<Wish>());
+            _service.Setup(x => x.GetAll("test", "test", 0, 1))
+                .Returns(new List<Wish>());
 
             //--Act
             var result = _controller.ClassUnderTest.Edit(_testModel) as RedirectToRouteResult;
@@ -149,8 +148,8 @@ namespace UnitTests.UI.Controllers
         [Test]
         public void ItRedirectsToIndexUponFinishingAWish()
         {
-            _controller.Get<IWishService>().Expect(x => x.GetByID(Arg<int>.Is.Anything, Arg<string>.Is.Anything))
-                .Return(new Wish { ID = 666 });
+            _service.Setup(x => x.GetByID(666, Arg<string>.Is.Anything))
+                .Returns(new Wish { ID = 666, UserID = "test" });
 
             //--Act
             var result = _controller.ClassUnderTest.FinishWish(666) as RedirectToRouteResult;
