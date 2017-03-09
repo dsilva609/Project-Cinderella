@@ -163,10 +163,10 @@ namespace UI.Controllers
         }
 
         [NonAction]
-        partial void SearchOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string query, UI.Enums.ItemType type, string act);
+        partial void SearchOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string query, BusinessLogic.Enums.ItemType type, string act);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Search(string query, UI.Enums.ItemType type, string act)
+        public override System.Web.Mvc.ActionResult Search(string query, BusinessLogic.Enums.ItemType type, string act)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Search);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "query", query);

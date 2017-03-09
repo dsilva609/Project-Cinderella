@@ -1,11 +1,11 @@
-﻿using BusinessLogic.Models;
+﻿using BusinessLogic.Enums;
+using BusinessLogic.Models;
 using BusinessLogic.Services.Interfaces;
 using NUnit.Framework;
 using Rhino.Mocks;
 using Shouldly;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using UI.Enums;
 using UnitTests.UI.Controllers.TestBases;
 
 namespace UnitTests.UI.Controllers

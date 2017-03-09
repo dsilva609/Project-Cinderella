@@ -11,7 +11,6 @@ using System.Web.Mvc;
 using UI.Common;
 using UI.Enums;
 using UI.Models;
-using ItemType = UI.Enums.ItemType;
 
 namespace UI.Controllers
 {

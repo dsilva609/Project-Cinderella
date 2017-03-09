@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using BusinessLogic.Enums;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Security.Claims;
 using System.Threading.Tasks;

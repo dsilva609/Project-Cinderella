@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using BusinessLogic.Enums;
+using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

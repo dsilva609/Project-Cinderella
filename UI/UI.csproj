@@ -812,7 +812,6 @@
     <Compile Include="Enums\ActionType.cs" />
     <Compile Include="Enums\CompletionStatusHelper.cs" />
     <Compile Include="Enums\EnumHelpers.cs" />
-    <Compile Include="Enums\ItemType.cs" />
     <Compile Include="Enums\MessageTypeEnum.cs" />
     <Compile Include="GameController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
