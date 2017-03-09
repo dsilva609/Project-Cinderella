@@ -6,7 +6,13 @@
 	var deleteUrl = '@Url.Action(MVC.Movie.Delete())';
 </script>
 
-<h2>Details</h2>
+<h2>
+    Details
+    @if (User.IsInRole("Admin") && Model.IsShowcased)
+    {
+        @Html.ActionLink("Remove From showcase", MVC.Movie.RemoveFromShowcase(Model.ID), new { @class = "btn btn-danger" })
+    }
+</h2>
 @if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
 {
     <div class="">Last Updated: @Model.DateUpdated</div>
