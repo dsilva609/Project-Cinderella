@@ -6,6 +6,7 @@
             <th>#</th>
             <th></th>
             <th></th>
+            <th></th>
             <th>Completed</th>
             <th>Title</th>
             <th class="hidden-xs">Date Added</th>
@@ -13,36 +14,41 @@
         </tr>
     </thead>
     <tbody>
-    @for (var i = 0; i < Model.Count; i++)
-    {
-        <tr>
-            <td>@(i + 1)</td>
-            <td>
-                <a href="@Url.Action(MVC.Wish.Edit(Model[i].ID))">
-                    <span class="fa fa-pencil"></span>
-                </a>
-            </td>
-            <td>
-                <a class="deleteBtn" href="@Url.Action(MVC.Wish.Delete(Model[i].ID))" data-id="@Model[i].ID">
-                    <span class="fa fa-trash"></span>
-                </a>
-            </td>
-            @if (!Model[i].Completed)
-            {
+        @for (var i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <td>@(i + 1)</td>
                 <td>
-                    <a href="@Url.Action(MVC.Wish.FinishWish(Model[i].ID))" class="btn btn-sm btn-info">Done</a>
+                    <a href="@Url.Action(MVC.Wish.Edit(Model[i].ID))">
+                        <span class="fa fa-pencil"></span>
+                    </a>
                 </td>
-            }
-            else
-            {
                 <td>
-                    <span class="fa fa-check-circle"></span>
+                    <a class="deleteBtn" href="@Url.Action(MVC.Wish.Delete(Model[i].ID))" data-id="@Model[i].ID">
+                        <span class="fa fa-trash"></span>
+                    </a>
                 </td>
-            }
-            <td>@Model[i].Title</td>
-            <td class="hidden-xs">@Html.Partial(MVC.Shared.Views._Timespan, Model[i].DateAdded)</td>
-            <td class="hidden-xs">@Model[i].Notes</td>
-        </tr>
-    }
+                @if (!Model[i].Completed)
+                {
+                    <td>
+                        <a href="@Url.Action(MVC.Wish.Search(Model[i].ID))" data-id="@Model[i].ID">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="@Url.Action(MVC.Wish.FinishWish(Model[i].ID))" class="btn btn-sm btn-info">Done</a>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <span class="fa fa-check-circle"></span>
+                    </td>
+                }
+                <td>@Model[i].Title</td>
+                <td class="hidden-xs">@Html.Partial(MVC.Shared.Views._Timespan, Model[i].DateAdded)</td>
+                <td class="hidden-xs">@Model[i].Notes</td>
+            </tr>
+        }
     </tbody>
 </table>
