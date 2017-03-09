@@ -4,14 +4,15 @@ using UI.Controllers;
 
 namespace UnitTests.UI.Controllers.TestBases
 {
-	public class StatisticsControllerTestBase
-	{
-		protected RhinoAutoMocker<StatisticsController> _controller;
+    public class StatisticsControllerTestBase : ControllerTestBase
+    {
+        protected RhinoAutoMocker<StatisticsController> _controller;
 
-		[SetUp]
-		public virtual void SetUp()
-		{
-			_controller = new RhinoAutoMocker<StatisticsController>();
-		}
-	}
+        [SetUp]
+        public virtual void SetUp()
+        {
+            _controller = new RhinoAutoMocker<StatisticsController>();
+            _controller.ClassUnderTest.ControllerContext = SetupAuthorization("Admin", true, true).Object;
+        }
+    }
 }

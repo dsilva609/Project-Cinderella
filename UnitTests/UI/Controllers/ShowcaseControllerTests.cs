@@ -1,7 +1,11 @@
-﻿using BusinessLogic.Enums;
+﻿using System.Collections.Generic;
+using BusinessLogic.Enums;
 using NUnit.Framework;
 using Shouldly;
 using System.Web.Mvc;
+using BusinessLogic.Models;
+using BusinessLogic.Services.Interfaces;
+using Rhino.Mocks;
 using UnitTests.UI.Controllers.TestBases;
 
 namespace UnitTests.UI.Controllers
@@ -11,6 +15,19 @@ namespace UnitTests.UI.Controllers
         [Test]
         public void ThatIndexActionReturnsAView()
         {
+            _controller.Get<IAlbumService>()
+                .Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<int>.Is.Anything, Arg<int?>.Is.Anything))
+                .Return(new List<Album>());
+            _controller.Get<IBookService>()
+                .Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<int>.Is.Anything, Arg<int?>.Is.Anything))
+                .Return(new List<Book>());
+            _controller.Get<IGameService>()
+                .Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<int>.Is.Anything, Arg<int?>.Is.Anything))
+                .Return(new List<Game>());
+            _controller.Get<IMovieService>()
+                .Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<int>.Is.Anything, Arg<int?>.Is.Anything))
+                .Return(new List<Movie>());
+
             var result = _controller.ClassUnderTest.Index() as ViewResult;
 
             string.IsNullOrWhiteSpace(result.ViewName).ShouldBeTrue();
