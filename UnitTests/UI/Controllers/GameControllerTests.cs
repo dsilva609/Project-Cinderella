@@ -77,7 +77,7 @@ namespace UnitTests.UI.Controllers
         [Test]
         public void ThatEditActionReturnsAView()
         {
-            _controller.Get<IGameService>().Expect(x => x.GetByID(Arg<int>.Is.Equal(42), Arg<string>.Is.Anything)).Return(new Game { ID = 42 });
+            _service.Setup(x => x.GetByID(42, Arg<string>.Is.Anything)).Returns(new Game { ID = 42 });
             //--Act
             var result = _controller.ClassUnderTest.Edit(42) as ViewResult;
 
@@ -89,7 +89,7 @@ namespace UnitTests.UI.Controllers
         public void ThatOnEditWhenModelStateIsValidItGoesBackToIndexView()
         {
             //--Arrange
-            _controller.Get<IGameService>().Expect(x => x.GetAll(It.IsAny<string>())).Return(new List<Game>());
+            _service.Setup(x => x.GetAll(It.Is<string>(y => y == null), string.Empty, 0, 1)).Returns(new List<Game>());
 
             //--Act
             var result = _controller.ClassUnderTest.Edit(_testModel) as RedirectToRouteResult;
@@ -116,8 +116,8 @@ namespace UnitTests.UI.Controllers
         public void ThatOnEditADuplicateGameIsFoundItRedirectsBackToEditView()
         {
             //--Arrange
-            _controller.Get<IGameService>().Expect(x => x.GetAll(It.IsAny<string>()))
-                .Return(new List<Game> { new Game { ID = 1, Title = "Final Fantasy", Developer = "Squeenix" } });
+            _service.Setup(x => x.GetAll(It.Is<string>(y => y == null), string.Empty, 0, 1))
+            .Returns(new List<Game> { new Game { ID = 1, Title = "Final Fantasy", Developer = "Squeenix" } });
             _testModel.ID = 2;
             _testModel.Title = "Final Fantasy";
             _testModel.Developer = "Squeenix";
@@ -132,8 +132,7 @@ namespace UnitTests.UI.Controllers
         [Test]
         public void ThatItGoesToIndexViewAfterDelete()
         {
-            _controller.Get<IGameService>().Expect(x => x.GetByID(Arg<int>.Is.Anything, Arg<string>.Is.Anything))
-                .Return(new Game { ID = 666, UserID = "Test User" });
+            _service.Setup(x => x.GetByID(666, Arg<string>.Is.Anything)).Returns(new Game { ID = 666, UserID = "Test User" });
 
             //--Act
             var result = _controller.ClassUnderTest.Delete(666) as RedirectToRouteResult;

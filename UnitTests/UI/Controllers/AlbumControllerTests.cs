@@ -1,4 +1,5 @@
-﻿using BusinessLogic.Models;
+﻿using BusinessLogic.Enums;
+using BusinessLogic.Models;
 using BusinessLogic.Models.DiscogsModels;
 using BusinessLogic.Services.Interfaces;
 using Moq;
@@ -67,8 +68,8 @@ namespace UnitTests.UI.Controllers
         [Test]
         public void ItGoesToIndexViewAfterDelete()
         {
-            _controller.Get<IAlbumService>().Expect(x => x.GetByID(Arg<int>.Is.Anything, Arg<string>.Is.Anything))
-                .Return(new Album { ID = 666, UserID = "Test User" });
+            _service.Setup(x => x.GetByID(666, Arg<string>.Is.Anything))
+                .Returns(new Album { ID = 666, UserID = "Test User" });
 
             //--Act
             var result = _controller.ClassUnderTest.Delete(666) as RedirectToRouteResult;
@@ -81,8 +82,8 @@ namespace UnitTests.UI.Controllers
         public void ThatEditActionReturnsAView()
         {
             //--Arrange
-            _controller.Get<IAlbumService>().Expect(x => x.GetByID(Arg<int>.Is.Anything, Arg<string>.Is.Anything))
-                .Return(new Album { ID = 666 });
+            _service.Setup(x => x.GetByID(666, Arg<string>.Is.Anything))
+                .Returns(new Album { ID = 666 });
 
             //--Act
             var result = _controller.ClassUnderTest.Edit(666) as ViewResult;
@@ -95,9 +96,7 @@ namespace UnitTests.UI.Controllers
         public void ThatOnEditWhenModelStateIsValidItGoesBackToIndexView()
         {
             //--Arrange
-            _controller.Get<IAlbumService>()
-                .Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<int>.Is.Anything, Arg<int>.Is.Anything))
-                .Return(new List<Album>());
+            _service.Setup(x => x.GetAll(It.Is<string>(y => y == null), string.Empty, 0, 1)).Returns(new List<Album>());
 
             //--Act
             var result = _controller.ClassUnderTest.Edit(_testModel) as RedirectToRouteResult;
@@ -124,12 +123,13 @@ namespace UnitTests.UI.Controllers
         public void ThatOnEditADuplicateRecordIsFoundItRedirectsBackToEditView()
         {
             //--Arrange
-            _controller.Get<IAlbumService>()
-                .Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<int>.Is.Anything, Arg<int>.Is.Anything))
-                .Return(new List<Album> { new Album { ID = 1, Title = "Kill 'Em All", Artist = "Metallica" } });
+            _service.Setup(x => x.GetAll(It.Is<string>(y => y == null), string.Empty, It.IsAny<int>(), It.IsAny<int>()))
+                .Returns(new List<Album> { new Album { ID = 1, Title = "Kill 'Em All", Artist = "Metallica", UserID = "test", DiscogsID = 0, MediaType = AlbumMediaTypeEnum.Vinyl } });
             _testModel.ID = 2;
             _testModel.Title = "Kill 'Em All";
             _testModel.Artist = "Metallica";
+            _testModel.MediaType = AlbumMediaTypeEnum.Vinyl;
+            _testModel.DiscogsID = 0;
 
             //--Act
             var result = _controller.ClassUnderTest.Edit(_testModel) as ViewResult;

@@ -20,7 +20,7 @@ namespace UnitTests.UI.Controllers
         public void ThatIndexActionReturnsAView()
         {
             //--Arrange
-            _controller.Get<IBookService>().Expect(x => x.GetAll(It.IsAny<string>(), It.IsAny<string>())).Return(new List<Book>());
+            _service.Setup(x => x.GetAll(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>())).Returns(new List<Book>());
 
             //--Act
             var result = _controller.ClassUnderTest.Index(string.Empty, string.Empty, 1) as ViewResult;
@@ -78,7 +78,7 @@ namespace UnitTests.UI.Controllers
         public void ThatEditActionReturnsAView()
         {
             //--Arrange
-            _controller.Get<IBookService>().Expect(x => x.GetByID(Arg<int>.Is.Anything, Arg<string>.Is.Anything)).Return(new Book { ID = 42 });
+            _service.Setup(x => x.GetByID(42, Arg<string>.Is.Anything)).Returns(new Book { ID = 42 });
 
             //--Act
             var result = _controller.ClassUnderTest.Edit(42) as ViewResult;
@@ -91,7 +91,7 @@ namespace UnitTests.UI.Controllers
         public void ThatOnEditWhenModelStateIsValidItGoesBackToIndexView()
         {
             //--Arrange
-            _controller.Get<IBookService>().Expect(x => x.GetAll(It.IsAny<string>())).Return(new List<Book>());
+            _service.Setup(x => x.GetAll(It.Is<string>(y => y == null), string.Empty, 0, 1)).Returns(new List<Book>());
 
             //--Act
             var result = _controller.ClassUnderTest.Edit(_testModel) as RedirectToRouteResult;
@@ -118,8 +118,8 @@ namespace UnitTests.UI.Controllers
         public void ThatOnEditADuplicateBookIsFoundItRedirectsBackToEditView()
         {
             //--Arrange
-            _controller.Get<IBookService>().Expect(x => x.GetAll(It.IsAny<string>())).
-                Return(new List<Book> { new Book { ID = 666, Title = "Death Note", Author = "Manga" } });
+            _service.Setup(x => x.GetAll(It.Is<string>(y => y == null), string.Empty, 0, 1))
+                .Returns(new List<Book> { new Book { ID = 666, Title = "Death Note", Author = "Manga" } });
             _testModel.ID = 667;
             _testModel.Title = "Death Note";
             _testModel.Author = "Manga";
@@ -134,8 +134,8 @@ namespace UnitTests.UI.Controllers
         [Test]
         public void ThatItGoesToIndexViewAfterDelete()
         {
-            _controller.Get<IBookService>().Expect(x => x.GetByID(Arg<int>.Is.Anything, Arg<string>.Is.Anything))
-                .Return(new Book { ID = 666, UserID = "Test User" });
+            _service.Setup(x => x.GetByID(666, Arg<string>.Is.Anything))
+                .Returns(new Book { ID = 666, UserID = "Test User" });
 
             //--Act
             var result = _controller.ClassUnderTest.Delete(666) as RedirectToRouteResult;

@@ -1,6 +1,5 @@
 ﻿using BusinessLogic.Enums;
 using BusinessLogic.Models;
-using BusinessLogic.Services.Interfaces;
 using Moq;
 using NUnit.Framework;
 using Rhino.Mocks;
@@ -67,8 +66,8 @@ namespace UnitTests.UI.Controllers
         public void ThatEditActionReturnsAView()
         {
             //--Arrange
-            _controller.Get<IWishService>().Expect(x => x.GetByID(Arg<int>.Is.Anything, Arg<string>.Is.Anything))
-                .Return(new Wish { ID = 666 });
+            _service.Setup(x => x.GetByID(666, Arg<string>.Is.Anything))
+                .Returns(new Wish { ID = 666 });
 
             //--Act
             var result = _controller.ClassUnderTest.Edit(666) as ViewResult;
@@ -94,7 +93,7 @@ namespace UnitTests.UI.Controllers
         public void ThatOnEditWhenModelStateIsValidItGoesBackToIndexView()
         {
             //--Arrange
-            _service.Setup(x => x.GetAll("test", "test", 0, 1))
+            _service.Setup(x => x.GetAll(It.Is<string>(y => y == null), string.Empty, 0, 1))
                 .Returns(new List<Wish>());
 
             //--Act
@@ -122,9 +121,8 @@ namespace UnitTests.UI.Controllers
         public void ThatOnEditADuplicateRecordIsFoundItRedirectsBackToEditView()
         {
             //--Arrange
-            _controller.Get<IWishService>()
-                .Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<int>.Is.Anything, Arg<int>.Is.Anything))
-                .Return(new List<Wish> { new Wish { ID = 1, Title = "Kill 'Em All" } });
+            _service.Setup(x => x.GetAll(It.Is<string>(y => y == null), string.Empty, 0, 1))
+                .Returns(new List<Wish> { new Wish { ID = 1, Title = "Kill 'Em All" } });
             _testModel.ID = 2;
             _testModel.Title = "Kill 'Em All";
 
