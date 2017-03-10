@@ -13,6 +13,7 @@
 @Html.HiddenFor(m => m.DateCompleted)
 @Html.HiddenFor(m => m.GiantBombID)
 @Html.HiddenFor(m => m.BGGID)
+@Html.HiddenFor(m => m.IsShowcased)
 
 <div class="row panel-body">
     @if (Model.DateAdded != Convert.ToDateTime("1/1/1900") && Model.DateAdded != DateTime.MinValue)
