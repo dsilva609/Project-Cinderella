@@ -50,8 +50,6 @@ namespace BusinessLogic.Services
 			release.LabelString = release.labels != null ? string.Join(", ", release.labels.Select(x => x.name).ToList()) : string.Empty;
 			release.GenreString = release.genres != null ? string.Join(", ", release.genres.ToList()) : string.Empty;
 			release.StylesString = release.styles != null ? string.Join(", ", release.styles) : string.Empty;
-			if (!string.IsNullOrWhiteSpace(release.StylesString))
-				release.GenreString += $" - {release.StylesString}";
 
 			var album = ConvertFromRelease(release);
 
@@ -76,6 +74,7 @@ namespace BusinessLogic.Services
 				YearReleased = release.year,
 				RecordLabel = release.LabelString,
 				Genre = release.GenreString,
+				Style = release.StylesString,
 				DiscogsID = release.id,
 				ImageUrl = release.images?.First().uri,
 				Tracklist = release.tracklist,
