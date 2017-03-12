@@ -18,6 +18,8 @@ namespace BusinessLogic.Models
 		[DisplayName("Media Type")]
 		public AlbumMediaTypeEnum MediaType { get; set; }
 
+		public string Style { get; set; }
+
 		public SpeedEnum Speed { get; set; }
 		public SizeEnum Size { get; set; }
 

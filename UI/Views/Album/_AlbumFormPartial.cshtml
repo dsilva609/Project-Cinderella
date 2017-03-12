@@ -100,11 +100,16 @@
         }
     </div>
     <div class="panel-body">
-        <div class="col-md-6">
-            @Html.LabelFor(m => m.Genre)
-            @Html.TextBoxFor(m => m.Genre, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Genre, "", new { @class = "text-danger" })
-        </div>
+	    <div class="col-md-6">
+		    @Html.LabelFor(m => m.Genre)
+		    @Html.TextBoxFor(m => m.Genre, new { @class = "form-control" })
+		    @Html.ValidationMessageFor(m => m.Genre, "", new { @class = "text-danger" })
+	    </div>
+		<div class="col-md-6">
+			@Html.LabelFor(m => m.Style)
+			@Html.TextBoxFor(m => m.Style, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.Style, "", new { @class = "text-danger" })
+		</div>
         <div class="col-md-6">
             @Html.LabelFor(m => m.YearReleased)
             @Html.DropDownListFor(model => model.YearReleased, ViewHelpers.GetYearRange(1900, DateTime.Today.Year), Model.YearReleased.ToString(), new { @class = "form-control" })

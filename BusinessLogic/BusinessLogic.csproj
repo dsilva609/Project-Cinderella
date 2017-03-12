@@ -306,6 +306,10 @@
     <Compile Include="Migrations\201703071708579_added IsShowcased to base item.Designer.cs">
       <DependentUpon>201703071708579_added IsShowcased to base item.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703120340313_added style to album model.cs" />
+    <Compile Include="Migrations\201703120340313_added style to album model.Designer.cs">
+      <DependentUpon>201703120340313_added style to album model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseItem.cs" />
     <Compile Include="Models\BGGModels\BGGGame.cs" />
@@ -508,6 +512,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703071708579_added IsShowcased to base item.resx">
       <DependentUpon>201703071708579_added IsShowcased to base item.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703120340313_added style to album model.resx">
+      <DependentUpon>201703120340313_added style to album model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
