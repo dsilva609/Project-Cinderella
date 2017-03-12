@@ -175,25 +175,12 @@ namespace UI.Controllers
 			SetTimeStamps(model);
 			//TODO: make sure user id is the same so as not to change other users data
 			model.DateUpdated = DateTime.UtcNow;
-			try
-			{
-				_service.Edit(model);
-			}
-			catch (DbEntityValidationException e)
-			{
-				var message = string.Empty;
-				foreach (var eve in e.EntityValidationErrors)
-				{
-					message += $"Entity of type \"{eve.Entry.Entity.GetType().Name}\" in state \"{eve.Entry.State}\" has the following validation errors:";
-					foreach (var ve in eve.ValidationErrors)
-					{
-						message += $"- Property: \"{ve.PropertyName}\", Error: \"{ve.ErrorMessage}\"";
-					}
-				}
-				throw new Exception(message);
-			}
-			ShowStatusMessage(MessageTypeEnum.success,
-				$"Album of Artist: {model.Artist}, Album: {model.Title}, Media Type: {model.MediaType} updated.", "Update Successful");
+
+			_service.Edit(model);
+
+			UpdateGenreAndStatus(model.ID);
+
+			ShowStatusMessage(MessageTypeEnum.success, $"Album of Artist: {model.Artist}, Album: {model.Title}, Media Type: {model.MediaType} updated.", "Update Successful");
 			return RedirectToAction(MVC.Album.Index());
 		}
 
@@ -270,6 +257,53 @@ namespace UI.Controllers
 
 			ShowStatusMessage(MessageTypeEnum.info, "Album removed from showcase", "Showcase");
 			return RedirectToAction(MVC.Showcase.Index());
+		}
+
+		private void UpdateGenreAndStatus(int id)
+		{
+			var album = _service.GetByID(id, User.Identity.GetUserId());
+
+			if (!string.IsNullOrWhiteSpace(album.Style)) return;
+			var origGenre = album.Genre;
+			if (string.IsNullOrWhiteSpace(origGenre)) return;
+			else
+			{
+				var firstDashIndex = origGenre.IndexOf('-');
+				var firstCommaIndex = origGenre.IndexOf(',');
+				var genre = string.Empty;
+				var style = string.Empty;
+
+				if (firstDashIndex < firstCommaIndex && firstCommaIndex != -1 && firstDashIndex != -1)
+				{
+					genre = origGenre.Substring(0, firstDashIndex);
+					style = origGenre.Substring(firstDashIndex + 1);
+				}
+				else if (firstCommaIndex == -1 && firstDashIndex == -1)
+				{
+					return;
+				}
+				else if (firstCommaIndex < firstDashIndex && firstCommaIndex != -1)
+				{
+					genre = origGenre.Substring(0, firstCommaIndex);
+					style = origGenre.Substring(firstCommaIndex + 1);
+				}
+				else if (firstDashIndex > 0 && firstCommaIndex == -1)
+				{
+					genre = origGenre.Substring(0, firstDashIndex);
+					style = origGenre.Substring(firstDashIndex + 1);
+				}
+				else if (firstCommaIndex > 0 && firstDashIndex == -1)
+				{
+					genre = origGenre.Substring(0, firstCommaIndex);
+					style = origGenre.Substring(firstCommaIndex + 1);
+				}
+				album.Genre = genre.Trim();
+				style = style.TrimStart(',');
+				album.Style = style.Trim();
+				album.DateUpdated = DateTime.UtcNow;
+				_service.Edit(album);
+				ShowStatusMessage(MessageTypeEnum.info, $"Updated album genre to: {album.Genre}, style to: {album.Style}", "Update");
+			}
 		}
 	}
 }

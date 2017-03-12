@@ -78,7 +78,6 @@ namespace UI.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
-            public readonly string UpdateAlbums = "UpdateAlbums";
             public readonly string Index = "Index";
             public readonly string About = "About";
             public readonly string Contact = "Contact";
@@ -88,7 +87,6 @@ namespace UI.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
-            public const string UpdateAlbums = "UpdateAlbums";
             public const string Index = "Index";
             public const string About = "About";
             public const string Contact = "Contact";
@@ -130,17 +128,6 @@ namespace UI.Controllers
     public partial class T4MVC_HomeController : UI.Controllers.HomeController
     {
         public T4MVC_HomeController() : base(Dummy.Instance) { }
-
-        [NonAction]
-        partial void UpdateAlbumsOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult UpdateAlbums()
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.UpdateAlbums);
-            UpdateAlbumsOverride(callInfo);
-            return callInfo;
-        }
 
         [NonAction]
         partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
