@@ -53,7 +53,8 @@ namespace UI.Controllers
                     NumBooks = _statisticService.GetNumBooks(),
                     NumMoviesAndShows = _statisticService.GetNumMoviesShows(),
                     NumGames = _statisticService.GetNumGames(),
-                    NumWishes = _statisticService.GetNumWishes()
+                    NumWishes = _statisticService.GetNumWishes(),
+                    NumShowcased = _statisticService.GetNumShowcased()
                 }
             };
 
@@ -96,7 +97,8 @@ namespace UI.Controllers
                         NumBooks = _statisticService.GetNumBooks(userID),
                         NumMoviesAndShows = _statisticService.GetNumMoviesShows(userID),
                         NumGames = _statisticService.GetNumGames(userID),
-                        NumWishes = _statisticService.GetNumWishes(userID)
+                        NumWishes = _statisticService.GetNumWishes(userID),
+                        NumShowcased = _statisticService.GetNumShowcased(userID)
                     }
                 };
 

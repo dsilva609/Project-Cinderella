@@ -46,7 +46,8 @@ namespace UnitTests.BusinessLogic.Services.TestBases
                     IsPhysical = false,
                     TimesCompleted = 0,
                     CheckedOut = false,
-                    CompletionStatus = CompletionStatus.NotStarted
+                    CompletionStatus = CompletionStatus.NotStarted,
+                    IsShowcased = true
                 },
                 new Album
                 {
@@ -55,7 +56,8 @@ namespace UnitTests.BusinessLogic.Services.TestBases
                     IsPhysical = false,
                     TimesCompleted = 5,
                     CheckedOut = false,
-                    CompletionStatus = CompletionStatus.NotStarted
+                    CompletionStatus = CompletionStatus.NotStarted,
+                    IsShowcased = true
                 }
             });
             _service.Get<IBookService>().Expect(x => x.GetAll()).Return(new List<Book>());

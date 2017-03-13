@@ -31,5 +31,7 @@
         int GetNumGames(string userID = "");
 
         int GetNumWishes(string userID = "");
+
+        int GetNumShowcased(string userID = "");
     }
 }

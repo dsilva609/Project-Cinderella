@@ -147,5 +147,11 @@ namespace UnitTests.BusinessLogic.Services
         {
             _service.ClassUnderTest.GetNumWishes("test").ShouldBe(1);
         }
+
+        [Test]
+        public void ItGetsNumItemsShowcased()
+        {
+            _service.ClassUnderTest.GetNumShowcased().ShouldBe(2);
+        }
     }
 }

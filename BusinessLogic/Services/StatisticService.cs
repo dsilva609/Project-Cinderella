@@ -88,6 +88,9 @@ namespace BusinessLogic.Services
         public int GetNumWishes(string userID = "")
             => string.IsNullOrWhiteSpace(userID) ? _wishService.GetAll().Count : _wishService.GetAll(userID).Count;
 
+        public int GetNumShowcased(string userID = "")
+            => string.IsNullOrWhiteSpace(userID) ? _items.Count(x => x.IsShowcased) : _items.Count(x => x.UserID == userID && x.IsShowcased);
+
         private List<BaseItem> GetAllItems()
         {
             var items = new List<BaseItem>();
