@@ -29,5 +29,7 @@
         int GetNumMoviesShows(string userID = "");
 
         int GetNumGames(string userID = "");
+
+        int GetNumWishes(string userID = "");
     }
 }

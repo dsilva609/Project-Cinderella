@@ -135,5 +135,17 @@ namespace UnitTests.BusinessLogic.Services
         {
             _service.ClassUnderTest.GetNumInProgress("Dio").ShouldBe(1);
         }
+
+        [Test]
+        public void ItGetsNumWishes()
+        {
+            _service.ClassUnderTest.GetNumWishes().ShouldBe(2);
+        }
+
+        [Test]
+        public void ItGetsNumWishesForUser()
+        {
+            _service.ClassUnderTest.GetNumWishes("test").ShouldBe(1);
+        }
     }
 }

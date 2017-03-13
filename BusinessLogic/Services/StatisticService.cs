@@ -1,6 +1,7 @@
 ﻿using BusinessLogic.Enums;
 using BusinessLogic.Models;
 using BusinessLogic.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,14 +13,17 @@ namespace BusinessLogic.Services
         private readonly IBookService _bookService;
         private readonly IGameService _gameService;
         private readonly IMovieService _movieService;
+        private readonly IWishService _wishService;
         private readonly List<BaseItem> _items;
 
-        public StatisticService(IAlbumService albumService, IBookService bookService, IGameService gameService, IMovieService movieService)
+        public StatisticService(IAlbumService albumService, IBookService bookService, IGameService gameService, IMovieService movieService,
+            IWishService wishService)
         {
             _albumService = albumService;
             _bookService = bookService;
             _gameService = gameService;
             _movieService = movieService;
+            _wishService = wishService;
             _items = GetAllItems();
         }
 
@@ -80,6 +84,9 @@ namespace BusinessLogic.Services
             => string.IsNullOrWhiteSpace(userID)
                 ? _items.Count(x => x.GetType() == typeof(Game))
                 : _items.Count(x => x.UserID == userID && x.GetType() == typeof(Game));
+
+        public int GetNumWishes(string userID = "")
+            => string.IsNullOrWhiteSpace(userID) ? _wishService.GetAll().Count : _wishService.GetAll(userID).Count;
 
         private List<BaseItem> GetAllItems()
         {
