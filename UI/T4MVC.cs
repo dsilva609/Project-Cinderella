@@ -105,6 +105,8 @@ namespace Links
             public static readonly string LICENSE = Url("LICENSE");
         }
     
+        public static readonly string flipclock_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/flipclock.min.js") ? Url("flipclock.min.js") : Url("flipclock.js");
+        public static readonly string flipclock_min_js = Url("flipclock.min.js");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class Hydrogen {
             public const string UrlPath = "~/Scripts/Hydrogen";
@@ -395,6 +397,8 @@ namespace Links
         public static readonly string bootstrap_min_css_map = Url("bootstrap.min.css.map");
         public static readonly string c3_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/c3.min.css") ? Url("c3.min.css") : Url("c3.css");
         public static readonly string c3_min_css = Url("c3.min.css");
+        public static readonly string flipclock_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/flipclock.min.css") ? Url("flipclock.min.css") : Url("flipclock.css");
+        public static readonly string flipclock_min_css = Url("flipclock.min.css");
         public static readonly string font_awesome_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/font-awesome.min.css") ? Url("font-awesome.min.css") : Url("font-awesome.css");
         public static readonly string font_awesome_min_css = Url("font-awesome.min.css");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -670,6 +674,7 @@ namespace Links
                 public const string c3_js = "~/Scripts/c3.js"; 
                 public const string c3_min_js = "~/Scripts/c3.min.js"; 
                 public const string Chart_js = "~/Scripts/Chart.js"; 
+                public const string flipclock_js = "~/Scripts/flipclock.js"; 
                 public const string jquery_3_1_1_intellisense_js = "~/Scripts/jquery-3.1.1.intellisense.js"; 
                 public const string jquery_3_1_1_js = "~/Scripts/jquery-3.1.1.js"; 
                 public const string jquery_3_1_1_min_js = "~/Scripts/jquery-3.1.1.min.js"; 
@@ -812,6 +817,7 @@ namespace Links
                 public const string bootstrap_reboot_min_css = "~/Content/bootstrap-reboot.min.css";
                 public const string bootstrap_css = "~/Content/bootstrap.css";
                 public const string c3_css = "~/Content/c3.css";
+                public const string flipclock_css = "~/Content/flipclock.css";
                 public const string font_awesome_css = "~/Content/font-awesome.css";
                 public const string jquery_mobile_1_4_5_css = "~/Content/jquery.mobile-1.4.5.css";
                 public const string jquery_mobile_1_4_5_min_css = "~/Content/jquery.mobile-1.4.5.min.css";

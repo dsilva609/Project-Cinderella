@@ -166,5 +166,17 @@
     "inputFiles": [
       "Content/tether/tether.css"
     ]
+  },
+  {
+    "outputFileName": "Scripts/flipclock.min.js",
+    "inputFiles": [
+      "Scripts/flipclock.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/flipclock.min.css",
+    "inputFiles": [
+      "Content/flipclock.css"
+    ]
   }
 ]

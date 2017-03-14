@@ -46,6 +46,9 @@ namespace UI.Controllers
 			var games = _gameService.GetAll(string.Empty, string.Empty).OrderByDescending(x => x.DateAdded).Take(NUM_GAMES_TO_GET).ToList();
 			var updatedGames = _gameService.GetAll(string.Empty, string.Empty).OrderByDescending(x => x.DateUpdated).Take(NUM_GAMES_TO_GET).ToList();
 
+			var recordStoreDayTimer = new TimerModel { ID = "recordStoreDayTimer", Year = 2017, Month = 4, Day = 22 };
+			var freeComicBookDayTimer = new TimerModel { ID = "freeComicBookDayTimer", Year = 2017, Month = 5, Day = 6 };
+
 			var model = new HomeViewModel
 			{
 				Albums = albums,
@@ -55,7 +58,9 @@ namespace UI.Controllers
 				Movies = movies,
 				UpdatedMovies = updatedMovies,
 				Games = games,
-				UpdatedGames = updatedGames
+				UpdatedGames = updatedGames,
+				RecordStoreDayTimer = recordStoreDayTimer,
+				FreeComicBookDayTimer = freeComicBookDayTimer
 			};
 
 			return View(model);

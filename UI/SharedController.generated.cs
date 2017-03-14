@@ -46,6 +46,7 @@ namespace T4MVC
                 public readonly string _GoogleBooksDisclaimer = "_GoogleBooksDisclaimer";
                 public readonly string _Layout = "_Layout";
                 public readonly string _LoginPartial = "_LoginPartial";
+                public readonly string _TimerPartial = "_TimerPartial";
                 public readonly string _Timespan = "_Timespan";
                 public readonly string _TMDBDisclaimer = "_TMDBDisclaimer";
                 public readonly string Error = "Error";
@@ -59,6 +60,7 @@ namespace T4MVC
             public readonly string _GoogleBooksDisclaimer = "~/Views/Shared/_GoogleBooksDisclaimer.cshtml";
             public readonly string _Layout = "~/Views/Shared/_Layout.cshtml";
             public readonly string _LoginPartial = "~/Views/Shared/_LoginPartial.cshtml";
+            public readonly string _TimerPartial = "~/Views/Shared/_TimerPartial.cshtml";
             public readonly string _Timespan = "~/Views/Shared/_Timespan.cshtml";
             public readonly string _TMDBDisclaimer = "~/Views/Shared/_TMDBDisclaimer.cshtml";
             public readonly string Error = "~/Views/Shared/Error.cshtml";

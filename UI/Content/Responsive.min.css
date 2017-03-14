@@ -1,1 +1,1 @@
-.jumbotron{background-image:url("Images/Turntable.jpg");background-position:center;height:500px !important}@media screen and (min-width:1920px){.container{width:1900px}}
+.jumbotron{background-image:url("Images/Turntable.jpg");background-position:center;height:500px !important}@media screen and (min-width:1920px){.container{width:1900px}}@media screen (max-width:480px){.clock{width:75%;display:inline-block;}}@media screen and (min-width:768px){.clock{width:60%;min-width:600px}}

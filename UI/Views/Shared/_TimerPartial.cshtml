@@ -1,0 +1,26 @@
+﻿@model UI.Models.TimerModel
+
+<div class="@Model.ID clock" style="margin: 0 auto; "></div>
+
+<script>
+	var @Model.ID;
+
+	$(function() {
+
+		// Grab the current date
+		var currentDate = new Date();
+
+		// Set some date in the future. Month - 1
+		var futureDate = new Date(@Model.Year, @Model.Month - 1, @Model.Day);
+
+		// Calculate the difference in seconds between the future and current date
+		var diff = futureDate.getTime() / 1000 - currentDate.getTime() / 1000;
+
+		// Instantiate a coutdown FlipClock
+		@Model.ID = $('.@Model.ID').FlipClock(diff,
+		{
+			clockFace: 'DailyCounter',
+			countdown: true
+		});
+	});
+</script>
