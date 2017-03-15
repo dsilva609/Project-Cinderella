@@ -117,7 +117,7 @@ namespace UnitTests.UI.Controllers
         {
             //--Arrange
             _service.Setup(x => x.GetAll(It.Is<string>(y => y == null), string.Empty, 0, 1))
-            .Returns(new List<Game> { new Game { ID = 1, Title = "Final Fantasy", Developer = "Squeenix" } });
+                .Returns(new List<Game> { new Game { ID = 1, Title = "Final Fantasy", Developer = "Squeenix" } });
             _testModel.ID = 2;
             _testModel.Title = "Final Fantasy";
             _testModel.Developer = "Squeenix";
@@ -182,6 +182,34 @@ namespace UnitTests.UI.Controllers
 
             result.RouteValues["Action"].ShouldBe("Index");
             result.RouteValues["Controller"].ShouldBe("Showcase");
+        }
+
+        [Test]
+        public void ItIncreasesCompletionCount()
+        {
+            _service.Setup(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>())).Returns(new Game());
+
+            var result = _controller.ClassUnderTest.IncreaseCompletionCount(1) as RedirectToRouteResult;
+
+            _service.Verify(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>()), Times.Once);
+            _service.Verify(x => x.Edit(It.IsAny<Game>()), Times.Once);
+
+            result.RouteValues["Action"].ShouldBe("Index");
+            result.RouteValues["Controller"].ShouldBe("Game");
+        }
+
+        [Test]
+        public void ItDecreasesCompletionCount()
+        {
+            _service.Setup(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>())).Returns(new Game());
+
+            var result = _controller.ClassUnderTest.DecreaseCompletionCount(1) as RedirectToRouteResult;
+
+            _service.Verify(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>()), Times.Once);
+            _service.Verify(x => x.Edit(It.IsAny<Game>()), Times.Once);
+
+            result.RouteValues["Action"].ShouldBe("Index");
+            result.RouteValues["Controller"].ShouldBe("Game");
         }
     }
 }

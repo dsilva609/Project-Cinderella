@@ -124,7 +124,18 @@ namespace UnitTests.UI.Controllers
         {
             //--Arrange
             _service.Setup(x => x.GetAll(It.Is<string>(y => y == null), string.Empty, It.IsAny<int>(), It.IsAny<int>()))
-                .Returns(new List<Album> { new Album { ID = 1, Title = "Kill 'Em All", Artist = "Metallica", UserID = "test", DiscogsID = 0, MediaType = AlbumMediaTypeEnum.Vinyl } });
+                .Returns(new List<Album>
+                {
+                    new Album
+                    {
+                        ID = 1,
+                        Title = "Kill 'Em All",
+                        Artist = "Metallica",
+                        UserID = "test",
+                        DiscogsID = 0,
+                        MediaType = AlbumMediaTypeEnum.Vinyl
+                    }
+                });
             _testModel.ID = 2;
             _testModel.Title = "Kill 'Em All";
             _testModel.Artist = "Metallica";
@@ -212,6 +223,34 @@ namespace UnitTests.UI.Controllers
 
             result.RouteValues["Action"].ShouldBe("Index");
             result.RouteValues["Controller"].ShouldBe("Showcase");
+        }
+
+        [Test]
+        public void ItIncreasesCompletionCount()
+        {
+            _service.Setup(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>())).Returns(new Album());
+
+            var result = _controller.ClassUnderTest.IncreaseCompletionCount(1) as RedirectToRouteResult;
+
+            _service.Verify(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>()), Times.Once);
+            _service.Verify(x => x.Edit(It.IsAny<Album>()), Times.Once);
+
+            result.RouteValues["Action"].ShouldBe("Index");
+            result.RouteValues["Controller"].ShouldBe("Album");
+        }
+
+        [Test]
+        public void ItDecreasesCompletionCount()
+        {
+            _service.Setup(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>())).Returns(new Album());
+
+            var result = _controller.ClassUnderTest.DecreaseCompletionCount(1) as RedirectToRouteResult;
+
+            _service.Verify(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>()), Times.Once);
+            _service.Verify(x => x.Edit(It.IsAny<Album>()), Times.Once);
+
+            result.RouteValues["Action"].ShouldBe("Index");
+            result.RouteValues["Controller"].ShouldBe("Album");
         }
     }
 }

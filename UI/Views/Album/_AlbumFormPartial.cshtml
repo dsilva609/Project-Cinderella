@@ -32,7 +32,18 @@
 
     <div class="col-md-6">
         @Html.LabelFor(m => m.TimesCompleted)
-        @Html.TextBoxFor(m => m.TimesCompleted, new { @class = "form-control", type = "number" })
+        <div style="display: inline-flex;">
+            @if (Model.TimesCompleted > 0)
+            {
+                <a class="btn btn-default" href="/Album/DecreaseCompletionCount/@Model.ID">
+                    <span class="fa fa-minus"></span>
+                </a>
+            }
+            @Html.TextBoxFor(m => m.TimesCompleted, new { @class = "form-control", type = "number" })
+            <a class="btn btn-default" href="/Album/IncreaseCompletionCount/@Model.ID">
+                <span class="fa fa-plus"></span>
+            </a>
+        </div>
         @Html.ValidationMessageFor(m => m.TimesCompleted, "", new { @class = "text-danger" })
     </div>
 
@@ -100,16 +111,16 @@
         }
     </div>
     <div class="panel-body">
-	    <div class="col-md-6">
-		    @Html.LabelFor(m => m.Genre)
-		    @Html.TextBoxFor(m => m.Genre, new { @class = "form-control" })
-		    @Html.ValidationMessageFor(m => m.Genre, "", new { @class = "text-danger" })
-	    </div>
-		<div class="col-md-6">
-			@Html.LabelFor(m => m.Style)
-			@Html.TextBoxFor(m => m.Style, new { @class = "form-control" })
-			@Html.ValidationMessageFor(m => m.Style, "", new { @class = "text-danger" })
-		</div>
+        <div class="col-md-6">
+            @Html.LabelFor(m => m.Genre)
+            @Html.TextBoxFor(m => m.Genre, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Genre, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(m => m.Style)
+            @Html.TextBoxFor(m => m.Style, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Style, "", new { @class = "text-danger" })
+        </div>
         <div class="col-md-6">
             @Html.LabelFor(m => m.YearReleased)
             @Html.DropDownListFor(model => model.YearReleased, ViewHelpers.GetYearRange(1900, DateTime.Today.Year), Model.YearReleased.ToString(), new { @class = "form-control" })

@@ -227,5 +227,46 @@ namespace UI.Controllers
             ShowStatusMessage(MessageTypeEnum.info, "Title removed from showcase", "Showcase");
             return RedirectToAction(MVC.Showcase.Index());
         }
+
+        [Authorize]
+        [HttpGet]
+        public virtual ActionResult IncreaseCompletionCount(int id)
+        {
+            var movie = _service.GetByID(id, User.Identity.GetUserId());
+
+            if (movie.UserID != User.Identity.GetUserId())
+            {
+                ShowStatusMessage(MessageTypeEnum.warning, "This movie cannot be edited by another user.", "Edit Failure");
+                return RedirectToAction(MVC.Movie.Index());
+            }
+
+            movie.TimesCompleted += 1;
+            if (movie.CompletionStatus != CompletionStatus.Completed) movie.CompletionStatus = CompletionStatus.Completed;
+            _service.Edit(movie);
+
+            ShowStatusMessage(MessageTypeEnum.info, "Movie was updated.", "Update");
+            return RedirectToAction(MVC.Movie.Index());
+        }
+
+        [Authorize]
+        [HttpGet]
+        public virtual ActionResult DecreaseCompletionCount(int id)
+        {
+            var movie = _service.GetByID(id, User.Identity.GetUserId());
+
+            if (movie.UserID != User.Identity.GetUserId())
+            {
+                ShowStatusMessage(MessageTypeEnum.warning, "This movie cannot be edited by another user.", "Edit Failure");
+                return RedirectToAction(MVC.Movie.Index());
+            }
+
+            if (movie.TimesCompleted > 0) movie.TimesCompleted -= 1;
+            if (movie.TimesCompleted == 0) movie.CompletionStatus = CompletionStatus.NotStarted;
+
+            _service.Edit(movie);
+
+            ShowStatusMessage(MessageTypeEnum.info, "Movie was updated.", "Update");
+            return RedirectToAction(MVC.Movie.Index());
+        }
     }
 }

@@ -225,5 +225,46 @@ namespace UI.Controllers
             ShowStatusMessage(MessageTypeEnum.info, "Game removed from showcase", "Showcase");
             return RedirectToAction(MVC.Showcase.Index());
         }
+
+        [Authorize]
+        [HttpGet]
+        public virtual ActionResult IncreaseCompletionCount(int id)
+        {
+            var game = _service.GetByID(id, User.Identity.GetUserId());
+
+            if (game.UserID != User.Identity.GetUserId())
+            {
+                ShowStatusMessage(MessageTypeEnum.warning, "This game cannot be edited by another user.", "Edit Failure");
+                return RedirectToAction(MVC.Game.Index());
+            }
+
+            game.TimesCompleted += 1;
+            if (game.CompletionStatus != CompletionStatus.Completed) game.CompletionStatus = CompletionStatus.Completed;
+            _service.Edit(game);
+
+            ShowStatusMessage(MessageTypeEnum.info, "Game was updated.", "Update");
+            return RedirectToAction(MVC.Game.Index());
+        }
+
+        [Authorize]
+        [HttpGet]
+        public virtual ActionResult DecreaseCompletionCount(int id)
+        {
+            var game = _service.GetByID(id, User.Identity.GetUserId());
+
+            if (game.UserID != User.Identity.GetUserId())
+            {
+                ShowStatusMessage(MessageTypeEnum.warning, "This game cannot be edited by another user.", "Edit Failure");
+                return RedirectToAction(MVC.Game.Index());
+            }
+
+            if (game.TimesCompleted > 0) game.TimesCompleted -= 1;
+            if (game.TimesCompleted == 0) game.CompletionStatus = CompletionStatus.NotStarted;
+
+            _service.Edit(game);
+
+            ShowStatusMessage(MessageTypeEnum.info, "Game was updated.", "Update");
+            return RedirectToAction(MVC.Game.Index());
+        }
     }
 }

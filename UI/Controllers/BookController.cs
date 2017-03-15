@@ -225,5 +225,46 @@ namespace UI.Controllers
             ShowStatusMessage(MessageTypeEnum.info, "Book removed from showcase", "Showcase");
             return RedirectToAction(MVC.Showcase.Index());
         }
+
+        [Authorize]
+        [HttpGet]
+        public virtual ActionResult IncreaseCompletionCount(int id)
+        {
+            var book = _service.GetByID(id, User.Identity.GetUserId());
+
+            if (book.UserID != User.Identity.GetUserId())
+            {
+                ShowStatusMessage(MessageTypeEnum.warning, "This book cannot be edited by another user.", "Edit Failure");
+                return RedirectToAction(MVC.Book.Index());
+            }
+
+            book.TimesCompleted += 1;
+            if (book.CompletionStatus != CompletionStatus.Completed) book.CompletionStatus = CompletionStatus.Completed;
+            _service.Edit(book);
+
+            ShowStatusMessage(MessageTypeEnum.info, "Book was updated.", "Update");
+            return RedirectToAction(MVC.Book.Index());
+        }
+
+        [Authorize]
+        [HttpGet]
+        public virtual ActionResult DecreaseCompletionCount(int id)
+        {
+            var book = _service.GetByID(id, User.Identity.GetUserId());
+
+            if (book.UserID != User.Identity.GetUserId())
+            {
+                ShowStatusMessage(MessageTypeEnum.warning, "This book cannot be edited by another user.", "Edit Failure");
+                return RedirectToAction(MVC.Book.Index());
+            }
+
+            if (book.TimesCompleted > 0) book.TimesCompleted -= 1;
+            if (book.TimesCompleted == 0) book.CompletionStatus = CompletionStatus.NotStarted;
+
+            _service.Edit(book);
+
+            ShowStatusMessage(MessageTypeEnum.info, "Book was updated.", "Update");
+            return RedirectToAction(MVC.Book.Index());
+        }
     }
 }
