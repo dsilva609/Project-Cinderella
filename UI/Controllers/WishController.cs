@@ -162,7 +162,7 @@ namespace UI.Controllers
                 ShowStatusMessage(MessageTypeEnum.error, "This wish cannot be edited by another user", "Edit Failure");
                 return RedirectToAction(MVC.Wish.Index());
             }
-            model.Completed = true;
+            model.Owned = true;
             model.DateModified = DateTime.UtcNow;
 
             _service.Edit(model);

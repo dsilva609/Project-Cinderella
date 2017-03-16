@@ -310,6 +310,10 @@
     <Compile Include="Migrations\201703120340313_added style to album model.Designer.cs">
       <DependentUpon>201703120340313_added style to album model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703161622223_changed completed to owned for wish.cs" />
+    <Compile Include="Migrations\201703161622223_changed completed to owned for wish.Designer.cs">
+      <DependentUpon>201703161622223_changed completed to owned for wish.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseItem.cs" />
     <Compile Include="Models\BGGModels\BGGGame.cs" />
@@ -515,6 +519,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703120340313_added style to album model.resx">
       <DependentUpon>201703120340313_added style to album model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703161622223_changed completed to owned for wish.resx">
+      <DependentUpon>201703161622223_changed completed to owned for wish.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

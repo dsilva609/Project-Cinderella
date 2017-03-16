@@ -7,7 +7,7 @@
             <th></th>
             <th></th>
             <th></th>
-            <th>Completed</th>
+            <th>Owned</th>
             <th>Title</th>
             <th class="hidden-xs">Date Added</th>
             <th class="hidden-xs">Notes</th>
@@ -28,13 +28,13 @@
                         <span class="fa fa-trash"></span>
                     </a>
                 </td>
-                @if (!Model[i].Completed)
+                <td>
+                    <a href="@Url.Action(MVC.Wish.Search(Model[i].ID))" data-id="@Model[i].ID">
+                        <span class="fa fa-search"></span>
+                    </a>
+                </td>
+                @if (!Model[i].Owned)
                 {
-                    <td>
-                        <a href="@Url.Action(MVC.Wish.Search(Model[i].ID))" data-id="@Model[i].ID">
-                            <span class="fa fa-search"></span>
-                        </a>
-                    </td>
                     <td>
                         <a href="@Url.Action(MVC.Wish.FinishWish(Model[i].ID))" class="btn btn-sm btn-info">Done</a>
                     </td>
