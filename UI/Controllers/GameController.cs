@@ -92,10 +92,11 @@ namespace UI.Controllers
                 return View(game);
             }
             Session["query"] = null;
-            Session["wish"] = null;
+
             if (!string.IsNullOrWhiteSpace(Session["wish"]?.ToString()))
             {
                 _wishService.Delete(Convert.ToInt32(Session["wishID"].ToString()), User.Identity.GetUserId());
+                Session["wish"] = null;
                 Session["wishID"] = null;
                 ShowStatusMessage(MessageTypeEnum.info, "Wish list has been updated", "Wish list");
             }
