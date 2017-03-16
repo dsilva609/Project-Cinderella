@@ -104,6 +104,18 @@ namespace UI.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RemoveFromShowcase);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult IncreaseCompletionCount()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.IncreaseCompletionCount);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult DecreaseCompletionCount()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DecreaseCompletionCount);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public MovieController Actions { get { return MVC.Movie; } }
@@ -129,6 +141,8 @@ namespace UI.Controllers
             public readonly string CreateFromSearchResult = "CreateFromSearchResult";
             public readonly string AddToShowcase = "AddToShowcase";
             public readonly string RemoveFromShowcase = "RemoveFromShowcase";
+            public readonly string IncreaseCompletionCount = "IncreaseCompletionCount";
+            public readonly string DecreaseCompletionCount = "DecreaseCompletionCount";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -143,6 +157,8 @@ namespace UI.Controllers
             public const string CreateFromSearchResult = "CreateFromSearchResult";
             public const string AddToShowcase = "AddToShowcase";
             public const string RemoveFromShowcase = "RemoveFromShowcase";
+            public const string IncreaseCompletionCount = "IncreaseCompletionCount";
+            public const string DecreaseCompletionCount = "DecreaseCompletionCount";
         }
 
 
@@ -219,6 +235,22 @@ namespace UI.Controllers
         public ActionParamsClass_RemoveFromShowcase RemoveFromShowcaseParams { get { return s_params_RemoveFromShowcase; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_RemoveFromShowcase
+        {
+            public readonly string id = "id";
+        }
+        static readonly ActionParamsClass_IncreaseCompletionCount s_params_IncreaseCompletionCount = new ActionParamsClass_IncreaseCompletionCount();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_IncreaseCompletionCount IncreaseCompletionCountParams { get { return s_params_IncreaseCompletionCount; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_IncreaseCompletionCount
+        {
+            public readonly string id = "id";
+        }
+        static readonly ActionParamsClass_DecreaseCompletionCount s_params_DecreaseCompletionCount = new ActionParamsClass_DecreaseCompletionCount();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_DecreaseCompletionCount DecreaseCompletionCountParams { get { return s_params_DecreaseCompletionCount; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_DecreaseCompletionCount
         {
             public readonly string id = "id";
         }
@@ -390,6 +422,30 @@ namespace UI.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RemoveFromShowcase);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             RemoveFromShowcaseOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void IncreaseCompletionCountOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult IncreaseCompletionCount(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.IncreaseCompletionCount);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            IncreaseCompletionCountOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void DecreaseCompletionCountOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult DecreaseCompletionCount(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DecreaseCompletionCount);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            DecreaseCompletionCountOverride(callInfo, id);
             return callInfo;
         }
 
