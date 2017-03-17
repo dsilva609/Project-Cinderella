@@ -130,7 +130,7 @@ select {
 }
 
 .panel-heading {
-    margin-bottom: 1em;
+    /*margin-bottom: 1em;*/
 }
 
 .charts {
@@ -273,6 +273,6 @@ a:hover {
    letter-spacing: -1px;  
    background: rgb(0, 0, 0); /* fallback color */
    background: rgba(0, 0, 0, 0.7);
-   padding: 10px; 
+   /*padding: 10px;*/ 
    height: auto;
 }
