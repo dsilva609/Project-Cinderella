@@ -52,7 +52,13 @@
         $(this).find(".card").toggleClass("flipped flip");
         return false;
       });
-      return $('[data-toggle="tooltip"]').tooltip();
+      $('[data-toggle="tooltip"]').tooltip();
+      $('.carousel').carousel({
+        interval: 2000
+      });
+      return $('.carousel').bcSwipe({
+        threshold: 50
+      });
     };
 
     return Layout;

@@ -33,6 +33,7 @@ namespace UI
 				.Include("~/Scripts/moment.min.js")
 				.Include("~/Scripts/livestamp.min.js")
 				.Include("~/Scripts/flipclock.min.js")
+				.Include("~/Scripts/jquery.bcSwipe.min.js")
 				.Include("~/Scripts/PageSpecific/AlbumEdit.min.js"));
 
 			bundles.Add(new StyleBundle("~/Content/css")

@@ -46,11 +46,11 @@ class Views.Shared.Layout
 		    
 		    return false
 		    
-		$('[data-toggle="tooltip"]').tooltip(); 
-
-        $('.carousel').carousel({
-          interval: 2000
-        })
+		$('[data-toggle="tooltip"]').tooltip();
+		
+		$('.carousel').carousel({interval: 2000});
+		
+		$('.carousel').bcSwipe({threshold: 50});
 	
 $ -> 
 	_layout = new Views.Shared.Layout

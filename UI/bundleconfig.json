@@ -178,5 +178,11 @@
     "inputFiles": [
       "Content/flipclock.css"
     ]
+  },
+  {
+    "outputFileName": "Scripts/jquery.bcSwipe.min.js",
+    "inputFiles": [
+      "Scripts/jquery.bcSwipe.js"
+    ]
   }
 ]

@@ -140,6 +140,8 @@ namespace Links
         public static readonly string jquery_ui_1_11_3_min_js_map = Url("jquery-ui-1.11.3.min.js.map");
         public static readonly string jquery_ui_1_11_4_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui-1.11.4.min.js") ? Url("jquery-ui-1.11.4.min.js") : Url("jquery-ui-1.11.4.js");
         public static readonly string jquery_ui_1_11_4_min_js = Url("jquery-ui-1.11.4.min.js");
+        public static readonly string jquery_bcSwipe_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.bcSwipe.min.js") ? Url("jquery.bcSwipe.min.js") : Url("jquery.bcSwipe.js");
+        public static readonly string jquery_bcSwipe_min_js = Url("jquery.bcSwipe.min.js");
         public static readonly string jquery_mobile_1_4_5_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.mobile-1.4.5.min.js") ? Url("jquery.mobile-1.4.5.min.js") : Url("jquery.mobile-1.4.5.js");
         public static readonly string jquery_validate_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.validate-vsdoc.min.js") ? Url("jquery.validate-vsdoc.min.js") : Url("jquery.validate-vsdoc.js");
         public static readonly string jquery_validate_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.validate.min.js") ? Url("jquery.validate.min.js") : Url("jquery.validate.js");
@@ -686,6 +688,7 @@ namespace Links
                 public const string jquery_ui_1_11_3_min_js = "~/Scripts/jquery-ui-1.11.3.min.js"; 
                 public const string jquery_ui_1_11_4_js = "~/Scripts/jquery-ui-1.11.4.js"; 
                 public const string jquery_ui_1_11_4_min_js = "~/Scripts/jquery-ui-1.11.4.min.js"; 
+                public const string jquery_bcSwipe_js = "~/Scripts/jquery.bcSwipe.js"; 
                 public const string jquery_mobile_1_4_5_js = "~/Scripts/jquery.mobile-1.4.5.js"; 
                 public const string jquery_validate_js = "~/Scripts/jquery.validate.js"; 
                 public const string jquery_validate_min_js = "~/Scripts/jquery.validate.min.js"; 
