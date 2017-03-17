@@ -19,10 +19,10 @@
 }
 
 <div data-toggle="collapse" data-parent="#accordion" href="#game-info">
-	<div class="row panel panel-primary panel-collapse">
+	<div class="row panel panel-primary panel-collapse text-center">
 		<div class="panel-heading">
 			<h4>
-				Game Information
+				@Model.Title
 				<span class="fa fa-chevron-circle-down"></span>
 			</h4>
 		</div>
@@ -36,11 +36,6 @@
 					<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Game_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Developer - @Model.Title (@Model.YearReleased)">
 						<img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Game_jpg : Model.ImageUrl)" class="img-rounded" style="height: 200px; width: 200px;">
 					</a>
-				</div>
-
-				<div class="col-xs-6">
-					@Html.LabelFor(m => m.Title):
-					@Html.DisplayFor(m => m.Title, new { @class = "form-control" })
 				</div>
 
 				<div class="col-xs-6">
@@ -80,77 +75,82 @@
 			</div>
 		</div>
 	</div>
-</div>
-<div data-toggle="collapse" data-parent="#accordion" href="#media-info">
-	<div class="row panel panel-primary panel-collapse">
-		<div class="panel-heading">
-			<h4>
-				Media Information
-				<span class="fa fa-chevron-circle-down"></span>
-			</h4>
+</div><div class="row" style="padding-top: 1em;">
+	<div class="col-md-6">
+		<div data-toggle="collapse" data-parent="#accordion" href="#media-info">
+			<div class="row panel panel-primary panel-collapse">
+				<div class="panel-heading">
+					<h4>
+						Media Information
+						<span class="fa fa-chevron-circle-down"></span>
+					</h4>
+				</div>
+			</div>
+		</div>
+		<div id="media-info" class="collapse in">
+			<div class="panel-body">
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.Type):
+					@Model.Type.GetDisplayName()
+				</div>
+
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.IsPhysical):
+					@Html.DisplayFor(m => m.IsPhysical, new { @class = "form-control" })
+				</div>
+
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.Platform):
+					@Model.Platform.GetDisplayName()
+				</div>
+
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.IsDLC):
+					@Html.DisplayFor(m => m.IsDLC, new { @class = "form-control" })
+				</div>
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.PartOfSeries):
+					@Html.DisplayFor(m => m.PartOfSeries, new { @class = "form-control" })
+				</div>
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.Series):
+					@Html.DisplayFor(m => m.Series, new { @class = "form-control" })
+				</div>
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.Language):
+					@Html.DisplayFor(m => m.Language, new { @class = "form-control" })
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
-<div id="media-info" class="collapse in">
-	<div class="panel-body">
-		<div class="col-xs-6">
-			@Html.LabelFor(m => m.Type):
-			@Model.Type.GetDisplayName()
+	<div class="col-md-6">
+		<div data-toggle="collapse" data-parent="#accordion" href="#purchase-info">
+			<div class="row panel panel-primary panel-collapse">
+				<div class="panel-heading">
+					<h4>
+						Purchase Information
+						<span class="fa fa-chevron-circle-down"></span>
+					</h4>
+				</div>
+			</div>
 		</div>
+		<div id="purchase-info" class="collapse in">
+			<div class="panel-body">
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.DatePurchased):
+					@Html.DisplayFor(m => m.DatePurchased)
+				</div>
 
-		<div class="col-xs-6">
-			@Html.LabelFor(m => m.IsPhysical):
-			@Html.DisplayFor(m => m.IsPhysical, new { @class = "form-control" })
-		</div>
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.LocationPurchased):
+					@Html.DisplayFor(m => m.LocationPurchased, new { @class = "form-control" })
+				</div>
 
-		<div class="col-xs-6">
-			@Html.LabelFor(m => m.Platform):
-			@Model.Platform.GetDisplayName()
-		</div>
-
-		<div class="col-xs-6">
-			@Html.LabelFor(m => m.IsDLC):
-			@Html.DisplayFor(m => m.IsDLC, new { @class = "form-control" })
-		</div>
-		<div class="col-xs-6">
-			@Html.LabelFor(m => m.PartOfSeries):
-			@Html.DisplayFor(m => m.PartOfSeries, new { @class = "form-control" })
-		</div>
-		<div class="col-xs-6">
-			@Html.LabelFor(m => m.Series):
-			@Html.DisplayFor(m => m.Series, new { @class = "form-control" })
-		</div>
-		<div class="col-xs-6">
-			@Html.LabelFor(m => m.Language):
-			@Html.DisplayFor(m => m.Language, new { @class = "form-control" })
-		</div>
-	</div>
-</div>
-<div data-toggle="collapse" data-parent="#accordion" href="#purchase-info">
-	<div class="row panel panel-primary panel-collapse">
-		<div class="panel-heading">
-			<h4>
-				Purchase Information
-				<span class="fa fa-chevron-circle-down"></span>
-			</h4>
-		</div>
-	</div>
-</div>
-<div id="purchase-info" class="collapse in">
-	<div class="panel-body">
-		<div class="col-xs-6">
-			@Html.LabelFor(m => m.DatePurchased):
-			@Html.DisplayFor(m => m.DatePurchased)
-		</div>
-
-		<div class="col-xs-6">
-			@Html.LabelFor(m => m.LocationPurchased):
-			@Html.DisplayFor(m => m.LocationPurchased, new { @class = "form-control" })
-		</div>
-
-		<div class="col-xs-6">
-			@Html.LabelFor(m => m.IsNew):
-			@Html.DisplayFor(m => m.IsNew, new { @class = "form-control" })
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.IsNew):
+					@Html.DisplayFor(m => m.IsNew, new { @class = "form-control" })
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

@@ -18,10 +18,10 @@
 	<div class="">Last Updated: @Model.DateUpdated</div>
 }
 <div data-toggle="collapse" data-parent="#accordion" href="#album-info">
-	<div class="row panel panel-primary panel-collapse">
+	<div class="row panel panel-primary panel-collapse text-center">
 		<div class="panel-heading">
 			<h4>
-				Album Information
+				@Model.Artist - @Model.Title
 				<span class="fa fa-chevron-circle-down"></span>
 			</h4>
 		</div>
@@ -35,15 +35,6 @@
 					<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Artist - @Model.Title (@Model.YearReleased)">
 						<img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="img-rounded" style="height: 200px; width: 200px;">
 					</a>
-				</div>
-				<div>
-					@Html.LabelFor(m => m.Artist):
-					@Html.DisplayFor(m => m.Artist)
-				</div>
-
-				<div>
-					@Html.LabelFor(m => m.Title):
-					@Html.DisplayFor(m => m.Title)
 				</div>
 				<div>
 					@Html.LabelFor(m => m.Genre):
@@ -101,64 +92,69 @@
 		</div>
 	</div>
 }
-<div data-toggle="collapse" data-parent="#accordion" href="#media-info">
-	<div class="row panel panel-primary panel-collapse">
-		<div class="panel-heading">
-			<h4>
-				Media Information
-				<span class="fa fa-chevron-circle-down"></span>
-			</h4>
+<div class="row" style="padding-top: 1em;">
+	<div class="col-md-6">
+		<div data-toggle="collapse" data-parent="#accordion" href="#media-info">
+			<div class="panel panel-primary panel-collapse">
+				<div class="panel-heading">
+					<h4>
+						Media Information
+						<span class="fa fa-chevron-circle-down"></span>
+					</h4>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
-<div id="media-info" class="collapse in">
-	<div class="panel-body">
-		<div>
-			@Html.LabelFor(m => m.MediaType):
-			@Html.DisplayFor(m => m.MediaType)
-		</div>
+		<div id="media-info" class="collapse in">
+			<div class="panel-body">
+				<div>
+					@Html.LabelFor(m => m.MediaType):
+					@Html.DisplayFor(m => m.MediaType)
+				</div>
 
-		<div>
-			@Html.LabelFor(m => m.IsPhysical):
-			@Html.DisplayFor(m => m.IsPhysical)
-		</div>
+				<div>
+					@Html.LabelFor(m => m.IsPhysical):
+					@Html.DisplayFor(m => m.IsPhysical)
+				</div>
 
-		<div>
-			@Html.LabelFor(m => m.Speed):
-			@Model.Speed.GetDisplayName()
-		</div>
+				<div>
+					@Html.LabelFor(m => m.Speed):
+					@Model.Speed.GetDisplayName()
+				</div>
 
-		<div>
-			@Html.LabelFor(m => m.Size):
-			@Model.Size.GetDisplayName()
+				<div>
+					@Html.LabelFor(m => m.Size):
+					@Model.Size.GetDisplayName()
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
-<div data-toggle="collapse" data-parent="#accordion" href="#purchase-info">
-	<div class="row panel panel-primary panel-collapse">
-		<div class="panel-heading">
-			<h4>
-				Purchase Information
-				<span class="fa fa-chevron-circle-down"></span>
-			</h4>
+	</div><div class="col-md-6">
+		<div data-toggle="collapse" data-parent="#accordion" href="#purchase-info">
+			<div class="panel panel-primary panel-collapse">
+				<div class="panel-heading">
+					<h4>
+						Purchase Information
+						<span class="fa fa-chevron-circle-down"></span>
+					</h4>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
-<div id="purchase-info" class="collapse in">
-	<div class="panel-body">
-		<div>
-			@Html.LabelFor(m => m.DatePurchased):
-			@Html.DisplayFor(m => m.DatePurchased)
-		</div>
+		<div id="purchase-info" class="collapse in">
+			<div class="panel-body">
+				<div>
+					@Html.LabelFor(m => m.DatePurchased):
+					@Html.DisplayFor(m => m.DatePurchased)
+				</div>
 
-		<div>
-			@Html.LabelFor(m => m.LocationPurchased):
-			@Html.DisplayFor(m => m.LocationPurchased)
-		</div>
+				<div>
+					@Html.LabelFor(m => m.LocationPurchased):
+					@Html.DisplayFor(m => m.LocationPurchased)
+				</div>
 
-		<div>
-			@Html.LabelFor(m => m.IsNew):
-			@Html.DisplayFor(m => m.IsNew)
+				<div>
+					@Html.LabelFor(m => m.IsNew):
+					@Html.DisplayFor(m => m.IsNew)
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

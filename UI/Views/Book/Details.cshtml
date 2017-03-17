@@ -8,19 +8,19 @@
 <h2>
 	Details
 	@if (User.IsInRole("Admin") && Model.IsShowcased)
-    {
+	{
 		@Html.ActionLink("Remove From showcase", MVC.Book.RemoveFromShowcase(Model.ID), new { @class = "btn btn-danger" })
-    }
+	}
 </h2>
 @if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
 {
 	<div class="">Last Updated: @Model.DateUpdated</div>
 }
 <div data-toggle="collapse" data-parent="#accordion" href="#book-info">
-	<div class="row panel panel-primary panel-collapse">
+	<div class="row panel panel-primary panel-collapse text-center">
 		<div class="panel-heading">
 			<h4>
-				Book Information
+				@Model.Author - @Model.Title
 				<span class="fa fa-chevron-circle-down"></span>
 			</h4>
 		</div>
@@ -35,16 +35,6 @@
 						<img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Book_jpg : Model.ImageUrl)" class="img-rounded" style="height: 300px; width: 200px;">
 					</a>
 				</div>
-				<div class="col-xs-6">
-					@Html.LabelFor(m => m.Title):
-					@Html.DisplayFor(m => m.Title, new { @class = "form-control" })
-				</div>
-
-				<div class="col-xs-6">
-					@Html.LabelFor(m => m.Author):
-					@Html.DisplayFor(m => m.Author, new { @class = "form-control" })
-				</div>
-
 				<div class="col-xs-6">
 					@Html.LabelFor(m => m.Publisher):
 					@Html.DisplayFor(m => m.Publisher, new { @class = "form-control" })
@@ -83,74 +73,80 @@
 		</div>
 	</div>
 </div>
-<div data-toggle="collapse" data-parent="#accordion" href="#media-info">
-	<div class="row panel panel-primary panel-collapse">
-		<div class="panel-heading">
-			<h4>
-				Media Information
-				<span class="fa fa-chevron-circle-down"></span>
-			</h4>
+<div class="row" style="padding-top: 1em;">
+	<div class="col-md-6">
+		<div data-toggle="collapse" data-parent="#accordion" href="#media-info">
+			<div class="row panel panel-primary panel-collapse">
+				<div class="panel-heading">
+					<h4>
+						Media Information
+						<span class="fa fa-chevron-circle-down"></span>
+					</h4>
+				</div>
+			</div>
+		</div>
+		<div id="media-info" class="collapse in">
+			<div class="panel-body">
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.Type):
+					@Html.DisplayFor(m => m.Type, new { @class = "form-control" })
+				</div>
+
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.IsPhysical):
+					@Html.DisplayFor(m => m.IsPhysical, new { @class = "form-control" })
+				</div>
+
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.Hardcover):
+					@Html.DisplayFor(m => m.Hardcover, new { @class = "form-control" })
+				</div>
+
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.IsFirstEdition):
+					@Html.DisplayFor(m => m.IsFirstEdition, new { @class = "form-control" })
+				</div>
+
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.Language):
+					@Html.DisplayFor(m => m.Language, new { @class = "form-control" })
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
-<div id="media-info" class="collapse in">
-	<div class="panel-body">
-		<div class="col-xs-6">
-			@Html.LabelFor(m => m.Type):
-			@Html.DisplayFor(m => m.Type, new { @class = "form-control" })
+	<div class="col-md-6">
+		<div data-toggle="collapse" data-parent="#accordion" href="#purchase-info">
+			<div class="row panel panel-primary panel-collapse">
+				<div class="panel-heading">
+					<h4>
+						Purchase Information
+						<span class="fa fa-chevron-circle-down"></span>
+					</h4>
+				</div>
+			</div>
 		</div>
+		<div id="purchase-info" class="collapse in">
+			<div class="panel-body">
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.DatePurchased):
+					@Html.DisplayFor(m => m.DatePurchased)
+				</div>
 
-		<div class="col-xs-6">
-			@Html.LabelFor(m => m.IsPhysical):
-			@Html.DisplayFor(m => m.IsPhysical, new { @class = "form-control" })
-		</div>
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.LocationPurchased):
+					@Html.DisplayFor(m => m.LocationPurchased, new { @class = "form-control" })
+				</div>
 
-		<div class="col-xs-6">
-			@Html.LabelFor(m => m.Hardcover):
-			@Html.DisplayFor(m => m.Hardcover, new { @class = "form-control" })
-		</div>
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.IsNew):
+					@Html.DisplayFor(m => m.IsNew, new { @class = "form-control" })
+				</div>
 
-		<div class="col-xs-6">
-			@Html.LabelFor(m => m.IsFirstEdition):
-			@Html.DisplayFor(m => m.IsFirstEdition, new { @class = "form-control" })
-		</div>
-
-		<div class="col-xs-6">
-			@Html.LabelFor(m => m.Language):
-			@Html.DisplayFor(m => m.Language, new { @class = "form-control" })
-		</div>
-	</div>
-</div>
-<div data-toggle="collapse" data-parent="#accordion" href="#purchase-info">
-	<div class="row panel panel-primary panel-collapse">
-		<div class="panel-heading">
-			<h4>
-				Purchase Information
-				<span class="fa fa-chevron-circle-down"></span>
-			</h4>
-		</div>
-	</div>
-</div>
-<div id="purchase-info" class="collapse in">
-	<div class="panel-body">
-		<div class="col-xs-6">
-			@Html.LabelFor(m => m.DatePurchased):
-			@Html.DisplayFor(m => m.DatePurchased)
-		</div>
-
-		<div class="col-xs-6">
-			@Html.LabelFor(m => m.LocationPurchased):
-			@Html.DisplayFor(m => m.LocationPurchased, new { @class = "form-control" })
-		</div>
-
-		<div class="col-xs-6">
-			@Html.LabelFor(m => m.IsNew):
-			@Html.DisplayFor(m => m.IsNew, new { @class = "form-control" })
-		</div>
-
-		<div class="col-xs-6">
-			@Html.LabelFor(m => m.IsReissue):
-			@Html.DisplayFor(m => m.IsReissue, new { @class = "form-control" })
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.IsReissue):
+					@Html.DisplayFor(m => m.IsReissue, new { @class = "form-control" })
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

@@ -175,7 +175,7 @@ a:hover {
 
 .contentContainer {
   color: lightgray;
-  font: bold 24px/45px Helvetica, Sans-Serif;
+  font: bold 16px/45px Helvetica, Sans-Serif;
   letter-spacing: -1px;
   background: black;
   /* fallback color */
