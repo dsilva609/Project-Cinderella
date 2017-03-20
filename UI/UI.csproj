@@ -875,7 +875,6 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MovieViewModel.cs" />
     <Compile Include="Models\AlbumViewModel.cs" />
-    <Compile Include="Models\PurchaseInfoViewModel.cs" />
     <Compile Include="Models\ShowcaseViewModel.cs" />
     <Compile Include="Models\StatisticsViewModel.cs" />
     <Compile Include="Models\StatsViewModel.cs" />

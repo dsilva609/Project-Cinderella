@@ -4,11 +4,19 @@ using UI.Models;
 
 namespace UI.MappingProfiles
 {
-    public class AlbumViewModelProfile : Profile
+    public class AlbumViewModelProfile : ITypeConverter<Album, ItemViewModel>
     {
-        public AlbumViewModelProfile()
+        public ItemViewModel Convert(Album source, ItemViewModel destination, ResolutionContext context)
         {
-            CreateMap<Album, ItemViewModel>();
+            destination = new ItemViewModel
+            {
+                InfoView = new ItemInfoViewModel
+                {
+                    Title = source.Title
+                }
+            };
+
+            return destination;
         }
     }
 }

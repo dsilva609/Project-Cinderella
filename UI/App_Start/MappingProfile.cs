@@ -1,21 +1,15 @@
 ﻿using AutoMapper;
+using BusinessLogic.Models;
 using UI.MappingProfiles;
+using UI.Models;
 
 namespace UI
 {
     public static class MappingProfile
     {
-        public static MapperConfiguration InitializeAutoMapper()
+        public static void InitializeAutoMapper()
         {
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile(new AlbumViewModelProfile());
-                //cfg.CreateMap<Question, QuestionModel>();
-                //cfg.CreateMap<QuestionModel, Question>();
-                /*etc...*/
-            });
-
-            return config;
+            Mapper.Initialize(x => { x.CreateMap<Album, ItemViewModel>().ConvertUsing<AlbumViewModelProfile>(); });
         }
     }
 }

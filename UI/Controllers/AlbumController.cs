@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web.Mvc;
+using AutoMapper;
 using UI.Models;
 using CompletionStatus = BusinessLogic.Enums.CompletionStatus;
 
@@ -117,7 +118,7 @@ namespace UI.Controllers
         {
             ViewBag.Title = "Edit";
             var model = _service.GetByID(id, User.Identity.GetUserId());
-
+            var viewModel = Mapper.Map<ItemViewModel>(model);
             if (model.UserID != User.Identity.GetUserId())
             {
                 ShowStatusMessage(MessageTypeEnum.warning, "This album cannot be edited by another user.", "Edit Failure");
