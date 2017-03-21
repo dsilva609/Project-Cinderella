@@ -1,7 +1,13 @@
 ﻿@           __o = Html.LabelFor(m => m.DatePurchased);
 {    @Html.DisplayFor(m => m.DatePurchased)
 }
-@if (Model.StatusInfo.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.StatusInfo.DateUpdated != DateTime.MinValue)
-{
-    <div class="">Last Updated: @Model.StatusInfo.DateUpdated</div>
-}
+@            __o = Model.Statused;
+
+n
+#line default
+#line hidden
+
+#line 5 "C:\GitSandbox\Project-Cinderella\UI\Views\Shared\Items\_Details.cshtml"
+           __o = Html.DisplayFor(m => m.LocationPurchased);
+<div class="">Last Updated: @Html.DisplayFor(m => m.LocationPurchased)</div>
+    }
