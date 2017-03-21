@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using AutoMapper;
 using UI.Models;
 using CompletionStatus = BusinessLogic.Enums.CompletionStatus;
 
@@ -52,7 +53,8 @@ namespace UI.Controllers
         public virtual ActionResult Details(int id)
         {
             ViewBag.Title = "Details";
-            var model = _service.GetByID(id, User.Identity.GetUserId());
+            var movie = _service.GetByID(id, User.Identity.GetUserId());
+            var model = Mapper.Map<MovieViewModel>(movie);
 
             return View(model);
         }

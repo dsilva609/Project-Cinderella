@@ -1,0 +1,7 @@
+﻿@           __o = Html.LabelFor(m => m.DatePurchased);
+{    @Html.DisplayFor(m => m.DatePurchased)
+}
+@if (Model.StatusInfo.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.StatusInfo.DateUpdated != DateTime.MinValue)
+{
+    <div class="">Last Updated: @Model.StatusInfo.DateUpdated</div>
+}

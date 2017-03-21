@@ -65,6 +65,47 @@ namespace T4MVC
             public readonly string _TMDBDisclaimer = "~/Views/Shared/_TMDBDisclaimer.cshtml";
             public readonly string Error = "~/Views/Shared/Error.cshtml";
             public readonly string Lockout = "~/Views/Shared/Lockout.cshtml";
+            static readonly _ItemsClass s_Items = new _ItemsClass();
+            public _ItemsClass Items { get { return s_Items; } }
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public partial class _ItemsClass
+            {
+                static readonly _ViewNamesClass s_ViewNames = new _ViewNamesClass();
+                public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
+                public class _ViewNamesClass
+                {
+                }
+                static readonly _DetailsClass s_Details = new _DetailsClass();
+                public _DetailsClass Details { get { return s_Details; } }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public partial class _DetailsClass
+                {
+                    static readonly _ViewNamesClass s_ViewNames = new _ViewNamesClass();
+                    public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
+                    public class _ViewNamesClass
+                    {
+                        public readonly string _ItemInfo = "_ItemInfo";
+                        public readonly string _MediaInfo = "_MediaInfo";
+                        public readonly string _PurchaseInfo = "_PurchaseInfo";
+                        public readonly string _StatusInfo = "_StatusInfo";
+                    }
+                    public readonly string _ItemInfo = "~/Views/Shared/Items/Details/_ItemInfo.cshtml";
+                    public readonly string _MediaInfo = "~/Views/Shared/Items/Details/_MediaInfo.cshtml";
+                    public readonly string _PurchaseInfo = "~/Views/Shared/Items/Details/_PurchaseInfo.cshtml";
+                    public readonly string _StatusInfo = "~/Views/Shared/Items/Details/_StatusInfo.cshtml";
+                }
+                static readonly _FormClass s_Form = new _FormClass();
+                public _FormClass Form { get { return s_Form; } }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public partial class _FormClass
+                {
+                    static readonly _ViewNamesClass s_ViewNames = new _ViewNamesClass();
+                    public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
+                    public class _ViewNamesClass
+                    {
+                    }
+                }
+            }
         }
     }
 
