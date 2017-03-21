@@ -1,4 +1,5 @@
-﻿using BusinessLogic.Enums;
+﻿using AutoMapper;
+using BusinessLogic.Enums;
 using BusinessLogic.Models;
 using BusinessLogic.Services.Interfaces;
 using Microsoft.AspNet.Identity;
@@ -7,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using AutoMapper;
 using UI.Models;
 using CompletionStatus = BusinessLogic.Enums.CompletionStatus;
 
@@ -213,6 +213,7 @@ namespace UI.Controllers
         {
             var movie = _service.GetByID(id, User.Identity.GetUserId());
             movie.IsShowcased = true;
+            movie.DateUpdated = DateTime.UtcNow;
             _service.Edit(movie);
 
             ShowStatusMessage(MessageTypeEnum.info, "Title added to showcase", "Showcase");
@@ -225,6 +226,7 @@ namespace UI.Controllers
         {
             var movie = _service.GetByID(id, User.Identity.GetUserId());
             movie.IsShowcased = false;
+            movie.DateUpdated = DateTime.UtcNow;
             _service.Edit(movie);
 
             ShowStatusMessage(MessageTypeEnum.info, "Title removed from showcase", "Showcase");
@@ -245,6 +247,7 @@ namespace UI.Controllers
 
             movie.TimesCompleted += 1;
             if (movie.CompletionStatus != CompletionStatus.Completed) movie.CompletionStatus = CompletionStatus.Completed;
+            movie.DateUpdated = DateTime.UtcNow;
             _service.Edit(movie);
 
             ShowStatusMessage(MessageTypeEnum.info, "Movie was updated.", "Update");
@@ -265,7 +268,7 @@ namespace UI.Controllers
 
             if (movie.TimesCompleted > 0) movie.TimesCompleted -= 1;
             if (movie.TimesCompleted == 0) movie.CompletionStatus = CompletionStatus.NotStarted;
-
+            movie.DateUpdated = DateTime.UtcNow;
             _service.Edit(movie);
 
             ShowStatusMessage(MessageTypeEnum.info, "Movie was updated.", "Update");

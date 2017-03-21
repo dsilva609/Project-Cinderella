@@ -1,14 +1,13 @@
-﻿using BusinessLogic.Enums;
+﻿using AutoMapper;
+using BusinessLogic.Enums;
 using BusinessLogic.Models;
 using BusinessLogic.Services.Interfaces;
 using Microsoft.AspNet.Identity;
 using PagedList;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web.Mvc;
-using AutoMapper;
 using UI.Models;
 using CompletionStatus = BusinessLogic.Enums.CompletionStatus;
 
@@ -243,6 +242,7 @@ namespace UI.Controllers
         {
             var album = _service.GetByID(id, User.Identity.GetUserId());
             album.IsShowcased = true;
+            album.DateUpdated = DateTime.UtcNow;
             _service.Edit(album);
 
             ShowStatusMessage(MessageTypeEnum.info, "Album added to showcase", "Showcase");
@@ -255,6 +255,7 @@ namespace UI.Controllers
         {
             var album = _service.GetByID(id, User.Identity.GetUserId());
             album.IsShowcased = false;
+            album.DateUpdated = DateTime.UtcNow;
             _service.Edit(album);
 
             ShowStatusMessage(MessageTypeEnum.info, "Album removed from showcase", "Showcase");
@@ -275,6 +276,7 @@ namespace UI.Controllers
 
             album.TimesCompleted += 1;
             if (album.CompletionStatus != CompletionStatus.Completed) album.CompletionStatus = CompletionStatus.Completed;
+            album.DateUpdated = DateTime.UtcNow;
             _service.Edit(album);
 
             ShowStatusMessage(MessageTypeEnum.info, "Album was updated.", "Update");
@@ -296,7 +298,7 @@ namespace UI.Controllers
             if (album.TimesCompleted > 0) album.TimesCompleted -= 1;
 
             if (album.TimesCompleted == 0) album.CompletionStatus = CompletionStatus.NotStarted;
-
+            album.DateUpdated = DateTime.UtcNow;
             _service.Edit(album);
 
             ShowStatusMessage(MessageTypeEnum.info, "Album was updated.", "Update");

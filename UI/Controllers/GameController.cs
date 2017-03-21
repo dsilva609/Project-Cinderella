@@ -209,6 +209,7 @@ namespace UI.Controllers
         {
             var game = _service.GetByID(id, User.Identity.GetUserId());
             game.IsShowcased = true;
+            game.DateUpdated = DateTime.UtcNow;
             _service.Edit(game);
 
             ShowStatusMessage(MessageTypeEnum.info, "Game added to showcase", "Showcase");
@@ -221,6 +222,7 @@ namespace UI.Controllers
         {
             var game = _service.GetByID(id, User.Identity.GetUserId());
             game.IsShowcased = false;
+            game.DateUpdated = DateTime.UtcNow;
             _service.Edit(game);
 
             ShowStatusMessage(MessageTypeEnum.info, "Game removed from showcase", "Showcase");
@@ -241,6 +243,7 @@ namespace UI.Controllers
 
             game.TimesCompleted += 1;
             if (game.CompletionStatus != CompletionStatus.Completed) game.CompletionStatus = CompletionStatus.Completed;
+            game.DateUpdated = DateTime.UtcNow;
             _service.Edit(game);
 
             ShowStatusMessage(MessageTypeEnum.info, "Game was updated.", "Update");
@@ -261,7 +264,7 @@ namespace UI.Controllers
 
             if (game.TimesCompleted > 0) game.TimesCompleted -= 1;
             if (game.TimesCompleted == 0) game.CompletionStatus = CompletionStatus.NotStarted;
-
+            game.DateUpdated = DateTime.UtcNow;
             _service.Edit(game);
 
             ShowStatusMessage(MessageTypeEnum.info, "Game was updated.", "Update");

@@ -209,6 +209,7 @@ namespace UI.Controllers
         {
             var book = _service.GetByID(id, User.Identity.GetUserId());
             book.IsShowcased = true;
+            book.DateUpdated = DateTime.UtcNow;
             _service.Edit(book);
 
             ShowStatusMessage(MessageTypeEnum.info, "Book added to showcase", "Showcase");
@@ -221,6 +222,7 @@ namespace UI.Controllers
         {
             var book = _service.GetByID(id, User.Identity.GetUserId());
             book.IsShowcased = false;
+            book.DateUpdated = DateTime.UtcNow;
             _service.Edit(book);
 
             ShowStatusMessage(MessageTypeEnum.info, "Book removed from showcase", "Showcase");
@@ -241,6 +243,7 @@ namespace UI.Controllers
 
             book.TimesCompleted += 1;
             if (book.CompletionStatus != CompletionStatus.Completed) book.CompletionStatus = CompletionStatus.Completed;
+            book.DateUpdated = DateTime.UtcNow;
             _service.Edit(book);
 
             ShowStatusMessage(MessageTypeEnum.info, "Book was updated.", "Update");
@@ -261,7 +264,7 @@ namespace UI.Controllers
 
             if (book.TimesCompleted > 0) book.TimesCompleted -= 1;
             if (book.TimesCompleted == 0) book.CompletionStatus = CompletionStatus.NotStarted;
-
+            book.DateUpdated = DateTime.UtcNow;
             _service.Edit(book);
 
             ShowStatusMessage(MessageTypeEnum.info, "Book was updated.", "Update");
