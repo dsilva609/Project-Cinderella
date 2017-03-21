@@ -4,66 +4,75 @@ using System.ComponentModel.DataAnnotations;
 
 namespace UI.Models
 {
-    public class ItemViewModel
-    {
-        public ItemInfoViewModel InfoView { get; set; }
-        public MediaInfoViewModel MediaInfo { get; set; }
-        public PurchaseInfoViewModel PurchaseInfo { get; set; }
-        public ItemStatusViewModel ItemStatus { get; set; }
-    }
+	public class ItemInfoViewModel
+	{
+		public int ID { get; set; }
 
-    public class ItemInfoViewModel
-    {
-        [Required]
-        public string Title { get; set; }
+		[Required]
+		public string UserID { get; set; }
 
-        public string Genre { get; set; }
-        public string Language { get; set; }
-        public string Notes { get; set; }
+		[Required]
+		public string Title { get; set; }
 
-        [DisplayName("Image Url")]
-        public string ImageUrl { get; set; }
+		public string Genre { get; set; }
+		public string Language { get; set; }
+		public string Notes { get; set; }
 
-        [DisplayName("Year Released")]
-        public int YearReleased { get; set; } = DateTime.Today.Year;
+		[DisplayName("Image Url")]
+		public string ImageUrl { get; set; }
 
-        public string Category { get; set; }
-    }
+		[DisplayName("Year Released")]
+		public int YearReleased { get; set; } = DateTime.Today.Year;
 
-    public class MediaInfoViewModel
-    {
-    }
+		public string Category { get; set; }
+	}
 
-    public class PurchaseInfoViewModel
-    {
-        [Display(Name = "Date Purchased")]
-        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime DatePurchased { get; set; } = DateTime.Today;
+	public class MediaInfoViewModel
+	{
+		[Required]
+		[DisplayName("Physical?")]
+		public bool IsPhysical { get; set; }
 
-        [DisplayName("Location Purchased")]
-        public string LocationPurchased { get; set; }
+		[DisplayName("Country Of Origin")]
+		public string CountryOfOrigin { get; set; }
+	}
 
-        [Display(Name = "Purchased New?")]
-        public bool IsNew { get; set; }
+	public class PurchaseInfoViewModel
+	{
+		[Display(Name = "Date Purchased")]
+		[DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+		public DateTime DatePurchased { get; set; } = DateTime.Today;
 
-        [DisplayName("Country Purchased")]
-        public string CountryPurchased { get; set; }
-    }
+		[DisplayName("Location Purchased")]
+		public string LocationPurchased { get; set; }
 
-    public class ItemStatusViewModel
-    {
-        public DateTime DateAdded { get; set; }
-        public DateTime DateUpdated { get; set; } = Convert.ToDateTime("1/1/1900");
+		[Display(Name = "Purchased New?")]
+		public bool IsNew { get; set; }
 
-        [DisplayName("Completion Status")]
-        public CompletionStatus CompletionStatus { get; set; }
+		[DisplayName("Country Purchased")]
+		public string CountryPurchased { get; set; }
+	}
 
-        [DisplayName("Checked Out?")]
-        public bool CheckedOut { get; set; }
+	public class ItemStatusViewModel
+	{
+		public DateTime DateAdded { get; set; }
+		public DateTime DateUpdated { get; set; } = Convert.ToDateTime("1/1/1900");
 
-        [DisplayName("Times Completed")]
-        public int TimesCompleted { get; set; }
+		[DisplayName("Date Started")]
+		public DateTime DateStarted { get; set; } = Convert.ToDateTime("1/1/1900");
 
-        public bool IsShowcased { get; set; }
-    }
+		[DisplayName("Date Completed")]
+		public DateTime DateCompleted { get; set; } = Convert.ToDateTime("1/1/1900");
+
+		[DisplayName("Completion Status")]
+		public BusinessLogic.Enums.CompletionStatus CompletionStatus { get; set; }
+
+		[DisplayName("Checked Out?")]
+		public bool CheckedOut { get; set; }
+
+		[DisplayName("Times Completed")]
+		public int TimesCompleted { get; set; }
+
+		public bool IsShowcased { get; set; }
+	}
 }
