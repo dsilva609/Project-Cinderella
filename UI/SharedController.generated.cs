@@ -103,7 +103,11 @@ namespace T4MVC
                     public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
                     public class _ViewNamesClass
                     {
+                        public readonly string _PurchaseInfoSection = "_PurchaseInfoSection";
+                        public readonly string _StatusSection = "_StatusSection";
                     }
+                    public readonly string _PurchaseInfoSection = "~/Views/Shared/Items/Form/_PurchaseInfoSection.cshtml";
+                    public readonly string _StatusSection = "~/Views/Shared/Items/Form/_StatusSection.cshtml";
                 }
             }
         }
