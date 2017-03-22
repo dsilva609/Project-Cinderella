@@ -13,19 +13,24 @@
     <div id="purchase-info" class="collapse in">
         <div class="panel-body">
             <div class="col-xs-6">
-                @:
+                @Html.LabelFor(m => m.DatePurchased):
                 @Html.DisplayFor(m => m.DatePurchased)
             </div>
 
             <div class="col-xs-6">
-                @(Model.Statused):
+                @Html.LabelFor(m => m.LocationPurchased):
                 @Html.DisplayFor(m => m.LocationPurchased)
             </div>
 
-            <div class="col-xs-6">
-                @Html.LabelFor(m => m.IsNew):
-                @Html.DisplayFor(m => m.IsNew)
-            </div>
+	        <div class="col-xs-6">
+		        @Html.LabelFor(m => m.IsNew):
+		        @Html.DisplayFor(m => m.IsNew)
+	        </div>
+			
+	        <div class="col-xs-6">
+		        @Html.LabelFor(m => m.CountryPurchased):
+				@Html.DisplayFor(m => m.CountryPurchased)
+	        </div>
         </div>
     </div>
 </div>

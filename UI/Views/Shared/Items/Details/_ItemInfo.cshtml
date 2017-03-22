@@ -1,55 +1,45 @@
 ﻿@model UI.Models.ItemInfoViewModel
 
 <div data-toggle="collapse" data-parent="#accordion" href="#movie-info">
-    <div class="row panel panel-primary panel-collapse text-center">
-        <div class="panel-heading">
-            <h4>
-                @Model.Title
-                <span class="fa fa-chevron-circle-down"></span>
-            </h4>
-        </div>
-    </div>
+	<div class="row panel panel-primary panel-collapse text-center">
+		<div class="panel-heading">
+			<h4>
+				@Model.Title
+				<span class="fa fa-chevron-circle-down"></span>
+			</h4>
+		</div>
+	</div>
 </div>
 <div id="movie-info" class="collapse in">
-    <div class="background-image" style="background: url('@Model.ImageUrl')">
-        <div class="contentContainer">
-            <div class="panel-body">
-                <div class="animate-box item col-sm-6">
-                    <a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@*@Model.Director*@ - @Model.Title (@Model.YearReleased)">
-                        <img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" class="img-rounded" style="height: 350px; width: 250px;">
-                    </a>
-                </div>
+	<div class="background-image" style="background: url('@Model.ImageUrl')">
+		<div class="contentContainer">
+			<div class="panel-body">
+				<div class="animate-box item col-sm-6">
+					<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Title (@Model.YearReleased)">
+						<img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" class="img-rounded" style="height: 350px; width: 250px;">
+					</a>
+				</div>
 
-                @*<div class="col-xs-6">
-                        @Html.LabelFor(m => m.MovieInfo.Director):
-                        @Html.DisplayFor(m => m.MovieInfo.Director, new { @class = "form-control" })
-                    </div>
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.YearReleased):
+					@Html.DisplayFor(m => m.YearReleased)
+				</div>
 
-                    <div class="col-xs-6">
-                        @Html.LabelFor(m => m.MovieInfo.Distributor):
-                        @Html.DisplayFor(m => m.MovieInfo.Distributor, new { @class = "form-control" })
-                    </div>*@
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.Genre):
+					@Html.DisplayFor(m => m.Genre, new { @class = "form-control" })
+				</div>
 
-                <div class="col-xs-6">
-                    @Html.LabelFor(m => m.YearReleased):
-                    @Html.DisplayFor(m => m.YearReleased)
-                </div>
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.Notes):
+					@Html.DisplayFor(m => m.Notes, new { @class = "form-control" })
+				</div>
 
-                <div class="col-xs-6">
-                    @Html.LabelFor(m => m.Genre):
-                    @Html.DisplayFor(m => m.Genre, new { @class = "form-control" })
-                </div>
-
-                <div class="col-xs-6">
-                    @Html.LabelFor(m => m.Notes):
-                    @Html.DisplayFor(m => m.Notes, new { @class = "form-control" })
-                </div>
-
-                <div class="col-xs-6">
-                    @Html.LabelFor(m => m.Category):
-                    @Html.DisplayFor(m => m.Category)
-                </div>
-            </div>
-        </div>
-    </div>
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.Category):
+					@Html.DisplayFor(m => m.Category)
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

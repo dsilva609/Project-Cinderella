@@ -1,32 +1,16 @@
-﻿@*@model UI.Models.MediaInfoViewModel
+﻿@model UI.Models.MediaInfoViewModel
 
-    <div class="col-md-6">
-        <div data-toggle="collapse" data-parent="#accordion" href="#media-info">
-            <div class="row panel panel-primary panel-collapse">
-                <div class="panel-heading">
-                    <h4>
-                        Media Information
-                        <span class="fa fa-chevron-circle-down"></span>
-                    </h4>
-                </div>
-            </div>
-        </div>
-        <div id="media-info" class="collapse in">
-            <div class="panel-body">
-                <div class="col-xs-6">
-                    @Html.LabelFor(m => m.MediaInfo.Type):
-                    @Model.MediaInfo.Type.GetDisplayName()
-                </div>
+<div class="col-xs-6">
+	@Html.LabelFor(m => m.Language):
+	@Html.DisplayFor(m => m.Language)
+</div>
 
-                <div class="col-xs-6">
-                    @Html.LabelFor(m => m.MediaInfo.Rating):
-                    @Model.MediaInfo.Rating.GetDisplayName()
-                </div>
+<div class="col-xs-6">
+	@Html.LabelFor(m => m.IsPhysical):
+	@Html.DisplayFor(m => m.IsPhysical)
+</div>
 
-                <div class="col-xs-6">
-                    @Html.LabelFor(m => m.MovieInfo.Language):
-                    @Html.DisplayFor(m => m.MovieInfo.Language)
-                </div>
-            </div>
-        </div>
-    </div>*@
+<div class="col-xs-6">
+	@Html.LabelFor(m => m.CountryOfOrigin):
+	@Html.DisplayFor(m => m.CountryOfOrigin)
+</div>

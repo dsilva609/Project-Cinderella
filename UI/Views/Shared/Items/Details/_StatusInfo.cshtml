@@ -1,13 +1,31 @@
-﻿@           __o = Html.LabelFor(m => m.DatePurchased);
-{    @Html.DisplayFor(m => m.DatePurchased)
+﻿@using BusinessLogic.Enums
+@model UI.Models.ItemStatusViewModel
+
+@if (User.IsInRole("Admin") && Model.IsShowcased)
+{
+	@Html.ActionLink("Remove From showcase", GetRemoveAction(Model.ItemID, Model.ItemType), new { @class = "btn btn-danger" })
 }
-@            __o = Model.Statused;
+@if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
+{
+	<div class="">Last Updated: @Model.DateUpdated</div>
+}
 
-n
-#line default
-#line hidden
+@functions {
 
-#line 5 "C:\GitSandbox\Project-Cinderella\UI\Views\Shared\Items\_Details.cshtml"
-           __o = Html.DisplayFor(m => m.LocationPurchased);
-<div class="">Last Updated: @Html.DisplayFor(m => m.LocationPurchased)</div>
-    }
+	private static ActionResult GetRemoveAction(int id, ItemType type)
+	{
+		switch (type)
+		{
+			case ItemType.Album:
+				return MVC.Album.RemoveFromShowcase(id);
+			case ItemType.Book:
+				return MVC.Book.RemoveFromShowcase(id);
+			case ItemType.Movie:
+				return MVC.Movie.RemoveFromShowcase(id);
+			case ItemType.Game:
+				return MVC.Game.RemoveFromShowcase(id);
+		}
+		return null;
+	}
+
+}

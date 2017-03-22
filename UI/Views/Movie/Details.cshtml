@@ -3,147 +3,56 @@
 @model UI.Models.MovieViewModel
 
 <script>
-    var deleteUrl = '@Url.Action(MVC.Movie.Delete())';
+	var deleteUrl = '@Url.Action(MVC.Movie.Delete())';
 </script>
 
 <h2>
-    Details
+	Details
 </h2>
-@if (User.IsInRole("Admin") && Model.StatusInfo.IsShowcased)
-{
-    @Html.ActionLink("Remove From showcase", MVC.Movie.RemoveFromShowcase(Model.MovieInfo.ID), new { @class = "btn btn-danger" })
-}
-@if (Model.StatusInfo.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.StatusInfo.DateUpdated != DateTime.MinValue)
-{
-    <div class="">Last Updated: @Model.StatusInfo.DateUpdated</div>
-}
-    @*<div data-toggle="collapse" data-parent="#accordion" href="#movie-info">
-            <div class="row panel panel-primary panel-collapse text-center">
-                <div class="panel-heading">
-                    <h4>
-                        @Model.MovieInfo.Title
-                        <span class="fa fa-chevron-circle-down"></span>
-                    </h4>
-                </div>
-            </div>
-        </div>
-        <div id="movie-info" class="collapse in">
-            <div class="background-image" style="background: url('@Model.MovieInfo.ImageUrl')">
-                <div class="contentContainer">
-                    <div class="panel-body">
-                        <div class="animate-box item col-sm-6">
-                            <a href="@(string.IsNullOrWhiteSpace(Model.MovieInfo.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.MovieInfo.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.MovieInfo.Director - @Model.MovieInfo.Title (@Model.MovieInfo.YearReleased)">
-                                <img src="@(string.IsNullOrWhiteSpace(Model.MovieInfo.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.MovieInfo.ImageUrl)" class="img-rounded" style="height: 350px; width: 250px;">
-                            </a>
-                        </div>
 
-                        <div class="col-xs-6">
-                            @Html.LabelFor(m => m.MovieInfo.Director):
-                            @Html.DisplayFor(m => m.MovieInfo.Director, new { @class = "form-control" })
-                        </div>
+@Html.Partial(MVC.Shared.Views.Items.Details._StatusInfo, Model.StatusInfo)
 
-                        <div class="col-xs-6">
-                            @Html.LabelFor(m => m.MovieInfo.Distributor):
-                            @Html.DisplayFor(m => m.MovieInfo.Distributor, new { @class = "form-control" })
-                        </div>
+@Html.Partial(MVC.Shared.Views.Items.Details._ItemInfo, Model.MovieInfo)
 
-                        <div class="col-xs-6">
-                            @Html.LabelFor(m => m.MovieInfo.YearReleased):
-                            @Html.DisplayFor(m => m.MovieInfo.YearReleased)
-                        </div>
+<div class="row" style="padding-top: 1em;">
+	<div class="col-md-6">
+		<div data-toggle="collapse" data-parent="#accordion" href="#media-info">
+			<div class="row panel panel-primary panel-collapse">
+				<div class="panel-heading">
+					<h4>
+						Media Information
+						<span class="fa fa-chevron-circle-down"></span>
+					</h4>
+				</div>
+			</div>
+		</div>
+		<div id="media-info" class="collapse in">
+			<div class="panel-body">
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.MediaInfo.Type):
+					@Model.MediaInfo.Type.GetDisplayName()
+				</div>
 
-                        <div class="col-xs-6">
-                            @Html.LabelFor(m => m.MovieInfo.Genre):
-                            @Html.DisplayFor(m => m.MovieInfo.Genre, new { @class = "form-control" })
-                        </div>
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.MediaInfo.Rating):
+					@Model.MediaInfo.Rating.GetDisplayName()
+				</div>
 
-                        <div class="col-xs-6">
-                            @Html.LabelFor(m => m.MovieInfo.Notes):
-                            @Html.DisplayFor(m => m.MovieInfo.Notes, new { @class = "form-control" })
-                        </div>
+				@Html.Partial(MVC.Shared.Views.Items.Details._MediaInfo, Model.MediaInfo)
+			</div>
+		</div>
+	</div>
 
-                        <div class="col-xs-6">
-                            @Html.LabelFor(m => m.MovieInfo.Category):
-                            @Html.DisplayFor(m => m.MovieInfo.Category)
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>*@@Html.Partial(MVC.Shared.Views.Items.Details._ItemInfo, Model.MovieInfo)
+	@Html.Partial(MVC.Shared.Views.Items.Details._PurchaseInfo, Model.PurchaseInfo)
+</div>
 
-        <div class="row" style="padding-top: 1em;">
-            <div class="col-md-6">
-                <div data-toggle="collapse" data-parent="#accordion" href="#media-info">
-                    <div class="row panel panel-primary panel-collapse">
-                        <div class="panel-heading">
-                            <h4>
-                                Media Information
-                                <span class="fa fa-chevron-circle-down"></span>
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-                <div id="media-info" class="collapse in">
-                    <div class="panel-body">
-                        <div class="col-xs-6">
-                            @Html.LabelFor(m => m.MediaInfo.Type):
-                            @Model.MediaInfo.Type.GetDisplayName()
-                        </div>
-
-                        <div class="col-xs-6">
-                            @Html.LabelFor(m => m.MediaInfo.Rating):
-                            @Model.MediaInfo.Rating.GetDisplayName()
-                        </div>
-
-                        <div class="col-xs-6">
-                            @Html.LabelFor(m => m.MovieInfo.Language):
-                            @Html.DisplayFor(m => m.MovieInfo.Language)
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            @*<div class="col-md-6">
-                    <div data-toggle="collapse" data-parent="#accordion" href="#purchase-info">
-                        <div class="row panel panel-primary panel-collapse">
-                            <div class="panel-heading">
-                                <h4>
-                                    Purchase Information
-                                    <span class="fa fa-chevron-circle-down"></span>
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="purchase-info" class="collapse in">
-                        <div class="panel-body">
-                            <div class="col-xs-6">
-                                @Html.LabelFor(m => m.PurchaseInfo.DatePurchased):
-                                @Html.DisplayFor(m => m.PurchaseInfo.DatePurchased)
-                            </div>
-
-                            <div class="col-xs-6">
-                                @Html.LabelFor(m => m.PurchaseInfo.LocationPurchased):
-                                @Html.DisplayFor(m => m.PurchaseInfo.LocationPurchased)
-                            </div>
-
-                            <div class="col-xs-6">
-                                @Html.LabelFor(m => m.PurchaseInfo.IsNew):
-                                @Html.DisplayFor(m => m.PurchaseInfo.IsNew)
-                            </div>
-                        </div>
-                    </div>
-                </div>*@
-
-            @Html.Partial(MVC.Shared.Views.Items.Details._PurchaseInfo, Model.PurchaseInfo)
-        </div>
-
-        <div>
-            @if (User.Identity.IsAuthenticated && Model.MovieInfo.UserID == User.Identity.GetUserId())
-            {
-                @Html.ActionLink("Edit", MVC.Movie.Edit(Model.MovieInfo.ID), new { id = Model.MovieInfo.ID })
-                <span> | </span>
-                @Html.ActionLink("Delete", MVC.Movie.Delete(Model.MovieInfo.ID), new { @class = "deleteBtn", @data_id = Model.MovieInfo.ID })
-                <span> | </span>
-            }
-            @Html.ActionLink("Back to List", MVC.Movie.Index())
-        </div>
+<div>
+	@if (User.Identity.IsAuthenticated && Model.MovieInfo.UserID == User.Identity.GetUserId())
+	{
+		@Html.ActionLink("Edit", MVC.Movie.Edit(Model.MovieInfo.ID), new { id = Model.MovieInfo.ID })
+		<span> | </span>
+		@Html.ActionLink("Delete", MVC.Movie.Delete(Model.MovieInfo.ID), new { @class = "deleteBtn", @data_id = Model.MovieInfo.ID })
+		<span> | </span>
+	}
+	@Html.ActionLink("Back to List", MVC.Movie.Index())
+</div>

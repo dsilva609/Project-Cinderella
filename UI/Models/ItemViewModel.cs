@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using BusinessLogic.Enums;
 
 namespace UI.Models
 {
@@ -15,7 +16,7 @@ namespace UI.Models
 		public string Title { get; set; }
 
 		public string Genre { get; set; }
-		public string Language { get; set; }
+
 		public string Notes { get; set; }
 
 		[DisplayName("Image Url")]
@@ -29,6 +30,8 @@ namespace UI.Models
 
 	public class MediaInfoViewModel
 	{
+		public string Language { get; set; }
+
 		[Required]
 		[DisplayName("Physical?")]
 		public bool IsPhysical { get; set; }
@@ -55,6 +58,8 @@ namespace UI.Models
 
 	public class ItemStatusViewModel
 	{
+		public int ItemID { get; set; }
+		public ItemType ItemType { get; set; }
 		public DateTime DateAdded { get; set; }
 		public DateTime DateUpdated { get; set; } = Convert.ToDateTime("1/1/1900");
 
