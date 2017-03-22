@@ -775,6 +775,8 @@
     <Content Include="Views\Shared\Items\Details\_MediaInfo.cshtml" />
     <Content Include="Views\Shared\Items\Details\_ItemInfo.cshtml" />
     <Content Include="Views\Shared\Items\Details\_StatusInfo.cshtml" />
+    <Content Include="Views\Shared\Items\Form\_StatusSection.cshtml" />
+    <Content Include="Views\Shared\Items\Form\_PurchaseInfoSection.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -934,9 +936,7 @@
       <DependentUpon>201610121626520_added default action type.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Shared\Items\Form\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
