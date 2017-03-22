@@ -2,98 +2,98 @@
 @model UI.Models.ItemStatusViewModel
 
 <div class="row panel-body">
-	@if (Model.DateAdded != Convert.ToDateTime("1/1/1900") && Model.DateAdded != DateTime.MinValue)
-	{
-		<div>Date Added: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateAdded)</div>
-	}
-	@if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
-	{
-		<div class="">Last Updated: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateUpdated)</div>
-	}
+    @if (Model.DateAdded != Convert.ToDateTime("1/1/1900") && Model.DateAdded != DateTime.MinValue)
+    {
+        <div>Date Added: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateAdded)</div>
+    }
+    @if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
+    {
+        <div class="">Last Updated: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateUpdated)</div>
+    }
 
-	<div class="col-md-6">
-		@Html.LabelFor(m => m.CompletionStatus)
-		@Html.EnumDropDownListFor(m => m.CompletionStatus, new { @class = "form-control" })
-		@Html.ValidationMessageFor(m => m.CompletionStatus, "", new { @class = "text-danger" })
-	</div>
+    <div class="col-md-6">
+        @Html.LabelFor(m => m.CompletionStatus)
+        @Html.EnumDropDownListFor(m => m.CompletionStatus, new { @class = "form-control", Name = Model.ModelName + ".CompletionStatus" })
+        @Html.ValidationMessageFor(m => m.CompletionStatus, "", new { @class = "text-danger" })
+    </div>
 
-	<div class="col-md-6">
-		@Html.LabelFor(m => m.TimesCompleted)
-		<div style="display: inline-flex;">
-			@if (Model.TimesCompleted > 0)
-			{
-				<a class="btn btn-default" href="/@Model.ItemType.ToString()/DecreaseCompletionCount/@Model.ItemID">
-					<span class="fa fa-minus"></span>
-				</a>
-			}
-			@Html.TextBoxFor(m => m.TimesCompleted, new { @class = "form-control", type = "number" })
-			<a class="btn btn-default" href="/@Model.ItemType.ToString()/IncreaseCompletionCount/@Model.ItemID">
-				<span class="fa fa-plus"></span>
-			</a>
-		</div>
-		@Html.ValidationMessageFor(m => m.TimesCompleted, "", new { @class = "text-danger" })
-	</div>
+    <div class="col-md-6">
+        @Html.LabelFor(m => m.TimesCompleted)
+        <div style="display: inline-flex;">
+            @if (Model.TimesCompleted > 0)
+            {
+                <a class="btn btn-default" href="/@Model.ItemType.ToString()/DecreaseCompletionCount/@Model.ItemID">
+                    <span class="fa fa-minus"></span>
+                </a>
+            }
+            @Html.TextBoxFor(m => m.TimesCompleted, new { @class = "form-control", type = "number", Name = Model.ModelName + ".TimesCompleted" })
+            <a class="btn btn-default" href="/@Model.ItemType.ToString()/IncreaseCompletionCount/@Model.ItemID">
+                <span class="fa fa-plus"></span>
+            </a>
+        </div>
+        @Html.ValidationMessageFor(m => m.TimesCompleted, "", new { @class = "text-danger" })
+    </div>
 
-	<div class="row">
-		<div class="col-md-6 form-inline">
-			<label>
-				@Html.CheckBoxFor(m => m.CheckedOut) Checked Out?
-			</label>
-			@Html.ValidationMessageFor(m => m.CheckedOut, "", new { @class = "text-danger" })
-		</div>
+    <div class="row">
+        <div class="col-md-6 form-inline">
+            <label>
+                @Html.CheckBoxFor(m => m.CheckedOut, new { Name = Model.ModelName + ".CheckedOut" }) Checked Out?
+            </label>
+            @Html.ValidationMessageFor(m => m.CheckedOut, "", new { @class = "text-danger" })
+        </div>
 
-		@if (Model.ItemID > 0)
-		{
-			if (!Model.IsShowcased)
-			{
-				<div class="col-md-6">
-					@Html.ActionLink("Add to Showcase", GetAddAction(Model.ItemID, Model.ItemType), new { @class = "btn btn-default" })
-				</div>
-			}
-			else
-			{
-				<div class="col-md-6">
-					@Html.ActionLink("Remove from Showcase", GetRemoveAction(Model.ItemID, Model.ItemType), new { @class = "btn btn-danger" })
-				</div>
-			}
-		}
-	</div>
+        @if (Model.ItemID > 0)
+        {
+            if (!Model.IsShowcased)
+            {
+                <div class="col-md-6">
+                    @Html.ActionLink("Add to Showcase", GetAddAction(Model.ItemID, Model.ItemType), new { @class = "btn btn-default" })
+                </div>
+            }
+            else
+            {
+                <div class="col-md-6">
+                    @Html.ActionLink("Remove from Showcase", GetRemoveAction(Model.ItemID, Model.ItemType), new { @class = "btn btn-danger" })
+                </div>
+            }
+        }
+    </div>
 </div>
 
 @functions
 {
 
-	private ActionResult GetAddAction(int id, ItemType type)
-	{
-		switch (type)
-		{
-			case ItemType.Album:
-				return MVC.Album.AddToShowcase(id);
-			case ItemType.Book:
-				return MVC.Book.AddToShowcase(id);
-			case ItemType.Movie:
-				return MVC.Movie.AddToShowcase(id);
-			case ItemType.Game:
-				return MVC.Game.AddToShowcase(id);
-		}
-		return null;
-	}
+    private ActionResult GetAddAction(int id, ItemType type)
+    {
+        switch (type)
+        {
+            case ItemType.Album:
+                return MVC.Album.AddToShowcase(id);
+            case ItemType.Book:
+                return MVC.Book.AddToShowcase(id);
+            case ItemType.Movie:
+                return MVC.Movie.AddToShowcase(id);
+            case ItemType.Game:
+                return MVC.Game.AddToShowcase(id);
+        }
+        return null;
+    }
 
-	private ActionResult GetRemoveAction(int id, ItemType type)
-	{
-		switch (type)
-		{
-			case ItemType.Album:
-				return MVC.Album.RemoveFromShowcase(id);
-			case ItemType.Book:
-				return MVC.Game.RemoveFromShowcase(id);
-			case ItemType.Movie:
-				return MVC.Game.RemoveFromShowcase(id);
-			case ItemType.Game:
-				return MVC.Game.RemoveFromShowcase(id);
-		}
+    private ActionResult GetRemoveAction(int id, ItemType type)
+    {
+        switch (type)
+        {
+            case ItemType.Album:
+                return MVC.Album.RemoveFromShowcase(id);
+            case ItemType.Book:
+                return MVC.Game.RemoveFromShowcase(id);
+            case ItemType.Movie:
+                return MVC.Game.RemoveFromShowcase(id);
+            case ItemType.Game:
+                return MVC.Game.RemoveFromShowcase(id);
+        }
 
-		return null;
-	}
+        return null;
+    }
 
 }

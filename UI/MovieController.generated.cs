@@ -186,7 +186,7 @@ namespace UI.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Create
         {
-            public readonly string movie = "movie";
+            public readonly string model = "model";
         }
         static readonly ActionParamsClass_Edit s_params_Edit = new ActionParamsClass_Edit();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -195,7 +195,7 @@ namespace UI.Controllers
         public class ActionParamsClass_Edit
         {
             public readonly string id = "id";
-            public readonly string movie = "movie";
+            public readonly string model = "model";
         }
         static readonly ActionParamsClass_Delete s_params_Delete = new ActionParamsClass_Delete();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -329,14 +329,14 @@ namespace UI.Controllers
         }
 
         [NonAction]
-        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, BusinessLogic.Models.Movie movie);
+        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, UI.Models.MovieViewModel model);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Create(BusinessLogic.Models.Movie movie)
+        public override System.Web.Mvc.ActionResult Create(UI.Models.MovieViewModel model)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "movie", movie);
-            CreateOverride(callInfo, movie);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            CreateOverride(callInfo, model);
             return callInfo;
         }
 
@@ -353,14 +353,14 @@ namespace UI.Controllers
         }
 
         [NonAction]
-        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, BusinessLogic.Models.Movie movie);
+        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, UI.Models.MovieViewModel model);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Edit(BusinessLogic.Models.Movie movie)
+        public override System.Web.Mvc.ActionResult Edit(UI.Models.MovieViewModel model)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "movie", movie);
-            EditOverride(callInfo, movie);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            EditOverride(callInfo, model);
             return callInfo;
         }
 

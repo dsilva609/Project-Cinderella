@@ -777,6 +777,8 @@
     <Content Include="Views\Shared\Items\Details\_StatusInfo.cshtml" />
     <Content Include="Views\Shared\Items\Form\_StatusSection.cshtml" />
     <Content Include="Views\Shared\Items\Form\_PurchaseInfoSection.cshtml" />
+    <Content Include="Views\Shared\Items\Form\_ItemInfoSection.cshtml" />
+    <Content Include="Views\Shared\Items\Form\_MediaInfoSection.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

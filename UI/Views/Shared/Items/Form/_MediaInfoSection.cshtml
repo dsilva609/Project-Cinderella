@@ -1,0 +1,19 @@
+﻿@model UI.Models.MediaInfoViewModel
+
+<div class="col-sm-6">
+    @Html.LabelFor(m => m.IsPhysical)
+    @Html.CheckBoxFor(m => m.IsPhysical, new { @class = "form-control", Name = Model.ModelName + ".IsPhysical" })
+    @Html.ValidationMessageFor(m => m.IsPhysical, "", new { @class = "text-danger" })
+</div>
+
+<div class="col-sm-6">
+    @Html.LabelFor(m => m.Language)
+    @Html.TextBoxFor(m => m.Language, new { @class = "form-control", Name = Model.ModelName + ".Language" })
+    @Html.ValidationMessageFor(m => m.Language, "", new { @class = "text-danger" })
+</div>
+
+<div class="col-sm-6">
+    @Html.LabelFor(m => m.CountryOfOrigin)
+    @Html.TextBoxFor(m => m.CountryOfOrigin, new { @class = "form-control", Name = Model.ModelName + ".CountryOfOrigin" })
+    @Html.ValidationMessageFor(m => m.CountryOfOrigin, "", new { @class = "text-danger" })
+</div>

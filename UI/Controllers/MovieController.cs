@@ -66,22 +66,26 @@ namespace UI.Controllers
             var model = Session["movieResult"] ?? new Movie { UserID = User.Identity.GetUserId() };
             ViewBag.Title = "Create";
             Session["movieResult"] = null;
+            var viewModel = Mapper.Map<MovieViewModel>(model);
 
-            return View(model);
+            return View(viewModel);
         }
 
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult Create(Movie movie)
+        public virtual ActionResult Create(MovieViewModel model)
         {
-            if (!ModelState.IsValid) return View(movie);
+            if (!ModelState.IsValid) return View(model);
+
+            var movie = Mapper.Map<Movie>(model);
             try
             {
                 if (movie.CompletionStatus == CompletionStatus.Completed && movie.TimesCompleted == 0)
                     movie.TimesCompleted = 1;
                 movie.DateAdded = DateTime.UtcNow;
                 SetTimeStamps(movie);
+
                 this._service.Add(movie);
             }
             catch (Exception e)
@@ -114,17 +118,19 @@ namespace UI.Controllers
                 ShowStatusMessage(MessageTypeEnum.warning, "This item cannot be edited by another user.", "Edit Failure");
                 return RedirectToAction(MVC.Movie.Index());
             }
+            var viewModel = Mapper.Map<MovieViewModel>(model);
 
-            return View(model);
+            return View(viewModel);
         }
 
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult Edit(Movie movie)
+        public virtual ActionResult Edit(MovieViewModel model)
         {
-            if (!ModelState.IsValid) return View(movie);
+            if (!ModelState.IsValid) return View(model);
 
+            var movie = Mapper.Map<Movie>(model);
             var existingMovies = _service.GetAll(User.Identity.GetUserId());
 
             if (existingMovies.Count > 0 && existingMovies.Any(x => x.ID != movie.ID && x.Title == movie.Title && x.Type == movie.Type))

@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using BusinessLogic.Enums;
+﻿using BusinessLogic.Enums;
 using BusinessLogic.Models;
 using PagedList;
+using System.ComponentModel.DataAnnotations;
 
 namespace UI.Models
 {
