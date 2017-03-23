@@ -28,9 +28,6 @@ namespace UI.Controllers
     public partial class QueueController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public QueueController() { }
-
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected QueueController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -95,8 +92,10 @@ namespace UI.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _QueueTablePartial = "_QueueTablePartial";
                 public readonly string Index = "Index";
             }
+            public readonly string _QueueTablePartial = "~/Views/Queue/_QueueTablePartial.cshtml";
             public readonly string Index = "~/Views/Queue/Index.cshtml";
         }
     }

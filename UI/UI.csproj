@@ -780,6 +780,7 @@
     <Content Include="Views\Shared\Items\Form\_ItemInfoSection.cshtml" />
     <Content Include="Views\Shared\Items\Form\_MediaInfoSection.cshtml" />
     <Content Include="Views\Queue\Index.cshtml" />
+    <Content Include="Views\Queue\_QueueTablePartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -888,6 +889,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MovieViewModel.cs" />
     <Compile Include="Models\AlbumViewModel.cs" />
+    <Compile Include="Models\QueueItemViewModel.cs" />
+    <Compile Include="Models\QueueViewModel.cs" />
     <Compile Include="Models\ShowcaseViewModel.cs" />
     <Compile Include="Models\StatisticsViewModel.cs" />
     <Compile Include="Models\StatsViewModel.cs" />
