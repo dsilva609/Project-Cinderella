@@ -1,0 +1,77 @@
+﻿@model UI.Models.QueueViewModel
+
+@if (Model.Albums.Any())
+{
+	<div data-toggle="collapse" data-parent="#accordion" href="#albums">
+		<div class="row panel panel-primary panel-collapse">
+			<div class="panel-heading">
+				<h4>
+					Albums
+					<span class="fa fa-chevron-circle-down"></span>
+				</h4>
+			</div>
+		</div>
+	</div>
+	<div id="albums" class="collapse in">
+		<div class="panel-body">
+			@Html.Partial(MVC.Queue.Views._QueueTablePartial, Model.Albums)
+		</div>
+	</div>
+}
+
+@if (Model.Books.Any())
+{
+	<div data-toggle="collapse" data-parent="#accordion" href="#books">
+		<div class="row panel panel-primary panel-collapse">
+			<div class="panel-heading">
+				<h4>
+					Books
+					<span class="fa fa-chevron-circle-down"></span>
+				</h4>
+			</div>
+		</div>
+	</div>
+	<div id="books" class="collapse in">
+		<div class="panel-body">
+			@Html.Partial(MVC.Queue.Views._QueueTablePartial, Model.Books)
+		</div>
+	</div>
+}
+
+@if (Model.Movies.Any())
+{
+	<div data-toggle="collapse" data-parent="#accordion" href="#movies">
+		<div class="row panel panel-primary panel-collapse">
+			<div class="panel-heading">
+				<h4>
+					Movies
+					<span class="fa fa-chevron-circle-down"></span>
+				</h4>
+			</div>
+		</div>
+	</div>
+	<div id="movies" class="collapse in">
+		<div class="panel-body">
+			@Html.Partial(MVC.Queue.Views._QueueTablePartial, Model.Movies)
+		</div>
+	</div>
+}
+
+@if (Model.Games.Any())
+{
+	<div data-toggle="collapse" data-parent="#accordion" href="#games">
+		<div class="row panel panel-primary panel-collapse">
+			<div class="panel-heading">
+				<h4>
+					Games
+					<span class="fa fa-chevron-circle-down"></span>
+				</h4>
+			</div>
+		</div>
+	</div>
+	<div id="games" class="collapse in">
+		<div class="panel-body">
+			@Html.Partial(MVC.Wish.Views._WishTablePartial, Model.Games)
+		</div>
+	</div>
+}

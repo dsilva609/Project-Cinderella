@@ -13,203 +13,232 @@ using UnitTests.UI.Controllers.TestBases;
 
 namespace UnitTests.UI.Controllers
 {
-    [TestFixture]
-    public class GameControllerTests : GameControllerTestBase
-    {
-        private Game _testModel = new Game();
+	[TestFixture]
+	public class GameControllerTests : GameControllerTestBase
+	{
+		private Game _testModel = new Game();
 
-        [Test]
-        public void ThatIndexActionReturnsAView()
-        {
-            _session["query"] = string.Empty;
-            //--Act
-            var result = _controller.ClassUnderTest.Index(string.Empty, string.Empty, 1) as ViewResult;
+		[Test]
+		public void ThatIndexActionReturnsAView()
+		{
+			_session["query"] = string.Empty;
+			//--Act
+			var result = _controller.ClassUnderTest.Index(string.Empty, string.Empty, 1) as ViewResult;
 
-            //--Assert
-            Assert.AreEqual(string.Empty, result.ViewName);
-        }
+			//--Assert
+			Assert.AreEqual(string.Empty, result.ViewName);
+		}
 
-        [Test]
-        public void ThatDetailsActionRetunsAView()
-        {
-            //--Act
-            var result = _controller.ClassUnderTest.Details(72) as ViewResult;
+		[Test]
+		public void ThatDetailsActionRetunsAView()
+		{
+			//--Act
+			var result = _controller.ClassUnderTest.Details(72) as ViewResult;
 
-            //--Assert
-            Assert.AreEqual(string.Empty, result.ViewName);
-        }
+			//--Assert
+			Assert.AreEqual(string.Empty, result.ViewName);
+		}
 
-        [Test]
-        public void ThatCreateActionReturnsAView()
-        {
-            //--Act
-            var result = _controller.ClassUnderTest.Create() as ViewResult;
+		[Test]
+		public void ThatCreateActionReturnsAView()
+		{
+			//--Act
+			var result = _controller.ClassUnderTest.Create() as ViewResult;
 
-            //--Assert
-            Assert.AreEqual(string.Empty, result.ViewName);
-        }
+			//--Assert
+			Assert.AreEqual(string.Empty, result.ViewName);
+		}
 
-        [Test]
-        public void ItRedirectsToIndexActionWhenModelIsValid()
-        {
-            //--Act
-            var result = _controller.ClassUnderTest.Create(_testModel) as RedirectToRouteResult;
+		[Test]
+		public void ItRedirectsToIndexActionWhenModelIsValid()
+		{
+			//--Act
+			var result = _controller.ClassUnderTest.Create(_testModel) as RedirectToRouteResult;
 
-            //--Assert
-            Assert.IsTrue(_controller.ClassUnderTest.ModelState.IsValid);
-            Assert.AreEqual("Index", result.RouteValues["Action"]);
-        }
+			//--Assert
+			Assert.IsTrue(_controller.ClassUnderTest.ModelState.IsValid);
+			Assert.AreEqual("Index", result.RouteValues["Action"]);
+		}
 
-        [Test]
-        public void ItGoesBackToTheViewIfModelStateIsInvalid()
-        {
-            //--Arrange
-            _controller.ClassUnderTest.ModelState.AddModelError(string.Empty, string.Empty);
+		[Test]
+		public void ItGoesBackToTheViewIfModelStateIsInvalid()
+		{
+			//--Arrange
+			_controller.ClassUnderTest.ModelState.AddModelError(string.Empty, string.Empty);
 
-            //--Act
-            var result = _controller.ClassUnderTest.Create(_testModel) as ViewResult;
+			//--Act
+			var result = _controller.ClassUnderTest.Create(_testModel) as ViewResult;
 
-            //--Assert
-            Assert.AreEqual(string.Empty, result.ViewName);
-            Assert.IsFalse(_controller.ClassUnderTest.ModelState.IsValid);
-        }
+			//--Assert
+			Assert.AreEqual(string.Empty, result.ViewName);
+			Assert.IsFalse(_controller.ClassUnderTest.ModelState.IsValid);
+		}
 
-        [Test]
-        public void ThatEditActionReturnsAView()
-        {
-            _service.Setup(x => x.GetByID(42, Arg<string>.Is.Anything)).Returns(new Game { ID = 42 });
-            //--Act
-            var result = _controller.ClassUnderTest.Edit(42) as ViewResult;
+		[Test]
+		public void ThatEditActionReturnsAView()
+		{
+			_service.Setup(x => x.GetByID(42, Arg<string>.Is.Anything)).Returns(new Game { ID = 42 });
+			//--Act
+			var result = _controller.ClassUnderTest.Edit(42) as ViewResult;
 
-            //--Assert
-            Assert.AreEqual(string.Empty, result.ViewName);
-        }
+			//--Assert
+			Assert.AreEqual(string.Empty, result.ViewName);
+		}
 
-        [Test]
-        public void ThatOnEditWhenModelStateIsValidItGoesBackToIndexView()
-        {
-            //--Arrange
-            _service.Setup(x => x.GetAll(It.Is<string>(y => y == null), string.Empty, 0, 1)).Returns(new List<Game>());
+		[Test]
+		public void ThatOnEditWhenModelStateIsValidItGoesBackToIndexView()
+		{
+			//--Arrange
+			_service.Setup(x => x.GetAll(It.Is<string>(y => y == null), string.Empty, 0, 1)).Returns(new List<Game>());
 
-            //--Act
-            var result = _controller.ClassUnderTest.Edit(_testModel) as RedirectToRouteResult;
+			//--Act
+			var result = _controller.ClassUnderTest.Edit(_testModel) as RedirectToRouteResult;
 
-            //--Assert
-            Assert.AreEqual("Index", result.RouteValues["Action"]);
-        }
+			//--Assert
+			Assert.AreEqual("Index", result.RouteValues["Action"]);
+		}
 
-        [Test]
-        public void ThatWhenModelStateIsNotValidItRedirectsBackToEditView()
-        {
-            //--Arrange
-            _controller.ClassUnderTest.ModelState.AddModelError("", "");
+		[Test]
+		public void ThatWhenModelStateIsNotValidItRedirectsBackToEditView()
+		{
+			//--Arrange
+			_controller.ClassUnderTest.ModelState.AddModelError("", "");
 
-            //--Act
-            var result = _controller.ClassUnderTest.Edit(_testModel) as ViewResult;
+			//--Act
+			var result = _controller.ClassUnderTest.Edit(_testModel) as ViewResult;
 
-            //--Assert
-            Assert.IsFalse(_controller.ClassUnderTest.ModelState.IsValid);
-            Assert.AreEqual(string.Empty, result.ViewName);
-        }
+			//--Assert
+			Assert.IsFalse(_controller.ClassUnderTest.ModelState.IsValid);
+			Assert.AreEqual(string.Empty, result.ViewName);
+		}
 
-        [Test]
-        public void ThatOnEditADuplicateGameIsFoundItRedirectsBackToEditView()
-        {
-            //--Arrange
-            _service.Setup(x => x.GetAll(It.Is<string>(y => y == null), string.Empty, 0, 1))
-                .Returns(new List<Game> { new Game { ID = 1, Title = "Final Fantasy", Developer = "Squeenix" } });
-            _testModel.ID = 2;
-            _testModel.Title = "Final Fantasy";
-            _testModel.Developer = "Squeenix";
+		[Test]
+		public void ThatOnEditADuplicateGameIsFoundItRedirectsBackToEditView()
+		{
+			//--Arrange
+			_service.Setup(x => x.GetAll(It.Is<string>(y => y == null), string.Empty, 0, 1))
+				.Returns(new List<Game> { new Game { ID = 1, Title = "Final Fantasy", Developer = "Squeenix" } });
+			_testModel.ID = 2;
+			_testModel.Title = "Final Fantasy";
+			_testModel.Developer = "Squeenix";
 
-            //--Act
-            var result = _controller.ClassUnderTest.Edit(_testModel) as ViewResult;
+			//--Act
+			var result = _controller.ClassUnderTest.Edit(_testModel) as ViewResult;
 
-            //--Assert
-            Assert.AreEqual(string.Empty, result.ViewName);
-        }
+			//--Assert
+			Assert.AreEqual(string.Empty, result.ViewName);
+		}
 
-        [Test]
-        public void ThatItGoesToIndexViewAfterDelete()
-        {
-            _service.Setup(x => x.GetByID(666, Arg<string>.Is.Anything)).Returns(new Game { ID = 666, UserID = "Test User" });
+		[Test]
+		public void ThatItGoesToIndexViewAfterDelete()
+		{
+			_service.Setup(x => x.GetByID(666, Arg<string>.Is.Anything)).Returns(new Game { ID = 666, UserID = "Test User" });
 
-            //--Act
-            var result = _controller.ClassUnderTest.Delete(666) as RedirectToRouteResult;
+			//--Act
+			var result = _controller.ClassUnderTest.Delete(666) as RedirectToRouteResult;
 
-            //--Assert
-            Assert.AreEqual("Index", result.RouteValues["Action"]);
-        }
+			//--Assert
+			Assert.AreEqual("Index", result.RouteValues["Action"]);
+		}
 
-        [Test]
-        public void ThatSearchForWishPopulatesModelCorrectly()
-        {
-            _session["query"] = null;
-            _session["wish"] = "Brutal Legend";
-            _controller.Get<IGiantBombService>()
-                .Expect(x => x.Search(Arg<string>.Is.Anything))
-                .Return(new GiantBombResult());
-            _controller.Get<IBGGService>().Expect(x => x.Search(Arg<string>.Is.Anything)).Return(new BGGGame());
+		[Test]
+		public void ThatSearchForWishPopulatesModelCorrectly()
+		{
+			_session["query"] = null;
+			_session["wish"] = "Brutal Legend";
+			_controller.Get<IGiantBombService>()
+				.Expect(x => x.Search(Arg<string>.Is.Anything))
+				.Return(new GiantBombResult());
+			_controller.Get<IBGGService>().Expect(x => x.Search(Arg<string>.Is.Anything)).Return(new BGGGame());
 
-            var result = _controller.ClassUnderTest.Search(new GameSearchModel()) as ViewResult;
+			var result = _controller.ClassUnderTest.Search(new GameSearchModel()) as ViewResult;
 
-            ((GameSearchModel)result.Model).Title.ShouldBe("Brutal Legend");
-        }
+			((GameSearchModel)result.Model).Title.ShouldBe("Brutal Legend");
+		}
 
-        [Test]
-        public void ItAddsAnGameToShowcase()
-        {
-            _service.Setup(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>())).Returns(new Game());
+		[Test]
+		public void ItAddsAnGameToShowcase()
+		{
+			_service.Setup(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>())).Returns(new Game());
 
-            var result = _controller.ClassUnderTest.AddToShowcase(1) as RedirectToRouteResult;
+			var result = _controller.ClassUnderTest.AddToShowcase(1) as RedirectToRouteResult;
 
-            _service.Verify(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>()), Times.Once);
-            _service.Verify(x => x.Edit(It.IsAny<Game>()), Times.Once);
+			_service.Verify(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>()), Times.Once);
+			_service.Verify(x => x.Edit(It.IsAny<Game>()), Times.Once);
 
-            result.RouteValues["Action"].ShouldBe("Index");
-            result.RouteValues["Controller"].ShouldBe("Showcase");
-        }
+			result.RouteValues["Action"].ShouldBe("Index");
+			result.RouteValues["Controller"].ShouldBe("Showcase");
+		}
 
-        [Test]
-        public void ItRemovesAnGameFromTheShowcase()
-        {
-            _service.Setup(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>())).Returns(new Game());
+		[Test]
+		public void ItRemovesAnGameFromTheShowcase()
+		{
+			_service.Setup(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>())).Returns(new Game());
 
-            var result = _controller.ClassUnderTest.RemoveFromShowcase(1) as RedirectToRouteResult;
+			var result = _controller.ClassUnderTest.RemoveFromShowcase(1) as RedirectToRouteResult;
 
-            _service.Verify(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>()), Times.Once);
-            _service.Verify(x => x.Edit(It.IsAny<Game>()), Times.Once);
+			_service.Verify(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>()), Times.Once);
+			_service.Verify(x => x.Edit(It.IsAny<Game>()), Times.Once);
 
-            result.RouteValues["Action"].ShouldBe("Index");
-            result.RouteValues["Controller"].ShouldBe("Showcase");
-        }
+			result.RouteValues["Action"].ShouldBe("Index");
+			result.RouteValues["Controller"].ShouldBe("Showcase");
+		}
 
-        [Test]
-        public void ItIncreasesCompletionCount()
-        {
-            _service.Setup(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>())).Returns(new Game());
+		[Test]
+		public void ItIncreasesCompletionCount()
+		{
+			_service.Setup(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>())).Returns(new Game());
 
-            var result = _controller.ClassUnderTest.IncreaseCompletionCount(1) as RedirectToRouteResult;
+			var result = _controller.ClassUnderTest.IncreaseCompletionCount(1) as RedirectToRouteResult;
 
-            _service.Verify(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>()), Times.Once);
-            _service.Verify(x => x.Edit(It.IsAny<Game>()), Times.Once);
+			_service.Verify(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>()), Times.Once);
+			_service.Verify(x => x.Edit(It.IsAny<Game>()), Times.Once);
 
-            result.RouteValues["Action"].ShouldBe("Index");
-            result.RouteValues["Controller"].ShouldBe("Game");
-        }
+			result.RouteValues["Action"].ShouldBe("Index");
+			result.RouteValues["Controller"].ShouldBe("Game");
+		}
 
-        [Test]
-        public void ItDecreasesCompletionCount()
-        {
-            _service.Setup(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>())).Returns(new Game());
+		[Test]
+		public void ItDecreasesCompletionCount()
+		{
+			_service.Setup(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>())).Returns(new Game());
 
-            var result = _controller.ClassUnderTest.DecreaseCompletionCount(1) as RedirectToRouteResult;
+			var result = _controller.ClassUnderTest.DecreaseCompletionCount(1) as RedirectToRouteResult;
 
-            _service.Verify(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>()), Times.Once);
-            _service.Verify(x => x.Edit(It.IsAny<Game>()), Times.Once);
+			_service.Verify(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>()), Times.Once);
+			_service.Verify(x => x.Edit(It.IsAny<Game>()), Times.Once);
 
-            result.RouteValues["Action"].ShouldBe("Index");
-            result.RouteValues["Controller"].ShouldBe("Game");
-        }
-    }
+			result.RouteValues["Action"].ShouldBe("Index");
+			result.RouteValues["Controller"].ShouldBe("Game");
+		}
+
+		[Test]
+		public void ItAddsToQueue()
+		{
+			_service.Setup(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>())).Returns(new Game());
+
+			var result = _controller.ClassUnderTest.AddToQueue(1) as RedirectToRouteResult;
+
+			_service.Verify(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>()), Times.Once);
+			_service.Verify(x => x.Edit(It.IsAny<Game>()), Times.Once);
+			_service.Verify(x => x.GetHighestQueueRank(It.IsAny<string>()), Times.Once);
+
+			result.RouteValues["Action"].ShouldBe("Index");
+			result.RouteValues["Controller"].ShouldBe("Queue");
+		}
+
+		[Test]
+		public void ItRemovesFromQueue()
+		{
+			_service.Setup(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>())).Returns(new Game());
+
+			var result = _controller.ClassUnderTest.RemoveFromQueue(1) as RedirectToRouteResult;
+
+			_service.Verify(x => x.GetByID(It.IsAny<int>(), It.IsAny<string>()), Times.Once);
+			_service.Verify(x => x.Edit(It.IsAny<Game>()), Times.Once);
+
+			result.RouteValues["Action"].ShouldBe("Index");
+			result.RouteValues["Controller"].ShouldBe("Queue");
+		}
+	}
 }

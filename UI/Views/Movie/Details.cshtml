@@ -1,6 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity
 @using UI.Enums
-@model UI.Models.MovieViewModel
+@model BusinessLogic.Models.Movie
 
 <script>
 	var deleteUrl = '@Url.Action(MVC.Movie.Delete())';
@@ -8,13 +8,68 @@
 
 <h2>
 	Details
+	@if (User.IsInRole("Admin") && Model.IsShowcased)
+	{
+		@Html.ActionLink("Remove From showcase", MVC.Movie.RemoveFromShowcase(Model.ID), new { @class = "btn btn-danger" })
+	}
 </h2>
+@if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
+{
+	<div class="">Last Updated: @Model.DateUpdated</div>
+}
+<div data-toggle="collapse" data-parent="#accordion" href="#movie-info">
+	<div class="row panel panel-primary panel-collapse text-center">
+		<div class="panel-heading">
+			<h4>
+				@Model.Title
+				<span class="fa fa-chevron-circle-down"></span>
+			</h4>
+		</div>
+	</div>
+</div>
+<div id="movie-info" class="collapse in">
+	<div class="background-image" style="background: url('@Model.ImageUrl');">
+		<div class="contentContainer">
+			<div class="panel-body">
+				<div class="animate-box item col-sm-6">
+					<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Director - @Model.Title (@Model.YearReleased)">
+						<img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" class="img-rounded" style="height: 350px; width: 250px;">
+					</a>
+				</div>
 
-@Html.Partial(MVC.Shared.Views.Items.Details._StatusInfo, Model.StatusInfo)
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.Director):
+					@Html.DisplayFor(m => m.Director, new { @class = "form-control" })
+				</div>
 
-@Html.Partial(MVC.Shared.Views.Items.Details._ItemInfo, Model.MovieInfo)
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.Distributor):
+					@Html.DisplayFor(m => m.Distributor, new { @class = "form-control" })
+				</div>
 
-<div class="row" style="padding-top: 1em;">
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.YearReleased):
+					@Html.DisplayFor(m => m.YearReleased)
+				</div>
+
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.Genre):
+					@Html.DisplayFor(m => m.Genre, new { @class = "form-control" })
+				</div>
+
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.Notes):
+					@Html.DisplayFor(m => m.Notes, new { @class = "form-control" })
+				</div>
+
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.Category):
+					@Html.DisplayFor(m => m.Category)
+				</div>
+			</div>
+		</div>
+	</div>
+</div><div class="row" style="padding-top: 1em;">
 	<div class="col-md-6">
 		<div data-toggle="collapse" data-parent="#accordion" href="#media-info">
 			<div class="row panel panel-primary panel-collapse">
@@ -29,29 +84,61 @@
 		<div id="media-info" class="collapse in">
 			<div class="panel-body">
 				<div class="col-xs-6">
-					@Html.LabelFor(m => m.MediaInfo.Type):
-					@Model.MediaInfo.Type.GetDisplayName()
+					@Html.LabelFor(m => m.Type):
+					@Model.Type.GetDisplayName()
 				</div>
 
 				<div class="col-xs-6">
-					@Html.LabelFor(m => m.MediaInfo.Rating):
-					@Model.MediaInfo.Rating.GetDisplayName()
+					@Html.LabelFor(m => m.Rating):
+					@Model.Rating.GetDisplayName()
 				</div>
 
-				@Html.Partial(MVC.Shared.Views.Items.Details._MediaInfo, Model.MediaInfo)
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.Language):
+					@Html.DisplayFor(m => m.Language, new { @class = "form-control" })
+				</div>
 			</div>
 		</div>
 	</div>
 
-	@Html.Partial(MVC.Shared.Views.Items.Details._PurchaseInfo, Model.PurchaseInfo)
+	<div class="col-md-6">
+		<div data-toggle="collapse" data-parent="#accordion" href="#purchase-info">
+			<div class="row panel panel-primary panel-collapse">
+				<div class="panel-heading">
+					<h4>
+						Purchase Information
+						<span class="fa fa-chevron-circle-down"></span>
+					</h4>
+				</div>
+			</div>
+		</div>
+		<div id="purchase-info" class="collapse in">
+			<div class="panel-body">
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.DatePurchased):
+					@Html.DisplayFor(m => m.DatePurchased)
+				</div>
+
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.LocationPurchased):
+					@Html.DisplayFor(m => m.LocationPurchased, new { @class = "form-control" })
+				</div>
+
+				<div class="col-xs-6">
+					@Html.LabelFor(m => m.IsNew):
+					@Html.DisplayFor(m => m.IsNew, new { @class = "form-control" })
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <div>
-	@if (User.Identity.IsAuthenticated && Model.MovieInfo.UserID == User.Identity.GetUserId())
+	@if (User.Identity.IsAuthenticated && Model.UserID == User.Identity.GetUserId())
 	{
-		@Html.ActionLink("Edit", MVC.Movie.Edit(Model.MovieInfo.ID), new { id = Model.MovieInfo.ID })
+		@Html.ActionLink("Edit", MVC.Movie.Edit(Model.ID), new { id = Model.ID })
 		<span> | </span>
-		@Html.ActionLink("Delete", MVC.Movie.Delete(Model.MovieInfo.ID), new { @class = "deleteBtn", @data_id = Model.MovieInfo.ID })
+		@Html.ActionLink("Delete", MVC.Movie.Delete(Model.ID), new { @class = "deleteBtn", @data_id = Model.ID })
 		<span> | </span>
 	}
 	@Html.ActionLink("Back to List", MVC.Movie.Index())

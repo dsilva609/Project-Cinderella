@@ -779,6 +779,8 @@
     <Content Include="Views\Shared\Items\Form\_PurchaseInfoSection.cshtml" />
     <Content Include="Views\Shared\Items\Form\_ItemInfoSection.cshtml" />
     <Content Include="Views\Shared\Items\Form\_MediaInfoSection.cshtml" />
+    <Content Include="Views\Queue\Index.cshtml" />
+    <Content Include="Views\Queue\_QueueTablePartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -833,6 +835,7 @@
     <Compile Include="Controllers\ElmahController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\QueueController.cs" />
     <Compile Include="Controllers\ShowcaseController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\WishController.cs" />
@@ -886,6 +889,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MovieViewModel.cs" />
     <Compile Include="Models\AlbumViewModel.cs" />
+    <Compile Include="Models\QueueItemViewModel.cs" />
+    <Compile Include="Models\QueueViewModel.cs" />
     <Compile Include="Models\ShowcaseViewModel.cs" />
     <Compile Include="Models\StatisticsViewModel.cs" />
     <Compile Include="Models\StatsViewModel.cs" />
@@ -896,6 +901,9 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueueController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>

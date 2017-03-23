@@ -314,6 +314,10 @@
     <Compile Include="Migrations\201703161622223_changed completed to owned for wish.Designer.cs">
       <DependentUpon>201703161622223_changed completed to owned for wish.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703230130388_added is queued and queue rank to base item.cs" />
+    <Compile Include="Migrations\201703230130388_added is queued and queue rank to base item.Designer.cs">
+      <DependentUpon>201703230130388_added is queued and queue rank to base item.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseItem.cs" />
     <Compile Include="Models\BGGModels\BGGGame.cs" />
@@ -522,6 +526,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703161622223_changed completed to owned for wish.resx">
       <DependentUpon>201703161622223_changed completed to owned for wish.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703230130388_added is queued and queue rank to base item.resx">
+      <DependentUpon>201703230130388_added is queued and queue rank to base item.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

@@ -116,6 +116,18 @@ namespace UI.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DecreaseCompletionCount);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult AddToQueue()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddToQueue);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult RemoveFromQueue()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RemoveFromQueue);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public MovieController Actions { get { return MVC.Movie; } }
@@ -143,6 +155,8 @@ namespace UI.Controllers
             public readonly string RemoveFromShowcase = "RemoveFromShowcase";
             public readonly string IncreaseCompletionCount = "IncreaseCompletionCount";
             public readonly string DecreaseCompletionCount = "DecreaseCompletionCount";
+            public readonly string AddToQueue = "AddToQueue";
+            public readonly string RemoveFromQueue = "RemoveFromQueue";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -159,6 +173,8 @@ namespace UI.Controllers
             public const string RemoveFromShowcase = "RemoveFromShowcase";
             public const string IncreaseCompletionCount = "IncreaseCompletionCount";
             public const string DecreaseCompletionCount = "DecreaseCompletionCount";
+            public const string AddToQueue = "AddToQueue";
+            public const string RemoveFromQueue = "RemoveFromQueue";
         }
 
 
@@ -186,7 +202,7 @@ namespace UI.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Create
         {
-            public readonly string model = "model";
+            public readonly string movie = "movie";
         }
         static readonly ActionParamsClass_Edit s_params_Edit = new ActionParamsClass_Edit();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -195,7 +211,7 @@ namespace UI.Controllers
         public class ActionParamsClass_Edit
         {
             public readonly string id = "id";
-            public readonly string model = "model";
+            public readonly string movie = "movie";
         }
         static readonly ActionParamsClass_Delete s_params_Delete = new ActionParamsClass_Delete();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -251,6 +267,22 @@ namespace UI.Controllers
         public ActionParamsClass_DecreaseCompletionCount DecreaseCompletionCountParams { get { return s_params_DecreaseCompletionCount; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_DecreaseCompletionCount
+        {
+            public readonly string id = "id";
+        }
+        static readonly ActionParamsClass_AddToQueue s_params_AddToQueue = new ActionParamsClass_AddToQueue();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_AddToQueue AddToQueueParams { get { return s_params_AddToQueue; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_AddToQueue
+        {
+            public readonly string id = "id";
+        }
+        static readonly ActionParamsClass_RemoveFromQueue s_params_RemoveFromQueue = new ActionParamsClass_RemoveFromQueue();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_RemoveFromQueue RemoveFromQueueParams { get { return s_params_RemoveFromQueue; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_RemoveFromQueue
         {
             public readonly string id = "id";
         }
@@ -329,14 +361,14 @@ namespace UI.Controllers
         }
 
         [NonAction]
-        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, UI.Models.MovieViewModel model);
+        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, BusinessLogic.Models.Movie movie);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Create(UI.Models.MovieViewModel model)
+        public override System.Web.Mvc.ActionResult Create(BusinessLogic.Models.Movie movie)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
-            CreateOverride(callInfo, model);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "movie", movie);
+            CreateOverride(callInfo, movie);
             return callInfo;
         }
 
@@ -353,14 +385,14 @@ namespace UI.Controllers
         }
 
         [NonAction]
-        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, UI.Models.MovieViewModel model);
+        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, BusinessLogic.Models.Movie movie);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Edit(UI.Models.MovieViewModel model)
+        public override System.Web.Mvc.ActionResult Edit(BusinessLogic.Models.Movie movie)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
-            EditOverride(callInfo, model);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "movie", movie);
+            EditOverride(callInfo, movie);
             return callInfo;
         }
 
@@ -446,6 +478,30 @@ namespace UI.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DecreaseCompletionCount);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             DecreaseCompletionCountOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void AddToQueueOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult AddToQueue(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddToQueue);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            AddToQueueOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void RemoveFromQueueOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult RemoveFromQueue(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RemoveFromQueue);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            RemoveFromQueueOverride(callInfo, id);
             return callInfo;
         }
 

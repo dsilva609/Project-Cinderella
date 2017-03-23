@@ -67,8 +67,21 @@
                 <div class="col-md-6">
                     @Html.ActionLink("Remove from Showcase", MVC.Book.RemoveFromShowcase(Model.ID), new { @class = "btn btn-danger" })
                 </div>
-            }
-        }
+			}
+
+			if (Model.IsQueued)
+			{
+				<div class="col-md-6">
+					@Html.ActionLink("Remove from queue", MVC.Book.RemoveFromQueue(Model.ID), new { @class = "btn btn-danger" })
+				</div>
+			}
+			else
+			{
+				<div class="col-md-6">
+					@Html.ActionLink("Add to queue", MVC.Book.AddToQueue(Model.ID), new { @class = "btn btn-default" })
+				</div>
+			}
+		}
     </div>
 </div>
 

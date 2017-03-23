@@ -116,6 +116,18 @@ namespace UI.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DecreaseCompletionCount);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult AddToQueue()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddToQueue);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult RemoveFromQueue()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RemoveFromQueue);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public GameController Actions { get { return MVC.Game; } }
@@ -143,6 +155,8 @@ namespace UI.Controllers
             public readonly string RemoveFromShowcase = "RemoveFromShowcase";
             public readonly string IncreaseCompletionCount = "IncreaseCompletionCount";
             public readonly string DecreaseCompletionCount = "DecreaseCompletionCount";
+            public readonly string AddToQueue = "AddToQueue";
+            public readonly string RemoveFromQueue = "RemoveFromQueue";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -159,6 +173,8 @@ namespace UI.Controllers
             public const string RemoveFromShowcase = "RemoveFromShowcase";
             public const string IncreaseCompletionCount = "IncreaseCompletionCount";
             public const string DecreaseCompletionCount = "DecreaseCompletionCount";
+            public const string AddToQueue = "AddToQueue";
+            public const string RemoveFromQueue = "RemoveFromQueue";
         }
 
 
@@ -251,6 +267,22 @@ namespace UI.Controllers
         public ActionParamsClass_DecreaseCompletionCount DecreaseCompletionCountParams { get { return s_params_DecreaseCompletionCount; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_DecreaseCompletionCount
+        {
+            public readonly string id = "id";
+        }
+        static readonly ActionParamsClass_AddToQueue s_params_AddToQueue = new ActionParamsClass_AddToQueue();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_AddToQueue AddToQueueParams { get { return s_params_AddToQueue; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_AddToQueue
+        {
+            public readonly string id = "id";
+        }
+        static readonly ActionParamsClass_RemoveFromQueue s_params_RemoveFromQueue = new ActionParamsClass_RemoveFromQueue();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_RemoveFromQueue RemoveFromQueueParams { get { return s_params_RemoveFromQueue; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_RemoveFromQueue
         {
             public readonly string id = "id";
         }
@@ -446,6 +478,30 @@ namespace UI.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DecreaseCompletionCount);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             DecreaseCompletionCountOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void AddToQueueOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult AddToQueue(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddToQueue);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            AddToQueueOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void RemoveFromQueueOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult RemoveFromQueue(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RemoveFromQueue);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            RemoveFromQueueOverride(callInfo, id);
             return callInfo;
         }
 

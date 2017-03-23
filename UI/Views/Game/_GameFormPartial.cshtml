@@ -69,8 +69,21 @@
                 <div class="col-md-6">
                     @Html.ActionLink("Remove from Showcase", MVC.Game.RemoveFromShowcase(Model.ID), new { @class = "btn btn-danger" })
                 </div>
-            }
-        }
+			}
+
+			if (Model.IsQueued)
+			{
+				<div class="col-md-6">
+					@Html.ActionLink("Remove from queue", MVC.Game.RemoveFromQueue(Model.ID), new { @class = "btn btn-danger" })
+				</div>
+			}
+			else
+			{
+				<div class="col-md-6">
+					@Html.ActionLink("Add to queue", MVC.Game.AddToQueue(Model.ID), new { @class = "btn btn-default" })
+				</div>
+			}
+		}
     </div>
 </div>
 

@@ -1,6 +1,7 @@
 ﻿using BusinessLogic.Models;
 using Moq;
 using NUnit.Framework;
+using Shouldly;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,13 +26,19 @@ namespace UnitTests.BusinessLogic.Services
 			{
 				ID = 1984,
 				Artist = "Dio",
-				Title = "The Last In Line"
+				Title = "The Last In Line",
+				IsQueued = true,
+				QueueRank = 1,
+				UserID = "TestUser"
 			};
 			_testModel2 = new Album
 			{
 				ID = 1983,
 				Artist = "Dio",
-				Title = "Holy Diver"
+				Title = "Holy Diver",
+				IsQueued = true,
+				QueueRank = 2,
+				UserID = "TestUser"
 			};
 
 			_recordModels = new List<Album>
@@ -42,7 +49,8 @@ namespace UnitTests.BusinessLogic.Services
 				{
 					ID = 1986,
 					Artist = "Metallica",
-					Title = "Master Of Puppets"
+					Title = "Master Of Puppets",
+					UserID = "NotThisUser"
 				},
 				new Album
 				{
@@ -194,6 +202,16 @@ namespace UnitTests.BusinessLogic.Services
 
 			//--Assert
 			Assert.AreEqual(expectedResult, result.Count);
+		}
+
+		[Test]
+		public void ItGetsCurrentQueueRank()
+		{
+			_repo.Setup(x => x.GetAll()).Returns(_recordModels);
+
+			var result = _service.Object.GetHighestQueueRank("TestUser");
+
+			result.ShouldBe(2);
 		}
 	}
 }
