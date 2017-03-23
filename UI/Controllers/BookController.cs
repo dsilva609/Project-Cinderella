@@ -63,7 +63,7 @@ namespace UI.Controllers
 		public virtual ActionResult Create()
 		{
 			ViewBag.Title = "Create";
-			var model = Session["BookResult"] ?? new Book { UserID = User.Identity.GetUserId() };
+			var model = Session["BookResult"] ?? new Book {UserID = User.Identity.GetUserId()};
 			Session["BookResult"] = null;
 
 			return View(model);
@@ -126,7 +126,7 @@ namespace UI.Controllers
 			if (!ModelState.IsValid) return View(book);
 			var existingBooks = _service.GetAll(User.Identity.GetUserId());
 			if (existingBooks.Count > 0 &&
-				existingBooks.Any(x => x.ID != book.ID && x.Title == book.Title && x.Author == book.Author))
+			    existingBooks.Any(x => x.ID != book.ID && x.Title == book.Title && x.Author == book.Author))
 			{
 				ShowStatusMessage(MessageTypeEnum.error, $"A book of Title: {book.Title}, Author: {book.Author} already exists.", "Duplicate Book");
 				return View(book);
@@ -173,7 +173,7 @@ namespace UI.Controllers
 			if (!string.IsNullOrWhiteSpace(Session["wish"]?.ToString())) searchModel.Title = Session["wish"].ToString();
 
 			if (Request.UrlReferrer?.LocalPath == "/Book/Search" && string.IsNullOrWhiteSpace(searchModel.Author) &&
-				string.IsNullOrWhiteSpace(searchModel.Title))
+			    string.IsNullOrWhiteSpace(searchModel.Title))
 			{
 				ShowStatusMessage(MessageTypeEnum.error, "Please enter search terms.", "Search Error");
 				return View(searchModel);
@@ -291,7 +291,7 @@ namespace UI.Controllers
 
 			book.IsQueued = true;
 			var currentHighestRank = _service.GetHighestQueueRank(User.Identity.GetUserId());
-			book.QueueRank = currentHighestRank++;
+			book.QueueRank = currentHighestRank + 1;
 
 			_service.Edit(book);
 

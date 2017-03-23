@@ -779,6 +779,7 @@
     <Content Include="Views\Shared\Items\Form\_PurchaseInfoSection.cshtml" />
     <Content Include="Views\Shared\Items\Form\_ItemInfoSection.cshtml" />
     <Content Include="Views\Shared\Items\Form\_MediaInfoSection.cshtml" />
+    <Content Include="Views\Queue\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -942,9 +943,7 @@
       <DependentUpon>201610121626520_added default action type.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Queue\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

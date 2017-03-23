@@ -295,7 +295,7 @@ namespace UI.Controllers
 
 			game.IsQueued = true;
 			var currentHighestRank = _service.GetHighestQueueRank(User.Identity.GetUserId());
-			game.QueueRank = currentHighestRank++;
+			game.QueueRank = currentHighestRank + 1;
 
 			_service.Edit(game);
 

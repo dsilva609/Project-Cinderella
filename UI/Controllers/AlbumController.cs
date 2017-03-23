@@ -325,7 +325,7 @@ namespace UI.Controllers
 
 			album.IsQueued = true;
 			var currentHighestRank = _service.GetHighestQueueRank(User.Identity.GetUserId());
-			album.QueueRank = currentHighestRank++;
+			album.QueueRank = currentHighestRank + 1;
 
 			_service.Edit(album);
 
