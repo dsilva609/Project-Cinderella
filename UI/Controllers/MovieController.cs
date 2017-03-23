@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using BusinessLogic.Enums;
+﻿using BusinessLogic.Enums;
 using BusinessLogic.Models;
 using BusinessLogic.Services.Interfaces;
 using Microsoft.AspNet.Identity;
@@ -274,6 +273,55 @@ namespace UI.Controllers
 
 			ShowStatusMessage(MessageTypeEnum.info, "Movie was updated.", "Update");
 			return RedirectToAction(MVC.Movie.Index());
+		}
+
+		[Authorize]
+		[HttpGet]
+		public virtual ActionResult AddToQueue(int id)
+		{
+			var game = _service.GetByID(id, User.Identity.GetUserId());
+
+			if (game.UserID != User.Identity.GetUserId())
+			{
+				ShowStatusMessage(MessageTypeEnum.error, "This movie/TV show cannot be edited by another user.", "Edit Failure");
+				return RedirectToAction(MVC.Album.Index());
+			}
+
+			if (game.IsQueued)
+			{
+				ShowStatusMessage(MessageTypeEnum.warning, "This movie/TV show is already queued.", "Edit Failure");
+				return RedirectToAction(MVC.Album.Index());
+			}
+
+			game.IsQueued = true;
+			var currentHighestRank = _service.GetHighestQueueRank(User.Identity.GetUserId());
+			game.QueueRank = currentHighestRank++;
+
+			_service.Edit(game);
+
+			ShowStatusMessage(MessageTypeEnum.info, "Movie/TV Show added to queue", "Queue");
+			return RedirectToAction(MVC.Queue.Index());
+		}
+
+		[Authorize]
+		[HttpGet]
+		public virtual ActionResult RemoveFromQueue(int id)
+		{
+			var game = _service.GetByID(id, User.Identity.GetUserId());
+
+			if (game.UserID != User.Identity.GetUserId())
+			{
+				ShowStatusMessage(MessageTypeEnum.error, "This movie/TV show cannot be edited by another user.", "Edit Failure");
+				return RedirectToAction(MVC.Album.Index());
+			}
+
+			game.IsQueued = false;
+			game.QueueRank = 0;
+
+			_service.Edit(game);
+
+			ShowStatusMessage(MessageTypeEnum.info, "Movie/TV Show removed from queue,", "Queue");
+			return RedirectToAction(MVC.Queue.Index());
 		}
 	}
 }

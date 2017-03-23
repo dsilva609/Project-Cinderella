@@ -16,5 +16,7 @@ namespace BusinessLogic.Services.Interfaces
 		void Delete(int id, string userID);
 
 		int GetCount();
+
+		int GetHighestQueueRank(string userID);
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using BusinessLogic.Models;
 using Moq;
 using NUnit.Framework;
+using Shouldly;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace UnitTests.BusinessLogic.Services
 		private Movie _testModel1;
 		private Movie _testModel2;
 
-		private IQueryable<Movie> _MovieModels;
+		private IQueryable<Movie> _movieModels;
 
 		[SetUp]
 		protected override void SetUp()
@@ -25,16 +26,22 @@ namespace UnitTests.BusinessLogic.Services
 			{
 				ID = 1984,
 				Director = "Sam Raimi",
-				Title = "Spider Man"
+				Title = "Spider Man",
+				UserID = "TestUser",
+				IsQueued = true,
+				QueueRank = 4
 			};
 			_testModel2 = new Movie
 			{
 				ID = 1983,
 				Director = "Sam Raimi",
-				Title = "Evil Dead"
+				Title = "Evil Dead",
+				UserID = "TestUser",
+				IsQueued = true,
+				QueueRank = 5
 			};
 
-			_MovieModels = new List<Movie>
+			_movieModels = new List<Movie>
 			{
 				_testModel1,
 				_testModel2,
@@ -44,7 +51,7 @@ namespace UnitTests.BusinessLogic.Services
 					Director = "Zack Snyder",
 					Title = "Batman vs Superman"
 				},
-				new Movie()
+				new Movie
 				{
 					ID = 2004,
 					Director = "Steven Spielberg",
@@ -109,7 +116,7 @@ namespace UnitTests.BusinessLogic.Services
 		public void ItReturnsSpecifiedNumberOfMovies(int numToTake, int expectedResult)
 		{
 			//--Arrange
-			_repo.Setup(mock => mock.GetAll()).Returns(_MovieModels);
+			_repo.Setup(mock => mock.GetAll()).Returns(_movieModels);
 
 			//--Act
 			var result = _service.Object.GetAll(string.Empty, string.Empty, numToTake);
@@ -122,7 +129,7 @@ namespace UnitTests.BusinessLogic.Services
 		public void ItReturnsAllMoviesWhenNoParameterIsPassedIn()
 		{
 			//--Arrange
-			_repo.Setup(mock => mock.GetAll()).Returns(_MovieModels);
+			_repo.Setup(mock => mock.GetAll()).Returns(_movieModels);
 
 			//--Act
 			var result = _service.Object.GetAll();
@@ -135,7 +142,7 @@ namespace UnitTests.BusinessLogic.Services
 		public void ItOrdersByTitleWhenYouGetAllMovies()
 		{
 			//--Arrange
-			_repo.Setup(mock => mock.GetAll()).Returns(_MovieModels);
+			_repo.Setup(mock => mock.GetAll()).Returns(_movieModels);
 
 			//--Act
 			var result = _service.Object.GetAll();
@@ -156,7 +163,7 @@ namespace UnitTests.BusinessLogic.Services
 		public void ItReturnsSpecifiedNumberOfMoviesPerPage(int numToTake, int pageNum, int expectedResult)
 		{
 			//--Arrange
-			_repo.Setup(mock => mock.GetAll()).Returns(_MovieModels);
+			_repo.Setup(mock => mock.GetAll()).Returns(_movieModels);
 
 			//--Act
 			var result = _service.Object.GetAll(string.Empty, string.Empty, numToTake, pageNum);
@@ -169,7 +176,7 @@ namespace UnitTests.BusinessLogic.Services
 		public void ItGetsCountOfMovies()
 		{
 			//--Arrange
-			_repo.Setup(mock => mock.GetCount()).Returns(_MovieModels.Count);
+			_repo.Setup(mock => mock.GetCount()).Returns(_movieModels.Count);
 
 			//--Act
 			var result = _service.Object.GetCount();
@@ -187,13 +194,23 @@ namespace UnitTests.BusinessLogic.Services
 		public void ItReturnsMoviesOfSpecifiedName(string query, int expectedResult)
 		{
 			//--Arrange
-			_repo.Setup(mock => mock.GetAll()).Returns(_MovieModels);
+			_repo.Setup(mock => mock.GetAll()).Returns(_movieModels);
 
 			//--Act
 			var result = _service.Object.GetAll(string.Empty, query);
 
 			//--Assert
 			Assert.AreEqual(expectedResult, result.Count);
+		}
+
+		[Test]
+		public void ItGetsCurrentQueueRank()
+		{
+			_repo.Setup(x => x.GetAll()).Returns(_movieModels);
+
+			var result = _service.Object.GetHighestQueueRank("TestUser");
+
+			result.ShouldBe(5);
 		}
 	}
 }

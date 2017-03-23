@@ -1,6 +1,7 @@
 ﻿using BusinessLogic.Models;
 using Moq;
 using NUnit.Framework;
+using Shouldly;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,13 +26,19 @@ namespace UnitTests.BusinessLogic.Services
 			{
 				ID = 1984,
 				Author = "Rowling",
-				Title = "Sorcerer's Stone"
+				Title = "Sorcerer's Stone",
+				UserID = "TestUser",
+				IsQueued = true,
+				QueueRank = 4
 			};
 			_testModel2 = new Book
 			{
 				ID = 1983,
 				Author = "Rowling",
-				Title = "Half Blood Prince"
+				Title = "Half Blood Prince",
+				UserID = "TestUser",
+				IsQueued = true,
+				QueueRank = 5
 			};
 
 			_bookModels = new List<Book>
@@ -194,6 +201,16 @@ namespace UnitTests.BusinessLogic.Services
 
 			//--Assert
 			Assert.AreEqual(expectedResult, result.Count);
+		}
+
+		[Test]
+		public void ItGetsCurrentQueueRank()
+		{
+			_repo.Setup(x => x.GetAll()).Returns(_bookModels);
+
+			var result = _service.Object.GetHighestQueueRank("TestUser");
+
+			result.ShouldBe(5);
 		}
 	}
 }

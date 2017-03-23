@@ -47,8 +47,8 @@ namespace BusinessLogic.Services
 				var currentList = new List<Movie>();
 				currentList.AddRange(movieList);
 				movieList = currentList.Where(x =>
-							 x.Title.Equals(query, StringComparison.InvariantCultureIgnoreCase) ||
-							 x.Director.Equals(query, StringComparison.InvariantCultureIgnoreCase)).ToList();
+					x.Title.Equals(query, StringComparison.InvariantCultureIgnoreCase) ||
+					x.Director.Equals(query, StringComparison.InvariantCultureIgnoreCase)).ToList();
 				var partialMatches = currentList.Where(x => x.Title.IndexOf(query, StringComparison.InvariantCultureIgnoreCase) != -1 || x.Director.IndexOf(query, StringComparison.InvariantCultureIgnoreCase) != -1).ToList();
 				movieList = movieList.Concat(partialMatches).Distinct().ToList();
 			}
@@ -66,5 +66,12 @@ namespace BusinessLogic.Services
 		public void Delete(int id, string userID) => _deleteEntityComponent.Execute(_repository, id, userID);
 
 		public int GetCount() => _repository.GetCount();
+
+		public int GetHighestQueueRank(string userID)
+		{
+			var movies = GetAll(userID).Where(x => x.IsQueued).OrderByDescending(y => y.QueueRank).ToList();
+
+			return movies.Any() ? movies.FirstOrDefault().QueueRank : 0;
+		}
 	}
 }
