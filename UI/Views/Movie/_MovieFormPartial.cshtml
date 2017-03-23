@@ -1,252 +1,246 @@
-﻿@model UI.Models.MovieViewModel
+﻿@using UI.Common
+@model BusinessLogic.Models.Movie
 
 <script>
-    var deleteUrl = '@Url.Action(MVC.Movie.Delete())';
+	var deleteUrl = '@Url.Action(MVC.Movie.Delete())';
 </script>
 
 @Html.AntiForgeryToken()
-@Html.Hidden(Model.MovieInfo.ModelName + ".UserID", Model.MovieInfo.UserID)
-@Html.Hidden(Model.StatusInfo.ModelName + ".DateAdded", Model.StatusInfo.DateAdded)
-@Html.Hidden(Model.StatusInfo.ModelName + ".DateStarted", Model.StatusInfo.DateStarted)
-@Html.Hidden(Model.StatusInfo.ModelName + ".DateCompleted", Model.StatusInfo.DateCompleted)
-@Html.Hidden(Model.StatusInfo.ModelName + ".IsShowcased", Model.StatusInfo.IsShowcased)
-
-@*<div class="row panel-body">
-        @if (Model.DateAdded != Convert.ToDateTime("1/1/1900") && Model.DateAdded != DateTime.MinValue)
-        {
-            <div>Date Added: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateAdded)</div>
-        }
-        @if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
-        {
-            <div class="">Last Updated: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateUpdated)</div>
-        }
-
-        <div class="col-md-6">
-            @Html.LabelFor(m => m.CompletionStatus)
-            @Html.EnumDropDownListFor(m => m.CompletionStatus, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.CompletionStatus, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="col-md-6">
-            @Html.LabelFor(m => m.TimesCompleted)
-            <div style="display: inline-flex;">
-                @if (Model.TimesCompleted > 0)
-                {
-                    <a class="btn btn-default" href="/Movie/DecreaseCompletionCount/@Model.ID">
-                        <span class="fa fa-minus"></span>
-                    </a>
-                }
-                @Html.TextBoxFor(m => m.TimesCompleted, new { @class = "form-control", type = "number" })
-                <a class="btn btn-default" href="/Movie/IncreaseCompletionCount/@Model.ID">
-                    <span class="fa fa-plus"></span>
-                </a>
-            </div>
-            @Html.ValidationMessageFor(m => m.TimesCompleted, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="row">
-            <div class="col-md-6 form-inline">
-                <label>
-                    @Html.CheckBoxFor(m => m.CheckedOut) Checked Out?
-                </label>
-                @Html.ValidationMessageFor(m => m.CheckedOut, "", new { @class = "text-danger" })
-            </div>
-
-            @if (Model.ID > 0)
-            {
-                if (!Model.IsShowcased)
-                {
-                    <div class="col-md-6">
-                        @Html.ActionLink("Add to Showcase", MVC.Movie.AddToShowcase(Model.ID), new { @class = "btn btn-default" })
-                    </div>
-                }
-                else
-                {
-                    <div class="col-md-6">
-                        @Html.ActionLink("Remove from Showcase", MVC.Movie.RemoveFromShowcase(Model.ID), new { @class = "btn btn-danger" })
-                    </div>
-                }
-            }
-        </div>
-    </div>*@
-
-@Html.Partial(MVC.Shared.Views.Items.Form._StatusSection, Model.StatusInfo)
-
-<div data-toggle="collapse" data-parent="#accordion" href="#movie-info">
-    <div class="row panel panel-primary panel-collapse">
-        <div class="panel-heading">
-            <h4>
-                Movie Information
-                <span class="fa fa-chevron-circle-down"></span>
-            </h4>
-        </div>
-    </div>
-</div>
-<div id="movie-info" class="collapse in">
-    <div class="panel-body">
-        <div class="item-title">
-            <div class="col-sm-6">
-                @Html.LabelFor(m => m.MovieInfo.Title)
-                @Html.TextBoxFor(m => m.MovieInfo.Title, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.MovieInfo.Title, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="col-sm-6">
-                @Html.LabelFor(m => m.MovieInfo.Director)
-                @Html.TextBoxFor(m => m.MovieInfo.Director, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.MovieInfo.Director, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        @if (!string.IsNullOrWhiteSpace(Model.MovieInfo.ImageUrl))
-        {
-            <div class="animate-box item col-sm-6">
-                <a href="@(string.IsNullOrWhiteSpace(Model.MovieInfo.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.MovieInfo.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.MovieInfo.Title (@Model.MovieInfo.YearReleased)">
-                    <img src="@(string.IsNullOrWhiteSpace(Model.MovieInfo.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.MovieInfo.ImageUrl)" class="img-rounded" style="height: 100%; width: 100%;">
-                </a>
-            </div>
-        }
-
-        <div class="col-sm-6">
-            @Html.LabelFor(m => m.MovieInfo.Distributor)
-            @Html.TextBoxFor(m => m.MovieInfo.Distributor, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.MovieInfo.Distributor, "", new { @class = "text-danger" })
-        </div>
-
-        @*<div class="col-sm-6">
-                @Html.LabelFor(m => m.YearReleased)
-                @Html.DropDownListFor(m => m.YearReleased, ViewHelpers.GetYearRange(1900, DateTime.Today.Year), Model.YearReleased.ToString(), new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.YearReleased, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="col-sm-6">
-                @Html.LabelFor(m => m.Genre)
-                @Html.TextBoxFor(m => m.Genre, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Genre, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="col-sm-6">
-                @Html.LabelFor(m => m.Notes)
-                @Html.TextAreaFor(m => m.Notes, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Notes, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="col-sm-6">
-                @Html.LabelFor(m => m.Category)
-                @Html.TextAreaFor(m => m.Category, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Category, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="col-sm-6">
-                @Html.LabelFor(m => m.ImageUrl)
-                @Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.ImageUrl, "", new { @class = "text-danger" })
-            </div>*@
-
-        @Html.Partial(MVC.Shared.Views.Items.Form._ItemInfoSection, Model.MovieInfo)
-    </div>
-</div>
-<div data-toggle="collapse" data-parent="#accordion" href="#media-info">
-    <div class="row panel panel-primary panel-collapse">
-        <div class="panel-heading">
-            <h4>
-                Media Information
-                <span class="fa fa-chevron-circle-down"></span>
-            </h4>
-        </div>
-    </div>
-</div>
-<div id="media-info" class="collapse in">
-    <div class="panel-body">
-        <div class="col-sm-6">
-            @Html.LabelFor(m => m.MediaInfo.Type)
-            @Html.EnumDropDownListFor(m => m.MediaInfo.Type, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.MediaInfo.Type, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="col-sm-6">
-            @Html.LabelFor(m => m.MediaInfo.Rating)
-            @Html.EnumDropDownListFor(m => m.MediaInfo.Rating, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.MediaInfo.Rating, "", new { @class = "text-danger" })
-        </div>
-
-        @*<div class="col-sm-6">
-                @Html.LabelFor(m => m.IsPhysical)
-                @Html.CheckBoxFor(m => m.IsPhysical, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.IsPhysical, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="col-sm-6">
-                @Html.LabelFor(m => m.Language)
-                @Html.TextBoxFor(m => m.Language, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Language, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="col-sm-6">
-                @Html.LabelFor(m => m.CountryOfOrigin)
-                @Html.TextBoxFor(m => m.CountryOfOrigin, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.CountryOfOrigin, "", new { @class = "text-danger" })
-            </div>*@
-        @Html.Partial(MVC.Shared.Views.Items.Form._MediaInfoSection, Model.MediaInfo)
-    </div>
-</div>
-
-@*<div data-toggle="collapse" data-parent="#accordion" href="#purchase-info">
-        <div class="row panel panel-primary panel-collapse">
-            <div class="panel-heading">
-                <h4>
-                    Purchase Information
-                    <span class="fa fa-chevron-circle-down"></span>
-                </h4>
-            </div>
-        </div>
-    </div>
-    <div id="purchase-info" class="collapse in">
-            <div class="panel-body">
-                <div class="col-sm-6">
-                    @Html.LabelFor(m => m.DatePurchased)
-                    @if (Request.Browser.Browser == "IE" || !Request.Browser.IsMobileDevice)
-                    {
-                        @Html.EditorFor(m => m.DatePurchased, new { htmlattributes = new { type = "text", Value = Model.DatePurchased.ToShortDateString(), @class = "form-control datepicker" } })
-                    }
-                    else
-                    {
-                        @Html.EditorFor(m => m.DatePurchased, new { htmlattributes = new { type = "date", Value = Model.DatePurchased.ToString("yyyy-MM-dd"), @class = "form-control" } })
-                    }
-                    @Html.ValidationMessageFor(m => m.DatePurchased, "", new { @class = "text-danger" })
-                </div>
-
-                <div class="col-sm-6">
-                    @Html.LabelFor(m => m.LocationPurchased)
-                    @Html.TextBoxFor(m => m.LocationPurchased, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.LocationPurchased, "", new { @class = "text-danger" })
-                </div>
-
-                <div class="col-sm-6">
-                    @Html.LabelFor(m => m.IsNew)
-                    @Html.CheckBoxFor(m => m.IsNew, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.IsNew, "", new { @class = "text-danger" })
-                </div>
-
-                <div class="col-md-6">
-                    @Html.LabelFor(m => m.CountryPurchased)
-                    @Html.TextBoxFor(m => m.CountryPurchased, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.CountryPurchased, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>*@
-
-@Html.Partial(MVC.Shared.Views.Items.Form._PurchaseInfoSection, Model.PurchaseInfo)
+@Html.HiddenFor(m => m.UserID)
+@Html.HiddenFor(m => m.DateAdded)
+@Html.HiddenFor(m => m.DateStarted)
+@Html.HiddenFor(m => m.DateCompleted)
+@Html.HiddenFor(m => m.IsShowcased)
 
 <div class="row panel-body">
-    <div class="col-xs-6 col-md-4">
-        <input id="btnSubmit" type="submit" value=@(Model.MovieInfo.ID > 0 ? "Save" : "Create") class="btn btn-default btn-block btn-lg" />
-    </div>
+	@if (Model.DateAdded != Convert.ToDateTime("1/1/1900") && Model.DateAdded != DateTime.MinValue)
+	{
+		<div>Date Added: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateAdded)</div>
+	}
+	@if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
+	{
+		<div class="">Last Updated: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateUpdated)</div>
+	}
 
-    @if (Model.MovieInfo.ID > 0)
-    {
-        <div class="col-md-4 offset-md-4 col-xs-6">
-            @Html.ActionLink("Delete", MVC.Movie.Delete(Model.MovieInfo.ID), new { @class = "deleteBtn btn btn-danger btn-block btn-lg", data_id = Model.MovieInfo.ID, data_deleteUrl = Url.Action(MVC.Movie.Delete()) })
-        </div>
-    }
+	<div class="col-md-6">
+		@Html.LabelFor(m => m.CompletionStatus)
+		@Html.EnumDropDownListFor(m => m.CompletionStatus, new { @class = "form-control" })
+		@Html.ValidationMessageFor(m => m.CompletionStatus, "", new { @class = "text-danger" })
+	</div>
+
+	<div class="col-md-6">
+		@Html.LabelFor(m => m.TimesCompleted)
+		<div style="display: inline-flex;">
+			@if (Model.TimesCompleted > 0)
+			{
+				<a class="btn btn-default" href="/Movie/DecreaseCompletionCount/@Model.ID">
+					<span class="fa fa-minus"></span>
+				</a>
+			}
+			@Html.TextBoxFor(m => m.TimesCompleted, new { @class = "form-control", type = "number" })
+			<a class="btn btn-default" href="/Movie/IncreaseCompletionCount/@Model.ID">
+				<span class="fa fa-plus"></span>
+			</a>
+		</div>
+		@Html.ValidationMessageFor(m => m.TimesCompleted, "", new { @class = "text-danger" })
+	</div>
+
+	<div class="row">
+		<div class="col-md-6 form-inline">
+			<label>
+				@Html.CheckBoxFor(m => m.CheckedOut) Checked Out?
+			</label>
+			@Html.ValidationMessageFor(m => m.CheckedOut, "", new { @class = "text-danger" })
+		</div>
+
+		@if (Model.ID > 0)
+		{
+			if (!Model.IsShowcased)
+			{
+				<div class="col-md-6">
+					@Html.ActionLink("Add to Showcase", MVC.Movie.AddToShowcase(Model.ID), new { @class = "btn btn-default" })
+				</div>
+			}
+			else
+			{
+				<div class="col-md-6">
+					@Html.ActionLink("Remove from Showcase", MVC.Movie.RemoveFromShowcase(Model.ID), new { @class = "btn btn-danger" })
+				</div>
+			}
+		}
+	</div>
+</div>
+
+<div data-toggle="collapse" data-parent="#accordion" href="#movie-info">
+	<div class="row panel panel-primary panel-collapse">
+		<div class="panel-heading">
+			<h4>
+				Movie Information
+				<span class="fa fa-chevron-circle-down"></span>
+			</h4>
+		</div>
+	</div>
+</div>
+<div id="movie-info" class="collapse in">
+	<div class="panel-body">
+		<div class="item-title">
+			<div class="col-sm-6">
+				@Html.LabelFor(m => m.Title)
+				@Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+			</div>
+
+			<div class="col-sm-6">
+				@Html.LabelFor(m => m.Director)
+				@Html.TextBoxFor(m => m.Director, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Director, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		@if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+		{
+			<div class="animate-box item col-sm-6">
+				<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Title (@Model.YearReleased)">
+					<img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" class="img-rounded" style="height: 100%; width: 100%;" @*style="height: 350px; width: 250px;"*@>
+				</a>
+			</div>
+		}
+
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.Distributor)
+			@Html.TextBoxFor(m => m.Distributor, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.Distributor, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.YearReleased)
+			@Html.DropDownListFor(m => m.YearReleased, ViewHelpers.GetYearRange(1900, DateTime.Today.Year), Model.YearReleased.ToString(), new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.YearReleased, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.Genre)
+			@Html.TextBoxFor(m => m.Genre, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.Genre, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.Notes)
+			@Html.TextAreaFor(m => m.Notes, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.Notes, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.Category)
+			@Html.TextAreaFor(m => m.Category, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.Category, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.ImageUrl)
+			@Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.ImageUrl, "", new { @class = "text-danger" })
+		</div>
+	</div>
+</div>
+<div data-toggle="collapse" data-parent="#accordion" href="#media-info">
+	<div class="row panel panel-primary panel-collapse">
+		<div class="panel-heading">
+			<h4>
+				Media Information
+				<span class="fa fa-chevron-circle-down"></span>
+			</h4>
+		</div>
+	</div>
+</div>
+<div id="media-info" class="collapse in">
+	<div class="panel-body">
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.Type)
+			@Html.EnumDropDownListFor(m => m.Type, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.Rating)
+			@Html.EnumDropDownListFor(m => m.Rating, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.Rating, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.IsPhysical)
+			@Html.CheckBoxFor(m => m.IsPhysical, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.IsPhysical, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.Language)
+			@Html.TextBoxFor(m => m.Language, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.Language, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.CountryOfOrigin)
+			@Html.TextBoxFor(m => m.CountryOfOrigin, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.CountryOfOrigin, "", new { @class = "text-danger" })
+		</div>
+	</div>
+</div>
+
+<div data-toggle="collapse" data-parent="#accordion" href="#purchase-info">
+	<div class="row panel panel-primary panel-collapse">
+		<div class="panel-heading">
+			<h4>
+				Purchase Information
+				<span class="fa fa-chevron-circle-down"></span>
+			</h4>
+		</div>
+	</div>
+</div>
+<div id="purchase-info" class="collapse in">
+	<div class="panel-body">
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.DatePurchased)
+			@if (Request.Browser.Browser == "IE" || !Request.Browser.IsMobileDevice)
+			{
+				@Html.EditorFor(m => m.DatePurchased, new { htmlattributes = new { type = "text", Value = Model.DatePurchased.ToShortDateString(), @class = "form-control datepicker" } })
+			}
+			else
+			{
+				@Html.EditorFor(m => m.DatePurchased, new { htmlattributes = new { type = "date", Value = Model.DatePurchased.ToString("yyyy-MM-dd"), @class = "form-control" } })
+			}
+			@Html.ValidationMessageFor(m => m.DatePurchased, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.LocationPurchased)
+			@Html.TextBoxFor(m => m.LocationPurchased, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.LocationPurchased, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.IsNew)
+			@Html.CheckBoxFor(m => m.IsNew, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.IsNew, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="col-md-6">
+			@Html.LabelFor(m => m.CountryPurchased)
+			@Html.TextBoxFor(m => m.CountryPurchased, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.CountryPurchased, "", new { @class = "text-danger" })
+		</div>
+	</div>
+</div>
+
+<div class="row panel-body">
+	<div class="col-xs-6 col-md-4">
+		<input id="btnSubmit" type="submit" value=@(Model.ID > 0 ? "Save" : "Create") class="btn btn-default btn-block btn-lg" />
+	</div>
+
+	@if (Model.ID > 0)
+	{
+		<div class="col-md-4 offset-md-4 col-xs-6">
+			@Html.ActionLink("Delete", MVC.Movie.Delete(Model.ID), new { @class = "deleteBtn btn btn-danger btn-block btn-lg", data_id = Model.ID, data_deleteUrl = Url.Action(MVC.Movie.Delete()) })
+		</div>
+	}
 </div>
