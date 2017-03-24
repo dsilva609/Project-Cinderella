@@ -42,7 +42,11 @@
     </div>
     <div id="albums" class="collapse in">
         <div class="panel-body">
-            @Html.Partial(MVC.Wish.Views._WishTablePartial, Model.AlbumWishes)
+            @foreach (var albumWishGroup in Model.AlbumWishes)
+            {
+                <div class="bold">@albumWishGroup.Key</div>
+                @Html.Partial(MVC.Wish.Views._WishTablePartial, albumWishGroup.Value)
+            }
         </div>
     </div>
 }
@@ -61,7 +65,11 @@
     </div>
     <div id="books" class="collapse in">
         <div class="panel-body">
-            @Html.Partial(MVC.Wish.Views._WishTablePartial, Model.BookWishes)
+            @foreach (var bookWishGroup in Model.BookWishes)
+            {
+                <div class="bold">@bookWishGroup.Key</div>
+                @Html.Partial(MVC.Wish.Views._WishTablePartial, bookWishGroup.Value)
+            }
         </div>
     </div>
 }
@@ -80,7 +88,11 @@
     </div>
     <div id="movies" class="collapse in">
         <div class="panel-body">
-            @Html.Partial(MVC.Wish.Views._WishTablePartial, Model.MovieWishes)
+            @foreach (var movieWishGroup in Model.MovieWishes)
+            {
+                <div class="bold">@movieWishGroup.Key</div>
+                @Html.Partial(MVC.Wish.Views._WishTablePartial, movieWishGroup.Value)
+            }
         </div>
     </div>
 }
@@ -99,7 +111,11 @@
     </div>
     <div id="games" class="collapse in">
         <div class="panel-body">
-            @Html.Partial(MVC.Wish.Views._WishTablePartial, Model.GameWishes)
+            @foreach (var gameWishGroup in Model.GameWishes)
+            {
+                <div class="bold">@gameWishGroup.Key</div>
+                @Html.Partial(MVC.Wish.Views._WishTablePartial, gameWishGroup.Value)
+            }
         </div>
     </div>
 }

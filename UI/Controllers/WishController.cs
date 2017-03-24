@@ -36,10 +36,22 @@ namespace UI.Controllers
             var viewModel = new WishViewModel
             {
                 ViewTitle = "Index",
-                AlbumWishes = wishes?.Where(x => x.ItemType == ItemType.Album).ToList(),
-                BookWishes = wishes?.Where(x => x.ItemType == ItemType.Book).ToList(),
-                MovieWishes = wishes?.Where(x => x.ItemType == ItemType.Movie).ToList(),
-                GameWishes = wishes?.Where(x => x.ItemType == ItemType.Game).ToList(),
+                AlbumWishes =
+                    wishes?.Where(x => x.ItemType == ItemType.Album)
+                        .ToList()?
+                        .GroupBy(y => y.Category)?.ToDictionary(d => string.IsNullOrWhiteSpace(d.Key) ? string.Empty : d.Key, d => d.ToList()),
+                BookWishes =
+                    wishes?.Where(x => x.ItemType == ItemType.Book)
+                        .ToList()?
+                        .GroupBy(y => y.Category)?.ToDictionary(d => string.IsNullOrWhiteSpace(d.Key) ? string.Empty : d.Key, d => d.ToList()),
+                MovieWishes =
+                    wishes?.Where(x => x.ItemType == ItemType.Movie)
+                        .ToList()?
+                        .GroupBy(y => y.Category)?.ToDictionary(d => string.IsNullOrWhiteSpace(d.Key) ? string.Empty : d.Key, d => d.ToList()),
+                GameWishes =
+                    wishes?.Where(x => x.ItemType == ItemType.Game)
+                        .ToList()?
+                        .GroupBy(y => y.Category)?.ToDictionary(d => string.IsNullOrWhiteSpace(d.Key) ? string.Empty : d.Key, d => d.ToList()),
                 PageSize = NUM_WISHES_TO_GET
             };
 
