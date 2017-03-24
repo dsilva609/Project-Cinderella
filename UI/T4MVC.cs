@@ -456,15 +456,6 @@ namespace Links
         public static readonly string bootstrap_min_css_map = Url("bootstrap.min.css.map");
         public static readonly string c3_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/c3.min.css") ? Url("c3.min.css") : Url("c3.css");
         public static readonly string c3_min_css = Url("c3.min.css");
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class css {
-            public const string UrlPath = "~/Content/css";
-            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
-            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
-            public static readonly string select2_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/select2.min.css") ? Url("select2.min.css") : Url("select2.css");
-            public static readonly string select2_min_css = Url("select2.min.css");
-        }
-    
         public static readonly string flipclock_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/flipclock.min.css") ? Url("flipclock.min.css") : Url("flipclock.css");
         public static readonly string flipclock_min_css = Url("flipclock.min.css");
         public static readonly string font_awesome_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/font-awesome.min.css") ? Url("font-awesome.min.css") : Url("font-awesome.css");
@@ -517,6 +508,8 @@ namespace Links
             public static readonly string Main_min_css = Url("Main.min.css");
         }
     
+        public static readonly string select2_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/select2.min.css") ? Url("select2.min.css") : Url("select2.css");
+        public static readonly string select2_min_css = Url("select2.min.css");
         public static readonly string Site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/Site.min.css") ? Url("Site.min.css") : Url("Site.css");
         public static readonly string Site_min_css = Url("Site.min.css");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -825,7 +818,6 @@ namespace Links
                 public const string respond_matchmedia_addListener_js = "~/Scripts/respond.matchmedia.addListener.js"; 
                 public const string respond_matchmedia_addListener_min_js = "~/Scripts/respond.matchmedia.addListener.min.js"; 
                 public const string select2_js = "~/Scripts/select2.js"; 
-                public const string select2_min_js = "~/Scripts/select2.min.js"; 
                 public const string toastr_js = "~/Scripts/toastr.js"; 
                 public const string toastr_min_js = "~/Scripts/toastr.min.js"; 
             }
@@ -851,14 +843,6 @@ namespace Links
                     public const string bootstrap_datepicker3_standalone_css = "~/Content/bootstrap/bootstrap-datepicker3.standalone.css";
                     public const string bootstrap_datepicker3_standalone_min_css = "~/Content/bootstrap/bootstrap-datepicker3.standalone.min.css";
                     public const string bootstrap_css = "~/Content/bootstrap/bootstrap.css";
-                }
-            }
-            public static partial class css 
-            {
-                public static class Assets
-                {
-                    public const string select2_css = "~/Content/css/select2.css";
-                    public const string select2_min_css = "~/Content/css/select2.min.css";
                 }
             }
             public static partial class fonts 
@@ -957,6 +941,7 @@ namespace Links
                 public const string jquery_mobile_inline_svg_1_4_5_min_css = "~/Content/jquery.mobile.inline-svg-1.4.5.min.css";
                 public const string PagedList_css = "~/Content/PagedList.css";
                 public const string Responsive_css = "~/Content/Responsive.css";
+                public const string select2_css = "~/Content/select2.css";
                 public const string Site_css = "~/Content/Site.css";
                 public const string toastr_css = "~/Content/toastr.css";
             }
