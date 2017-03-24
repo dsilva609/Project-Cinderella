@@ -41,8 +41,14 @@
 
     <div class="col-sm-6">
         @Html.LabelFor(m => m.Category)
-        @Html.TextBoxFor(m => m.Category, new { @class = "form-control" })
+        @Html.DropDownListFor(m => m.Category, new List<SelectListItem> {new SelectListItem {Value = "test", Text = "test"} }, new { @class = "form-control category" })
         @Html.ValidationMessageFor(m => m.Category, "", new { @class = "text-danger" })
+        <script>
+            $(".category").select2({
+                tags: true,
+                tokenSeparators: [',', ' ']
+            })
+        </script>
     </div>
 
     <div class="col-sm-6">

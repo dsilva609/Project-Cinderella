@@ -184,5 +184,17 @@
     "inputFiles": [
       "Scripts/jquery.bcSwipe.js"
     ]
+  },
+  {
+    "outputFileName": "Scripts/select2.min.js",
+    "inputFiles": [
+      "Scripts/select2.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/css/select2.min.css",
+    "inputFiles": [
+      "Content/css/select2.css"
+    ]
   }
 ]
