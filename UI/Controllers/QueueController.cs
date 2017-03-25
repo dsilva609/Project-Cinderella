@@ -27,7 +27,7 @@ namespace UI.Controllers
 		{
 			var model = new QueueViewModel
 			{
-				Albums = _albumService.GetAll(User.Identity.GetUserId()).Where(x => x.IsQueued).OrderBy(y => y.QueueRank)
+				Albums = _albumService.GetAll(User.Identity.GetUserId()).Where(x => x.IsQueued)?.OrderBy(y => y.QueueRank)
 					.Select(z => new QueueItemViewModel { ID = z.ID, Title = z.Title, ImageUrl = z.ImageUrl, QueueRank = z.QueueRank }).ToList(),
 				Books = _bookService.GetAll(User.Identity.GetUserId()).Where(x => x.IsQueued).OrderBy(y => y.QueueRank)
 					.Select(z => new QueueItemViewModel { ID = z.ID, Title = z.Title, ImageUrl = z.ImageUrl, QueueRank = z.QueueRank }).ToList(),

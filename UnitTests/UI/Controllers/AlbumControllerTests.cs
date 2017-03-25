@@ -16,7 +16,7 @@ namespace UnitTests.UI.Controllers
 	[TestFixture]
 	public class AlbumControllerTests : AlbumControllerTestBase
 	{
-		private Album _testModel = new Album();
+		private Album _testModel = new Album { ID = 666 };
 
 		[Test]
 		public void ThatTheIndexActionReturnsAView()
@@ -97,7 +97,7 @@ namespace UnitTests.UI.Controllers
 		{
 			//--Arrange
 			_service.Setup(x => x.GetAll(It.Is<string>(y => y == null), string.Empty, 0, 1)).Returns(new List<Album>());
-
+			_service.Setup(x => x.GetByID(666, Arg<string>.Is.Anything)).Returns(new Album { ID = 666 });
 			//--Act
 			var result = _controller.ClassUnderTest.Edit(_testModel) as RedirectToRouteResult;
 

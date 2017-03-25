@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using BusinessLogic.Enums;
+﻿using BusinessLogic.Enums;
 using BusinessLogic.Models;
 using BusinessLogic.Services.Interfaces;
 using Microsoft.AspNet.Identity;
@@ -117,7 +116,6 @@ namespace UI.Controllers
 		{
 			ViewBag.Title = "Edit";
 			var model = _service.GetByID(id, User.Identity.GetUserId());
-			var viewModel = Mapper.Map<AlbumViewModel>(model);
 			if (model.UserID != User.Identity.GetUserId())
 			{
 				ShowStatusMessage(MessageTypeEnum.warning, "This album cannot be edited by another user.", "Edit Failure");

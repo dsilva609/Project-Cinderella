@@ -9,10 +9,6 @@
 @Html.HiddenFor(m => m.Wish.UserID)
 @Html.HiddenFor(m => m.Wish.DateAdded)
 @Html.HiddenFor(m => m.Wish.DateModified)
-@*@Styles.Render(Links.Content.select2_min_css)
-@Scripts.Render(Links.Scripts.select2_min_js)*@
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet", type="text/css"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.min.js"></script>
 
 <div class="row panel-body">
 	@if (Model.Wish.DateAdded != Convert.ToDateTime("1/1/1900") && Model.Wish.DateAdded != DateTime.MinValue)
@@ -44,8 +40,6 @@
 		@Html.ValidationMessageFor(m => m.Wish.Notes, "", new { @class = "text-danger" })
 	</div>
 
-	
-
 	<div class="col-sm-6">
 		@Html.LabelFor(m => m.Wish.ApiID)
 		@Html.TextBoxFor(m => m.Wish.ApiID, new { @class = "form-control" })
@@ -53,21 +47,10 @@
 	</div>
 
 	<div class="col-sm-6" style="display: inline-grid;">
-	@Html.LabelFor(m => m.Wish.Category)
-			@Html.DropDownListFor(m => m.Wish.Category, new List<SelectListItem>(Model.Categories), new {@class = "form-control category"})
-			@Html.ValidationMessageFor(m => m.Wish.Category, "", new {@class = "text-danger"})
-			<script>
-				$(".category").select2({
-					placeholder: "Select a category",
-					tags: true,
-					tokenSeparators: [',', ' '],
-					//containerCssClass: 'form-control',
-					//dropdownCssClass: 'form-control'
-				})
-			</script>
-	
+		@Html.LabelFor(m => m.Wish.Category)
+		@Html.DropDownListFor(m => m.Wish.Category, new List<SelectListItem>(Model.Categories), new { @class = "form-control category" })
+		@Html.ValidationMessageFor(m => m.Wish.Category, "", new { @class = "text-danger" })
 	</div>
-
 
 	<div class="col-sm-6">
 		@Html.LabelFor(m => m.Wish.Owned)

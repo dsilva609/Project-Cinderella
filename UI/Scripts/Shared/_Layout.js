@@ -56,8 +56,13 @@
       $('.carousel').carousel({
         interval: 2000
       });
-      return $('.carousel').bcSwipe({
+      $('.carousel').bcSwipe({
         threshold: 50
+      });
+      return $(".category").select2({
+        placeholder: "Select a category",
+        tags: true,
+        tokenSeparators: [',', ' ']
       });
     };
 

@@ -51,7 +51,14 @@ class Views.Shared.Layout
 		$('.carousel').carousel({interval: 2000});
 		
 		$('.carousel').bcSwipe({threshold: 50});
-	
+		
+		
+		
+		$(".category").select2({
+			placeholder: "Select a category",
+			tags: true,
+			tokenSeparators: [',', ' ']})
+			
 $ -> 
 	_layout = new Views.Shared.Layout
 	
