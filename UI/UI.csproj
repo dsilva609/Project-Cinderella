@@ -951,6 +951,7 @@
     <Compile Include="Models\StatsViewModel.cs" />
     <Compile Include="Models\TimerModel.cs" />
     <Compile Include="Models\Toastr.cs" />
+    <Compile Include="Models\WishFormModel.cs" />
     <Compile Include="Models\WishViewModel.cs" />
     <Compile Include="MovieController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>

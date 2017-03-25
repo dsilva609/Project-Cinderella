@@ -246,10 +246,10 @@ namespace UI.Controllers
         }
 
         [NonAction]
-        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, BusinessLogic.Models.Wish model);
+        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, UI.Models.WishFormModel model);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Create(BusinessLogic.Models.Wish model)
+        public override System.Web.Mvc.ActionResult Create(UI.Models.WishFormModel model)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
@@ -270,10 +270,10 @@ namespace UI.Controllers
         }
 
         [NonAction]
-        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, BusinessLogic.Models.Wish model);
+        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, UI.Models.WishFormModel model);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Edit(BusinessLogic.Models.Wish model)
+        public override System.Web.Mvc.ActionResult Edit(UI.Models.WishFormModel model)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
