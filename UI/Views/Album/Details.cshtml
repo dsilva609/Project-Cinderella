@@ -17,6 +17,18 @@
 {
 	<div class="">Last Updated: @Model.DateUpdated</div>
 }
+
+<div>
+    <a href="@Url.Action(MVC.Album.Index())"><span class="fa fa-list"></span> Back to List</a>
+    <span> | </span>
+    @if (User.Identity.IsAuthenticated && Model.UserID == User.Identity.GetUserId())
+    {
+        <a href="@Url.Action(MVC.Album.Edit(Model.ID))"><span class="fa fa-pencil"></span> Edit</a>
+        <span> | </span>
+        <a href="@Url.Action(MVC.Album.Delete(Model.ID))" class="deleteBtn"><span class="fa fa-trash"></span> Delete</a>
+    }
+</div>
+
 <div data-toggle="collapse" data-parent="#accordion" href="#album-info">
 	<div class="row panel panel-primary panel-collapse text-center">
 		<div class="panel-heading">
@@ -157,15 +169,4 @@
 			</div>
 		</div>
 	</div>
-</div>
-
-<div>
-	@if (User.Identity.IsAuthenticated && Model.UserID == User.Identity.GetUserId())
-	{
-		@Html.ActionLink("Edit", MVC.Album.Edit(Model.ID), new { id = Model.ID })
-		<span> | </span>
-		@Html.ActionLink("Delete", MVC.Album.Delete(Model.ID), new { @class = "deleteBtn", @data_id = Model.ID })
-		<span> | </span>
-	}
-	@Html.ActionLink("Back to List", MVC.Album.Index())
 </div>
