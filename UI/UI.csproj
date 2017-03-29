@@ -797,7 +797,7 @@
     <Content Include="Views\Book\_RecentlyAdded.cshtml" />
     <Content Include="Views\Movie\_RecentlyAdded.cshtml" />
     <Content Include="Views\Game\_RecentlyAdded.cshtml" />
-    <Content Include="Views\Album\_Album.cshtml" />
+    <Content Include="Models\_Album.cshtml" />
     <Content Include="Views\Book\_Book.cshtml" />
     <Content Include="Views\Game\_Game.cshtml" />
     <Content Include="Views\Movie\_Movie.cshtml" />
