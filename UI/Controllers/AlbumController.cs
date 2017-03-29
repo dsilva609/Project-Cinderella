@@ -141,6 +141,7 @@ namespace UI.Controllers
                 ShowStatusMessage(MessageTypeEnum.error, "No ID found to update.", "Missing ID");
                 return RedirectToAction(MVC.Album.Edit(id));
             }
+
             var release = _discogsService.GetRelease(model.DiscogsID);
 
             //TODO: does this have to be here?

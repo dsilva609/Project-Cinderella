@@ -12,6 +12,7 @@ namespace UI.Models
     {
         public ItemType DefaultType { get; set; }
         public ActionType DefaultAction { get; set; }
+        public int UserNum { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -20,6 +21,8 @@ namespace UI.Models
             // Add custom user claims here
             userIdentity.AddClaim(new Claim("DefaultType", DefaultType.ToString()));
             userIdentity.AddClaim(new Claim("DefaultAction", string.IsNullOrWhiteSpace(DefaultAction.Value) ? string.Empty : DefaultAction.Value));
+            //var latestUser = new ApplicationDbContext().Users.OrderByDescending(x => x.UserNum).FirstOrDefault();
+            userIdentity.AddClaim(new Claim("UserNum", UserNum.ToString()));
             return userIdentity;
         }
     }

@@ -939,6 +939,10 @@
     <Compile Include="Migrations\201610121626520_added default action type.Designer.cs">
       <DependentUpon>201610121626520_added default action type.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703291623274_added UserNum to identity.cs" />
+    <Compile Include="Migrations\201703291623274_added UserNum to identity.Designer.cs">
+      <DependentUpon>201703291623274_added UserNum to identity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseViewModel.cs" />
@@ -1014,6 +1018,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610121626520_added default action type.resx">
       <DependentUpon>201610121626520_added default action type.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703291623274_added UserNum to identity.resx">
+      <DependentUpon>201703291623274_added UserNum to identity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
