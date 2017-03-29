@@ -41,7 +41,7 @@ namespace BusinessLogic.Services
 							x.UserID == album.UserID && x.Title == album.Title && x.Artist == album.Artist && x.MediaType == album.MediaType &&
 							x.DiscogsID == album.DiscogsID)
 					.ToList();
-			if (existingAlbum.Count > 0)
+			if (existingAlbum.Any())
 				throw new ApplicationException($"An existing album of {album.Artist}, {album.Title}, {album.MediaType} already exists.");
 			_addEntityComponent.Execute(_repository, album);
 		}

@@ -318,11 +318,16 @@
     <Compile Include="Migrations\201703230130388_added is queued and queue rank to base item.Designer.cs">
       <DependentUpon>201703230130388_added is queued and queue rank to base item.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703282313533_added funko pop model.cs" />
+    <Compile Include="Migrations\201703282313533_added funko pop model.Designer.cs">
+      <DependentUpon>201703282313533_added funko pop model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseItem.cs" />
     <Compile Include="Models\BGGModels\BGGGame.cs" />
     <Compile Include="Models\BGGModels\BGGResult.cs" />
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\FunkoModel.cs" />
     <Compile Include="Models\StatisticsModels\CollectionStatistic.cs" />
     <Compile Include="Models\ComicVineModels\ComicVineComic.cs" />
     <Compile Include="Models\ComicVineModels\ComicVineResult.cs" />
@@ -363,10 +368,12 @@
     <Compile Include="Services\Interfaces\IGiantBombService.cs" />
     <Compile Include="Services\Interfaces\IGoogleBookService.cs" />
     <Compile Include="Services\Interfaces\IMovieService.cs" />
+    <Compile Include="Services\Interfaces\IPopService.cs" />
     <Compile Include="Services\Interfaces\IStatisticService.cs" />
     <Compile Include="Services\Interfaces\ITMDBService.cs" />
     <Compile Include="Services\Interfaces\IWishService.cs" />
     <Compile Include="Services\MovieService.cs" />
+    <Compile Include="Services\PopService.cs" />
     <Compile Include="Services\StatisticService.cs" />
     <Compile Include="Services\TMDBService.cs" />
     <Compile Include="Services\WishService.cs" />
@@ -529,6 +536,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703230130388_added is queued and queue rank to base item.resx">
       <DependentUpon>201703230130388_added is queued and queue rank to base item.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703282313533_added funko pop model.resx">
+      <DependentUpon>201703282313533_added funko pop model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
