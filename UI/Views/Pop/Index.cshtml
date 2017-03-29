@@ -1,1 +1,39 @@
-﻿
+﻿@using PagedList.Mvc
+@model UI.Models.PopViewModel
+
+@{
+	ViewBag.Title = Model.ViewTitle;
+}
+
+<div>
+	<div class="h2 col-md-8">
+		Pops
+		@if (User.Identity.IsAuthenticated)
+		{
+			<a class="btn btn-default" href="@Url.Action(MVC.Pop.Create())" style="padding-top: 1.25em;" contenteditable="false">
+				<span class="fa fa-plus"></span>
+			</a>
+		}
+	</div>
+
+	<div class="col-md-4 text-right" style="padding-top: 1.25em; display: inline-flex;">
+		@using (Html.BeginForm(MVC.Pop.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
+		{
+			<input class="form-control" id="query" name="movieQuery" placeholder="Search" type="text" value="@ViewBag.Filter">
+			<button type="submit" class="btn btn-default">
+				<span class="fa fa-search"></span>
+			</button>
+		}
+	</div>
+</div>
+
+<div id="fh5co-main">
+	<div class="container" style="padding-top: 2em;">
+		@foreach (var pop in Model.Pops)
+		{
+			@Html.Partial(MVC.Pop.Views._Pop, pop)
+		}
+	</div>
+</div>
+
+@Html.PagedListPager(Model.Pops, page => Url.Action("Index", new { popQuery = ViewBag.query, filter = ViewBag.Filter, page }))

@@ -1,0 +1,8 @@
+﻿@model BusinessLogic.Models.FunkoModel
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(MVC.Pop.Edit(Model.ID), FormMethod.Post))
+{
+	Html.RenderPartial(MVC.Pop.Views._PopFormPartial, Model);
+}
+@Html.ActionLink("Back to List", MVC.Pop.Index())

@@ -1,4 +1,4 @@
-a {
+﻿a {
   color: #007aac; }
 
 body {
@@ -115,7 +115,7 @@ a:hover {
   max-width: 100%; }
   .flip-container .flipper, .front .flipper, .back .flipper {
     height: 100%; }
-  .flip-container .album, .flip-container .game, .front .album, .front .game, .back .album, .back .game {
+  .flip-container .album, .flip-container .game, .flip-container .pop, .front .album, .front .game, .front .pop, .back .album, .back .game, .back .pop {
     height: 260px; }
   .flip-container .book, .flip-container .movie, .front .book, .front .movie, .back .book, .back .movie {
     height: 400px; }

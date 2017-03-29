@@ -837,6 +837,11 @@
     <Content Include="Views\Queue\Index.cshtml" />
     <Content Include="Views\Queue\_QueueTablePartial.cshtml" />
     <Content Include="Views\Pop\Index.cshtml" />
+    <Content Include="Views\Pop\_Pop.cshtml" />
+    <Content Include="Views\Pop\_PopFormPartial.cshtml" />
+    <Content Include="Views\Pop\Create.cshtml" />
+    <Content Include="Views\Pop\Edit.cshtml" />
+    <Content Include="Views\Pop\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

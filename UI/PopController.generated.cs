@@ -199,8 +199,18 @@ namespace UI.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _Pop = "_Pop";
+                public readonly string _PopFormPartial = "_PopFormPartial";
+                public readonly string Create = "Create";
+                public readonly string Details = "Details";
+                public readonly string Edit = "Edit";
                 public readonly string Index = "Index";
             }
+            public readonly string _Pop = "~/Views/Pop/_Pop.cshtml";
+            public readonly string _PopFormPartial = "~/Views/Pop/_PopFormPartial.cshtml";
+            public readonly string Create = "~/Views/Pop/Create.cshtml";
+            public readonly string Details = "~/Views/Pop/Details.cshtml";
+            public readonly string Edit = "~/Views/Pop/Edit.cshtml";
             public readonly string Index = "~/Views/Pop/Index.cshtml";
         }
     }
