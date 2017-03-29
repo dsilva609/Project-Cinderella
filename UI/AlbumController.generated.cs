@@ -311,6 +311,7 @@ namespace UI.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _Album = "_Album";
                 public readonly string _AlbumFormPartial = "_AlbumFormPartial";
                 public readonly string _RecentlyAdded = "_RecentlyAdded";
                 public readonly string _RecentlyUpdated = "_RecentlyUpdated";
@@ -320,6 +321,7 @@ namespace UI.Controllers
                 public readonly string Index = "Index";
                 public readonly string Search = "Search";
             }
+            public readonly string _Album = "~/Views/Album/_Album.cshtml";
             public readonly string _AlbumFormPartial = "~/Views/Album/_AlbumFormPartial.cshtml";
             public readonly string _RecentlyAdded = "~/Views/Album/_RecentlyAdded.cshtml";
             public readonly string _RecentlyUpdated = "~/Views/Album/_RecentlyUpdated.cshtml";
