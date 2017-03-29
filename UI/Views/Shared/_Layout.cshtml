@@ -1,22 +1,24 @@
 ﻿@using UI.Models
 <!DOCTYPE html>
 <html>
-<head>
+<head prefix="og: http://ogp.me/ns#">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="twitter:card" content="@("http://projectcinderella.azurewebsites.net" + Links.Content.Images.Turntable2_jpg)">>
+    <meta name="twitter:domain" value="projectcinderella.azurewebsites.net" />
+    <meta name="twitter:title" value="Project Cinderella" />
+    <meta name="twitter:description" value="Always know what's playing in your collection." />
+    <meta name="twitter:image" content="@("http://projectcinderella.azurewebsites.net" + Links.Content.Images.Turntable_jpg)" />
+    <meta name="twitter:url" value="http://projectcinderella.azurewebsites.net" />
+
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://projectcinderella.azurewebsites.net" />
     <meta property="og:title" content="Project Cinderella" />
     <meta property="og:description" content="Always know what's playing in your collection." />
     <meta property="og:site_name" content="Project Cinderella" />
-    <meta property="og:image" content="@Links.Content.Images.Turntable2_jpg" />
+    <meta property="og:image" content="@("http://projectcinderella.azurewebsites.net" + Links.Content.Images.Turntable_jpg)" />
 
-    <meta name="twitter:card" content="@Links.Content.Images.Turntable2_jpg">
-    <meta name="twitter:domain" value="projectcinderella.azurewebsites.net" />
-    <meta name="twitter:title" value="Project Cinderella" />
-    <meta name="twitter:description" value="Always know what's playing in your collection'." />
-    <meta name="twitter:image" content="@Links.Content.Images.Turntable_jpg" />
-    <meta name="twitter:url" value="http://projectcinderella.azurewebsites.net" />
     <title>@ViewBag.Title - Project Cinderella</title>
     @Styles.Render("~/Content/css")
 
