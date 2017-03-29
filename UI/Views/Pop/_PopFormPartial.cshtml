@@ -73,12 +73,16 @@
 			</div>
 		</div>
 
-
-
 		<div class="col-sm-6">
 			@Html.LabelFor(m => m.PopLine)
 			@Html.TextBoxFor(m => m.PopLine, new { @class = "form-control" })
 			@Html.ValidationMessageFor(m => m.PopLine, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.Number)
+			@Html.TextBoxFor(m => m.Number, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.Number, "", new { @class = "text-danger" })
 		</div>
 
 		<div class="col-sm-6">
@@ -124,7 +128,7 @@
 			@Html.TextBoxFor(m => m.CountryOfOrigin, new { @class = "form-control" })
 			@Html.ValidationMessageFor(m => m.CountryOfOrigin, "", new { @class = "text-danger" })
 		</div>
-		
+
 		<div class="col-sm-6">
 			@Html.LabelFor(m => m.CountryPurchased)
 			@Html.TextBoxFor(m => m.CountryPurchased, new { @class = "form-control" })
@@ -149,7 +153,7 @@
 			@Html.TextBoxFor(m => m.LocationPurchased, new { @class = "form-control" })
 			@Html.ValidationMessageFor(m => m.LocationPurchased, "", new { @class = "text-danger" })
 		</div>
-		
+
 		<div class="col-sm-6">
 			@Html.LabelFor(m => m.IsNew)
 			@Html.CheckBoxFor(m => m.IsNew, new { @class = "form-control" })

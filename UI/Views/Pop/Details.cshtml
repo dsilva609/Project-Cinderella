@@ -56,6 +56,10 @@
 					@Html.DisplayFor(m => m.PopLine)
 				</div>
 				<div>
+					@Html.LabelFor(m => m.Number):
+					@Html.DisplayFor(m => m.Number)
+				</div>
+				<div>
 					@Html.LabelFor(m => m.YearReleased):
 					@Html.DisplayFor(m => m.YearReleased)
 				</div>
@@ -102,7 +106,7 @@
 					@Html.LabelFor(m => m.IsNew):
 					@Html.DisplayFor(m => m.IsNew)
 				</div>
-				
+
 				<div>
 					@Html.LabelFor(m => m.CountryPurchased):
 					@Html.DisplayFor(m => m.CountryPurchased)
