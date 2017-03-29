@@ -119,3 +119,26 @@
         </div>
     </div>
 }
+
+@if (Model.PopWishes.Any())
+{
+	<div data-toggle="collapse" data-parent="#accordion" href="#pops">
+		<div class="row panel panel-primary panel-collapse">
+			<div class="panel-heading">
+				<h4>
+					Pops
+					<span class="fa fa-chevron-circle-down"></span>
+				</h4>
+			</div>
+		</div>
+	</div>
+	<div id="pops" class="collapse in">
+		<div class="panel-body">
+			@foreach (var popWishGroup in Model.PopWishes)
+			{
+				<div class="bold">@popWishGroup.Key</div>
+				@Html.Partial(MVC.Wish.Views._WishTablePartial, popWishGroup.Value)
+			}
+		</div>
+	</div>
+}

@@ -201,6 +201,8 @@ namespace UI.Controllers
             {
                 public readonly string _Pop = "_Pop";
                 public readonly string _PopFormPartial = "_PopFormPartial";
+                public readonly string _RecentlyAdded = "_RecentlyAdded";
+                public readonly string _RecentlyUpdated = "_RecentlyUpdated";
                 public readonly string Create = "Create";
                 public readonly string Details = "Details";
                 public readonly string Edit = "Edit";
@@ -208,6 +210,8 @@ namespace UI.Controllers
             }
             public readonly string _Pop = "~/Views/Pop/_Pop.cshtml";
             public readonly string _PopFormPartial = "~/Views/Pop/_PopFormPartial.cshtml";
+            public readonly string _RecentlyAdded = "~/Views/Pop/_RecentlyAdded.cshtml";
+            public readonly string _RecentlyUpdated = "~/Views/Pop/_RecentlyUpdated.cshtml";
             public readonly string Create = "~/Views/Pop/Create.cshtml";
             public readonly string Details = "~/Views/Pop/Details.cshtml";
             public readonly string Edit = "~/Views/Pop/Edit.cshtml";

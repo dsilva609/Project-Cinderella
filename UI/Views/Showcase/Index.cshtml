@@ -1,147 +1,177 @@
 ﻿@model UI.Models.ShowcaseViewModel
 @{
-    ViewBag.Title = Model.ViewTitle;
+	ViewBag.Title = Model.ViewTitle;
 }
 
 <div class="row">
-    <div class="h2 col-md-5">
-        Item Showcase
-        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-        {
-            <a class="btn btn-default" href="@Url.Action(MVC.Showcase.Add())" style="padding-top: 1.25em;" contenteditable="false">
-                <span class="fa fa-plus"></span>
-            </a>
-        }
+	<div class="h2 col-md-5">
+		Item Showcase
+		@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+		{
+			<a class="btn btn-default" href="@Url.Action(MVC.Showcase.Add())" style="padding-top: 1.25em;" contenteditable="false">
+				<span class="fa fa-plus"></span>
+			</a>
+		}
 
-        <h2>
-            @if (DateTime.UtcNow.DayOfWeek == DayOfWeek.Friday)
-            {
-                <span>Heavy Metal Friday</span>
-            }
-            else
-            {
-                <span>Albums</span>
-            }
-        </h2>
-        <div class="container">
-            @if (Model.Albums.Any())
-            {
-                <div id="albumCarousel" class="carousel slide" data-ride="carousel">
-	                <div class="carousel-inner" role="listbox">
-		                <div class="item active">
-			                <a href="@Url.Action(MVC.Album.Details(Model.Albums[0].ID))">
-				                <img class="d-block img-fluid" src="@Model.Albums[0].ImageUrl" alt="@(Model.Albums[0].Artist + "-" + Model.Albums[0].Title)">
-			                </a>
-		                </div>
-		                @for (var i = 1; i < Model.Albums.Count; i++)
-		                {
-			                <div class="item">
-				                <a href="@Url.Action(MVC.Album.Details(Model.Albums[i].ID))">
-					                <img class="d-block img-fluid" src="@Model.Albums[i].ImageUrl" alt="@(Model.Albums[i].Artist + "-" + Model.Albums[i].Title)">
-				                </a>
-			                </div>
-		                }
-	                </div>
-	                <a class="left carousel-control" href="#albumCarousel" role="button" data-slide="prev">
-		                <span class="sr-only">Previous</span>
-	                </a>
-					<a class="right carousel-control" href="#albumCarousel" role="button" data-slide="next">
-						<span class="sr-only">next</span>
-					</a>
-                </div>
-            }
-        </div>
+		@if (Model.Albums.Any())
+		{
+			<h2>
+				@if (DateTime.UtcNow.DayOfWeek == DayOfWeek.Friday)
+				{
+					<span>Heavy Metal Friday</span>
+				}
+				else
+				{
+					<span>Albums</span>
+				}
+			</h2>
+			<div class="container">
 
-        <h2>
-            Books
-        </h2>
-        <div class="container">
-            @if (Model.Books.Any())
-            {
-                <div id="bookCarousel" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner" role="listbox">
-                        <div class="item active">
-                            <a href="@Url.Action(MVC.Book.Details(Model.Books[0].ID))">
-                                <img class="d-block img-fluid" src="@Model.Books[0].ImageUrl" alt="@(Model.Books[0].Author + "-" + Model.Books[0].Title)">
-                            </a>
-                        </div>
-                        @for (var i = 1; i < Model.Books.Count; i++)
-                        {
-                            <div class="item">
-                                <a href="@Url.Action(MVC.Book.Details(Model.Books[i].ID))">
-                                    <img class="d-block img-fluid" src="@Model.Books[i].ImageUrl" alt="@(Model.Books[i].Author + "-" + Model.Books[i].Title)">
-                                </a>
-                            </div>
-                        }
-                    </div>
+				<div id="albumCarousel" class="carousel slide" data-ride="carousel">
+					<div class="carousel-inner" role="listbox">
+						<div class="item active">
+							<a href="@Url.Action(MVC.Album.Details(Model.Albums[0].ID))">
+								<img class="d-block img-fluid" src="@Model.Albums[0].ImageUrl" alt="@(Model.Albums[0].Artist + "-" + Model.Albums[0].Title)">
+							</a>
+						</div>
+						@for (var i = 1; i < Model.Albums.Count; i++)
+						{
+							<div class="item">
+								<a href="@Url.Action(MVC.Album.Details(Model.Albums[i].ID))">
+									<img class="d-block img-fluid" src="@Model.Albums[i].ImageUrl" alt="@(Model.Albums[i].Artist + "-" + Model.Albums[i].Title)">
+								</a>
+							</div>
+						}
+					</div>
 					<a class="left carousel-control" href="#albumCarousel" role="button" data-slide="prev">
 						<span class="sr-only">Previous</span>
 					</a>
 					<a class="right carousel-control" href="#albumCarousel" role="button" data-slide="next">
 						<span class="sr-only">next</span>
 					</a>
-                </div>
-            }
-        </div>
+				</div>
+			</div>
+			}
 
-        <h2>Games</h2>
-        <div class="container">
-            @if (Model.Games.Any())
-            {
-                <div id="gameCarousel" class="carousel slide" data-ride="carousel">
-	                <div class="carousel-inner" role="listbox">
-		                <div class="item active">
-			                <a href="@Url.Action(MVC.Game.Details(Model.Games[0].ID))">
-				                <img class="d-block img-fluid" src="@Model.Games[0].ImageUrl" alt="@Model.Games[0].Title">
-			                </a>
-		                </div>
-		                @for (var i = 1; i < Model.Games.Count; i++)
-		                {
-			                <div class="item">
-				                <a href="@Url.Action(MVC.Game.Details(Model.Games[i].ID))">
-					                <img class="d-block img-fluid" src="@Model.Games[i].ImageUrl" alt="@Model.Games[i].Title">
-				                </a>
-			                </div>
-		                }
-	                </div>
-					<a class="left carousel-control" href="#albumCarousel" role="button" data-slide="prev">
+		@if (Model.Books.Any())
+		{
+			<h2>Books</h2>
+			<div class="container">
+				<div id="bookCarousel" class="carousel slide" data-ride="carousel">
+					<div class="carousel-inner" role="listbox">
+						<div class="item active">
+							<a href="@Url.Action(MVC.Book.Details(Model.Books[0].ID))">
+								<img class="d-block img-fluid" src="@Model.Books[0].ImageUrl" alt="@(Model.Books[0].Author + "-" + Model.Books[0].Title)">
+							</a>
+						</div>
+						@for (var i = 1; i < Model.Books.Count; i++)
+						{
+							<div class="item">
+								<a href="@Url.Action(MVC.Book.Details(Model.Books[i].ID))">
+									<img class="d-block img-fluid" src="@Model.Books[i].ImageUrl" alt="@(Model.Books[i].Author + "-" + Model.Books[i].Title)">
+								</a>
+							</div>
+						}
+					</div>
+					<a class="left carousel-control" href="#bookCarousel" role="button" data-slide="prev">
 						<span class="sr-only">Previous</span>
 					</a>
-					<a class="right carousel-control" href="#albumCarousel" role="button" data-slide="next">
+					<a class="right carousel-control" href="#bookCarousel" role="button" data-slide="next">
 						<span class="sr-only">next</span>
 					</a>
-                </div>
-            }
-        </div>
+				</div>
+			</div>
+		}
 
-        <h2>Movies/TV</h2>
-        <div class="container">
-            @if (Model.Movies.Any())
-            {
-                <div id="movieCarousel" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner" role="listbox">
-                        <div class="item active">
-                            <a href="@Url.Action(MVC.Movie.Details(Model.Movies[0].ID))">
-                                <img class="d-block img-fluid" src="@Model.Movies[0].ImageUrl" alt="@Model.Albums[0].Title">
-                            </a>
-                        </div>
-                        @for (var i = 1; i < Model.Movies.Count; i++)
-                        {
-                            <div class="item">
-                                <a href="@Url.Action(MVC.Movie.Details(Model.Movies[i].ID))">
-                                    <img class="d-block img-fluid" src="@Model.Movies[i].ImageUrl" alt="@Model.Movies[i].Title">
-                                </a>
-                            </div>
-                        }
-                    </div>
-					<a class="left carousel-control" href="#albumCarousel" role="button" data-slide="prev">
+		@if (Model.Games.Any())
+		{
+			<h2>Games</h2>
+			<div class="container">
+				<div id="gameCarousel" class="carousel slide" data-ride="carousel">
+					<div class="carousel-inner" role="listbox">
+						<div class="item active">
+							<a href="@Url.Action(MVC.Game.Details(Model.Games[0].ID))">
+								<img class="d-block img-fluid" src="@Model.Games[0].ImageUrl" alt="@Model.Games[0].Title">
+							</a>
+						</div>
+						@for (var i = 1; i < Model.Games.Count; i++)
+						{
+							<div class="item">
+								<a href="@Url.Action(MVC.Game.Details(Model.Games[i].ID))">
+									<img class="d-block img-fluid" src="@Model.Games[i].ImageUrl" alt="@Model.Games[i].Title">
+								</a>
+							</div>
+						}
+					</div>
+					<a class="left carousel-control" href="#gameCarousel" role="button" data-slide="prev">
 						<span class="sr-only">Previous</span>
 					</a>
-					<a class="right carousel-control" href="#albumCarousel" role="button" data-slide="next">
+					<a class="right carousel-control" href="#gameCarousel" role="button" data-slide="next">
 						<span class="sr-only">next</span>
 					</a>
-                </div>
-            }
-        </div>
-    </div>
+				</div>
+			</div>
+		}
+
+		@if (Model.Movies.Any())
+		{
+			<h2>Movies/TV</h2>
+			<div class="container">
+
+				<div id="movieCarousel" class="carousel slide" data-ride="carousel">
+					<div class="carousel-inner" role="listbox">
+						<div class="item active">
+							<a href="@Url.Action(MVC.Movie.Details(Model.Movies[0].ID))">
+								<img class="d-block img-fluid" src="@Model.Movies[0].ImageUrl" alt="@Model.Movies[0].Title">
+							</a>
+						</div>
+						@for (var i = 1; i < Model.Movies.Count; i++)
+				{
+							<div class="item">
+								<a href="@Url.Action(MVC.Movie.Details(Model.Movies[i].ID))">
+									<img class="d-block img-fluid" src="@Model.Movies[i].ImageUrl" alt="@Model.Movies[i].Title">
+								</a>
+							</div>
+				}
+					</div>
+					<a class="left carousel-control" href="#movieCarousel" role="button" data-slide="prev">
+						<span class="sr-only">Previous</span>
+					</a>
+					<a class="right carousel-control" href="#movieCarousel" role="button" data-slide="next">
+						<span class="sr-only">next</span>
+					</a>
+				</div>
+			</div>
+		}
+
+		@if (Model.Pops.Any())
+		{
+			<h2>Pops</h2>
+			<div class="container">
+				<div id="popCarousel" class="carousel slide" data-ride="carousel">
+					<div class="carousel-inner" role="listbox">
+						<div class="item active">
+							<a href="@Url.Action(MVC.Pop.Details(Model.Books[0].ID))">
+								<img class="d-block img-fluid" src="@Model.Pops[0].ImageUrl" alt="@(Model.Pops[0].Title + "-" + Model.Pops[0].Series)">
+							</a>
+						</div>
+						@for (var i = 1; i < Model.Pops.Count; i++)
+						{
+							<div class="item">
+								<a href="@Url.Action(MVC.Pop.Details(Model.Books[i].ID))">
+									<img class="d-block img-fluid" src="@Model.Pops[i].ImageUrl" alt="@(Model.Pops[i].Title + "-" + Model.Pops[i].Series)">
+								</a>
+							</div>
+						}
+					</div>
+					<a class="left carousel-control" href="#popCarousel" role="button" data-slide="prev">
+						<span class="sr-only">Previous</span>
+					</a>
+					<a class="right carousel-control" href="#popCarousel" role="button" data-slide="next">
+						<span class="sr-only">next</span>
+					</a>
+				</div>
+			</div>
+		}
+	</div>
 </div>

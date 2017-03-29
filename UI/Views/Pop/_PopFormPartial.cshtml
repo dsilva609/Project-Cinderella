@@ -26,20 +26,20 @@
 			if (!Model.IsShowcased)
 			{
 				<div class="col-md-6">
-					@Html.ActionLink("Add to Showcase", MVC.Movie.AddToShowcase(Model.ID), new { @class = "btn btn-default" })
+					@Html.ActionLink("Add to Showcase", MVC.Pop.AddToShowcase(Model.ID), new { @class = "btn btn-default" })
 				</div>
 			}
 			else
 			{
 				<div class="col-md-6">
-					@Html.ActionLink("Remove from Showcase", MVC.Movie.RemoveFromShowcase(Model.ID), new { @class = "btn btn-danger" })
+					@Html.ActionLink("Remove from Showcase", MVC.Pop.RemoveFromShowcase(Model.ID), new { @class = "btn btn-danger" })
 				</div>
 			}
 		}
 	</div>
 </div>
 
-<div data-toggle="collapse" data-parent="#accordion" href="#movie-info">
+<div data-toggle="collapse" data-parent="#accordion" href="#pop-info">
 	<div class="row panel panel-primary panel-collapse">
 		<div class="panel-heading">
 			<h4>
@@ -49,7 +49,7 @@
 		</div>
 	</div>
 </div>
-<div id="movie-info" class="collapse in">
+<div id="pop-info" class="collapse in">
 	<div class="panel-body">
 		<div class="item-title">
 			@if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
@@ -120,15 +120,17 @@
 <div id="purchase-info" class="collapse in">
 	<div class="panel-body">
 		<div class="col-sm-6">
-			@Html.LabelFor(m => m.IsPhysical)
-			@Html.CheckBoxFor(m => m.IsPhysical, new { @class = "form-control" })
-			@Html.ValidationMessageFor(m => m.IsPhysical, "", new { @class = "text-danger" })
-		</div>
-		<div class="col-sm-6">
 			@Html.LabelFor(m => m.CountryOfOrigin)
 			@Html.TextBoxFor(m => m.CountryOfOrigin, new { @class = "form-control" })
 			@Html.ValidationMessageFor(m => m.CountryOfOrigin, "", new { @class = "text-danger" })
 		</div>
+		
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.CountryPurchased)
+			@Html.TextBoxFor(m => m.CountryPurchased, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.CountryPurchased, "", new { @class = "text-danger" })
+		</div>
+
 		<div class="col-sm-6">
 			@Html.LabelFor(m => m.DatePurchased)
 			@if (Request.Browser.Browser == "IE" || !Request.Browser.IsMobileDevice)
@@ -147,7 +149,7 @@
 			@Html.TextBoxFor(m => m.LocationPurchased, new { @class = "form-control" })
 			@Html.ValidationMessageFor(m => m.LocationPurchased, "", new { @class = "text-danger" })
 		</div>
-
+		
 		<div class="col-sm-6">
 			@Html.LabelFor(m => m.IsNew)
 			@Html.CheckBoxFor(m => m.IsNew, new { @class = "form-control" })
@@ -155,9 +157,9 @@
 		</div>
 
 		<div class="col-sm-6">
-			@Html.LabelFor(m => m.CountryPurchased)
-			@Html.TextBoxFor(m => m.CountryPurchased, new { @class = "form-control" })
-			@Html.ValidationMessageFor(m => m.CountryPurchased, "", new { @class = "text-danger" })
+			@Html.LabelFor(m => m.IsPhysical)
+			@Html.CheckBoxFor(m => m.IsPhysical, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.IsPhysical, "", new { @class = "text-danger" })
 		</div>
 	</div>
 </div>

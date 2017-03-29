@@ -842,6 +842,8 @@
     <Content Include="Views\Pop\Create.cshtml" />
     <Content Include="Views\Pop\Edit.cshtml" />
     <Content Include="Views\Pop\Details.cshtml" />
+    <Content Include="Views\Pop\_RecentlyAdded.cshtml" />
+    <Content Include="Views\Pop\_RecentlyUpdated.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

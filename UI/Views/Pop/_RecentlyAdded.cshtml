@@ -1,0 +1,17 @@
+﻿@model List<BusinessLogic.Models.FunkoModel>
+
+<div class="container" data-toggle="collapse" data-parent="#accordion" href="#pops">
+	<div class="row panel panel-primary panel-collapse">
+		<h2>
+			Recently Added Pops
+			<span class="fa fa-chevron-circle-down"></span>
+		</h2>
+	</div>
+</div>
+
+<div id="pops" class="collapse in container">
+	@foreach (var pop in Model)
+	{
+		@Html.Partial(MVC.Pop.Views._Pop, pop)
+	}
+</div>

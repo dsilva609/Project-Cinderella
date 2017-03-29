@@ -65,10 +65,14 @@
                         <span class="fa fa-film"></span>/<span class="fa fa-television"></span>
                         <span>Movies/TV</span>
                     </a> |
-                    <a href="@Url.Action(MVC.Game.Index())">
-                        <span class="fa fa-gamepad"></span>
-                        <span>Games</span>
-                    </a>
+	                <a href="@Url.Action(MVC.Game.Index())">
+		                <span class="fa fa-gamepad"></span>
+		                <span>Games</span>
+	                </a> |
+					<a href="@Url.Action(MVC.Pop.Index())">
+						<span class="fa fa-user"></span>
+						<span>Other Vinyl</span>
+					</a>
                 </div>
             </div>
         </div>
@@ -194,27 +198,56 @@
                     </a>
                 </h4>
             </li>
-            <li id="Games" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <div class="table">
-                        <div>@Html.ActionLink("View Games", MVC.Game.Index())</div>
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <div>@Html.ActionLink("Add Game", MVC.Game.Create())</div>
-                            <div>@Html.ActionLink("Search Giant Bomb/BGG", MVC.Game.Search())</div>
-                            <div>
-                                @using (Html.BeginForm(MVC.Game.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
-                                {
-                                    @Html.TextBox("gameQuery", null, new { @class = "form-control", @placeholder = "Search" })
-                                    <button type="submit" class="btn btn-default">
-                                        <span class="fa fa-search"></span>
-                                    </button>
-                                }
-                            </div>
-                        }
-                    </div>
-                </div>
-            </li>
+        <li id="Games" class="panel-collapse collapse">
+	        <div class="panel-body">
+		        <div class="table">
+			        <div>@Html.ActionLink("View Games", MVC.Game.Index())</div>
+			        @if (User.Identity.IsAuthenticated)
+			        {
+				        <div>@Html.ActionLink("Add Game", MVC.Game.Create())</div>
+				        <div>@Html.ActionLink("Search Giant Bomb/BGG", MVC.Game.Search())</div>
+				        <div>
+					        @using (Html.BeginForm(MVC.Game.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
+					        {
+						        @Html.TextBox("gameQuery", null, new { @class = "form-control", @placeholder = "Search" })
+						        <button type="submit" class="btn btn-default">
+							        <span class="fa fa-search"></span>
+						        </button>
+					        }
+				        </div>
+			        }
+		        </div>
+	        </div>
+        </li>
+			
+		<li class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#Pops">
+					<span class="fa fa-user"></span> Other Vinyl
+				</a>
+			</h4>
+		</li>
+        <li id="Pops" class="panel-collapse collapse">
+				<div class="panel-body">
+					<div class="table">
+						<div>@Html.ActionLink("View Pops", MVC.Pop.Index())</div>
+						@if (User.Identity.IsAuthenticated)
+						{
+							<div>@Html.ActionLink("Add Pop", MVC.Pop.Create())</div>
+							<div>
+								@using (Html.BeginForm(MVC.Pop.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
+								{
+									@Html.TextBox("popQuery", null, new { @class = "form-control", @placeholder = "Search" })
+									<button type="submit" class="btn btn-default">
+										<span class="fa fa-search"></span>
+									</button>
+								}
+							</div>
+						}
+					</div>
+				</div>
+			</li>
+
             <li id="Stats" class="panel-heading">
                 <h4 class="panel-title">
                     <a href="@Url.Action(MVC.Statistics.Index())">
