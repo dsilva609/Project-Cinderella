@@ -151,14 +151,14 @@
 				<div id="popCarousel" class="carousel slide" data-ride="carousel">
 					<div class="carousel-inner" role="listbox">
 						<div class="item active">
-							<a href="@Url.Action(MVC.Pop.Details(Model.Pops[0].ID))">>
+							<a href="@Url.Action(MVC.Pop.Details(Model.Pops[0].ID))">
 								<img class="d-block img-fluid" src="@Model.Pops[0].ImageUrl" alt="@(Model.Pops[0].Title + "-" + Model.Pops[0].Series)">
 							</a>
 						</div>
 						@for (var i = 1; i < Model.Pops.Count; i++)
 						{
 							<div class="item">
-								<a href="@Url.Action(MVC.Pop.Details(Model.Pops[i].ID))">>
+								<a href="@Url.Action(MVC.Pop.Details(Model.Pops[i].ID))">
 									<img class="d-block img-fluid" src="@Model.Pops[i].ImageUrl" alt="@(Model.Pops[i].Title + "-" + Model.Pops[i].Series)">
 								</a>
 							</div>

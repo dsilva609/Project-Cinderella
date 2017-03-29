@@ -478,6 +478,7 @@ namespace Links
             public const string UrlPath = "~/Content/Images";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string action_figures_jpg = Url("action-figures.jpg");
             public static readonly string Book_jpg = Url("Book.jpg");
             public static readonly string ComicVineLogo_png = Url("ComicVineLogo.png");
             public static readonly string Discogs_Logo_png = Url("Discogs.Logo.png");
