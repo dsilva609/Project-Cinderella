@@ -119,7 +119,7 @@ namespace UI.Controllers
             if (model.UserID != User.Identity.GetUserId())
             {
                 ShowStatusMessage(MessageTypeEnum.warning, "This album cannot be edited by another user.", "Edit Failure");
-                return RedirectToAction(MVC.Album.Index());
+                return RedirectToAction(MVC.Album.Details(model.ID));
             }
 
             return View(model);
@@ -133,7 +133,7 @@ namespace UI.Controllers
             if (model.UserID != User.Identity.GetUserId())
             {
                 ShowStatusMessage(MessageTypeEnum.warning, "This album cannot be edited by another user.", "Edit Failure");
-                return RedirectToAction(MVC.Album.Index());
+                return RedirectToAction(MVC.Album.Details(model.ID));
             }
             //TODO--check if id exists
             if (model.DiscogsID == 0)
