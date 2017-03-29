@@ -98,6 +98,14 @@
 </div>
 <div id="album-info" class="collapse in">
 	<div class="panel-body">
+		@if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+		{
+				<div class="animate-box item col-md-6">
+					<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Artist - @Model.Title (@Model.YearReleased)">
+						<img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="img-rounded" style="height: 100%; width: 100%;">
+					</a>
+				</div>
+		}
 		<div class="row item-title">
 			<div class="col-md-6">
 				@Html.LabelFor(m => m.Artist)
@@ -111,17 +119,6 @@
 				@Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
 			</div>
 		</div>
-
-		@if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
-		{
-			<div class="row">
-				<div class="animate-box item col-md-6">
-					<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Artist - @Model.Title (@Model.YearReleased)">
-						<img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="img-rounded" style="height: 100%; width: 100%;" )@*height: 200px; width: 200px;*@">
-					</a>
-				</div>
-			</div>
-		}
 	</div>
 	<div class="panel-body">
 		<div class="col-md-6">

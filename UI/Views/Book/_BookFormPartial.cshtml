@@ -96,78 +96,77 @@
     </div>
 </div>
 <div id="book-info" class="collapse in">
-    <div class="panel-body">
-        <div class="item-title">
-            <div class="col-sm-6">
-                @Html.LabelFor(m => m.Title)
-                @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
-            </div>
+	<div class="panel-body">
+		@if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+		{
+			<div class="animate-box item col-sm-6">
+				<a href="@Model.ImageUrl" class="image-popup img-fluid fh5co-board-img">
+					<img src="@Model.ImageUrl" class="img-rounded" style="height: 100%; width: 100%;">
+				</a>
+			</div>
+		}
+		<div class="item-title">
+			<div class="col-sm-6">
+				@Html.LabelFor(m => m.Title)
+				@Html.TextBoxFor(m => m.Title, new {@class = "form-control"})
+				@Html.ValidationMessageFor(m => m.Title, "", new {@class = "text-danger"})
+			</div>
 
-            <div class="col-sm-6">
-                @Html.LabelFor(m => m.Author)
-                @Html.TextBoxFor(m => m.Author, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Author, "", new { @class = "text-danger" })
-            </div>
-        </div>
+			<div class="col-sm-6">
+				@Html.LabelFor(m => m.Author)
+				@Html.TextBoxFor(m => m.Author, new {@class = "form-control"})
+				@Html.ValidationMessageFor(m => m.Author, "", new {@class = "text-danger"})
+			</div>
+		</div>
 
-        @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
-        {
-            <div class="animate-box item col-sm-6">
-                <a href="@Model.ImageUrl" class="image-popup img-fluid fh5co-board-img">
-                    <img src="@Model.ImageUrl" class="img-rounded" style="height: 100%; width: 100%;" @*style="height: 300px; width: 200px;"*@>
-                </a>
-            </div>
-        }
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.Publisher)
+			@Html.TextBoxFor(m => m.Publisher, new {@class = "form-control"})
+			@Html.ValidationMessageFor(m => m.Publisher, "", new {@class = "text-danger"})
+		</div>
 
-        <div class="col-sm-6">
-            @Html.LabelFor(m => m.Publisher)
-            @Html.TextBoxFor(m => m.Publisher, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Publisher, "", new { @class = "text-danger" })
-        </div>
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.YearReleased)
+			@Html.DropDownListFor(m => m.YearReleased, ViewHelpers.GetYearRange(1900, DateTime.Today.Year), Model.YearReleased.ToString(), new {@class = "form-control"})
+			@Html.ValidationMessageFor(m => m.YearReleased, "", new {@class = "text-danger"})
+		</div>
 
-        <div class="col-sm-6">
-            @Html.LabelFor(m => m.YearReleased)
-            @Html.DropDownListFor(m => m.YearReleased, ViewHelpers.GetYearRange(1900, DateTime.Today.Year), Model.YearReleased.ToString(), new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.YearReleased, "", new { @class = "text-danger" })
-        </div>
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.Genre)
+			@Html.TextBoxFor(m => m.Genre, new {@class = "form-control"})
+			@Html.ValidationMessageFor(m => m.Genre, "", new {@class = "text-danger"})
+		</div>
 
-        <div class="col-sm-6">
-            @Html.LabelFor(m => m.Genre)
-            @Html.TextBoxFor(m => m.Genre, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Genre, "", new { @class = "text-danger" })
-        </div>
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.ISBN10)
+			@Html.TextBoxFor(m => m.ISBN10, new {@class = "form-control"})
+			@Html.ValidationMessageFor(m => m.ISBN10, "", new {@class = "text-danger"})
+		</div>
 
-        <div class="col-sm-6">
-            @Html.LabelFor(m => m.ISBN10)
-            @Html.TextBoxFor(m => m.ISBN10, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.ISBN10, "", new { @class = "text-danger" })
-        </div>
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.ISBN13)
+			@Html.TextBoxFor(m => m.ISBN13, new {@class = "form-control"})
+			@Html.ValidationMessageFor(m => m.ISBN13, "", new {@class = "text-danger"})
+		</div>
 
-        <div class="col-sm-6">
-            @Html.LabelFor(m => m.ISBN13)
-            @Html.TextBoxFor(m => m.ISBN13, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.ISBN13, "", new { @class = "text-danger" })
-        </div>
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.ImageUrl)
+			@Html.TextBoxFor(m => m.ImageUrl, new {@class = "form-control"})
+			@Html.ValidationMessageFor(m => m.ImageUrl, "", new {@class = "text-danger"})
+		</div>
 
-        <div class="col-sm-6">
-            @Html.LabelFor(m => m.ImageUrl)
-            @Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.ImageUrl, "", new { @class = "text-danger" })
-        </div>
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.Notes)
+			@Html.TextAreaFor(m => m.Notes, new {@class = "form-control"})
+			@Html.ValidationMessageFor(m => m.Notes, "", new {@class = "text-danger"})
+		</div>
 
-        <div class="col-sm-6">
-            @Html.LabelFor(m => m.Notes)
-            @Html.TextAreaFor(m => m.Notes, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Notes, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="col-sm-6">
-            @Html.LabelFor(m => m.Category)
-            @Html.TextAreaFor(m => m.Category, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Category, "", new { @class = "text-danger" })
-        </div>
-    </div>
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.Category)
+			@Html.TextAreaFor(m => m.Category, new {@class = "form-control"})
+			@Html.ValidationMessageFor(m => m.Category, "", new {@class = "text-danger"})
+		</div>
+	</div>
 </div>
 <div data-toggle="collapse" data-parent="#accordion" href="#media-info">
     <div class="row panel panel-primary panel-collapse">
