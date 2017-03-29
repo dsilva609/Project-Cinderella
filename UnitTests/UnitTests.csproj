@@ -196,6 +196,7 @@
     <Compile Include="BusinessLogic\Services\WishServiceTests.cs" />
     <Compile Include="UI\Controllers\BookControllerTests.cs" />
     <Compile Include="UI\Controllers\GameControllerTests.cs" />
+    <Compile Include="UI\Controllers\PopControllerTests.cs" />
     <Compile Include="UI\Controllers\ProjectCinderellaControllerBaseTests.cs" />
     <Compile Include="UI\Controllers\QueueControllerTests.cs" />
     <Compile Include="UI\Controllers\ShowcaseControllerTests.cs" />
@@ -211,6 +212,7 @@
     <Compile Include="UI\Controllers\TestBases\AlbumControllerTestBase.cs" />
     <Compile Include="UI\Controllers\MovieControllerTests.cs" />
     <Compile Include="UI\Controllers\TestBases\MovieControllerTestBase.cs" />
+    <Compile Include="UI\Controllers\TestBases\PopControllerTestBase.cs" />
     <Compile Include="UI\Controllers\TestBases\ProjectCinderellaControllerBaseTestBase.cs" />
     <Compile Include="UI\Controllers\TestBases\QueueControllerTestBase.cs" />
     <Compile Include="UI\Controllers\TestBases\ShowcaseControllerTestBase.cs" />
