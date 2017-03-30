@@ -7,16 +7,17 @@
 </script>
 
 <h2>
-	Details
-	@if (User.IsInRole("Admin") && Model.IsShowcased)
-	{
-		@Html.ActionLink("Remove From showcase", MVC.Album.RemoveFromShowcase(Model.ID), new { @class = "btn btn-danger" })
-	}
+    Details
+    @if (User.IsInRole("Admin") && Model.IsShowcased)
+    {
+        @Html.ActionLink("Remove From showcase", MVC.Album.RemoveFromShowcase(Model.ID), new { @class = "btn btn-danger" })
+    }
 </h2>
-@if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
-{
-	<div class="">Last Updated: @Model.DateUpdated</div>
-}
+
+    @if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
+    {
+        <div class="">Last Updated: @Model.DateUpdated</div>
+    }
 
 <div>
     <a href="@Url.Action(MVC.Album.Index())"><span class="fa fa-list"></span> Back to List</a>
@@ -29,144 +30,146 @@
     }
 </div>
 
-<div data-toggle="collapse" data-parent="#accordion" href="#album-info">
-	<div class="row panel panel-primary panel-collapse text-center">
-		<div class="panel-heading">
-			<h4>
-				@Model.Artist - @Model.Title
-				<span class="fa fa-chevron-circle-down"></span>
-			</h4>
-		</div>
-	</div>
-</div>
-<div id="album-info" class="collapse in">
-	<div class="background-image" style="background: url('@Model.ImageUrl');">
-		<div class="contentContainer">
-			<div class="panel-body">
-				<div class="animate-box item col-sm-6">
-					<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Artist - @Model.Title (@Model.YearReleased)">
-						<img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="img-rounded" style="height: 200px; width: 200px;">
-					</a>
-				</div>
-				<div>
-					@Html.LabelFor(m => m.Genre):
-					@Html.DisplayFor(m => m.Genre)
-				</div>
-				<div>
-					@Html.LabelFor(m => m.Style):
-					@Html.DisplayFor(m => m.Style)
-				</div>
-				<div>
-					@Html.LabelFor(m => m.YearReleased):
-					@Html.DisplayFor(m => m.YearReleased)
-				</div>
+<div class="background-image" style="background: url('@Model.ImageUrl'); background-size: cover;">
+    <div class="contentContainer">
+        <div data-toggle="collapse" data-parent="#accordion" href="#album-info">
+            <div class="row panel panel-primary panel-collapse text-center">
+                <div class="panel-heading">
+                    <h4>
+                        @Model.Artist - @Model.Title
+                        <span class="fa fa-chevron-circle-down"></span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div id="album-info" class="collapse in">
 
-				<div>
-					@Html.LabelFor(m => m.RecordLabel):
-					@Html.DisplayFor(m => m.RecordLabel)
-				</div>
+            <div class="panel-body">
+                <div class="animate-box item col-sm-6">
+                    <a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Artist - @Model.Title (@Model.YearReleased)">
+                        <img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="img-rounded" style="height: 200px; width: 200px;">
+                    </a>
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Genre):
+                    @Html.DisplayFor(m => m.Genre)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Style):
+                    @Html.DisplayFor(m => m.Style)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.YearReleased):
+                    @Html.DisplayFor(m => m.YearReleased)
+                </div>
 
-				<div>
-					@Html.LabelFor(m => m.Notes):
-					@Html.DisplayFor(m => m.Notes)
-				</div>
+                <div>
+                    @Html.LabelFor(m => m.RecordLabel):
+                    @Html.DisplayFor(m => m.RecordLabel)
+                </div>
 
-				<div>
-					@Html.LabelFor(m => m.Category):
-					@Html.DisplayFor(m => m.Category)
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+                <div>
+                    @Html.LabelFor(m => m.Notes):
+                    @Html.DisplayFor(m => m.Notes)
+                </div>
 
-@if (Model.Tracklist != null)
-{
-	<div data-toggle="collapse" data-parent="#accordion" href="#track-list">
-		<div class="row panel panel-primary panel-collapse">
-			<div class="panel-heading">
-				<h4>
-					Track List
-					<span class="fa fa-chevron-circle-down"></span>
-				</h4>
-			</div>
-		</div>
-	</div>
-	<div id="track-list" class="collapse in">
-		<div class="panel-body">
-			@for (var index = 0; index < Model.Tracklist.Count; index++)
-			{
-				<div class="row">
-					<div class="col-sm-1">@Html.DisplayFor(x => x.Tracklist[index].position)</div>
-					<div class="col-sm-1">@Html.DisplayFor(x => x.Tracklist[index].duration)</div>
-					<div class="col-sm-6">@Html.DisplayFor(x => x.Tracklist[index].title)</div>
-				</div>}
-		</div>
-	</div>
-}
-<div class="row" style="padding-top: 1em;">
-	<div class="col-md-6">
-		<div data-toggle="collapse" data-parent="#accordion" href="#media-info">
-			<div class="panel panel-primary panel-collapse">
-				<div class="panel-heading">
-					<h4>
-						Media Information
-						<span class="fa fa-chevron-circle-down"></span>
-					</h4>
-				</div>
-			</div>
-		</div>
-		<div id="media-info" class="collapse in">
-			<div class="panel-body">
-				<div>
-					@Html.LabelFor(m => m.MediaType):
-					@Html.DisplayFor(m => m.MediaType)
-				</div>
+                <div>
+                    @Html.LabelFor(m => m.Category):
+                    @Html.DisplayFor(m => m.Category)
+                </div>
+            </div>
+        </div>
 
-				<div>
-					@Html.LabelFor(m => m.IsPhysical):
-					@Html.DisplayFor(m => m.IsPhysical)
-				</div>
+        @if (Model.Tracklist != null)
+        {
+            <div data-toggle="collapse" data-parent="#accordion" href="#track-list">
+                <div class="row panel panel-primary panel-collapse">
+                    <div class="panel-heading">
+                        <h4>
+                            Track List
+                            <span class="fa fa-chevron-circle-down"></span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div id="track-list" class="collapse in">
+                <div class="panel-body">
+                    @for (var index = 0; index < Model.Tracklist.Count; index++)
+                {
+                        <div class="row">
+                            <div class="col-sm-1">@Html.DisplayFor(x => x.Tracklist[index].position)</div>
+                            <div class="col-sm-1">@Html.DisplayFor(x => x.Tracklist[index].duration)</div>
+                            <div class="col-sm-6">@Html.DisplayFor(x => x.Tracklist[index].title)</div>
+                        </div>}
+                </div>
+            </div>
+        }
+        <div class="row" style="padding-top: 1em;">
+            <div class="col-md-6">
+                <div data-toggle="collapse" data-parent="#accordion" href="#media-info">
+                    <div class="panel panel-primary panel-collapse">
+                        <div class="panel-heading">
+                            <h4>
+                                Media Information
+                                <span class="fa fa-chevron-circle-down"></span>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <div id="media-info" class="collapse in">
+                    <div class="panel-body">
+                        <div>
+                            @Html.LabelFor(m => m.MediaType):
+                            @Html.DisplayFor(m => m.MediaType)
+                        </div>
 
-				<div>
-					@Html.LabelFor(m => m.Speed):
-					@Model.Speed.GetDisplayName()
-				</div>
+                        <div>
+                            @Html.LabelFor(m => m.IsPhysical):
+                            @Html.DisplayFor(m => m.IsPhysical)
+                        </div>
 
-				<div>
-					@Html.LabelFor(m => m.Size):
-					@Model.Size.GetDisplayName()
-				</div>
-			</div>
-		</div>
-	</div><div class="col-md-6">
-		<div data-toggle="collapse" data-parent="#accordion" href="#purchase-info">
-			<div class="panel panel-primary panel-collapse">
-				<div class="panel-heading">
-					<h4>
-						Purchase Information
-						<span class="fa fa-chevron-circle-down"></span>
-					</h4>
-				</div>
-			</div>
-		</div>
-		<div id="purchase-info" class="collapse in">
-			<div class="panel-body">
-				<div>
-					@Html.LabelFor(m => m.DatePurchased):
-					@Html.DisplayFor(m => m.DatePurchased)
-				</div>
+                        <div>
+                            @Html.LabelFor(m => m.Speed):
+                            @Model.Speed.GetDisplayName()
+                        </div>
 
-				<div>
-					@Html.LabelFor(m => m.LocationPurchased):
-					@Html.DisplayFor(m => m.LocationPurchased)
-				</div>
+                        <div>
+                            @Html.LabelFor(m => m.Size):
+                            @Model.Size.GetDisplayName()
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div data-toggle="collapse" data-parent="#accordion" href="#purchase-info">
+                    <div class="panel panel-primary panel-collapse">
+                        <div class="panel-heading">
+                            <h4>
+                                Purchase Information
+                                <span class="fa fa-chevron-circle-down"></span>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <div id="purchase-info" class="collapse in">
+                    <div class="panel-body">
+                        <div>
+                            @Html.LabelFor(m => m.DatePurchased):
+                            @Html.DisplayFor(m => m.DatePurchased)
+                        </div>
 
-				<div>
-					@Html.LabelFor(m => m.IsNew):
-					@Html.DisplayFor(m => m.IsNew)
-				</div>
-			</div>
-		</div>
-	</div>
+                        <div>
+                            @Html.LabelFor(m => m.LocationPurchased):
+                            @Html.DisplayFor(m => m.LocationPurchased)
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(m => m.IsNew):
+                            @Html.DisplayFor(m => m.IsNew)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
