@@ -1,4 +1,4 @@
-﻿a {
+a {
   color: #007aac; }
 
 body {
@@ -8,7 +8,7 @@ body {
 
 .footer {
   height: auto;
-  margin-top: 5em;
+  /*margin-top: 5em;*/
   background-color: #BBEAFA;
   padding-bottom: 2em;
   position: relative;
@@ -46,7 +46,6 @@ body {
   color: #007aac; }
   #fh5co-header .navbar-brand:hover {
     color: #ffff66 !important; }
-
 #fh5co-header a:hover {
   color: #ffff66 !important; }
 
@@ -74,7 +73,6 @@ select {
 
 .pagination .active a {
   background-color: #007aac; }
-
 .pagination li a {
   color: black; }
 
@@ -88,7 +86,6 @@ select {
 
 .charts .table .row:nth-child(even) {
   background-color: transparent; }
-
 .charts .table .row:not(:first-child):hover {
   background-color: transparent;
   cursor: default; }
@@ -199,3 +196,4 @@ a:hover {
   margin: 0 auto;
   width: 40%; }
 
+/*# sourceMappingURL=Main.css.map */
