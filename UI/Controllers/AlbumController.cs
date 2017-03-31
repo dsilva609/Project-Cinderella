@@ -37,7 +37,7 @@ namespace UI.Controllers
             }
             ViewBag.Filter = (string.IsNullOrWhiteSpace(albumQuery) ? filter : albumQuery)?.Trim();
 
-            var albums = _service.GetAll(User.Identity.GetUserId(), ViewBag.Filter) as List<Album>;
+            var albums = _service.GetAll(string.Empty, ViewBag.Filter) as List<Album>;
 
             var viewModel = new AlbumViewModel
             {

@@ -1,4 +1,5 @@
 ﻿@model BusinessLogic.Models.Game
+@using UI.Common
 @using UI.Enums
 
 <div id="fh5co-board" data-columns>
@@ -13,9 +14,9 @@
                     </div>
                 </div>
                 <div class="back">
-                    <img src="@Links.Content.Images.Game_jpg" alt="Game"/>
+                    <img src="@Links.Content.Images.Game_jpg" alt="Game" />
                     <div class="info fh5co-desc @Model.CompletionStatus.ToString()" data-id="@Model.ID">
-                        <a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Game.Edit(Model.ID) : MVC.Game.Details(Model.ID))">
+                        <a href="@Url.Action(User.Identity.IsAuthenticated && Model.UserNum == User.Identity.GetUserNum() ? MVC.Game.Edit(Model.ID) : MVC.Game.Details(Model.ID))">
                             <div class="row">
                                 @Html.DisplayFor(modelItem => Model.Title)
                             </div>

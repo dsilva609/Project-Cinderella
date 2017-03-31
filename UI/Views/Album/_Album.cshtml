@@ -1,4 +1,5 @@
 ﻿@using BusinessLogic.Enums
+@using UI.Common
 @using UI.Enums
 @model BusinessLogic.Models.Album
 <div id="fh5co-board" data-columns>
@@ -15,7 +16,7 @@
                 <div class="back">
                     <img src="@Links.Content.Images.Turntable_jpg" alt="Turntable" />
                     <div class="info fh5co-desc @Model.CompletionStatus.ToString()" data-id="@Model.ID">
-                        <a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Album.Edit(Model.ID) : MVC.Album.Details(Model.ID))">
+                        <a href="@Url.Action(User.Identity.IsAuthenticated && Model.UserNum == User.Identity.GetUserNum() ? MVC.Album.Edit(Model.ID) : MVC.Album.Details(Model.ID))">
                             <div class="row">
                                 @Html.DisplayFor(modelItem => Model.Artist)
                             </div>

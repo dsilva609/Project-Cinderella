@@ -38,7 +38,7 @@ namespace UI.Controllers
 
             ViewBag.Filter = (string.IsNullOrWhiteSpace(movieQuery) ? filter : movieQuery)?.Trim();
 
-            var movies = _service.GetAll(User.Identity.GetUserId(), ViewBag.Filter) as List<Movie>;
+            var movies = _service.GetAll(string.Empty, ViewBag.Filter) as List<Movie>;
             var viewModel = new MovieViewModel
             {
                 ViewTitle = "Index",

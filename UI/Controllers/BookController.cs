@@ -39,7 +39,7 @@ namespace UI.Controllers
                 Session["query"] = string.Empty;
             }
             ViewBag.Filter = (string.IsNullOrWhiteSpace(bookQuery) ? filter : bookQuery)?.Trim();
-            var books = _service.GetAll(User.Identity.GetUserId(), ViewBag.Filter) as List<Book>;
+            var books = _service.GetAll(string.Empty, ViewBag.Filter) as List<Book>;
             var viewModel = new BookViewModel
             {
                 ViewTitle = "Index",

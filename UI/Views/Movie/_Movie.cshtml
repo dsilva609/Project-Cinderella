@@ -1,4 +1,5 @@
 ﻿@model BusinessLogic.Models.Movie
+@using UI.Common
 @using UI.Enums
 
 <div id="fh5co-board" data-columns>
@@ -15,7 +16,7 @@
                 <div class="back">
                     <img src="@Links.Content.Images.Reel_jpg" alt="Reel" />
                     <div class="info fh5co-desc @Model.CompletionStatus.ToString()" data-id="@Model.ID">
-                        <a href="@Url.Action(User.Identity.IsAuthenticated ? MVC.Movie.Edit(Model.ID) : MVC.Movie.Details(Model.ID))">
+                        <a href="@Url.Action(User.Identity.IsAuthenticated && Model.UserNum == User.Identity.GetUserNum() ? MVC.Movie.Edit(Model.ID) : MVC.Movie.Details(Model.ID))">
                             <div class="row">
                                 @Html.DisplayFor(modelItem => Model.Title)
                             </div>

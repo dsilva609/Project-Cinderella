@@ -41,7 +41,7 @@ namespace UI.Controllers
 
             ViewBag.Filter = (string.IsNullOrWhiteSpace(gameQuery) ? filter : gameQuery)?.Trim();
 
-            var games = _service.GetAll(User.Identity.GetUserId(), ViewBag.Filter) as List<Game>;
+            var games = _service.GetAll(string.Empty, ViewBag.Filter) as List<Game>;
 
             var viewModel = new GameViewModel
             {

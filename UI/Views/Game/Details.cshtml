@@ -21,10 +21,11 @@
 	}
 	<div>
 		<a href="@Url.Action(MVC.Game.Index())"><span class="fa fa-list"></span> Back to List</a>
-		<span> | </span>
+		
 		@if (User.Identity.IsAuthenticated && Model.UserID == User.Identity.GetUserId())
 		{
-			<a href="@Url.Action(MVC.Game.Edit(Model.ID))"><span class="fa fa-pencil"></span> Edit</a>
+		    <span> | </span>
+            <a href="@Url.Action(MVC.Game.Edit(Model.ID))"><span class="fa fa-pencil"></span> Edit</a>
 			<span> | </span>
 			<a href="@Url.Action(MVC.Game.Delete(Model.ID))" class="deleteBtn"><span class="fa fa-trash"></span> Delete</a>
 		}

@@ -34,7 +34,7 @@ namespace UI.Controllers
             }
             ViewBag.Filter = (string.IsNullOrWhiteSpace(popQuery) ? filter : popQuery)?.Trim();
 
-            var pops = _service.GetAll(User.Identity.GetUserId(), ViewBag.Filter) as List<FunkoModel>;
+            var pops = _service.GetAll(string.Empty, ViewBag.Filter) as List<FunkoModel>;
 
             var viewModel = new PopViewModel
             {
