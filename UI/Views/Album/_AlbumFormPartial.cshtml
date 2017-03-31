@@ -9,6 +9,7 @@
 @Html.AntiForgeryToken()
 
 @Html.HiddenFor(m => m.UserID)
+@Html.HiddenFor(m => m.UserNum)
 @Html.HiddenFor(m => m.DateAdded)
 @Html.HiddenFor(m => m.DateStarted)
 @Html.HiddenFor(m => m.DateCompleted)
@@ -100,11 +101,11 @@
 	<div class="panel-body">
 		@if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
 		{
-				<div class="animate-box item col-md-6">
-					<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Artist - @Model.Title (@Model.YearReleased)">
-						<img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="img-rounded" style="height: 100%; width: 100%;">
-					</a>
-				</div>
+			<div class="animate-box item col-md-6">
+				<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Artist - @Model.Title (@Model.YearReleased)">
+					<img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="img-rounded" style="height: 100%; width: 100%;">
+				</a>
+			</div>
 		}
 		<div class="row item-title">
 			<div class="col-md-6">

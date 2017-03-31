@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using UI.Common;
 using UI.Models;
 using CompletionStatus = BusinessLogic.Enums.CompletionStatus;
 
@@ -63,7 +64,7 @@ namespace UI.Controllers
 		public virtual ActionResult Create()
 		{
 			ViewBag.Title = "Create";
-			var model = Session["BookResult"] ?? new Book { UserID = User.Identity.GetUserId() };
+			var model = Session["BookResult"] ?? new Book {UserID = User.Identity.GetUserId(), UserNum = User.Identity.GetUserNum()};
 			Session["BookResult"] = null;
 
 			return View(model);
@@ -122,7 +123,7 @@ namespace UI.Controllers
 			if (!ModelState.IsValid) return View(book);
 			var existingBooks = _service.GetAll(User.Identity.GetUserId());
 			if (existingBooks.Count > 0 &&
-				existingBooks.Any(x => x.ID != book.ID && x.Title == book.Title && x.Author == book.Author))
+			    existingBooks.Any(x => x.ID != book.ID && x.Title == book.Title && x.Author == book.Author))
 			{
 				ShowStatusMessage(MessageTypeEnum.error, $"A book of Title: {book.Title}, Author: {book.Author} already exists.", "Duplicate Book");
 				return View(book);
@@ -169,7 +170,7 @@ namespace UI.Controllers
 			if (!string.IsNullOrWhiteSpace(Session["wish"]?.ToString())) searchModel.Title = Session["wish"].ToString();
 
 			if (Request.UrlReferrer?.LocalPath == "/Book/Search" && string.IsNullOrWhiteSpace(searchModel.Author) &&
-				string.IsNullOrWhiteSpace(searchModel.Title))
+			    string.IsNullOrWhiteSpace(searchModel.Title))
 			{
 				ShowStatusMessage(MessageTypeEnum.error, "Please enter search terms.", "Search Error");
 				return View(searchModel);
@@ -194,6 +195,7 @@ namespace UI.Controllers
 			var book = isComic ? _comicVineService.SearchByID(id) : _googleBookService.SearchByID(id);
 
 			book.UserID = User.Identity.GetUserId();
+			book.UserNum = User.Identity.GetUserNum();
 			Session["BookResult"] = book;
 
 			return RedirectToAction(MVC.Book.Create());

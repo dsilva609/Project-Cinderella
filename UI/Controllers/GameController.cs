@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using UI.Common;
 using UI.Models;
 using CompletionStatus = BusinessLogic.Enums.CompletionStatus;
 
@@ -66,7 +67,7 @@ namespace UI.Controllers
 		public virtual ActionResult Create()
 		{
 			ViewBag.Title = "Create";
-			var model = Session["gameResult"] ?? new Game { UserID = User.Identity.GetUserId() };
+			var model = Session["gameResult"] ?? new Game { UserID = User.Identity.GetUserId(), UserNum = User.Identity.GetUserNum() };
 			Session["gameResult"] = null;
 
 			return View(model);
@@ -194,6 +195,7 @@ namespace UI.Controllers
 			var game = isBGG ? _bggService.SearchByID(id) : _giantBombService.SearchByID(id);
 
 			game.UserID = User.Identity.GetUserId();
+			game.UserNum = User.Identity.GetUserNum();
 			Session["gameResult"] = game;
 
 			return RedirectToAction(MVC.Game.Create());

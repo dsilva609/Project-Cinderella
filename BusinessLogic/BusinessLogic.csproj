@@ -322,6 +322,10 @@
     <Compile Include="Migrations\201703282313533_added funko pop model.Designer.cs">
       <DependentUpon>201703282313533_added funko pop model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703310032063_added usernum to base item.cs" />
+    <Compile Include="Migrations\201703310032063_added usernum to base item.Designer.cs">
+      <DependentUpon>201703310032063_added usernum to base item.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseItem.cs" />
     <Compile Include="Models\BGGModels\BGGGame.cs" />
@@ -539,6 +543,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703282313533_added funko pop model.resx">
       <DependentUpon>201703282313533_added funko pop model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703310032063_added usernum to base item.resx">
+      <DependentUpon>201703310032063_added usernum to base item.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

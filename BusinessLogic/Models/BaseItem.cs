@@ -16,6 +16,9 @@ namespace BusinessLogic.Models
 		[Required]
 		public string Title { get; set; }
 
+		[Required]
+		public int UserNum { get; set; }
+
 		public string Genre { get; set; }
 		public string Language { get; set; }
 		public string Notes { get; set; }

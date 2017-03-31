@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using UI.Common;
 using UI.Models;
 
 namespace UI.Controllers
@@ -49,7 +50,7 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult Create()
 		{
-			var model = new FunkoModel { UserID = User.Identity.GetUserId() };
+			var model = new FunkoModel {UserID = User.Identity.GetUserId(), UserNum = User.Identity.GetUserNum()};
 			ViewBag.Title = "Create";
 
 			return View(model);

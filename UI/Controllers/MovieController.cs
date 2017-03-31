@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using UI.Common;
 using UI.Models;
 using CompletionStatus = BusinessLogic.Enums.CompletionStatus;
 
@@ -61,7 +62,7 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult Create()
 		{
-			var model = Session["movieResult"] ?? new Movie { UserID = User.Identity.GetUserId() };
+			var model = Session["movieResult"] ?? new Movie { UserID = User.Identity.GetUserId(), UserNum = User.Identity.GetUserNum() };
 			ViewBag.Title = "Create";
 			Session["movieResult"] = null;
 
@@ -195,7 +196,7 @@ namespace UI.Controllers
 			var movie = isTvShow ? _tmdbService.SearchTVShowByID(releaseID) : _tmdbService.SearchMovieByID(releaseID);
 
 			movie.UserID = User.Identity.GetUserId();
-
+			movie.UserNum = User.Identity.GetUserNum();
 			ViewBag.Title = "Create";
 
 			Session["movieResult"] = movie;
