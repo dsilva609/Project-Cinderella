@@ -41,7 +41,7 @@ namespace UI.Controllers
 
             var viewModel = new AlbumViewModel
             {
-                ViewTitle = "Index",
+                ViewTitle = "Albums",
                 Albums = albums?.ToPagedList(page ?? 1, NUM_ALBUMS_TO_GET),
                 PageSize = NUM_ALBUMS_TO_GET
             };
@@ -116,8 +116,8 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Edit(int id)
         {
-            ViewBag.Title = "Edit";
             var model = _service.GetByID(id, User.Identity.GetUserId());
+            ViewBag.Title = $"Edit - {model.Title}";
             if (model.UserID != User.Identity.GetUserId()) return RedirectToAction(MVC.Album.Details(model.ID));
 
             return View(model);
@@ -168,8 +168,8 @@ namespace UI.Controllers
                 return View(model);
             }
 
-            if (model.CompletionStatus == CompletionStatus.Completed && model.TimesCompleted == 0)
-                model.TimesCompleted = 1;
+            if (model.CompletionStatus == CompletionStatus.Completed && model.TimesCompleted == 0) model.TimesCompleted = 1;
+            if (model.TimesCompleted > 0) model.CompletionStatus = CompletionStatus.Completed;
             SetTimeStamps(model);
             //TODO: make sure user id is the same so as not to change other users data
             model.DateUpdated = DateTime.UtcNow;
@@ -187,7 +187,7 @@ namespace UI.Controllers
         public virtual ActionResult Details(int id)
         {
             var model = _service.GetByID(id, User.Identity.GetUserId());
-
+            ViewBag.Title = $"Details - {model.Title}";
             return View(model);
         }
 
@@ -273,7 +273,7 @@ namespace UI.Controllers
             }
 
             album.TimesCompleted += 1;
-            if (album.CompletionStatus != CompletionStatus.Completed) album.CompletionStatus = CompletionStatus.Completed;
+            album.CompletionStatus = CompletionStatus.Completed;
             album.DateUpdated = DateTime.UtcNow;
             _service.Edit(album);
 

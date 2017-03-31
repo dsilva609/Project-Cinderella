@@ -41,7 +41,7 @@ namespace UI.Controllers
             var movies = _service.GetAll(string.Empty, ViewBag.Filter) as List<Movie>;
             var viewModel = new MovieViewModel
             {
-                ViewTitle = "Index",
+                ViewTitle = "Movies/TV",
                 Movies = movies?.ToPagedList(page ?? 1, NUM_MOVIES_TO_GET),
                 PageSize = NUM_MOVIES_TO_GET,
             };
@@ -52,9 +52,8 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Details(int id)
         {
-            ViewBag.Title = "Details";
             var movie = _service.GetByID(id, User.Identity.GetUserId());
-
+            ViewBag.Title = $"Details - {movie.Title}";
             return View(movie);
         }
 
@@ -107,9 +106,8 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Edit(int id)
         {
-            ViewBag.Title = "Edit";
             var model = _service.GetByID(id, User.Identity.GetUserId());
-
+            ViewBag.Title = $"Edit - {model.Title}";
             if (model.UserID != User.Identity.GetUserId()) return RedirectToAction(MVC.Movie.Details(model.ID));
 
             return View(model);
@@ -133,6 +131,7 @@ namespace UI.Controllers
 
             if (movie.CompletionStatus == CompletionStatus.Completed && movie.TimesCompleted == 0)
                 movie.TimesCompleted = 1;
+            if (movie.TimesCompleted > 0) movie.CompletionStatus = CompletionStatus.Completed;
             SetTimeStamps(movie);
             //TODO: make sure user id is the same so as not to change other users data
             movie.DateUpdated = DateTime.UtcNow;
@@ -243,7 +242,7 @@ namespace UI.Controllers
             }
 
             movie.TimesCompleted += 1;
-            if (movie.CompletionStatus != CompletionStatus.Completed) movie.CompletionStatus = CompletionStatus.Completed;
+            movie.CompletionStatus = CompletionStatus.Completed;
             movie.DateUpdated = DateTime.UtcNow;
             _service.Edit(movie);
 

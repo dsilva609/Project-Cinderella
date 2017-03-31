@@ -42,7 +42,7 @@ namespace UI.Controllers
             var books = _service.GetAll(string.Empty, ViewBag.Filter) as List<Book>;
             var viewModel = new BookViewModel
             {
-                ViewTitle = "Index",
+                ViewTitle = "Books",
                 Books = books?.ToPagedList(page ?? 1, NUM_BOOKS_TO_GET),
                 PageSize = NUM_BOOKS_TO_GET,
             };
@@ -53,9 +53,8 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Details(int id)
         {
-            ViewBag.Title = "Details";
             var model = _service.GetByID(id, User.Identity.GetUserId());
-
+            ViewBag.Title = $"Details - {model.Title}";
             return View(model);
         }
 
@@ -107,9 +106,8 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Edit(int id)
         {
-            ViewBag.Title = "Edit";
             var model = _service.GetByID(id, User.Identity.GetUserId());
-
+            ViewBag.Title = $"Edit - {model.Title}";
             if (model.UserID != User.Identity.GetUserId()) return RedirectToAction(MVC.Book.Details(model.ID));
 
             return View(model);
@@ -129,8 +127,8 @@ namespace UI.Controllers
                 return View(book);
             }
 
-            if (book.CompletionStatus == CompletionStatus.Completed && book.TimesCompleted == 0)
-                book.TimesCompleted = 1;
+            if (book.CompletionStatus == CompletionStatus.Completed && book.TimesCompleted == 0) book.TimesCompleted = 1;
+            if (book.TimesCompleted > 0) book.CompletionStatus = CompletionStatus.Completed;
             SetTimeStamps(book);
 
             //TODO: make sure user id is the same so as not to change other users data
@@ -240,7 +238,7 @@ namespace UI.Controllers
             }
 
             book.TimesCompleted += 1;
-            if (book.CompletionStatus != CompletionStatus.Completed) book.CompletionStatus = CompletionStatus.Completed;
+            book.CompletionStatus = CompletionStatus.Completed;
             book.DateUpdated = DateTime.UtcNow;
             _service.Edit(book);
 

@@ -38,7 +38,7 @@ namespace UI.Controllers
 
             var viewModel = new PopViewModel
             {
-                ViewTitle = "Index",
+                ViewTitle = "Pops",
                 Pops = pops?.ToPagedList(page ?? 1, NUM_POPS_TO_GET),
                 PageSize = NUM_POPS_TO_GET
             };
@@ -89,8 +89,8 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Edit(int id)
         {
-            ViewBag.Title = "Edit";
             var model = _service.GetByID(id, User.Identity.GetUserId());
+            ViewBag.Title = $"Edit - {model.Title}";
             if (model.UserID != User.Identity.GetUserId()) return RedirectToAction(MVC.Pop.Details(model.ID));
 
             return View(model);
@@ -122,7 +122,7 @@ namespace UI.Controllers
         public virtual ActionResult Details(int id)
         {
             var model = _service.GetByID(id, User.Identity.GetUserId());
-
+            ViewBag.Title = $"Details - {model.Title}";
             return View(model);
         }
 
