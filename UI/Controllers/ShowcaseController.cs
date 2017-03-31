@@ -24,16 +24,16 @@ namespace UI.Controllers
 		}
 
 		[HttpGet]
-		public virtual ActionResult Index()
+		public virtual ActionResult Index(int id)
 		{
 			var model = new ShowcaseViewModel
 			{
 				ViewTitle = "Index",
-				Albums = _albumService.GetAll().Where(x => x.IsShowcased).ToList(),
-				Books = _bookService.GetAll().Where(x => x.IsShowcased).ToList(),
-				Games = _gameService.GetAll().Where(x => x.IsShowcased).ToList(),
-				Movies = _movieService.GetAll().Where(x => x.IsShowcased).ToList(),
-				Pops = _popService.GetAll().Where(x => x.IsShowcased).ToList()
+				Albums = _albumService.GetAll().Where(x => x.IsShowcased && x.UserNum == id).ToList(),
+				Books = _bookService.GetAll().Where(x => x.IsShowcased && x.UserNum == id).ToList(),
+				Games = _gameService.GetAll().Where(x => x.IsShowcased && x.UserNum == id).ToList(),
+				Movies = _movieService.GetAll().Where(x => x.IsShowcased && x.UserNum == id).ToList(),
+				Pops = _popService.GetAll().Where(x => x.IsShowcased && x.UserNum == id).ToList()
 			};
 
 			return View(model);

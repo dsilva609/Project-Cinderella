@@ -43,13 +43,13 @@
 
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
-					<img class="img-fluid"src="@Links.Content.Images.Turntable_jpg">
+					<img class="img-fluid" src="@Links.Content.Images.Turntable_jpg">
 				</div>
 				<div class="item">
-					<img class="img-fluid" src="@Links.Content.Images.Book_jpg"/>
+					<img class="img-fluid" src="@Links.Content.Images.Book_jpg" />
 				</div>
 				<div class="item">
-					<img class="img-fluid" src="@Links.Content.Images.Reel_jpg"/>
+					<img class="img-fluid" src="@Links.Content.Images.Reel_jpg" />
 				</div>
 				<div class="item">
 					<img class="img-fluid" src="@Links.Content.Images.Turntable2_jpg">
@@ -67,7 +67,7 @@
 @if (DateTime.UtcNow.DayOfWeek == DayOfWeek.Friday)
 {
 	<div class="row text-center h1">
-		@Html.ActionLink("Heavy Metal Friday", MVC.Showcase.Index())
+		@Html.ActionLink("Heavy Metal Friday", MVC.Showcase.Index(1))
 	</div>
 }
 <div class="row text-center">
@@ -108,7 +108,7 @@
 				</ul>
 			}
 			<ul class="col-sm-6">
-				<li class="h3">View the <a href="@Url.Action(MVC.Showcase.Index())"><span class="fa fa-certificate"></span> Showcase</a></li>
+				<li class="h3">View the <a href="@Url.Action(MVC.Showcase.Index(User.Identity.IsAuthenticated ? User.Identity.GetUserNum() : 1))"><span class="fa fa-certificate"></span> Showcase</a></li>
 			</ul>
 			<ul class="col-sm-6">
 				<li class="h3">View the <a href="@Url.Action(MVC.Queue.Index())"><span class="fa fa-list"></span> Queue</a></li>

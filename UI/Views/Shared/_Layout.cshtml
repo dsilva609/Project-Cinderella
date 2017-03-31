@@ -1,4 +1,5 @@
-﻿@using UI.Models
+﻿@using UI.Common
+@using UI.Models
 <!DOCTYPE html>
 <html prefix="og: http://ogp.me/ns#">
 <head>
@@ -269,7 +270,7 @@
 			}
 			<li id="Showcase" class="panel-heading">
 				<h4 class="panel-title">
-					<a href="@Url.Action(MVC.Showcase.Index())">
+					<a href="@Url.Action(MVC.Showcase.Index(User.Identity.IsAuthenticated ? User.Identity.GetUserNum() : 1))">
 						<span class="fa fa-certificate"></span> Showcase
 					</a>
 				</h4>
@@ -345,7 +346,7 @@
 									</li>
 								}
 								<li>
-									<a href="@Url.Action(MVC.Showcase.Index())">
+									<a href="@Url.Action(MVC.Showcase.Index(User.Identity.IsAuthenticated ? User.Identity.GetUserNum() : 1))">
 										<span class="fa fa-certificate"></span> Showcase
 									</a>
 								</li>

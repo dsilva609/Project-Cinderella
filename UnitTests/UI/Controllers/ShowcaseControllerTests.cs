@@ -17,21 +17,33 @@ namespace UnitTests.UI.Controllers
 		{
 			_controller.Get<IAlbumService>()
 				.Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<int>.Is.Anything, Arg<int?>.Is.Anything))
-				.Return(new List<Album>());
+				.Return(new List<Album> { new Album { IsShowcased = true, UserNum = 1 } });
 			_controller.Get<IBookService>()
 				.Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<int>.Is.Anything, Arg<int?>.Is.Anything))
-				.Return(new List<Book>());
+				.Return(new List<Book>
+				{
+					new Book {IsShowcased = true, UserNum = 1}
+				});
 			_controller.Get<IGameService>()
 				.Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<int>.Is.Anything, Arg<int?>.Is.Anything))
-				.Return(new List<Game>());
+				.Return(new List<Game>
+				{
+					new Game {IsShowcased = true, UserNum = 1}
+				});
 			_controller.Get<IMovieService>()
 				.Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<int>.Is.Anything, Arg<int?>.Is.Anything))
-				.Return(new List<Movie>());
+				.Return(new List<Movie>
+				{
+					new Movie {IsShowcased = true, UserNum = 1}
+				});
 			_controller.Get<IPopService>()
 				.Expect(x => x.GetAll(Arg<string>.Is.Anything, Arg<string>.Is.Anything, Arg<int>.Is.Anything, Arg<int?>.Is.Anything))
-				.Return(new List<FunkoModel>());
+				.Return(new List<FunkoModel>
+				{
+					new FunkoModel {IsShowcased = true, UserNum = 1}
+				});
 
-			var result = _controller.ClassUnderTest.Index() as ViewResult;
+			var result = _controller.ClassUnderTest.Index(1) as ViewResult;
 
 			string.IsNullOrWhiteSpace(result.ViewName).ShouldBeTrue();
 		}
