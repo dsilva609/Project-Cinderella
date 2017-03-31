@@ -54,7 +54,7 @@
       });
       $('[data-toggle="tooltip"]').tooltip();
       $('.carousel').carousel({
-        interval: 2000
+        interval: 5000
       });
       $('.carousel').bcSwipe({
         threshold: 50

@@ -48,7 +48,7 @@ class Views.Shared.Layout
 		    
 		$('[data-toggle="tooltip"]').tooltip();
 		
-		$('.carousel').carousel({interval: 2000});
+		$('.carousel').carousel({interval: 5000});
 		
 		$('.carousel').bcSwipe({threshold: 50});
 		

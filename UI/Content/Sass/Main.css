@@ -1,4 +1,4 @@
-﻿a {
+a {
   color: #007aac; }
 
 body {
@@ -8,7 +8,6 @@ body {
 
 .footer {
   height: auto;
-  /*margin-top: 5em;*/
   background-color: #BBEAFA;
   padding-bottom: 2em;
   position: relative;
@@ -17,6 +16,8 @@ body {
   left: 0; }
 
 .jumbotron {
+  padding-left: 0;
+  padding-right: 0;
   padding-top: 0; }
   .jumbotron input[type="text"] {
     color: antiquewhite; }
@@ -24,6 +25,16 @@ body {
       color: black; }
   .jumbotron select, .jumbotron option {
     background-color: #add8e6; }
+  .jumbotron .carousel-inner .item {
+    width: 100%;
+    height: 575px; }
+    .jumbotron .carousel-inner .item img {
+      resize: both;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      left: 0;
+      right: 0; }
 
 .jumbotronText {
   font-size: 30px;
@@ -46,7 +57,6 @@ body {
   color: #007aac; }
   #fh5co-header .navbar-brand:hover {
     color: #ffff66 !important; }
-
 #fh5co-header a:hover {
   color: #ffff66 !important; }
 
@@ -74,7 +84,6 @@ select {
 
 .pagination .active a {
   background-color: #007aac; }
-
 .pagination li a {
   color: black; }
 
@@ -88,7 +97,6 @@ select {
 
 .charts .table .row:nth-child(even) {
   background-color: transparent; }
-
 .charts .table .row:not(:first-child):hover {
   background-color: transparent;
   cursor: default; }
@@ -200,11 +208,8 @@ a:hover {
   z-index: 3; }
 
 .carousel-inner .item img {
-  /*margin: 0 auto;*/
-  width: 100%;
-  position: relative;
-  left: 0;
-  right: 0; }
+  margin: 0 auto;
+  width: 40%; }
 
 .detailsContainer {
   width: 100%;
@@ -212,3 +217,4 @@ a:hover {
   position: relative;
   z-index: 1; }
 
+/*# sourceMappingURL=Main.css.map */
