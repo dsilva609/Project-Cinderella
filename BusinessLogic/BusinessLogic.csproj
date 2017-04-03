@@ -364,21 +364,26 @@
     <Compile Include="Services\GoogleBookService.cs" />
     <Compile Include="Services\Interfaces\IAlbumService.cs" />
     <Compile Include="Services\AlbumService.cs" />
+    <Compile Include="Services\Interfaces\IAlbumStatisticService.cs" />
     <Compile Include="Services\Interfaces\IBGGService.cs" />
     <Compile Include="Services\Interfaces\IBookService.cs" />
+    <Compile Include="Services\Interfaces\IBookStatisticService.cs" />
     <Compile Include="Services\Interfaces\IComicVineService.cs" />
     <Compile Include="Services\Interfaces\IDiscogsService.cs" />
+    <Compile Include="Services\Interfaces\IFunkoStatisticService.cs" />
     <Compile Include="Services\Interfaces\IGameService.cs" />
+    <Compile Include="Services\Interfaces\IGameStatisticService.cs" />
     <Compile Include="Services\Interfaces\IGiantBombService.cs" />
     <Compile Include="Services\Interfaces\IGoogleBookService.cs" />
     <Compile Include="Services\Interfaces\IMovieService.cs" />
+    <Compile Include="Services\Interfaces\IMovieStatisticService.cs" />
     <Compile Include="Services\Interfaces\IPopService.cs" />
     <Compile Include="Services\Interfaces\IStatisticService.cs" />
     <Compile Include="Services\Interfaces\ITMDBService.cs" />
     <Compile Include="Services\Interfaces\IWishService.cs" />
     <Compile Include="Services\MovieService.cs" />
     <Compile Include="Services\PopService.cs" />
-    <Compile Include="Services\StatisticService.cs" />
+    <Compile Include="Services\Statistics\StatisticService.cs" />
     <Compile Include="Services\TMDBService.cs" />
     <Compile Include="Services\WishService.cs" />
   </ItemGroup>

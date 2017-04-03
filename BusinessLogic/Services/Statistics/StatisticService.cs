@@ -1,11 +1,10 @@
 ﻿using BusinessLogic.Enums;
 using BusinessLogic.Models;
 using BusinessLogic.Services.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BusinessLogic.Services
+namespace BusinessLogic.Services.Statistics
 {
     public class StatisticService : IStatisticService
     {

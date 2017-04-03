@@ -1,7 +1,7 @@
 ﻿using BusinessLogic.Enums;
 using BusinessLogic.Models;
-using BusinessLogic.Services;
 using BusinessLogic.Services.Interfaces;
+using BusinessLogic.Services.Statistics;
 using NUnit.Framework;
 using Rhino.Mocks;
 using StructureMap.AutoMocking;
