@@ -12,16 +12,19 @@ namespace BusinessLogic.Services.Statistics
         private readonly IBookService _bookService;
         private readonly IGameService _gameService;
         private readonly IMovieService _movieService;
+        private readonly IPopService _popService;
         private readonly IWishService _wishService;
         private readonly List<BaseItem> _items;
 
         public StatisticService(IAlbumService albumService, IBookService bookService, IGameService gameService, IMovieService movieService,
+            IPopService popService,
             IWishService wishService)
         {
             _albumService = albumService;
             _bookService = bookService;
             _gameService = gameService;
             _movieService = movieService;
+            _popService = popService;
             _wishService = wishService;
             _items = GetAllItems();
         }
@@ -83,6 +86,11 @@ namespace BusinessLogic.Services.Statistics
             => string.IsNullOrWhiteSpace(userID)
                 ? _items.Count(x => x.GetType() == typeof(Game))
                 : _items.Count(x => x.UserID == userID && x.GetType() == typeof(Game));
+
+        public int GetNumPops(string userID = "")
+            => string.IsNullOrWhiteSpace(userID)
+                ? _items.Count(x => x.GetType() == typeof(FunkoModel))
+                : _items.Count(x => x.UserID == userID && x.GetType() == typeof(FunkoModel));
 
         public int GetNumWishes(string userID = "")
             => string.IsNullOrWhiteSpace(userID) ? _wishService.GetAll().Count : _wishService.GetAll(userID).Count;

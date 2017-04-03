@@ -30,6 +30,8 @@
 
         int GetNumGames(string userID = "");
 
+        int GetNumPops(string userID = "");
+
         int GetNumWishes(string userID = "");
 
         int GetNumShowcased(string userID = "");
