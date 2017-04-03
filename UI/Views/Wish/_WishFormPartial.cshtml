@@ -1,7 +1,7 @@
 ﻿@model UI.Models.WishFormModel
 
 <script>
-	var deleteUrl = '@Url.Action(MVC.Wish.Delete())';
+    var deleteUrl = '@Url.Action(MVC.Wish.Delete())';
 </script>
 
 @Html.AntiForgeryToken()
@@ -11,67 +11,69 @@
 @Html.HiddenFor(m => m.Wish.DateModified)
 
 <div class="row panel-body">
-	@if (Model.Wish.DateAdded != Convert.ToDateTime("1/1/1900") && Model.Wish.DateAdded != DateTime.MinValue)
-	{
-		<div>Date Added: @Html.Partial(MVC.Shared.Views._Timespan, Model.Wish.DateAdded)</div>
-	}
-	@if (Model.Wish.DateModified != Convert.ToDateTime("1/1/1900") && Model.Wish.DateModified != DateTime.MinValue)
-	{
-		<div>Last Updated: @Html.Partial(MVC.Shared.Views._Timespan, Model.Wish.DateModified)</div>
-	}
+    @if (Model.Wish.DateAdded != Convert.ToDateTime("1/1/1900") && Model.Wish.DateAdded != DateTime.MinValue)
+    {
+        <div>Date Added: @Html.Partial(MVC.Shared.Views._Timespan, Model.Wish.DateAdded)</div>
+    }
+    @if (Model.Wish.DateModified != Convert.ToDateTime("1/1/1900") && Model.Wish.DateModified != DateTime.MinValue)
+    {
+        <div>Last Updated: @Html.Partial(MVC.Shared.Views._Timespan, Model.Wish.DateModified)</div>
+    }
 </div>
 
 <div class="row panel-body">
-	<div class="col-sm-6">
-		@Html.LabelFor(m => m.Wish.Title)
-		@Html.TextBoxFor(m => m.Wish.Title, new { @class = "form-control" })
-		@Html.ValidationMessageFor(m => m.Wish.Title, "", new { @class = "text-danger" })
-	</div>
+    <div class="col-sm-6">
+        @Html.LabelFor(m => m.Wish.Title)
+        @Html.TextBoxFor(m => m.Wish.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Wish.Title, "", new { @class = "text-danger" })
+    </div>
 
-	<div class="col-sm-6">
-		@Html.LabelFor(m => m.Wish.ItemType)
-		@Html.EnumDropDownListFor(m => m.Wish.ItemType, new { @class = "form-control" })
-		@Html.ValidationMessageFor(m => m.Wish.ItemType, "", new { @class = "text-danger" })
-	</div>
+    <div class="col-sm-6">
+        @Html.LabelFor(m => m.Wish.ItemType)
+        @Html.EnumDropDownListFor(m => m.Wish.ItemType, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Wish.ItemType, "", new { @class = "text-danger" })
+    </div>
 
-	<div class="col-sm-6">
-		@Html.LabelFor(m => m.Wish.Notes)
-		@Html.TextAreaFor(m => m.Wish.Notes, new { @class = "form-control" })
-		@Html.ValidationMessageFor(m => m.Wish.Notes, "", new { @class = "text-danger" })
-	</div>
+    <div class="col-sm-6">
+        @Html.LabelFor(m => m.Wish.Notes)
+        @Html.TextAreaFor(m => m.Wish.Notes, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Wish.Notes, "", new { @class = "text-danger" })
+    </div>
 
-	<div class="col-sm-6">
-		@Html.LabelFor(m => m.Wish.ApiID)
-		@Html.TextBoxFor(m => m.Wish.ApiID, new { @class = "form-control" })
-		@Html.ValidationMessageFor(m => m.Wish.ApiID, "", new { @class = "text-danger" })
-	</div>
+    <div class="col-sm-6">
+        @Html.LabelFor(m => m.Wish.ApiID)
+        @Html.TextBoxFor(m => m.Wish.ApiID, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Wish.ApiID, "", new { @class = "text-danger" })
+    </div>
 
-	<div class="col-sm-6" style="display: inline-grid;">
-		@Html.LabelFor(m => m.Wish.Category)
-		@Html.DropDownListFor(m => m.Wish.Category, new List<SelectListItem>(Model.Categories), new { @class = "form-control category" })
-		@Html.ValidationMessageFor(m => m.Wish.Category, "", new { @class = "text-danger" })
-	</div>
+    <div class="col-sm-6" style="display: inline-grid;">
+        @Html.LabelFor(m => m.Wish.Category)
+        @Html.DropDownListFor(m => m.Wish.Category, new List<SelectListItem>(Model.Categories), new { @class = "form-control category" })
+        @Html.ValidationMessageFor(m => m.Wish.Category, "", new { @class = "text-danger" })
+    </div>
 
-	<div class="col-sm-6">
-		@Html.LabelFor(m => m.Wish.Owned)
-		@Html.CheckBoxFor(m => m.Wish.Owned, new { @class = "form-control" })
-		@Html.ValidationMessageFor(m => m.Wish.Owned, "", new { @class = "text-danger" })
-	</div>
+    <div class="col-sm-6">
+        @Html.LabelFor(m => m.Wish.Owned)
+        @Html.CheckBoxFor(m => m.Wish.Owned, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Wish.Owned, "", new { @class = "text-danger" })
+    </div>
 </div>
+@if (Model.Wish.ID > 0)
+{
+    <div class="row panel-body">
+        @Html.ActionLink("Search for wish", MVC.Wish.Search(Model.Wish.ID), new { @class = "btn btn-default" })
+    </div>
+}
 
 <div class="row panel-body">
-	@Html.ActionLink("Search for wish", MVC.Wish.Search(Model.Wish.ID), new { @class = "btn btn-default" })
-</div>
+    <div class="col-xs-6 col-md-4">
+        <input id="btnSubmit" type="submit" value=@(Model.Wish.ID > 0 ? "Save" : "Create") class="btn btn-default btn-block btn-lg" />
+    </div>
 
-<div class="row panel-body">
-	<div class="col-xs-6 col-md-4">
-		<input id="btnSubmit" type="submit" value=@(Model.Wish.ID > 0 ? "Save" : "Create") class="btn btn-default btn-block btn-lg" />
-	</div>
-
-	@if (Model.Wish.ID > 0)
-	{
-		<div class="col-md-4 offset-md-4 col-xs-6">
-			@Html.ActionLink("Delete", MVC.Wish.Delete(Model.Wish.ID), new { @class = "deleteBtn btn btn-danger btn-block btn-lg", data_id = Model.Wish.ID, data_deleteUrl = Url.Action(MVC.Wish.Delete()) })
-		</div>
-	}
+    @if (Model.Wish.ID > 0)
+    {
+        <div class="col-md-4 offset-md-4 col-xs-6">
+            @Html.ActionLink("Delete", MVC.Wish.Delete(Model.Wish.ID), new { @class = "deleteBtn btn btn-danger btn-block btn-lg", data_id = Model.Wish.ID, data_deleteUrl = Url.Action(MVC.Wish.Delete()) })
+        </div>
+    }
 </div>
