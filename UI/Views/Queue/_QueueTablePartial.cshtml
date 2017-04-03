@@ -4,6 +4,8 @@
     <thead>
         <tr>
             <th>#</th>
+            <th></th>
+            <th></th>
             <th>Title</th>
             <th></th>
         </tr>
@@ -13,6 +15,16 @@
         {
             <tr>
                 <td>@(i + 1)</td>
+                <td>
+                    <a href="/@Model[i].ItemType/Edit/@Model[i].ID">
+                        <span class="fa fa-pencil"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="/@Model[i].ItemType/RemoveFromQueue/@Model[i].ID">
+                        <span class="fa fa-trash"></span>
+                    </a>
+                </td>
                 <td>@Model[i].Title</td>
                 <td>
                     <div class="animate-box item col-md-6">
