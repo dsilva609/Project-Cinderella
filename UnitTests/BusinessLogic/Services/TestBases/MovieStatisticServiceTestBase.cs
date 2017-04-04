@@ -1,4 +1,5 @@
-﻿using BusinessLogic.Models;
+﻿using BusinessLogic.Enums;
+using BusinessLogic.Models;
 using BusinessLogic.Services.Interfaces;
 using BusinessLogic.Services.Statistics;
 using NUnit.Framework;
@@ -21,15 +22,38 @@ namespace UnitTests.BusinessLogic.Services.TestBases
             {
                 new Movie
                 {
-                    Director = "Joss Whedon"
+                    Title = "Avengers",
+                    Director = "Joss Whedon",
+                    Type = MovieMediaTypeEnum.DVD,
+                    Rating = MovieRatingEnum.PG13,
+                    CountryOfOrigin = "US",
+                    CountryPurchased = "US",
+                    LocationPurchased = "Ebay",
+                    TimesCompleted = 5,
+                    YearReleased = 2017
                 },
                 new Movie
                 {
-                    Director = "Joss Whedon"
+                    Title = "Batgirl",
+                    Director = "Joss Whedon",
+                    Type = MovieMediaTypeEnum.Bluray,
+                    Rating = MovieRatingEnum.PG,
+                    CountryOfOrigin = "US",
+                    CountryPurchased = "US",
+                    LocationPurchased = "Ebay",
+                    TimesCompleted = 4,
+                    YearReleased = 2017
                 },
                 new Movie
                 {
-                    Director = "Jon Faverau"
+                    Director = "Jon Faverau",
+                    Type = MovieMediaTypeEnum.Bluray,
+                    Rating = MovieRatingEnum.R,
+                    CountryOfOrigin = "US",
+                    CountryPurchased = "US",
+                    LocationPurchased = "Ebay",
+                    TimesCompleted = 3,
+                    YearReleased = 2017
                 }
             });
         }
