@@ -172,6 +172,7 @@
     <Compile Include="BusinessLogic\Services\AlbumStatisticServiceTests.cs" />
     <Compile Include="BusinessLogic\Services\BGGServiceTests.cs" />
     <Compile Include="BusinessLogic\Services\BookServiceTests.cs" />
+    <Compile Include="BusinessLogic\Services\BookStatisticServiceTests.cs" />
     <Compile Include="BusinessLogic\Services\ComicVineServiceTests.cs" />
     <Compile Include="BusinessLogic\Services\DiscogsServiceTests.cs" />
     <Compile Include="BusinessLogic\Services\GameServiceTests.cs" />
@@ -186,6 +187,7 @@
     <Compile Include="BusinessLogic\Services\TestBases\AlbumStatisticServiceTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\BGGServiceTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\BookServiceTestBase.cs" />
+    <Compile Include="BusinessLogic\Services\TestBases\BookStatisticServiceTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\ComicVineTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\DiscogsServiceTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\GameServiceTestBase.cs" />
