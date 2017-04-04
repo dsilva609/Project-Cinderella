@@ -7,7 +7,7 @@
     $("#main-body").removeClass("container");
 </script>
 
-<div class="container">
+<div class="container" style="padding-bottom: 1em;">
     <h2>
         Details
         @if (User.IsInRole("Admin") && Model.IsShowcased)
@@ -36,7 +36,7 @@
 <div class="detailsContainer">
     <div class="background-image" style="background: url('@Model.ImageUrl');"></div>
     <div class="contentContainer">
-        <div class="container">
+        <div class="container" style="padding-top: 1em;">
             <div data-toggle="collapse" data-parent="#accordion" href="#album-info">
                 <div class="row panel panel-primary panel-collapse text-center">
                     <div class="panel-heading">
@@ -48,7 +48,6 @@
                 </div>
             </div>
             <div id="album-info" class="collapse in">
-
                 <div class="panel-body">
                     <div class="animate-box item col-sm-6">
                         <a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Artist - @Model.Title (@Model.YearReleased)">
@@ -87,7 +86,7 @@
 
             @if (Model.Tracklist != null)
             {
-                <div data-toggle="collapse" data-parent="#accordion" href="#track-list">
+                <div data-toggle="collapse" data-parent="#accordion" href="#track-list" style="padding-top: 1em;">
                     <div class="row panel panel-primary panel-collapse">
                         <div class="panel-heading">
                             <h4>

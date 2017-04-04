@@ -6,7 +6,7 @@
     $("#main-body").removeClass("container");
 </script>
 
-<div class="container">
+<div class="container" style="padding-bottom: 1em;">
     <h2>
         Details
         @if (User.IsInRole("Admin") && Model.IsShowcased)
@@ -34,7 +34,7 @@
 <div class="detailsContainer">
     <div class="background-image" style="background: url('@Model.ImageUrl');"></div>
     <div class="contentContainer">
-        <div class="container">
+        <div class="container" style="padding-top: 1em;">
             <div data-toggle="collapse" data-parent="#accordion" href="#book-info">
                 <div class="row panel panel-primary panel-collapse text-center">
                     <div class="panel-heading">
