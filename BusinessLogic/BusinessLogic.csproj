@@ -370,7 +370,7 @@
     <Compile Include="Services\Interfaces\IBookStatisticService.cs" />
     <Compile Include="Services\Interfaces\IComicVineService.cs" />
     <Compile Include="Services\Interfaces\IDiscogsService.cs" />
-    <Compile Include="Services\Interfaces\IFunkoStatisticService.cs" />
+    <Compile Include="Services\Interfaces\IPopStatisticService.cs" />
     <Compile Include="Services\Interfaces\IGameService.cs" />
     <Compile Include="Services\Interfaces\IGameStatisticService.cs" />
     <Compile Include="Services\Interfaces\IGiantBombService.cs" />
@@ -383,6 +383,11 @@
     <Compile Include="Services\Interfaces\IWishService.cs" />
     <Compile Include="Services\MovieService.cs" />
     <Compile Include="Services\PopService.cs" />
+    <Compile Include="Services\Statistics\AlbumStatisticService.cs" />
+    <Compile Include="Services\Statistics\BookStatisticService.cs" />
+    <Compile Include="Services\Statistics\GameStatisticService.cs" />
+    <Compile Include="Services\Statistics\MovieStatisticService.cs" />
+    <Compile Include="Services\Statistics\PopStatisticService.cs" />
     <Compile Include="Services\Statistics\StatisticService.cs" />
     <Compile Include="Services\TMDBService.cs" />
     <Compile Include="Services\WishService.cs" />

@@ -169,6 +169,7 @@
     <Compile Include="BusinessLogic\Components\CrudComponents\TestBases\GetEntityListComponentTestBase.cs" />
     <Compile Include="BusinessLogic\Components\CrudComponents\GetEntityListComponentTests.cs" />
     <Compile Include="BusinessLogic\Services\AlbumServiceTests.cs" />
+    <Compile Include="BusinessLogic\Services\AlbumStatisticServiceTests.cs" />
     <Compile Include="BusinessLogic\Services\BGGServiceTests.cs" />
     <Compile Include="BusinessLogic\Services\BookServiceTests.cs" />
     <Compile Include="BusinessLogic\Services\ComicVineServiceTests.cs" />
@@ -180,6 +181,7 @@
     <Compile Include="BusinessLogic\Services\PopServiceTests.cs" />
     <Compile Include="BusinessLogic\Services\StatisticServiceTests.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\AlbumServiceTestBase.cs" />
+    <Compile Include="BusinessLogic\Services\TestBases\AlbumStatisticServiceTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\BGGServiceTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\BookServiceTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\ComicVineTestBase.cs" />
