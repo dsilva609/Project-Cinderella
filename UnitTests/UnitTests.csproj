@@ -178,6 +178,7 @@
     <Compile Include="BusinessLogic\Services\GiantBombServiceTests.cs" />
     <Compile Include="BusinessLogic\Services\GoogleBookServiceTests.cs" />
     <Compile Include="BusinessLogic\Services\MovieServiceTests.cs" />
+    <Compile Include="BusinessLogic\Services\MovieStatisticServiceTests.cs" />
     <Compile Include="BusinessLogic\Services\PopServiceTests.cs" />
     <Compile Include="BusinessLogic\Services\PopStatisticServiceTests.cs" />
     <Compile Include="BusinessLogic\Services\StatisticServiceTests.cs" />
@@ -191,6 +192,7 @@
     <Compile Include="BusinessLogic\Services\TestBases\GiantBombServiceTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\GoogleBookServiceTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\MovieServiceTestBase.cs" />
+    <Compile Include="BusinessLogic\Services\TestBases\MovieStatisticServiceTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\PopServiceTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\PopStatisticServiceTestBase.cs" />
     <Compile Include="BusinessLogic\Services\TestBases\StatisticServiceTestBase.cs" />
