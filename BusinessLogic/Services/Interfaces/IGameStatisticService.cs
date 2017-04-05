@@ -50,6 +50,10 @@ namespace BusinessLogic.Services.Interfaces
 
         int NumWii(string userID = "");
 
+        int NumWiiU(string userID = "");
+
+        int NumNintendoSwitch(string userID = "");
+
         int NumGameBoy(string userID = "");
 
         int NumGameBoyAdvance(string userID = "");
@@ -57,6 +61,8 @@ namespace BusinessLogic.Services.Interfaces
         int NumNintendoDS(string userID = "");
 
         int NumNintendo3DS(string userID = "");
+
+        int NumPSP(string userID = "");
 
         int NumPSVita(string userID = "");
 
