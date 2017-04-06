@@ -73,12 +73,14 @@ namespace UI.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
+            public readonly string AlbumStats = "AlbumStats";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Index = "Index";
+            public const string AlbumStats = "AlbumStats";
         }
 
 
@@ -93,9 +95,11 @@ namespace UI.Controllers
             public class _ViewNamesClass
             {
                 public readonly string _StatsTable = "_StatsTable";
+                public readonly string AlbumStats = "AlbumStats";
                 public readonly string Index = "Index";
             }
             public readonly string _StatsTable = "~/Views/Statistics/_StatsTable.cshtml";
+            public readonly string AlbumStats = "~/Views/Statistics/AlbumStats.cshtml";
             public readonly string Index = "~/Views/Statistics/Index.cshtml";
             static readonly _ChartsClass s_Charts = new _ChartsClass();
             public _ChartsClass Charts { get { return s_Charts; } }
@@ -132,6 +136,17 @@ namespace UI.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
             IndexOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void AlbumStatsOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult AlbumStats()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AlbumStats);
+            AlbumStatsOverride(callInfo);
             return callInfo;
         }
 

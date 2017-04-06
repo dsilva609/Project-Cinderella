@@ -48,6 +48,11 @@ namespace UI
             c.Register<IComicVineService, ComicVineService>(Lifestyle.Scoped);
             c.Register<IGiantBombService, GiantBombService>(Lifestyle.Scoped);
             c.Register<IStatisticService>(() => new StatisticService(c.GetInstance<IAlbumService>(), c.GetInstance<IBookService>(), c.GetInstance<IGameService>(), c.GetInstance<IMovieService>(), c.GetInstance<IPopService>(), c.GetInstance<IWishService>()), Lifestyle.Scoped);
+            c.Register<IAlbumStatisticService, AlbumStatisticService>(Lifestyle.Scoped);
+            c.Register<IBookStatisticService, BookStatisticService>(Lifestyle.Scoped);
+            c.Register<IMovieStatisticService, MovieStatisticService>(Lifestyle.Scoped);
+            c.Register<IGameStatisticService, GameStatisticService>(Lifestyle.Scoped);
+            c.Register<IPopStatisticService, PopStatisticService>(Lifestyle.Scoped);
         }
     }
 }

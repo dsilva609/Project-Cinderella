@@ -8,7 +8,11 @@
 @Scripts.Render(Links.Scripts.d3.d3_min_js)
 @Scripts.Render(Links.Scripts.c3_min_js)
 
-<div data-toggle="collapse" data-parent="#accordion" href="#collection-info">
+<div>
+    <a href="@Url.Action(MVC.Statistics.AlbumStats())"><span class="fa fa-music"></span> Album Stats</a>
+</div>
+
+<div data-toggle="collapse" data-parent="#accordion" href="#collection-info" style="padding-top: 1em;">
     <div class="row panel panel-primary panel-collapse">
         <div class="panel-heading">
             <h4>
