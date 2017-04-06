@@ -142,14 +142,14 @@ namespace UI.Controllers
                 Num12Inch = _albumStatisticService.Num12Inch(),
                 Num10Inch = _albumStatisticService.Num10Inch(),
                 Num7Inch = _albumStatisticService.Num7Inch(),
-                TopArtists = _albumStatisticService.TopArtists().Take(10).ToList(),
-                TopGenres = _albumStatisticService.TopGenres().Take(10).ToList(),
-                TopRecordLabels = _albumStatisticService.TopRecordLabels().Take(10).ToList(),
-                TopCountriesOfOrigin = _albumStatisticService.TopCountriesOfOrigin().Take(10).ToList(),
-                TopPurchaseCountries = _albumStatisticService.TopPurchaseCountries().Take(10).ToList(),
-                MostCompleted = _albumStatisticService.MostCompleted().Take(10).ToList(),
-                TopLocationsPurchased = _albumStatisticService.TopLocationsPurchased().Take(10).ToList(),
-                TopReleaseYears = _albumStatisticService.TopReleaseYears().Take(10).ToList()
+                TopArtists = _albumStatisticService.TopArtists()?.Take(10).ToList(),
+                TopGenres = _albumStatisticService.TopGenres()?.Take(10).ToList(),
+                TopRecordLabels = _albumStatisticService.TopRecordLabels()?.Take(10).ToList(),
+                TopCountriesOfOrigin = _albumStatisticService.TopCountriesOfOrigin()?.Take(10).ToList(),
+                TopPurchaseCountries = _albumStatisticService.TopPurchaseCountries()?.Take(10).ToList(),
+                MostCompleted = _albumStatisticService.MostCompleted()?.Take(10).ToList(),
+                TopLocationsPurchased = _albumStatisticService.TopLocationsPurchased()?.Take(10).ToList(),
+                TopReleaseYears = _albumStatisticService.TopReleaseYears()?.Take(10).ToList()
             };
 
             return View(model);
