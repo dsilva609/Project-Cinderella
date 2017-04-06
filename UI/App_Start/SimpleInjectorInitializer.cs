@@ -10,6 +10,8 @@ using SimpleInjector.Integration.Web.Mvc;
 using System.Reflection;
 using System.Web.Mvc;
 using UI;
+using UI.Models;
+using UI.Models.Interfaces;
 
 [assembly: WebActivator.PostApplicationStartMethod(typeof(SimpleInjectorInitializer), "Initialize")]
 
@@ -53,6 +55,7 @@ namespace UI
             c.Register<IMovieStatisticService, MovieStatisticService>(Lifestyle.Scoped);
             c.Register<IGameStatisticService, GameStatisticService>(Lifestyle.Scoped);
             c.Register<IPopStatisticService, PopStatisticService>(Lifestyle.Scoped);
+            c.Register<IUserContext, UserContext>(Lifestyle.Scoped);
         }
     }
 }

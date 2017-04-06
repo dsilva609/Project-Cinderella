@@ -132,6 +132,8 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult AlbumStats()
         {
+            ViewBag.Title = "Album Stats";
+
             var model = new AlbumStatsViewModel
             {
                 NumVinyl = _albumStatisticService.NumVinyl(),
