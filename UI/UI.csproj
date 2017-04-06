@@ -950,8 +950,6 @@
     <Compile Include="Models\BaseViewModel.cs" />
     <Compile Include="Models\BookViewModel.cs" />
     <Compile Include="Models\GameSearchModel.cs" />
-    <Compile Include="Models\Interfaces\IUserContext.cs" />
-    <Compile Include="Models\UserContext.cs" />
     <Compile Include="Models\ItemViewModel.cs" />
     <Compile Include="Models\MovieSearchModel.cs" />
     <Compile Include="Models\DiscogsSearchModel.cs" />

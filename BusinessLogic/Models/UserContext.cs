@@ -1,10 +1,9 @@
-﻿using BusinessLogic.Enums;
+﻿using System.Web;
+using BusinessLogic.Enums;
+using BusinessLogic.Models.Interfaces;
 using Microsoft.AspNet.Identity;
-using System.Web;
-using UI.Enums;
-using UI.Models.Interfaces;
 
-namespace UI.Models
+namespace BusinessLogic.Models
 {
     public class UserContext : IUserContext
     {
@@ -30,9 +29,10 @@ namespace UI.Models
             throw new System.NotImplementedException();
         }
 
-        public ActionType GetDefaultAction()
-        {
-            throw new System.NotImplementedException();
-        }
+        //TODO: move enum to business logic
+        //public ActionType GetDefaultAction()
+        //{
+        //    throw new System.NotImplementedException();
+        //}
     }
 }

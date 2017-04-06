@@ -1,4 +1,6 @@
 using BusinessLogic.DAL;
+using BusinessLogic.Models;
+using BusinessLogic.Models.Interfaces;
 using BusinessLogic.Repositories;
 using BusinessLogic.Services;
 using BusinessLogic.Services.Interfaces;
@@ -10,8 +12,6 @@ using SimpleInjector.Integration.Web.Mvc;
 using System.Reflection;
 using System.Web.Mvc;
 using UI;
-using UI.Models;
-using UI.Models.Interfaces;
 
 [assembly: WebActivator.PostApplicationStartMethod(typeof(SimpleInjectorInitializer), "Initialize")]
 

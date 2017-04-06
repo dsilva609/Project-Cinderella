@@ -80,6 +80,10 @@
       <HintPath>..\packages\log4net.2.0.7\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -332,6 +336,7 @@
     <Compile Include="Models\BGGModels\BGGResult.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\FunkoModel.cs" />
+    <Compile Include="Models\Interfaces\IUserContext.cs" />
     <Compile Include="Models\StatisticsModels\CollectionStatistic.cs" />
     <Compile Include="Models\ComicVineModels\ComicVineComic.cs" />
     <Compile Include="Models\ComicVineModels\ComicVineResult.cs" />
@@ -344,6 +349,7 @@
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\TMDBModels\TMDBMovie.cs" />
+    <Compile Include="Models\UserContext.cs" />
     <Compile Include="Models\Wish.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

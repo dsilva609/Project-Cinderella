@@ -1,7 +1,6 @@
 ﻿using BusinessLogic.Enums;
-using UI.Enums;
 
-namespace UI.Models.Interfaces
+namespace BusinessLogic.Models.Interfaces
 {
     public interface IUserContext
     {
@@ -15,6 +14,7 @@ namespace UI.Models.Interfaces
 
         ItemType GetDefaultType();
 
-        ActionType GetDefaultAction();
+        //TODO: move enum to business logic
+        //ActionType GetDefaultAction();
     }
 }
