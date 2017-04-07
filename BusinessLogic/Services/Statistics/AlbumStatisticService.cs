@@ -64,23 +64,23 @@ namespace BusinessLogic.Services.Statistics
 
 		public List<string> TopGenres(string userID = "")
 			=> string.IsNullOrWhiteSpace(userID)
-				? _albums.GroupBy(x => x.Genre).OrderByDescending(y => y.Count()).Select(z => z.Key).ToList()
-				: _albums.Where(x => x.UserID == userID).GroupBy(y => y.Genre).OrderByDescending(z => z.Count()).Select(w => w.Key).ToList();
+				? _albums.Where(w => !string.IsNullOrWhiteSpace(w.Genre)).GroupBy(x => x.Genre).OrderByDescending(y => y.Count()).Select(z => z.Key).ToList()
+				: _albums.Where(x => x.UserID == userID && !string.IsNullOrWhiteSpace(x.Genre)).GroupBy(y => y.Genre).OrderByDescending(z => z.Count()).Select(w => w.Key).ToList();
 
 		public List<string> TopRecordLabels(string userID = "")
 			=> string.IsNullOrWhiteSpace(userID)
-				? _albums.GroupBy(x => x.RecordLabel).OrderByDescending(y => y.Count()).Select(z => z.Key).ToList()
-				: _albums.Where(x => x.UserID == userID).GroupBy(y => y.RecordLabel).OrderByDescending(z => z.Count()).Select(w => w.Key).ToList();
+				? _albums.Where(w => !string.IsNullOrWhiteSpace(w.RecordLabel)).GroupBy(x => x.RecordLabel).OrderByDescending(y => y.Count()).Select(z => z.Key).ToList()
+				: _albums.Where(x => x.UserID == userID && !string.IsNullOrWhiteSpace(x.RecordLabel)).GroupBy(y => y.RecordLabel).OrderByDescending(z => z.Count()).Select(w => w.Key).ToList();
 
 		public List<string> TopCountriesOfOrigin(string userID = "")
 			=> string.IsNullOrWhiteSpace(userID)
-				? _albums.GroupBy(x => x.CountryOfOrigin).OrderByDescending(y => y.Count()).Select(z => z.Key).ToList()
-				: _albums.Where(x => x.UserID == userID).GroupBy(y => y.CountryOfOrigin).OrderByDescending(z => z.Count()).Select(w => w.Key).ToList();
+				? _albums.Where(w => !string.IsNullOrWhiteSpace(w.CountryOfOrigin)).GroupBy(x => x.CountryOfOrigin).OrderByDescending(y => y.Count()).Select(z => z.Key).ToList()
+				: _albums.Where(x => x.UserID == userID && !string.IsNullOrWhiteSpace(x.CountryOfOrigin)).GroupBy(y => y.CountryOfOrigin).OrderByDescending(z => z.Count()).Select(w => w.Key).ToList();
 
 		public List<string> TopPurchaseCountries(string userID = "")
 			=> string.IsNullOrWhiteSpace(userID)
-				? _albums.GroupBy(x => x.CountryPurchased).OrderByDescending(y => y.Count()).Select(z => z.Key).ToList()
-				: _albums.Where(x => x.UserID == userID).GroupBy(y => y.CountryPurchased).OrderByDescending(z => z.Count()).Select(w => w.Key).ToList();
+				? _albums.Where(w => !string.IsNullOrWhiteSpace(w.CountryPurchased)).GroupBy(x => x.CountryPurchased).OrderByDescending(y => y.Count()).Select(z => z.Key).ToList()
+				: _albums.Where(x => x.UserID == userID && !string.IsNullOrWhiteSpace(x.CountryPurchased)).GroupBy(y => y.CountryPurchased).OrderByDescending(z => z.Count()).Select(w => w.Key).ToList();
 
 		public List<string> MostCompleted(string userID = "")
 			=> string.IsNullOrWhiteSpace(userID)
@@ -89,8 +89,8 @@ namespace BusinessLogic.Services.Statistics
 
 		public List<string> TopLocationsPurchased(string userID = "")
 			=> string.IsNullOrWhiteSpace(userID)
-				? _albums.GroupBy(x => x.LocationPurchased).OrderByDescending(y => y.Count()).Select(z => z.Key).ToList()
-				: _albums.Where(x => x.UserID == userID).GroupBy(y => y.LocationPurchased).OrderByDescending(z => z.Count()).Select(w => w.Key).ToList();
+				? _albums.Where(w => !string.IsNullOrWhiteSpace(w.LocationPurchased)).GroupBy(x => x.LocationPurchased).OrderByDescending(y => y.Count()).Select(z => z.Key).ToList()
+				: _albums.Where(x => x.UserID == userID && !string.IsNullOrWhiteSpace(x.LocationPurchased)).GroupBy(y => y.LocationPurchased).OrderByDescending(z => z.Count()).Select(w => w.Key).ToList();
 
 		public List<int> TopReleaseYears(string userID = "")
 			=> string.IsNullOrWhiteSpace(userID)
