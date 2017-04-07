@@ -1,5 +1,6 @@
 ﻿using BusinessLogic.Enums;
 using BusinessLogic.Models;
+using BusinessLogic.Models.Interfaces;
 using BusinessLogic.Services.Interfaces;
 using Microsoft.AspNet.Identity;
 using PagedList;
@@ -15,13 +16,15 @@ namespace UI.Controllers
 {
     public partial class AlbumController : ProjectCinderellaControllerBase
     {
+        private readonly IUserContext _user;
         private readonly IAlbumService _service;
         private readonly IDiscogsService _discogsService;
         private readonly IWishService _wishService;
         private const int NUM_ALBUMS_TO_GET = 25;
 
-        public AlbumController(IAlbumService service, IDiscogsService discogsService, IWishService wishService)
+        public AlbumController(IUserContext user, IAlbumService service, IDiscogsService discogsService, IWishService wishService)
         {
+            _user = user;
             _service = service;
             _discogsService = discogsService;
             _wishService = wishService;

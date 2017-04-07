@@ -1,5 +1,6 @@
 ﻿using BusinessLogic.Enums;
 using BusinessLogic.Models;
+using BusinessLogic.Models.Interfaces;
 using BusinessLogic.Services.Interfaces;
 using Microsoft.AspNet.Identity;
 using PagedList;
@@ -15,6 +16,7 @@ namespace UI.Controllers
 {
     public partial class BookController : ProjectCinderellaControllerBase
     {
+        private readonly IUserContext _user;
         private readonly IBookService _service;
         private readonly IWishService _wishService;
         private readonly IGoogleBookService _googleBookService;
@@ -22,8 +24,10 @@ namespace UI.Controllers
 
         private const int NUM_BOOKS_TO_GET = 25;
 
-        public BookController(IBookService service, IWishService wishService, IGoogleBookService googleBookService, IComicVineService comicVineService)
+        public BookController(IUserContext user, IBookService service, IWishService wishService, IGoogleBookService googleBookService,
+            IComicVineService comicVineService)
         {
+            _user = user;
             _service = service;
             _wishService = wishService;
             _googleBookService = googleBookService;
