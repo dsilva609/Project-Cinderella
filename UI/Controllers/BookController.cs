@@ -2,13 +2,11 @@
 using BusinessLogic.Models;
 using BusinessLogic.Models.Interfaces;
 using BusinessLogic.Services.Interfaces;
-using Microsoft.AspNet.Identity;
 using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using UI.Common;
 using UI.Models;
 using CompletionStatus = BusinessLogic.Enums.CompletionStatus;
 
@@ -57,7 +55,7 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Details(int id)
         {
-            var model = _service.GetByID(id, User.Identity.GetUserId());
+            var model = _service.GetByID(id, _user.GetUserID());
             ViewBag.Title = $"Details - {model.Title}";
             return View(model);
         }
@@ -67,7 +65,7 @@ namespace UI.Controllers
         public virtual ActionResult Create()
         {
             ViewBag.Title = "Create";
-            var model = Session["BookResult"] ?? new Book { UserID = User.Identity.GetUserId(), UserNum = User.Identity.GetUserNum() };
+            var model = Session["BookResult"] ?? new Book { UserID = _user.GetUserID(), UserNum = _user.GetUserNum() };
             Session["BookResult"] = null;
 
             return View(model);
@@ -96,7 +94,7 @@ namespace UI.Controllers
 
             if (!string.IsNullOrWhiteSpace(Session["wish"]?.ToString()))
             {
-                _wishService.Delete(Convert.ToInt32(Session["wishID"].ToString()), User.Identity.GetUserId());
+                _wishService.Delete(Convert.ToInt32(Session["wishID"].ToString()), _user.GetUserID());
                 Session["wish"] = null;
                 Session["wishID"] = null;
                 ShowStatusMessage(MessageTypeEnum.info, "Wish list has been updated", "Wish list");
@@ -110,9 +108,9 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Edit(int id)
         {
-            var model = _service.GetByID(id, User.Identity.GetUserId());
+            var model = _service.GetByID(id, _user.GetUserID());
             ViewBag.Title = $"Edit - {model.Title}";
-            if (model.UserID != User.Identity.GetUserId()) return RedirectToAction(MVC.Book.Details(model.ID));
+            if (model.UserID != _user.GetUserID()) return RedirectToAction(MVC.Book.Details(model.ID));
 
             return View(model);
         }
@@ -123,7 +121,7 @@ namespace UI.Controllers
         public virtual ActionResult Edit(Book book)
         {
             if (!ModelState.IsValid) return View(book);
-            var existingBooks = _service.GetAll(User.Identity.GetUserId());
+            var existingBooks = _service.GetAll(_user.GetUserID());
             if (existingBooks.Count > 0 &&
                 existingBooks.Any(x => x.ID != book.ID && x.Title == book.Title && x.Author == book.Author))
             {
@@ -147,14 +145,14 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Delete(int id)
         {
-            var model = _service.GetByID(id, User.Identity.GetUserId());
-            if (model.UserID != User.Identity.GetUserId())
+            var model = _service.GetByID(id, _user.GetUserID());
+            if (model.UserID != _user.GetUserID())
             {
                 ShowStatusMessage(MessageTypeEnum.error, "This book cannot be deleted by another user", "Delete Failure");
                 return RedirectToAction(MVC.Book.Index());
             }
 
-            _service.Delete(id, User.Identity.GetUserId());
+            _service.Delete(id, _user.GetUserID());
 
             ShowStatusMessage(MessageTypeEnum.success, "", "Book Deleted Successfully");
 
@@ -196,8 +194,8 @@ namespace UI.Controllers
             ViewBag.Title = "Create";
             var book = isComic ? _comicVineService.SearchByID(id) : _googleBookService.SearchByID(id);
 
-            book.UserID = User.Identity.GetUserId();
-            book.UserNum = User.Identity.GetUserNum();
+            book.UserID = _user.GetUserID();
+            book.UserNum = _user.GetUserNum();
             Session["BookResult"] = book;
 
             return RedirectToAction(MVC.Book.Create());
@@ -207,35 +205,35 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult AddToShowcase(int id)
         {
-            var book = _service.GetByID(id, User.Identity.GetUserId());
+            var book = _service.GetByID(id, _user.GetUserID());
             book.IsShowcased = true;
             book.DateUpdated = DateTime.UtcNow;
             _service.Edit(book);
 
             ShowStatusMessage(MessageTypeEnum.info, "Book added to showcase", "Showcase");
-            return RedirectToAction(MVC.Showcase.Index(User.Identity.GetUserNum()));
+            return RedirectToAction(MVC.Showcase.Index(_user.GetUserNum()));
         }
 
         [Authorize(Roles = "Admin")]
         [HttpGet]
         public virtual ActionResult RemoveFromShowcase(int id)
         {
-            var book = _service.GetByID(id, User.Identity.GetUserId());
+            var book = _service.GetByID(id, _user.GetUserID());
             book.IsShowcased = false;
             book.DateUpdated = DateTime.UtcNow;
             _service.Edit(book);
 
             ShowStatusMessage(MessageTypeEnum.info, "Book removed from showcase", "Showcase");
-            return RedirectToAction(MVC.Showcase.Index(User.Identity.GetUserNum()));
+            return RedirectToAction(MVC.Showcase.Index(_user.GetUserNum()));
         }
 
         [Authorize]
         [HttpGet]
         public virtual ActionResult IncreaseCompletionCount(int id)
         {
-            var book = _service.GetByID(id, User.Identity.GetUserId());
+            var book = _service.GetByID(id, _user.GetUserID());
 
-            if (book.UserID != User.Identity.GetUserId())
+            if (book.UserID != _user.GetUserID())
             {
                 ShowStatusMessage(MessageTypeEnum.warning, "This book cannot be edited by another user.", "Edit Failure");
                 return RedirectToAction(MVC.Book.Index());
@@ -254,9 +252,9 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult DecreaseCompletionCount(int id)
         {
-            var book = _service.GetByID(id, User.Identity.GetUserId());
+            var book = _service.GetByID(id, _user.GetUserID());
 
-            if (book.UserID != User.Identity.GetUserId())
+            if (book.UserID != _user.GetUserID())
             {
                 ShowStatusMessage(MessageTypeEnum.warning, "This book cannot be edited by another user.", "Edit Failure");
                 return RedirectToAction(MVC.Book.Index());
@@ -275,9 +273,9 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult AddToQueue(int id)
         {
-            var book = _service.GetByID(id, User.Identity.GetUserId());
+            var book = _service.GetByID(id, _user.GetUserID());
 
-            if (book.UserID != User.Identity.GetUserId())
+            if (book.UserID != _user.GetUserID())
             {
                 ShowStatusMessage(MessageTypeEnum.error, "This book cannot be edited by another user.", "Edit Failure");
                 return RedirectToAction(MVC.Album.Index());
@@ -290,7 +288,7 @@ namespace UI.Controllers
             }
 
             book.IsQueued = true;
-            var currentHighestRank = _service.GetHighestQueueRank(User.Identity.GetUserId());
+            var currentHighestRank = _service.GetHighestQueueRank(_user.GetUserID());
             book.QueueRank = currentHighestRank + 1;
 
             _service.Edit(book);
@@ -303,9 +301,9 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult RemoveFromQueue(int id)
         {
-            var book = _service.GetByID(id, User.Identity.GetUserId());
+            var book = _service.GetByID(id, _user.GetUserID());
 
-            if (book.UserID != User.Identity.GetUserId())
+            if (book.UserID != _user.GetUserID())
             {
                 ShowStatusMessage(MessageTypeEnum.error, "This book cannot be edited by another user.", "Edit Failure");
                 return RedirectToAction(MVC.Album.Index());

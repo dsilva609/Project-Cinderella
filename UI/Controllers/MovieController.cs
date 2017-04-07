@@ -55,7 +55,7 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Details(int id)
         {
-            var movie = _service.GetByID(id, User.Identity.GetUserId());
+            var movie = _service.GetByID(id, _user.GetUserID());
             ViewBag.Title = $"Details - {movie.Title}";
             return View(movie);
         }
@@ -64,7 +64,7 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Create()
         {
-            var model = Session["movieResult"] ?? new Movie { UserID = User.Identity.GetUserId(), UserNum = User.Identity.GetUserNum() };
+            var model = Session["movieResult"] ?? new Movie { UserID = _user.GetUserID(), UserNum = _user.GetUserNum() };
             ViewBag.Title = "Create";
             Session["movieResult"] = null;
 
@@ -96,7 +96,7 @@ namespace UI.Controllers
 
             if (!string.IsNullOrWhiteSpace(Session["wish"]?.ToString()))
             {
-                _wishService.Delete(Convert.ToInt32(Session["wishID"].ToString()), User.Identity.GetUserId());
+                _wishService.Delete(Convert.ToInt32(Session["wishID"].ToString()), _user.GetUserID());
                 Session["wish"] = null;
                 Session["wishID"] = null;
                 ShowStatusMessage(MessageTypeEnum.info, "Wish list has been updated", "Wish list");
@@ -109,9 +109,9 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Edit(int id)
         {
-            var model = _service.GetByID(id, User.Identity.GetUserId());
+            var model = _service.GetByID(id, _user.GetUserID());
             ViewBag.Title = $"Edit - {model.Title}";
-            if (model.UserID != User.Identity.GetUserId()) return RedirectToAction(MVC.Movie.Details(model.ID));
+            if (model.UserID != _user.GetUserID()) return RedirectToAction(MVC.Movie.Details(model.ID));
 
             return View(model);
         }
@@ -123,7 +123,7 @@ namespace UI.Controllers
         {
             if (!ModelState.IsValid) return View(movie);
 
-            var existingMovies = _service.GetAll(User.Identity.GetUserId());
+            var existingMovies = _service.GetAll(_user.GetUserID());
 
             if (existingMovies.Count > 0 && existingMovies.Any(x => x.ID != movie.ID && x.Title == movie.Title && x.Type == movie.Type))
             {
@@ -148,14 +148,14 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Delete(int id)
         {
-            var model = _service.GetByID(id, User.Identity.GetUserId());
-            if (model.UserID != User.Identity.GetUserId())
+            var model = _service.GetByID(id, _user.GetUserID());
+            if (model.UserID != _user.GetUserID())
             {
                 ShowStatusMessage(MessageTypeEnum.error, "This game cannot be deleted by another user", "Delete Failure");
                 return RedirectToAction(MVC.Game.Index());
             }
 
-            _service.Delete(id, User.Identity.GetUserId());
+            _service.Delete(id, _user.GetUserID());
 
             ShowStatusMessage(MessageTypeEnum.success, "", "Movie Deleted Successfully");
 
@@ -197,8 +197,8 @@ namespace UI.Controllers
         {
             var movie = isTvShow ? _tmdbService.SearchTVShowByID(releaseID) : _tmdbService.SearchMovieByID(releaseID);
 
-            movie.UserID = User.Identity.GetUserId();
-            movie.UserNum = User.Identity.GetUserNum();
+            movie.UserID = _user.GetUserID();
+            movie.UserNum = _user.GetUserNum();
             ViewBag.Title = "Create";
 
             Session["movieResult"] = movie;
@@ -210,35 +210,35 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult AddToShowcase(int id)
         {
-            var movie = _service.GetByID(id, User.Identity.GetUserId());
+            var movie = _service.GetByID(id, _user.GetUserID());
             movie.IsShowcased = true;
             movie.DateUpdated = DateTime.UtcNow;
             _service.Edit(movie);
 
             ShowStatusMessage(MessageTypeEnum.info, "Title added to showcase", "Showcase");
-            return RedirectToAction(MVC.Showcase.Index(User.Identity.GetUserNum()));
+            return RedirectToAction(MVC.Showcase.Index(_user.GetUserNum()));
         }
 
         [Authorize(Roles = "Admin")]
         [HttpGet]
         public virtual ActionResult RemoveFromShowcase(int id)
         {
-            var movie = _service.GetByID(id, User.Identity.GetUserId());
+            var movie = _service.GetByID(id, _user.GetUserID());
             movie.IsShowcased = false;
             movie.DateUpdated = DateTime.UtcNow;
             _service.Edit(movie);
 
             ShowStatusMessage(MessageTypeEnum.info, "Title removed from showcase", "Showcase");
-            return RedirectToAction(MVC.Showcase.Index(User.Identity.GetUserNum()));
+            return RedirectToAction(MVC.Showcase.Index(_user.GetUserNum()));
         }
 
         [Authorize]
         [HttpGet]
         public virtual ActionResult IncreaseCompletionCount(int id)
         {
-            var movie = _service.GetByID(id, User.Identity.GetUserId());
+            var movie = _service.GetByID(id, _user.GetUserID());
 
-            if (movie.UserID != User.Identity.GetUserId())
+            if (movie.UserID != _user.GetUserID())
             {
                 ShowStatusMessage(MessageTypeEnum.warning, "This movie cannot be edited by another user.", "Edit Failure");
                 return RedirectToAction(MVC.Movie.Index());
@@ -257,9 +257,9 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult DecreaseCompletionCount(int id)
         {
-            var movie = _service.GetByID(id, User.Identity.GetUserId());
+            var movie = _service.GetByID(id, _user.GetUserID());
 
-            if (movie.UserID != User.Identity.GetUserId())
+            if (movie.UserID != _user.GetUserID())
             {
                 ShowStatusMessage(MessageTypeEnum.warning, "This movie cannot be edited by another user.", "Edit Failure");
                 return RedirectToAction(MVC.Movie.Index());
@@ -278,9 +278,9 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult AddToQueue(int id)
         {
-            var game = _service.GetByID(id, User.Identity.GetUserId());
+            var game = _service.GetByID(id, _user.GetUserID());
 
-            if (game.UserID != User.Identity.GetUserId())
+            if (game.UserID != _user.GetUserID())
             {
                 ShowStatusMessage(MessageTypeEnum.error, "This movie/TV show cannot be edited by another user.", "Edit Failure");
                 return RedirectToAction(MVC.Album.Index());
@@ -293,7 +293,7 @@ namespace UI.Controllers
             }
 
             game.IsQueued = true;
-            var currentHighestRank = _service.GetHighestQueueRank(User.Identity.GetUserId());
+            var currentHighestRank = _service.GetHighestQueueRank(_user.GetUserID());
             game.QueueRank = currentHighestRank + 1;
 
             _service.Edit(game);
@@ -306,9 +306,9 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult RemoveFromQueue(int id)
         {
-            var game = _service.GetByID(id, User.Identity.GetUserId());
+            var game = _service.GetByID(id, _user.GetUserID());
 
-            if (game.UserID != User.Identity.GetUserId())
+            if (game.UserID != _user.GetUserID())
             {
                 ShowStatusMessage(MessageTypeEnum.error, "This movie/TV show cannot be edited by another user.", "Edit Failure");
                 return RedirectToAction(MVC.Album.Index());

@@ -1,7 +1,6 @@
 ﻿using BusinessLogic.Enums;
 using BusinessLogic.Models.Interfaces;
 using BusinessLogic.Services.Interfaces;
-using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Web.Mvc;
 using UI.Models;
@@ -32,7 +31,7 @@ namespace UI.Controllers
         {
             var model = new QueueViewModel
             {
-                Albums = _albumService.GetAll(User.Identity.GetUserId())
+                Albums = _albumService.GetAll(_user.GetUserID())
                     .Where(x => x.IsQueued)
                     ?.OrderBy(y => y.QueueRank)
                     .Select(
@@ -46,7 +45,7 @@ namespace UI.Controllers
                                 ItemType = ItemType.Album
                             })
                     .ToList(),
-                Books = _bookService.GetAll(User.Identity.GetUserId())
+                Books = _bookService.GetAll(_user.GetUserID())
                     .Where(x => x.IsQueued)
                     .OrderBy(y => y.QueueRank)
                     .Select(
@@ -60,7 +59,7 @@ namespace UI.Controllers
                                 ItemType = ItemType.Book
                             })
                     .ToList(),
-                Games = _gameService.GetAll(User.Identity.GetUserId())
+                Games = _gameService.GetAll(_user.GetUserID())
                     .Where(x => x.IsQueued)
                     .OrderBy(y => y.QueueRank)
                     .Select(
@@ -74,7 +73,7 @@ namespace UI.Controllers
                                 ItemType = ItemType.Game
                             })
                     .ToList(),
-                Movies = _movieService.GetAll(User.Identity.GetUserId())
+                Movies = _movieService.GetAll(_user.GetUserID())
                     .Where(x => x.IsQueued)
                     .OrderBy(y => y.QueueRank)
                     .Select(

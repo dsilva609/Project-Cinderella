@@ -2,13 +2,11 @@
 using BusinessLogic.Models;
 using BusinessLogic.Models.Interfaces;
 using BusinessLogic.Services.Interfaces;
-using Microsoft.AspNet.Identity;
 using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using UI.Common;
 using UI.Models;
 
 namespace UI.Controllers
@@ -53,7 +51,7 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Create()
         {
-            var model = new FunkoModel { UserID = User.Identity.GetUserId(), UserNum = User.Identity.GetUserNum() };
+            var model = new FunkoModel { UserID = _user.GetUserID(), UserNum = _user.GetUserNum() };
             ViewBag.Title = "Create";
 
             return View(model);
@@ -79,7 +77,7 @@ namespace UI.Controllers
 
             if (!string.IsNullOrWhiteSpace(Session["popWish"]?.ToString()))
             {
-                _wishService.Delete(Convert.ToInt32(Session["popWishID"].ToString()), User.Identity.GetUserId());
+                _wishService.Delete(Convert.ToInt32(Session["popWishID"].ToString()), _user.GetUserID());
                 Session["popWish"] = null;
                 Session["popWishID"] = null;
                 ShowStatusMessage(MessageTypeEnum.info, "Wish list has been updated", "Wish list");
@@ -92,9 +90,9 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Edit(int id)
         {
-            var model = _service.GetByID(id, User.Identity.GetUserId());
+            var model = _service.GetByID(id, _user.GetUserID());
             ViewBag.Title = $"Edit - {model.Title}";
-            if (model.UserID != User.Identity.GetUserId()) return RedirectToAction(MVC.Pop.Details(model.ID));
+            if (model.UserID != _user.GetUserID()) return RedirectToAction(MVC.Pop.Details(model.ID));
 
             return View(model);
         }
@@ -104,7 +102,7 @@ namespace UI.Controllers
         public virtual ActionResult Edit(FunkoModel model)
         {
             if (!ModelState.IsValid) return View(model);
-            var existingFunkoModels = _service.GetAll(User.Identity.GetUserId());
+            var existingFunkoModels = _service.GetAll(_user.GetUserID());
             if (existingFunkoModels.Any(x => x.ID != model.ID && x.Title == model.Title && x.Series == model.Series && x.Number == model.Number))
             {
                 ShowStatusMessage(MessageTypeEnum.error,
@@ -124,7 +122,7 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Details(int id)
         {
-            var model = _service.GetByID(id, User.Identity.GetUserId());
+            var model = _service.GetByID(id, _user.GetUserID());
             ViewBag.Title = $"Details - {model.Title}";
             return View(model);
         }
@@ -133,14 +131,14 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Delete(int id)
         {
-            var model = _service.GetByID(id, User.Identity.GetUserId());
-            if (model.UserID != User.Identity.GetUserId())
+            var model = _service.GetByID(id, _user.GetUserID());
+            if (model.UserID != _user.GetUserID())
             {
                 ShowStatusMessage(MessageTypeEnum.error, "This pop cannot be deleted by another user", "Delete Failure");
                 return RedirectToAction(MVC.Pop.Index());
             }
 
-            _service.Delete(id, User.Identity.GetUserId());
+            _service.Delete(id, _user.GetUserID());
 
             ShowStatusMessage(MessageTypeEnum.success, "", "Pop Deleted Successfully");
             return RedirectToAction(MVC.Pop.Index());
@@ -150,12 +148,12 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult AddToShowcase(int id)
         {
-            var pop = _service.GetByID(id, User.Identity.GetUserId());
+            var pop = _service.GetByID(id, _user.GetUserID());
 
-            if (pop.UserID != User.Identity.GetUserId())
+            if (pop.UserID != _user.GetUserID())
             {
                 ShowStatusMessage(MessageTypeEnum.warning, "This pop cannot be edited by another user.", "Edit Failure");
-                return RedirectToAction(MVC.Showcase.Index(User.Identity.GetUserNum()));
+                return RedirectToAction(MVC.Showcase.Index(_user.GetUserNum()));
             }
 
             pop.IsShowcased = true;
@@ -164,14 +162,14 @@ namespace UI.Controllers
             _service.Edit(pop);
 
             ShowStatusMessage(MessageTypeEnum.info, "Pop added to showcase", "Showcase");
-            return RedirectToAction(MVC.Showcase.Index(User.Identity.GetUserNum()));
+            return RedirectToAction(MVC.Showcase.Index(_user.GetUserNum()));
         }
 
         [Authorize(Roles = "Admin")]
         [HttpGet]
         public virtual ActionResult RemoveFromShowcase(int id)
         {
-            var pop = _service.GetByID(id, User.Identity.GetUserId());
+            var pop = _service.GetByID(id, _user.GetUserID());
             pop.IsShowcased = false;
             pop.DateUpdated = DateTime.UtcNow;
 

@@ -2,13 +2,11 @@
 using BusinessLogic.Models;
 using BusinessLogic.Models.Interfaces;
 using BusinessLogic.Services.Interfaces;
-using Microsoft.AspNet.Identity;
 using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using UI.Common;
 using UI.Models;
 using CompletionStatus = BusinessLogic.Enums.CompletionStatus;
 
@@ -60,7 +58,7 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Details(int id)
         {
-            var model = _service.GetByID(id, User.Identity.GetUserId());
+            var model = _service.GetByID(id, _user.GetUserID());
             ViewBag.Title = $"Details - {model.Title}";
             return View(model);
         }
@@ -70,7 +68,7 @@ namespace UI.Controllers
         public virtual ActionResult Create()
         {
             ViewBag.Title = "Create";
-            var model = Session["gameResult"] ?? new Game { UserID = User.Identity.GetUserId(), UserNum = User.Identity.GetUserNum() };
+            var model = Session["gameResult"] ?? new Game { UserID = _user.GetUserID(), UserNum = _user.GetUserNum() };
             Session["gameResult"] = null;
 
             return View(model);
@@ -99,7 +97,7 @@ namespace UI.Controllers
 
             if (!string.IsNullOrWhiteSpace(Session["wish"]?.ToString()))
             {
-                _wishService.Delete(Convert.ToInt32(Session["wishID"].ToString()), User.Identity.GetUserId());
+                _wishService.Delete(Convert.ToInt32(Session["wishID"].ToString()), _user.GetUserID());
                 Session["wish"] = null;
                 Session["wishID"] = null;
                 ShowStatusMessage(MessageTypeEnum.info, "Wish list has been updated", "Wish list");
@@ -112,9 +110,9 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Edit(int id)
         {
-            var model = _service.GetByID(id, User.Identity.GetUserId());
+            var model = _service.GetByID(id, _user.GetUserID());
             ViewBag.Title = $"Edit - {model.Title}";
-            if (model.UserID != User.Identity.GetUserId()) return RedirectToAction(MVC.Game.Details(model.ID));
+            if (model.UserID != _user.GetUserID()) return RedirectToAction(MVC.Game.Details(model.ID));
 
             return View(model);
         }
@@ -125,7 +123,7 @@ namespace UI.Controllers
         public virtual ActionResult Edit(Game game)
         {
             if (!ModelState.IsValid) return View(game);
-            var existingGames = _service.GetAll(User.Identity.GetUserId());
+            var existingGames = _service.GetAll(_user.GetUserID());
             if (existingGames.Count > 0 &&
                 existingGames.Any(x => x.ID != game.ID && x.Title == game.Title && x.Developer == game.Developer))
             {
@@ -152,14 +150,14 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Delete(int id)
         {
-            var model = _service.GetByID(id, User.Identity.GetUserId());
-            if (model.UserID != User.Identity.GetUserId())
+            var model = _service.GetByID(id, _user.GetUserID());
+            if (model.UserID != _user.GetUserID())
             {
                 ShowStatusMessage(MessageTypeEnum.error, "This game cannot be deleted by another user", "Delete Failure");
                 return RedirectToAction(MVC.Game.Index());
             }
 
-            _service.Delete(id, User.Identity.GetUserId());
+            _service.Delete(id, _user.GetUserID());
 
             ShowStatusMessage(MessageTypeEnum.success, "", "Game Deleted Successfully");
 
@@ -198,8 +196,8 @@ namespace UI.Controllers
             ViewBag.Title = "Create";
             var game = isBGG ? _bggService.SearchByID(id) : _giantBombService.SearchByID(id);
 
-            game.UserID = User.Identity.GetUserId();
-            game.UserNum = User.Identity.GetUserNum();
+            game.UserID = _user.GetUserID();
+            game.UserNum = _user.GetUserNum();
             Session["gameResult"] = game;
 
             return RedirectToAction(MVC.Game.Create());
@@ -209,35 +207,35 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult AddToShowcase(int id)
         {
-            var game = _service.GetByID(id, User.Identity.GetUserId());
+            var game = _service.GetByID(id, _user.GetUserID());
             game.IsShowcased = true;
             game.DateUpdated = DateTime.UtcNow;
             _service.Edit(game);
 
             ShowStatusMessage(MessageTypeEnum.info, "Game added to showcase", "Showcase");
-            return RedirectToAction(MVC.Showcase.Index(User.Identity.GetUserNum()));
+            return RedirectToAction(MVC.Showcase.Index(_user.GetUserNum()));
         }
 
         [Authorize(Roles = "Admin")]
         [HttpGet]
         public virtual ActionResult RemoveFromShowcase(int id)
         {
-            var game = _service.GetByID(id, User.Identity.GetUserId());
+            var game = _service.GetByID(id, _user.GetUserID());
             game.IsShowcased = false;
             game.DateUpdated = DateTime.UtcNow;
             _service.Edit(game);
 
             ShowStatusMessage(MessageTypeEnum.info, "Game removed from showcase", "Showcase");
-            return RedirectToAction(MVC.Showcase.Index(User.Identity.GetUserNum()));
+            return RedirectToAction(MVC.Showcase.Index(_user.GetUserNum()));
         }
 
         [Authorize]
         [HttpGet]
         public virtual ActionResult IncreaseCompletionCount(int id)
         {
-            var game = _service.GetByID(id, User.Identity.GetUserId());
+            var game = _service.GetByID(id, _user.GetUserID());
 
-            if (game.UserID != User.Identity.GetUserId())
+            if (game.UserID != _user.GetUserID())
             {
                 ShowStatusMessage(MessageTypeEnum.warning, "This game cannot be edited by another user.", "Edit Failure");
                 return RedirectToAction(MVC.Game.Index());
@@ -256,9 +254,9 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult DecreaseCompletionCount(int id)
         {
-            var game = _service.GetByID(id, User.Identity.GetUserId());
+            var game = _service.GetByID(id, _user.GetUserID());
 
-            if (game.UserID != User.Identity.GetUserId())
+            if (game.UserID != _user.GetUserID())
             {
                 ShowStatusMessage(MessageTypeEnum.warning, "This game cannot be edited by another user.", "Edit Failure");
                 return RedirectToAction(MVC.Game.Index());
@@ -277,9 +275,9 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult AddToQueue(int id)
         {
-            var game = _service.GetByID(id, User.Identity.GetUserId());
+            var game = _service.GetByID(id, _user.GetUserID());
 
-            if (game.UserID != User.Identity.GetUserId())
+            if (game.UserID != _user.GetUserID())
             {
                 ShowStatusMessage(MessageTypeEnum.error, "This game cannot be edited by another user.", "Edit Failure");
                 return RedirectToAction(MVC.Album.Index());
@@ -292,7 +290,7 @@ namespace UI.Controllers
             }
 
             game.IsQueued = true;
-            var currentHighestRank = _service.GetHighestQueueRank(User.Identity.GetUserId());
+            var currentHighestRank = _service.GetHighestQueueRank(_user.GetUserID());
             game.QueueRank = currentHighestRank + 1;
 
             _service.Edit(game);
@@ -305,9 +303,9 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult RemoveFromQueue(int id)
         {
-            var game = _service.GetByID(id, User.Identity.GetUserId());
+            var game = _service.GetByID(id, _user.GetUserID());
 
-            if (game.UserID != User.Identity.GetUserId())
+            if (game.UserID != _user.GetUserID())
             {
                 ShowStatusMessage(MessageTypeEnum.error, "This game cannot be edited by another user.", "Edit Failure");
                 return RedirectToAction(MVC.Album.Index());

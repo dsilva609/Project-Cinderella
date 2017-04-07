@@ -2,7 +2,6 @@
 using BusinessLogic.Models;
 using BusinessLogic.Models.Interfaces;
 using BusinessLogic.Services.Interfaces;
-using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +33,7 @@ namespace UI.Controllers
             }
             ViewBag.Filter = (string.IsNullOrWhiteSpace(wishQuery) ? filter : wishQuery)?.Trim();
 
-            var wishes = _service.GetAll(User.Identity.GetUserId(), ViewBag.Filter) as List<Wish>;
+            var wishes = _service.GetAll(_user.GetUserID(), ViewBag.Filter) as List<Wish>;
 
             var viewModel = new WishViewModel
             {
@@ -76,14 +75,14 @@ namespace UI.Controllers
         {
             var model = new WishFormModel
             {
-                Wish = new Wish { UserID = User.Identity.GetUserId() },
+                Wish = new Wish { UserID = _user.GetUserID() },
                 Categories =
                     new SelectList(
-                        _service.GetAll(User.Identity.GetUserId())
+                        _service.GetAll(_user.GetUserID())
                             .OrderBy(z => z.ItemType)
                             .GroupBy(x => new { x.ItemType, x.Category })
                             .Select(y => y.First()), "Category", "Category", "ItemType", string.Empty, string.Empty,
-                        _service.GetAll(User.Identity.GetUserId()).Where(x => string.IsNullOrWhiteSpace(x.Category)).ToList())
+                        _service.GetAll(_user.GetUserID()).Where(x => string.IsNullOrWhiteSpace(x.Category)).ToList())
             };
             ViewBag.Title = "Create";
 
@@ -115,11 +114,11 @@ namespace UI.Controllers
 
             model.Categories =
                 new SelectList(
-                    _service.GetAll(User.Identity.GetUserId())
+                    _service.GetAll(_user.GetUserID())
                         .OrderBy(z => z.ItemType)
                         .GroupBy(x => new { x.ItemType, x.Category })
                         .Select(y => y.First()), "Category", "Category", "ItemType", string.Empty, string.Empty,
-                    _service.GetAll(User.Identity.GetUserId()).Where(x => string.IsNullOrWhiteSpace(x.Category)).ToList());
+                    _service.GetAll(_user.GetUserID()).Where(x => string.IsNullOrWhiteSpace(x.Category)).ToList());
             return View(model);
         }
 
@@ -129,9 +128,9 @@ namespace UI.Controllers
         {
             ViewBag.Title = "Edit";
 
-            var wish = _service.GetByID(id, User.Identity.GetUserId());
+            var wish = _service.GetByID(id, _user.GetUserID());
 
-            if (wish.UserID != User.Identity.GetUserId())
+            if (wish.UserID != _user.GetUserID())
             {
                 ShowStatusMessage(MessageTypeEnum.warning, "This wish cannot be edited by another user.", "Edit Failure");
                 return RedirectToAction(MVC.Wish.Index());
@@ -140,12 +139,12 @@ namespace UI.Controllers
             {
                 Categories =
                     new SelectList(
-                        _service.GetAll(User.Identity.GetUserId())
+                        _service.GetAll(_user.GetUserID())
                             .OrderBy(z => z.ItemType)
                             .GroupBy(x => new { x.ItemType, x.Category })
                             .Select(y => y.First()), "Category", "Category", "ItemType", string.Empty, string.Empty,
-                        _service.GetAll(User.Identity.GetUserId()).Where(x => string.IsNullOrWhiteSpace(x.Category)).ToList()),
-                //_service.GetAll(User.Identity.GetUserId()).Where(x => !string.IsNullOrWhiteSpace(x.Category)).Select(y => new SelectListItem
+                        _service.GetAll(_user.GetUserID()).Where(x => string.IsNullOrWhiteSpace(x.Category)).ToList()),
+                //_service.GetAll(_user.GetUserID()).Where(x => !string.IsNullOrWhiteSpace(x.Category)).Select(y => new SelectListItem
                 //{
                 //	Group = new SelectListGroup { Name = y.ItemType.ToString() },
                 //	Text = y.Category,
@@ -167,15 +166,15 @@ namespace UI.Controllers
             {
                 model.Categories =
                     new SelectList(
-                        _service.GetAll(User.Identity.GetUserId())
+                        _service.GetAll(_user.GetUserID())
                             .OrderBy(z => z.ItemType)
                             .GroupBy(x => new { x.ItemType, x.Category })
                             .Select(y => y.First()), "Category", "Category", "ItemType", string.Empty, string.Empty,
-                        _service.GetAll(User.Identity.GetUserId()).Where(x => string.IsNullOrWhiteSpace(x.Category)).ToList());
+                        _service.GetAll(_user.GetUserID()).Where(x => string.IsNullOrWhiteSpace(x.Category)).ToList());
 
                 return View(model);
             }
-            var existingWishes = _service.GetAll(User.Identity.GetUserId());
+            var existingWishes = _service.GetAll(_user.GetUserID());
 
             if (existingWishes.Any(x => x.ID != model.Wish.ID && x.Title == model.Wish.Title && x.ItemType == model.Wish.ItemType))
             {
@@ -184,16 +183,16 @@ namespace UI.Controllers
                     "Duplicate Record");
                 model.Categories =
                     new SelectList(
-                        _service.GetAll(User.Identity.GetUserId())
+                        _service.GetAll(_user.GetUserID())
                             .OrderBy(z => z.ItemType)
                             .GroupBy(x => new { x.ItemType, x.Category })
                             .Select(y => y.First()), "Category", "Category", "ItemType", string.Empty, string.Empty,
-                        _service.GetAll(User.Identity.GetUserId()).Where(x => string.IsNullOrWhiteSpace(x.Category)).ToList());
+                        _service.GetAll(_user.GetUserID()).Where(x => string.IsNullOrWhiteSpace(x.Category)).ToList());
                 return View(model);
             }
 
             //TODO: make sure user id is the same so as not to change other users data
-            if (model.Wish.UserID != User.Identity.GetUserId())
+            if (model.Wish.UserID != _user.GetUserID())
             {
                 ShowStatusMessage(MessageTypeEnum.warning, "This wish cannot be edited by another user.", "Edit Failure");
                 return RedirectToAction(MVC.Wish.Index());
@@ -210,7 +209,7 @@ namespace UI.Controllers
         [Authorize]
         public virtual ActionResult Details(int id)
         {
-            var model = _service.GetByID(id, User.Identity.GetUserId());
+            var model = _service.GetByID(id, _user.GetUserID());
 
             return View(model);
         }
@@ -219,14 +218,14 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Delete(int id)
         {
-            var model = _service.GetByID(id, User.Identity.GetUserId());
-            if (model.UserID != User.Identity.GetUserId())
+            var model = _service.GetByID(id, _user.GetUserID());
+            if (model.UserID != _user.GetUserID())
             {
                 ShowStatusMessage(MessageTypeEnum.error, "This wish cannot be deleted by another user", "Delete Failure");
                 return RedirectToAction(MVC.Wish.Index());
             }
 
-            _service.Delete(id, User.Identity.GetUserId());
+            _service.Delete(id, _user.GetUserID());
 
             ShowStatusMessage(MessageTypeEnum.success, string.Empty, "Wish Deleted Successfully");
             return RedirectToAction(MVC.Wish.Index());
@@ -236,8 +235,8 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult FinishWish(int id)
         {
-            var model = _service.GetByID(id, User.Identity.GetUserId());
-            if (model.UserID != User.Identity.GetUserId())
+            var model = _service.GetByID(id, _user.GetUserID());
+            if (model.UserID != _user.GetUserID())
             {
                 ShowStatusMessage(MessageTypeEnum.error, "This wish cannot be edited by another user", "Edit Failure");
                 return RedirectToAction(MVC.Wish.Index());
@@ -255,7 +254,7 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Search(int id)
         {
-            var model = _service.GetByID(id, User.Identity.GetUserId());
+            var model = _service.GetByID(id, _user.GetUserID());
             Session["wish"] = model.Title;
             Session["wishID"] = model.ID;
 
