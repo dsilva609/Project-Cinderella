@@ -1,5 +1,6 @@
 ﻿using BusinessLogic.Enums;
 using BusinessLogic.Models;
+using BusinessLogic.Models.Interfaces;
 using BusinessLogic.Services.Interfaces;
 using Microsoft.AspNet.Identity;
 using PagedList;
@@ -14,12 +15,14 @@ namespace UI.Controllers
 {
     public partial class PopController : ProjectCinderellaControllerBase
     {
+        private readonly IUserContext _user;
         private readonly IPopService _service;
         private readonly IWishService _wishService;
         private const int NUM_POPS_TO_GET = 25;
 
-        public PopController(IPopService service, IWishService wishService)
+        public PopController(IUserContext user, IPopService service, IWishService wishService)
         {
+            _user = user;
             _service = service;
             _wishService = wishService;
         }

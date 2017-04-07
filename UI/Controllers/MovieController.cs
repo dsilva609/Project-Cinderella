@@ -1,5 +1,6 @@
 ﻿using BusinessLogic.Enums;
 using BusinessLogic.Models;
+using BusinessLogic.Models.Interfaces;
 using BusinessLogic.Services.Interfaces;
 using Microsoft.AspNet.Identity;
 using PagedList;
@@ -15,13 +16,15 @@ namespace UI.Controllers
 {
     public partial class MovieController : ProjectCinderellaControllerBase
     {
+        private readonly IUserContext _user;
         private readonly IMovieService _service;
         private readonly ITMDBService _tmdbService;
         private readonly IWishService _wishService;
         private const int NUM_MOVIES_TO_GET = 25;
 
-        public MovieController(IMovieService service, ITMDBService tmdbService, IWishService wishService)
+        public MovieController(IUserContext user, IMovieService service, ITMDBService tmdbService, IWishService wishService)
         {
+            _user = user;
             _service = service;
             _tmdbService = tmdbService;
             _wishService = wishService;

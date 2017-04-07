@@ -1,5 +1,6 @@
 ﻿using BusinessLogic.Enums;
 using BusinessLogic.Models;
+using BusinessLogic.Models.Interfaces;
 using BusinessLogic.Services.Interfaces;
 using Microsoft.AspNet.Identity;
 using PagedList;
@@ -15,15 +16,18 @@ namespace UI.Controllers
 {
     public partial class GameController : ProjectCinderellaControllerBase
     {
+        private readonly IUserContext _user;
         private readonly IGameService _service;
         private readonly IGiantBombService _giantBombService;
         private readonly IBGGService _bggService;
         private readonly IWishService _wishService;
         private const int NUM_GAMES_TO_GET = 25;
 
-        public GameController(IGameService service, IGiantBombService giantBombService, IBGGService bggService, IWishService wishService)
+        public GameController(IUserContext user, IGameService service, IGiantBombService giantBombService, IBGGService bggService,
+            IWishService wishService)
 
         {
+            _user = user;
             _service = service;
             _giantBombService = giantBombService;
             _bggService = bggService;
