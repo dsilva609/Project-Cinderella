@@ -29,33 +29,33 @@ namespace BusinessLogic.Services.Statistics
 
 		public int Num3313RPM(string userID = "")
 			=> string.IsNullOrWhiteSpace(userID)
-				? _albums.Count(x => x.Speed == SpeedEnum.RPM33)
-				: _albums.Count(x => x.UserID == userID && x.Speed == SpeedEnum.RPM33);
+				? _albums.Count(x => x.Speed == SpeedEnum.RPM33 && x.MediaType == AlbumMediaTypeEnum.Vinyl)
+				: _albums.Count(x => x.UserID == userID && x.Speed == SpeedEnum.RPM33 && x.MediaType == AlbumMediaTypeEnum.Vinyl);
 
 		public int Num45RPM(string userID = "")
 			=> string.IsNullOrWhiteSpace(userID)
-				? _albums.Count(x => x.Speed == SpeedEnum.RPM45)
-				: _albums.Count(x => x.UserID == userID && x.Speed == SpeedEnum.RPM45);
+				? _albums.Count(x => x.Speed == SpeedEnum.RPM45 && x.MediaType == AlbumMediaTypeEnum.Vinyl)
+				: _albums.Count(x => x.UserID == userID && x.Speed == SpeedEnum.RPM45 && x.MediaType == AlbumMediaTypeEnum.Vinyl);
 
 		public int Num78RPM(string userID = "")
 			=> string.IsNullOrWhiteSpace(userID)
-				? _albums.Count(x => x.Speed == SpeedEnum.RPM78)
-				: _albums.Count(x => x.UserID == userID && x.Speed == SpeedEnum.RPM78);
+				? _albums.Count(x => x.Speed == SpeedEnum.RPM78 && x.MediaType == AlbumMediaTypeEnum.Vinyl)
+				: _albums.Count(x => x.UserID == userID && x.Speed == SpeedEnum.RPM78 && x.MediaType == AlbumMediaTypeEnum.Vinyl);
 
 		public int Num12Inch(string userID = "")
 			=> string.IsNullOrWhiteSpace(userID)
-				? _albums.Count(x => x.Size == SizeEnum.Twelve)
-				: _albums.Count(x => x.UserID == userID && x.Size == SizeEnum.Twelve);
+				? _albums.Count(x => x.Size == SizeEnum.Twelve && x.MediaType == AlbumMediaTypeEnum.Vinyl)
+				: _albums.Count(x => x.UserID == userID && x.Size == SizeEnum.Twelve && x.MediaType == AlbumMediaTypeEnum.Vinyl);
 
 		public int Num10Inch(string userID = "")
 			=> string.IsNullOrWhiteSpace(userID)
-				? _albums.Count(x => x.Size == SizeEnum.Ten)
-				: _albums.Count(x => x.UserID == userID && x.Size == SizeEnum.Ten);
+				? _albums.Count(x => x.Size == SizeEnum.Ten && x.MediaType == AlbumMediaTypeEnum.Vinyl)
+				: _albums.Count(x => x.UserID == userID && x.Size == SizeEnum.Ten && x.MediaType == AlbumMediaTypeEnum.Vinyl);
 
 		public int Num7Inch(string userID = "")
 			=> string.IsNullOrWhiteSpace(userID)
-				? _albums.Count(x => x.Size == SizeEnum.Seven)
-				: _albums.Count(x => x.UserID == userID && x.Size == SizeEnum.Seven);
+				? _albums.Count(x => x.Size == SizeEnum.Seven && x.MediaType == AlbumMediaTypeEnum.Vinyl)
+				: _albums.Count(x => x.UserID == userID && x.Size == SizeEnum.Seven && x.MediaType == AlbumMediaTypeEnum.Vinyl);
 
 		public List<string> TopArtists(string userID = "")
 			=> string.IsNullOrWhiteSpace(userID)
