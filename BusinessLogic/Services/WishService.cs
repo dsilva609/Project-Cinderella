@@ -1,5 +1,6 @@
 ﻿using BusinessLogic.Components.CrudComponents;
 using BusinessLogic.Models;
+using BusinessLogic.Models.Interfaces;
 using BusinessLogic.Repositories;
 using BusinessLogic.Services.Interfaces;
 using System;
@@ -10,6 +11,7 @@ namespace BusinessLogic.Services
 {
     public class WishService : IWishService
     {
+        private readonly IUserContext _user;
         private readonly IRepository<Wish> _repository;
         private readonly GetEntityListComponent _getEntityListComponent;
         private readonly AddEntityComponent _addEntityComponent;
@@ -18,8 +20,9 @@ namespace BusinessLogic.Services
         private readonly EditEntityListComponent _editEntityListComponent;
         private readonly DeleteEntityComponent _deleteEntityComponent;
 
-        public WishService(IUnitOfWork uow)
+        public WishService(IUnitOfWork uow, IUserContext user)
         {
+            _user = user;
             _repository = uow.GetRepository<Wish>();
             _getEntityListComponent = new GetEntityListComponent();
             _addEntityComponent = new AddEntityComponent();
@@ -40,6 +43,7 @@ namespace BusinessLogic.Services
 
         public List<Wish> GetAll(string userID = "", string query = "", int numToTake = 0, int? pageNum = 1)
         {
+            var num = _user.GetUserNum();
             var wishList = _getEntityListComponent.Execute(_repository).OrderBy(x => x.Title).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(userID)) wishList = wishList.Where(x => x.UserID == userID);

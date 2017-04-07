@@ -36,13 +36,13 @@ namespace UI
             // For instance:
             // c.Register<IUserRepository, SqlUserRepository>(Lifestyle.Scoped);
             c.Register<IUnitOfWork, UnitOfWork<ProjectCinderellaContext>>(Lifestyle.Singleton);
-            c.Register<IAlbumService>(() => new AlbumService(c.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
-            c.Register<IBookService>(() => new BookService(c.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
-            c.Register<IMovieService>(() => new MovieService(c.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
-            c.Register<IGameService>(() => new GameService(c.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
-            c.Register<IPopService>(() => new PopService(c.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
-            c.Register<IWishService>(() => new WishService(c.GetInstance<IUnitOfWork>()), Lifestyle.Scoped);
-            c.Register<IDiscogsService, DiscogsService>();
+            c.Register<IAlbumService>(() => new AlbumService(c.GetInstance<IUnitOfWork>(), c.GetInstance<IUserContext>()), Lifestyle.Scoped);
+            c.Register<IBookService>(() => new BookService(c.GetInstance<IUnitOfWork>(), c.GetInstance<IUserContext>()), Lifestyle.Scoped);
+            c.Register<IMovieService>(() => new MovieService(c.GetInstance<IUnitOfWork>(), c.GetInstance<IUserContext>()), Lifestyle.Scoped);
+            c.Register<IGameService>(() => new GameService(c.GetInstance<IUnitOfWork>(), c.GetInstance<IUserContext>()), Lifestyle.Scoped);
+            c.Register<IPopService>(() => new PopService(c.GetInstance<IUnitOfWork>(), c.GetInstance<IUserContext>()), Lifestyle.Scoped);
+            c.Register<IWishService>(() => new WishService(c.GetInstance<IUnitOfWork>(), c.GetInstance<IUserContext>()), Lifestyle.Scoped);
+            c.Register<IDiscogsService, DiscogsService>(Lifestyle.Scoped);
             c.Register<IClientService>(() => new Google.Apis.Books.v1.BooksService(), Lifestyle.Scoped);
             c.Register<IGoogleBookService>(() => new GoogleBookService(c.GetInstance<IClientService>()), Lifestyle.Scoped);
             c.Register<ITMDBService, TMDBService>(Lifestyle.Scoped);
