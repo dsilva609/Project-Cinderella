@@ -846,6 +846,10 @@
     <Content Include="Views\Pop\_RecentlyAdded.cshtml" />
     <Content Include="Views\Pop\_RecentlyUpdated.cshtml" />
     <Content Include="Views\Statistics\AlbumStats.cshtml" />
+    <Content Include="Views\Statistics\PopStats.cshtml" />
+    <Content Include="Views\Statistics\MovieStats.cshtml" />
+    <Content Include="Views\Statistics\BookStats.cshtml" />
+    <Content Include="Views\Statistics\GameStats.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -948,8 +952,10 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AlbumStatsViewModel.cs" />
     <Compile Include="Models\BaseViewModel.cs" />
+    <Compile Include="Models\BookStatsViewModel.cs" />
     <Compile Include="Models\BookViewModel.cs" />
     <Compile Include="Models\GameSearchModel.cs" />
+    <Compile Include="Models\GameStatsViewModel.cs" />
     <Compile Include="Models\ItemViewModel.cs" />
     <Compile Include="Models\MovieSearchModel.cs" />
     <Compile Include="Models\DiscogsSearchModel.cs" />
@@ -958,8 +964,10 @@
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MovieStatsViewModel.cs" />
     <Compile Include="Models\MovieViewModel.cs" />
     <Compile Include="Models\AlbumViewModel.cs" />
+    <Compile Include="Models\PopStatsViewModel.cs" />
     <Compile Include="Models\PopViewModel.cs" />
     <Compile Include="Models\QueueItemViewModel.cs" />
     <Compile Include="Models\QueueViewModel.cs" />

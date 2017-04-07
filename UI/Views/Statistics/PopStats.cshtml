@@ -1,0 +1,97 @@
+﻿@model UI.Models.PopStatsViewModel
+
+<div class="collapse in">
+	<div class="panel-body">
+		<ul class="list-group col-md-6">
+			<li class="list-group-item active">
+				Top Series
+			</li>
+			@foreach (var series in Model.TopSeries)
+			{
+				<li class="list-group-item">
+					@series
+				</li>
+			}
+		</ul>
+	</div>
+</div>
+
+<div class="collapse in">
+	<div class="panel-body">
+		<ul class="list-group col-md-6">
+			<li class="list-group-item active">
+				Top Lines
+			</li>
+			@foreach (var line in Model.TopLines)
+			{
+				<li class="list-group-item">
+					@line
+				</li>
+			}
+		</ul>
+	</div>
+</div>
+
+<div class="collapse in">
+	<div class="panel-body">
+		<ul class="list-group col-md-6">
+			<li class="list-group-item active">
+				Top Artists
+			</li>
+			@foreach (var country in Model.TopCountriesOfOrigin)
+			{
+				<li class="list-group-item">
+					@country
+				</li>
+			}
+		</ul>
+	</div>
+</div>
+
+<div class="collapse in">
+	<div class="panel-body">
+		<ul class="list-group col-md-6">
+			<li class="list-group-item active">
+				Top Artists
+			</li>
+			@foreach (var country in Model.TopPurchaseCountries)
+			{
+				<li class="list-group-item">
+					@country
+				</li>
+			}
+		</ul>
+	</div>
+</div>
+
+<div class="collapse in">
+	<div class="panel-body">
+		<ul class="list-group col-md-6">
+			<li class="list-group-item active">
+				Top Artists
+			</li>
+			@foreach (var location in Model.TopLocationsPurchased)
+			{
+				<li class="list-group-item">
+					@location
+				</li>
+			}
+		</ul>
+	</div>
+</div>
+
+<div class="collapse in">
+	<div class="panel-body">
+		<ul class="list-group col-md-6">
+			<li class="list-group-item active">
+				Top Artists
+			</li>
+			@foreach (var year in Model.TopReleaseYears)
+			{
+				<li class="list-group-item">
+					@year
+				</li>
+			}
+		</ul>
+	</div>
+</div>

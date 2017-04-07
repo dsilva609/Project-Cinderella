@@ -74,6 +74,10 @@ namespace UI.Controllers
         {
             public readonly string Index = "Index";
             public readonly string AlbumStats = "AlbumStats";
+            public readonly string BookStats = "BookStats";
+            public readonly string GameStats = "GameStats";
+            public readonly string MovieStats = "MovieStats";
+            public readonly string PopStats = "PopStats";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -81,6 +85,10 @@ namespace UI.Controllers
         {
             public const string Index = "Index";
             public const string AlbumStats = "AlbumStats";
+            public const string BookStats = "BookStats";
+            public const string GameStats = "GameStats";
+            public const string MovieStats = "MovieStats";
+            public const string PopStats = "PopStats";
         }
 
 
@@ -96,11 +104,19 @@ namespace UI.Controllers
             {
                 public readonly string _StatsTable = "_StatsTable";
                 public readonly string AlbumStats = "AlbumStats";
+                public readonly string BookStats = "BookStats";
+                public readonly string GameStats = "GameStats";
                 public readonly string Index = "Index";
+                public readonly string MovieStats = "MovieStats";
+                public readonly string PopStats = "PopStats";
             }
             public readonly string _StatsTable = "~/Views/Statistics/_StatsTable.cshtml";
             public readonly string AlbumStats = "~/Views/Statistics/AlbumStats.cshtml";
+            public readonly string BookStats = "~/Views/Statistics/BookStats.cshtml";
+            public readonly string GameStats = "~/Views/Statistics/GameStats.cshtml";
             public readonly string Index = "~/Views/Statistics/Index.cshtml";
+            public readonly string MovieStats = "~/Views/Statistics/MovieStats.cshtml";
+            public readonly string PopStats = "~/Views/Statistics/PopStats.cshtml";
             static readonly _ChartsClass s_Charts = new _ChartsClass();
             public _ChartsClass Charts { get { return s_Charts; } }
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -147,6 +163,50 @@ namespace UI.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AlbumStats);
             AlbumStatsOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void BookStatsOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult BookStats()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.BookStats);
+            BookStatsOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void GameStatsOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult GameStats()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GameStats);
+            GameStatsOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void MovieStatsOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult MovieStats()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.MovieStats);
+            MovieStatsOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void PopStatsOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult PopStats()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.PopStats);
+            PopStatsOverride(callInfo);
             return callInfo;
         }
 
