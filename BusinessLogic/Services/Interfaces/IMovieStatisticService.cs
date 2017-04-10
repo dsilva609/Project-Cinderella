@@ -4,7 +4,7 @@ namespace BusinessLogic.Services.Interfaces
 {
     public interface IMovieStatisticService
     {
-        List<string> TopDirectors(string userID = "");
+        List<string> TopDirectors(string userID = "", int numToTake = 0);
 
         int NumDVD(string userID = "");
 
@@ -20,14 +20,14 @@ namespace BusinessLogic.Services.Interfaces
 
         int NumRatedNR(string userID = "");
 
-        List<string> TopCountriesOfOrigin(string userID = "");
+        List<string> TopCountriesOfOrigin(string userID = "", int numToTake = 0);
 
-        List<string> TopPurchaseCountries(string userID = "");
+        List<string> TopPurchaseCountries(string userID = "", int numToTake = 0);
 
-        List<string> MostCompleted(string userID = "");
+        List<string> MostCompleted(string userID = "", int numToTake = 0);
 
-        List<string> TopLocationsPurchased(string userID = "");
+        List<string> TopLocationsPurchased(string userID = "", int numToTake = 0);
 
-        List<int> TopReleaseYears(string userID = "");
+        List<int> TopReleaseYears(string userID = "", int numToTake = 0);
     }
 }

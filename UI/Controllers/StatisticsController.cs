@@ -146,14 +146,14 @@ namespace UI.Controllers
                 Num12Inch = _albumStatisticService.Num12Inch(),
                 Num10Inch = _albumStatisticService.Num10Inch(),
                 Num7Inch = _albumStatisticService.Num7Inch(),
-                TopArtists = _albumStatisticService.TopArtists()?.Take(10).ToList(),
-                TopGenres = _albumStatisticService.TopGenres()?.Take(10).ToList(),
-                TopRecordLabels = _albumStatisticService.TopRecordLabels()?.Take(10).ToList(),
-                TopCountriesOfOrigin = _albumStatisticService.TopCountriesOfOrigin()?.Take(10).ToList(),
-                TopPurchaseCountries = _albumStatisticService.TopPurchaseCountries()?.Take(10).ToList(),
-                MostCompleted = _albumStatisticService.MostCompleted()?.Take(10).ToList(),
-                TopLocationsPurchased = _albumStatisticService.TopLocationsPurchased()?.Take(10).ToList(),
-                TopReleaseYears = _albumStatisticService.TopReleaseYears()?.Take(10).ToList()
+                TopArtists = _albumStatisticService.TopArtists(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                TopGenres = _albumStatisticService.TopGenres(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                TopRecordLabels = _albumStatisticService.TopRecordLabels(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                TopCountriesOfOrigin = _albumStatisticService.TopCountriesOfOrigin(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                TopPurchaseCountries = _albumStatisticService.TopPurchaseCountries(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                MostCompleted = _albumStatisticService.MostCompleted(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                TopLocationsPurchased = _albumStatisticService.TopLocationsPurchased(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                TopReleaseYears = _albumStatisticService.TopReleaseYears(numToTake: NUM_OF_TOP_TO_TAKE).ToList()
             };
 
             return View(model);
@@ -172,12 +172,12 @@ namespace UI.Controllers
                 NumHardcover = _bookStatisticService.NumHardcover(),
                 NumFirstEdition = _bookStatisticService.NumFirstEdition(),
                 TotalPageCount = _bookStatisticService.TotalPageCount(),
-                TopPublishers = _bookStatisticService.TopPublishers()?.Take(NUM_OF_TOP_TO_TAKE).ToList(),
-                TopCountriesOfOrigin = _bookStatisticService.TopCountriesOfOrigin()?.Take(10).ToList(),
-                TopPurchaseCountries = _bookStatisticService.TopPurchaseCountries()?.Take(10).ToList(),
-                MostCompleted = _bookStatisticService.MostCompleted()?.Take(10).ToList(),
-                TopLocationsPurchased = _bookStatisticService.TopLocationsPurchased()?.Take(10).ToList(),
-                TopReleaseYears = _bookStatisticService.TopReleaseYears()?.Take(10).ToList()
+                TopPublishers = _bookStatisticService.TopPublishers(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                TopCountriesOfOrigin = _bookStatisticService.TopCountriesOfOrigin(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                TopPurchaseCountries = _bookStatisticService.TopPurchaseCountries(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                MostCompleted = _bookStatisticService.MostCompleted(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                TopLocationsPurchased = _bookStatisticService.TopLocationsPurchased(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                TopReleaseYears = _bookStatisticService.TopReleaseYears(numToTake: NUM_OF_TOP_TO_TAKE).ToList()
             };
 
             return View(model);
@@ -190,8 +190,8 @@ namespace UI.Controllers
 
             var model = new GameStatsViewModel
             {
-                TopDevelopers = _gameStatisticService.TopDevelopers()?.Take(NUM_OF_TOP_TO_TAKE).ToList(),
-                TopPublishers = _gameStatisticService.TopPublishers()?.Take(NUM_OF_TOP_TO_TAKE).ToList(),
+                TopDevelopers = _gameStatisticService.TopDevelopers(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                TopPublishers = _gameStatisticService.TopPublishers(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
                 NumFullGame = _gameStatisticService.NumFullGame(),
                 NumDLC = _gameStatisticService.NumDLC(),
                 NumExpansion = _gameStatisticService.NumExpansion(),
@@ -221,11 +221,11 @@ namespace UI.Controllers
                 NumNintendo3DS = _gameStatisticService.NumNintendo3DS(),
                 NumPSP = _gameStatisticService.NumPSP(),
                 NumPSVita = _gameStatisticService.NumPSVita(),
-                TopCountriesOfOrigin = _gameStatisticService.TopCountriesOfOrigin()?.Take(10).ToList(),
-                TopPurchaseCountries = _gameStatisticService.TopPurchaseCountries()?.Take(10).ToList(),
-                MostCompleted = _gameStatisticService.MostCompleted()?.Take(10).ToList(),
-                TopLocationsPurchased = _gameStatisticService.TopLocationsPurchased()?.Take(10).ToList(),
-                TopReleaseYears = _gameStatisticService.TopReleaseYears()?.Take(10).ToList()
+                TopCountriesOfOrigin = _gameStatisticService.TopCountriesOfOrigin(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                TopPurchaseCountries = _gameStatisticService.TopPurchaseCountries(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                MostCompleted = _gameStatisticService.MostCompleted(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                TopLocationsPurchased = _gameStatisticService.TopLocationsPurchased(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                TopReleaseYears = _gameStatisticService.TopReleaseYears(numToTake: NUM_OF_TOP_TO_TAKE).ToList()
             };
 
             return View(model);
@@ -238,7 +238,7 @@ namespace UI.Controllers
 
             var model = new MovieStatsViewModel
             {
-                TopDirectors = _movieStatisticService.TopDirectors()?.Take(NUM_OF_TOP_TO_TAKE).ToList(),
+                TopDirectors = _movieStatisticService.TopDirectors(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
                 NumDVD = _movieStatisticService.NumDVD(),
                 NumBluRay = _movieStatisticService.NumBluRay(),
                 NumRatedG = _movieStatisticService.NumRatedG(),
@@ -246,11 +246,11 @@ namespace UI.Controllers
                 NumRatedPG13 = _movieStatisticService.NumRatedPG13(),
                 NumRatedR = _movieStatisticService.NumRatedR(),
                 NumRatedNR = _movieStatisticService.NumRatedNR(),
-                TopCountriesOfOrigin = _movieStatisticService.TopCountriesOfOrigin()?.Take(NUM_OF_TOP_TO_TAKE).ToList(),
-                TopPurchaseCountries = _movieStatisticService.TopPurchaseCountries()?.Take(NUM_OF_TOP_TO_TAKE).ToList(),
-                MostCompleted = _movieStatisticService.MostCompleted()?.Take(NUM_OF_TOP_TO_TAKE).ToList(),
-                TopLocationsPurchased = _movieStatisticService.TopLocationsPurchased()?.Take(NUM_OF_TOP_TO_TAKE).ToList(),
-                TopReleaseYears = _movieStatisticService.TopReleaseYears()?.Take(NUM_OF_TOP_TO_TAKE).ToList()
+                TopCountriesOfOrigin = _movieStatisticService.TopCountriesOfOrigin(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                TopPurchaseCountries = _movieStatisticService.TopPurchaseCountries(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                MostCompleted = _movieStatisticService.MostCompleted(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                TopLocationsPurchased = _movieStatisticService.TopLocationsPurchased(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                TopReleaseYears = _movieStatisticService.TopReleaseYears(numToTake: NUM_OF_TOP_TO_TAKE).ToList()
             };
 
             return View(model);
@@ -263,12 +263,18 @@ namespace UI.Controllers
 
             var model = new PopStatsViewModel
             {
-                TopSeries = _popStatisticService.TopSeries()?.Take(NUM_OF_TOP_TO_TAKE).ToList(),
-                TopLines = _popStatisticService.TopLines()?.Take(NUM_OF_TOP_TO_TAKE).ToList(),
-                TopCountriesOfOrigin = _popStatisticService.TopCountriesOfOrigin()?.Take(NUM_OF_TOP_TO_TAKE).ToList(),
-                TopPurchaseCountries = _popStatisticService.TopPurchaseCountries()?.Take(NUM_OF_TOP_TO_TAKE).ToList(),
-                TopLocationsPurchased = _popStatisticService.TopLocationsPurchased()?.Take(NUM_OF_TOP_TO_TAKE).ToList(),
-                TopReleaseYears = _popStatisticService.TopReleaseYears()?.Take(NUM_OF_TOP_TO_TAKE).ToList()
+                TopSeries = _popStatisticService.TopSeries(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                TopLines = _popStatisticService.TopLines(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                TopCountriesOfOrigin = _popStatisticService.TopCountriesOfOrigin(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                TopPurchaseCountries = _popStatisticService.TopPurchaseCountries(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                TopLocationsPurchased = _popStatisticService.TopLocationsPurchased(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                TopReleaseYears = _popStatisticService.TopReleaseYears(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                TopSeriesUser = _popStatisticService.TopSeries(_user.GetUserID(), NUM_OF_TOP_TO_TAKE).ToList(),
+                TopLinesUser = _popStatisticService.TopLines(_user.GetUserID(), NUM_OF_TOP_TO_TAKE).ToList(),
+                TopCountriesOfOriginUser = _popStatisticService.TopCountriesOfOrigin(_user.GetUserID(), NUM_OF_TOP_TO_TAKE).ToList(),
+                TopPurchaseCountriesUser = _popStatisticService.TopPurchaseCountries(_user.GetUserID(), NUM_OF_TOP_TO_TAKE).ToList(),
+                TopLocationsPurchasedUser = _popStatisticService.TopLocationsPurchased(_user.GetUserID(), NUM_OF_TOP_TO_TAKE).ToList(),
+                TopReleaseYearsUser = _popStatisticService.TopReleaseYears(_user.GetUserID(), NUM_OF_TOP_TO_TAKE).ToList()
             };
 
             return View(model);
