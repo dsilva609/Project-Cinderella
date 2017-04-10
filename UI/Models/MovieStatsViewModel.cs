@@ -2,32 +2,58 @@
 
 namespace UI.Models
 {
-	public class MovieStatsViewModel
-	{
-		public List<string> TopDirectors { get; set; }
+    public class MovieStatsViewModel
+    {
+        public List<string> TopDirectors { get; set; }
 
-		public int NumDVD { get; set; }
+        public int NumDVD { get; set; }
 
-		public int NumBluRay { get; set; }
+        public int NumBluRay { get; set; }
 
-		public int NumRatedG { get; set; }
+        public int NumRatedG { get; set; }
 
-		public int NumRatedPG { get; set; }
+        public int NumRatedPG { get; set; }
 
-		public int NumRatedPG13 { get; set; }
+        public int NumRatedPG13 { get; set; }
 
-		public int NumRatedR { get; set; }
+        public int NumRatedR { get; set; }
 
-		public int NumRatedNR { get; set; }
+        public int NumRatedNR { get; set; }
 
-		public List<string> TopCountriesOfOrigin { get; set; }
+        public List<string> TopCountriesOfOrigin { get; set; }
 
-		public List<string> TopPurchaseCountries { get; set; }
+        public List<string> TopPurchaseCountries { get; set; }
 
-		public List<string> MostCompleted { get; set; }
+        public List<string> MostCompleted { get; set; }
 
-		public List<string> TopLocationsPurchased { get; set; }
+        public List<string> TopLocationsPurchased { get; set; }
 
-		public List<int> TopReleaseYears { get; set; }
-	}
+        public List<int> TopReleaseYears { get; set; }
+
+        public List<string> TopDirectorsUser { get; set; }
+
+        public int NumDVDUser { get; set; }
+
+        public int NumBluRayUser { get; set; }
+
+        public int NumRatedGUser { get; set; }
+
+        public int NumRatedPGUser { get; set; }
+
+        public int NumRatedPG13User { get; set; }
+
+        public int NumRatedRUser { get; set; }
+
+        public int NumRatedNRUser { get; set; }
+
+        public List<string> TopCountriesOfOriginUser { get; set; }
+
+        public List<string> TopPurchaseCountriesUser { get; set; }
+
+        public List<string> MostCompletedUser { get; set; }
+
+        public List<string> TopLocationsPurchasedUser { get; set; }
+
+        public List<int> TopReleaseYearsUser { get; set; }
+    }
 }

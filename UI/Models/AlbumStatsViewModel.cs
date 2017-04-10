@@ -20,5 +20,22 @@ namespace UI.Models
         public List<string> MostCompleted { get; set; }
         public List<string> TopLocationsPurchased { get; set; }
         public List<int> TopReleaseYears { get; set; }
+
+        public int NumVinylUser { get; set; }
+        public int NumCDUser { get; set; }
+        public int Num33RPMUser { get; set; }
+        public int Num45RPMUser { get; set; }
+        public int Num78RPMUser { get; set; }
+        public int Num12InchUser { get; set; }
+        public int Num10InchUser { get; set; }
+        public int Num7InchUser { get; set; }
+        public List<string> TopArtistsUser { get; set; }
+        public List<string> TopGenresUser { get; set; }
+        public List<string> TopRecordLabelsUser { get; set; }
+        public List<string> TopCountriesOfOriginUser { get; set; }
+        public List<string> TopPurchaseCountriesUser { get; set; }
+        public List<string> MostCompletedUser { get; set; }
+        public List<string> TopLocationsPurchasedUser { get; set; }
+        public List<int> TopReleaseYearsUser { get; set; }
     }
 }
