@@ -1,254 +1,32 @@
 ﻿@model UI.Models.GameStatsViewModel
 
-<div class="collapse in">
-	<div class="panel-body">
-		<ul class="list-group col-md-6">
-			<li class="list-group-item active">
-				Game Type Stats
-			</li>
-			<li class="list-group-item">
-				Full Game Count
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumFullGame</span>
-			</li>
-			<li class="list-group-item">
-				DLC Count
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumDLC</span>
-			</li>
-			<li class="list-group-item">
-				Expansion Count
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumExpansion</span>
-			</li>
-		</ul>
-	</div>
+<div data-toggle="collapse" data-parent="#accordion" href="#collection-info" style="padding-top: 1em;">
+    <div class="row panel panel-primary panel-collapse">
+        <div class="panel-heading">
+            <h4>
+                Game Stats
+                <span class="fa fa-chevron-circle-down"></span>
+            </h4>
+        </div>
+    </div>
 </div>
 
-<div class="collapse in">
-	<div class="panel-body">
-		<ul class="list-group col-md-6">
-			<li class="list-group-item active">
-				Rating Stats
-			</li>
-			<li class="list-group-item">
-				Rated EC
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumRatedEC</span>
-			</li>
-			<li class="list-group-item">
-				Rated E
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumRatedE</span>
-			</li>
-			<li class="list-group-item">
-				Rated E-10
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumRatedE10</span>
-			</li>
-			<li class="list-group-item">
-				Rated T
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumRatedT</span>
-			</li>
-			<li class="list-group-item">
-				Rated M
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumRatedM</span>
-			</li>
-			<li class="list-group-item">
-				Rated A
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumRatedA</span>
-			</li>
-		</ul>
-	</div>
-</div>
-
-<div class="collapse in">
-	<div class="panel-body">
-		<ul class="list-group col-md-6">
-			<li class="list-group-item active">
-				Platform Stats
-			</li>
-			<li class="list-group-item">
-				Board Game Count
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumBoardGame</span>
-			</li>
-			<li class="list-group-item">
-				PC Count
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumPC</span>
-			</li>
-			<li class="list-group-item">
-				PlayStation Count
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumPlayStation</span>
-			</li>
-			<li class="list-group-item">
-				PlayStation 2 Count
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumPlayStation2</span>
-			</li>
-			<li class="list-group-item">
-				PlayStation 3 Count
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumPlayStation3</span>
-			</li>
-			<li class="list-group-item">
-				PlayStation 4 Count
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumPlayStation4</span>
-			</li>
-			<li class="list-group-item">
-				Xbox Count
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumXbox</span>
-			</li>
-			<li class="list-group-item">
-				Xbox 360 Count
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumXbox360</span>
-			</li>
-			<li class="list-group-item">
-				Xbox One Count
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumXboxOne</span>
-			</li>
-			<li class="list-group-item">
-				Nintendo 64 Count
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumNintendo64</span>
-			</li>
-			<li class="list-group-item">
-				GameCube Count
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumGameCube</span>
-			</li>
-			<li class="list-group-item">
-				Wii Count
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumWii</span>
-			</li>
-			<li class="list-group-item">
-				Wii U
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumWiiU</span>
-			</li>
-			<li class="list-group-item">
-				Nintendo Switch Count
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumNintendoSwitch</span>
-			</li>
-			<li class="list-group-item">
-				GameBoy Count
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumGameBoy</span>
-			</li>
-			<li class="list-group-item">
-				GameBoy Advance Count
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumGameBoyAdvance</span>
-			</li>
-			<li class="list-group-item">
-				Nintendo DS Count
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumNintendoDS</span>
-			</li>
-			<li class="list-group-item">
-				Nintendo 3DS Count
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumNintendo3DS</span>
-			</li>
-			<li class="list-group-item">
-				PSP Count
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumPSP</span>
-			</li>
-			<li class="list-group-item">
-				PS Vita Count
-				<span class="tag tag-info tag-pill pull-xs-right">@Model.NumPSVita</span>
-			</li>
-		</ul>
-	</div>
-</div>
-
-<div class="collapse in">
-	<div class="panel-body">
-		<ul class="list-group col-md-6">
-			<li class="list-group-item active">
-				Top Developers
-			</li>
-			@foreach (var developer in Model.TopDevelopers)
-			{
-				<li class="list-group-item">
-					@developer
-				</li>
-			}
-		</ul>
-	</div>
-</div>
-<div class="collapse in">
-	<div class="panel-body">
-		<ul class="list-group col-md-6">
-			<li class="list-group-item active">
-				Top Publishers
-			</li>
-			@foreach (var publisher in Model.TopPublishers)
-			{
-				<li class="list-group-item">
-					@publisher
-				</li>
-			}
-		</ul>
-	</div>
-</div>
-
-<div class="collapse in">
-	<div class="panel-body">
-		<ul class="list-group col-md-6">
-			<li class="list-group-item active">
-				Top Countries of Origin
-			</li>
-			@foreach (var country in Model.TopCountriesOfOrigin)
-			{
-				<li class="list-group-item">
-					@country
-				</li>
-			}
-		</ul>
-	</div>
-</div>
-<div class="collapse in">
-	<div class="panel-body">
-		<ul class="list-group col-md-6">
-			<li class="list-group-item active">
-				Top Purchase Countries
-			</li>
-			@foreach (var country in Model.TopPurchaseCountries)
-			{
-				<li class="list-group-item">
-					@country
-				</li>
-			}
-		</ul>
-	</div>
-</div>
-<div class="collapse in">
-	<div class="panel-body">
-		<ul class="list-group col-md-6">
-			<li class="list-group-item active">
-				Top Completed
-			</li>
-			@foreach (var title in Model.MostCompleted)
-			{
-				<li class="list-group-item">
-					@title
-				</li>
-			}
-		</ul>
-	</div>
-</div>
-<div class="collapse in">
-	<div class="panel-body">
-		<ul class="list-group col-md-6">
-			<li class="list-group-item active">
-				Top Locations Purchased
-			</li>
-			@foreach (var location in Model.TopLocationsPurchased)
-			{
-				<li class="list-group-item">
-					@location
-				</li>
-			}
-		</ul>
-	</div>
-</div>
-<div class="collapse in">
-	<div class="panel-body">
-		<ul class="list-group col-md-6">
-			<li class="list-group-item active">
-				Top Release Years
-			</li>
-			@foreach (var year in Model.TopReleaseYears)
-			{
-				<li class="list-group-item">
-					@year
-				</li>
-			}
-		</ul>
-	</div>
+<div id="collection-info" class="collapse in">
+    <div class="panel-body row">
+        <div class="panel-heading">
+            <h4 class="col-md-6">
+                Global
+                <span class="fa fa-globe"></span>
+            </h4>
+            <h4 class="col-md-6">
+                User
+                <span class="fa fa-user"></span>
+            </h4>
+        </div>
+        <div class="col-md-6">@Html.Partial(MVC.Statistics.Views._GameStatsTable, Model.Global)</div>
+        @if (Model.User != null)
+        {
+            <div class="col-md-6">@Html.Partial(MVC.Statistics.Views._GameStatsTable, Model.User)</div>
+        }
+    </div>
 </div>

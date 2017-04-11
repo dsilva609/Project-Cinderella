@@ -1,97 +1,33 @@
 ﻿@model UI.Models.PopStatsViewModel
 
-<div class="collapse in">
-	<div class="panel-body">
-		<ul class="list-group col-md-6">
-			<li class="list-group-item active">
-				Top Series
-			</li>
-			@foreach (var series in Model.TopSeries)
-			{
-				<li class="list-group-item">
-					@series
-				</li>
-			}
-		</ul>
-	</div>
+<div data-toggle="collapse" data-parent="#accordion" href="#collection-info" style="padding-top: 1em;">
+    <div class="row panel panel-primary panel-collapse">
+        <div class="panel-heading">
+            <h4>
+                Pop Stats
+                <span class="fa fa-chevron-circle-down"></span>
+            </h4>
+        </div>
+    </div>
 </div>
 
-<div class="collapse in">
-	<div class="panel-body">
-		<ul class="list-group col-md-6">
-			<li class="list-group-item active">
-				Top Lines
-			</li>
-			@foreach (var line in Model.TopLines)
-			{
-				<li class="list-group-item">
-					@line
-				</li>
-			}
-		</ul>
-	</div>
-</div>
+<div id="collection-info" class="collapse in">
+    <div class="panel-body row">
+        <div class="panel-heading">
+            <h4 class="col-md-6">
+                Global
+                <span class="fa fa-globe"></span>
+            </h4>
+            <h4 class="col-md-6">
+                User
+                <span class="fa fa-user"></span>
+            </h4>
+        </div>
+        <div class="col-md-6">@Html.Partial(MVC.Statistics.Views._PopStatsTable, Model.Global)</div>
+        @if (Model.User != null)
+        {
 
-<div class="collapse in">
-	<div class="panel-body">
-		<ul class="list-group col-md-6">
-			<li class="list-group-item active">
-				Top Countries of Origin
-			</li>
-			@foreach (var country in Model.TopCountriesOfOrigin)
-			{
-				<li class="list-group-item">
-					@country
-				</li>
-			}
-		</ul>
-	</div>
-</div>
-
-<div class="collapse in">
-	<div class="panel-body">
-		<ul class="list-group col-md-6">
-			<li class="list-group-item active">
-				Top Purchase Countries
-			</li>
-			@foreach (var country in Model.TopPurchaseCountries)
-			{
-				<li class="list-group-item">
-					@country
-				</li>
-			}
-		</ul>
-	</div>
-</div>
-
-<div class="collapse in">
-	<div class="panel-body">
-		<ul class="list-group col-md-6">
-			<li class="list-group-item active">
-				Top Locations Purchased
-			</li>
-			@foreach (var location in Model.TopLocationsPurchased)
-			{
-				<li class="list-group-item">
-					@location
-				</li>
-			}
-		</ul>
-	</div>
-</div>
-
-<div class="collapse in">
-	<div class="panel-body">
-		<ul class="list-group col-md-6">
-			<li class="list-group-item active">
-				Top Release Years
-			</li>
-			@foreach (var year in Model.TopReleaseYears)
-			{
-				<li class="list-group-item">
-					@year
-				</li>
-			}
-		</ul>
-	</div>
+            <div class="col-md-6">@Html.Partial(MVC.Statistics.Views._PopStatsTable, Model.User)</div>
+        }
+    </div>
 </div>

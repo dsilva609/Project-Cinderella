@@ -1,0 +1,165 @@
+﻿@model UI.Models.AlbumStatsModel
+
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Album Stats
+            </li>
+            <li class="list-group-item">
+                Vinyl Count
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumVinyl</span>
+            </li>
+            <li class="list-group-item">
+                CD Count
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumCD</span>
+            </li>
+            <li class="list-group-item">
+                33 1/3 RPM Count
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.Num33RPM</span>
+            </li>
+            <li class="list-group-item">
+                45 RPM Count
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.Num45RPM</span>
+            </li>
+            <li class="list-group-item">
+                78 RPM Count
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.Num78RPM</span>
+            </li>
+            <li class="list-group-item">
+                12" Record Count
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.Num12Inch</span>
+            </li>
+            <li class="list-group-item">
+                10" Record Count
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.Num10Inch</span>
+            </li>
+            <li class="list-group-item">
+                7" Record Count
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.Num7Inch</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Top Artists
+            </li>
+            @foreach (var artist in Model.TopArtists)
+            {
+                <li class="list-group-item">
+                    @artist
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Top Genres
+            </li>
+            @foreach (var genre in Model.TopGenres)
+            {
+                <li class="list-group-item">
+                    @genre
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Top Record Labels
+            </li>
+            @foreach (var recordLabel in Model.TopRecordLabels)
+            {
+                <li class="list-group-item">
+                    @recordLabel
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Top Countries of Origin
+            </li>
+            @foreach (var country in Model.TopCountriesOfOrigin)
+            {
+                <li class="list-group-item">
+                    @country
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Top Purchase Countries
+            </li>
+            @foreach (var country in Model.TopPurchaseCountries)
+            {
+                <li class="list-group-item">
+                    @country
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Top Completed
+            </li>
+            @foreach (var title in Model.MostCompleted)
+            {
+                <li class="list-group-item">
+                    @title
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Top Locations Purchased
+            </li>
+            @foreach (var location in Model.TopLocationsPurchased)
+            {
+                <li class="list-group-item">
+                    @location
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Top Release Years
+            </li>
+            @foreach (var year in Model.TopReleaseYears)
+            {
+                <li class="list-group-item">
+                    @year
+                </li>
+            }
+        </ul>
+    </div>
+</div>

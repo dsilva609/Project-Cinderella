@@ -850,6 +850,11 @@
     <Content Include="Views\Statistics\MovieStats.cshtml" />
     <Content Include="Views\Statistics\BookStats.cshtml" />
     <Content Include="Views\Statistics\GameStats.cshtml" />
+    <Content Include="Views\Statistics\_PopStatsTable.cshtml" />
+    <Content Include="Views\Statistics\_MovieStatsTable.cshtml" />
+    <Content Include="Views\Statistics\_GameStatsTable.cshtml" />
+    <Content Include="Views\Statistics\_BookStatsTable.cshtml" />
+    <Content Include="Views\Statistics\_AlbumStatsTable.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

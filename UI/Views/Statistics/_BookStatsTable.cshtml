@@ -1,0 +1,127 @@
+﻿@model UI.Models.BookStatsModel
+
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Book Stats
+            </li>
+            <li class="list-group-item">
+                Novel Count
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumNovel</span>
+            </li>
+            <li class="list-group-item">
+                Comic Count
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumComic</span>
+            </li>
+            <li class="list-group-item">
+                Manga Count
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumManga</span>
+            </li>
+            <li class="list-group-item">
+                Hardcover Count
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumHardcover</span>
+            </li>
+            <li class="list-group-item">
+                First Edition Count
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumFirstEdition</span>
+            </li>
+            <li class="list-group-item">
+                Total Page Count
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.TotalPageCount</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Top Publishers
+            </li>
+            @foreach (var publisher in Model.TopPublishers)
+            {
+                <li class="list-group-item">
+                    @publisher
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Top Countries of Origin
+            </li>
+            @foreach (var country in Model.TopCountriesOfOrigin)
+            {
+                <li class="list-group-item">
+                    @country
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Top Purchase Countries
+            </li>
+            @foreach (var country in Model.TopPurchaseCountries)
+            {
+                <li class="list-group-item">
+                    @country
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Top Completed
+            </li>
+            @foreach (var title in Model.MostCompleted)
+            {
+                <li class="list-group-item">
+                    @title
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Top Locations Purchased
+            </li>
+            @foreach (var location in Model.TopLocationsPurchased)
+            {
+                <li class="list-group-item">
+                    @location
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Top Release Years
+            </li>
+            @foreach (var year in Model.TopReleaseYears)
+            {
+                <li class="list-group-item">
+                    @year
+                </li>
+            }
+        </ul>
+    </div>
+</div>

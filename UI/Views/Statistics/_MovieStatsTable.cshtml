@@ -1,0 +1,141 @@
+﻿@model UI.Models.MovieStatsModel
+
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Movie Stats
+            </li>
+            <li class="list-group-item">
+                Blu Ray Count
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumBluRay</span>
+            </li>
+            <li class="list-group-item">
+                DVD Count
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumDVD</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Rating Stats
+            </li>
+            <li class="list-group-item">
+                Rated G
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumRatedG</span>
+            </li>
+            <li class="list-group-item">
+                Rated PG
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumRatedPG</span>
+            </li>
+            <li class="list-group-item">
+                Rated PG 13
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumRatedPG13</span>
+            </li>
+            <li class="list-group-item">
+                Rated R
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumRatedR</span>
+            </li>
+            <li class="list-group-item">
+                Rated NR
+                <span class="tag tag-info tag-pill pull-xs-right">@Model.NumRatedNR</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Top Directors
+            </li>
+            @foreach (var director in Model.TopDirectors)
+            {
+                <li class="list-group-item">
+                    @director
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Top Countries of Origin
+            </li>
+            @foreach (var country in Model.TopCountriesOfOrigin)
+            {
+                <li class="list-group-item">
+                    @country
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Top Purchase Countries
+            </li>
+            @foreach (var country in Model.TopPurchaseCountries)
+            {
+                <li class="list-group-item">
+                    @country
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Top Completed
+            </li>
+            @foreach (var title in Model.MostCompleted)
+            {
+                <li class="list-group-item">
+                    @title
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Top Locations Purchased
+            </li>
+            @foreach (var location in Model.TopLocationsPurchased)
+            {
+                <li class="list-group-item">
+                    @location
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Top Release Years
+            </li>
+            @foreach (var year in Model.TopReleaseYears)
+            {
+                <li class="list-group-item">
+                    @year
+                </li>
+            }
+        </ul>
+    </div>
+</div>

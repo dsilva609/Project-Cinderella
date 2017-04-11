@@ -102,6 +102,11 @@ namespace UI.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _AlbumStatsTable = "_AlbumStatsTable";
+                public readonly string _BookStatsTable = "_BookStatsTable";
+                public readonly string _GameStatsTable = "_GameStatsTable";
+                public readonly string _MovieStatsTable = "_MovieStatsTable";
+                public readonly string _PopStatsTable = "_PopStatsTable";
                 public readonly string _StatsTable = "_StatsTable";
                 public readonly string AlbumStats = "AlbumStats";
                 public readonly string BookStats = "BookStats";
@@ -110,6 +115,11 @@ namespace UI.Controllers
                 public readonly string MovieStats = "MovieStats";
                 public readonly string PopStats = "PopStats";
             }
+            public readonly string _AlbumStatsTable = "~/Views/Statistics/_AlbumStatsTable.cshtml";
+            public readonly string _BookStatsTable = "~/Views/Statistics/_BookStatsTable.cshtml";
+            public readonly string _GameStatsTable = "~/Views/Statistics/_GameStatsTable.cshtml";
+            public readonly string _MovieStatsTable = "~/Views/Statistics/_MovieStatsTable.cshtml";
+            public readonly string _PopStatsTable = "~/Views/Statistics/_PopStatsTable.cshtml";
             public readonly string _StatsTable = "~/Views/Statistics/_StatsTable.cshtml";
             public readonly string AlbumStats = "~/Views/Statistics/AlbumStats.cshtml";
             public readonly string BookStats = "~/Views/Statistics/BookStats.cshtml";
