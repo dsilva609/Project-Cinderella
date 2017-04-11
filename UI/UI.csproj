@@ -950,11 +950,14 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AlbumStatsModel.cs" />
     <Compile Include="Models\AlbumStatsViewModel.cs" />
     <Compile Include="Models\BaseViewModel.cs" />
+    <Compile Include="Models\BookStatsModel.cs" />
     <Compile Include="Models\BookStatsViewModel.cs" />
     <Compile Include="Models\BookViewModel.cs" />
     <Compile Include="Models\GameSearchModel.cs" />
+    <Compile Include="Models\GameStatsModel.cs" />
     <Compile Include="Models\GameStatsViewModel.cs" />
     <Compile Include="Models\ItemViewModel.cs" />
     <Compile Include="Models\MovieSearchModel.cs" />
@@ -964,9 +967,11 @@
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MovieStatsModel.cs" />
     <Compile Include="Models\MovieStatsViewModel.cs" />
     <Compile Include="Models\MovieViewModel.cs" />
     <Compile Include="Models\AlbumViewModel.cs" />
+    <Compile Include="Models\PopStatsModel.cs" />
     <Compile Include="Models\PopStatsViewModel.cs" />
     <Compile Include="Models\PopViewModel.cs" />
     <Compile Include="Models\QueueItemViewModel.cs" />
