@@ -12,7 +12,10 @@
 			type: 'donut'
 		},
 		donut: {
-			title: "@Model.Title"
+			title: "@Model.Title",
+			label: {
+				format: function(value) { return value; }
+			}
 		}
 	});
 </script>
