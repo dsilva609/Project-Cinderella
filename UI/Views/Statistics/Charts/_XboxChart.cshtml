@@ -1,21 +1,21 @@
 ﻿@model UI.Models.GameStatsModel
 
-	<script>
-		c3.generate({
-			bindto: '#@Model.ID',
-			data: {
-				columns: [
-					['Xbox', @Model.NumXbox],
-					['Xbox 360', @Model.NumXbox360],
-					['Xbox One', @Model.NumXboxOne]
-				],
-				type: 'donut'
-			},
-			donut: {
-				title: "@Model.Title",
-				label: {
-					format: function (value) { return value; }
-				}
+<script>
+	c3.generate({
+		bindto: '#@Model.ID',
+		data: {
+			columns: [
+				['Xbox', @Model.NumXbox],
+				['Xbox 360', @Model.NumXbox360],
+				['Xbox One', @Model.NumXboxOne]
+			],
+			type: 'donut'
+		},
+		donut: {
+			title: "@Model.Title",
+			label: {
+				format: function (value) { return value; }
 			}
-		});
-	</script>
+		}
+	});
+</script>

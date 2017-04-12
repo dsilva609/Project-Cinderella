@@ -872,6 +872,11 @@
     <Content Include="Views\Statistics\Charts\_MovieRatingChart.cshtml" />
     <Content Include="Views\Statistics\Charts\_GameTypeChart.cshtml" />
     <Content Include="Views\Statistics\Charts\_GameRatingChart.cshtml" />
+    <Content Include="Views\Statistics\Charts\_PlayStationChart.cshtml" />
+    <Content Include="Views\Statistics\Charts\_XboxChart.cshtml" />
+    <Content Include="Views\Statistics\Charts\_NintendoChart.cshtml" />
+    <Content Include="Views\Statistics\Charts\_HandheldChart.cshtml" />
+    <Content Include="Views\Statistics\Charts\_CurrentGeneration.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
