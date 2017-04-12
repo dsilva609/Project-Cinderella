@@ -57,7 +57,7 @@ class Views.Shared.Layout
 		$(".category").select2({
 			placeholder: "Select a category",
 			tags: true,
-			tokenSeparators: [',', ' ']})
+			tokenSeparators: [',']});
 			
 $ -> 
 	_layout = new Views.Shared.Layout

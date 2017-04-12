@@ -62,7 +62,7 @@
       return $(".category").select2({
         placeholder: "Select a category",
         tags: true,
-        tokenSeparators: [',', ' ']
+        tokenSeparators: [',']
       });
     };
 
