@@ -864,6 +864,14 @@
     <Content Include="Views\Statistics\_GameStatsTable.cshtml" />
     <Content Include="Views\Statistics\_BookStatsTable.cshtml" />
     <Content Include="Views\Statistics\_AlbumStatsTable.cshtml" />
+    <Content Include="Views\Statistics\Charts\_AlbumTypeChart.cshtml" />
+    <Content Include="Views\Statistics\Charts\_AlbumSpeedChart.cshtml" />
+    <Content Include="Views\Statistics\Charts\_AlbumFormatChart.cshtml" />
+    <Content Include="Views\Statistics\Charts\_BookTypeChart.cshtml" />
+    <Content Include="Views\Statistics\Charts\_MovieTypeChart.cshtml" />
+    <Content Include="Views\Statistics\Charts\_MovieRatingChart.cshtml" />
+    <Content Include="Views\Statistics\Charts\_GameTypeChart.cshtml" />
+    <Content Include="Views\Statistics\Charts\_GameRatingChart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

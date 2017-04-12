@@ -136,15 +136,41 @@ namespace UI.Controllers
                 public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
                 public class _ViewNamesClass
                 {
+                    public readonly string _AlbumFormatChart = "_AlbumFormatChart";
+                    public readonly string _AlbumSpeedChart = "_AlbumSpeedChart";
+                    public readonly string _AlbumTypeChart = "_AlbumTypeChart";
+                    public readonly string _BookTypeChart = "_BookTypeChart";
                     public readonly string _CompletionStatusChart = "_CompletionStatusChart";
                     public readonly string _ConditionCharts = "_ConditionCharts";
+                    public readonly string _CurrentGeneration = "_CurrentGeneration";
+                    public readonly string _GameRatingChart = "_GameRatingChart";
+                    public readonly string _GameTypeChart = "_GameTypeChart";
+                    public readonly string _HandheldChart = "_HandheldChart";
                     public readonly string _ItemTypeChart = "_ItemTypeChart";
                     public readonly string _MediaTypesChart = "_MediaTypesChart";
+                    public readonly string _MovieRatingChart = "_MovieRatingChart";
+                    public readonly string _MovieTypeChart = "_MovieTypeChart";
+                    public readonly string _NintendoChart = "_NintendoChart";
+                    public readonly string _PlayStationChart = "_PlayStationChart";
+                    public readonly string _XboxChart = "_XboxChart";
                 }
+                public readonly string _AlbumFormatChart = "~/Views/Statistics/Charts/_AlbumFormatChart.cshtml";
+                public readonly string _AlbumSpeedChart = "~/Views/Statistics/Charts/_AlbumSpeedChart.cshtml";
+                public readonly string _AlbumTypeChart = "~/Views/Statistics/Charts/_AlbumTypeChart.cshtml";
+                public readonly string _BookTypeChart = "~/Views/Statistics/Charts/_BookTypeChart.cshtml";
                 public readonly string _CompletionStatusChart = "~/Views/Statistics/Charts/_CompletionStatusChart.cshtml";
                 public readonly string _ConditionCharts = "~/Views/Statistics/Charts/_ConditionCharts.cshtml";
+                public readonly string _CurrentGeneration = "~/Views/Statistics/Charts/_CurrentGeneration.cshtml";
+                public readonly string _GameRatingChart = "~/Views/Statistics/Charts/_GameRatingChart.cshtml";
+                public readonly string _GameTypeChart = "~/Views/Statistics/Charts/_GameTypeChart.cshtml";
+                public readonly string _HandheldChart = "~/Views/Statistics/Charts/_HandheldChart.cshtml";
                 public readonly string _ItemTypeChart = "~/Views/Statistics/Charts/_ItemTypeChart.cshtml";
                 public readonly string _MediaTypesChart = "~/Views/Statistics/Charts/_MediaTypesChart.cshtml";
+                public readonly string _MovieRatingChart = "~/Views/Statistics/Charts/_MovieRatingChart.cshtml";
+                public readonly string _MovieTypeChart = "~/Views/Statistics/Charts/_MovieTypeChart.cshtml";
+                public readonly string _NintendoChart = "~/Views/Statistics/Charts/_NintendoChart.cshtml";
+                public readonly string _PlayStationChart = "~/Views/Statistics/Charts/_PlayStationChart.cshtml";
+                public readonly string _XboxChart = "~/Views/Statistics/Charts/_XboxChart.cshtml";
             }
         }
     }

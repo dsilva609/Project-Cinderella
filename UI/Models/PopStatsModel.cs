@@ -2,18 +2,18 @@
 
 namespace UI.Models
 {
-    public class PopStatsModel
-    {
-        public List<string> TopSeries { get; set; }
+	public class PopStatsModel : ChartData
+	{
+		public List<string> TopSeries { get; set; }
 
-        public List<string> TopLines { get; set; }
+		public List<string> TopLines { get; set; }
 
-        public List<string> TopCountriesOfOrigin { get; set; }
+		public List<string> TopCountriesOfOrigin { get; set; }
 
-        public List<string> TopPurchaseCountries { get; set; }
+		public List<string> TopPurchaseCountries { get; set; }
 
-        public List<string> TopLocationsPurchased { get; set; }
+		public List<string> TopLocationsPurchased { get; set; }
 
-        public List<int> TopReleaseYears { get; set; }
-    }
+		public List<int> TopReleaseYears { get; set; }
+	}
 }
