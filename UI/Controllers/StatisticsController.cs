@@ -155,7 +155,9 @@ namespace UI.Controllers
                     TopPurchaseCountries = _albumStatisticService.TopPurchaseCountries(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
                     MostCompleted = _albumStatisticService.MostCompleted(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
                     TopLocationsPurchased = _albumStatisticService.TopLocationsPurchased(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
-                    TopReleaseYears = _albumStatisticService.TopReleaseYears(numToTake: NUM_OF_TOP_TO_TAKE).ToList()
+                    TopReleaseYears = _albumStatisticService.TopReleaseYears(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
+                    Title = "Global Album Types",
+                    ID = "global-album-types"
                 },
                 User = new AlbumStatsModel
                 {
@@ -174,7 +176,9 @@ namespace UI.Controllers
                     TopPurchaseCountries = _albumStatisticService.TopPurchaseCountries(_user.GetUserID(), NUM_OF_TOP_TO_TAKE).ToList(),
                     MostCompleted = _albumStatisticService.MostCompleted(_user.GetUserID(), NUM_OF_TOP_TO_TAKE).ToList(),
                     TopLocationsPurchased = _albumStatisticService.TopLocationsPurchased(_user.GetUserID(), NUM_OF_TOP_TO_TAKE).ToList(),
-                    TopReleaseYears = _albumStatisticService.TopReleaseYears(_user.GetUserID(), NUM_OF_TOP_TO_TAKE).ToList()
+                    TopReleaseYears = _albumStatisticService.TopReleaseYears(_user.GetUserID(), NUM_OF_TOP_TO_TAKE).ToList(),
+                    Title = "User Album Types",
+                    ID = "user-album-types"
                 }
             };
 
