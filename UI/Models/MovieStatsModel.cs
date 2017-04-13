@@ -2,32 +2,41 @@
 
 namespace UI.Models
 {
-	public class MovieStatsModel : ChartData
-	{
-		public List<string> TopDirectors { get; set; }
+    public class MovieStatsModel
+    {
+        public List<string> TopDirectors { get; set; }
 
-		public int NumDVD { get; set; }
+        public MovieTypesModel Types { get; set; }
+        public MovieRatingModel Ratings { get; set; }
 
-		public int NumBluRay { get; set; }
+        public List<string> TopCountriesOfOrigin { get; set; }
 
-		public int NumRatedG { get; set; }
+        public List<string> TopPurchaseCountries { get; set; }
 
-		public int NumRatedPG { get; set; }
+        public List<string> MostCompleted { get; set; }
 
-		public int NumRatedPG13 { get; set; }
+        public List<string> TopLocationsPurchased { get; set; }
 
-		public int NumRatedR { get; set; }
+        public List<int> TopReleaseYears { get; set; }
+    }
 
-		public int NumRatedNR { get; set; }
+    public class MovieTypesModel : ChartData
+    {
+        public int NumDVD { get; set; }
 
-		public List<string> TopCountriesOfOrigin { get; set; }
+        public int NumBluRay { get; set; }
+    }
 
-		public List<string> TopPurchaseCountries { get; set; }
+    public class MovieRatingModel : ChartData
+    {
+        public int NumRatedG { get; set; }
 
-		public List<string> MostCompleted { get; set; }
+        public int NumRatedPG { get; set; }
 
-		public List<string> TopLocationsPurchased { get; set; }
+        public int NumRatedPG13 { get; set; }
 
-		public List<int> TopReleaseYears { get; set; }
-	}
+        public int NumRatedR { get; set; }
+
+        public int NumRatedNR { get; set; }
+    }
 }

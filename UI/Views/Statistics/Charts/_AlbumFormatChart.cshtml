@@ -1,21 +1,21 @@
-﻿@model UI.Models.AlbumStatsModel
+﻿@model UI.Models.AlbumFormatModel
 
 <script>
-	c3.generate({
-		bindto: '#@Model.ID',
-		data: {
-			columns: [
-				['12"', @Model.Num12Inch],
-				['10"', @Model.Num10Inch],
-				['7"', @Model.Num7Inch]
-			],
-			type: 'donut'
-		},
-		donut: {
-			title: "@Model.Title",
-			label: {
-				format: function (value) { return value; }
-			}
-		}
-	});
+    c3.generate({
+        bindto: '#@Model.ID',
+        data: {
+            columns: [
+                ['12"', @Model.Num12Inch],
+                ['10"', @Model.Num10Inch],
+                ['7"', @Model.Num7Inch]
+            ],
+            type: 'donut'
+        },
+        donut: {
+            title: "@Model.Title",
+            label: {
+                format: function (value) { return value; }
+            }
+        }
+    });
 </script>

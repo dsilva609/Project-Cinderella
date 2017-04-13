@@ -983,6 +983,7 @@
     <Compile Include="Models\BookStatsModel.cs" />
     <Compile Include="Models\BookStatsViewModel.cs" />
     <Compile Include="Models\BookViewModel.cs" />
+    <Compile Include="Models\ChartData.cs" />
     <Compile Include="Models\GameSearchModel.cs" />
     <Compile Include="Models\GameStatsModel.cs" />
     <Compile Include="Models\GameStatsViewModel.cs" />

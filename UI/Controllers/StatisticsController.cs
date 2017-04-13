@@ -140,14 +140,29 @@ namespace UI.Controllers
             {
                 Global = new AlbumStatsModel
                 {
-                    NumVinyl = _albumStatisticService.NumVinyl(),
-                    NumCD = _albumStatisticService.NumCD(),
-                    Num33RPM = _albumStatisticService.Num3313RPM(),
-                    Num45RPM = _albumStatisticService.Num45RPM(),
-                    Num78RPM = _albumStatisticService.Num78RPM(),
-                    Num12Inch = _albumStatisticService.Num12Inch(),
-                    Num10Inch = _albumStatisticService.Num10Inch(),
-                    Num7Inch = _albumStatisticService.Num7Inch(),
+                    Types = new AlbumTypesModel
+                    {
+                        NumVinyl = _albumStatisticService.NumVinyl(),
+                        NumCD = _albumStatisticService.NumCD(),
+                        Title = "Global Album Types",
+                        ID = "global-album-types"
+                    },
+                    Speeds = new AlbumSpeedModel
+                    {
+                        Num33RPM = _albumStatisticService.Num3313RPM(),
+                        Num45RPM = _albumStatisticService.Num45RPM(),
+                        Num78RPM = _albumStatisticService.Num78RPM(),
+                        Title = "Global Album Speeds",
+                        ID = "global-album-speeds"
+                    },
+                    Formats = new AlbumFormatModel
+                    {
+                        Num12Inch = _albumStatisticService.Num12Inch(),
+                        Num10Inch = _albumStatisticService.Num10Inch(),
+                        Num7Inch = _albumStatisticService.Num7Inch(),
+                        Title = "Global Album Formats",
+                        ID = "global-album-formats"
+                    },
                     TopArtists = _albumStatisticService.TopArtists(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
                     TopGenres = _albumStatisticService.TopGenres(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
                     TopRecordLabels = _albumStatisticService.TopRecordLabels(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
@@ -155,20 +170,33 @@ namespace UI.Controllers
                     TopPurchaseCountries = _albumStatisticService.TopPurchaseCountries(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
                     MostCompleted = _albumStatisticService.MostCompleted(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
                     TopLocationsPurchased = _albumStatisticService.TopLocationsPurchased(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
-                    TopReleaseYears = _albumStatisticService.TopReleaseYears(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
-                    Title = "Global Album Types",
-                    ID = "global-album-types"
+                    TopReleaseYears = _albumStatisticService.TopReleaseYears(numToTake: NUM_OF_TOP_TO_TAKE).ToList()
                 },
                 User = new AlbumStatsModel
                 {
-                    NumVinyl = _albumStatisticService.NumVinyl(_user.GetUserID()),
-                    NumCD = _albumStatisticService.NumCD(_user.GetUserID()),
-                    Num33RPM = _albumStatisticService.Num3313RPM(_user.GetUserID()),
-                    Num45RPM = _albumStatisticService.Num45RPM(_user.GetUserID()),
-                    Num78RPM = _albumStatisticService.Num78RPM(_user.GetUserID()),
-                    Num12Inch = _albumStatisticService.Num12Inch(_user.GetUserID()),
-                    Num10Inch = _albumStatisticService.Num10Inch(_user.GetUserID()),
-                    Num7Inch = _albumStatisticService.Num7Inch(_user.GetUserID()),
+                    Types = new AlbumTypesModel
+                    {
+                        NumVinyl = _albumStatisticService.NumVinyl(_user.GetUserID()),
+                        NumCD = _albumStatisticService.NumCD(_user.GetUserID()),
+                        Title = "User Album Types",
+                        ID = "user-album-types"
+                    },
+                    Speeds = new AlbumSpeedModel
+                    {
+                        Num33RPM = _albumStatisticService.Num3313RPM(_user.GetUserID()),
+                        Num45RPM = _albumStatisticService.Num45RPM(_user.GetUserID()),
+                        Num78RPM = _albumStatisticService.Num78RPM(_user.GetUserID()),
+                        Title = "User Album Speeds",
+                        ID = "user-album-speeds"
+                    },
+                    Formats = new AlbumFormatModel
+                    {
+                        Num12Inch = _albumStatisticService.Num12Inch(_user.GetUserID()),
+                        Num10Inch = _albumStatisticService.Num10Inch(_user.GetUserID()),
+                        Num7Inch = _albumStatisticService.Num7Inch(_user.GetUserID()),
+                        Title = "User Album Formats",
+                        ID = "user-album-formats"
+                    },
                     TopArtists = _albumStatisticService.TopArtists(_user.GetUserID(), NUM_OF_TOP_TO_TAKE).ToList(),
                     TopGenres = _albumStatisticService.TopGenres(_user.GetUserID(), NUM_OF_TOP_TO_TAKE).ToList(),
                     TopRecordLabels = _albumStatisticService.TopRecordLabels(_user.GetUserID(), NUM_OF_TOP_TO_TAKE).ToList(),
@@ -176,9 +204,7 @@ namespace UI.Controllers
                     TopPurchaseCountries = _albumStatisticService.TopPurchaseCountries(_user.GetUserID(), NUM_OF_TOP_TO_TAKE).ToList(),
                     MostCompleted = _albumStatisticService.MostCompleted(_user.GetUserID(), NUM_OF_TOP_TO_TAKE).ToList(),
                     TopLocationsPurchased = _albumStatisticService.TopLocationsPurchased(_user.GetUserID(), NUM_OF_TOP_TO_TAKE).ToList(),
-                    TopReleaseYears = _albumStatisticService.TopReleaseYears(_user.GetUserID(), NUM_OF_TOP_TO_TAKE).ToList(),
-                    Title = "User Album Types",
-                    ID = "user-album-types"
+                    TopReleaseYears = _albumStatisticService.TopReleaseYears(_user.GetUserID(), NUM_OF_TOP_TO_TAKE).ToList()
                 }
             };
 
@@ -194,9 +220,14 @@ namespace UI.Controllers
             {
                 Global = new BookStatsModel
                 {
-                    NumNovel = _bookStatisticService.NumNovel(),
-                    NumComic = _bookStatisticService.NumComic(),
-                    NumManga = _bookStatisticService.NumManga(),
+                    Types = new BookTypesModel
+                    {
+                        NumNovel = _bookStatisticService.NumNovel(),
+                        NumComic = _bookStatisticService.NumComic(),
+                        NumManga = _bookStatisticService.NumManga(),
+                        Title = "Global Book Types",
+                        ID = "global-book-types"
+                    },
                     NumHardcover = _bookStatisticService.NumHardcover(),
                     NumFirstEdition = _bookStatisticService.NumFirstEdition(),
                     TotalPageCount = _bookStatisticService.TotalPageCount(),
@@ -209,9 +240,14 @@ namespace UI.Controllers
                 },
                 User = new BookStatsModel
                 {
-                    NumNovel = _bookStatisticService.NumNovel(_user.GetUserID()),
-                    NumComic = _bookStatisticService.NumComic(_user.GetUserID()),
-                    NumManga = _bookStatisticService.NumManga(_user.GetUserID()),
+                    Types = new BookTypesModel
+                    {
+                        NumNovel = _bookStatisticService.NumNovel(_user.GetUserID()),
+                        NumComic = _bookStatisticService.NumComic(_user.GetUserID()),
+                        NumManga = _bookStatisticService.NumManga(_user.GetUserID()),
+                        Title = "User Book Types",
+                        ID = "user-book-types"
+                    },
                     NumHardcover = _bookStatisticService.NumHardcover(_user.GetUserID()),
                     NumFirstEdition = _bookStatisticService.NumFirstEdition(_user.GetUserID()),
                     TotalPageCount = _bookStatisticService.TotalPageCount(_user.GetUserID()),
@@ -327,13 +363,23 @@ namespace UI.Controllers
                 Global = new MovieStatsModel
                 {
                     TopDirectors = _movieStatisticService.TopDirectors(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
-                    NumDVD = _movieStatisticService.NumDVD(),
-                    NumBluRay = _movieStatisticService.NumBluRay(),
-                    NumRatedG = _movieStatisticService.NumRatedG(),
-                    NumRatedPG = _movieStatisticService.NumRatedPG(),
-                    NumRatedPG13 = _movieStatisticService.NumRatedPG13(),
-                    NumRatedR = _movieStatisticService.NumRatedR(),
-                    NumRatedNR = _movieStatisticService.NumRatedNR(),
+                    Types = new MovieTypesModel
+                    {
+                        NumDVD = _movieStatisticService.NumDVD(),
+                        NumBluRay = _movieStatisticService.NumBluRay(),
+                        Title = "Global Movie Types",
+                        ID = "global-movie-types"
+                    },
+                    Ratings = new MovieRatingModel
+                    {
+                        NumRatedG = _movieStatisticService.NumRatedG(),
+                        NumRatedPG = _movieStatisticService.NumRatedPG(),
+                        NumRatedPG13 = _movieStatisticService.NumRatedPG13(),
+                        NumRatedR = _movieStatisticService.NumRatedR(),
+                        NumRatedNR = _movieStatisticService.NumRatedNR(),
+                        Title = "Global Movie Ratings",
+                        ID = "global-movie-ratings"
+                    },
                     TopCountriesOfOrigin = _movieStatisticService.TopCountriesOfOrigin(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
                     TopPurchaseCountries = _movieStatisticService.TopPurchaseCountries(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
                     MostCompleted = _movieStatisticService.MostCompleted(numToTake: NUM_OF_TOP_TO_TAKE).ToList(),
@@ -343,13 +389,23 @@ namespace UI.Controllers
                 User = new MovieStatsModel
                 {
                     TopDirectors = _movieStatisticService.TopDirectors(_user.GetUserID(), NUM_OF_TOP_TO_TAKE).ToList(),
-                    NumDVD = _movieStatisticService.NumDVD(),
-                    NumBluRay = _movieStatisticService.NumBluRay(),
-                    NumRatedG = _movieStatisticService.NumRatedG(),
-                    NumRatedPG = _movieStatisticService.NumRatedPG(),
-                    NumRatedPG13 = _movieStatisticService.NumRatedPG13(),
-                    NumRatedR = _movieStatisticService.NumRatedR(),
-                    NumRatedNR = _movieStatisticService.NumRatedNR(),
+                    Types = new MovieTypesModel
+                    {
+                        NumDVD = _movieStatisticService.NumDVD(),
+                        NumBluRay = _movieStatisticService.NumBluRay(),
+                        Title = "User Movie Types",
+                        ID = "user-movie-types"
+                    },
+                    Ratings = new MovieRatingModel
+                    {
+                        NumRatedG = _movieStatisticService.NumRatedG(),
+                        NumRatedPG = _movieStatisticService.NumRatedPG(),
+                        NumRatedPG13 = _movieStatisticService.NumRatedPG13(),
+                        NumRatedR = _movieStatisticService.NumRatedR(),
+                        NumRatedNR = _movieStatisticService.NumRatedNR(),
+                        Title = "User Movie Ratings",
+                        ID = "user-movie-ratings"
+                    },
                     TopCountriesOfOrigin = _movieStatisticService.TopCountriesOfOrigin(_user.GetUserID(), NUM_OF_TOP_TO_TAKE).ToList(),
                     TopPurchaseCountries = _movieStatisticService.TopPurchaseCountries(_user.GetUserID(), NUM_OF_TOP_TO_TAKE).ToList(),
                     MostCompleted = _movieStatisticService.MostCompleted(_user.GetUserID(), NUM_OF_TOP_TO_TAKE).ToList(),

@@ -1,20 +1,20 @@
-﻿@model UI.Models.AlbumStatsModel
+﻿@model UI.Models.AlbumTypesModel
 
 <script>
-	c3.generate({
-		bindto: '#@Model.ID',
-		data: {
-			columns: [
-				['Vinyl', @Model.NumVinyl],
-				['CD', @Model.NumCD]
-			],
-			type: 'donut'
-		},
-		donut: {
-			title: "@Model.Title",
-			label: {
-				format: function (value) { return value; }
-			}
-		}
-	});
+    c3.generate({
+        bindto: '#@Model.ID',
+        data: {
+            columns: [
+                ['Vinyl', @Model.NumVinyl],
+                ['CD', @Model.NumCD]
+            ],
+            type: 'donut'
+        },
+        donut: {
+            title: "@Model.Title",
+            label: {
+                format: function (value) { return value; }
+            }
+        }
+    });
 </script>

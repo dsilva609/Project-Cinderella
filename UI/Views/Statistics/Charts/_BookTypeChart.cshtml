@@ -1,21 +1,21 @@
-﻿@model UI.Models.BookStatsModel
+﻿@model UI.Models.BookTypesModel
 
 <script>
-	c3.generate({
-		bindto: '#@Model.ID',
-		data: {
-			columns: [
-				['Novel', @Model.NumNovel],
-				['Comic', @Model.NumComic],
-				['Manga', @Model.NumManga]
-			],
-			type: 'donut'
-		},
-		donut: {
-			title: "@Model.Title",
-			label: {
-				format: function (value) { return value; }
-			}
-		}
-	});
+    c3.generate({
+        bindto: '#@Model.ID',
+        data: {
+            columns: [
+                ['Novel', @Model.NumNovel],
+                ['Comic', @Model.NumComic],
+                ['Manga', @Model.NumManga]
+            ],
+            type: 'donut'
+        },
+        donut: {
+            title: "@Model.Title",
+            label: {
+                format: function (value) { return value; }
+            }
+        }
+    });
 </script>
