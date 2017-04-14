@@ -1,5 +1,9 @@
 ﻿@model UI.Models.GameStatsViewModel
 
+@Styles.Render(Links.Content.c3_min_css)
+@Scripts.Render(Links.Scripts.d3.d3_min_js)
+@Scripts.Render(Links.Scripts.c3_min_js)
+
 <div data-toggle="collapse" data-parent="#accordion" href="#collection-info" style="padding-top: 1em;">
     <div class="row panel panel-primary panel-collapse">
         <div class="panel-heading">
@@ -12,21 +16,84 @@
 </div>
 
 <div id="collection-info" class="collapse in">
-    <div class="panel-body row">
-        <div class="panel-heading">
-            <h4 class="col-md-6">
-                Global
-                <span class="fa fa-globe"></span>
-            </h4>
-            <h4 class="col-md-6">
-                User
-                <span class="fa fa-user"></span>
-            </h4>
-        </div>
-        <div class="col-md-6">@Html.Partial(MVC.Statistics.Views._GameStatsTable, Model.Global)</div>
-        @if (Model.User != null)
-        {
-            <div class="col-md-6">@Html.Partial(MVC.Statistics.Views._GameStatsTable, Model.User)</div>
-        }
-    </div>
+	<div class="panel-body row">
+		<div class="panel-heading">
+			<h4 class="col-md-6">
+				Global
+				<span class="fa fa-globe"></span>
+			</h4>
+			<h4 class="col-md-6">
+				User
+				<span class="fa fa-user"></span>
+			</h4>
+		</div>
+		<div class="col-md-6">@Html.Partial(MVC.Statistics.Views._GameStatsTable, Model.Global)</div>
+		@if (Model.User != null)
+		{
+			<div class="col-md-6">@Html.Partial(MVC.Statistics.Views._GameStatsTable, Model.User)</div>
+		}
+	</div>
 </div>
+
+<div data-toggle="collapse" data-parent="#accordion" href="#global-charts">
+	<div class="row panel panel-primary panel-collapse">
+		<div class="panel-heading">
+			<h4>
+				Charts
+				<span class="fa fa-chevron-circle-down"></span>
+			</h4>
+		</div>
+	</div>
+</div>
+<div id="global-charts" class="collapse in charts">
+	<div class="panel-body">
+		<div class="table">
+			<div class="row">
+				<div id="global-game-types" class="col-md-6" style="width: 500px; height: 500px;"></div>
+				<div id="user-game-types" class="col-md-6" style="width: 500px; height: 500px;"></div>
+			</div>
+			<div class="row">
+				<div id="global-game-ratings" class="col-md-6" style="width: 500px; height: 500px;"></div>
+				<div id="user-game-ratings" class="col-md-6" style="width: 500px; height: 500px;"></div>
+			</div>
+			<div class="row">
+				<div id="global-current-generation" class="col-md-6" style="width: 500px; height: 500px;"></div>
+				<div id="user-current-generation" class="col-md-6" style="width: 500px; height: 500px;"></div>
+			</div>
+			
+			<div class="row">
+				<div id="global-sony" class="col-md-6" style="width: 500px; height: 500px;"></div>
+				<div id="user-sony" class="col-md-6" style="width: 500px; height: 500px;"></div>
+			</div>
+			<div class="row">
+				<div id="global-microsoft" class="col-md-6" style="width: 500px; height: 500px;"></div>
+				<div id="user-microsoft" class="col-md-6" style="width: 500px; height: 500px;"></div>
+			</div>
+			<div class="row">
+				<div id="global-nintendo" class="col-md-6" style="width: 500px; height: 500px;"></div>
+				<div id="user-nintendo" class="col-md-6" style="width: 500px; height: 500px;"></div>
+			</div>
+			<div class="row">
+				<div id="global-handhelds" class="col-md-6" style="width: 500px; height: 500px;"></div>
+				<div id="user-handhelds" class="col-md-6" style="width: 500px; height: 500px;"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@Html.Partial(MVC.Statistics.Views.Charts._GameTypeChart, Model.Global.Types)
+@Html.Partial(MVC.Statistics.Views.Charts._GameTypeChart, Model.User.Types)
+
+@Html.Partial(MVC.Statistics.Views.Charts._GameRatingChart, Model.Global.Ratings)
+@Html.Partial(MVC.Statistics.Views.Charts._GameRatingChart, Model.User.Ratings)
+
+@Html.Partial(MVC.Statistics.Views.Charts._CurrentGeneration, Model.Global.Platforms.CurrentGeneration)
+@Html.Partial(MVC.Statistics.Views.Charts._CurrentGeneration, Model.User.Platforms.CurrentGeneration)
+@Html.Partial(MVC.Statistics.Views.Charts._PlayStationChart, Model.Global.Platforms.Sony)
+@Html.Partial(MVC.Statistics.Views.Charts._PlayStationChart, Model.User.Platforms.Sony)
+@Html.Partial(MVC.Statistics.Views.Charts._XboxChart, Model.Global.Platforms.Microsoft)
+@Html.Partial(MVC.Statistics.Views.Charts._XboxChart, Model.User.Platforms.Microsoft)
+@Html.Partial(MVC.Statistics.Views.Charts._NintendoChart, Model.Global.Platforms.Nintendo)
+@Html.Partial(MVC.Statistics.Views.Charts._NintendoChart, Model.User.Platforms.Nintendo)
+@Html.Partial(MVC.Statistics.Views.Charts._HandheldChart, Model.Global.Platforms.Handhelds)
+@Html.Partial(MVC.Statistics.Views.Charts._HandheldChart, Model.User.Platforms.Handhelds)

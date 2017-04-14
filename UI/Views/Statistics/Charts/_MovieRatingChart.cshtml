@@ -1,23 +1,23 @@
-﻿@model UI.Models.MovieStatsModel
+﻿@model UI.Models.MovieRatingModel
 
-<script>
-	c3.generate({
-		bindto: '#@Model.ID',
-		data: {
-			columns: [
-				['G', @Model.NumRatedG],
-				['PG', @Model.NumRatedPG],
-				['PG-13', @Model.NumRatedPG13],
-				['R', @Model.NumRatedR],
-				['NR', @Model.NumRatedNR]
-			],
-			type: 'donut'
-		},
-		donut: {
-			title: "@Model.Title",
-			label: {
-				format: function (value) { return value; }
+	<script>
+		c3.generate({
+			bindto: '#@Model.ID',
+			data: {
+				columns: [
+					['G', @Model.NumRatedG],
+					['PG', @Model.NumRatedPG],
+					['PG-13', @Model.NumRatedPG13],
+					['R', @Model.NumRatedR],
+					['NR', @Model.NumRatedNR]
+				],
+				type: 'donut'
+			},
+			donut: {
+				title: "@Model.Title",
+				label: {
+					format: function (value) { return value; }
+				}
 			}
-		}
-	});
-</script>
+		});
+	</script>

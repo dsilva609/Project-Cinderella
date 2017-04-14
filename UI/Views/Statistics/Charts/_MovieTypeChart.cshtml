@@ -1,20 +1,20 @@
-﻿@model UI.Models.MovieStatsModel
+﻿@model UI.Models.MovieTypesModel
 
-<script>
-	c3.generate({
-		bindto: '#@Model.ID',
-		data: {
-			columns: [
-				['DVD', @Model.NumDVD],
-				['Blu Ray', @Model.NumBluRay]
-			],
-			type: 'donut'
-		},
-		donut: {
-			title: "@Model.Title",
-			label: {
-				format: function (value) { return value; }
+	<script>
+		c3.generate({
+			bindto: '#@Model.ID',
+			data: {
+				columns: [
+					['DVD', @Model.NumDVD],
+					['Blu Ray', @Model.NumBluRay]
+				],
+				type: 'donut'
+			},
+			donut: {
+				title: "@Model.Title",
+				label: {
+					format: function (value) { return value; }
+				}
 			}
-		}
-	});
-</script>
+		});
+	</script>

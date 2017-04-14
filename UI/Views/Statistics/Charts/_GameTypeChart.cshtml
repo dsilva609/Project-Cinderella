@@ -1,21 +1,21 @@
-﻿@model UI.Models.GameStatsModel
+﻿@model UI.Models.GameTypesModel
 
-<script>
-	c3.generate({
-		bindto: '#@Model.ID',
-		data: {
-			columns: [
-				['Full Game', @Model.NumFullGame],
-				['DLC', @Model.NumDLC],
-				['Expansion', @Model.NumExpansion]
-			],
-			type: 'donut'
-		},
-		donut: {
-			title: "@Model.Title",
-			label: {
-				format: function (value) { return value; }
+	<script>
+		c3.generate({
+			bindto: '#@Model.ID',
+			data: {
+				columns: [
+					['Full Game', @Model.NumFullGame],
+					['DLC', @Model.NumDLC],
+					['Expansion', @Model.NumExpansion]
+				],
+				type: 'donut'
+			},
+			donut: {
+				title: "@Model.Title",
+				label: {
+					format: function (value) { return value; }
+				}
 			}
-		}
-	});
-</script>
+		});
+	</script>
