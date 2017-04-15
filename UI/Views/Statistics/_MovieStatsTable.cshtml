@@ -57,7 +57,8 @@
             @foreach (var director in Model.TopDirectors)
             {
                 <li class="list-group-item">
-                    @director
+                    @director.Item1
+	                <span class="tag tag-info tag-pill pull-xs-right">@director.Item2</span>
                 </li>
             }
         </ul>
@@ -73,7 +74,8 @@
             @foreach (var country in Model.TopCountriesOfOrigin)
             {
                 <li class="list-group-item">
-                    @country
+                    @country.Item1
+	                <span class="tag tag-info tag-pill pull-xs-right">@country.Item2</span>
                 </li>
             }
         </ul>
@@ -88,7 +90,8 @@
             @foreach (var country in Model.TopPurchaseCountries)
             {
                 <li class="list-group-item">
-                    @country
+                    @country.Item1
+	                <span class="tag tag-info tag-pill pull-xs-right">@country.Item2</span>
                 </li>
             }
         </ul>
@@ -103,7 +106,8 @@
             @foreach (var title in Model.MostCompleted)
             {
                 <li class="list-group-item">
-                    @title
+                    @title.Item1
+	                <span class="tag tag-info tag-pill pull-xs-right">@title.Item2</span>
                 </li>
             }
         </ul>
@@ -118,7 +122,8 @@
             @foreach (var location in Model.TopLocationsPurchased)
             {
                 <li class="list-group-item">
-                    @location
+                    @location.Item1
+	                <span class="tag tag-info tag-pill pull-xs-right">@location.Item2</span>
                 </li>
             }
         </ul>
@@ -133,7 +138,8 @@
             @foreach (var year in Model.TopReleaseYears)
             {
                 <li class="list-group-item">
-                    @year
+                    @year.Item1
+	                <span class="tag tag-info tag-pill pull-xs-right">@year.Item2</span>
                 </li>
             }
         </ul>

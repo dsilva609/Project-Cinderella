@@ -1,79 +1,80 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace BusinessLogic.Services.Interfaces
 {
-    public interface IGameStatisticService
-    {
-        List<string> TopDevelopers(string userID = "", int numToTake = 0);
+	public interface IGameStatisticService
+	{
+		int NumFullGame(string userID = "");
 
-        List<string> TopPublishers(string userID = "", int numToTake = 0);
+		int NumDLC(string userID = "");
 
-        int NumFullGame(string userID = "");
+		int NumExpansion(string userID = "");
 
-        int NumDLC(string userID = "");
+		int NumRatedEC(string userID = "");
 
-        int NumExpansion(string userID = "");
+		int NumRatedE(string userID = "");
 
-        int NumRatedEC(string userID = "");
+		int NumRatedE10(string userID = "");
 
-        int NumRatedE(string userID = "");
+		int NumRatedT(string userID = "");
 
-        int NumRatedE10(string userID = "");
+		int NumRatedM(string userID = "");
 
-        int NumRatedT(string userID = "");
+		int NumRatedA(string userID = "");
 
-        int NumRatedM(string userID = "");
+		int NumBoardGame(string userID = "");
 
-        int NumRatedA(string userID = "");
+		int NumPC(string userID = "");
 
-        int NumBoardGame(string userID = "");
+		int NumPlayStation(string userID = "");
 
-        int NumPC(string userID = "");
+		int NumPlayStation2(string userID = "");
 
-        int NumPlayStation(string userID = "");
+		int NumPlayStation3(string userID = "");
 
-        int NumPlayStation2(string userID = "");
+		int NumPlayStation4(string userID = "");
 
-        int NumPlayStation3(string userID = "");
+		int NumXbox(string userID = "");
 
-        int NumPlayStation4(string userID = "");
+		int NumXbox360(string userID = "");
 
-        int NumXbox(string userID = "");
+		int NumXboxOne(string userID = "");
 
-        int NumXbox360(string userID = "");
+		int NumNintendo64(string userID = "");
 
-        int NumXboxOne(string userID = "");
+		int NumGameCube(string userID = "");
 
-        int NumNintendo64(string userID = "");
+		int NumWii(string userID = "");
 
-        int NumGameCube(string userID = "");
+		int NumWiiU(string userID = "");
 
-        int NumWii(string userID = "");
+		int NumNintendoSwitch(string userID = "");
 
-        int NumWiiU(string userID = "");
+		int NumGameBoy(string userID = "");
 
-        int NumNintendoSwitch(string userID = "");
+		int NumGameBoyAdvance(string userID = "");
 
-        int NumGameBoy(string userID = "");
+		int NumNintendoDS(string userID = "");
 
-        int NumGameBoyAdvance(string userID = "");
+		int NumNintendo3DS(string userID = "");
 
-        int NumNintendoDS(string userID = "");
+		int NumPSP(string userID = "");
 
-        int NumNintendo3DS(string userID = "");
+		int NumPSVita(string userID = "");
 
-        int NumPSP(string userID = "");
+		List<Tuple<string, int>> TopDevelopers(string userID = "", int numToTake = 0);
 
-        int NumPSVita(string userID = "");
+		List<Tuple<string, int>> TopPublishers(string userID = "", int numToTake = 0);
 
-        List<string> TopCountriesOfOrigin(string userID = "", int numToTake = 0);
+		List<Tuple<string, int>> TopCountriesOfOrigin(string userID = "", int numToTake = 0);
 
-        List<string> TopPurchaseCountries(string userID = "", int numToTake = 0);
+		List<Tuple<string, int>> TopPurchaseCountries(string userID = "", int numToTake = 0);
 
-        List<string> MostCompleted(string userID = "", int numToTake = 0);
+		List<Tuple<string, int>> MostCompleted(string userID = "", int numToTake = 0);
 
-        List<string> TopLocationsPurchased(string userID = "", int numToTake = 0);
+		List<Tuple<string, int>> TopLocationsPurchased(string userID = "", int numToTake = 0);
 
-        List<int> TopReleaseYears(string userID = "", int numToTake = 0);
-    }
+		List<Tuple<int, int>> TopReleaseYears(string userID = "", int numToTake = 0);
+	}
 }

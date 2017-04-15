@@ -1,33 +1,34 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace BusinessLogic.Services.Interfaces
 {
-    public interface IMovieStatisticService
-    {
-        List<string> TopDirectors(string userID = "", int numToTake = 0);
+	public interface IMovieStatisticService
+	{
+		int NumDVD(string userID = "");
 
-        int NumDVD(string userID = "");
+		int NumBluRay(string userID = "");
 
-        int NumBluRay(string userID = "");
+		int NumRatedG(string userID = "");
 
-        int NumRatedG(string userID = "");
+		int NumRatedPG(string userID = "");
 
-        int NumRatedPG(string userID = "");
+		int NumRatedPG13(string userID = "");
 
-        int NumRatedPG13(string userID = "");
+		int NumRatedR(string userID = "");
 
-        int NumRatedR(string userID = "");
+		int NumRatedNR(string userID = "");
 
-        int NumRatedNR(string userID = "");
+		List<Tuple<string, int>> TopDirectors(string userID = "", int numToTake = 0);
 
-        List<string> TopCountriesOfOrigin(string userID = "", int numToTake = 0);
+		List<Tuple<string, int>> TopCountriesOfOrigin(string userID = "", int numToTake = 0);
 
-        List<string> TopPurchaseCountries(string userID = "", int numToTake = 0);
+		List<Tuple<string, int>> TopPurchaseCountries(string userID = "", int numToTake = 0);
 
-        List<string> MostCompleted(string userID = "", int numToTake = 0);
+		List<Tuple<string, int>> MostCompleted(string userID = "", int numToTake = 0);
 
-        List<string> TopLocationsPurchased(string userID = "", int numToTake = 0);
+		List<Tuple<string, int>> TopLocationsPurchased(string userID = "", int numToTake = 0);
 
-        List<int> TopReleaseYears(string userID = "", int numToTake = 0);
-    }
+		List<Tuple<int, int>> TopReleaseYears(string userID = "", int numToTake = 0);
+	}
 }

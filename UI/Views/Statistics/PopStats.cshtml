@@ -13,20 +13,22 @@
 
 <div id="collection-info" class="collapse in">
     <div class="panel-body row">
-        <div class="panel-heading">
+        <div class="panel-heading row">
             <h4 class="col-md-6">
                 Global
                 <span class="fa fa-globe"></span>
             </h4>
-            <h4 class="col-md-6">
-                User
-                <span class="fa fa-user"></span>
-            </h4>
+        @if (User.Identity.IsAuthenticated)
+        {
+	        <h4 class="col-md-6">
+		        User
+		        <span class="fa fa-user"></span>
+	        </h4>
+        }
         </div>
         <div class="col-md-6">@Html.Partial(MVC.Statistics.Views._PopStatsTable, Model.Global)</div>
-        @if (Model.User != null)
-        {
-
+	    @if (User.Identity.IsAuthenticated)
+	    {
             <div class="col-md-6">@Html.Partial(MVC.Statistics.Views._PopStatsTable, Model.User)</div>
         }
     </div>

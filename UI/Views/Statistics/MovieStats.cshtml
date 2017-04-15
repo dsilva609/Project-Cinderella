@@ -17,18 +17,21 @@
 
 <div id="collection-info" class="collapse in">
 	<div class="panel-body row">
-		<div class="panel-heading">
+		<div class="panel-heading row">
 			<h4 class="col-md-6">
 				Global
 				<span class="fa fa-globe"></span>
 			</h4>
+		@if (User.Identity.IsAuthenticated)
+		{
 			<h4 class="col-md-6">
 				User
 				<span class="fa fa-user"></span>
 			</h4>
+		}
 		</div>
 		<div class="col-md-6">@Html.Partial(MVC.Statistics.Views._MovieStatsTable, Model.Global)</div>
-		@if (Model.User != null)
+		@if (User.Identity.IsAuthenticated)
 		{
 			<div class="col-md-6">@Html.Partial(MVC.Statistics.Views._MovieStatsTable, Model.User)</div>
 		}
@@ -50,18 +53,27 @@
 		<div class="table">
 			<div class="row">
 				<div id="global-movie-types" class="col-md-6" style="width: 500px; height: 500px;"></div>
+			@if (User.Identity.IsAuthenticated)
+			{
 				<div id="user-movie-types" class="col-md-6" style="width: 500px; height: 500px;"></div>
+			}
 			</div>
 			<div class="row">
 				<div id="global-movie-ratings" class="col-md-6" style="width: 500px; height: 500px;"></div>
+			@if (User.Identity.IsAuthenticated)
+			{
 				<div id="user-movie-ratings" class="col-md-6" style="width: 500px; height: 500px;"></div>
+			}
 			</div>
 		</div>
 	</div>
 </div>
 
 @Html.Partial(MVC.Statistics.Views.Charts._MovieTypeChart, Model.Global.Types)
-@Html.Partial(MVC.Statistics.Views.Charts._MovieTypeChart, Model.User.Types)
-
 @Html.Partial(MVC.Statistics.Views.Charts._MovieRatingChart, Model.Global.Ratings)
-@Html.Partial(MVC.Statistics.Views.Charts._MovieRatingChart, Model.User.Ratings)
+
+@if (User.Identity.IsAuthenticated)
+{
+	@Html.Partial(MVC.Statistics.Views.Charts._MovieTypeChart, Model.User.Types)
+	@Html.Partial(MVC.Statistics.Views.Charts._MovieRatingChart, Model.User.Ratings)
+}

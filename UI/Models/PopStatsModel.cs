@@ -1,19 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace UI.Models
 {
 	public class PopStatsModel : ChartData
 	{
-		public List<string> TopSeries { get; set; }
+		public List<Tuple<string, int>> TopSeries { get; set; }
 
-		public List<string> TopLines { get; set; }
+		public List<Tuple<string, int>> TopLines { get; set; }
 
-		public List<string> TopCountriesOfOrigin { get; set; }
-
-		public List<string> TopPurchaseCountries { get; set; }
-
-		public List<string> TopLocationsPurchased { get; set; }
-
-		public List<int> TopReleaseYears { get; set; }
+		public List<Tuple<string, int>> TopCountriesOfOrigin { get; set; }
+		public List<Tuple<string, int>> TopPurchaseCountries { get; set; }
+		public List<Tuple<string, int>> MostCompleted { get; set; }
+		public List<Tuple<string, int>> TopLocationsPurchased { get; set; }
+		public List<Tuple<int, int>> TopReleaseYears { get; set; }
 	}
 }
