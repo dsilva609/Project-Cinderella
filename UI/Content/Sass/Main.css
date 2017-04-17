@@ -1,4 +1,4 @@
-a {
+﻿a {
   color: #007aac; }
 
 body {
@@ -57,6 +57,7 @@ body {
   color: #007aac; }
   #fh5co-header .navbar-brand:hover {
     color: #ffff66 !important; }
+
 #fh5co-header a:hover {
   color: #ffff66 !important; }
 
@@ -84,6 +85,7 @@ select {
 
 .pagination .active a {
   background-color: #007aac; }
+
 .pagination li a {
   color: black; }
 
@@ -97,6 +99,7 @@ select {
 
 .charts .table .row:nth-child(even) {
   background-color: transparent; }
+
 .charts .table .row:not(:first-child):hover {
   background-color: transparent;
   cursor: default; }
@@ -217,4 +220,26 @@ a:hover {
   position: relative;
   z-index: 1; }
 
-/*# sourceMappingURL=Main.css.map */
+.carousel-fade .carousel-inner .item {
+  transition-property: opacity; }
+
+.carousel-fade .carousel-inner .item,
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  opacity: 0; }
+
+.carousel-fade .carousel-inner .active,
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1; }
+
+.carousel-fade .carousel-inner .next,
+.carousel-fade .carousel-inner .prev,
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  transform: translate3d(0, 0, 0); }
+
+.carousel-fade .carousel-control {
+  z-index: 2; }
+

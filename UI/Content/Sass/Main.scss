@@ -9,315 +9,347 @@ $in-progress-color: #e6ffe6;
 $completed-color: #b3ffff;
 
 a {
-	color: $body-color;
+    color: $body-color;
 }
 
 body {
-	background-color: $cinderella-blue;
-	font-family: sans-serif;
-	padding-bottom: 0;
+    background-color: $cinderella-blue;
+    font-family: sans-serif;
+    padding-bottom: 0;
 }
 
 .footer {
-	height: auto;
-	background-color: $footer-color;
-	padding-bottom: 2em;
-	position: relative;
-	right: 0;
-	bottom: 0;
-	left: 0;
+    height: auto;
+    background-color: $footer-color;
+    padding-bottom: 2em;
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 .jumbotron {
-	padding-left: 0;
-	padding-right: 0;
-	padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
 
-	input[type="text"] {
-		color: antiquewhite;
+    input[type="text"] {
+        color: antiquewhite;
 
-		&:focus {
-			color: black;
-		}
-	}
+        &:focus {
+            color: black;
+        }
+    }
 
-	select, option {
-		background-color: $cinderella-blue;
-	}
+    select, option {
+        background-color: $cinderella-blue;
+    }
 
-	.carousel-inner {
-		.item {
-			width: 100%;
-			height: 575px;
+    .carousel-inner {
+        .item {
+            width: 100%;
+            height: 575px;
 
-			img {
-				resize: both;
-				width: 100%;
-				height: 100%;
-				position: relative;
-				left: 0;
-				right: 0;
-			}
-		}
-	}
+            img {
+                resize: both;
+                width: 100%;
+                height: 100%;
+                position: relative;
+                left: 0;
+                right: 0;
+            }
+        }
+    }
 }
 
 .jumbotronText {
-	font-size: 30px;
-	color: $cinderella-blue;
+    font-size: 30px;
+    color: $cinderella-blue;
 }
 
 .nav {
-	a {
-		color: $cinderella-blue;
-	}
+    a {
+        color: $cinderella-blue;
+    }
 }
 
 .form-control {
-	color: black;
-	border-color: $body-color;
+    color: black;
+    border-color: $body-color;
 
-	&:hover {
-		border-color: $belle-yellow !important;
-	}
+    &:hover {
+        border-color: $belle-yellow !important;
+    }
 }
 
 .row {
-	margin-left: 0;
-	margin-right: 0;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 #fh5co-header {
-	.navbar-brand {
-		color: $body-color;
+    .navbar-brand {
+        color: $body-color;
 
-		&:hover {
-			color: $belle-yellow !important;
-		}
-	}
+        &:hover {
+            color: $belle-yellow !important;
+        }
+    }
 
-	a:hover {
-		color: $belle-yellow !important;
-	}
+    a:hover {
+        color: $belle-yellow !important;
+    }
 }
 
 #fh5co-offcanvass {
-	background-color: $side-menu-color;
-	max-height: 100%;
-	margin: 0;
+    background-color: $side-menu-color;
+    max-height: 100%;
+    margin: 0;
 }
 
 .navbar-brand {
-	color: $body-color !important;
+    color: $body-color !important;
 
-	&:hover {
-		color: $belle-yellow;
-	}
+    &:hover {
+        color: $belle-yellow;
+    }
 }
 
 .fh5co-desc {
-	float: none !important;
+    float: none !important;
 }
 
 .panel-primary .panel-heading {
-	background-color: $body-color;
+    background-color: $body-color;
 }
 
 .btn-primary {
-	background: $body-color;
+    background: $body-color;
 }
 
 select {
-	height: 5rem !important;
+    height: 5rem !important;
 }
 
 .pagination {
-	.active {
-		a {
-			background-color: $body-color;
-		}
-	}
+    .active {
+        a {
+            background-color: $body-color;
+        }
+    }
 
-	li {
-		a {
-			color: black;
-		}
-	}
+    li {
+        a {
+            color: black;
+        }
+    }
 }
 
 .list-group-item.active {
-	font-weight: bold;
-	background-color: $body-color !important;
-	border-color: $body-color !important;
+    font-weight: bold;
+    background-color: $body-color !important;
+    border-color: $body-color !important;
 }
 
 .panel-heading {
-	/*margin-bottom: 1em;*/
+    /*margin-bottom: 1em;*/
 }
 
 .charts {
-	.table {
-		.row:nth-child(even) {
-			background-color: transparent;
-		}
+    .table {
+        .row:nth-child(even) {
+            background-color: transparent;
+        }
 
-		.row:not(:first-child):hover {
-			background-color: transparent;
-			cursor: default;
-		}
-	}
+        .row:not(:first-child):hover {
+            background-color: transparent;
+            cursor: default;
+        }
+    }
 }
 
 .form-control:focus {
-	border-color: transparent;
+    border-color: transparent;
 }
 
 a:hover {
-	color: $belle-yellow;
+    color: $belle-yellow;
 }
 
 .NotStarted {
-	background-color: $not-started-color;
+    background-color: $not-started-color;
 }
 
 .InProgress {
-	background-color: $in-progress-color;
+    background-color: $in-progress-color;
 }
 
 .Completed {
-	background-color: $completed-color;
+    background-color: $completed-color;
 }
 
 .flip-container {
-	perspective: 1000px;
+    perspective: 1000px;
 }
 /* flip the pane when hovered */
 .flip-container:hover .flipper, .flip-container.hover .flipper {
-	transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
 
 .flip-container, .front, .back {
-	.flipper {
-		height: 100%;
-	}
+    .flipper {
+        height: 100%;
+    }
 
-	.album, .game, .pop {
-		height: 260px;
-	}
+    .album, .game, .pop {
+        height: 260px;
+    }
 
-	.book, .movie {
-		height: 400px;
-	}
+    .book, .movie {
+        height: 400px;
+    }
 
-	width: 100%;
-	max-width: 100%;
+    width: 100%;
+    max-width: 100%;
 }
 
 /* flip speed goes here */
 .flipper {
-	transition: 0.6s;
-	transform-style: preserve-3d;
-	position: relative;
-	height: 100%;
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+    height: 100%;
 
-	.info {
-		max-height: 100%;
-	}
+    .info {
+        max-height: 100%;
+    }
 }
 
 /* hide back of pane during swap */
 .front, .back {
-	height: 100%;
-	backface-visibility: hidden;
-	position: absolute;
-	top: 0;
-	left: 0;
+    height: 100%;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 /* front pane, placed above back */
 .front {
-	z-index: 2;
-	/* for firefox 31 */
-	transform: rotateY(0deg);
+    z-index: 2;
+    /* for firefox 31 */
+    transform: rotateY(0deg);
 }
 
 /* back, initially hidden pane */
 .back {
-	transform: rotateY(180deg);
-	background-color: none;
+    transform: rotateY(180deg);
+    background-color: none;
 
-	img {
-		position: absolute;
-		left: 0;
-		top: 0;
-		opacity: 0.25;
-		height: 100%;
-		padding: 5px;
-	}
+    img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0.25;
+        height: 100%;
+        padding: 5px;
+    }
 
-	.info {
-		z-index: 100;
-		position: absolute;
-		background-color: transparent;
-		font-weight: bold;
-	}
+    .info {
+        z-index: 100;
+        position: absolute;
+        background-color: transparent;
+        font-weight: bold;
+    }
 }
 
 .animate-box {
-	height: 100%;
+    height: 100%;
 
-	a {
-		height: 100%;
+    a {
+        height: 100%;
 
-		img {
-			height: 100%;
-		}
-	}
+        img {
+            height: 100%;
+        }
+    }
 }
 
 .item-title {
-	input[type=text] {
-		height: 100px;
-		font-size: 20pt;
-		min-width: 100%;
-	}
+    input[type=text] {
+        height: 100px;
+        font-size: 20pt;
+        min-width: 100%;
+    }
 }
 
 .background-image {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	left: 0;
-	z-index: 2;
-	background-size: cover !important;
-	filter: blur(5px);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    z-index: 2;
+    background-size: cover !important;
+    filter: blur(5px);
 }
 
 .contentContainer {
-	color: lightgray;
-	font: bold 16px/45px Helvetica, Sans-Serif;
-	letter-spacing: -1px;
-	background: rgb(0, 0, 0); /* fallback color */
-	background: rgba(0, 0, 0, 0.7);
-	position: relative;
-	left: 0;
-	width: 100%;
-	height: auto;
-	z-index: 3;
+    color: lightgray;
+    font: bold 16px/45px Helvetica, Sans-Serif;
+    letter-spacing: -1px;
+    background: rgb(0, 0, 0); /* fallback color */
+    background: rgba(0, 0, 0, 0.7);
+    position: relative;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 3;
 }
 
 .carousel-inner {
-	.item {
-		img {
-			margin: 0 auto;
-			width: 40%;
-		}
-	}
+    .item {
+        img {
+            margin: 0 auto;
+            width: 40%;
+        }
+    }
 }
 
 .detailsContainer {
-	width: 100%;
-	height: 100%;
-	position: relative;
-	z-index: 1;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.carousel-fade {
+    .carousel-inner {
+        .item {
+            transition-property: opacity;
+        }
+
+        .item,
+        .active.left,
+        .active.right {
+            opacity: 0;
+        }
+
+        .active,
+        .next.left,
+        .prev.right {
+            opacity: 1;
+        }
+
+        .next,
+        .prev,
+        .active.left,
+        .active.right {
+            left: 0;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    .carousel-control {
+        z-index: 2;
+    }
 }
