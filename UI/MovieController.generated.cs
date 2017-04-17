@@ -237,6 +237,7 @@ namespace UI.Controllers
         {
             public readonly string releaseID = "releaseID";
             public readonly string isTvShow = "isTvShow";
+            public readonly string seasonNumber = "seasonNumber";
         }
         static readonly ActionParamsClass_AddToShowcase s_params_AddToShowcase = new ActionParamsClass_AddToShowcase();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -421,15 +422,16 @@ namespace UI.Controllers
         }
 
         [NonAction]
-        partial void CreateFromSearchResultOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int releaseID, bool isTvShow);
+        partial void CreateFromSearchResultOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int releaseID, bool isTvShow, int seasonNumber);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult CreateFromSearchResult(int releaseID, bool isTvShow)
+        public override System.Web.Mvc.ActionResult CreateFromSearchResult(int releaseID, bool isTvShow, int seasonNumber)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CreateFromSearchResult);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "releaseID", releaseID);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "isTvShow", isTvShow);
-            CreateFromSearchResultOverride(callInfo, releaseID, isTvShow);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "seasonNumber", seasonNumber);
+            CreateFromSearchResultOverride(callInfo, releaseID, isTvShow, seasonNumber);
             return callInfo;
         }
 

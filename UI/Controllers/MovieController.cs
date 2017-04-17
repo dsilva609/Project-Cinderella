@@ -2,13 +2,11 @@
 using BusinessLogic.Models;
 using BusinessLogic.Models.Interfaces;
 using BusinessLogic.Services.Interfaces;
-using Microsoft.AspNet.Identity;
 using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using UI.Common;
 using UI.Models;
 using CompletionStatus = BusinessLogic.Enums.CompletionStatus;
 
@@ -193,9 +191,9 @@ namespace UI.Controllers
 
         [Authorize]
         [HttpGet]
-        public virtual ActionResult CreateFromSearchResult(int releaseID, bool isTvShow)
+        public virtual ActionResult CreateFromSearchResult(int releaseID, bool isTvShow, int seasonNumber)
         {
-            var movie = isTvShow ? _tmdbService.SearchTVShowByID(releaseID) : _tmdbService.SearchMovieByID(releaseID);
+            var movie = isTvShow ? _tmdbService.SearchTVShowByID(releaseID, seasonNumber) : _tmdbService.SearchMovieByID(releaseID);
 
             movie.UserID = _user.GetUserID();
             movie.UserNum = _user.GetUserNum();

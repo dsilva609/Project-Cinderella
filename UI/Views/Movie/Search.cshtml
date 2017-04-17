@@ -18,6 +18,14 @@
             </div>
         </div>
 
+        <div class="panel-body">
+            <div class="col-xs-6">
+                @Html.LabelFor(m => m.SeasonNumber)
+                @Html.TextBoxFor(m => m.SeasonNumber, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.SeasonNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
         <div class="row panel-body">
             <div class="col-xs-8 col-sm-10">
                 <input id="btnSubmit" type="submit" value="Search" class="btn btn-default btn-block btn-lg" />
@@ -25,44 +33,18 @@
         </div>
     }
 </div>
-@if (Model.MovieResults != null && Model.MovieResults.Count > 0)
+@if (Model.MovieResults != null && Model.MovieResults.Any())
 {
     <div class="row panel panel-primary">
         <div class="panel-heading">
             <h4>
-                Search Results
+                Movie Results
             </h4>
         </div>
         <div class="panel-body">
             @foreach (var result in Model.MovieResults)
             {
-                using (Html.BeginForm(MVC.Movie.CreateFromSearchResult(result.id, result.IsTvShow), FormMethod.Get))
-                {
-                    <div id="Movie" class="row info" style="padding-bottom: 1em;" data-id="@result.id">
-                        <div class="col-xs-4">
-                            <img src="@(result.poster_path)" />
-                        </div>
-                        <div class="col-xs-4">
-                            @(result.IsTvShow ? Html.DisplayFor(x => result.name) : Html.DisplayFor(x => result.title))
-                        </div>
-
-                        <div class="col-xs-2">
-                            @(result.IsTvShow ? Html.DisplayFor(x => result.first_air_date) : Html.DisplayFor(x => result.release_date))
-                        </div>
-
-                        @Html.Hidden("releaseID", result.id)
-                        @Html.Hidden("isTvShow", result.IsTvShow)
-
-                        <div class="col-xs-2">
-                            <input id="" type="submit" value="Add" class="btn" />
-                        </div>
-                    </div>
-                }
-            }
-            @* TODO: add separator to show that these are shows/ move into partial *@
-            @foreach (var result in Model.TVShowResults)
-            {
-                using (Html.BeginForm(MVC.Movie.CreateFromSearchResult(result.id, result.IsTvShow), FormMethod.Get))
+                using (Html.BeginForm(MVC.Movie.CreateFromSearchResult(result.id, result.IsTvShow, -1), FormMethod.Get))
                 {
                     <div id="Movie" class="row info" style="padding-bottom: 1em;" data-id="@result.id">
                         <div class="col-xs-4">
@@ -89,6 +71,44 @@
     </div>
 }
 
+@if (Model.MovieResults != null && Model.TVShowResults.Any())
+{
+    <div class="row panel panel-primary">
+        <div class="panel-heading">
+            <h4>
+                TV Results
+            </h4>
+        </div>
+        <div class="panel-body">
+            @foreach (var result in Model.TVShowResults)
+            {
+                using (Html.BeginForm(MVC.Movie.CreateFromSearchResult(result.id, result.IsTvShow, Model.SeasonNumber), FormMethod.Get))
+                {
+                    <div id="Movie" class="row info" style="padding-bottom: 1em;" data-id="@result.id">
+                        <div class="col-xs-4">
+                            <img src="@(result.poster_path)" />
+                        </div>
+                        <div class="col-xs-4">
+                            @(result.IsTvShow ? Html.DisplayFor(x => result.name) : Html.DisplayFor(x => result.title))
+                        </div>
+
+                        <div class="col-xs-2">
+                            @(result.IsTvShow ? Html.DisplayFor(x => result.first_air_date) : Html.DisplayFor(x => result.release_date))
+                        </div>
+
+                        @Html.Hidden("releaseID", result.id)
+                        @Html.Hidden("isTvShow", result.IsTvShow)
+                        @Html.Hidden("seasonNumber", Model.SeasonNumber)
+
+                        <div class="col-xs-2">
+                            <input id="" type="submit" value="Add" class="btn" />
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+}
 @Html.ActionLink("Back to List", MVC.Movie.Index())
 
 @Html.Partial(MVC.Shared.Views._TMDBDisclaimer)
