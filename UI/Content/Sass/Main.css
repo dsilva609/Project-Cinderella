@@ -243,3 +243,6 @@ a:hover {
 .carousel-fade .carousel-control {
   z-index: 2; }
 
+.carousel-control {
+  opacity: 0; }
+
