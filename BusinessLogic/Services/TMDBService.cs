@@ -95,7 +95,7 @@ namespace BusinessLogic.Services
             {
                 Title = tmdb.name,
                 Director = string.Join(", ", tmdb.created_by.Select(x => x.name).ToList()),
-                Distributor = tmdb.production_companies.First().name,
+                Distributor = tmdb.production_companies?.FirstOrDefault()?.name,
                 Genre = string.Join(", ", tmdb.genres.Select(x => x.name).ToList()),
                 ImageUrl = string.Format("https://image.tmdb.org/t/p/w500{0}", tmdb.poster_path),
                 Language = tmdb.original_language,
