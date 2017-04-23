@@ -3,118 +3,118 @@
 @using UI.Enums
 @model UI.Models.HomeViewModel
 @{
-    ViewBag.Title = "Home Page";
+	ViewBag.Title = "Home Page";
 }
 
 <script>
-    $("#main-body").removeClass("container");
+	$("#main-body").removeClass("container");
 </script>
 
 <div class="jumbotron img-fluid">
-    <div class="h3 ">
-        <div class="carousel slide carousel-fade" data-ride="carousel">
-            <div class="carousel-caption">
-                <div class="row text-right" style="padding-top: 1em;">
-                    <div class="jumbotronText text-center">Always know what's playing in your collection.</div>
-                    @if (!User.Identity.IsAuthenticated)
-                    {
-                        <div class="hidden-xs hidden-sm" style="padding-top: 0;">
-                            @Html.ActionLink("Login", MVC.Account.Login(), new { @class = "btn btn-default" })
-                        </div>
-                    }
-                </div>
+	<div class="h3 ">
+		<div class="carousel slide carousel-fade" data-ride="carousel">
+			<div class="carousel-caption">
+				<div class="row text-right" style="padding-top: 1em;">
+					<div class="jumbotronText text-center">Always know what's playing in your collection.</div>
+					@if (!User.Identity.IsAuthenticated)
+					{
+						<div class="hidden-xs hidden-sm" style="padding-top: 0;">
+							@Html.ActionLink("Login", MVC.Account.Login(), new { @class = "btn btn-default" })
+						</div>
+					}
+				</div>
 
-                <div class="row text-center" style="padding-top: 5em;">
-                    <div class="text-xs-center">
-                        @using (Html.BeginForm("Search", "Home", FormMethod.Get, new { @style = "display:inline-flex;" }))
-                        {
-                            @Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
+				<div class="row text-center" style="padding-top: 5em;">
+					<div class="text-xs-center">
+						@using (Html.BeginForm("Search", "Home", FormMethod.Get, new { @style = "display:inline-flex;" }))
+						{
+							@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
 
-                            @Html.DropDownList("type", Enum.GetNames(typeof(ItemType)).Select(val => new SelectListItem { Text = val, Value = val, Selected = User.Identity.GetDefaultItemType() == val }).ToList(), new { @class = "form-control" })
-                            @Html.DropDownList("act", ActionType.GetTypes(User.Identity.IsAuthenticated).Select(val => new SelectListItem { Text = val.Name, Value = val.Value, Selected = User.Identity.GetDefaultActionType() == val.Value }).ToList(), new { @class = "form-control" })
+							@Html.DropDownList("type", Enum.GetNames(typeof(ItemType)).Select(val => new SelectListItem { Text = val, Value = val, Selected = User.Identity.GetDefaultItemType() == val }).ToList(), new { @class = "form-control" })
+							@Html.DropDownList("act", ActionType.GetTypes(User.Identity.IsAuthenticated).Select(val => new SelectListItem { Text = val.Name, Value = val.Value, Selected = User.Identity.GetDefaultActionType() == val.Value }).ToList(), new { @class = "form-control" })
 
-                            <button type="submit" class="btn btn-default">
-                                <span class="fa fa-arrow-right"></span>
-                            </button>
-                        }
-                    </div>
-                </div>
-            </div>
+							<button type="submit" class="btn btn-default">
+								<span class="fa fa-arrow-right"></span>
+							</button>
+						}
+					</div>
+				</div>
+			</div>
 
-            <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <img class="img-fluid" src="@Links.Content.Images.Turntable_jpg">
-                </div>
-                <div class="item">
-                    <img class="img-fluid" src="@Links.Content.Images.Book_jpg" />
-                </div>
-                <div class="item">
-                    <img class="img-fluid" src="@Links.Content.Images.Reel_jpg" />
-                </div>
-                <div class="item">
-                    <img class="img-fluid" src="@Links.Content.Images.Turntable2_jpg">
-                </div>
-                <div class="item">
-                    <img class="img-fluid" src="@Links.Content.Images.Game_jpg">
-                </div>
-                <div class="item">
-                    <img class="img-fluid" src="@Links.Content.Images.action_figures_jpg">
-                </div>
-            </div>
-        </div>
-    </div>
+			<div class="carousel-inner" role="listbox">
+				<div class="item active">
+					<img class="img-fluid" src="@Links.Content.Images.Turntable_jpg">
+				</div>
+				<div class="item">
+					<img class="img-fluid" src="@Links.Content.Images.Book_jpg" />
+				</div>
+				<div class="item">
+					<img class="img-fluid" src="@Links.Content.Images.Reel_jpg" />
+				</div>
+				<div class="item">
+					<img class="img-fluid" src="@Links.Content.Images.Turntable2_jpg">
+				</div>
+				<div class="item">
+					<img class="img-fluid" src="@Links.Content.Images.Game_jpg">
+				</div>
+				<div class="item">
+					<img class="img-fluid" src="@Links.Content.Images.action_figures_jpg">
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 @if (DateTime.UtcNow.DayOfWeek == DayOfWeek.Friday)
 {
-    <div class="row text-center h1">
-        @Html.ActionLink("Heavy Metal Friday", MVC.Showcase.Index(1))
-    </div>
+	<div class="row text-center h1">
+		@Html.ActionLink("Heavy Metal Friday", MVC.Showcase.Index(1))
+	</div>
 }
 <div class="row text-center">
-    <h2>
-        Time until <a href="http://recordstoreday.com" target="_blank">Record Store Day</a>
-    </h2>
+	<h2>
+		Time until <a href="http://recordstoreday.com" target="_blank">Record Store Day</a> 2018
+	</h2>
 
-    @Html.Partial(MVC.Shared.Views._TimerPartial, Model.RecordStoreDayTimer)
+	@Html.Partial(MVC.Shared.Views._TimerPartial, Model.RecordStoreDayTimer)
 </div>
 
 <div class="row text-center">
-    <h2>
-        Time until <a href="http://freecomicbookday.com" target="_blank">Free Comic Book Day</a>
-    </h2>
+	<h2>
+		Time until <a href="http://freecomicbookday.com" target="_blank">Free Comic Book Day</a>
+	</h2>
 
-    @Html.Partial(MVC.Shared.Views._TimerPartial, Model.FreeComicBookDayTimer)
+	@Html.Partial(MVC.Shared.Views._TimerPartial, Model.FreeComicBookDayTimer)
 </div>
 
 <div class="container">
-    <div class="row panel panel-default">
-        <div class="panel-body">
-            <ul class="col-sm-6">
-                <li>Project Cinderella is a site designed to keep track of your personal media collection (Music, Books, Movies, Games)...digital versions too.</li>
-                <li>Having large collections makes it hard to remember what you actually have. Why remember it all?</li>
-            </ul>
-            <ul class="col-sm-6">
-                <li>Find something in a really cool place? Use it to remember where you found certain items.</li>
-                <li>Don't know if you already own something? Use it to prevent getting duplicates when you're out searching.</li>
-                <li>Happy hunting!</li>
-            </ul>
-            <ul class="col-sm-6">
-                <li class="h3">See what's been collected so far: <a href="@Url.Action(MVC.Statistics.Index())"><span class="fa fa-trophy"></span> Stats</a></li>
-            </ul>
-            @if (User.Identity.IsAuthenticated)
-            {
-                <ul class="col-sm-6">
-                    <li class="h3">See what's on your wish list: <a href="@Url.Action(MVC.Wish.Index())"><span class="fa fa-star"></span> Wish List</a></li>
-                </ul>
-            }
-            <ul class="col-sm-6">
-                <li class="h3">View the <a href="@Url.Action(MVC.Showcase.Index(User.Identity.IsAuthenticated ? User.Identity.GetUserNum() : 1))"><span class="fa fa-certificate"></span> Showcase</a></li>
-            </ul>
-            <ul class="col-sm-6">
-                <li class="h3">View the <a href="@Url.Action(MVC.Queue.Index())"><span class="fa fa-list"></span> Queue</a></li>
-            </ul>
-        </div>
-    </div>
+	<div class="row panel panel-default">
+		<div class="panel-body">
+			<ul class="col-sm-6">
+				<li>Project Cinderella is a site designed to keep track of your personal media collection (Music, Books, Movies, Games)...digital versions too.</li>
+				<li>Having large collections makes it hard to remember what you actually have. Why remember it all?</li>
+			</ul>
+			<ul class="col-sm-6">
+				<li>Find something in a really cool place? Use it to remember where you found certain items.</li>
+				<li>Don't know if you already own something? Use it to prevent getting duplicates when you're out searching.</li>
+				<li>Happy hunting!</li>
+			</ul>
+			<ul class="col-sm-6">
+				<li class="h3">See what's been collected so far: <a href="@Url.Action(MVC.Statistics.Index())"><span class="fa fa-trophy"></span> Stats</a></li>
+			</ul>
+			@if (User.Identity.IsAuthenticated)
+			{
+				<ul class="col-sm-6">
+					<li class="h3">See what's on your wish list: <a href="@Url.Action(MVC.Wish.Index())"><span class="fa fa-star"></span> Wish List</a></li>
+				</ul>
+			}
+			<ul class="col-sm-6">
+				<li class="h3">View the <a href="@Url.Action(MVC.Showcase.Index(User.Identity.IsAuthenticated ? User.Identity.GetUserNum() : 1))"><span class="fa fa-certificate"></span> Showcase</a></li>
+			</ul>
+			<ul class="col-sm-6">
+				<li class="h3">View the <a href="@Url.Action(MVC.Queue.Index())"><span class="fa fa-list"></span> Queue</a></li>
+			</ul>
+		</div>
+	</div>
 </div>
 
 @Html.Partial(MVC.Album.Views._RecentlyAdded, Model.Albums)
