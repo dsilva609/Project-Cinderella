@@ -72,7 +72,7 @@
 }
 <div class="row text-center">
 	<h2>
-		Time until <a href="http://recordstoreday.com" target="_blank">Record Store Day</a> 2018
+		Time until <a href="http://recordstoreday.com" target="_blank">Record Store Day</a> @Model.RecordStoreDayTimer.Year
 	</h2>
 
 	@Html.Partial(MVC.Shared.Views._TimerPartial, Model.RecordStoreDayTimer)
@@ -80,7 +80,7 @@
 
 <div class="row text-center">
 	<h2>
-		Time until <a href="http://freecomicbookday.com" target="_blank">Free Comic Book Day</a>
+		Time until <a href="http://freecomicbookday.com" target="_blank">Free Comic Book Day</a> @Model.FreeComicBookDayTimer.Year
 	</h2>
 
 	@Html.Partial(MVC.Shared.Views._TimerPartial, Model.FreeComicBookDayTimer)

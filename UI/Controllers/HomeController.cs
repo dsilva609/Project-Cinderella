@@ -4,6 +4,7 @@ using BusinessLogic.Services.Interfaces;
 using System.Linq;
 using System.Web.Mvc;
 using UI.Models;
+using UI.Properties;
 
 namespace UI.Controllers
 {
@@ -53,8 +54,11 @@ namespace UI.Controllers
 			var pops = _popService.GetAll(string.Empty, string.Empty).OrderByDescending(x => x.DateAdded).Take(NUM_POPS_TO_GET).ToList();
 			var updatedPops = _popService.GetAll(string.Empty, string.Empty).OrderByDescending(x => x.DateUpdated).Take(NUM_POPS_TO_GET).ToList();
 
-			var recordStoreDayTimer = new TimerModel { ID = "recordStoreDayTimer", Year = 2018, Month = 4, Day = 21 };
-			var freeComicBookDayTimer = new TimerModel { ID = "freeComicBookDayTimer", Year = 2017, Month = 5, Day = 6 };
+			var recordStoreDate = Settings.Default.RecordStoreDayDate;
+			var recordStoreDayTimer = new TimerModel { ID = "recordStoreDayTimer", Year = recordStoreDate.Year, Month = recordStoreDate.Month, Day = recordStoreDate.Day };
+
+			var freeComicBookDayDate = Settings.Default.FreeComicBookDayDate;
+			var freeComicBookDayTimer = new TimerModel { ID = "freeComicBookDayTimer", Year = freeComicBookDayDate.Year, Month = freeComicBookDayDate.Month, Day = freeComicBookDayDate.Day };
 
 			var model = new HomeViewModel
 			{
