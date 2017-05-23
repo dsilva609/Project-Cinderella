@@ -299,8 +299,7 @@ namespace UI.Controllers
             {
                 public readonly string _Movie = "_Movie";
                 public readonly string _MovieFormPartial = "_MovieFormPartial";
-                public readonly string _RecentlyAdded = "_RecentlyAdded";
-                public readonly string _RecentlyUpdated = "_RecentlyUpdated";
+                public readonly string _Recents = "_Recents";
                 public readonly string Create = "Create";
                 public readonly string Details = "Details";
                 public readonly string Edit = "Edit";
@@ -309,8 +308,7 @@ namespace UI.Controllers
             }
             public readonly string _Movie = "~/Views/Movie/_Movie.cshtml";
             public readonly string _MovieFormPartial = "~/Views/Movie/_MovieFormPartial.cshtml";
-            public readonly string _RecentlyAdded = "~/Views/Movie/_RecentlyAdded.cshtml";
-            public readonly string _RecentlyUpdated = "~/Views/Movie/_RecentlyUpdated.cshtml";
+            public readonly string _Recents = "~/Views/Movie/_Recents.cshtml";
             public readonly string Create = "~/Views/Movie/Create.cshtml";
             public readonly string Details = "~/Views/Movie/Details.cshtml";
             public readonly string Edit = "~/Views/Movie/Edit.cshtml";

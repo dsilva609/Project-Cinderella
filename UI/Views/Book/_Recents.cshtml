@@ -1,0 +1,8 @@
+﻿@model List<BusinessLogic.Models.Book>
+
+<div class="container">
+	@foreach (var book in Model)
+	{
+		@Html.Partial(MVC.Book.Views._Book, book)
+	}
+</div>

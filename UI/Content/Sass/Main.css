@@ -246,3 +246,15 @@ a:hover {
 .carousel-control {
   opacity: 0; }
 
+.nav-pills li.active:hover > a {
+  color: black;
+  background-color: white; }
+
+.nav-pills li.active > a {
+  color: black;
+  background-color: #b3ffff !important; }
+
+.nav-pills li > a {
+  color: black;
+  background-color: #007aac; }
+

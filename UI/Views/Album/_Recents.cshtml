@@ -1,0 +1,8 @@
+﻿@model List<BusinessLogic.Models.Album>
+
+<div class="container">
+	@foreach (var album in Model)
+	{
+		@Html.Partial(MVC.Album.Views._Album, album)
+	}
+</div>

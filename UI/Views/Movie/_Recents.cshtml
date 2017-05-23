@@ -1,0 +1,8 @@
+﻿@model List<BusinessLogic.Models.Movie>
+
+<div class="container">
+	@foreach (var movie in Model)
+	{
+		@Html.Partial(MVC.Movie.Views._Movie, movie)
+	}
+</div>

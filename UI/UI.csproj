@@ -806,10 +806,6 @@
     <Content Include="Views\Movie\Search.cshtml" />
     <Content Include="Views\Game\Search.cshtml" />
     <Content Include="Views\Shared\_FormPurchaseInfo.cshtml" />
-    <Content Include="Views\Album\_RecentlyAdded.cshtml" />
-    <Content Include="Views\Book\_RecentlyAdded.cshtml" />
-    <Content Include="Views\Movie\_RecentlyAdded.cshtml" />
-    <Content Include="Views\Game\_RecentlyAdded.cshtml" />
     <Content Include="Views\Album\_Album.cshtml" />
     <Content Include="Views\Book\_Book.cshtml" />
     <Content Include="Views\Game\_Game.cshtml" />
@@ -826,10 +822,6 @@
     <Content Include="Views\Statistics\Charts\_ConditionCharts.cshtml" />
     <Content Include="Views\Statistics\Charts\_ItemTypeChart.cshtml" />
     <Content Include="Views\Statistics\Charts\_MediaTypesChart.cshtml" />
-    <Content Include="Views\Album\_RecentlyUpdated.cshtml" />
-    <Content Include="Views\Book\_RecentlyUpdated.cshtml" />
-    <Content Include="Views\Game\_RecentlyUpdated.cshtml" />
-    <Content Include="Views\Movie\_RecentlyUpdated.cshtml" />
     <Content Include="Views\Shared\_Timespan.cshtml" />
     <Content Include="Views\Wish\Index.cshtml" />
     <Content Include="Views\Wish\Create.cshtml" />
@@ -856,8 +848,6 @@
     <Content Include="Views\Pop\Create.cshtml" />
     <Content Include="Views\Pop\Edit.cshtml" />
     <Content Include="Views\Pop\Details.cshtml" />
-    <Content Include="Views\Pop\_RecentlyAdded.cshtml" />
-    <Content Include="Views\Pop\_RecentlyUpdated.cshtml" />
     <Content Include="Views\Statistics\AlbumStats.cshtml" />
     <Content Include="Views\Statistics\PopStats.cshtml" />
     <Content Include="Views\Statistics\MovieStats.cshtml" />
@@ -881,6 +871,11 @@
     <Content Include="Views\Statistics\Charts\_NintendoChart.cshtml" />
     <Content Include="Views\Statistics\Charts\_HandheldChart.cshtml" />
     <Content Include="Views\Statistics\Charts\_CurrentGeneration.cshtml" />
+    <Content Include="Views\Pop\_Recents.cshtml" />
+    <Content Include="Views\Movie\_Recents.cshtml" />
+    <Content Include="Views\Game\_Recents.cshtml" />
+    <Content Include="Views\Book\_Recents.cshtml" />
+    <Content Include="Views\Album\_Recents.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

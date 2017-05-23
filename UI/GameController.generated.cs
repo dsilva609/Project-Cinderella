@@ -298,8 +298,7 @@ namespace UI.Controllers
             {
                 public readonly string _Game = "_Game";
                 public readonly string _GameFormPartial = "_GameFormPartial";
-                public readonly string _RecentlyAdded = "_RecentlyAdded";
-                public readonly string _RecentlyUpdated = "_RecentlyUpdated";
+                public readonly string _Recents = "_Recents";
                 public readonly string Create = "Create";
                 public readonly string Details = "Details";
                 public readonly string Edit = "Edit";
@@ -308,8 +307,7 @@ namespace UI.Controllers
             }
             public readonly string _Game = "~/Views/Game/_Game.cshtml";
             public readonly string _GameFormPartial = "~/Views/Game/_GameFormPartial.cshtml";
-            public readonly string _RecentlyAdded = "~/Views/Game/_RecentlyAdded.cshtml";
-            public readonly string _RecentlyUpdated = "~/Views/Game/_RecentlyUpdated.cshtml";
+            public readonly string _Recents = "~/Views/Game/_Recents.cshtml";
             public readonly string Create = "~/Views/Game/Create.cshtml";
             public readonly string Details = "~/Views/Game/Details.cshtml";
             public readonly string Edit = "~/Views/Game/Edit.cshtml";

@@ -117,17 +117,142 @@
 	</div>
 </div>
 
-@Html.Partial(MVC.Album.Views._RecentlyAdded, Model.Albums)
-@Html.Partial(MVC.Album.Views._RecentlyUpdated, Model.UpdatedAlbums)
+<div class="container" data-toggle="collapse" data-parent="#accordion" href="#albums">
+	<div class="row panel panel-primary panel-collapse">
+		<h2>
+			Albums
+		</h2>
+	</div>
+</div>
 
-@Html.Partial(MVC.Book.Views._RecentlyAdded, Model.Books)
-@Html.Partial(MVC.Book.Views._RecentlyUpdated, Model.UpdatedBooks)
+<div class="container collapse in" id="albums">
+	<ul class="nav nav-pills">
+		<li class="active">
+			<a href="#albumsRecent" data-toggle="tab">Recently Added Albums</a>
+		</li>
+		<li>
+			<a href="#albumsUpdated" data-toggle="tab">Recently Updated Albums</a>
+		</li>
+	</ul>
 
-@Html.Partial(MVC.Movie.Views._RecentlyAdded, Model.Movies)
-@Html.Partial(MVC.Movie.Views._RecentlyUpdated, Model.UpdatedMovies)
+	<div class="tab-content">
+		<div class="tab-pane active" id="albumsRecent">
+			@Html.Partial(MVC.Album.Views._Recents, Model.Albums)
+		</div>
+		<div class="tab-pane" id="albumsUpdated">
+			@Html.Partial(MVC.Album.Views._Recents, Model.UpdatedAlbums)
+		</div>
+	</div>
+</div>
 
-@Html.Partial(MVC.Game.Views._RecentlyAdded, Model.Games)
-@Html.Partial(MVC.Game.Views._RecentlyUpdated, Model.UpdatedGames)
+<div class="container" data-toggle="collapse" data-parent="#accordion" href="#books">
+	<div class="row panel panel-primary panel-collapse">
+		<h2>
+			Books
+		</h2>
+	</div>
+</div>
 
-@Html.Partial(MVC.Pop.Views._RecentlyAdded, Model.Pops)
-@Html.Partial(MVC.Pop.Views._RecentlyUpdated, Model.UpdatedPops)
+<div class="container collapse in" id="books">
+	<ul class="nav nav-pills">
+		<li class="active">
+			<a href="#booksRecent" data-toggle="tab">Recently Added Books</a>
+		</li>
+		<li>
+			<a href="#booksUpdated" data-toggle="tab">Recently Updated Books</a>
+		</li>
+	</ul>
+
+	<div class="tab-content">
+		<div class="tab-pane active" id="booksRecent">
+			@Html.Partial(MVC.Book.Views._Recents, Model.Books)
+		</div>
+		<div class="tab-pane" id="booksUpdated">
+			@Html.Partial(MVC.Book.Views._Recents, Model.UpdatedBooks)
+		</div>
+	</div>
+</div>
+
+<div class="container" data-toggle="collapse" data-parent="#accordion" href="#movies">
+	<div class="row panel panel-primary panel-collapse">
+		<h2>
+			Movies
+		</h2>
+	</div>
+</div>
+
+<div class="container collapse in" id="movies">
+	<ul class="nav nav-pills">
+		<li class="active">
+			<a href="#moviesRecent" data-toggle="tab">Recently Added Movies</a>
+		</li>
+		<li>
+			<a href="#moviesUpdated" data-toggle="tab">Recently Updated Movies</a>
+		</li>
+	</ul>
+
+	<div class="tab-content">
+		<div class="tab-pane active" id="moviesRecent">
+			@Html.Partial(MVC.Movie.Views._Recents, Model.Movies)
+		</div>
+		<div class="tab-pane" id="moviesUpdated">
+			@Html.Partial(MVC.Movie.Views._Recents, Model.UpdatedMovies)
+		</div>
+	</div>
+</div>
+
+<div class="container" data-toggle="collapse" data-parent="#accordion" href="#games">
+	<div class="row panel panel-primary panel-collapse">
+		<h2>
+			Games
+		</h2>
+	</div>
+</div>
+
+<div class="container collapse in" id="games">
+	<ul class="nav nav-pills">
+		<li class="active">
+			<a href="#gamesRecent" data-toggle="tab">Recently Added Games</a>
+		</li>
+		<li>
+			<a href="#gamesUpdated" data-toggle="tab">Recently Updated Games</a>
+		</li>
+	</ul>
+
+	<div class="tab-content">
+		<div class="tab-pane active" id="gamesRecent">
+			@Html.Partial(MVC.Game.Views._Recents, Model.Games)
+		</div>
+		<div class="tab-pane" id="gamesUpdated">
+			@Html.Partial(MVC.Game.Views._Recents, Model.UpdatedGames)
+		</div>
+	</div>
+</div>
+
+<div class="container" data-toggle="collapse" data-parent="#accordion" href="#pops">
+	<div class="row panel panel-primary panel-collapse">
+		<h2>
+			Pops
+		</h2>
+	</div>
+</div>
+
+<div class="container collapse in" id="pops">
+	<ul class="nav nav-pills">
+		<li class="active">
+			<a href="#popsRecent" data-toggle="tab">Recently Added Pops</a>
+		</li>
+		<li>
+			<a href="#popsUpdated" data-toggle="tab">Recently Updated Pops</a>
+		</li>
+	</ul>
+
+	<div class="tab-content">
+		<div class="tab-pane active" id="popsRecent">
+			@Html.Partial(MVC.Pop.Views._Recents, Model.Pops)
+		</div>
+		<div class="tab-pane" id="popsUpdated">
+			@Html.Partial(MVC.Pop.Views._Recents, Model.UpdatedPops)
+		</div>
+	</div>
+</div>

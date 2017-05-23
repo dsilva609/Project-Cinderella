@@ -357,3 +357,18 @@ a:hover {
 .carousel-control {
     opacity: 0;
 }
+
+.nav-pills {
+	li.active:hover >a {
+		color: black;
+		background-color: white;
+	}
+	li.active > a {
+		color: black;
+		background-color: $completed-color !important;
+	}
+	li > a {
+		color: black;
+		background-color: $body-color;
+	}
+}
