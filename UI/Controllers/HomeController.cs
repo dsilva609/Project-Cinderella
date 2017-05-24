@@ -100,7 +100,7 @@ namespace UI.Controllers
 		{
 			if (type == ItemType.Pop && act == "Search") act = "Index";
 
-			Session["query"] = query.Trim();
+			Session[$"{type.ToString().ToLower()}-query"] = query.Trim();
 			return RedirectToAction(act, type.ToString());
 		}
 	}

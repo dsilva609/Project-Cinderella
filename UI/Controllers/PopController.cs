@@ -28,10 +28,10 @@ namespace UI.Controllers
         [HttpGet]
         public virtual ActionResult Index(string popQuery, string filter, int? page)
         {
-            if (string.IsNullOrWhiteSpace(popQuery) && !string.IsNullOrWhiteSpace(Session["popQuery"]?.ToString()))
+            if (string.IsNullOrWhiteSpace(popQuery) && !string.IsNullOrWhiteSpace(Session["pop-Query"]?.ToString()))
             {
-                popQuery = Session["popQuery"].ToString();
-                Session["popQuery"] = string.Empty;
+                popQuery = Session["pop-Query"].ToString();
+                Session["pop-Query"] = string.Empty;
             }
             ViewBag.Filter = (string.IsNullOrWhiteSpace(popQuery) ? filter : popQuery)?.Trim();
 

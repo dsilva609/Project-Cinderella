@@ -31,7 +31,7 @@
     <div class="col-md-4text-right" style="padding-top: 1.25em; display: inline-flex;">
         @using (Html.BeginForm(MVC.Game.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
         {
-            <input class="form-control" id="query" name="gameQuery" placeholder="Search" type="text" value="@ViewBag.Filter">
+            <input class="form-control" id="game-query" name="gameQuery" placeholder="Search" type="text" value="@ViewBag.Filter">
             <button type="submit" class="btn btn-default">
                 <span class="fa fa-search"></span>
             </button>
