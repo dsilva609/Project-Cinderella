@@ -32,5 +32,8 @@ namespace BusinessLogic.Models
 
 		[DisplayName("Owned?")]
 		public bool Owned { get; set; }
+
+		[DisplayName("Image Url")]
+		public string ImageUrl { get; set; }
 	}
 }
