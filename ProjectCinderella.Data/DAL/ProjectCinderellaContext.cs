@@ -1,27 +1,29 @@
-﻿using ProjectCinderella.Model.Common;
+﻿using BusinessLogic.Migrations;
+using Microsoft.EntityFrameworkCore;
+using ProjectCinderella.Model.Common;
 using ProjectCinderella.Model.DiscogsModels;
 
 namespace ProjectCinderella.Data.DAL
 {
 	public class ProjectCinderellaContext : DbContext
 	{
-		public DbSet<Album> Albums { get; set; }
-		public DbSet<Tracklist> Tracks { get; set; }
-		public DbSet<Book> Books { get; set; }
-		public DbSet<Movie> Movies { get; set; }
-		public DbSet<Game> Games { get; set; }
-		public DbSet<FunkoModel> Pops { get; set; }
-		public DbSet<Wish> Wishes { get; set; }
+		public DbSet<Album> Album { get; set; }
+		public DbSet<Tracklist> Track { get; set; }
+		public DbSet<Book> Book { get; set; }
+		public DbSet<Movie> Movie { get; set; }
+		public DbSet<Game> Game { get; set; }
+		public DbSet<FunkoModel> Pop { get; set; }
+		public DbSet<Wish> Wishe { get; set; }
 
 		public ProjectCinderellaContext()
 			: base("ProjectCinderella")
 		{
-			Configuration.LazyLoadingEnabled = false;
+			//Configuration.LazyLoadingEnabled = false;
 		}
 
-		protected override void OnModelCreating(DbModelBuilder modelBuilder)
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+			//modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 		}
 	}
 }

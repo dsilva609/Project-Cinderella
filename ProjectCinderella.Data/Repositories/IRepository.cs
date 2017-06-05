@@ -13,7 +13,7 @@ namespace ProjectCinderella.Data.Repositories
 
 		void Edit(T entity);
 
-		void Edit(List<T> entities);
+		void Edit(IEnumerable<T> entities);
 
 		void Delete(int id, string userID);
 

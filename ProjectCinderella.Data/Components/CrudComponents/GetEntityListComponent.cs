@@ -5,9 +5,6 @@ namespace ProjectCinderella.Data.Components.CrudComponents
 {
 	public class GetEntityListComponent
 	{
-		public IQueryable<T> Execute<T>(IRepository<T> repo) where T : class
-		{
-			return repo.GetAll();
-		}
+		public IQueryable<T> Execute<T>(IRepository<T> repo) where T : class => repo.GetAll();
 	}
 }

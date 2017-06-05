@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProjectCinderella.Data.Repositories
 {
@@ -21,12 +22,9 @@ namespace ProjectCinderella.Data.Repositories
         {
             if (!this._isDisposed)
             {
-                if (disposing)
-                {
-                    this._context.Dispose();
-                }
+	            if (disposing) this._context.Dispose();
 
-                this._isDisposed = true;
+	            this._isDisposed = true;
             }
         }
 
@@ -53,9 +51,6 @@ namespace ProjectCinderella.Data.Repositories
             GC.SuppressFinalize(this);
         }
 
-        ~UnitOfWork()
-        {
-            this._context.Dispose();
-        }
+        ~UnitOfWork() => this._context.Dispose();
     }
 }

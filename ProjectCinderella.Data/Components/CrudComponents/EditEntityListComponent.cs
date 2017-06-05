@@ -5,9 +5,6 @@ namespace ProjectCinderella.Data.Components.CrudComponents
 {
 	public class EditEntityListComponent
 	{
-		public void Execute<T>(IRepository<T> repo, List<T> entity) where T : class
-		{
-			repo.Edit(entity);
-		}
+		public void Execute<T>(IRepository<T> repo, List<T> entity) where T : class => repo.Edit(entity);
 	}
 }
