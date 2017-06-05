@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Enums\" />
+    <Folder Include="BGGModels\" />
+    <Folder Include="ComicVineModels\" />
+    <Folder Include="DiscogsModels\" />
+    <Folder Include="GiantBombModels\" />
+    <Folder Include="TMDBModels\" />
+    <Folder Include="StatisticsModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.ComponentModel.Annotations">
+      <HintPath>..\..\..\Users\dsilva\.nuget\packages\microsoft.netcore.app\2.0.0-preview1-002111-00\ref\netcoreapp2.0\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

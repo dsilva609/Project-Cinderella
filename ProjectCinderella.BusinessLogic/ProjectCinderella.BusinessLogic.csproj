@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectCinderella.Data\ProjectCinderella.Data.csproj" />
+    <ProjectReference Include="..\ProjectCinderella.Model\ProjectCinderella.Model.csproj" />
+  </ItemGroup>
+
+</Project>
