@@ -1,17 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Extensions;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore;
 using Microsoft.AspNetCore.Diagnostics.Identity.Service;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Rewrite;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Logging;
+using System.Web;
+using Microsoft.AspNetCore.Http;
+using ProjectCinderella.Data.DAL;
+using ProjectCinderella.Model.Common;
 
 namespace ProjectCinderellaCore
 {
@@ -28,12 +28,16 @@ namespace ProjectCinderellaCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddIdentityServiceAuthentication();
-
-            services.AddMvc();
+	        services.AddDbContext<ProjectCinderellaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+	        services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+	        services.AddSingleton<IConfiguration>(Configuration);
+	        services.AddOptions();
+			services.Configure<ServiceSettings>(Configuration.GetSection("ServiceSettings"));
+			services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IServiceProvider svp)
         {
             if (env.IsDevelopment())
             {
@@ -45,8 +49,8 @@ namespace ProjectCinderellaCore
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
-            app.UseStaticFiles();
+			
+			app.UseStaticFiles();
 
             app.UseRewriter(new RewriteOptions().AddIISUrlRewrite(env.ContentRootFileProvider, "urlRewrite.config"));
 

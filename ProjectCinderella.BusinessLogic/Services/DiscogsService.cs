@@ -4,6 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using ProjectCinderella.BusinessLogic.Services.Interfaces;
 using ProjectCinderella.Model.Common;
 using ProjectCinderella.Model.DiscogsModels;
@@ -12,10 +15,12 @@ namespace ProjectCinderella.BusinessLogic.Services
 {
 	public class DiscogsService : IDiscogsService
 	{
+		private readonly ServiceSettings _settings;
 		private HttpClient _client;
 
-		public DiscogsService()
+		public DiscogsService(IOptions<ServiceSettings> settings)
 		{
+			_settings = settings.Value;
 			CreateClient();
 		}
 
@@ -58,7 +63,7 @@ namespace ProjectCinderella.BusinessLogic.Services
 			_client = new HttpClient { BaseAddress = new Uri("https://api.discogs.com/") };
 			ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 			_client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-			_client.DefaultRequestHeaders.Add("Authorization", $"Discogs token={Settings.Default.DiscogsKey}");
+			_client.DefaultRequestHeaders.Add("Authorization", $"Discogs token={_settings.DiscogsKey}");
 			_client.DefaultRequestHeaders.Add("User-Agent", "Project-Cinderella/1.0 +projectcinderella.azurewebsites.net");
 		}
 

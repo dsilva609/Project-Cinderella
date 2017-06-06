@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity.Service.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
+using ProjectCinderellaCore.Areas.IdentityService.Models;
 using ProjectCinderellaCore.Identity.Models;
 using ProjectCinderellaCore.Identity.Models.AccountViewModels;
 using ProjectCinderellaCore.Identity.Services;

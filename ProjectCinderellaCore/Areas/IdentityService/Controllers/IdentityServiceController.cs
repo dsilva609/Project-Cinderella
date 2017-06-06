@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity.Service.Mvc;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using ProjectCinderellaCore.Areas.IdentityService.Models;
 using ProjectCinderellaCore.Identity.Models;
 
 namespace ProjectCinderellaCore.Identity.Controllers

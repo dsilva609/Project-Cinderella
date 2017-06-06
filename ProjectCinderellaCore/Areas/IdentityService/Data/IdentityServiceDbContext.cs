@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.Service;
 using Microsoft.AspNetCore.Identity.Service.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using ProjectCinderellaCore.Areas.IdentityService.Models;
 using ProjectCinderellaCore.Identity.Models;
 
 namespace ProjectCinderellaCore.Identity.Data

@@ -9,8 +9,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Google.Apis" Version="1.27.0" />
+    <PackageReference Include="Google.Apis.Books.v1" Version="1.27.0.802" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ProjectCinderella.Data\ProjectCinderella.Data.csproj" />
     <ProjectReference Include="..\ProjectCinderella.Model\ProjectCinderella.Model.csproj" />
   </ItemGroup>
-
+	
+	<ItemGroup>
+		<DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.0-preview1-final" />
+	</ItemGroup>
 </Project>

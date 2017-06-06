@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using ProjectCinderella.BusinessLogic.Services.Interfaces;
 using ProjectCinderella.Model.Common;
 using ProjectCinderella.Model.TMDBModels;
@@ -12,16 +14,18 @@ namespace ProjectCinderella.BusinessLogic.Services
 {
     public class TMDBService : ITMDBService
     {
-        private HttpClient _client;
+	    private readonly ServiceSettings _settings;
+	    private HttpClient _client;
 
-        public TMDBService()
+        public TMDBService(IOptions<ServiceSettings> settings)
         {
-            CreateClient();
+	        _settings = settings.Value;
+	        CreateClient();
         }
 
         public List<TMDBMovie> SearchMovies(string title)
         {
-            var response = _client.GetAsync($"search/movie?api_key={Settings.Default.TMDBKey}&query={title}");
+            var response = _client.GetAsync($"search/movie?api_key={_settings.TMDBKey}&query={title}");
 
             var result = response.Result.Content.ReadAsStringAsync().Result;
             var movies = JsonConvert.DeserializeObject<TMDBMovieResult>(result);
@@ -31,7 +35,7 @@ namespace ProjectCinderella.BusinessLogic.Services
 
         public Movie SearchMovieByID(int id)
         {
-            var response = _client.GetAsync($"movie/{id}?api_key={Settings.Default.TMDBKey}");
+            var response = _client.GetAsync($"movie/{id}?api_key={_settings.TMDBKey}");
 
             var result = response.Result.Content.ReadAsStringAsync().Result;
             var tmdbMovie = JsonConvert.DeserializeObject<TMDBMovie>(result);
@@ -42,7 +46,7 @@ namespace ProjectCinderella.BusinessLogic.Services
 
         public List<TMDBMovie> SearchTV(string title)
         {
-            var response = _client.GetAsync($"search/tv?api_key={Settings.Default.TMDBKey}&query={title}");
+            var response = _client.GetAsync($"search/tv?api_key={_settings.TMDBKey}&query={title}");
 
             var result = response.Result.Content.ReadAsStringAsync().Result;
             var shows = JsonConvert.DeserializeObject<TMDBMovieResult>(result);
@@ -53,7 +57,7 @@ namespace ProjectCinderella.BusinessLogic.Services
 
         public Movie SearchTVShowByID(int id, int seasonNumber)
         {
-            var response = _client.GetAsync($"tv/{id}?api_key={Settings.Default.TMDBKey}");
+            var response = _client.GetAsync($"tv/{id}?api_key={_settings.TMDBKey}");
 
             var result = response.Result.Content.ReadAsStringAsync().Result;
             var tmdbMovie = JsonConvert.DeserializeObject<TMDBMovie>(result);

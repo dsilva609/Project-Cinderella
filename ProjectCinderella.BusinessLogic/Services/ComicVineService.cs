@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using ProjectCinderella.BusinessLogic.Services.Interfaces;
 using ProjectCinderella.Model.ComicVineModels;
 using ProjectCinderella.Model.Common;
@@ -11,17 +13,19 @@ namespace ProjectCinderella.BusinessLogic.Services
 {
 	public class ComicVineService : IComicVineService
 	{
+		private readonly ServiceSettings _settings;
 		private HttpClient _client;
 
-		public ComicVineService()
+		public ComicVineService(IOptions<ServiceSettings> settings)
 		{
+			_settings = settings.Value;
 			CreateClient();
 		}
 
 		public ComicVineResult Search(string query)
 		{
 			var response =
-				_client.GetStringAsync($"search/?api_key={Settings.Default.ComicVineKey}&resources=issue&format=json&limit=25&query={query}");
+				_client.GetStringAsync($"search/?api_key={_settings.ComicVineKey}&resources=issue&format=json&limit=25&query={query}");
 			var result = response.Result;
 
 			var comicVineResults = JsonConvert.DeserializeObject<ComicVineResult>(result);
@@ -31,7 +35,7 @@ namespace ProjectCinderella.BusinessLogic.Services
 
 		public Book SearchByID(string id)
 		{
-			var response = _client.GetStringAsync($"issue/{id}/?api_key={Settings.Default.ComicVineKey}&format=json");
+			var response = _client.GetStringAsync($"issue/{id}/?api_key={_settings.ComicVineKey}&format=json");
 			var result = response.Result;
 
 			var comicVineResult = JsonConvert.DeserializeObject<ComicVineComic>(result);

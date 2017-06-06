@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Google.Apis.Books.v1;
+using Google.Apis.Books.v1.Data;
+using Google.Apis.Services;
 using ProjectCinderella.BusinessLogic.Services.Interfaces;
-using ProjectCinderella.Model.ComicVineModels;
 using ProjectCinderella.Model.Common;
 
 namespace ProjectCinderella.BusinessLogic.Services

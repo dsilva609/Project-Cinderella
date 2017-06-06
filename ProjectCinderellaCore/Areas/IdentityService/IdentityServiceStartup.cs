@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity.Service.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ProjectCinderellaCore.Areas.IdentityService.Models;
 using ProjectCinderellaCore.Identity.Data;
 using ProjectCinderellaCore.Identity.Models;
 using ProjectCinderellaCore.Identity.Services;

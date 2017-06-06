@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using ProjectCinderella.BusinessLogic.Services.Interfaces;
 using ProjectCinderella.Model.Common;
 using ProjectCinderella.Model.GiantBombModels;
@@ -10,16 +12,18 @@ namespace ProjectCinderella.BusinessLogic.Services
 {
 	public class GiantBombService : IGiantBombService
 	{
+		private readonly ServiceSettings _settings;
 		private HttpClient _client;
 
-		public GiantBombService()
+		public GiantBombService(IOptions<ServiceSettings> settings)
 		{
+			_settings = settings.Value;
 			CreateHttpClient();
 		}
 
 		public GiantBombResult Search(string query)
 		{
-			var response = _client.GetStringAsync($"search?query={query}&format=json&api_key={Settings.Default.GiantBombKey}&limit=25");
+			var response = _client.GetStringAsync($"search?query={query}&format=json&api_key={_settings.GiantBombKey}&limit=25");
 			var result = response.Result;
 
 			var giantBombResult = JsonConvert.DeserializeObject<GiantBombResult>(result);
@@ -30,7 +34,7 @@ namespace ProjectCinderella.BusinessLogic.Services
 
 		public Game SearchByID(int id)
 		{
-			var response = _client.GetStringAsync($"game/{id}/?format=json&api_key={Settings.Default.GiantBombKey}");
+			var response = _client.GetStringAsync($"game/{id}/?format=json&api_key={_settings.GiantBombKey}");
 			var result = response.Result;
 
 			var giantBombResult = JsonConvert.DeserializeObject<GiantBombGame>(result);
