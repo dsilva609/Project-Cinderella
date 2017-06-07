@@ -155,7 +155,7 @@ namespace ProjectCinderellaCore.Controllers
 			if (pop.UserID != _user.GetUserID())
 			{
 				ShowStatusMessage(MessageTypeEnum.warning, "This pop cannot be edited by another user.", "Edit Failure");
-				return RedirectToAction("Index", "Showcase", _user.GetUserNum() as string);
+				return RedirectToAction("Index", "Showcase", (object) _user.GetUserNum() );
 			}
 
 			pop.IsShowcased = true;
@@ -164,7 +164,7 @@ namespace ProjectCinderellaCore.Controllers
 			_service.Edit(pop);
 
 			ShowStatusMessage(MessageTypeEnum.info, "Pop added to showcase", "Showcase");
-			return RedirectToAction("Index", "Showcase",_user.GetUserNum() as string);
+			return RedirectToAction("Index", "Showcase", (object) _user.GetUserNum() );
 		}
 
 		[Authorize(Roles = "Admin")]

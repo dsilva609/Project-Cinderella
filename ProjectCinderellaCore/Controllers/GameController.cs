@@ -1,24 +1,19 @@
-﻿using BusinessLogic.Enums;
-using BusinessLogic.Models;
-using BusinessLogic.Models.Interfaces;
-using BusinessLogic.Services.Interfaces;
-using PagedList;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ProjectCinderellaCore.Controllers;
-using UI.Models;
-using CompletionStatus = BusinessLogic.Enums.CompletionStatus;
+using PagedList;
+using ProjectCinderella.Model.Interfaces;
+using ProjectCinderella.BusinessLogic.Services.Interfaces;
 using ProjectCinderella.Model.Common;
-using ProjectCinderella.Model.Enums;
 using ProjectCinderella.Model.UI;
+using ProjectCinderella.Model.Enums;
+using System.Linq;
 
-namespace UI.Controllers
+namespace ProjectCinderellaCore.Controllers
 {
-	public partial class GameController : ProjectCinderellaControllerBase
+	public class GameController : ProjectCinderellaControllerBase
 	{
 		private readonly IUserContext _user;
 		private readonly IGameService _service;
@@ -41,10 +36,10 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult Index(string gameQuery, string filter, int? page = 1)
 		{
-			if (string.IsNullOrWhiteSpace(gameQuery) && !string.IsNullOrWhiteSpace(Session["game-query"]?.ToString()))
+			if (string.IsNullOrWhiteSpace(gameQuery) && !string.IsNullOrWhiteSpace(HttpContext.Session.GetString("game-query")))
 			{
-				gameQuery = Session["game-query"].ToString();
-				Session["game-query"] = string.Empty;
+				gameQuery = HttpContext.Session.GetString("game-query");
+				HttpContext.Session.SetString("game-query", string.Empty);
 			}
 
 			ViewBag.Filter = (string.IsNullOrWhiteSpace(gameQuery) ? filter : gameQuery)?.Trim();
@@ -74,8 +69,8 @@ namespace UI.Controllers
 		public virtual ActionResult Create()
 		{
 			ViewBag.Title = "Create";
-			var model = Session["gameResult"] ?? new Game { UserID = _user.GetUserID(), UserNum = _user.GetUserNum() };
-			Session["gameResult"] = null;
+			var model = HttpContext.Session.Get("gameResult") ?? new Game { UserID = _user.GetUserID(), UserNum = _user.GetUserNum() };
+			HttpContext.Session.Set("gameResult",  null);
 
 			return View(model);
 		}
@@ -88,7 +83,7 @@ namespace UI.Controllers
 			if (!ModelState.IsValid) return View(game);
 			try
 			{
-				if (game.CompletionStatus == CompletionStatus.Completed && game.TimesCompleted == 0)
+				if (game.CompletionStatus == ProjectCinderella.Model.Enums.CompletionStatus.Completed && game.TimesCompleted == 0)
 					game.TimesCompleted = 1;
 				game.DateAdded = DateTime.UtcNow;
 				SetTimeStamps(game);
@@ -96,20 +91,20 @@ namespace UI.Controllers
 			}
 			catch (Exception e)
 			{
-				ShowStatusMessage(MessageTypeEnum.error, e.Message, "Duplicate Game");
+				ShowStatusMessage(ProjectCinderella.Model.Enums.MessageTypeEnum.error, e.Message, "Duplicate Game");
 				return View(game);
 			}
-			Session["game-query"] = null;
+			HttpContext.Session.Set("game-query", null);
 
-			if (!string.IsNullOrWhiteSpace(Session["wish"]?.ToString()))
+			if (!string.IsNullOrWhiteSpace(HttpContext.Session.GetString("wish")))
 			{
-				_wishService.Delete(Convert.ToInt32(Session["wishID"].ToString()), _user.GetUserID());
-				Session["wish"] = null;
-				Session["wishID"] = null;
-				ShowStatusMessage(MessageTypeEnum.info, "Wish list has been updated", "Wish list");
+				_wishService.Delete(Convert.ToInt32(HttpContext.Session.GetString("wishID")), _user.GetUserID());
+				HttpContext.Session.Set("wish", null);
+				HttpContext.Session.Set("wishID", null);
+				ShowStatusMessage(ProjectCinderella.Model.Enums.MessageTypeEnum.info, "Wish list has been updated", "Wish list");
 			}
 			ShowStatusMessage(MessageTypeEnum.success, "New Game Added Successfully.", "Add Successful");
-			return RedirectToAction(MVC.Game.Index());
+			return RedirectToAction("Index", "Game");
 		}
 
 		[Authorize]
@@ -118,7 +113,7 @@ namespace UI.Controllers
 		{
 			var model = _service.GetByID(id, _user.GetUserID());
 			ViewBag.Title = $"Edit - {model.Title}";
-			if (model.UserID != _user.GetUserID()) return RedirectToAction(MVC.Game.Details(model.ID));
+			if (model.UserID != _user.GetUserID()) return RedirectToAction("Details", "Game", (object) model.ID);
 
 			return View(model);
 		}
@@ -138,9 +133,9 @@ namespace UI.Controllers
 				return View(game);
 			}
 
-			if (game.CompletionStatus == CompletionStatus.Completed && game.TimesCompleted == 0)
+			if (game.CompletionStatus == ProjectCinderella.Model.Enums.CompletionStatus.Completed && game.TimesCompleted == 0)
 				game.TimesCompleted = 1;
-			if (game.TimesCompleted > 0) game.CompletionStatus = CompletionStatus.Completed;
+			if (game.TimesCompleted > 0) game.CompletionStatus = ProjectCinderella.Model.Enums.CompletionStatus.Completed;
 			SetTimeStamps(game);
 
 			//TODO: make sure user id is the same so as not to change other users data
@@ -149,7 +144,7 @@ namespace UI.Controllers
 
 			ShowStatusMessage(ProjectCinderella.Model.Enums.MessageTypeEnum.success,
 				$"Game of Title {game.Title}, Developer: {game.Developer} updated.", "Update Successful");
-			return RedirectToAction(MVC.Game.Index());
+			return RedirectToAction("Index", "Game");
 		}
 
 		[Authorize]
@@ -160,14 +155,14 @@ namespace UI.Controllers
 			if (model.UserID != _user.GetUserID())
 			{
 				ShowStatusMessage(MessageTypeEnum.error, "This game cannot be deleted by another user", "Delete Failure");
-				return RedirectToAction(MVC.Game.Index());
+				return RedirectToAction("Index", "Game");
 			}
 
 			_service.Delete(id, _user.GetUserID());
 
 			ShowStatusMessage(MessageTypeEnum.success, "", "Game Deleted Successfully");
 
-			return RedirectToAction(MVC.Game.Index());
+			return RedirectToAction("Index", "Game");
 		}
 
 		//TODO: add tests and validation
@@ -176,8 +171,8 @@ namespace UI.Controllers
 		public virtual ActionResult Search(GameSearchModel searchModel)
 		{
 			if (!string.IsNullOrWhiteSpace(searchModel.Title)) searchModel.Title = searchModel.Title.Trim();
-			if (!string.IsNullOrWhiteSpace(Session["game-query"]?.ToString())) searchModel.Title = Session["game-query"].ToString();
-			if (!string.IsNullOrWhiteSpace(Session["wish"]?.ToString())) searchModel.Title = Session["wish"].ToString();
+			if (!string.IsNullOrWhiteSpace(HttpContext.Session.GetString("game-query"))) searchModel.Title = HttpContext.Session.GetString("game-query");
+			if (!string.IsNullOrWhiteSpace(HttpContext.Session.GetString("wish"))) searchModel.Title = HttpContext.Session.GetString("wish");
 
 			if (Request.UrlReferrer?.LocalPath == "/Game/Search" && string.IsNullOrWhiteSpace(searchModel.Title))
 			{
@@ -204,9 +199,9 @@ namespace UI.Controllers
 
 			game.UserID = _user.GetUserID();
 			game.UserNum = _user.GetUserNum();
-			Session["gameResult"] = game;
+			HttpContext.Session.Set("gameResult", game);
 
-			return RedirectToAction(MVC.Game.Create());
+			return RedirectToAction("Create", "Game");
 		}
 
 		[Authorize(Roles = "Admin")]
@@ -219,7 +214,7 @@ namespace UI.Controllers
 			_service.Edit(game);
 
 			ShowStatusMessage(MessageTypeEnum.info, "Game added to showcase", "Showcase");
-			return RedirectToAction(MVC.Showcase.Index(_user.GetUserNum()));
+			return RedirectToAction("Index", "Showcase",(object) _user.GetUserNum());
 		}
 
 		[Authorize(Roles = "Admin")]
@@ -232,7 +227,7 @@ namespace UI.Controllers
 			_service.Edit(game);
 
 			ShowStatusMessage(MessageTypeEnum.info, "Game removed from showcase", "Showcase");
-			return RedirectToAction(MVC.Showcase.Index(_user.GetUserNum()));
+			return RedirectToAction("Index", "Showcase",(object) _user.GetUserNum());
 		}
 
 		[Authorize]
@@ -244,16 +239,16 @@ namespace UI.Controllers
 			if (game.UserID != _user.GetUserID())
 			{
 				ShowStatusMessage(MessageTypeEnum.warning, "This game cannot be edited by another user.", "Edit Failure");
-				return RedirectToAction(MVC.Game.Index());
+				return RedirectToAction("Index", "Game");
 			}
 
 			game.TimesCompleted += 1;
-			game.CompletionStatus = CompletionStatus.Completed;
+			game.CompletionStatus = ProjectCinderella.Model.Enums.CompletionStatus.Completed;
 			game.DateUpdated = DateTime.UtcNow;
 			_service.Edit(game);
 
 			ShowStatusMessage(MessageTypeEnum.info, "Game was updated.", "Update");
-			return RedirectToAction(MVC.Game.Index());
+			return RedirectToAction("Index", "Game");
 		}
 
 		[Authorize]
@@ -265,16 +260,16 @@ namespace UI.Controllers
 			if (game.UserID != _user.GetUserID())
 			{
 				ShowStatusMessage(MessageTypeEnum.warning, "This game cannot be edited by another user.", "Edit Failure");
-				return RedirectToAction(MVC.Game.Index());
+				return RedirectToAction("Index","Game");
 			}
 
 			if (game.TimesCompleted > 0) game.TimesCompleted -= 1;
-			if (game.TimesCompleted == 0) game.CompletionStatus = CompletionStatus.NotStarted;
+			if (game.TimesCompleted == 0) game.CompletionStatus = ProjectCinderella.Model.Enums.CompletionStatus.NotStarted;
 			game.DateUpdated = DateTime.UtcNow;
 			_service.Edit(game);
 
 			ShowStatusMessage(MessageTypeEnum.info, "Game was updated.", "Update");
-			return RedirectToAction(MVC.Game.Index());
+			return RedirectToAction("Index", "Game");
 		}
 
 		[Authorize]
@@ -286,13 +281,13 @@ namespace UI.Controllers
 			if (game.UserID != _user.GetUserID())
 			{
 				ShowStatusMessage(MessageTypeEnum.error, "This game cannot be edited by another user.", "Edit Failure");
-				return RedirectToAction(MVC.Album.Index());
+				return RedirectToAction("Index", "Game");
 			}
 
 			if (game.IsQueued)
 			{
 				ShowStatusMessage(MessageTypeEnum.warning, "This game is already queued.", "Edit Failure");
-				return RedirectToAction(MVC.Album.Index());
+				return RedirectToAction("Index", "Game");
 			}
 
 			game.IsQueued = true;
@@ -302,7 +297,7 @@ namespace UI.Controllers
 			_service.Edit(game);
 
 			ShowStatusMessage(MessageTypeEnum.info, "Game added to queue", "Queue");
-			return RedirectToAction(MVC.Queue.Index());
+			return RedirectToAction("Index", "Queue");
 		}
 
 		[Authorize]
@@ -314,7 +309,7 @@ namespace UI.Controllers
 			if (game.UserID != _user.GetUserID())
 			{
 				ShowStatusMessage(MessageTypeEnum.error, "This game cannot be edited by another user.", "Edit Failure");
-				return RedirectToAction(MVC.Album.Index());
+				return RedirectToAction("Index", "Game");
 			}
 
 			game.IsQueued = false;
@@ -323,7 +318,7 @@ namespace UI.Controllers
 			_service.Edit(game);
 
 			ShowStatusMessage(MessageTypeEnum.info, "Game removed from queue,", "Queue");
-			return RedirectToAction(MVC.Queue.Index());
+			return RedirectToAction("Index", "Queue");
 		}
 	}
 }

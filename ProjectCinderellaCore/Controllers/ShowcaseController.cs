@@ -61,7 +61,7 @@ namespace ProjectCinderellaCore.Controllers
 		public virtual ActionResult SearchItems(string query, ItemType type)
 		{
 			HttpContext.Session.SetString($"{type.ToString().ToLower()}-query", query.Trim());
-			return RedirectToAction("Index","Showcase", type.ToString());
+			return RedirectToAction("Index","Showcase", (string) type.ToString());
 		}
 	}
 }

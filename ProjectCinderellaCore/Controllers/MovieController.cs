@@ -1,23 +1,19 @@
-﻿using BusinessLogic.Enums;
-using BusinessLogic.Models;
-using BusinessLogic.Models.Interfaces;
-using BusinessLogic.Services.Interfaces;
-using PagedList;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ProjectCinderellaCore.Controllers;
-using UI.Models;
-using CompletionStatus = BusinessLogic.Enums.CompletionStatus;
+using PagedList;
+using ProjectCinderella.Model.Interfaces;
+using ProjectCinderella.BusinessLogic.Services.Interfaces;
+using ProjectCinderella.Model.Common;
 using ProjectCinderella.Model.UI;
 using ProjectCinderella.Model.Enums;
+using System.Linq;
 
-namespace UI.Controllers
+namespace ProjectCinderellaCore.Controllers
 {
-	public partial class MovieController : ProjectCinderellaControllerBase
+	public class MovieController : ProjectCinderellaControllerBase
 	{
 		private readonly IUserContext _user;
 		private readonly IMovieService _service;
@@ -36,10 +32,10 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult Index(string movieQuery, string filter, int? page)
 		{
-			if (string.IsNullOrWhiteSpace(movieQuery) && !string.IsNullOrWhiteSpace(Session["movie-query"]?.ToString()))
+			if (string.IsNullOrWhiteSpace(movieQuery) && !string.IsNullOrWhiteSpace(HttpContext.Session.GetString("movie-query")))
 			{
-				movieQuery = Session["movie-query"].ToString();
-				Session["movie-query"] = string.Empty;
+				movieQuery = HttpContext.Session.GetString("movie-query");
+				HttpContext.Session.SetString("movie-query", string.Empty);
 			}
 
 			ViewBag.Filter = (string.IsNullOrWhiteSpace(movieQuery) ? filter : movieQuery)?.Trim();
@@ -67,10 +63,9 @@ namespace UI.Controllers
 		[HttpGet]
 		public virtual ActionResult Create()
 		{
-			var model = Session["movieResult"] ?? new Movie { UserID = _user.GetUserID(), UserNum = _user.GetUserNum() };
+			var model = HttpContext.Session.Get("movieResult") ?? new Movie { UserID = _user.GetUserID(), UserNum = _user.GetUserNum() };
 			ViewBag.Title = "Create";
-			Session["movieResult"] = null;
-
+			HttpContext.Session.Set("movieResult", null);
 			return View(model);
 		}
 
@@ -83,7 +78,7 @@ namespace UI.Controllers
 
 			try
 			{
-				if (movie.CompletionStatus == CompletionStatus.Completed && movie.TimesCompleted == 0)
+				if (movie.CompletionStatus == ProjectCinderella.Model.Enums.CompletionStatus.Completed && movie.TimesCompleted == 0)
 					movie.TimesCompleted = 1;
 				movie.DateAdded = DateTime.UtcNow;
 				SetTimeStamps(movie);
@@ -95,17 +90,17 @@ namespace UI.Controllers
 				ShowStatusMessage(MessageTypeEnum.error, e.Message, "Duplicate Movie");
 				return View(movie);
 			}
-			Session["movie-query"] = null;
+			HttpContext.Session.Set("movie-query", null);
 
-			if (!string.IsNullOrWhiteSpace(Session["wish"]?.ToString()))
+			if (!string.IsNullOrWhiteSpace(HttpContext.Session.GetString("wish")))
 			{
-				_wishService.Delete(Convert.ToInt32(Session["wishID"].ToString()), _user.GetUserID());
-				Session["wish"] = null;
-				Session["wishID"] = null;
+				_wishService.Delete(Convert.ToInt32(HttpContext.Session.GetString("wishID")), _user.GetUserID());
+				HttpContext.Session.Set("wish", null);
+				HttpContext.Session.SetString("wishID", null);
 				ShowStatusMessage(MessageTypeEnum.info, "Wish list has been updated", "Wish list");
 			}
 			ShowStatusMessage(MessageTypeEnum.success, "New Movie Added Successfully.", "Add Successful");
-			return RedirectToAction(MVC.Movie.Index());
+			return RedirectToAction("Index", "Movie");
 		}
 
 		[Authorize]
@@ -114,7 +109,7 @@ namespace UI.Controllers
 		{
 			var model = _service.GetByID(id, _user.GetUserID());
 			ViewBag.Title = $"Edit - {model.Title}";
-			if (model.UserID != _user.GetUserID()) return RedirectToAction(MVC.Movie.Details(model.ID));
+			if (model.UserID != _user.GetUserID()) return RedirectToAction("Details", "Movie", (object) model.ID);
 
 			return View(model);
 		}
@@ -130,21 +125,21 @@ namespace UI.Controllers
 
 			if (existingMovies.Count > 0 && existingMovies.Any(x => x.ID != movie.ID && x.Title == movie.Title && x.Type == movie.Type))
 			{
-				ShowStatusMessage(MessageTypeEnum.error, $"A Game of Title: {movie.Title}, Media Type: {movie.Type} already exists.",
+				ShowStatusMessage(MessageTypeEnum.error, $"A Movie of Title: {movie.Title}, Media Type: {movie.Type} already exists.",
 					"Duplicate Movie");
 				return View(movie);
 			}
 
-			if (movie.CompletionStatus == CompletionStatus.Completed && movie.TimesCompleted == 0)
+			if (movie.CompletionStatus == ProjectCinderella.Model.Enums.CompletionStatus.Completed && movie.TimesCompleted == 0)
 				movie.TimesCompleted = 1;
-			if (movie.TimesCompleted > 0) movie.CompletionStatus = CompletionStatus.Completed;
+			if (movie.TimesCompleted > 0) movie.CompletionStatus = ProjectCinderella.Model.Enums.CompletionStatus.Completed;
 			SetTimeStamps(movie);
 			//TODO: make sure user id is the same so as not to change other users data
 			movie.DateUpdated = DateTime.UtcNow;
 			_service.Edit(movie);
 
 			ShowStatusMessage(MessageTypeEnum.success, $"Movie of Title {movie.Title}, Media Type: {movie.Type} updated.", "Update Successful");
-			return RedirectToAction(MVC.Movie.Index());
+			return RedirectToAction("Index", "Movie");
 		}
 
 		[Authorize]
@@ -154,15 +149,15 @@ namespace UI.Controllers
 			var model = _service.GetByID(id, _user.GetUserID());
 			if (model.UserID != _user.GetUserID())
 			{
-				ShowStatusMessage(MessageTypeEnum.error, "This game cannot be deleted by another user", "Delete Failure");
-				return RedirectToAction(MVC.Game.Index());
+				ShowStatusMessage(MessageTypeEnum.error, "This movie cannot be deleted by another user", "Delete Failure");
+				return RedirectToAction("Index", "Movie");
 			}
 
 			_service.Delete(id, _user.GetUserID());
 
 			ShowStatusMessage(MessageTypeEnum.success, "", "Movie Deleted Successfully");
 
-			return RedirectToAction(MVC.Movie.Index());
+			return RedirectToAction("Index", "Movie");
 		}
 
 		[Authorize]
@@ -170,8 +165,8 @@ namespace UI.Controllers
 		public virtual ActionResult Search(MovieSearchModel searchModel)
 		{
 			if (!string.IsNullOrWhiteSpace(searchModel.Title)) searchModel.Title = searchModel.Title.Trim();
-			if (!string.IsNullOrWhiteSpace(Session["movie-query"]?.ToString())) searchModel.Title = Session["movie-query"].ToString();
-			if (!string.IsNullOrWhiteSpace(Session["wish"]?.ToString())) searchModel.Title = Session["wish"].ToString();
+			if (!string.IsNullOrWhiteSpace(HttpContext.Session.GetString("movie-query"))) searchModel.Title = HttpContext.Session.GetString("movie-query");
+			if (!string.IsNullOrWhiteSpace(HttpContext.Session.GetString("wish"))) searchModel.Title = HttpContext.Session.GetString("wish");
 
 			if (Request.UrlReferrer?.LocalPath == "/Movie/Search" && string.IsNullOrWhiteSpace(searchModel.Title))
 			{
@@ -204,9 +199,9 @@ namespace UI.Controllers
 			movie.UserNum = _user.GetUserNum();
 			ViewBag.Title = "Create";
 
-			Session["movieResult"] = movie;
+			HttpContext.Session.Set("movieResult", movie);
 
-			return RedirectToAction(MVC.Movie.Create());
+			return RedirectToAction("Create", "Movie");
 		}
 
 		[Authorize(Roles = "Admin")]
@@ -219,7 +214,7 @@ namespace UI.Controllers
 			_service.Edit(movie);
 
 			ShowStatusMessage(MessageTypeEnum.info, "Title added to showcase", "Showcase");
-			return RedirectToAction(MVC.Showcase.Index(_user.GetUserNum()));
+			return RedirectToAction("Index", "Showcase",(object) _user.GetUserNum());
 		}
 
 		[Authorize(Roles = "Admin")]
@@ -232,7 +227,7 @@ namespace UI.Controllers
 			_service.Edit(movie);
 
 			ShowStatusMessage(MessageTypeEnum.info, "Title removed from showcase", "Showcase");
-			return RedirectToAction(MVC.Showcase.Index(_user.GetUserNum()));
+			return RedirectToAction("Index", "Showcase",(object) _user.GetUserNum());
 		}
 
 		[Authorize]
@@ -244,16 +239,16 @@ namespace UI.Controllers
 			if (movie.UserID != _user.GetUserID())
 			{
 				ShowStatusMessage(MessageTypeEnum.warning, "This movie cannot be edited by another user.", "Edit Failure");
-				return RedirectToAction(MVC.Movie.Index());
+				return RedirectToAction("Index", "Movie");
 			}
 
 			movie.TimesCompleted += 1;
-			movie.CompletionStatus = CompletionStatus.Completed;
+			movie.CompletionStatus = ProjectCinderella.Model.Enums.CompletionStatus.Completed;
 			movie.DateUpdated = DateTime.UtcNow;
 			_service.Edit(movie);
 
 			ShowStatusMessage(MessageTypeEnum.info, "Movie was updated.", "Update");
-			return RedirectToAction(MVC.Movie.Index());
+			return RedirectToAction("Index", "Movie");
 		}
 
 		[Authorize]
@@ -265,16 +260,16 @@ namespace UI.Controllers
 			if (movie.UserID != _user.GetUserID())
 			{
 				ShowStatusMessage(MessageTypeEnum.warning, "This movie cannot be edited by another user.", "Edit Failure");
-				return RedirectToAction(MVC.Movie.Index());
+				return RedirectToAction("Index", "Movie");
 			}
 
 			if (movie.TimesCompleted > 0) movie.TimesCompleted -= 1;
-			if (movie.TimesCompleted == 0) movie.CompletionStatus = CompletionStatus.NotStarted;
+			if (movie.TimesCompleted == 0) movie.CompletionStatus = ProjectCinderella.Model.Enums.CompletionStatus.NotStarted;
 			movie.DateUpdated = DateTime.UtcNow;
 			_service.Edit(movie);
 
 			ShowStatusMessage(MessageTypeEnum.info, "Movie was updated.", "Update");
-			return RedirectToAction(MVC.Movie.Index());
+			return RedirectToAction("Index", "Movie");
 		}
 
 		[Authorize]
@@ -286,13 +281,13 @@ namespace UI.Controllers
 			if (game.UserID != _user.GetUserID())
 			{
 				ShowStatusMessage(MessageTypeEnum.error, "This movie/TV show cannot be edited by another user.", "Edit Failure");
-				return RedirectToAction(MVC.Album.Index());
+				return RedirectToAction("Index", "Movie");
 			}
 
 			if (game.IsQueued)
 			{
 				ShowStatusMessage(MessageTypeEnum.warning, "This movie/TV show is already queued.", "Edit Failure");
-				return RedirectToAction(MVC.Album.Index());
+				return RedirectToAction("Index", "Movie");
 			}
 
 			game.IsQueued = true;
@@ -302,7 +297,7 @@ namespace UI.Controllers
 			_service.Edit(game);
 
 			ShowStatusMessage(MessageTypeEnum.info, "Movie/TV Show added to queue", "Queue");
-			return RedirectToAction(MVC.Queue.Index());
+			return RedirectToAction("Index", "Queue");
 		}
 
 		[Authorize]
@@ -314,7 +309,7 @@ namespace UI.Controllers
 			if (game.UserID != _user.GetUserID())
 			{
 				ShowStatusMessage(MessageTypeEnum.error, "This movie/TV show cannot be edited by another user.", "Edit Failure");
-				return RedirectToAction(MVC.Album.Index());
+				return RedirectToAction("Index", "Movie");
 			}
 
 			game.IsQueued = false;
@@ -323,7 +318,7 @@ namespace UI.Controllers
 			_service.Edit(game);
 
 			ShowStatusMessage(MessageTypeEnum.info, "Movie/TV Show removed from queue,", "Queue");
-			return RedirectToAction(MVC.Queue.Index());
+			return RedirectToAction("Index", "Queue");
 		}
 	}
 }

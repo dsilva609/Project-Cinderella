@@ -36,7 +36,7 @@ namespace ProjectCinderellaCore.Controllers
 		[HttpGet]
 		public virtual ActionResult Index(string bookQuery, string filter, int? page)
 		{
-			if (string.IsNullOrWhiteSpace(bookQuery) && !string.IsNullOrWhiteSpace(Session["book-query"]?.ToString()))
+			if (string.IsNullOrWhiteSpace(bookQuery) && !string.IsNullOrWhiteSpace(HttpContext.Session.GetString("book-query")))
 			{
 				bookQuery = HttpContext.Session.GetString("book-query");
 				HttpContext.Session.SetString("book-query", string.Empty);
@@ -66,8 +66,8 @@ namespace ProjectCinderellaCore.Controllers
 		public virtual ActionResult Create()
 		{
 			ViewBag.Title = "Create";
-			var model = Session["BookResult"] ?? new Book { UserID = _user.GetUserID(), UserNum = _user.GetUserNum() };
-			Session["BookResult"] = null;
+			var model = HttpContext.Session.Get("BookResult") ?? new Book { UserID = _user.GetUserID(), UserNum = _user.GetUserNum() };
+			HttpContext.Session.Set("BookResult", null);
 
 			return View(model);
 		}
@@ -84,25 +84,25 @@ namespace ProjectCinderellaCore.Controllers
 					book.TimesCompleted = 1;
 				book.DateAdded = DateTime.UtcNow;
 				SetTimeStamps(book);
-				this._service.Add(book);
+				_service.Add(book);
 			}
 			catch (Exception e)
 			{
 				ShowStatusMessage(MessageTypeEnum.error, e.Message, "Duplicate Book");
 				return View(book);
 			}
-			Session["book-query"] = null;
+			HttpContext.Session.Set("book-query", null);
 
-			if (!string.IsNullOrWhiteSpace(Session["wish"]?.ToString()))
+			if (!string.IsNullOrWhiteSpace(HttpContext.Session.GetString("wish")))
 			{
-				_wishService.Delete(Convert.ToInt32(Session["wishID"].ToString()), _user.GetUserID());
-				Session["wish"] = null;
-				Session["wishID"] = null;
+				_wishService.Delete(Convert.ToInt32(HttpContext.Session.GetString("wishID")), _user.GetUserID());
+				HttpContext.Session.Set("wish", null);
+				HttpContext.Session.Set("wishID", null);
 				ShowStatusMessage(MessageTypeEnum.info, "Wish list has been updated", "Wish list");
 			}
 
 			ShowStatusMessage(MessageTypeEnum.success, "New Book Added Successfully.", "Add Successful");
-			return RedirectToAction(MVC.Book.Index());
+			return RedirectToAction("Index", "Book");
 		}
 
 		[Authorize]
@@ -111,7 +111,7 @@ namespace ProjectCinderellaCore.Controllers
 		{
 			var model = _service.GetByID(id, _user.GetUserID());
 			ViewBag.Title = $"Edit - {model.Title}";
-			if (model.UserID != _user.GetUserID()) return RedirectToAction(MVC.Book.Details(model.ID));
+			if (model.UserID != _user.GetUserID()) return RedirectToAction("Details", "Book",(object) model.ID);
 
 			return View(model);
 		}
@@ -139,7 +139,7 @@ namespace ProjectCinderellaCore.Controllers
 			_service.Edit(book);
 
 			ShowStatusMessage(MessageTypeEnum.success, $"Book of Title {book.Title}, Author: {book.Author}", "Update Successful");
-			return RedirectToAction(MVC.Book.Index());
+			return RedirectToAction("Index", "Book");
 		}
 
 		[Authorize]
@@ -150,14 +150,14 @@ namespace ProjectCinderellaCore.Controllers
 			if (model.UserID != _user.GetUserID())
 			{
 				ShowStatusMessage(MessageTypeEnum.error, "This book cannot be deleted by another user", "Delete Failure");
-				return RedirectToAction(MVC.Book.Index());
+				return RedirectToAction("Index", "Book");
 			}
 
 			_service.Delete(id, _user.GetUserID());
 
 			ShowStatusMessage(MessageTypeEnum.success, "", "Book Deleted Successfully");
 
-			return RedirectToAction(MVC.Book.Index());
+			return RedirectToAction("Index", "Book");
 		}
 
 		//TODO: add tests and validation
@@ -167,8 +167,8 @@ namespace ProjectCinderellaCore.Controllers
 		{
 			if (!string.IsNullOrWhiteSpace(searchModel.Author)) searchModel.Author = searchModel.Author.Trim();
 			if (!string.IsNullOrWhiteSpace(searchModel.Title)) searchModel.Title = searchModel.Title.Trim();
-			if (!string.IsNullOrWhiteSpace(Session["book-query"]?.ToString())) searchModel.Title = Session["book-query"].ToString();
-			if (!string.IsNullOrWhiteSpace(Session["wish"]?.ToString())) searchModel.Title = Session["wish"].ToString();
+			if (!string.IsNullOrWhiteSpace(HttpContext.Session.GetString("book-query"))) searchModel.Title = HttpContext.Session.GetString("book-query");
+			if (!string.IsNullOrWhiteSpace(HttpContext.Session.GetString("wish"))) searchModel.Title = HttpContext.Session.GetString("wish");
 
 			if (Request.UrlReferrer?.LocalPath == "/Book/Search" && string.IsNullOrWhiteSpace(searchModel.Author) &&
 				string.IsNullOrWhiteSpace(searchModel.Title))

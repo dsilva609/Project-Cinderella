@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ProjectCinderellaCore.Controllers
 {
 	[Authorize(Roles = "Admin")]
-	public partial class ElmahController : Controller
+	public class ElmahController : Controller
 	{
 		public virtual ActionResult Index(string type)
 		{

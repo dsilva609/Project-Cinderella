@@ -55,7 +55,7 @@ namespace ProjectCinderellaCore.Controllers
 		[HttpGet]
 		public virtual ActionResult Create()
 		{
-			var model =HttpContext.Session.Get("albumResult") ?? new Album { UserID = _user.GetUserID(), UserNum = _user.GetUserNum() };
+			var model = HttpContext.Session.Get("albumResult") ?? new Album { UserID = _user.GetUserID(), UserNum = _user.GetUserNum() };
 			ViewBag.Title = "Create";
 			HttpContext.Session.Set("albumResult", null);
 
@@ -75,7 +75,7 @@ namespace ProjectCinderellaCore.Controllers
 
 			HttpContext.Session.Set("albumResult", release);
 
-			return RedirectToAction(MVC.Album.Create());
+			return RedirectToAction("Create", "Album");
 		}
 
 		[Authorize]
@@ -99,17 +99,17 @@ namespace ProjectCinderellaCore.Controllers
 					ShowStatusMessage(MessageTypeEnum.error, e.Message, "Duplicate Album");
 					return View(model);
 				}
-				Session["album-query"] = null;
+				HttpContext.Session.Set("album-query",null);
 
-				if (!string.IsNullOrWhiteSpace(Session["wish"]?.ToString()))
+				if (!string.IsNullOrWhiteSpace(HttpContext.Session.GetString("wish")))
 				{
-					_wishService.Delete(Convert.ToInt32(Session["wishID"].ToString()), _user.GetUserID());
-					Session["wish"] = null;
-					Session["wishID"] = null;
+					_wishService.Delete(Convert.ToInt32(HttpContext.Session.GetString("wishID")), _user.GetUserID());
+					HttpContext.Session.Set("wish", null);
+					HttpContext.Session.Set("wishID", null);
 					ShowStatusMessage(MessageTypeEnum.info, "Wish list has been updated", "Wish list");
 				}
 				ShowStatusMessage(MessageTypeEnum.success, "New Album Added Successfully.", "Add Successful");
-				return RedirectToAction(MVC.Album.Index());
+				return RedirectToAction("Index", "Album");
 			}
 			return View(model);
 		}
@@ -120,7 +120,7 @@ namespace ProjectCinderellaCore.Controllers
 		{
 			var model = _service.GetByID(id, _user.GetUserID());
 			ViewBag.Title = $"Edit - {model.Title}";
-			if (model.UserID != _user.GetUserID()) return RedirectToAction(MVC.Album.Details(model.ID));
+			if (model.UserID != _user.GetUserID()) return RedirectToAction("Details", "Album",(object) model.ID);
 
 			return View(model);
 		}
@@ -130,13 +130,13 @@ namespace ProjectCinderellaCore.Controllers
 		public virtual ActionResult Update(int id)
 		{
 			var model = _service.GetByID(id, _user.GetUserID());
-			if (model.UserID != _user.GetUserID()) return RedirectToAction(MVC.Album.Details(model.ID));
+			if (model.UserID != _user.GetUserID()) return RedirectToAction("Details", "Album",(object) model.ID);
 
 			//TODO--check if id exists
 			if (model.DiscogsID == 0)
 			{
 				ShowStatusMessage(MessageTypeEnum.error, "No ID found to update.", "Missing ID");
-				return RedirectToAction(MVC.Album.Edit(id));
+				return RedirectToAction("Edit", "Album", id);
 			}
 
 			var release = _discogsService.GetRelease(model.DiscogsID);
@@ -152,7 +152,7 @@ namespace ProjectCinderellaCore.Controllers
 			//model.Tracklist = release.Tracklist;
 			//model.Tracklist.ForEach(x => x.AlbumID = model.ID);
 
-			return View(MVC.Album.Views.Edit, model);
+			return View("Edit", model);
 		}
 
 		[Authorize]
@@ -182,7 +182,7 @@ namespace ProjectCinderellaCore.Controllers
 
 			ShowStatusMessage(MessageTypeEnum.success,
 				$"Album of Artist: {model.Artist}, Album: {model.Title}, Media Type: {model.MediaType} updated.", "Update Successful");
-			return RedirectToAction(MVC.Album.Index());
+			return RedirectToAction("Index", "Album");
 		}
 
 		[HttpGet]
@@ -201,13 +201,13 @@ namespace ProjectCinderellaCore.Controllers
 			if (model.UserID != _user.GetUserID())
 			{
 				ShowStatusMessage(MessageTypeEnum.error, "This album cannot be deleted by another user", "Delete Failure");
-				return RedirectToAction(MVC.Album.Index());
+				return RedirectToAction("Index", "Album");
 			}
 
 			_service.Delete(id, _user.GetUserID());
 
 			ShowStatusMessage(MessageTypeEnum.success, "", "Album Deleted Successfully");
-			return RedirectToAction(MVC.Album.Index());
+			return RedirectToAction("Index", "Album");
 		}
 
 		//TODO: add tests and validation
@@ -217,8 +217,8 @@ namespace ProjectCinderellaCore.Controllers
 		{
 			if (!string.IsNullOrWhiteSpace(searchModel.Artist)) searchModel.Artist = searchModel.Artist.Trim();
 			if (!string.IsNullOrWhiteSpace(searchModel.AlbumName)) searchModel.AlbumName = searchModel.AlbumName.Trim();
-			if (!string.IsNullOrWhiteSpace(Session["album-query"]?.ToString())) searchModel.AlbumName = Session["album-query"].ToString();
-			if (!string.IsNullOrWhiteSpace(Session["wish"]?.ToString())) searchModel.AlbumName = Session["wish"].ToString();
+			if (!string.IsNullOrWhiteSpace(HttpContext.Session.GetString("album-query"))) searchModel.AlbumName = HttpContext.Session.GetString("album-query");
+			if (!string.IsNullOrWhiteSpace(HttpContext.Session.GetString("wish"))) searchModel.AlbumName = HttpContext.Session.GetString("wish");
 
 			if (Request.UrlReferrer?.LocalPath == "/Album/Search" && string.IsNullOrWhiteSpace(searchModel.Artist) &&
 				string.IsNullOrWhiteSpace(searchModel.AlbumName))
@@ -246,7 +246,7 @@ namespace ProjectCinderellaCore.Controllers
 			_service.Edit(album);
 
 			ShowStatusMessage(MessageTypeEnum.info, "Album added to showcase", "Showcase");
-			return RedirectToAction(MVC.Showcase.Index(_user.GetUserNum()));
+			return RedirectToAction("Index", "Showcase",(object) _user.GetUserNum());
 		}
 
 		[Authorize(Roles = "Admin")]
@@ -259,7 +259,7 @@ namespace ProjectCinderellaCore.Controllers
 			_service.Edit(album);
 
 			ShowStatusMessage(MessageTypeEnum.info, "Album removed from showcase", "Showcase");
-			return RedirectToAction(MVC.Showcase.Index(_user.GetUserNum()));
+			return RedirectToAction("Index", "Showcase",(object) _user.GetUserNum());
 		}
 
 		[Authorize]
@@ -271,7 +271,7 @@ namespace ProjectCinderellaCore.Controllers
 			if (album.UserID != _user.GetUserID())
 			{
 				ShowStatusMessage(MessageTypeEnum.warning, "This album cannot be edited by another user.", "Edit Failure");
-				return RedirectToAction(MVC.Album.Index());
+				return RedirectToAction("Index", "Album");
 			}
 
 			album.TimesCompleted += 1;
@@ -280,7 +280,7 @@ namespace ProjectCinderellaCore.Controllers
 			_service.Edit(album);
 
 			ShowStatusMessage(MessageTypeEnum.info, "Album was updated.", "Update");
-			return RedirectToAction(MVC.Album.Index());
+			return RedirectToAction("Index", "Album");
 		}
 
 		[Authorize]
@@ -292,7 +292,7 @@ namespace ProjectCinderellaCore.Controllers
 			if (album.UserID != _user.GetUserID())
 			{
 				ShowStatusMessage(MessageTypeEnum.warning, "This album cannot be edited by another user.", "Edit Failure");
-				return RedirectToAction(MVC.Album.Index());
+				return RedirectToAction("Index", "Album");
 			}
 
 			if (album.TimesCompleted > 0) album.TimesCompleted -= 1;
@@ -302,7 +302,7 @@ namespace ProjectCinderellaCore.Controllers
 			_service.Edit(album);
 
 			ShowStatusMessage(MessageTypeEnum.info, "Album was updated.", "Update");
-			return RedirectToAction(MVC.Album.Index());
+			return RedirectToAction("Index", "Album");
 		}
 
 		[Authorize]
@@ -314,13 +314,13 @@ namespace ProjectCinderellaCore.Controllers
 			if (album.UserID != _user.GetUserID())
 			{
 				ShowStatusMessage(MessageTypeEnum.error, "This album cannot be edited by another user.", "Edit Failure");
-				return RedirectToAction(MVC.Album.Index());
+				return RedirectToAction("Index", "Album");
 			}
 
 			if (album.IsQueued)
 			{
 				ShowStatusMessage(MessageTypeEnum.warning, "This album is already queued.", "Edit Failure");
-				return RedirectToAction(MVC.Album.Index());
+				return RedirectToAction("Index", "Album");
 			}
 
 			album.IsQueued = true;
@@ -330,7 +330,7 @@ namespace ProjectCinderellaCore.Controllers
 			_service.Edit(album);
 
 			ShowStatusMessage(MessageTypeEnum.info, "Album added to queue", "Queue");
-			return RedirectToAction(MVC.Queue.Index());
+			return RedirectToAction("Index", "Queue");
 		}
 
 		[Authorize]
@@ -342,7 +342,7 @@ namespace ProjectCinderellaCore.Controllers
 			if (album.UserID != _user.GetUserID())
 			{
 				ShowStatusMessage(MessageTypeEnum.error, "This album cannot be edited by another user.", "Edit Failure");
-				return RedirectToAction(MVC.Album.Index());
+				return RedirectToAction("Index", "Album");
 			}
 
 			album.IsQueued = false;
@@ -351,7 +351,7 @@ namespace ProjectCinderellaCore.Controllers
 			_service.Edit(album);
 
 			ShowStatusMessage(MessageTypeEnum.info, "Album removed from queue,", "Queue");
-			return RedirectToAction(MVC.Queue.Index());
+			return RedirectToAction("Index", "Queue");
 		}
 
 		private void UpdateGenreAndStatus(int id)
