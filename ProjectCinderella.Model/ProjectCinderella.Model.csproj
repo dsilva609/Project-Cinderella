@@ -10,6 +10,7 @@
     <Folder Include="ComicVineModels\" />
     <Folder Include="DiscogsModels\" />
     <Folder Include="GiantBombModels\" />
+    <Folder Include="UI\" />
     <Folder Include="TMDBModels\" />
     <Folder Include="StatisticsModels\" />
   </ItemGroup>
@@ -17,6 +18,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="1.1.0" />
+    <PackageReference Include="PagedList" Version="1.17.0" />
   </ItemGroup>
 
   <ItemGroup>
