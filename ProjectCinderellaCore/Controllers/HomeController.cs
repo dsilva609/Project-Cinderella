@@ -26,7 +26,7 @@ namespace ProjectCinderellaCore.Controllers
 		private const int NUM_POPS_TO_GET = 10;
 
 		public HomeController(IUserContext user, IAlbumService albumService, IBookService bookService, IMovieService movieService,
-			IGameService gameService, IPopService popService, IOptions<ServiceSettings> settings)
+			IGameService gameService, IPopService popService, ServiceSettings settings)
 		{
 			_user = user;
 			_albumService = albumService;
@@ -34,6 +34,7 @@ namespace ProjectCinderellaCore.Controllers
 			_movieService = movieService;
 			_gameService = gameService;
 			_popService = popService;
+			_settings = settings;
 		}
 
 		[HttpGet]

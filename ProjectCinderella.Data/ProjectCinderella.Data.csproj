@@ -28,16 +28,11 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.0-preview1-final" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="2.0.0-preview1-final" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.0-preview1-final" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.4.0-preview1-25305-02" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ProjectCinderella.Model\ProjectCinderella.Model.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="System.Configuration">
-      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7\System.Configuration.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>

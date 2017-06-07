@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Configuration;
+using Microsoft.EntityFrameworkCore;
 using ProjectCinderella.Model.Common;
 using ProjectCinderella.Model.DiscogsModels;
 
@@ -6,6 +7,7 @@ namespace ProjectCinderella.Data.DAL
 {
 	public class ProjectCinderellaContext : DbContext
 	{
+		public static string ConnectionString { get; set; }
 		public DbSet<Album> Albums { get; set; }
 		public DbSet<Tracklist> Tracks { get; set; }
 		public DbSet<Book> Books { get; set; }
@@ -17,14 +19,14 @@ namespace ProjectCinderella.Data.DAL
 		public ProjectCinderellaContext(DbContextOptions<ProjectCinderellaContext> options)
 			: base(options)
 		{
+			var opt = options;
 			//Configuration.LazyLoadingEnabled = false;
 		}
 
-		public ProjectCinderellaContext()
+		public ProjectCinderellaContext(): base()
 		{
-			
 		}
-
+		
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			modelBuilder.Entity<Album>().ToTable("Album");
@@ -34,6 +36,13 @@ namespace ProjectCinderella.Data.DAL
 			modelBuilder.Entity<Game>().ToTable("Game");
 			modelBuilder.Entity<FunkoModel>().ToTable("Pop");
 			modelBuilder.Entity<Wish>().ToTable("Wish");
-			}
+		}
+		protected override void OnConfiguring(DbContextOptionsBuilder builder)
+		{
+			builder.UseSqlServer(ConnectionString);
+			//builder.UseSqlServer("Server=(local);Database=ProjectCinderellaCore;Trusted_Connection=True;MultipleActiveResultSets=true");
+			base.
+				OnConfiguring(builder);
+		}
 	}
 }
