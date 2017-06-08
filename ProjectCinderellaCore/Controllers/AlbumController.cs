@@ -10,6 +10,7 @@ using ProjectCinderella.Model.Common;
 using ProjectCinderella.Model.UI;
 using ProjectCinderella.Model.Enums;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace ProjectCinderellaCore.Controllers
 {
@@ -55,7 +56,8 @@ namespace ProjectCinderellaCore.Controllers
 		[HttpGet]
 		public virtual ActionResult Create()
 		{
-			var model = HttpContext.Session.Get("albumResult") ?? new Album { UserID = _user.GetUserID(), UserNum = _user.GetUserNum() };
+			var albumResultStr = HttpContext.Session.GetString("albumResult");
+			var model = string.IsNullOrWhiteSpace(albumResultStr) ? new Album { UserID = _user.GetUserID(), UserNum = _user.GetUserNum() }: JsonConvert.DeserializeObject<Album>(albumResultStr);
 			ViewBag.Title = "Create";
 			HttpContext.Session.Set("albumResult", null);
 
@@ -73,7 +75,7 @@ namespace ProjectCinderellaCore.Controllers
 
 			ViewBag.Title = "Create";
 
-			HttpContext.Session.Set("albumResult", release);
+			HttpContext.Session.SetString("albumResult", JsonConvert.SerializeObject(release));
 
 			return RedirectToAction("Create", "Album");
 		}
@@ -220,7 +222,8 @@ namespace ProjectCinderellaCore.Controllers
 			if (!string.IsNullOrWhiteSpace(HttpContext.Session.GetString("album-query"))) searchModel.AlbumName = HttpContext.Session.GetString("album-query");
 			if (!string.IsNullOrWhiteSpace(HttpContext.Session.GetString("wish"))) searchModel.AlbumName = HttpContext.Session.GetString("wish");
 
-			if (Request.UrlReferrer?.LocalPath == "/Album/Search" && string.IsNullOrWhiteSpace(searchModel.Artist) &&
+			//TODO: check for correct value
+			if (Request.Path.Value == "/Album/Search" && string.IsNullOrWhiteSpace(searchModel.Artist) &&
 				string.IsNullOrWhiteSpace(searchModel.AlbumName))
 			{
 				ShowStatusMessage(MessageTypeEnum.error, "Please enter search terms.", "Search Error");

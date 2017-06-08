@@ -1,0 +1,9 @@
+﻿@using System.Collections.Generic
+@model System.Collections.Generic.List<ProjectCinderella.Model.Common.Movie>
+
+<div class="container">
+	@foreach (var movie in Model)
+	{
+		@Html.Partial(MVC.Movie.Views._Movie, movie)
+	}
+</div>

@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNet.Identity
+@using PagedList.Mvc
+@using UI.Enums
+@model ProjectCinderella.Model.UI.GameViewModel
+@{
+    ViewBag.Title = Model.ViewTitle;
+}
+
+<script>
+    var deleteUrl = '@Url.Action(MVC.Game.Delete())';
+</script>
+
+<div>
+    <div class="h2 col-md-5">
+        Games
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a class="btn btn-default" href="@Url.Action(MVC.Game.Create())" style="padding-top: 1.25em;" contenteditable="false">
+                <span class="fa fa-plus"></span>
+            </a>
+        }
+    </div>
+
+    <div class="col-md-3" style="padding-top: 1.25em;">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a href="@Url.Action(MVC.Game.Search())" class="btn btn-default">Giant Bomb/BGG <span class="fa fa-search"></span></a>
+        }
+    </div>
+
+    <div class="col-md-4text-right" style="padding-top: 1.25em; display: inline-flex;">
+        @using (Html.BeginForm(MVC.Game.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
+        {
+            <input class="form-control" id="game-query" name="gameQuery" placeholder="Search" type="text" value="@ViewBag.Filter">
+            <button type="submit" class="btn btn-default">
+                <span class="fa fa-search"></span>
+            </button>
+        }
+    </div>
+</div>
+
+<div id="fh5co-main">
+    <div class="container">
+        @foreach (var game in Model.Games)
+        {
+            @Html.Partial(MVC.Game.Views._Game, game)
+        }
+    </div>
+</div>
+
+@Html.PagedListPager(Model.Games, page => Url.Action("Index", new { gameQuery = ViewBag.query, filter = ViewBag.Filter, page }))
+
+@Html.Partial(MVC.Shared.Views._GiantBombDisclaimer)

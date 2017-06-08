@@ -10,6 +10,7 @@ using ProjectCinderella.Model.Common;
 using ProjectCinderella.Model.UI;
 using ProjectCinderella.Model.Enums;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace ProjectCinderellaCore.Controllers
 {
@@ -63,7 +64,8 @@ namespace ProjectCinderellaCore.Controllers
 		[HttpGet]
 		public virtual ActionResult Create()
 		{
-			var model = HttpContext.Session.Get("movieResult") ?? new Movie { UserID = _user.GetUserID(), UserNum = _user.GetUserNum() };
+			var movieResultStr = HttpContext.Session.GetString("movieResult");
+			var model = string.IsNullOrWhiteSpace(movieResultStr) ? new Movie { UserID = _user.GetUserID(), UserNum = _user.GetUserNum() }: JsonConvert.DeserializeObject<Movie>(movieResultStr);
 			ViewBag.Title = "Create";
 			HttpContext.Session.Set("movieResult", null);
 			return View(model);
@@ -168,7 +170,8 @@ namespace ProjectCinderellaCore.Controllers
 			if (!string.IsNullOrWhiteSpace(HttpContext.Session.GetString("movie-query"))) searchModel.Title = HttpContext.Session.GetString("movie-query");
 			if (!string.IsNullOrWhiteSpace(HttpContext.Session.GetString("wish"))) searchModel.Title = HttpContext.Session.GetString("wish");
 
-			if (Request.UrlReferrer?.LocalPath == "/Movie/Search" && string.IsNullOrWhiteSpace(searchModel.Title))
+			//TODO:check for correct value
+			if (Request.Path.Value == "/Movie/Search" && string.IsNullOrWhiteSpace(searchModel.Title))
 			{
 				ShowStatusMessage(MessageTypeEnum.error, "Please enter search terms.", "Search Error");
 				return View(searchModel);
@@ -199,7 +202,7 @@ namespace ProjectCinderellaCore.Controllers
 			movie.UserNum = _user.GetUserNum();
 			ViewBag.Title = "Create";
 
-			HttpContext.Session.Set("movieResult", movie);
+			HttpContext.Session.SetString("movieResult", JsonConvert.SerializeObject(movie));
 
 			return RedirectToAction("Create", "Movie");
 		}

@@ -10,7 +10,9 @@
 
   <ItemGroup>
     <PackageReference Include="bootstrap" Version="4.0.0-alpha6" />
+    <PackageReference Include="c3" Version="0.4.8.1" />
     <PackageReference Include="elmah" Version="1.2.2" />
+    <PackageReference Include="FontAwesome" Version="4.7.0" />
     <PackageReference Include="jQuery" Version="3.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0-preview1-final" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.0-preview1-final" PrivateAssets="All" />
@@ -18,12 +20,65 @@
     <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
     <PackageReference Include="SimpleInjector" Version="4.0.8" />
     <PackageReference Include="SimpleInjector.Integration.AspNetCore.Mvc" Version="4.0.8" />
+    <PackageReference Include="toastr" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0-preview1-final" />
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0-preview1-final" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0-preview1-final" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Album\Create.cshtml" />
+    <None Include="Views\Album\Details.cshtml" />
+    <None Include="Views\Album\Edit.cshtml" />
+    <None Include="Views\Album\Index.cshtml" />
+    <None Include="Views\Album\Search.cshtml" />
+    <None Include="Views\Album\_Album.cshtml" />
+    <None Include="Views\Album\_AlbumFormPartial.cshtml" />
+    <None Include="Views\Album\_Recents.cshtml" />
+    <None Include="Views\Book\Create.cshtml" />
+    <None Include="Views\Book\Details.cshtml" />
+    <None Include="Views\Book\Edit.cshtml" />
+    <None Include="Views\Book\Index.cshtml" />
+    <None Include="Views\Book\Search.cshtml" />
+    <None Include="Views\Book\_Book.cshtml" />
+    <None Include="Views\Book\_BookFormPartial.cshtml" />
+    <None Include="Views\Book\_Recents.cshtml" />
+    <None Include="Views\Game\Create.cshtml" />
+    <None Include="Views\Game\Details.cshtml" />
+    <None Include="Views\Game\Edit.cshtml" />
+    <None Include="Views\Game\Index.cshtml" />
+    <None Include="Views\Game\Search.cshtml" />
+    <None Include="Views\Game\_Game.cshtml" />
+    <None Include="Views\Game\_GameFormPartial.cshtml" />
+    <None Include="Views\Game\_Recents.cshtml" />
+    <None Include="Views\Movie\Create.cshtml" />
+    <None Include="Views\Movie\Details.cshtml" />
+    <None Include="Views\Movie\Edit.cshtml" />
+    <None Include="Views\Movie\Index.cshtml" />
+    <None Include="Views\Movie\Search.cshtml" />
+    <None Include="Views\Movie\_Movie.cshtml" />
+    <None Include="Views\Movie\_MovieFormPartial.cshtml" />
+    <None Include="Views\Movie\_Recents.cshtml" />
+    <None Include="Views\Pop\Create.cshtml" />
+    <None Include="Views\Pop\Details.cshtml" />
+    <None Include="Views\Pop\Edit.cshtml" />
+    <None Include="Views\Pop\Index.cshtml" />
+    <None Include="Views\Pop\_Pop.cshtml" />
+    <None Include="Views\Pop\_PopFormPartial.cshtml" />
+    <None Include="Views\Pop\_Recents.cshtml" />
+    <None Include="Views\Queue\Index.cshtml" />
+    <None Include="Views\Queue\_QueueTablePartial.cshtml" />
+    <None Include="Views\Shared\Items\Details\_ItemInfo.cshtml" />
+    <None Include="Views\Shared\Items\Details\_MediaInfo.cshtml" />
+    <None Include="Views\Shared\Items\Details\_PurchaseInfo.cshtml" />
+    <None Include="Views\Shared\Items\Details\_StatusInfo.cshtml" />
+    <None Include="Views\Shared\Items\Form\_ItemInfoSection.cshtml" />
+    <None Include="Views\Shared\Items\Form\_MediaInfoSection.cshtml" />
+    <None Include="Views\Shared\Items\Form\_PurchaseInfoSection.cshtml" />
+    <None Include="Views\Shared\Items\Form\_StatusSection.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

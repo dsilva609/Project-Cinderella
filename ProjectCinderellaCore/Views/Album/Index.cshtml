@@ -1,0 +1,48 @@
+﻿@using Microsoft.AspNet.Identity
+@using PagedList.Mvc
+@model ProjectCinderella.Model.UI.AlbumViewModel
+@{
+	ViewBag.Title = @Model.ViewTitle;
+}
+<script>
+	var deleteUrl = '@Url.Action(MVC.Album.Delete())';
+</script>
+
+<div class="row">
+	<div class="h2 col-md-5">
+		Albums
+		@if (User.Identity.IsAuthenticated)
+		{
+			<a class="btn btn-default" href="@Url.Action(MVC.Album.Create())" style="padding-top: 1.25em;" contenteditable="false">
+				<span class="fa fa-plus"></span>
+			</a>
+		}
+	</div>
+	<div class="col-md-3" style="padding-top: 1.25em;">
+		@if (User.Identity.IsAuthenticated)
+		{
+			<a href="@Url.Action(MVC.Album.Search())" class="btn btn-default">Discogs <span class="fa fa-search"></span></a>
+		}
+	</div>
+	<div class="col-md-4" style="padding-top: 1.25em;">
+		<form action="@Url.Action(MVC.Album.Index())" method="get" style="display: inline-flex;">
+			<input class="form-control" id="album-query" name="albumQuery" placeholder="Search" type="text" value="@ViewBag.Filter">
+			<button type="submit" class="btn btn-default">
+				<span class="fa fa-search"></span>
+			</button>
+		</form>
+	</div>
+</div>
+
+<div id="fh5co-main">
+	<div class="container">
+		@foreach (var album in Model.Albums)
+		{
+			@Html.Partial(MVC.Album.Views._Album, album)
+		}
+	</div>
+</div>
+
+@Html.PagedListPager(Model.Albums, page => Url.Action("Index", new { albumQuery = ViewBag.query, filter = ViewBag.Filter, page }))
+
+@Html.Partial(MVC.Shared.Views._DiscogsDisclaimer)

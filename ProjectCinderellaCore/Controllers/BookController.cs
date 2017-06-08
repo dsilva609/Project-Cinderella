@@ -10,6 +10,7 @@ using ProjectCinderella.Model.Common;
 using ProjectCinderella.Model.UI;
 using ProjectCinderella.Model.Enums;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace ProjectCinderellaCore.Controllers
 {
@@ -66,7 +67,8 @@ namespace ProjectCinderellaCore.Controllers
 		public virtual ActionResult Create()
 		{
 			ViewBag.Title = "Create";
-			var model = HttpContext.Session.Get("BookResult") ?? new Book { UserID = _user.GetUserID(), UserNum = _user.GetUserNum() };
+			var bookResultStr = HttpContext.Session.GetString("BookResult");
+			var model =string.IsNullOrWhiteSpace(bookResultStr) ? new Book { UserID = _user.GetUserID(), UserNum = _user.GetUserNum() }: JsonConvert.DeserializeObject<Book>(bookResultStr);
 			HttpContext.Session.Set("BookResult", null);
 
 			return View(model);
@@ -169,8 +171,8 @@ namespace ProjectCinderellaCore.Controllers
 			if (!string.IsNullOrWhiteSpace(searchModel.Title)) searchModel.Title = searchModel.Title.Trim();
 			if (!string.IsNullOrWhiteSpace(HttpContext.Session.GetString("book-query"))) searchModel.Title = HttpContext.Session.GetString("book-query");
 			if (!string.IsNullOrWhiteSpace(HttpContext.Session.GetString("wish"))) searchModel.Title = HttpContext.Session.GetString("wish");
-
-			if (Request.UrlReferrer?.LocalPath == "/Book/Search" && string.IsNullOrWhiteSpace(searchModel.Author) &&
+			//TODO: check for correct value
+			if (Request.Path.Value == "/Book/Search" && string.IsNullOrWhiteSpace(searchModel.Author) &&
 				string.IsNullOrWhiteSpace(searchModel.Title))
 			{
 				ShowStatusMessage(MessageTypeEnum.error, "Please enter search terms.", "Search Error");
@@ -197,7 +199,7 @@ namespace ProjectCinderellaCore.Controllers
 
 			book.UserID = _user.GetUserID();
 			book.UserNum = _user.GetUserNum();
-			HttpContext.Session.Set("BookResult", book);
+			HttpContext.Session.SetString("BookResult",JsonConvert.SerializeObject(book));
 
 			return RedirectToAction("Create", "Book");
 		}

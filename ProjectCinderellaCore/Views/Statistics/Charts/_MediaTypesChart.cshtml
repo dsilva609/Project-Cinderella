@@ -1,0 +1,20 @@
+﻿@model UI.Models.MediaTypes
+
+<script>
+	c3.generate({
+		bindto: '#@Model.ID',
+		data: {
+			columns: [
+				['Physical', @Model.NumPhysical],
+				['Digital', @Model.NumDigital]
+			],
+			type: 'donut'
+		},
+		donut: {
+			title: "@Model.Title",
+			label: {
+				format: function (value) { return value; }
+			}
+		}
+	});
+</script>

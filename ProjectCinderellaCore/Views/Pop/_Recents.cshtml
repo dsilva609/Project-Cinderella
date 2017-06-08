@@ -1,0 +1,9 @@
+﻿@using System.Collections.Generic
+@model System.Collections.Generic.List<ProjectCinderella.Model.Common.FunkoModel>
+
+<div class="container">
+	@foreach (var pop in Model)
+	{
+		@Html.Partial(MVC.Pop.Views._Pop, pop)
+	}
+</div>

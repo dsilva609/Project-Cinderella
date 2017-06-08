@@ -321,7 +321,7 @@ namespace ProjectCinderellaCore.Controllers
 							Title = "Global Sony",
 							ID = "global-sony"
 						},
-						Microsoft = new Models.Microsoft
+						Microsoft = new ProjectCinderella.Model.UI.Microsoft
 						{
 							NumXbox = _gameStatisticService.NumXbox(),
 							NumXbox360 = _gameStatisticService.NumXbox360(),
@@ -412,7 +412,7 @@ namespace ProjectCinderellaCore.Controllers
 							Title = "User Sony",
 							ID = "user-sony"
 						},
-						Microsoft = new Models.Microsoft
+						Microsoft = new ProjectCinderella.Model.UI.Microsoft
 						{
 							NumXbox = _gameStatisticService.NumXbox(_user.GetUserID()),
 							NumXbox360 = _gameStatisticService.NumXbox360(_user.GetUserID()),
@@ -420,7 +420,7 @@ namespace ProjectCinderellaCore.Controllers
 							Title = "User Microsoft",
 							ID = "user-microsoft"
 						},
-						Nintendo = new Nintendo
+						Nintendo = new ProjectCinderella.Model.UI.Nintendo
 						{
 							NumNintendo64 = _gameStatisticService.NumNintendo64(_user.GetUserID()),
 							NumGameCube = _gameStatisticService.NumGameCube(_user.GetUserID()),

@@ -1,0 +1,75 @@
+﻿@model UI.Models.StatsViewModel
+
+<ul class="list-group col-md-6">
+	<li class="list-group-item active">
+		@Model.Title
+	</li>
+	<li class="list-group-item">
+		Total number of items in collection
+		<span class="tag tag-info tag-pill pull-xs-right">@Model.CollectionCount</span>
+	</li>
+	<li class="list-group-item">
+		Total number of Albums
+		<span class="tag tag-info tag-pill pull-xs-right">@Model.ItemTypes.NumAlbums</span>
+	</li>
+	<li class="list-group-item">
+		Total number of Books
+		<span class="tag tag-info tag-pill pull-xs-right">@Model.ItemTypes.NumBooks</span>
+	</li>
+	<li class="list-group-item">
+		Total number of Movies and TV Shows
+		<span class="tag tag-info tag-pill pull-xs-right">@Model.ItemTypes.NumMoviesAndShows</span>
+	</li>
+	<li class="list-group-item">
+		Total number of Games
+		<span class="tag tag-info tag-pill pull-xs-right">@Model.ItemTypes.NumGames</span>
+	</li>
+	<li class="list-group-item">
+		Total number of Pops
+		<span class="tag tag-info tag-pill pull-xs-right">@Model.ItemTypes.NumPops</span>
+	</li>
+	<li class="list-group-item">
+		Total number of Wishes
+		<span class="tag tag-info tag-pill pull-xs-right">@Model.ItemTypes.NumWishes</span>
+	</li>
+	<li class="list-group-item">
+		Total number of items showcased
+		<span class="tag tag-info tag-pill pull-xs-right">@Model.ItemTypes.NumShowcased</span>
+	</li>
+	<li class="list-group-item">
+		Number of items purchased new
+		<span class="tag tag-info tag-pill pull-xs-right">@Model.Condition.NumNew</span>
+	</li>
+	<li class="list-group-item">
+		Number of items purchased used
+		<span class="tag tag-info tag-pill pull-xs-right">@Model.Condition.NumUsed</span>
+	</li>
+	<li class="list-group-item">
+		Number of physical items
+		<span class="tag tag-info tag-pill pull-xs-right">@Model.MediaTypes.NumPhysical</span>
+	</li>
+	<li class="list-group-item">
+		Number of digital items
+		<span class="tag tag-info tag-pill pull-xs-right">@Model.MediaTypes.NumDigital</span>
+	</li>
+	<li class="list-group-item">
+		Number of times an item has been completed
+		<span class="tag tag-info tag-pill pull-xs-right">@Model.TimesCompleted</span>
+	</li>
+	<li class="list-group-item">
+		Number of items completed
+		<span class="tag tag-info tag-pill pull-xs-right">@Model.CompletionStatus.NumCompleted</span>
+	</li>
+	<li class="list-group-item">
+		Number of items in progress
+		<span class="tag tag-info tag-pill pull-xs-right">@Model.CompletionStatus.NumInProgress</span>
+	</li>
+	<li class="list-group-item">
+		Number of items not started
+		<span class="tag tag-info tag-pill pull-xs-right">@Model.CompletionStatus.NumNotStarted</span>
+	</li>
+	<li class="list-group-item">
+		Number of items checked out
+		<span class="tag tag-info tag-pill pull-xs-right">@Model.NumCheckedOut</span>
+	</li>
+</ul>
