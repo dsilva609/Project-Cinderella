@@ -16,9 +16,9 @@ namespace ProjectCinderella.BusinessLogic.Services
 		private readonly ServiceSettings _settings;
 		private HttpClient _client;
 
-		public ComicVineService(IOptions<ServiceSettings> settings)
+		public ComicVineService(ServiceSettings settings)
 		{
-			_settings = settings.Value;
+			_settings = settings;
 			CreateClient();
 		}
 

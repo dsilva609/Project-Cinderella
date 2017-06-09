@@ -1,13 +1,13 @@
 ﻿@using Microsoft.AspNet.Identity
-@using PagedList.Mvc
 @using UI.Enums
+@using FormMethod = Microsoft.AspNetCore.Mvc.Rendering.FormMethod
 @model ProjectCinderella.Model.UI.MovieViewModel
 @{
     ViewBag.Title = Model.ViewTitle;
 }
 
 <script>
-    var deleteUrl = '@Url.Action(MVC.Movie.Delete())';
+    var deleteUrl = '@Url.Action("Delete", "Movie")';
 </script>
 
 <div>
@@ -15,7 +15,7 @@
         Movies/TV
         @if (User.Identity.IsAuthenticated)
         {
-            <a class="btn btn-default" href="@Url.Action(MVC.Movie.Create())" style="padding-top: 1.25em;" contenteditable="false">
+            <a class="btn btn-default" href="@Url.Action("Create", "Movie")" style="padding-top: 1.25em;" contenteditable="false">
                 <span class="fa fa-plus"></span>
             </a>
         }
@@ -24,12 +24,12 @@
     <div class="col-md-3" style="padding-top: 1.25em;">
         @if (User.Identity.IsAuthenticated)
         {
-            <a href="@Url.Action(MVC.Movie.Search())" class="btn btn-default">TMDb <span class="fa fa-search"></span></a>
+            <a href="@Url.Action("Search", "Movie")" class="btn btn-default">TMDb <span class="fa fa-search"></span></a>
         }
     </div>
 
     <div class="col-md-4 text-right" style="padding-top: 1.25em; display: inline-flex;">
-        @using (Html.BeginForm(MVC.Movie.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
+        @using (Html.BeginForm("Index", "Movie", null, FormMethod.Get, false, new { @style = "display:inline-flex;" }))
         {
             <input class="form-control" id="movie-query" name="movieQuery" placeholder="Search" type="text" value="@ViewBag.Filter">
             <button type="submit" class="btn btn-default">
@@ -43,11 +43,11 @@
     <div class="container" style="padding-top: 2em;">
         @foreach (var movie in Model.Movies)
         {
-            @Html.Partial(MVC.Movie.Views._Movie, movie)
+            @Html.Partial("~/Views/Movie/_Movie.cshtml", movie)
         }
     </div>
 </div>
 
-@Html.PagedListPager(Model.Movies, page => Url.Action("Index", new { movieQuery = ViewBag.query, filter = ViewBag.Filter, page }))
+@*@Html.PagedListPager(Model.Movies, page => Url.Action("Index", new { movieQuery = ViewBag.query, filter = ViewBag.Filter, page }))*@
 
-@Html.Partial(MVC.Shared.Views._TMDBDisclaimer)
+@Html.Partial("_TMDBDisclaimer")

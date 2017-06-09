@@ -15,9 +15,9 @@ namespace ProjectCinderella.BusinessLogic.Services
 		private readonly ServiceSettings _settings;
 		private HttpClient _client;
 
-		public GiantBombService(IOptions<ServiceSettings> settings)
+		public GiantBombService(ServiceSettings settings)
 		{
-			_settings = settings.Value;
+			_settings = settings;
 			CreateHttpClient();
 		}
 

@@ -53,9 +53,9 @@ namespace ProjectCinderellaCore
 	        services.AddSingleton<IViewComponentActivator>(new SimpleInjectorViewComponentActivator(_container));
 			services.UseSimpleInjectorAspNetRequestScoping(_container);
 	        //services.Configure<ServiceSettings>(Configuration.GetSection("ServiceSettings"));
-	        
-			services.AddMvc();
-        }
+	        services.AddMvc();
+	        services.AddSession();
+		}
 	    
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IServiceProvider svp)
@@ -76,7 +76,7 @@ namespace ProjectCinderellaCore
             app.UseRewriter(new RewriteOptions().AddIISUrlRewrite(env.ContentRootFileProvider, "urlRewrite.config"));
 
             app.UseAuthentication();
-
+	        app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

@@ -17,9 +17,9 @@ namespace ProjectCinderella.BusinessLogic.Services
 	    private readonly ServiceSettings _settings;
 	    private HttpClient _client;
 
-        public TMDBService(IOptions<ServiceSettings> settings)
+        public TMDBService(ServiceSettings settings)
         {
-	        _settings = settings.Value;
+	        _settings = settings;
 	        CreateClient();
         }
 

@@ -18,9 +18,9 @@ namespace ProjectCinderella.BusinessLogic.Services
 		private readonly ServiceSettings _settings;
 		private HttpClient _client;
 
-		public DiscogsService(IOptions<ServiceSettings> settings)
+		public DiscogsService(ServiceSettings settings)
 		{
-			_settings = settings.Value;
+			_settings = settings;
 			CreateClient();
 		}
 

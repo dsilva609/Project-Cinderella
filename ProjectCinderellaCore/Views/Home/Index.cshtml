@@ -1,6 +1,8 @@
-﻿@using BusinessLogic.Enums
+﻿@using System
+@using System.Linq
 @using ProjectCinderellaCore.Common
-@using UI.Enums
+@using FormMethod = Microsoft.AspNetCore.Mvc.Rendering.FormMethod
+@using SelectListItem = Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
 @model ProjectCinderella.Model.UI.HomeViewModel
 @{
 	ViewBag.Title = "Home Page";
@@ -19,19 +21,19 @@
 					@if (!User.Identity.IsAuthenticated)
 					{
 						<div class="hidden-xs hidden-sm" style="padding-top: 0;">
-							@Html.ActionLink("Login", MVC.Account.Login(), new { @class = "btn btn-default" })
+							@Html.ActionLink("Login", "Login", "Account",null,null,null, null,new { @class = "btn btn-default" })
 						</div>
 					}
 				</div>
 
 				<div class="row text-center" style="padding-top: 5em;">
 					<div class="text-xs-center">
-						@using (Html.BeginForm("Search", "Home", FormMethod.Get, new { @style = "display:inline-flex;" }))
+						@using (Html.BeginForm("Search", "Home",null, FormMethod.Get,false, new { @style = "display:inline-flex;" }))
 						{
 							@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
 
-							@Html.DropDownList("type", Enum.GetNames(typeof(ItemType)).Select(val => new SelectListItem { Text = val, Value = val, Selected = User.Identity.GetDefaultItemType() == val }).ToList(), new { @class = "form-control" })
-							@Html.DropDownList("act", ActionType.GetTypes(User.Identity.IsAuthenticated).Select(val => new SelectListItem { Text = val.Name, Value = val.Value, Selected = User.Identity.GetDefaultActionType() == val.Value }).ToList(), new { @class = "form-control" })
+							@*@Html.DropDownList("type", Enum.GetNames(typeof(ItemType)).Select(val => new SelectListItem { Text = val, Value = val, Selected = User.Identity.GetDefaultItemType() == val }).ToList(), new { @class = "form-control" })
+							@Html.DropDownList("act", ActionType.GetTypes(User.Identity.IsAuthenticated).Select(val => new SelectListItem { Text = val.Name, Value = val.Value, Selected = User.Identity.GetDefaultActionType() == val.Value }).ToList(), new { @class = "form-control" })*@
 
 							<button type="submit" class="btn btn-default">
 								<span class="fa fa-arrow-right"></span>
@@ -43,22 +45,22 @@
 
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
-					<img class="img-fluid" src="@Links.Content.Images.Turntable_jpg">
+					<img class="img-fluid" src="/images/Turntable.jpg">
 				</div>
 				<div class="item">
-					<img class="img-fluid" src="@Links.Content.Images.Book_jpg" />
+					<img class="img-fluid" src="/images/Book.jpg" />
 				</div>
 				<div class="item">
-					<img class="img-fluid" src="@Links.Content.Images.Reel_jpg" />
+					<img class="img-fluid" src="/images/Reel.jpg" />
 				</div>
 				<div class="item">
-					<img class="img-fluid" src="@Links.Content.Images.Turntable2_jpg">
+					<img class="img-fluid" src="/images/Turntable2.jpg">
 				</div>
 				<div class="item">
-					<img class="img-fluid" src="@Links.Content.Images.Game_jpg">
+					<img class="img-fluid" src="/images/Game.jpg">
 				</div>
 				<div class="item">
-					<img class="img-fluid" src="@Links.Content.Images.action_figures_jpg">
+					<img class="img-fluid" src="/images/action-figures.jpg">
 				</div>
 			</div>
 		</div>
@@ -67,7 +69,7 @@
 @if (DateTime.UtcNow.DayOfWeek == DayOfWeek.Friday)
 {
 	<div class="row text-center h1">
-		@Html.ActionLink("Heavy Metal Friday", MVC.Showcase.Index(1))
+		@Html.ActionLink("Heavy Metal Friday", "Index", "Showcase",null, null,null, "1", null)
 	</div>
 }
 <div class="row text-center">
@@ -75,7 +77,7 @@
 		Time until <a href="http://recordstoreday.com" target="_blank">Record Store Day</a> @Model.RecordStoreDayTimer.Year
 	</h2>
 
-	@Html.Partial(MVC.Shared.Views._TimerPartial, Model.RecordStoreDayTimer)
+	@Html.Partial("_TimerPartial", Model.RecordStoreDayTimer)
 </div>
 
 <div class="row text-center">
@@ -83,7 +85,7 @@
 		Time until <a href="http://freecomicbookday.com" target="_blank">Free Comic Book Day</a> @Model.FreeComicBookDayTimer.Year
 	</h2>
 
-	@Html.Partial(MVC.Shared.Views._TimerPartial, Model.FreeComicBookDayTimer)
+	@Html.Partial("_TimerPartial", Model.FreeComicBookDayTimer)
 </div>
 
 <div class="container">
@@ -99,19 +101,19 @@
 				<li>Happy hunting!</li>
 			</ul>
 			<ul class="col-sm-6">
-				<li class="h3">See what's been collected so far: <a href="@Url.Action(MVC.Statistics.Index())"><span class="fa fa-trophy"></span> Stats</a></li>
+				<li class="h3">See what's been collected so far: <a href="@Url.Action("Index", "Statistics")"><span class="fa fa-trophy"></span> Stats</a></li>
 			</ul>
 			@if (User.Identity.IsAuthenticated)
 			{
 				<ul class="col-sm-6">
-					<li class="h3">See what's on your wish list: <a href="@Url.Action(MVC.Wish.Index())"><span class="fa fa-star"></span> Wish List</a></li>
+					<li class="h3">See what's on your wish list: <a href="@Url.Action("Index", "Wish")"><span class="fa fa-star"></span> Wish List</a></li>
 				</ul>
 			}
 			<ul class="col-sm-6">
-				<li class="h3">View the <a href="@Url.Action(MVC.Showcase.Index(User.Identity.IsAuthenticated ? User.Identity.GetUserNum() : 1))"><span class="fa fa-certificate"></span> Showcase</a></li>
+				<li class="h3">View the @*<a href="@Url.Action(MVC.Showcase.Index(User.Identity.IsAuthenticated ? User.Identity.GetUserNum() : 1))"><span class="fa fa-certificate"></span> Showcase</a>*@</li>
 			</ul>
 			<ul class="col-sm-6">
-				<li class="h3">View the <a href="@Url.Action(MVC.Queue.Index())"><span class="fa fa-list"></span> Queue</a></li>
+				<li class="h3">View the <a href="@Url.Action("Index", "Queue")"><span class="fa fa-list"></span> Queue</a></li>
 			</ul>
 		</div>
 	</div>
@@ -137,10 +139,10 @@
 
 	<div class="tab-content">
 		<div class="tab-pane active" id="albumsRecent">
-			@Html.Partial(MVC.Album.Views._Recents, Model.Albums)
+			@Html.Partial("~/Views/Album/_Recents.cshtml", Model.Albums)
 		</div>
 		<div class="tab-pane" id="albumsUpdated">
-			@Html.Partial(MVC.Album.Views._Recents, Model.UpdatedAlbums)
+			@Html.Partial("~/Views/Album/_Recents.cshtml", Model.UpdatedAlbums)
 		</div>
 	</div>
 </div>
@@ -165,10 +167,10 @@
 
 	<div class="tab-content">
 		<div class="tab-pane active" id="booksRecent">
-			@Html.Partial(MVC.Book.Views._Recents, Model.Books)
+			@Html.Partial("~/Views/Book/_Recents.cshtml", Model.Books)
 		</div>
 		<div class="tab-pane" id="booksUpdated">
-			@Html.Partial(MVC.Book.Views._Recents, Model.UpdatedBooks)
+			@Html.Partial("~/Views/Book/_Recents.cshtml", Model.UpdatedBooks)
 		</div>
 	</div>
 </div>
@@ -193,10 +195,10 @@
 
 	<div class="tab-content">
 		<div class="tab-pane active" id="moviesRecent">
-			@Html.Partial(MVC.Movie.Views._Recents, Model.Movies)
+			@Html.Partial("~/Views/Movie/_Recents.cshtml", Model.Movies)
 		</div>
 		<div class="tab-pane" id="moviesUpdated">
-			@Html.Partial(MVC.Movie.Views._Recents, Model.UpdatedMovies)
+			@Html.Partial("~/Views/Movie/_Recents.cshtml", Model.UpdatedMovies)
 		</div>
 	</div>
 </div>
@@ -221,10 +223,10 @@
 
 	<div class="tab-content">
 		<div class="tab-pane active" id="gamesRecent">
-			@Html.Partial(MVC.Game.Views._Recents, Model.Games)
+			@Html.Partial("~/Views/Game/_Recents.cshtml", Model.Games)
 		</div>
 		<div class="tab-pane" id="gamesUpdated">
-			@Html.Partial(MVC.Game.Views._Recents, Model.UpdatedGames)
+			@Html.Partial("~/Views/Game/_Recents.cshtml", Model.UpdatedGames)
 		</div>
 	</div>
 </div>
@@ -249,10 +251,10 @@
 
 	<div class="tab-content">
 		<div class="tab-pane active" id="popsRecent">
-			@Html.Partial(MVC.Pop.Views._Recents, Model.Pops)
+			@Html.Partial("~/Views/Pop/_Recents.cshtml", Model.Pops)
 		</div>
 		<div class="tab-pane" id="popsUpdated">
-			@Html.Partial(MVC.Pop.Views._Recents, Model.UpdatedPops)
+			@Html.Partial("~/Views/Pop/_Recents.cshtml", Model.UpdatedPops)
 		</div>
 	</div>
 </div>

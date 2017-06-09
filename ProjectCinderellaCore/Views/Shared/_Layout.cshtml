@@ -18,62 +18,64 @@
 	<meta property="og:title" content="Project Cinderella" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="http://projectcinderella.azurewebsites.net/" />
-	<meta property="og:image" content="@("http://projectcinderella.azurewebsites.net" + Links.Content.Images.Turntable_jpg)" />
+	<meta property="og:image" content="@("http://projectcinderella.azurewebsites.net" + "/Images/Turntable.jpg")" />
 	<meta property="og:description" content="Always know what's playing in your collection." />
 
-	@Styles.Render("~/Content/css")
-
-	@Styles.Render(Links.Content.Responsive_min_css)
+	@*@Styles.Render("~/Content/css")*@
+	
+	<link href="/css/Responsive.css" rel="stylesheet" type="text/css"/>
+	
 	<!-- Animate.css -->
-	@Styles.Render(Links.Content.themes.Hydrogen.animate_min_css)
+	<link href="/css/themes/Hydrogen/animate.min.css" rel="stylesheet" type="text/css" />
 	<!-- Icomoon Icon Fonts-->
-	@Styles.Render(Links.Content.themes.Hydrogen.icomoon_css)
+	<link href="/css/themes/Hydrogen/icomoon.min.css" rel="stylesheet" type="text/css" />
 	<!-- Magnific Popup -->
-	@Styles.Render(Links.Content.themes.Hydrogen.magnific_popup_min_css)
+	<link href="/css/themes/Hydrogen/magnific-popup.min.css" rel="stylesheet" type="text/css" />
 	<!-- Salvattore -->
-	@Styles.Render(Links.Content.themes.Hydrogen.salvattore_min_css)
+	<link href="/css/themes/Hydrogen/salvattore.min.css" rel="stylesheet" type="text/css" />
 	<!-- Theme Style -->
-	@Styles.Render(Links.Content.themes.Hydrogen.style_min_css)
-	@Styles.Render(Links.Content.Sass.Main_min_css)
+	<link href="/css/themes/Hydrogen/style.min.css" rel="stylesheet" type="text/css" />
+	<link href="/css/Sass/Main.min.css" rel="stylesheet" type="text/css" />
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" , type="text/css" />
-
-	@Scripts.Render("~/bundles/jquery")
-	@Scripts.Render("~/bundles/bootstrap")
+	
+	<link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	@*@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")*@
 </head>
-@if (TempData.ContainsKey("Toastr"))
+@*@if (TempData.ContainsKey("Toastr"))
 {
-	var toastr = TempData["Toastr"] as Toastr;
+	var toastr = (Toastr) TempData["Toastr"];
 	@ToastrBuilder.ShowToastMessages(toastr)
 	;
-}
+}*@
 <body>
 	<div class="row">
 		<div id="fh5co-header" role="banner">
 			<div class="container">
 				<a href="#" class="fh5co-menu-btn js-fh5co-menu-btn">Menu <span class="fa fa-bars"></span></a>
 				<div class="h1 fh5co-logo">
-					@Html.ActionLink("Project Cinderella", MVC.Home.Index(), new { @class = "navbar-brand" })
+					@Html.ActionLink("Project Cinderella", "Index", "Home", new { @class = "navbar-brand" })
 				</div>
 				<div class="h4 text-center hidden-xs">
-					<a href="@Url.Action(MVC.Album.Index())">
+					<a href="@Url.Action("Index", "Album")">
 						<span class="fa fa-music"></span>
 						<span>Albums</span>
 					</a> |
 
-					<a href="@Url.Action(MVC.Book.Index())">
+					<a href="@Url.Action("Index", "Book")">
 						<span class="fa fa-book"></span>
 						<span>Books</span>
 					</a> |
 
-					<a href="@Url.Action(MVC.Movie.Index())">
-						<span class="fa fa-film"></span>/<span class="fa fa-television"></span>
+					<a href="@Url.Action("Index", "Movie")">
+						<span class="fa fa-film"></span><span class="fa fa-television"></span>
 						<span>Movies/TV</span>
 					</a> |
-					<a href="@Url.Action(MVC.Game.Index())">
+					<a href="@Url.Action("Index", "Game")">
 						<span class="fa fa-gamepad"></span>
 						<span>Games</span>
 					</a> |
-					<a href="@Url.Action(MVC.Pop.Index())">
+					<a href="@Url.Action("Index", "Pop")">
 						<span class="fa fa-user"></span>
 						<span>Other Vinyl</span>
 					</a>
@@ -84,7 +86,7 @@
 	<div id="fh5co-offcanvass" class="well well-lg pre-scrollable">
 		<a href="#" class="fh5co-offcanvass-close js-fh5co-offcanvass-close">Menu <span class="fa fa-bars"></span> </a>
 		<h1 class="fh5co-logo">
-			@Html.ActionLink("Project Cinderella", MVC.Home.Index(), new { @class = "navbar-brand" })
+			@Html.ActionLink("Project Cinderella", "Index", "Home", new { @class = "navbar-brand" })
 		</h1>
 		<ul id="accordion">
 			<li class="panel-heading">
@@ -98,11 +100,11 @@
 				<div class="panel-body">
 					<div class="table">
 						<div>
-							@Html.ActionLink("About", MVC.Home.About())
+							@Html.ActionLink("About","About", "Home")
 						</div>
 
 						<div>
-							@Html.ActionLink("Contact", MVC.Home.Contact())
+							@Html.ActionLink("Contact", "Contact", "Home")
 						</div>
 					</div>
 				</div>
@@ -118,13 +120,13 @@
 			<li id="Albums" class="panel-collapse collapse">
 				<div class="panel-body">
 					<div class="table">
-						<div>@Html.ActionLink("View Albums", MVC.Album.Index())</div>
+						<div>@Html.ActionLink("View Albums", "Index", "Album")</div>
 						@if (User.Identity.IsAuthenticated)
 						{
-							<div>@Html.ActionLink("Add Album", MVC.Album.Create())</div>
-							<div>@Html.ActionLink("Search Discogs", MVC.Album.Search())</div>
+							<div>@Html.ActionLink("Add Album", "Create", "Album")</div>
+							<div>@Html.ActionLink("Search Discogs", "Search", "Album")</div>
 							<div>
-								@using (Html.BeginForm(MVC.Album.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
+								@using (Html.BeginForm("Index", "Album",null, FormMethod.Get,false, new { @style = "display:inline-flex;" }))
 								{
 									@Html.TextBox("albumQuery", null, new { @class = "form-control", @placeholder = "Search" })
 									<button type="submit" class="btn btn-default">
@@ -147,13 +149,13 @@
 			<li id="Books" class="panel-collapse collapse">
 				<div class="panel-body">
 					<div class="table">
-						<div>@Html.ActionLink("View Books", MVC.Book.Index())</div>
+						<div>@Html.ActionLink("View Books", "Index", "Book")</div>
 						@if (User.Identity.IsAuthenticated)
 						{
-							<div>@Html.ActionLink("Add Book", MVC.Book.Create())</div>
-							<div>@Html.ActionLink("Search Google for Book", MVC.Book.Search())</div>
+							<div>@Html.ActionLink("Add Book", "Create", "Book")</div>
+							<div>@Html.ActionLink("Search Google for Book", "Search", "Book")</div>
 							<div>
-								@using (Html.BeginForm(MVC.Book.Index(), FormMethod.Get, new { @style = "display:inline-flex;" }))
+								@using (Html.BeginForm("Index", "Book", FormMethod.Get, new { @style = "display:inline-flex;" }))
 								{
 									@Html.TextBox("bookQuery", null, new { @class = "form-control", @placeholder = "Search" })
 									<button type="submit" class="btn btn-default">
@@ -176,11 +178,11 @@
 			<li id="Movies" class="panel-collapse collapse">
 				<div class="panel-body">
 					<div class="table">
-						<div>@Html.ActionLink("View Movies/TV", MVC.Movie.Index())</div>
+						<div>@Html.ActionLink("View Movies/TV","Index", "Movie")</div>
 						@if (User.Identity.IsAuthenticated)
 						{
-							<div>@Html.ActionLink("Add Movie/TV", MVC.Movie.Create())</div>
-							<div>@Html.ActionLink("Search TMDB", MVC.Movie.Search())</div>
+							<div>@Html.ActionLink("Add Movie/TV", "Create", "Movie")</div>
+							<div>@Html.ActionLink("Search TMDB", "Search", "Movie")</div>
 							<div>
 								@using (Html.BeginForm("Index","Movie",null, FormMethod.Get, null,new { @style = "display:inline-flex;" }))
 								{
@@ -239,7 +241,7 @@
 						{
 							<div>@Html.ActionLink("Add Pop", "Create", "Pop")</div>
 							<div>
-								@using (Html.BeginForm("Index", "Pop",null,  FormMethod.Get, false, new { @style = "display:inline-flex;" }}))
+								@using (Html.BeginForm("Index", "Pop",null,  FormMethod.Get, false, new { @style = "display:inline-flex;" }))
 								{
 									@Html.TextBox("popQuery", null,"", new { @class = "form-control", @placeholder = "Search" })
 									<button type="submit" class="btn btn-default">
@@ -271,9 +273,9 @@
 			}
 			<li id="Showcase" class="panel-heading">
 				<h4 class="panel-title">
-					<a href="@Url.Action("Index", "Showcase", User.Identity.IsAuthenticated ? User.Identity.GetUserNum() : 1))">
+					@*<a href="@Url.Action("Index", "Showcase", User.Identity.IsAuthenticated ? User.Identity.GetUserNum() : 1))">
 						<span class="fa fa-certificate"></span> Showcase
-					</a>
+					</a>*@
 				</h4>
 			</li>
 			@if (User.Identity.IsAuthenticated)
@@ -334,23 +336,23 @@
 								<li>@Html.ActionLink("About", "About", "Home")</li>
 								<li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 								<li>
-									<a href="@Url.Action(MVC.Statistics.Index())">
+									<a href="@Url.Action("Index","Statistics")">
 										<span class="fa fa-trophy"></span> Stats
 									</a>
 								</li>
 								@if (User.Identity.IsAuthenticated)
 								{
 									<li>
-										<a href="@Url.Action(MVC.Wish.Index())">
+										<a href="@Url.Action("Index", "Wish")">
 											<span class="fa fa-star"></span> Wish List
 										</a>
 									</li>
 								}
-								<li>
+								@*<li>
 									<a href="@Url.Action("Index","Showcase",User.Identity.IsAuthenticated ? User.Identity.GetUserNum() : 1))">
 										<span class="fa fa-certificate"></span> Showcase
 									</a>
-								</li>
+								</li>*@
 								@if (User.Identity.IsAuthenticated)
 								{
 									<li>
