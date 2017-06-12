@@ -1,0 +1,33 @@
+﻿@using System
+@using ProjectCinderella.Model.Enums
+@using Microsoft.AspNetCore.Mvc
+@model ProjectCinderella.Model.UI.ItemStatusViewModel
+
+@if (User.IsInRole("Admin") && Model.IsShowcased)
+{
+	@Html.ActionLink("Remove From showcase", GetRemoveAction(Model.ItemID, Model.ItemType), new { @class = "btn btn-danger" })
+}
+@if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
+{
+	<div class="">Last Updated: @Model.DateUpdated</div>
+}
+
+@functions {
+
+	private static ActionResult GetRemoveAction(int id, ItemType type)
+	{
+		switch (type)
+		{
+			case ItemType.Album:
+				return new  RedirectToActionResult("RemoveFromShowCase", "Album", id);
+			case ItemType.Book:
+				return MVC.Book.RemoveFromShowcase(id);
+			case ItemType.Movie:
+				return MVC.Movie.RemoveFromShowcase(id);
+			case ItemType.Game:
+				return MVC.Game.RemoveFromShowcase(id);
+		}
+		return null;
+	}
+
+}

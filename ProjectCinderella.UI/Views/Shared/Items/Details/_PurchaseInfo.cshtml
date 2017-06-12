@@ -1,0 +1,36 @@
+﻿@model ProjectCinderella.Model.UI.PurchaseInfoViewModel
+<div class="col-md-6">
+    <div data-toggle="collapse" data-parent="#accordion" href="#purchase-info">
+        <div class="row panel panel-primary panel-collapse">
+            <div class="panel-heading">
+                <h4>
+                    Purchase Information
+                    <span class="fa fa-chevron-circle-down"></span>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div id="purchase-info" class="collapse in">
+        <div class="panel-body">
+            <div class="col-xs-6">
+                @Html.LabelFor(m => m.DatePurchased):
+                @Html.DisplayFor(m => m.DatePurchased)
+            </div>
+
+            <div class="col-xs-6">
+                @Html.LabelFor(m => m.LocationPurchased):
+                @Html.DisplayFor(m => m.LocationPurchased)
+            </div>
+
+	        <div class="col-xs-6">
+		        @Html.LabelFor(m => m.IsNew):
+		        @Html.DisplayFor(m => m.IsNew)
+	        </div>
+			
+	        <div class="col-xs-6">
+		        @Html.LabelFor(m => m.CountryPurchased):
+				@Html.DisplayFor(m => m.CountryPurchased)
+	        </div>
+        </div>
+    </div>
+</div>

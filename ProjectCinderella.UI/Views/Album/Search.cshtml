@@ -1,0 +1,87 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+@model ProjectCinderella.Model.UI.DiscogsSearchModel
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row panel panel-primary">
+    <div class="panel-heading">
+        <h4>
+            Album Information
+        </h4>
+    </div>
+    @using (Html.BeginForm(MVC.Album.Search(), FormMethod.Get))
+    {
+        <div class="panel-body">
+            <div class="col-sm-6">
+	            @Html.LabelFor<>(m => m.Artist)
+	            @Html.TextBoxFor<>(m => m.Artist, new { @class = "form-control" })
+	            @Html.ValidationMessageFor<>(m => m.Artist, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-sm-6">
+	            @Html.LabelFor<>(m => m.AlbumName)
+	            @Html.TextBoxFor<>(m => m.AlbumName, new { @class = "form-control" })
+	            @Html.ValidationMessageFor<>(m => m.AlbumName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row panel-body">
+            <div class="col-xs-8 col-sm-10">
+                <input id="btnSubmit" type="submit" value="Search" class="btn btn-default btn-block btn-lg" />
+            </div>
+        </div>
+    }
+</div>
+@if (Model.Results != null && Model.Results.Count > 0)
+{
+    <div class="row panel panel-primary">
+        <div class="panel-heading">
+            <h4>
+                Search Results
+            </h4>
+        </div>
+
+        <div class="panel-body">
+            @foreach (var result in Model.Results)
+            {
+                using (Html.BeginForm(MVC.Album.CreateFromSearchResult(result.ID), FormMethod.Get))
+                {
+                    <div id="album" class="row info" style="padding-bottom: 1em;" data-id="@result.ID">
+                        <div class="col-sm-2 ">
+                            <img src="@result.Thumb" class="img-rounded" />
+                        </div>
+
+                        <div class="col-sm-3 ">
+                            <div class="row">@Html.DisplayFor<>(x => result.Title)</div>
+                            <div class="row">
+	                            @Html.DisplayFor<>(x => result.Year)
+                            </div>
+                            <div class="row">
+	                            @Html.DisplayFor<>(x => result.Country)
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2 ">
+                            <div class="row">
+	                            @Html.DisplayFor<>(x => result.FormatString)
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 hidden-xs">
+	                        @Html.DisplayFor<>(x => result.LabelString)
+                        </div>
+
+                        @Html.Hidden("releaseID", result.ID)
+
+                        <div class="col-sm-1 ">
+                            <input id="" type="submit" value="Add" class="btn" />
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+}
+@Html.ActionLink("Back to List", MVC.Album.Index())
+
+@Html.Partial(MVC.Shared.Views._DiscogsDisclaimer)

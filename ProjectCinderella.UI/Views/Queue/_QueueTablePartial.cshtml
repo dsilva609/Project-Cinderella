@@ -1,0 +1,40 @@
+﻿@using System.Collections.Generic
+@model System.Collections.Generic.List<ProjectCinderella.Model.UI.QueueItemViewModel>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th></th>
+            <th></th>
+            <th>Title</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (var i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <td>@(i + 1)</td>
+                <td>
+                    <a href="/@Model[i].ItemType/Edit/@Model[i].ID">
+                        <span class="fa fa-pencil"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="/@Model[i].ItemType/RemoveFromQueue/@Model[i].ID">
+                        <span class="fa fa-trash"></span>
+                    </a>
+                </td>
+                <td>@Model[i].Title</td>
+                <td>
+                    <div class="animate-box item col-md-6">
+                        <a href="@Model[i].ImageUrl" class="image-popup img-fluid fh5co-board-img" title="@Model[i].Title">
+                            <img src="@Model[i].ImageUrl" class="img-rounded" style="height: 100%; width: 100%;">
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

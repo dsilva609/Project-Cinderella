@@ -1,0 +1,55 @@
+﻿@using Microsoft.AspNet.Identity
+@using UI.Enums
+@using FormMethod = Microsoft.AspNetCore.Mvc.Rendering.FormMethod
+@model ProjectCinderella.Model.UI.BookViewModel
+@{
+    ViewBag.Title = Model.ViewTitle;
+}
+
+<script>
+    var deleteUrl = '@Url.Action("Delete", "Book")';
+</script>
+
+<div>
+    <div class="h2 col-md-5">
+        Books
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a class="btn btn-default" href="@Url.Action("Create ", "Book")" style="padding-top: 1.25em;" contenteditable="false">
+                <span class="fa fa-plus"></span>
+            </a>
+        }
+    </div>
+
+    <div class="col-md-3" style="padding-top: 1.25em;">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a href="@Url.Action("Search", "Book")" class="btn btn-default">Google Books <span class="fa fa-search"></span></a>
+        }
+    </div>
+
+    <div class="col-md-4 text-right" style="padding-top: 1.25em; display: inline-flex;">
+        @using (Html.BeginForm("Index", "Book",null , FormMethod.Get,false, new { @style = "display:inline-flex;" }))
+        {
+            <input class="form-control" id="book-query" name="bookQuery" placeholder="Search" type="text" value="@ViewBag.Filter">
+            <button type="submit" class="btn btn-default">
+                <span class="fa fa-search"></span>
+            </button>
+        }
+    </div>
+</div>
+
+<div id="fh5co-main">
+    <div class="container" style="padding-top: 2em;">
+        @foreach (var book in Model.Books)
+        {
+            @Html.Partial("~/Views/Book/_Book.cshtml", book)
+        }
+    </div>
+</div>
+
+@*@Html.PagedListPager(Model.Books, page => Url.Action("Index", new { bookQuery = ViewBag.query, filter = ViewBag.Filter, page }))*@
+
+@Html.Partial("_GoogleBooksDisclaimer")
+
+@Html.Partial("_ComicVineDisclaimer")

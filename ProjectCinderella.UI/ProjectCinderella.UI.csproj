@@ -9,10 +9,16 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0-preview1-final" />
+    <PackageReference Include="SimpleInjector.Integration.AspNetCore.Mvc.Core" Version="4.0.8" />
   </ItemGroup>
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0-preview1-final" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectCinderella.BusinessLogic\ProjectCinderella.BusinessLogic.csproj" />
+    <ProjectReference Include="..\ProjectCinderella.Data\ProjectCinderella.Data.csproj" />
   </ItemGroup>
 
 </Project>

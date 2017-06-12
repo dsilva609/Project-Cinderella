@@ -1,0 +1,24 @@
+﻿@model UI.Models.Handhelds
+
+	<script>
+		c3.generate({
+			bindto: '#@Model.ID',
+			data: {
+				columns: [
+					['Game Boy', @Model.NumGameBoy],
+					['Game Boy Advance', @Model.NumGameBoyAdvance],
+					['DS', @Model.NumNintendoDS],
+					['3DS', @Model.NumNintendo3DS],
+					['PSP', @Model.NumPSP],
+					['PS Vita', @Model.NumPSVita]
+				],
+				type: 'donut'
+			},
+			donut: {
+				title: "@Model.Title",
+				label: {
+					format: function (value) { return value; }
+				}
+			}
+		});
+	</script>

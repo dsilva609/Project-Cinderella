@@ -1,0 +1,103 @@
+﻿@model UI.Models.PopStatsModel
+
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Top Series
+            </li>
+            @foreach (var series in Model.TopSeries)
+            {
+                <li class="list-group-item">
+                    @series.Item1
+	                <span class="tag tag-info tag-pill pull-xs-right">@series.Item2</span>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Top Lines
+            </li>
+            @foreach (var line in Model.TopLines)
+            {
+                <li class="list-group-item">
+                    @line.Item1
+	                <span class="tag tag-info tag-pill pull-xs-right">@line.Item2</span>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Top Countries of Origin
+            </li>
+            @foreach (var country in Model.TopCountriesOfOrigin)
+            {
+                <li class="list-group-item">
+                    @country.Item1
+	                <span class="tag tag-info tag-pill pull-xs-right">@country.Item2</span>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Top Purchase Countries
+            </li>
+            @foreach (var country in Model.TopPurchaseCountries)
+            {
+                <li class="list-group-item">
+                    @country.Item1
+	                <span class="tag tag-info tag-pill pull-xs-right">@country.Item2</span>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Top Locations Purchased
+            </li>
+            @foreach (var location in Model.TopLocationsPurchased)
+            {
+                <li class="list-group-item">
+                    @location.Item1
+	                <span class="tag tag-info tag-pill pull-xs-right">@location.Item2</span>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+<div class="collapse in">
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Top Release Years
+            </li>
+            @foreach (var year in Model.TopReleaseYears)
+            {
+                <li class="list-group-item">
+                    @year.Item1
+	                <span class="tag tag-info tag-pill pull-xs-right">@year.Item2</span>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

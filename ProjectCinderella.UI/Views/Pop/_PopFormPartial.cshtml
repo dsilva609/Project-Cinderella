@@ -1,0 +1,183 @@
+﻿@using ProjectCinderellaCore.Common
+@model ProjectCinderella.Model.Common.FunkoModel
+
+<script>
+	var deleteUrl = '@Url.Action(MVC.Pop.Delete())';
+</script>
+
+@Html.AntiForgeryToken()
+@Html.HiddenFor(m => m.UserID)
+@Html.HiddenFor(m => m.UserNum)
+@Html.HiddenFor(m => m.DateAdded)
+@Html.HiddenFor(m => m.IsShowcased)
+
+<div class="row panel-body">
+	@if (Model.DateAdded != Convert.ToDateTime("1/1/1900") && Model.DateAdded != DateTime.MinValue)
+	{
+		<div>Date Added: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateAdded)</div>
+	}
+	@if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
+	{
+		<div class="">Last Updated: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateUpdated)</div>
+	}
+
+	<div class="row">
+		@if (Model.ID > 0)
+		{
+			if (!Model.IsShowcased)
+			{
+				<div class="col-md-6">
+					@Html.ActionLink("Add to Showcase", MVC.Pop.AddToShowcase(Model.ID), new { @class = "btn btn-default" })
+				</div>
+			}
+			else
+			{
+				<div class="col-md-6">
+					@Html.ActionLink("Remove from Showcase", MVC.Pop.RemoveFromShowcase(Model.ID), new { @class = "btn btn-danger" })
+				</div>
+			}
+		}
+	</div>
+</div>
+
+<div data-toggle="collapse" data-parent="#accordion" href="#pop-info">
+	<div class="row panel panel-primary panel-collapse">
+		<div class="panel-heading">
+			<h4>
+				Pop Information
+				<span class="fa fa-chevron-circle-down"></span>
+			</h4>
+		</div>
+	</div>
+</div>
+<div id="pop-info" class="collapse in">
+	<div class="panel-body">
+		<div class="item-title">
+			@if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+			{
+				<div class="animate-box item col-sm-6">
+					<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.action_figures_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Title (@Model.YearReleased)">
+						<img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.action_figures_jpg : Model.ImageUrl)" class="img-rounded" style="height: 100%; width: 100%;">
+					</a>
+				</div>
+			}
+			<div class="col-sm-6">
+				@Html.LabelFor(m => m.Title, "Name")
+				@Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+			</div>
+
+			<div class="col-sm-6">
+				@Html.LabelFor(m => m.Series)
+				@Html.TextBoxFor(m => m.Series, new { @class = "form-control" })
+				@Html.ValidationMessageFor(m => m.Series, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.PopLine)
+			@Html.TextBoxFor(m => m.PopLine, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.PopLine, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.Number)
+			@Html.TextBoxFor(m => m.Number, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.Number, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.YearReleased)
+			@Html.DropDownListFor(m => m.YearReleased, ViewHelpers.GetYearRange(1900, DateTime.Today.Year), Model.YearReleased.ToString(), new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.YearReleased, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.Notes)
+			@Html.TextAreaFor(m => m.Notes, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.Notes, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.Category)
+			@Html.TextAreaFor(m => m.Category, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.Category, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.ImageUrl)
+			@Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.ImageUrl, "", new { @class = "text-danger" })
+		</div>
+	</div>
+</div>
+
+<div data-toggle="collapse" data-parent="#accordion" href="#purchase-info">
+	<div class="row panel panel-primary panel-collapse">
+		<div class="panel-heading">
+			<h4>
+				Purchase Information
+				<span class="fa fa-chevron-circle-down"></span>
+			</h4>
+		</div>
+	</div>
+</div>
+<div id="purchase-info" class="collapse in">
+	<div class="panel-body">
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.CountryOfOrigin)
+			@Html.TextBoxFor(m => m.CountryOfOrigin, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.CountryOfOrigin, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.CountryPurchased)
+			@Html.TextBoxFor(m => m.CountryPurchased, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.CountryPurchased, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.DatePurchased)
+			@if (Request.Browser.Browser == "IE" || !Request.Browser.IsMobileDevice)
+			{
+				@Html.EditorFor(m => m.DatePurchased, new { htmlattributes = new { type = "text", Value = Model.DatePurchased.ToShortDateString(), @class = "form-control datepicker" } })
+			}
+			else
+			{
+				@Html.EditorFor(m => m.DatePurchased, new { htmlattributes = new { type = "date", Value = Model.DatePurchased.ToString("yyyy-MM-dd"), @class = "form-control" } })
+			}
+			@Html.ValidationMessageFor(m => m.DatePurchased, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.LocationPurchased)
+			@Html.TextBoxFor(m => m.LocationPurchased, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.LocationPurchased, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.IsNew)
+			@Html.CheckBoxFor(m => m.IsNew, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.IsNew, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="col-sm-6">
+			@Html.LabelFor(m => m.IsPhysical)
+			@Html.CheckBoxFor(m => m.IsPhysical, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.IsPhysical, "", new { @class = "text-danger" })
+		</div>
+	</div>
+</div>
+
+<div class="row panel-body">
+	<div class="col-xs-6 col-md-4">
+		<input id="btnSubmit" type="submit" value=@(Model.ID > 0 ? "Save" : "Create") class="btn btn-default btn-block btn-lg" />
+	</div>
+
+	@if (Model.ID > 0)
+	{
+		<div class="col-md-4 offset-md-4 col-xs-6">
+			@Html.ActionLink("Delete", MVC.Pop.Delete(Model.ID), new { @class = "deleteBtn btn btn-danger btn-block btn-lg", data_id = Model.ID, data_deleteUrl = Url.Action(MVC.Pop.Delete()) })
+		</div>
+	}
+</div>

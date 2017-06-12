@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNet.Identity
+@using UI.Enums
+@using FormMethod = Microsoft.AspNetCore.Mvc.Rendering.FormMethod
+@model ProjectCinderella.Model.UI.GameViewModel
+@{
+    ViewBag.Title = Model.ViewTitle;
+}
+
+<script>
+    var deleteUrl = '@Url.Action("Delete", "Game")';
+</script>
+
+<div>
+    <div class="h2 col-md-5">
+        Games
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a class="btn btn-default" href="@Url.Action("Create", "Game")" style="padding-top: 1.25em;" contenteditable="false">
+                <span class="fa fa-plus"></span>
+            </a>
+        }
+    </div>
+
+    <div class="col-md-3" style="padding-top: 1.25em;">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a href="@Url.Action("Search", "Game")" class="btn btn-default">Giant Bomb/BGG <span class="fa fa-search"></span></a>
+        }
+    </div>
+
+    <div class="col-md-4text-right" style="padding-top: 1.25em; display: inline-flex;">
+        @using (Html.BeginForm("Index", "Game", null, FormMethod.Get,false, new { @style = "display:inline-flex;" }))
+        {
+            <input class="form-control" id="game-query" name="gameQuery" placeholder="Search" type="text" value="@ViewBag.Filter">
+            <button type="submit" class="btn btn-default">
+                <span class="fa fa-search"></span>
+            </button>
+        }
+    </div>
+</div>
+
+<div id="fh5co-main">
+    <div class="container">
+        @foreach (var game in Model.Games)
+        {
+            @Html.Partial("~/Views/Game/_Game.cshtml", game)
+        }
+    </div>
+</div>
+
+@*@Html.PagedListPager(Model.Games, page => Url.Action("Index", new { gameQuery = ViewBag.query, filter = ViewBag.Filter, page }))*@
+
+@Html.Partial("_GiantBombDisclaimer")

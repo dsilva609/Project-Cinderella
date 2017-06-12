@@ -1,0 +1,27 @@
+﻿@model UI.Models.Nintendo
+
+	<script>
+		c3.generate({
+			bindto: '#@Model.ID',
+			data: {
+				columns: [
+					['Nintendo 64', @Model.NumNintendo64],
+					['GameCube', @Model.NumGameCube],
+					['Wii', @Model.NumWii],
+					['Wii U', @Model.NumWiiU],
+					['Switch', @Model.NumNintendoSwitch],
+					['Game Boy', @Model.NumGameBoy],
+					['Game Boy Advance', @Model.NumGameBoyAdvance],
+					['DS', @Model.NumNintendoDS],
+					['3DS', @Model.NumNintendo3DS]
+				],
+				type: 'donut'
+			},
+			donut: {
+				title: "@Model.Title",
+				label: {
+					format: function (value) { return value; }
+				}
+			}
+		});
+	</script>
