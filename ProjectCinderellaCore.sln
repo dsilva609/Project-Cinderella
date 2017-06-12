@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectCinderella.UnitTests
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectCinderella.Data", "ProjectCinderella.Data\ProjectCinderella.Data.csproj", "{CA23756B-6882-4475-8F9F-455DACBE622B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectCinderella.UI", "ProjectCinderella.UI\ProjectCinderella.UI.csproj", "{3DFF8DBF-7638-407E-9145-0F1B96BAE217}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{CA23756B-6882-4475-8F9F-455DACBE622B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA23756B-6882-4475-8F9F-455DACBE622B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA23756B-6882-4475-8F9F-455DACBE622B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DFF8DBF-7638-407E-9145-0F1B96BAE217}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DFF8DBF-7638-407E-9145-0F1B96BAE217}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DFF8DBF-7638-407E-9145-0F1B96BAE217}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DFF8DBF-7638-407E-9145-0F1B96BAE217}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
