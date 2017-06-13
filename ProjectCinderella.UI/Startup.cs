@@ -1,9 +1,11 @@
 ﻿using System;
 using Google.Apis.Services;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.Identity.Service;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Microsoft.AspNetCore.Mvc.ViewFeatures.Internal;
@@ -22,6 +24,8 @@ using ProjectCinderella.BusinessLogic.Services.Interfaces;
 using ProjectCinderella.Model.Interfaces;
 using ProjectCinderella.Model.Common;
 using ProjectCinderella.BusinessLogic.Services.Statistics;
+using ProjectCinderella.UI.Data;
+using ProjectCinderella.UI.Models;
 
 namespace ProjectCinderella.UI
 {
@@ -41,9 +45,34 @@ namespace ProjectCinderella.UI
 		{
 			//services.AddIdentityServiceAuthentication();
 			ProjectCinderellaContext.ConnectionString = Configuration.GetConnectionString("DefaultConnection");
+			MyIdentityDbContext.ConnectionString = Configuration.GetConnectionString("DefaultConnection");
 
 			services.AddDbContext<ProjectCinderellaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+			// Add framework services.
+		//	services.AddDbContext<MyIdentityDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+			//services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<MyIdentityDbContext>().AddDefaultTokenProviders();
+			services.Configure<IdentityOptions>(options =>
+			{
+				// Password settings
+				options.Password.RequireDigit = true;
+				options.Password.RequiredLength = 8;
+				options.Password.RequireNonAlphanumeric = false;
+				options.Password.RequireUppercase = true;
+				options.Password.RequireLowercase = false;
+
+				// Lockout settings
+	//			options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+				//options.Lockout.MaxFailedAccessAttempts = 10;
+
+				// Cookie settings
+//				options.Cookies.ApplicationCookie.ExpireTimeSpan = TimeSpan.FromDays(150);
+				//options.Cookies..ApplicationCookie.LoginPath = "/Account/LogIn";
+				//options.Cookies.ApplicationCookie.LogoutPath = "/Account/LogOut";
+
+				// User settings
+				options.User.RequireUniqueEmail = true;
+			});
 			services.AddSingleton<IConfiguration>(Configuration);
 			services.AddOptions();
 			services.AddSingleton<IControllerActivator>(new SimpleInjectorControllerActivator(_container));
@@ -69,9 +98,8 @@ namespace ProjectCinderella.UI
 			}
 			InitializeContainer(app);
 			app.UseStaticFiles();
-
-		//	app.UseRewriter(new RewriteOptions().AddIISUrlRewrite(env.ContentRootFileProvider, "urlRewrite.config"));
-
+			//	app.UseRewriter(new RewriteOptions().AddIISUrlRewrite(env.ContentRootFileProvider, "urlRewrite.config"));
+			//app.UseIdentity();
 			app.UseAuthentication();
 			app.UseSession();
 			app.UseMvc(routes =>
@@ -90,7 +118,9 @@ namespace ProjectCinderella.UI
 			_container.RegisterMvcViewComponents(app);
 
 			// Add application services. For instance:
-			_container.Register<IHttpContextAccessor, HttpContextAccessor>(Lifestyle.Scoped);
+		_container.Register<IHttpContextAccessor, HttpContextAccessor>(Lifestyle.Scoped);
+			_container.Register<ApplicationUserManager>(Lifestyle.Scoped);
+			_container.Register<UserStore<ApplicationUser>>(Lifestyle.Scoped);
 			//		    _container.Register<IUnitOfWork, UnitOfWork<ProjectCinderellaContext>>(Lifestyle.Singleton);
 			_container.RegisterSingleton<IUnitOfWork>(() => new UnitOfWork<ProjectCinderellaContext>());
 			_container.Register<IAlbumService>(() => new AlbumService(_container.GetInstance<IUnitOfWork>(), _container.GetInstance<IUserContext>()), Lifestyle.Scoped);

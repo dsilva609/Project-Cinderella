@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ProjectCinderellaCore.Areas.IdentityService.Models.AccountViewModels
+namespace ProjectCinderella.UI.Models
 {
     public class LoginViewModel
     {
