@@ -1,55 +1,143 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿/* latin */
+@font-face {
+	font-family: 'Arizonia';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Arizonia'), local('Arizonia-Regular'), url(http://fonts.gstatic.com/s/arizonia/v6/PwrsyFTYH2Wmsvpn0dx4s_esZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
+body {
+	padding-top: 50px;
+	padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
-/* Set widths on the form inputs since otherwise they're 100% wide */
+/* Override the default bootstrap behavior where horizontal description lists
+   will truncate terms that are too long to fit in the left column
+*/
+
+.dl-horizontal dt {
+	white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+
 input,
 select,
 textarea {
-    max-width: 280px;
+	max-width: 280px;
 }
 
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
+.bold {
+	font-weight: bold !important;
 }
 
-/* buttons and links extension to use brackets: [ click me ] */
-.btn-bracketed::before {
-    display: inline-block;
-    content: "[";
-    padding-right: 0.5em;
+.removePaddingLeftRight {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
 }
 
-.btn-bracketed::after {
-    display: inline-block;
-    content: "]";
-    padding-left: 0.5em;
+.table .row:not(:first-child):hover {
+	background-color: ButtonShadow;
+	cursor: pointer;
 }
 
-.dl-horizontal dt 
-{
-    white-space: normal;
+.btn-link {
+	height: 20px;
+	vertical-align: top;
+	padding: 0;
+	margin-top: -1px;
 }
 
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
+.mainPlayer {
+	text-align: center;
+	width: 800px;
+	height: 200px;
+	margin-left: 30%;
 }
 
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none;
-    }
+.jumbotronText {
+	color: lime;
+	font-family: sans-serif;
+	font-size: large;
+}
+
+.title {
+	font-size: 75px !important;
+}
+
+.titleDescription {
+	font-size: 30px;
+	margin-left: 200px;
+}
+
+#topBar {
+	height: 250px;
+	margin-bottom: 25px;
+}
+
+.front, .back {
+	width: 100px;
+	height: 150px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transition: transform 0.5s;
+	-moz-transition: transform 0.5s;
+	-o-transition: transform 0.5s;
+	transition: transform 0.5s;
+}
+
+.front {
+	background-size: cover;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.back {
+	-o-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	-webkit-transform: rotateY(180deg);
+	-ms-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+}
+
+.table-responsive {
+	overflow-x: hidden;
+}
+
+a.fa {
+	text-decoration: none !important;
+}
+
+.table > .row:nth-child(even) {
+	background-color: darkslategray;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+	.dropdown:hover {
+		background-color: #303030;
+	}
+
+.dropdown-menu {
+	display: none;
+	position: absolute;
+}
+
+.dropdown:hover .dropdown-menu {
+	display: block;
 }

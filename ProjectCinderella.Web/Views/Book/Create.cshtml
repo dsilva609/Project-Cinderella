@@ -1,0 +1,10 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+@model ProjectCinderella.Model.Common.Book
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(MVC.Book.Create(), FormMethod.Post))
+{
+	Html.RenderPartial(MVC.Book.Views._BookFormPartial, Model);
+}
+@Html.ActionLink("Back to List", MVC.Book.Index())

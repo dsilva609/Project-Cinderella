@@ -1,0 +1,10 @@
+﻿@model UI.Models.WishFormModel
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(MVC.Wish.Edit(), FormMethod.Post))
+{
+	Html.RenderPartial(MVC.Wish.Views._WishFormPartial, Model);
+}
+
+@Html.ActionLink("Back to List", MVC.Wish.Index())

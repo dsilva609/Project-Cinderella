@@ -1,0 +1,144 @@
+﻿@model UI.Models.WishViewModel
+@{
+    ViewBag.Title = @Model.ViewTitle;
+}
+
+<script>
+    var deleteUrl = '@Url.Action(MVC.Wish.Delete())';
+</script>
+
+<div class="row">
+    <div class="h2 col-md-8">
+        Wishes
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a class="btn btn-default" href="@Url.Action(MVC.Wish.Create())" style="padding-top: 1.25em;" contenteditable="false">
+                <span class="fa fa-plus"></span>
+            </a>
+        }
+    </div>
+
+    <div class="col-md-4" style="padding-top: 1.25em;">
+        <form action="@Url.Action(MVC.Wish.Index())" method="get" style="display: inline-flex;">
+            <input class="form-control" id="query" name="wishQuery" placeholder="Search" type="text" value="@ViewBag.Filter">
+            <button type="submit" class="btn btn-default">
+                <span class="fa fa-search"></span>
+            </button>
+        </form>
+    </div>
+</div>
+
+@if (Model.AlbumWishes.Any())
+{
+    <div data-toggle="collapse" data-parent="#accordion" href="#albums">
+        <div class="row panel panel-primary panel-collapse">
+            <div class="panel-heading">
+                <h4>
+                    Albums
+                    <span class="fa fa-chevron-circle-down"></span>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div id="albums" class="collapse in">
+        <div class="panel-body">
+            @foreach (var albumWishGroup in Model.AlbumWishes)
+            {
+                <div class="bold">@albumWishGroup.Key</div>
+                @Html.Partial(MVC.Wish.Views._WishTablePartial, albumWishGroup.Value)
+            }
+        </div>
+    </div>
+}
+
+@if (Model.BookWishes.Any())
+{
+    <div data-toggle="collapse" data-parent="#accordion" href="#books">
+        <div class="row panel panel-primary panel-collapse">
+            <div class="panel-heading">
+                <h4>
+                    Books
+                    <span class="fa fa-chevron-circle-down"></span>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div id="books" class="collapse in">
+        <div class="panel-body">
+            @foreach (var bookWishGroup in Model.BookWishes)
+            {
+                <div class="bold">@bookWishGroup.Key</div>
+                @Html.Partial(MVC.Wish.Views._WishTablePartial, bookWishGroup.Value)
+            }
+        </div>
+    </div>
+}
+
+@if (Model.MovieWishes.Any())
+{
+    <div data-toggle="collapse" data-parent="#accordion" href="#movies">
+        <div class="row panel panel-primary panel-collapse">
+            <div class="panel-heading">
+                <h4>
+                    Movies
+                    <span class="fa fa-chevron-circle-down"></span>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div id="movies" class="collapse in">
+        <div class="panel-body">
+            @foreach (var movieWishGroup in Model.MovieWishes)
+            {
+                <div class="bold">@movieWishGroup.Key</div>
+                @Html.Partial(MVC.Wish.Views._WishTablePartial, movieWishGroup.Value)
+            }
+        </div>
+    </div>
+}
+
+@if (Model.GameWishes.Any())
+{
+    <div data-toggle="collapse" data-parent="#accordion" href="#games">
+        <div class="row panel panel-primary panel-collapse">
+            <div class="panel-heading">
+                <h4>
+                    Games
+                    <span class="fa fa-chevron-circle-down"></span>
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div id="games" class="collapse in">
+        <div class="panel-body">
+            @foreach (var gameWishGroup in Model.GameWishes)
+            {
+                <div class="bold">@gameWishGroup.Key</div>
+                @Html.Partial(MVC.Wish.Views._WishTablePartial, gameWishGroup.Value)
+            }
+        </div>
+    </div>
+}
+
+@if (Model.PopWishes.Any())
+{
+	<div data-toggle="collapse" data-parent="#accordion" href="#pops">
+		<div class="row panel panel-primary panel-collapse">
+			<div class="panel-heading">
+				<h4>
+					Pops
+					<span class="fa fa-chevron-circle-down"></span>
+				</h4>
+			</div>
+		</div>
+	</div>
+	<div id="pops" class="collapse in">
+		<div class="panel-body">
+			@foreach (var popWishGroup in Model.PopWishes)
+			{
+				<div class="bold">@popWishGroup.Key</div>
+				@Html.Partial(MVC.Wish.Views._WishTablePartial, popWishGroup.Value)
+			}
+		</div>
+	</div>
+}

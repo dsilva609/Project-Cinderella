@@ -1,0 +1,21 @@
+﻿@model UI.Models.CurrentGeneration
+
+	<script>
+		c3.generate({
+			bindto: '#@Model.ID',
+			data: {
+				columns: [
+					['PlayStation 4', @Model.NumPlayStation4],
+					['Xbox One', @Model.NumXboxOne],
+					['Switch', @Model.NumNintendoSwitch]
+				],
+				type: 'donut'
+			},
+			donut: {
+				title: "@Model.Title",
+				label: {
+					format: function (value) { return value; }
+				}
+			}
+		});
+	</script>

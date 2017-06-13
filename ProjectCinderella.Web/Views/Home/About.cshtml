@@ -1,7 +1,25 @@
-﻿@{
-    ViewData["Title"] = "About";
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+@{
+	ViewBag.Title = "About";
 }
-<h2>@ViewData["Title"].</h2>
-<h3>@ViewData["Message"]</h3>
+<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<p>
+    &bull; Project Cinderella is an application that keeps track of your music collection.
+    <br />&bull; It was originally designed to catalog vinyl records and cds.
+    <br />&bull; Use it to keep track of your own collection and prevent yourself from buying the same album twice.
+</p>
+
+<p>
+    @Html.Partial("_DiscogsDisclaimer")
+    
+    @Html.Partial("_GoogleBooksDisclaimer")
+    
+    @Html.Partial("_ComicVineDisclaimer")
+    
+    @Html.Partial("_TMDBDisclaimer")
+    
+    @Html.Partial("_GiantBombDisclaimer")
+    
+    @Html.Partial("_BGGDisclaimer")
+</p>

@@ -1,0 +1,33 @@
+﻿@using System
+@using ProjectCinderellaCore.Common
+@model ProjectCinderella.Model.UI.ItemInfoViewModel
+
+<div class="col-sm-6">
+    @Html.LabelFor(m => m.YearReleased)
+    @Html.DropDownListFor(m => m.YearReleased, ViewHelpers.GetYearRange(1900, DateTime.Today.Year), Model.YearReleased.ToString(), new { @class = "form-control", Name = Model.ModelName + ".YearReleased" })
+    @Html.ValidationMessageFor(m => m.YearReleased, "", new { @class = "text-danger" })
+</div>
+
+<div class="col-sm-6">
+    @Html.LabelFor(m => m.Genre)
+    @Html.TextBoxFor(m => m.Genre, new { @class = "form-control", Name = Model.ModelName + ".Genre" })
+    @Html.ValidationMessageFor(m => m.Genre, "", new { @class = "text-danger" })
+</div>
+
+<div class="col-sm-6">
+    @Html.LabelFor(m => m.Notes)
+    @Html.TextAreaFor(m => m.Notes, new { @class = "form-control", Name = Model.ModelName + ".Notes" })
+    @Html.ValidationMessageFor(m => m.Notes, "", new { @class = "text-danger" })
+</div>
+
+<div class="col-sm-6">
+    @Html.LabelFor(m => m.Category)
+    @Html.TextAreaFor(m => m.Category, new { @class = "form-control", Name = Model.ModelName + ".Category" })
+    @Html.ValidationMessageFor(m => m.Category, "", new { @class = "text-danger" })
+</div>
+
+<div class="col-sm-6">
+    @Html.LabelFor(m => m.ImageUrl)
+    @Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control", Name = Model.ModelName + ".ImageUrl" })
+    @Html.ValidationMessageFor(m => m.ImageUrl, "", new { @class = "text-danger" })
+</div>

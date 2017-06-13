@@ -1,0 +1,9 @@
+﻿@using System.Collections.Generic
+@model System.Collections.Generic.List<ProjectCinderella.Model.Common.Album>
+
+<div class="container">
+	@foreach (var album in Model)
+	{
+		@Html.Partial("_Album", album)
+	}
+</div>

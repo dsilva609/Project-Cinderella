@@ -1,0 +1,24 @@
+﻿@model UI.Models.Sony
+
+	<script>
+		c3.generate({
+			bindto: '#@Model.ID',
+			data: {
+				columns: [
+					['PlayStation', @Model.NumPlayStation],
+					['PlayStation 2', @Model.NumPlayStation2],
+					['PlayStation 3', @Model.NumPlayStation3],
+					['PlayStation 4', @Model.NumPlayStation4],
+					['PSP', @Model.NumPSP],
+					['PS Vita', @Model.NumPSVita]
+				],
+				type: 'donut'
+			},
+			donut: {
+				title: "@Model.Title",
+				label: {
+					format: function (value) { return value; }
+				}
+			}
+		});
+	</script>

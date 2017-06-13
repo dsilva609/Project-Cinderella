@@ -220,7 +220,7 @@ $.validator.addMethod("cpfBR", function(value) {
 		value === "22222222222" ||
 		value === "33333333333" ||
 		value === "44444444444" ||
-		value === "56465564655" ||
+		value === "63997639975" ||
 		value === "66666666666" ||
 		value === "77777777777" ||
 		value === "88888888888" ||

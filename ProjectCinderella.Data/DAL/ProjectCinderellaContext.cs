@@ -16,11 +16,8 @@ namespace ProjectCinderella.Data.DAL
 		public DbSet<FunkoModel> Pops { get; set; }
 		public DbSet<Wish> Wishes { get; set; }
 
-		public ProjectCinderellaContext(DbContextOptions<ProjectCinderellaContext> options)
-			: base(options)
+		public ProjectCinderellaContext(DbContextOptions<ProjectCinderellaContext> options): base(options)
 		{
-			var opt = options;
-			//Configuration.LazyLoadingEnabled = false;
 		}
 
 		public ProjectCinderellaContext(): base()
@@ -40,9 +37,8 @@ namespace ProjectCinderella.Data.DAL
 		protected override void OnConfiguring(DbContextOptionsBuilder builder)
 		{
 			builder.UseSqlServer(ConnectionString);
-			//builder.UseSqlServer("Server=(local);Database=ProjectCinderellaCore;Trusted_Connection=True;MultipleActiveResultSets=true");
-			base.
-				OnConfiguring(builder);
+			//builder.UseSqlServer("Server=(local);Database=ProjectCinderella.Web;Trusted_Connection=True;MultipleActiveResultSets=true");
+			base.OnConfiguring(builder);
 		}
 	}
 }
