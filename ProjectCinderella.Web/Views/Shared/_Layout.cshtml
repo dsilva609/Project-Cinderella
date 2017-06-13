@@ -23,6 +23,8 @@
 
 	@*@Styles.Render("~/Content/css")*@
 	
+	<script src="lib/jquery/dist/jquery.min.js"></script>
+	@*<script src="js/flipclock.js"></script>*@
 	<link href="/css/Responsive.css" rel="stylesheet" type="text/css"/>
 	
 	<!-- Animate.css -->
@@ -310,10 +312,10 @@
 		@RenderSection("scripts", required: false)
 
 		@RenderBody()
-
+		
 		@*@Scripts.Render(Links.Scripts.bootbox_min_js)
 		@Scripts.Render("~/bundles/custom")
-
+			
 		<!-- jQuery Easing -->
 		<script src="@Links.Scripts.Hydrogen.jquery_easing_1_3_min_js"></script>
 		<!-- Waypoints -->
