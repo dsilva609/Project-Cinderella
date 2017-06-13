@@ -17,20 +17,20 @@ namespace ProjectCinderella.Web.Identity.Controllers
     [IdentityServiceRoute(IdentityServiceConstants.DefaultPolicy + "/oauth2/v" + IdentityServiceConstants.Version + "/[action]")]
     public class IdentityServiceController : Controller
     {
-        private readonly IOptions<IdentityServiceOptions> _options;
+        //private readonly IOptions<IdentityServiceOptions> _options;
         private readonly ITokenManager _tokenManager;
         private readonly SessionManager<ApplicationUser, IdentityServiceApplication> _sessionManager;
         private readonly IAuthorizationResponseFactory _authorizationResponseFactory;
         private readonly ITokenResponseFactory _tokenResponseFactory;
 
         public IdentityServiceController(
-            IOptions<IdentityServiceOptions> options,
+          //  IOptions<IdentityServiceOptions> options,
             ITokenManager tokenManager,
             SessionManager<ApplicationUser, IdentityServiceApplication> sessionManager,
             IAuthorizationResponseFactory authorizationResponseFactory,
             ITokenResponseFactory tokenResponseFactory)
         {
-            _options = options;
+            //_options = options;
             _tokenManager = tokenManager;
             _sessionManager = sessionManager;
             _authorizationResponseFactory = authorizationResponseFactory;

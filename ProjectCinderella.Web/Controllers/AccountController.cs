@@ -14,7 +14,7 @@ namespace ProjectCinderella.Web.Controllers
         //
         // GET: /Account/SignIn
         [HttpGet]
-        public IActionResult SignIn()
+        public IActionResult Login()
         {
             return Challenge(
                 new AuthenticationProperties { RedirectUri = "/" }, OpenIdConnectDefaults.AuthenticationScheme);

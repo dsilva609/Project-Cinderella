@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using System.Web;
 using Google.Apis.Services;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity.Service;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Microsoft.AspNetCore.Mvc.ViewFeatures.Internal;
@@ -25,6 +26,7 @@ using SimpleInjector;
 using SimpleInjector.Integration.AspNetCore.Mvc;
 using SimpleInjector.Lifestyles;
 using ProjectCinderella.BusinessLogic.Services.Statistics;
+using ProjectCinderellaCore.Identity.Data;
 
 namespace ProjectCinderellaCore
 {
@@ -46,7 +48,7 @@ namespace ProjectCinderellaCore
 	        ProjectCinderellaContext.ConnectionString = Configuration.GetConnectionString("DefaultConnection");
 
 			services.AddDbContext<ProjectCinderellaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-	        
+	        services.AddDbContext<IdentityServiceDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 			services.AddSingleton<IConfiguration>(Configuration);
 	        services.AddOptions();
 	        services.AddSingleton<IControllerActivator>(new SimpleInjectorControllerActivator(_container));
@@ -95,7 +97,13 @@ namespace ProjectCinderellaCore
 			// Add application services. For instance:
 		    _container.Register<IHttpContextAccessor, HttpContextAccessor>(Lifestyle.Scoped);
 			//		    _container.Register<IUnitOfWork, UnitOfWork<ProjectCinderellaContext>>(Lifestyle.Singleton);
-		    _container.RegisterSingleton<IUnitOfWork>(() => new UnitOfWork<ProjectCinderellaContext>());
+		    //private readonly IOptions<IdentityServiceOptions> _options;
+		    //private readonly ITokenManager _tokenManager;
+		    //private readonly SessionManager<ApplicationUser, IdentityServiceApplication> _sessionManager;
+		    //private readonly IAuthorizationResponseFactory _authorizationResponseFactory;
+		    //private readonly ITokenResponseFactory _tokenResponseFactory;
+			//_container.Register<IOptions<IdentityServiceOptions>, OptionsManager<identiser>>();
+		_container.RegisterSingleton<IUnitOfWork>(() => new UnitOfWork<ProjectCinderellaContext>());
 			_container.Register<IAlbumService>(() => new AlbumService(_container.GetInstance<IUnitOfWork>(), _container.GetInstance<IUserContext>()), Lifestyle.Scoped);
 		    _container.Register<IBookService>(() => new BookService(_container.GetInstance<IUnitOfWork>(), _container.GetInstance<IUserContext>()), Lifestyle.Scoped);
 		    _container.Register<IMovieService>(() => new MovieService(_container.GetInstance<IUnitOfWork>(), _container.GetInstance<IUserContext>()), Lifestyle.Scoped);

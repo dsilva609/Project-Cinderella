@@ -37,7 +37,7 @@ namespace ProjectCinderella.Data.DAL
 		protected override void OnConfiguring(DbContextOptionsBuilder builder)
 		{
 			builder.UseSqlServer(ConnectionString);
-			//builder.UseSqlServer("Server=(local);Database=ProjectCinderella.Web;Trusted_Connection=True;MultipleActiveResultSets=true");
+			//builder.UseSqlServer("Server=(local)\\SQLEXPRESS;Database=ProjectCinderella.Web;Trusted_Connection=True;MultipleActiveResultSets=true");
 			base.OnConfiguring(builder);
 		}
 	}

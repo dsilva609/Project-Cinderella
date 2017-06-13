@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore;
 using Microsoft.AspNetCore.Diagnostics.Identity.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity.Service.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Microsoft.AspNetCore.Mvc.ViewFeatures.Internal;
@@ -28,6 +29,8 @@ using ProjectCinderella.Model.Interfaces;
 using ProjectCinderella.Model.Common;
 using SimpleInjector.Integration.AspNetCore.Mvc;
 using ProjectCinderella.Data.DAL;
+using ProjectCinderella.Web.Identity.Models;
+using ProjectCinderella.Web.Identity.Data;
 
 namespace ProjectCinderella.Web
 {
@@ -49,6 +52,7 @@ namespace ProjectCinderella.Web
 	        ProjectCinderellaContext.ConnectionString = Configuration.GetConnectionString("DefaultConnection");
 
 	        services.AddDbContext<ProjectCinderellaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+			services.AddDbContext<IdentityServiceDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
 			services.AddSingleton<IConfiguration>(Configuration);
 	        services.AddOptions();
