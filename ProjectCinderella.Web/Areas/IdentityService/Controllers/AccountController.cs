@@ -9,17 +9,15 @@ using Microsoft.AspNetCore.Identity.Service.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
-using ProjectCinderellaCore.Areas.IdentityService.Models;
-using ProjectCinderellaCore.Areas.IdentityService.Models.AccountViewModels;
-using ProjectCinderellaCore.Identity.Models;
-using ProjectCinderellaCore.Identity.Models.AccountViewModels;
-using ProjectCinderellaCore.Identity.Services;
+using ProjectCinderella.Web.Identity.Models;
+using ProjectCinderella.Web.Identity.Models.AccountViewModels;
+using ProjectCinderella.Web.Identity.Services;
 
-namespace ProjectCinderellaCore.Identity.Controllers
+namespace ProjectCinderella.Web.Identity.Controllers
 {
-    //[Area("IdentityService")]
-    //[IdentityServiceRoute("[controller]/[action]")]
-    //[Authorize(IdentityServiceOptions.LoginPolicyName)]
+    [Area("IdentityService")]
+    [IdentityServiceRoute("[controller]/[action]")]
+    [Authorize(IdentityServiceOptions.LoginPolicyName)]
     [AllowAnonymous]
     public class AccountController : Controller
     {

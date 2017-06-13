@@ -7,6 +7,10 @@
     <UserSecretsId>aspnet-ProjectCinderellaCore-5873CA0D-0469-4286-BE51-9FA01EB177AF</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Controllers\AccountController.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="bootstrap" Version="4.0.0-alpha6" />
