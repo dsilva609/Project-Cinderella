@@ -4,11 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Google.Apis.Services;
 using Microsoft.AspNetCore.Authentication.Extensions;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore;
 using Microsoft.AspNetCore.Diagnostics.Identity.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.Service.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
@@ -19,6 +22,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using Microsoft.IdentityModel.Tokens;
 using SimpleInjector;
 using SimpleInjector.Lifestyles;
 using ProjectCinderella.Data.Repositories;
@@ -53,16 +58,45 @@ namespace ProjectCinderella.Web
 
 	        services.AddDbContext<ProjectCinderellaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 			services.AddDbContext<IdentityServiceDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+			//services.AddIdentity<ApplicationUser, IdentityRole>(config => {
+			//	// Config here
+			//	config.User.RequireUniqueEmail = true;
+			//	config.Password = new PasswordOptions
+			//	{
+			//		RequireDigit = true,
+			//		RequireNonAlphanumeric = false,
+			//		RequireUppercase = false,
+			//		RequireLowercase = true,
+			//		RequiredLength = 8,
+			//	};
+		//	}).AddEntityFrameworkStores<IdentityServiceDbContext>().AddDefaultTokenProviders();
+	       
+			//services.AddAuthorization(options =>
+	  //      {
+		 //       options.AddPolicy("AddEditUser", policy => {
+			//        policy.RequireClaim("Add User", "Add User");
+			//        policy.RequireClaim("Edit User", "Edit User");
+		 //       });
+		 //       options.AddPolicy("DeleteUser", policy => policy.RequireClaim("Delete User", "Delete User"));
+	  //      });
+			//services.AddScoped<ApplicationUser>();
 			services.AddSingleton<IConfiguration>(Configuration);
-	        services.AddOptions();
-
-			services.AddSingleton<IControllerActivator>(new SimpleInjectorControllerActivator(_container));
-	        services.AddSingleton<IViewComponentActivator>(new SimpleInjectorViewComponentActivator(_container));
-	        services.UseSimpleInjectorAspNetRequestScoping(_container);
+	        var settings =Configuration.GetSection("ServiceSettings").Get<ServiceSettings>();
+			services.AddSingleton<ServiceSettings>(settings);
+			services.AddOptions();
+	        services.AddAuthentication(options =>
+	        {
+		        options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
+		        options.DefaultAuthenticateScheme = OpenIdConnectDefaults.AuthenticationScheme;
+		        options.DefaultSignInScheme = OpenIdConnectDefaults.AuthenticationScheme;
+	        });
+		
 
 	        services.AddMvc();
 	        services.AddSession();
+			//services.AddSingleton<IControllerActivator>(new SimpleInjectorControllerActivator(_container));
+	        services.AddSingleton<IViewComponentActivator>(new SimpleInjectorViewComponentActivator(_container));
+	        services.UseSimpleInjectorAspNetRequestScoping(_container);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -79,10 +113,11 @@ namespace ProjectCinderella.Web
                 app.UseExceptionHandler("/Home/Error");
             }
 			InitializeContainer(app);
+			//_container.Verify();
             app.UseStaticFiles();
 
             app.UseRewriter(new RewriteOptions().AddIISUrlRewrite(env.ContentRootFileProvider, "urlRewrite.config"));
-
+	       
 			app.UseAuthentication();
 	        app.UseSession();
 

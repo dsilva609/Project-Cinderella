@@ -14,7 +14,7 @@ namespace ProjectCinderella.Web.Controllers
 	public class HomeController : ProjectCinderellaControllerBase
 	{
 		//private readonly IUserContext _user;
-		private readonly ApplicationUser _user;
+		//private readonly ApplicationUser _user;
 		private readonly IAlbumService _albumService;
 		private readonly IBookService _bookService;
 		private readonly IMovieService _movieService;
@@ -27,16 +27,17 @@ namespace ProjectCinderella.Web.Controllers
 		private const int NUM_GAMES_TO_GET = 10;
 		private const int NUM_POPS_TO_GET = 10;
 
-		public HomeController(ApplicationUser user, IAlbumService albumService, IBookService bookService, IMovieService movieService,
+		public HomeController( IAlbumService albumService, IBookService bookService, IMovieService movieService,
 			IGameService gameService, IPopService popService, ServiceSettings settings)
 		{
-			_user = user;
+		//	_user = user;
 			_albumService = albumService;
-			_bookService = bookService;
-			_movieService = movieService;
+		_bookService = bookService;
+		_movieService = movieService;
 			_gameService = gameService;
 			_popService = popService;
 			_settings = settings;
+			
 		}
 
 		[HttpGet]
