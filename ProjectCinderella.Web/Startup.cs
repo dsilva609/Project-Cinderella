@@ -81,7 +81,14 @@ namespace ProjectCinderella.Web
 	  //      });
 			//services.AddScoped<ApplicationUser>();
 			services.AddSingleton<IConfiguration>(Configuration);
-	        var settings =Configuration.GetSection("ServiceSettings").Get<ServiceSettings>();
+	        services.AddSingleton<IUnitOfWork>( new UnitOfWork<ProjectCinderellaContext>());
+			services.AddScoped<IUserContext, UserContext>();
+			var settings =Configuration.GetSection("ServiceSettings").Get<ServiceSettings>();
+	        services.AddScoped<IAlbumService, AlbumService>();
+	        services.AddScoped<IBookService, BookService>();
+	        services.AddScoped<IMovieService, MovieService>();
+	        services.AddScoped<IGameService, GameService>();
+	        services.AddScoped<IPopService, PopService>();
 			services.AddSingleton<ServiceSettings>(settings);
 			services.AddOptions();
 	        services.AddAuthentication(options =>
