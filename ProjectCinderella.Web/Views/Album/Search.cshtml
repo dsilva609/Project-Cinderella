@@ -9,19 +9,19 @@
             Album Information
         </h4>
     </div>
-    @using (Html.BeginForm(MVC.Album.Search(), FormMethod.Get))
+    @using (Html.BeginForm("Search", "Album", FormMethod.Get))
     {
         <div class="panel-body">
             <div class="col-sm-6">
-	            @Html.LabelFor<>(m => m.Artist)
-	            @Html.TextBoxFor<>(m => m.Artist, new { @class = "form-control" })
-	            @Html.ValidationMessageFor<>(m => m.Artist, "", new { @class = "text-danger" })
+	            @Html.LabelFor(m => m.Artist)
+	            @Html.TextBoxFor(m => m.Artist, new { @class = "form-control" })
+	            @Html.ValidationMessageFor(m => m.Artist, "", new { @class = "text-danger" })
             </div>
 
             <div class="col-sm-6">
-	            @Html.LabelFor<>(m => m.AlbumName)
-	            @Html.TextBoxFor<>(m => m.AlbumName, new { @class = "form-control" })
-	            @Html.ValidationMessageFor<>(m => m.AlbumName, "", new { @class = "text-danger" })
+	            @Html.LabelFor(m => m.AlbumName)
+	            @Html.TextBoxFor(m => m.AlbumName, new { @class = "form-control" })
+	            @Html.ValidationMessageFor(m => m.AlbumName, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -44,7 +44,7 @@
         <div class="panel-body">
             @foreach (var result in Model.Results)
             {
-                using (Html.BeginForm(MVC.Album.CreateFromSearchResult(result.ID), FormMethod.Get))
+                using (Html.BeginForm("CreateFromSearchResult", "Album", result.ID, FormMethod.Get, false, null))
                 {
                     <div id="album" class="row info" style="padding-bottom: 1em;" data-id="@result.ID">
                         <div class="col-sm-2 ">
@@ -52,23 +52,23 @@
                         </div>
 
                         <div class="col-sm-3 ">
-                            <div class="row">@Html.DisplayFor<>(x => result.Title)</div>
+                            <div class="row">@Html.DisplayFor(x => result.Title)</div>
                             <div class="row">
-	                            @Html.DisplayFor<>(x => result.Year)
+	                            @Html.DisplayFor(x => result.Year)
                             </div>
                             <div class="row">
-	                            @Html.DisplayFor<>(x => result.Country)
+	                            @Html.DisplayFor(x => result.Country)
                             </div>
                         </div>
 
                         <div class="col-sm-2 ">
                             <div class="row">
-	                            @Html.DisplayFor<>(x => result.FormatString)
+	                            @Html.DisplayFor(x => result.FormatString)
                             </div>
                         </div>
 
                         <div class="col-sm-3 hidden-xs">
-	                        @Html.DisplayFor<>(x => result.LabelString)
+	                        @Html.DisplayFor(x => result.LabelString)
                         </div>
 
                         @Html.Hidden("releaseID", result.ID)
@@ -82,6 +82,6 @@
         </div>
     </div>
 }
-@Html.ActionLink("Back to List", MVC.Album.Index())
+@Html.ActionLink("Back to List", "Index", "Album")
 
-@Html.Partial(MVC.Shared.Views._DiscogsDisclaimer)
+@Html.Partial("_DiscogsDisclaimer")

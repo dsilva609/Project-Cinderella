@@ -89,7 +89,22 @@ namespace ProjectCinderella.Web
 	        services.AddScoped<IMovieService, MovieService>();
 	        services.AddScoped<IGameService, GameService>();
 	        services.AddScoped<IPopService, PopService>();
+	        services.AddScoped<IWishService, WishService>();
+	        services.AddScoped<IDiscogsService, DiscogsService>();
+	        services.AddScoped<IClientService, Google.Apis.Books.v1.BooksService>();
+	        services.AddScoped<IGoogleBookService, GoogleBookService>();
+	        services.AddScoped<ITMDBService, TMDBService>();
+	        services.AddScoped<IBGGService, BGGService>();
+	        services.AddScoped<IComicVineService, ComicVineService>();
+	        services.AddScoped<IGiantBombService, GiantBombService>();
+			services.AddScoped<IStatisticService, StatisticService>();
+	        services.AddScoped<IAlbumStatisticService, AlbumStatisticService>();
+	        services.AddScoped<IBookStatisticService, BookStatisticService>();
+	        services.AddScoped<IMovieStatisticService, MovieStatisticService>();
+	        services.AddScoped<IGameStatisticService, GameStatisticService>();
+	        services.AddScoped<IPopStatisticService, PopStatisticService>();
 			services.AddSingleton<ServiceSettings>(settings);
+
 			services.AddOptions();
 	        services.AddAuthentication(options =>
 	        {

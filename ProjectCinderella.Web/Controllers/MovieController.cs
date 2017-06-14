@@ -172,7 +172,7 @@ namespace ProjectCinderellaCore.Controllers
 			if (!string.IsNullOrWhiteSpace(HttpContext.Session.GetString("wish"))) searchModel.Title = HttpContext.Session.GetString("wish");
 
 			//TODO:check for correct value
-			if (Request.Path.Value == "/Movie/Search" && string.IsNullOrWhiteSpace(searchModel.Title))
+			if (Request.Headers["Referer"].ToString().Contains("/Movie/Search") && string.IsNullOrWhiteSpace(searchModel.Title))
 			{
 				ShowStatusMessage(MessageTypeEnum.error, "Please enter search terms.", "Search Error");
 				return View(searchModel);

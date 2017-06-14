@@ -224,7 +224,7 @@ namespace ProjectCinderellaCore.Controllers
 			if (!string.IsNullOrWhiteSpace(HttpContext.Session.GetString("wish"))) searchModel.AlbumName = HttpContext.Session.GetString("wish");
 
 			//TODO: check for correct value
-			if (Request.Path.Value == "/Album/Search" && string.IsNullOrWhiteSpace(searchModel.Artist) &&
+			if (Request.Headers["Referer"].ToString().Contains("/Album/Search") && string.IsNullOrWhiteSpace(searchModel.Artist) &&
 				string.IsNullOrWhiteSpace(searchModel.AlbumName))
 			{
 				ShowStatusMessage(MessageTypeEnum.error, "Please enter search terms.", "Search Error");
