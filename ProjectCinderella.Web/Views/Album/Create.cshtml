@@ -1,12 +1,12 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Rendering
 @model ProjectCinderella.Model.Common.Album
 
-<h2>@ViewBag.Title @Html.ActionLink("Search Discogs", MVC.Album.Search(), new { @class = "btn btn-default" })</h2>
+<h2>@ViewBag.Title @Html.ActionLink("Search Discogs", "Search", "Album", new { @class = "btn btn-default" })</h2>
 
 
 
-@using (Html.BeginForm(MVC.Album.Create(), FormMethod.Post))
+@using (Html.BeginForm("Create", "Album", FormMethod.Post))
 {
-	Html.RenderPartial(MVC.Album.Views._AlbumFormPartial, Model);
+	Html.RenderPartial("~/Views/Album/_AlbumFormPartial.cshtml", Model);
 }
-@Html.ActionLink("Back to List", MVC.Album.Index())
+@Html.ActionLink("Back to List", "Index", "Album"))

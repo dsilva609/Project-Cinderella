@@ -60,8 +60,15 @@ namespace ProjectCinderellaCore.Controllers
 			var albumResultStr = HttpContext.Session.GetString("albumResult");
 			var model = string.IsNullOrWhiteSpace(albumResultStr) ? new Album { UserID = _user.GetUserID(), UserNum = _user.GetUserNum() }: JsonConvert.DeserializeObject<Album>(albumResultStr);
 			ViewBag.Title = "Create";
-			HttpContext.Session.Set("albumResult", null);
-
+			//TODO: move to base controller
+			try
+			{
+				HttpContext.Session.Set("albumResult", null);
+			}
+			catch (Exception ex)
+			{
+				
+			}
 			return View(model);
 		}
 
