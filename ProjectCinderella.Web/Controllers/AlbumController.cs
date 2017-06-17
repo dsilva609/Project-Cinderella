@@ -12,6 +12,7 @@ using ProjectCinderella.Model.Enums;
 using System.Linq;
 using Newtonsoft.Json;
 using ProjectCinderella.Web.Controllers;
+using ProjectCinderella.Web.Common;
 
 namespace ProjectCinderellaCore.Controllers
 {
@@ -61,14 +62,8 @@ namespace ProjectCinderellaCore.Controllers
 			var model = string.IsNullOrWhiteSpace(albumResultStr) ? new Album { UserID = _user.GetUserID(), UserNum = _user.GetUserNum() }: JsonConvert.DeserializeObject<Album>(albumResultStr);
 			ViewBag.Title = "Create";
 			//TODO: move to base controller
-			try
-			{
-				HttpContext.Session.Set("albumResult", null);
-			}
-			catch (Exception ex)
-			{
-				
-			}
+			HttpContext.Session.StoreObject("albumResult", null);
+			
 			return View(model);
 		}
 
