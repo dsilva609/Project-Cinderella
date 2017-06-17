@@ -1,6 +1,6 @@
-﻿@using BusinessLogic.Enums
-@using ProjectCinderellaCore.Common
-@using UI.Enums
+﻿@using Microsoft.AspNet.Identity
+@using Microsoft.AspNetCore.Mvc
+@using ProjectCinderella.Model.Enums
 @model ProjectCinderella.Model.Common.Album
 <div id="fh5co-board" data-columns>
     <div class="item">
@@ -8,35 +8,35 @@
             <div class="flipper album">
                 <div class="front">
                     <div class="animate-box text-center img-fluid">
-                        <a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@Model.Artist - @Model.Title (@Model.YearReleased)">
-                            <img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" alt="@Model.Title">
+                        <a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? "~/images/Turntable.jpg" : Model.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@Model.Artist - @Model.Title (@Model.YearReleased)">
+                            <img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? "~/images/Turntable.jpg" : Model.ImageUrl)" alt="@Model.Title">
                         </a>
                     </div>
                 </div>
                 <div class="back">
-                    <img src="@Links.Content.Images.Turntable_jpg" alt="Turntable" />
-                    <div class="info fh5co-desc @Model.CompletionStatus.ToString()" data-id="@Model.ID">
-                        <a href="@Url.Action(User.Identity.IsAuthenticated && Model.UserNum == User.Identity.GetUserNum() ? MVC.Album.Edit(Model.ID) : MVC.Album.Details(Model.ID))">
-                            <div class="row">
-                                @Html.DisplayFor(modelItem => Model.Artist)
-                            </div>
-                            <div class="row">
-                                @Html.DisplayFor(modelItem => Model.Title)
-                            </div>
-                            <div class="row">
-                                @Html.DisplayFor(modelItem => Model.MediaType)
-                                @if (Model.MediaType == AlbumMediaTypeEnum.Vinyl)
-                                {
-                                    <span>@Model.Speed.GetDisplayName()</span>
-                                    <span>@Model.Size.GetDisplayName()</span>
-                                }
-                                <span class="@CompletionStatusHelper.GetStatusClass(Model.CompletionStatus)"></span>
-                            </div>
-                            <div class="row">
-                                @Html.DisplayFor(x => x.Notes)
-                            </div>
-                        </a>
-                    </div>
+                    <img src="~/images/Turntable.jpg" alt="Turntable" />
+	                <div class="info fh5co-desc @Model.CompletionStatus.ToString()" data-id="@Model.ID">
+		                <a href="@Url.Action(User.Identity.IsAuthenticated && Model.UserID == User.Identity.GetUserId() ? "Edit" : "Details", "Album")/@Model.ID">
+			                <div class="row">
+				                @Html.DisplayFor(modelItem => Model.Artist)
+			                </div>
+			                <div class="row">
+				                @Html.DisplayFor(modelItem => Model.Title)
+			                </div>
+			                <div class="row">
+				                @Html.DisplayFor(modelItem => Model.MediaType)
+				                @if (Model.MediaType == ProjectCinderella.Model.Enums.AlbumMediaTypeEnum.Vinyl)
+				                {
+					                <span>@Model.Speed.GetDisplayName()</span>
+					                <span>@Model.Size.GetDisplayName()</span>
+				                }
+				              @*  <span class="@CompletionStatusHelper.GetStatusClass(Model.CompletionStatus)"></span>*@
+			                </div>
+			                <div class="row">
+				                @Html.DisplayFor(x => x.Notes)
+			                </div>
+		                </a>
+	                </div>
                 </div>
             </div>
         </div>

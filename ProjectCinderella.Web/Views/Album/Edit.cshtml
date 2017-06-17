@@ -2,10 +2,10 @@
 @model ProjectCinderella.Model.Common.Album
 
 <h2>@ViewBag.Title</h2>
-@Html.ActionLink("Update", MVC.Album.Update(Model.ID), new { @class = "btn btn-default" })
+@Html.ActionLink("Update","Update", "Album", Model.ID, new { @class = "btn btn-default" })
 
-@using (Html.BeginForm(MVC.Album.Edit(Model.ID), FormMethod.Post))
+@using (Html.BeginForm("Edit", "Album", Model.ID, FormMethod.Post))
 {
-	Html.RenderPartial(MVC.Album.Views._AlbumFormPartial, Model);
+	Html.RenderPartial("~/Views/Album/_AlbumFormPartial.cshtml", Model);
 }
-@Html.ActionLink("Back to List", MVC.Album.Index())
+@Html.ActionLink("Back to List", "Index", "Album")

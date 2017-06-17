@@ -37,7 +37,9 @@ namespace ProjectCinderella.Data.Repositories
 		public void Edit(T entity)
 		{
 			//TODO: check that this works, used to be AddOrUpdate
-			this._context.Set<T>().Update(entity);
+			//this._context.Set<T>().Update(entity)State = EntityState.Modified;
+			//_context.Entry(entity).State = EntityState.Modified;
+			_context.Set<T>().Update(entity);
 			this._context.SaveChanges();
 		}
 

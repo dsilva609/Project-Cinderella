@@ -1,9 +1,10 @@
-﻿@using BusinessLogic.Enums
+﻿@using System
+@using Microsoft.AspNetCore.Http
 @using ProjectCinderellaCore.Common
 @model ProjectCinderella.Model.Common.Album
 
 <script>
-	var deleteUrl = '@Url.Action(MVC.Album.Delete())';
+	var deleteUrl = '@Url.Action("Delete", "Album")';
 </script>
 
 @Html.AntiForgeryToken()
@@ -18,16 +19,16 @@
 <div class="row panel-body">
 	@if (Model.DateAdded != Convert.ToDateTime("1/1/1900") && Model.DateAdded != DateTime.MinValue)
 	{
-		<div>Date Added: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateAdded)</div>
+		<div>Date Added: @Html.Partial("_Timespan", Model.DateAdded)</div>
 	}
 	@if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
 	{
-		<div>Last Updated: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateUpdated)</div>
+		<div>Last Updated: @Html.Partial("_Timespan", Model.DateUpdated)</div>
 	}
 
 	<div class="col-md-6">
 		@Html.LabelFor(m => m.CompletionStatus)
-		@Html.EnumDropDownListFor(m => m.CompletionStatus, new { @class = "form-control" })
+		@*@Html.EnumDropDownListFor(m => m.CompletionStatus, new { @class = "form-control" })*@
 		@Html.ValidationMessageFor(m => m.CompletionStatus, "", new { @class = "text-danger" })
 	</div>
 
@@ -61,26 +62,26 @@
 			if (!Model.IsShowcased)
 			{
 				<div class="col-md-6">
-					@Html.ActionLink("Add to Showcase", MVC.Album.AddToShowcase(Model.ID), new { @class = "btn btn-default" })
+					@Html.ActionLink("Add to Showcase", "AddToShowcase", "Album", null, null, null, Model.ID, new { @class = "btn btn-default" })
 				</div>
 			}
 			else
 			{
 				<div class="col-md-6">
-					@Html.ActionLink("Remove from Showcase", MVC.Album.RemoveFromShowcase(Model.ID), new { @class = "btn btn-danger" })
+					@Html.ActionLink("Remove from Showcase","RemoveFromShowcase", "Album", null, null, null,Model.ID, new { @class = "btn btn-danger" })
 				</div>
 			}
 
 			if (Model.IsQueued)
 			{
 				<div class="col-md-6">
-					@Html.ActionLink("Remove from queue", MVC.Album.RemoveFromQueue(Model.ID), new { @class = "btn btn-danger" })
+					@Html.ActionLink("Remove from queue", "RemoveFromQueue", "Album",null, null, null, Model.ID, new { @class = "btn btn-danger" })
 				</div>
 			}
 			else
 			{
 				<div class="col-md-6">
-					@Html.ActionLink("Add to queue", MVC.Album.AddToQueue(Model.ID), new { @class = "btn btn-default" })
+					@Html.ActionLink("Add to queue","AddToQueue", "Album", null, null, null, Model.ID, new { @class = "btn btn-default" })
 				</div>
 			}
 		}
@@ -102,8 +103,8 @@
 		@if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
 		{
 			<div class="animate-box item col-md-6">
-				<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Artist - @Model.Title (@Model.YearReleased)">
-					<img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="img-rounded" style="height: 100%; width: 100%;">
+				<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ?" /images/Turntable.jpg" : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Artist - @Model.Title (@Model.YearReleased)">
+					<img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? "/images/Turntable.jpg" : Model.ImageUrl)" class="img-rounded" style="height: 100%; width: 100%;">
 				</a>
 			</div>
 		}
@@ -223,7 +224,7 @@
 	<div class="panel-body">
 		<div class="col-md-6">
 			@Html.LabelFor(m => m.MediaType)
-			@Html.EnumDropDownListFor(m => m.MediaType, new { @class = "form-control", @id = "ddlAlbumType" })
+		@*	@Html.EnumDropDownListFor(m => m.MediaType, new { @class = "form-control", @id = "ddlAlbumType" })*@
 			@Html.ValidationMessageFor(m => m.MediaType, "", new { @class = "text-danger" })
 		</div>
 
@@ -232,16 +233,16 @@
 			@Html.CheckBoxFor(m => m.IsPhysical, new { @class = "form-control" })
 			@Html.ValidationMessageFor(m => m.IsPhysical, "", new { @class = "text-danger" })
 		</div>
-		<div id="vinylInfo" class="@(Model.MediaType == AlbumMediaTypeEnum.Vinyl ? "" : "hidden")">
+		<div id="vinylInfo" class="@(Model.MediaType == ProjectCinderella.Model.Enums.AlbumMediaTypeEnum.Vinyl ? "" : "hidden")">
 			<div class="col-md-6">
 				@Html.LabelFor(m => m.Speed)
-				@Html.EnumDropDownListFor(m => m.Speed, new { @class = "form-control" })
+				@*@Html.EnumDropDownListFor(m => m.Speed, new { @class = "form-control" })*@
 				@Html.ValidationMessageFor(m => m.Speed, "", new { @class = "text-danger" })
 			</div>
 
 			<div class="col-md-6">
 				@Html.LabelFor(m => m.Size)
-				@Html.EnumDropDownListFor(m => m.Size, new { @class = "form-control" })
+				@*@Html.EnumDropDownListFor(m => m.Size, new { @class = "form-control" })*@
 				@Html.ValidationMessageFor(m => m.Size, "", new { @class = "text-danger" })
 			</div>
 		</div>
@@ -267,7 +268,7 @@
 	<div class="panel-body">
 		<div class="col-md-6">
 			@Html.LabelFor(m => m.DatePurchased)
-			@if (Request.Browser.Browser == "IE" || !Request.Browser.IsMobileDevice)
+			@if (Context.Request.Headers["User-Agent"].Contains("Mobi"))
 			{
 				@Html.EditorFor(m => m.DatePurchased, new { htmlattributes = new { type = "text", Value = Model.DatePurchased.ToShortDateString(), @class = "form-control datepicker" } })
 			}
@@ -305,7 +306,7 @@
 	@if (Model.ID > 0)
 	{
 		<div class="col-md-4 offset-md-4 col-xs-6">
-			@Html.ActionLink("Delete", MVC.Album.Delete(Model.ID), new { @class = "deleteBtn btn btn-danger btn-block btn-lg", data_id = Model.ID, data_deleteUrl = Url.Action(MVC.Album.Delete()) })
+			@Html.ActionLink("Delete", "Delete", "Album",null, null, null,Model.ID, new { @class = "deleteBtn btn btn-danger btn-block btn-lg", data_id = Model.ID, data_deleteUrl = Url.Action("Delete", "Album") })
 		</div>
 	}
 </div>
