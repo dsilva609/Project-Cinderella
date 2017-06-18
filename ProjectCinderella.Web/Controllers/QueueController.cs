@@ -5,9 +5,8 @@ using ProjectCinderella.Model.Enums;
 using ProjectCinderella.Model.Interfaces;
 using ProjectCinderella.Model.UI;
 using System.Linq;
-using ProjectCinderella.Web.Controllers;
 
-namespace ProjectCinderellaCore.Controllers
+namespace ProjectCinderella.Web.Controllers
 {
     public class QueueController : ProjectCinderellaControllerBase
     {

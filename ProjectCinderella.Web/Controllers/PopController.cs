@@ -4,15 +4,14 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PagedList;
-using ProjectCinderella.Model.Enums;
-using ProjectCinderella.Model.Common;
 using ProjectCinderella.Model.Interfaces;
 using ProjectCinderella.BusinessLogic.Services.Interfaces;
+using ProjectCinderella.Model.Common;
 using ProjectCinderella.Model.UI;
 using System.Linq;
-using ProjectCinderella.Web.Controllers;
+using ProjectCinderella.Model.Enums;
 
-namespace ProjectCinderellaCore.Controllers
+namespace ProjectCinderella.Web.Controllers
 {
 	public class PopController : ProjectCinderellaControllerBase
 	{

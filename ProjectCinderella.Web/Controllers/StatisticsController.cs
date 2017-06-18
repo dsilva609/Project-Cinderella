@@ -3,9 +3,8 @@ using ProjectCinderella.BusinessLogic.Services.Interfaces;
 using ProjectCinderella.Model.Interfaces;
 using ProjectCinderella.Model.UI;
 using System.Linq;
-using ProjectCinderella.Web.Controllers;
 
-namespace ProjectCinderellaCore.Controllers
+namespace ProjectCinderella.Web.Controllers
 {
 	public class StatisticsController : ProjectCinderellaControllerBase
 	{

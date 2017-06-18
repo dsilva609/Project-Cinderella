@@ -4,15 +4,13 @@ using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using ProjectCinderella.Model.Interfaces;
 using ProjectCinderella.BusinessLogic.Services.Interfaces;
-using ProjectCinderella.Model.Common;
 using ProjectCinderella.Model.UI;
+using ProjectCinderella.Model.Common;
 using ProjectCinderella.Model.Enums;
-using ProjectCinderella.Web.Controllers;
 
-namespace ProjectCinderella.UI.Controllers
+namespace ProjectCinderella.Web.Controllers
 {
     public class WishController : ProjectCinderellaControllerBase
     {

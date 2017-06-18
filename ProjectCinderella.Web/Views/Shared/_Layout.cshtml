@@ -25,25 +25,40 @@
 
 	@*@Styles.Render("~/Content/css")*@
 	
-	<script src="lib/jquery/dist/jquery.min.js"></script>
-	@*<script src="js/flipclock.js"></script>*@
-	<link href="/css/Responsive.css" rel="stylesheet" type="text/css"/>
+
+	<link href="~/css/site.min.css" rel="stylesheet" type="text/css"/>
+	<link href="~/css/Responsive.css" rel="stylesheet" type="text/css" />
+	<link href="~/css/flipclock.css" rel="stylesheet" type="text/css" />
+	@*<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css"/>*@
 	
+	<link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+	<link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" type="text/css"/>
 	<!-- Animate.css -->
-	<link href="/css/themes/Hydrogen/animate.min.css" rel="stylesheet" type="text/css" />
+	<link href="~/css/themes/Hydrogen/animate.min.css" rel="stylesheet" type="text/css" />
 	<!-- Icomoon Icon Fonts-->
-	<link href="/css/themes/Hydrogen/icomoon.min.css" rel="stylesheet" type="text/css" />
+	<link href="~/css/themes/Hydrogen/icomoon.min.css" rel="stylesheet" type="text/css" />
 	<!-- Magnific Popup -->
-	<link href="/css/themes/Hydrogen/magnific-popup.min.css" rel="stylesheet" type="text/css" />
+	<link href="~/css/themes/Hydrogen/magnific-popup.min.css" rel="stylesheet" type="text/css" />
 	<!-- Salvattore -->
-	<link href="/css/themes/Hydrogen/salvattore.min.css" rel="stylesheet" type="text/css" />
+	<link href="~/css/themes/Hydrogen/salvattore.min.css" rel="stylesheet" type="text/css" />
 	<!-- Theme Style -->
-	<link href="/css/themes/Hydrogen/style.min.css" rel="stylesheet" type="text/css" />
-	<link href="/css/Sass/Main.min.css" rel="stylesheet" type="text/css" />
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" , type="text/css" />
+	<link href="~/css/themes/Hydrogen/style.min.css" rel="stylesheet" type="text/css" />
+	<link href="~/css/Sass/Main.min.css" rel="stylesheet" type="text/css" />
 	
-	<link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	@*@Scripts.Render("~/bundles/jquery")
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" , type="text/css" />
+		
+	<script src="~/lib/tether/dist/js/tether.js"></script>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+	
+	<script src="~/js/toastr.js"></script>
+	<script src="~/js/jquery.bcSwipe.js"></script>
+	
+	<script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+	<script src="~/js/Namespace.js"></script>
+	<script src="~/js/Shared/_Layout.js"></script>
+	<script src="~/js/flipclock.js"></script>
+		@*@Scripts.Render("~/bundles/jquery")
 	@Scripts.Render("~/bundles/bootstrap")*@
 </head>
 @if (TempData.ContainsKey("Toastr"))
@@ -317,16 +332,16 @@
 		@*@Scripts.Render(Links.Scripts.bootbox_min_js)
 		@Scripts.Render("~/bundles/custom")
 			
-		<!-- jQuery Easing -->
-		<script src="@Links.Scripts.Hydrogen.jquery_easing_1_3_min_js"></script>
+		<!-- jQuery Easing -->*@
+		<script src="~/js/Hydrogen/jquery.easing.1.3.min.js"></script>
 		<!-- Waypoints -->
-		<script src="@Links.Scripts.Hydrogen.jquery_waypoints_min_js"></script>
+		<script src="~/js/Hydrogen/jquery.waypoints.min.js"></script>
 		<!-- Magnific Popup -->
-		<script src="@Links.Scripts.Hydrogen.jquery_magnific_popup_min_js"></script>
+		<script src="~/js/Hydrogen/jquery.magnific-popup.min.js"></script>
 		<!-- Salvattore -->
-		<script src="@Links.Scripts.Hydrogen.salvattore_min_js"></script>
+		<script src="~/js/Hydrogen/salvattore.min.js"></script>
 		<!-- Main JS -->
-		<script src="@Links.Scripts.Hydrogen.main_min_js"></script>*@
+		<script src="~/js/Hydrogen/main.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.min.js"></script>
 	</div>
 	<div class="footer">

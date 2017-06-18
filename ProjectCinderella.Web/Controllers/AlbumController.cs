@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using PagedList;
+using ProjectCinderella.Web.Common;
 using ProjectCinderella.Model.Interfaces;
 using ProjectCinderella.BusinessLogic.Services.Interfaces;
-using ProjectCinderella.Model.Common;
 using ProjectCinderella.Model.UI;
+using ProjectCinderella.Model.Common;
 using ProjectCinderella.Model.Enums;
 using System.Linq;
-using Newtonsoft.Json;
-using ProjectCinderella.Web.Controllers;
-using ProjectCinderella.Web.Common;
 
-namespace ProjectCinderellaCore.Controllers
+namespace ProjectCinderella.Web.Controllers
 {
 	public class AlbumController : ProjectCinderellaControllerBase
 	{

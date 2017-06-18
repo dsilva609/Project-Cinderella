@@ -1,14 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjectCinderella.BusinessLogic.Services.Interfaces;
+using ProjectCinderella.Model.Enums;
 using ProjectCinderella.Model.Interfaces;
 using ProjectCinderella.Model.UI;
 using System.Linq;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity.Service;
-using ProjectCinderella.Model.Enums;
 
-namespace ProjectCinderellaCore.Controllers
+namespace ProjectCinderella.Web.Controllers
 {
 	public class ShowcaseController : Controller
 	{

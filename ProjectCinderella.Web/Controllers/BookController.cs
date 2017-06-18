@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using PagedList;
-using ProjectCinderella.Model.Interfaces;
-using ProjectCinderella.BusinessLogic.Services.Interfaces;
-using ProjectCinderella.Model.Common;
-using ProjectCinderella.Model.UI;
-using ProjectCinderella.Model.Enums;
-using System.Linq;
 using Newtonsoft.Json;
-using ProjectCinderella.Web.Controllers;
+using PagedList;
+using ProjectCinderella.BusinessLogic.Services.Interfaces;
+using ProjectCinderella.Model.Interfaces;
+using ProjectCinderella.Model.UI;
+using ProjectCinderella.Model.Common;
+using System.Linq;
+using ProjectCinderella.Model.Enums;
 
-namespace ProjectCinderellaCore.Controllers
+namespace ProjectCinderella.Web.Controllers
 {
 	public class BookController : ProjectCinderellaControllerBase
 	{
