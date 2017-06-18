@@ -1,5 +1,7 @@
 ﻿@using System
 @using Microsoft.AspNet.Identity
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using Newtonsoft.Json
 @using FormMethod = Microsoft.AspNetCore.Mvc.Rendering.FormMethod
 <!DOCTYPE html>
 <html prefix="og: http://ogp.me/ns#">
@@ -44,12 +46,11 @@
 	@*@Scripts.Render("~/bundles/jquery")
 	@Scripts.Render("~/bundles/bootstrap")*@
 </head>
-@*@if (TempData.ContainsKey("Toastr"))
+@if (TempData.ContainsKey("Toastr"))
 {
-	var toastr = (Toastr) TempData["Toastr"];
-	@ToastrBuilder.ShowToastMessages(toastr)
-	;
-}*@
+	var toastr = JsonConvert.DeserializeObject<ProjectCinderella.Model.UI.Toastr>(TempData["Toastr"].ToString());
+	@*@ToastrBuilder.ShowToastMessages(toastr);*@
+}
 <body>
 	<div class="row">
 		<div id="fh5co-header" role="banner">

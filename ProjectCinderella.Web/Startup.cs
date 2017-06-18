@@ -81,7 +81,7 @@ namespace ProjectCinderella.Web
 	  //      });
 			//services.AddScoped<ApplicationUser>();
 			services.AddSingleton<IConfiguration>(Configuration);
-	        services.AddSingleton<IUnitOfWork>( new UnitOfWork<ProjectCinderellaContext>());
+			services.AddScoped<IUnitOfWork, UnitOfWork<ProjectCinderellaContext>>();
 			services.AddScoped<IUserContext, UserContext>();
 			var settings =Configuration.GetSection("ServiceSettings").Get<ServiceSettings>();
 	        services.AddScoped<IAlbumService, AlbumService>();

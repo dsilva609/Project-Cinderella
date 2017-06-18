@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace ProjectCinderella.Data.Repositories
 {
@@ -15,6 +16,7 @@ namespace ProjectCinderella.Data.Repositories
 		{
 			this._context = context;
 			this._dbSet = context.Set<T>();
+			_context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
 		}
 
 		public virtual void Add(T entity)
@@ -38,6 +40,7 @@ namespace ProjectCinderella.Data.Repositories
 		{
 			//TODO: check that this works, used to be AddOrUpdate
 			//this._context.Set<T>().Update(entity)State = EntityState.Modified;
+			//var existing = _dbSet.Find(entity);
 			//_context.Entry(entity).State = EntityState.Modified;
 			_context.Set<T>().Update(entity);
 			this._context.SaveChanges();

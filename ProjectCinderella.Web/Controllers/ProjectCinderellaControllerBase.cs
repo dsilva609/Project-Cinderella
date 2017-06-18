@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using ProjectCinderella.Model.UI;
 using ProjectCinderella.Model.Enums;
 using ProjectCinderella.Model.Common;
@@ -11,11 +12,11 @@ namespace ProjectCinderella.Web.Controllers
 	{
 		public ToastMessage ShowStatusMessage(MessageTypeEnum toastType, string message, string title)
 		{
-			var toastr = TempData["Toastr"] as Toastr;
-			toastr = toastr ?? new Toastr();
+			var toastrVal = TempData["Toastr"]?.ToString();
+			var toastr = string.IsNullOrWhiteSpace(toastrVal) ? new Toastr(): JsonConvert.DeserializeObject<Toastr>(toastrVal);
 
 			var toastMessage = toastr.AddToastMessage(title, message, toastType);
-			TempData["Toastr"] = toastr;
+			TempData["Toastr"] = JsonConvert.SerializeObject(toastr);
 			return toastMessage;
 		}
 
