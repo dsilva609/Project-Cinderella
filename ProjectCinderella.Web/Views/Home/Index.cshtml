@@ -1,8 +1,13 @@
 ﻿@using System
+@using System.Collections
+@using System.Collections.Generic
 @using System.Linq
+
+@using Microsoft.CodeAnalysis
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
 @using ProjectCinderellaCore.Common
 @using FormMethod = Microsoft.AspNetCore.Mvc.Rendering.FormMethod
-@using SelectListItem = Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
+@using SelectList = Microsoft.AspNetCore.Mvc.Rendering.SelectList
 @model ProjectCinderella.Model.UI.HomeViewModel
 @{
 	ViewBag.Title = "Home Page";
@@ -32,8 +37,10 @@
 						{
 							@Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
 
-							@*@Html.DropDownList("type", Enum.GetNames(typeof(ItemType)).Select(val => new SelectListItem { Text = val, Value = val, Selected = User.Identity.GetDefaultItemType() == val }).ToList(), new { @class = "form-control" })
-							@Html.DropDownList("act", ActionType.GetTypes(User.Identity.IsAuthenticated).Select(val => new SelectListItem { Text = val.Name, Value = val.Value, Selected = User.Identity.GetDefaultActionType() == val.Value }).ToList(), new { @class = "form-control" })*@
+							@Html.DropDownList("type", new SelectList(Enum.GetNames(typeof(ProjectCinderella.Model.Enums.ItemType))),null, new { @class = "form-control" })
+							@*@Html.DropDownList("type", Enum.GetNames(typeof(ItemType)).Select(val => new SelectListItem { Text = val, Value = val, Selected = User.Identity.GetDefaultItemType() == val }).ToList(), new { @class = "form-control" })*@
+							@Html.DropDownList("act", new List<SelectListItem>(ProjectCinderella.Model.Enums.ActionType.GetTypes(User.Identity.IsAuthenticated).Select(val => new SelectListItem { Text = val.Name, Value = val.Value}).ToList()), new { @class = "form-control" })
+							@*@Html.DropDownList("act", ActionType.GetTypes(User.Identity.IsAuthenticated).Select(val => new SelectListItem { Text = val.Name, Value = val.Value, Selected = User.Identity.GetDefaultActionType() == val.Value }).ToList(), new { @class = "form-control" })*@
 
 							<button type="submit" class="btn btn-default">
 								<span class="fa fa-arrow-right"></span>
@@ -111,6 +118,7 @@
 			}
 			<ul class="col-sm-6">
 				<li class="h3">View the @*<a href="@Url.Action(MVC.Showcase.Index(User.Identity.IsAuthenticated ? User.Identity.GetUserNum() : 1))"><span class="fa fa-certificate"></span> Showcase</a>*@</li>
+				@*<li class="h3">View the <a href="@Url.Action("Index", "Showcase", MVC.Showcase.Index(User.Identity.IsAuthenticated ? User.Identity.GetUserNum() : 1))"><span class="fa fa-certificate"></span> Showcase</a></li>*@
 			</ul>
 			<ul class="col-sm-6">
 				<li class="h3">View the <a href="@Url.Action("Index", "Queue")"><span class="fa fa-list"></span> Queue</a></li>

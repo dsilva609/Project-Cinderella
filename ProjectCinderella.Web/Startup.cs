@@ -31,11 +31,13 @@ using ProjectCinderella.BusinessLogic.Services.Interfaces;
 using ProjectCinderella.BusinessLogic.Services;
 using ProjectCinderella.BusinessLogic.Services.Statistics;
 using ProjectCinderella.Model.Interfaces;
-using ProjectCinderella.Model.Common;
 using SimpleInjector.Integration.AspNetCore.Mvc;
 using ProjectCinderella.Data.DAL;
+using ProjectCinderella.Web.Areas.IdentityService.Models;
+using ProjectCinderella.Web.Common;
 using ProjectCinderella.Web.Identity.Models;
 using ProjectCinderella.Web.Identity.Data;
+using ProjectCinderella.Model.Common;
 
 namespace ProjectCinderella.Web
 {
@@ -58,6 +60,8 @@ namespace ProjectCinderella.Web
 
 	        services.AddDbContext<ProjectCinderellaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 			services.AddDbContext<IdentityServiceDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+	      // services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<IdentityServiceDbContext>().AddClaimsPrincipalFactory<AppClaimsPrincipalFactory>().AddDefaultTokenProviders();
+	        services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, AppClaimsPrincipalFactory>();
 			//services.AddIdentity<ApplicationUser, IdentityRole>(config => {
 			//	// Config here
 			//	config.User.RequireUniqueEmail = true;
@@ -69,17 +73,18 @@ namespace ProjectCinderella.Web
 			//		RequireLowercase = true,
 			//		RequiredLength = 8,
 			//	};
-		//	}).AddEntityFrameworkStores<IdentityServiceDbContext>().AddDefaultTokenProviders();
-	       
+			//	}).AddEntityFrameworkStores<IdentityServiceDbContext>().AddDefaultTokenProviders();
+
 			//services.AddAuthorization(options =>
-	  //      {
-		 //       options.AddPolicy("AddEditUser", policy => {
+			//      {
+			//       options.AddPolicy("AddEditUser", policy => {
 			//        policy.RequireClaim("Add User", "Add User");
 			//        policy.RequireClaim("Edit User", "Edit User");
-		 //       });
-		 //       options.AddPolicy("DeleteUser", policy => policy.RequireClaim("Delete User", "Delete User"));
-	  //      });
-			//services.AddScoped<ApplicationUser>();
+			//       });
+			//       options.AddPolicy("DeleteUser", policy => policy.RequireClaim("Delete User", "Delete User"));
+			//      });
+			//	services.AddScoped<ApplicationUser>();
+	        services.AddScoped<UserManager<ApplicationUser>>();
 			services.AddSingleton<IConfiguration>(Configuration);
 			services.AddScoped<IUnitOfWork, UnitOfWork<ProjectCinderellaContext>>();
 			services.AddScoped<IUserContext, UserContext>();
@@ -104,7 +109,7 @@ namespace ProjectCinderella.Web
 	        services.AddScoped<IGameStatisticService, GameStatisticService>();
 	        services.AddScoped<IPopStatisticService, PopStatisticService>();
 			services.AddSingleton<ServiceSettings>(settings);
-
+	        
 			services.AddOptions();
 	        services.AddAuthentication(options =>
 	        {
@@ -112,8 +117,8 @@ namespace ProjectCinderella.Web
 		        options.DefaultAuthenticateScheme = OpenIdConnectDefaults.AuthenticationScheme;
 		        options.DefaultSignInScheme = OpenIdConnectDefaults.AuthenticationScheme;
 	        });
-		
 
+	        services.AddScoped<ApplicationUserManager>();
 	        services.AddMvc();
 	        services.AddSession();
 			//services.AddSingleton<IControllerActivator>(new SimpleInjectorControllerActivator(_container));
@@ -139,10 +144,13 @@ namespace ProjectCinderella.Web
             app.UseStaticFiles();
 
             app.UseRewriter(new RewriteOptions().AddIISUrlRewrite(env.ContentRootFileProvider, "urlRewrite.config"));
-	       
-			app.UseAuthentication();
+	       app.UseAuthentication();
+	        app.UseIdentity();
 	        app.UseSession();
-
+	        //app.UseClaimsTransformation(new ClaimsTransformationOptions
+	        //{
+		       // Transformer = new ClaimsTransformer()
+	        //});
 			app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -180,7 +188,7 @@ namespace ProjectCinderella.Web
 		    _container.Register<IMovieStatisticService, MovieStatisticService>(Lifestyle.Scoped);
 		    _container.Register<IGameStatisticService, GameStatisticService>(Lifestyle.Scoped);
 		    _container.Register<IPopStatisticService, PopStatisticService>(Lifestyle.Scoped);
-		    _container.Register<IUserContext, UserContext>(Lifestyle.Scoped);
+		    //_container.Register<IUserContext, UserContext>(Lifestyle.Scoped);
 		    //_container.Register<IOptions<ServiceSettings>>(()=> GetServiceSettings());
 
 		    // Cross-wire ASP.NET services (if any). For instance:

@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using ProjectCinderella.Model.Interfaces;
 using ProjectCinderella.BusinessLogic.Services.Interfaces;
 using ProjectCinderella.Model.UI;
-using ProjectCinderella.Model.Common;
 using ProjectCinderella.Model.Enums;
+using ProjectCinderella.Model.Common;
 
 namespace ProjectCinderella.Web.Controllers
 {

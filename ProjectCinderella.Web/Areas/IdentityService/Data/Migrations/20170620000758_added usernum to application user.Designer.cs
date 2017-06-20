@@ -9,9 +9,10 @@ using System;
 namespace ProjectCinderella.Web.Identity.Data.Migrations
 {
     [DbContext(typeof(IdentityServiceDbContext))]
-    partial class IdentityServiceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170620000758_added usernum to application user")]
+    partial class addedusernumtoapplicationuser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.0-preview1-24937")

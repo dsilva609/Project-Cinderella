@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity.Service.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
+using ProjectCinderella.Web.Areas.IdentityService.Models;
 using ProjectCinderella.Web.Identity.Models;
 using ProjectCinderella.Web.Identity.Models.AccountViewModels;
 using ProjectCinderella.Web.Identity.Services;
@@ -61,7 +62,8 @@ namespace ProjectCinderella.Web.Identity.Controllers
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
-                if (result.Succeeded)
+
+				if (result.Succeeded)
                 {
                     _logger.LogInformation(1, "User logged in.");
                     return RedirectToLocal(returnUrl);

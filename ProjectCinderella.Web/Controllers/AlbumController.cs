@@ -9,9 +9,9 @@ using ProjectCinderella.Web.Common;
 using ProjectCinderella.Model.Interfaces;
 using ProjectCinderella.BusinessLogic.Services.Interfaces;
 using ProjectCinderella.Model.UI;
-using ProjectCinderella.Model.Common;
 using ProjectCinderella.Model.Enums;
 using System.Linq;
+using ProjectCinderella.Model.Common;
 
 namespace ProjectCinderella.Web.Controllers
 {
@@ -103,7 +103,7 @@ namespace ProjectCinderella.Web.Controllers
 					ShowStatusMessage(MessageTypeEnum.error, e.Message, "Duplicate Album");
 					return View(model);
 				}
-				HttpContext.Session.Set("album-query",null);
+				HttpContext.Session.SetString("album-query",null);
 
 				if (!string.IsNullOrWhiteSpace(HttpContext.Session.GetString("wish")))
 				{

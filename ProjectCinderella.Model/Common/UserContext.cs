@@ -12,11 +12,14 @@ namespace ProjectCinderella.Model.Common
 	public class UserContext : IUserContext
 	{
 		private readonly IHttpContextAccessor _contextAccessor;
+		//private readonly ApplicationUserManager _userManager;
 		private HttpContext _context => _contextAccessor.HttpContext;
-
-		public UserContext(IHttpContextAccessor contextAccessor)
+		//private readonly ApplicationUser _user;
+		public UserContext(IHttpContextAccessor contextAccessor )
 		{
 			_contextAccessor = contextAccessor;
+			
+		//	_user = _userManager.FindByName(_context.User.Identity.Name);
 		}
 		public bool IsAuthenticated() => _context.User.Identity.IsAuthenticated;
 

@@ -1,5 +1,8 @@
 ﻿@using System
+@using System.Collections.Generic
 @using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Mvc.Rendering
+@using ProjectCinderella.Web.Common
 @using ProjectCinderellaCore.Common
 @model ProjectCinderella.Model.Common.Album
 
@@ -28,7 +31,7 @@
 
 	<div class="col-md-6">
 		@Html.LabelFor(m => m.CompletionStatus)
-		@*@Html.EnumDropDownListFor(m => m.CompletionStatus, new { @class = "form-control" })*@
+		@Html.DropDownListFor(m => m.CompletionStatus, new SelectList(Enum.GetValues(typeof(ProjectCinderella.Model.Enums.CompletionStatus))), new { @class="form-control"})
 		@Html.ValidationMessageFor(m => m.CompletionStatus, "", new { @class = "text-danger" })
 	</div>
 
@@ -41,6 +44,7 @@
 					<span class="fa fa-minus"></span>
 				</a>
 			}
+
 			@Html.TextBoxFor(m => m.TimesCompleted, new { @class = "form-control", type = "number" })
 			<a class="btn btn-default" href="/Album/IncreaseCompletionCount/@Model.ID">
 				<span class="fa fa-plus"></span>
@@ -224,7 +228,7 @@
 	<div class="panel-body">
 		<div class="col-md-6">
 			@Html.LabelFor(m => m.MediaType)
-		@*	@Html.EnumDropDownListFor(m => m.MediaType, new { @class = "form-control", @id = "ddlAlbumType" })*@
+			@Html.DropDownListFor(m => m.MediaType,new SelectList(Enum.GetValues(typeof(ProjectCinderella.Model.Enums.AlbumMediaTypeEnum))), new { @class = "form-control", @id = "ddlAlbumType" })
 			@Html.ValidationMessageFor(m => m.MediaType, "", new { @class = "text-danger" })
 		</div>
 
@@ -236,13 +240,13 @@
 		<div id="vinylInfo" class="@(Model.MediaType == ProjectCinderella.Model.Enums.AlbumMediaTypeEnum.Vinyl ? "" : "hidden")">
 			<div class="col-md-6">
 				@Html.LabelFor(m => m.Speed)
-				@*@Html.EnumDropDownListFor(m => m.Speed, new { @class = "form-control" })*@
+				@Html.DropDownListFor(m => m.Speed,new SelectList(Enum.GetValues(typeof(ProjectCinderella.Model.Enums.SpeedEnum))), new { @class = "form-control" })
 				@Html.ValidationMessageFor(m => m.Speed, "", new { @class = "text-danger" })
 			</div>
 
 			<div class="col-md-6">
 				@Html.LabelFor(m => m.Size)
-				@*@Html.EnumDropDownListFor(m => m.Size, new { @class = "form-control" })*@
+				@Html.DropDownListFor(m => m.Size, new SelectList(Enum.GetValues(typeof(ProjectCinderella.Model.Enums.SizeEnum))), new { @class = "form-control" })
 				@Html.ValidationMessageFor(m => m.Size, "", new { @class = "text-danger" })
 			</div>
 		</div>
@@ -269,8 +273,8 @@
 		<div class="col-md-6">
 			@Html.LabelFor(m => m.DatePurchased)
 			@(!Context.Request.Headers["User-Agent"].Contains("Mobi") 
-				? Html.EditorFor(m => m.DatePurchased, new {htmlattributes = new {type = "text", Value = Model.DatePurchased.ToShortDateString(), @class = "form-control datepicker"}}) 
-				: Html.EditorFor(m => m.DatePurchased, new {htmlattributes = new {type = "date", Value = Model.DatePurchased.ToString("yyyy-MM-dd"), @class = "form-control"}}))
+				  ? Html.EditorFor(m => m.DatePurchased, new {htmlattributes = new {type = "text", Value = Model.DatePurchased.ToShortDateString(), @class = "form-control datepicker"}}) 
+				  : Html.EditorFor(m => m.DatePurchased, new {htmlattributes = new {type = "date", Value = Model.DatePurchased.ToString("yyyy-MM-dd"), @class = "form-control"}}))
 			@Html.ValidationMessageFor(m => m.DatePurchased, "", new { @class = "text-danger" })
 		</div>
 		<div class="col-md-4">

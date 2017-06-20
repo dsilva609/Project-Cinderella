@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity.Service.Mvc;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using ProjectCinderella.Web.Areas.IdentityService.Models;
 using ProjectCinderella.Web.Identity.Models;
 
 namespace ProjectCinderella.Web.Identity.Controllers
@@ -65,7 +66,7 @@ namespace ProjectCinderella.Web.Identity.Controllers
 
             await _tokenManager.IssueTokensAsync(context);
             var response = await _authorizationResponseFactory.CreateAuthorizationResponseAsync(context);
-
+	        
             await _sessionManager.StartSessionAsync(authorizationResult.User, authorizationResult.Application);
 
             return this.ValidAuthorization(response);
@@ -89,6 +90,7 @@ namespace ProjectCinderella.Web.Identity.Controllers
 
             await _tokenManager.IssueTokensAsync(context);
             var response = await _tokenResponseFactory.CreateTokenResponseAsync(context);
+			
             return Ok(response.Parameters);
         }
 

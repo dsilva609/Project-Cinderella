@@ -8,9 +8,9 @@ using PagedList;
 using ProjectCinderella.Model.Interfaces;
 using ProjectCinderella.BusinessLogic.Services.Interfaces;
 using ProjectCinderella.Model.UI;
-using ProjectCinderella.Model.Common;
 using System.Linq;
 using ProjectCinderella.Model.Enums;
+using ProjectCinderella.Model.Common;
 
 namespace ProjectCinderella.Web.Controllers
 {

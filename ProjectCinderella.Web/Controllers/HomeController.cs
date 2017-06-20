@@ -2,12 +2,14 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using ProjectCinderella.BusinessLogic.Services.Interfaces;
-using ProjectCinderella.Model.Common;
 using ProjectCinderella.Model.Enums;
 using ProjectCinderella.Model.Interfaces;
 using ProjectCinderella.Model.UI;
 using System.Linq;
+using ProjectCinderella.Web.Areas.IdentityService.Models;
+using ProjectCinderella.Web.Common;
 using ProjectCinderella.Web.Identity.Models;
+using ProjectCinderella.Model.Common;
 
 namespace ProjectCinderella.Web.Controllers
 {
@@ -15,6 +17,9 @@ namespace ProjectCinderella.Web.Controllers
 	{
 		//private readonly IUserContext _user;
 		//private readonly ApplicationUser _user;
+
+		private readonly ApplicationUserManager _userManager;
+		private readonly IUserContext _userContext;
 		private readonly IAlbumService _albumService;
 		private readonly IBookService _bookService;
 		private readonly IMovieService _movieService;
@@ -27,10 +32,14 @@ namespace ProjectCinderella.Web.Controllers
 		private const int NUM_GAMES_TO_GET = 10;
 		private const int NUM_POPS_TO_GET = 10;
 
-		public HomeController( IAlbumService albumService, IBookService bookService, IMovieService movieService,
-			IGameService gameService, IPopService popService, ServiceSettings settings)
+		public HomeController(ApplicationUserManager userManager,  IAlbumService albumService, IBookService bookService, IMovieService movieService,
+			IGameService gameService, IPopService popService, ServiceSettings settings)//: base(userManager)
 		{
-		//	_user = user;
+			//_userContext = userContext;
+	//	_user = user;
+			_userManager = userManager;
+			
+			
 			_albumService = albumService;
 		_bookService = bookService;
 		_movieService = movieService;
@@ -39,10 +48,14 @@ namespace ProjectCinderella.Web.Controllers
 			_settings = settings;
 			
 		}
+		public ApplicationUser GetUser() => _userManager.FindByNameAsync(User.Identity.Name).Result;
 
 		[HttpGet]
 		public virtual ActionResult Index()
 		{
+
+			var num = GetUser().UserNum;
+
 			//TODO: needs refactor to take asc/desc
 			var albums = _albumService.GetAll(string.Empty, string.Empty).OrderByDescending(x => x.DateAdded).Take(NUM_ALBUMS_TO_GET).ToList();
 			var updatedAlbums =

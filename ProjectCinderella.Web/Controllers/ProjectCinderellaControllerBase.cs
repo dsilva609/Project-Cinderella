@@ -4,12 +4,24 @@ using Newtonsoft.Json;
 using ProjectCinderella.Model.UI;
 using ProjectCinderella.Model.Enums;
 using ProjectCinderella.Model.Common;
+using ProjectCinderella.Web.Areas.IdentityService.Models;
+using ProjectCinderella.Web.Common;
 
 namespace ProjectCinderella.Web.Controllers
 {
 	//--TODO: can this be set to protected?
 	public class ProjectCinderellaControllerBase : Controller
 	{
+		//private ApplicationUser _user;
+		//private readonly ApplicationUserManager _userManager;
+
+		//public ProjectCinderellaControllerBase(ApplicationUserManager userManager)
+		//{
+		//	_userManager = userManager;
+		//}
+
+		//public ApplicationUser GetUser() => _userManager.FindByNameAsync(User.Identity.Name).Result;
+
 		public ToastMessage ShowStatusMessage(MessageTypeEnum toastType, string message, string title)
 		{
 			var toastrVal = TempData["Toastr"]?.ToString();

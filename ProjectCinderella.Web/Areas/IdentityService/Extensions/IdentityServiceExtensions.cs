@@ -41,7 +41,7 @@ namespace Microsoft.AspNetCore.Identity.Service.Extensions
         public static void AddExtensionsAmbientClaims(
             this TokenGeneratingContext context, string policy, string version, string tenantId)
         {
-            context.AmbientClaims.Add(new Claim(IdentityServiceExtensionsAmbientClaimTypes.Policy, policy));
+			context.AmbientClaims.Add(new Claim(IdentityServiceExtensionsAmbientClaimTypes.Policy, policy));
             context.AmbientClaims.Add(new Claim(IdentityServiceExtensionsAmbientClaimTypes.Version, version));
             context.AmbientClaims.Add(new Claim(IdentityServiceExtensionsAmbientClaimTypes.TenantId, tenantId));
         }

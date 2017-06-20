@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity.Service;
 using Microsoft.AspNetCore.Identity.Service.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using ProjectCinderella.Web.Areas.IdentityService.Models;
 using ProjectCinderella.Web.Identity.Models;
 using ProjectCinderella.Web.Identity.Models.ManageViewModels;
 using ProjectCinderella.Web.Identity.Services;
