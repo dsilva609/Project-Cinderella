@@ -8,7 +8,7 @@
 			Movie/TV Show Information
 		</h4>
 	</div>
-	@using (Html.BeginForm(MVC.Movie.Search(), FormMethod.Get))
+	@using (Html.BeginForm("Search", "Movie", FormMethod.Get))
 	{
 		<div class="panel-body">
 			<div class="col-xs-6">
@@ -44,7 +44,7 @@
 		<div class="panel-body">
 			@foreach (var result in Model.MovieResults)
 			{
-				using (Html.BeginForm(MVC.Movie.CreateFromSearchResult(result.id, result.IsTvShow, -1), FormMethod.Get))
+				using (Html.BeginForm("CreateFromSearchResult", "Movie", (result.id, result.IsTvShow, -1), FormMethod.Get))
 				{
 					<div id="Movie" class="row info" style="padding-bottom: 1em;" data-id="@result.id">
 						<div class="col-xs-4">
@@ -83,7 +83,7 @@
 		<div class="panel-body">
 			@foreach (var result in Model.TVShowResults)
 			{
-				using (Html.BeginForm(MVC.Movie.CreateFromSearchResult(result.id, result.IsTvShow, Model.SeasonNumber), FormMethod.Get))
+				using (Html.BeginForm("CreateFromSearchResult", "Movie",(result.id, result.IsTvShow, Model.SeasonNumber), FormMethod.Get))
 				{
 					<div id="Movie" class="row info" style="padding-bottom: 1em;" data-id="@result.id">
 						<div class="col-xs-4">
@@ -110,6 +110,6 @@
 		</div>
 	</div>
 }
-@Html.ActionLink("Back to List", MVC.Movie.Index())
+@Html.ActionLink("Back to List", "Index", "Movie")
 
-@Html.Partial(MVC.Shared.Views._TMDBDisclaimer)
+@Html.Partial("_TMDBDisclaimer")

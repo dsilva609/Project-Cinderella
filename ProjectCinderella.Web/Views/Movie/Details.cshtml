@@ -1,9 +1,9 @@
 ﻿@using Microsoft.AspNet.Identity
-@using UI.Enums
+@using ProjectCinderella.Model.Enums
 @model ProjectCinderella.Model.Common.Movie
 
 <script>
-    var deleteUrl = '@Url.Action(MVC.Movie.Delete())';
+    var deleteUrl = '@Url.Action("Delete", "Movie")';
     $("#main-body").removeClass("container");
 </script>
 
@@ -12,23 +12,23 @@
         Details
         @if (User.IsInRole("Admin") && Model.IsShowcased)
 		{
-            @Html.ActionLink("Remove From showcase", MVC.Movie.RemoveFromShowcase(Model.ID), new { @class = "btn btn-danger" })
+            @Html.ActionLink("Remove From showcase", "RemoveFromShowcase", "Movie", Model.ID, new { @class = "btn btn-danger" })
 		}
     </h2>
     @if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
 	{
-        <div class="">Last Updated: @Model.DateUpdated</div>
+        <div>Last Updated: @Model.DateUpdated</div>
     }
 
     <div>
-        <a href="@Url.Action(MVC.Movie.Index())"><span class="fa fa-list"></span> Back to List</a>
+        <a href="@Url.Action("Index", "Movie")"><span class="fa fa-list"></span> Back to List</a>
 
         @if (User.Identity.IsAuthenticated && Model.UserID == User.Identity.GetUserId())
         {
             <span> | </span>
-            <a href="@Url.Action(MVC.Movie.Edit(Model.ID))"><span class="fa fa-pencil"></span> Edit</a>
+            <a href="@Url.Action("Edit", "Movie")/@Model.ID"><span class="fa fa-pencil"></span> Edit</a>
             <span> | </span>
-            <a href="@Url.Action(MVC.Movie.Delete(Model.ID))" class="deleteBtn"><span class="fa fa-trash"></span> Delete</a>}
+            <a href="@Url.Action("Delete", "Movie")/@Model.ID" class="deleteBtn"><span class="fa fa-trash"></span> Delete</a>}
     </div>
 </div>
 
@@ -49,8 +49,8 @@
             <div id="movie-info" class="collapse in">
                 <div class="panel-body">
                     <div class="animate-box item col-sm-6">
-                        <a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Director - @Model.Title (@Model.YearReleased)">
-                            <img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Reel_jpg : Model.ImageUrl)" class="img-rounded" style="height: 350px; width: 250px;">
+                        <a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? "~/Images/Reel.jpg" : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Director - @Model.Title (@Model.YearReleased)">
+                            <img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? "~/Images.Reel.jpg" : Model.ImageUrl)" class="img-rounded" style="height: 350px; width: 250px;">
                         </a>
                     </div>
 

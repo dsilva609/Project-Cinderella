@@ -3,8 +3,8 @@
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm(MVC.Movie.Create(), FormMethod.Post))
+@using (Html.BeginForm("Create","Movie", FormMethod.Post))
 {
-	Html.RenderPartial(MVC.Movie.Views._MovieFormPartial, Model);
+	Html.RenderPartial("~/Views/Movie/_MovieFormPartial", Model);
 }
-@Html.ActionLink("Back to List", MVC.Movie.Index())
+@Html.ActionLink("Back to List", "Index","Movie")
