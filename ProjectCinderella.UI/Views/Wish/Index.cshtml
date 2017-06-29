@@ -1,10 +1,10 @@
-﻿@model UI.Models.WishViewModel
+﻿@model ProjectCinderella.Model.UI.WishViewModel
 @{
     ViewBag.Title = @Model.ViewTitle;
 }
 
 <script>
-    var deleteUrl = '@Url.Action(MVC.Wish.Delete())';
+    var deleteUrl = '@Url.Action("Delete", "Wish")';
 </script>
 
 <div class="row">
@@ -12,14 +12,14 @@
         Wishes
         @if (User.Identity.IsAuthenticated)
         {
-            <a class="btn btn-default" href="@Url.Action(MVC.Wish.Create())" style="padding-top: 1.25em;" contenteditable="false">
+            <a class="btn btn-default" href="@Url.Action("Create", "Wish")" style="padding-top: 1.25em;" contenteditable="false">
                 <span class="fa fa-plus"></span>
             </a>
         }
     </div>
 
     <div class="col-md-4" style="padding-top: 1.25em;">
-        <form action="@Url.Action(MVC.Wish.Index())" method="get" style="display: inline-flex;">
+        <form action="@Url.Action("Index", "Wish")" method="get" style="display: inline-flex;">
             <input class="form-control" id="query" name="wishQuery" placeholder="Search" type="text" value="@ViewBag.Filter">
             <button type="submit" class="btn btn-default">
                 <span class="fa fa-search"></span>
@@ -45,7 +45,7 @@
             @foreach (var albumWishGroup in Model.AlbumWishes)
             {
                 <div class="bold">@albumWishGroup.Key</div>
-                @Html.Partial(MVC.Wish.Views._WishTablePartial, albumWishGroup.Value)
+                @Html.Partial("~/Views/Wish/_WishTablePartial", albumWishGroup.Value)
             }
         </div>
     </div>
@@ -68,7 +68,7 @@
             @foreach (var bookWishGroup in Model.BookWishes)
             {
                 <div class="bold">@bookWishGroup.Key</div>
-                @Html.Partial(MVC.Wish.Views._WishTablePartial, bookWishGroup.Value)
+                @Html.Partial("~/Views/Wish/_WishTablePartial", bookWishGroup.Value)
             }
         </div>
     </div>
@@ -91,7 +91,7 @@
             @foreach (var movieWishGroup in Model.MovieWishes)
             {
                 <div class="bold">@movieWishGroup.Key</div>
-                @Html.Partial(MVC.Wish.Views._WishTablePartial, movieWishGroup.Value)
+                @Html.Partial("~/Views/Wish/_WishTablePartial", movieWishGroup.Value)
             }
         </div>
     </div>
@@ -114,7 +114,7 @@
             @foreach (var gameWishGroup in Model.GameWishes)
             {
                 <div class="bold">@gameWishGroup.Key</div>
-                @Html.Partial(MVC.Wish.Views._WishTablePartial, gameWishGroup.Value)
+                @Html.Partial("~/Views/Wish/_WishTablePartial", gameWishGroup.Value)
             }
         </div>
     </div>
@@ -137,7 +137,7 @@
 			@foreach (var popWishGroup in Model.PopWishes)
 			{
 				<div class="bold">@popWishGroup.Key</div>
-				@Html.Partial(MVC.Wish.Views._WishTablePartial, popWishGroup.Value)
+				@Html.Partial("~/Views/Wish/_WishTablePartial", popWishGroup.Value)
 			}
 		</div>
 	</div>

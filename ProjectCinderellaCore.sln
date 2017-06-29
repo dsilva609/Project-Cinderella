@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26510.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectCinderellaCore", "ProjectCinderellaCore\ProjectCinderellaCore.csproj", "{D32D855F-C940-4D89-AA66-CB9B3FA18535}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectCinderella.Model", "ProjectCinderella.Model\ProjectCinderella.Model.csproj", "{ADE17C96-EF3B-48CA-BFBF-D4F4C83037B3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectCinderella.Model", "ProjectCinderella.Model\ProjectCinderella.Model.csproj", "{ADE17C96-EF3B-48CA-BFBF-D4F4C83037B3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectCinderella.BusinessLogic", "ProjectCinderella.BusinessLogic\ProjectCinderella.BusinessLogic.csproj", "{D815ADA4-3CC2-47E1-974F-10C0BCF9C88C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectCinderella.BusinessLogic", "ProjectCinderella.BusinessLogic\ProjectCinderella.BusinessLogic.csproj", "{D815ADA4-3CC2-47E1-974F-10C0BCF9C88C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectCinderella.Data", "ProjectCinderella.Data\ProjectCinderella.Data.csproj", "{CA23756B-6882-4475-8F9F-455DACBE622B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectCinderella.UnitTests", "ProjectCinderella.UnitTests\ProjectCinderella.UnitTests.csproj", "{5C63383F-97F5-4774-A006-08ED3F01EB70}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectCinderella.UI", "ProjectCinderella.UI\ProjectCinderella.UI.csproj", "{3DFF8DBF-7638-407E-9145-0F1B96BAE217}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectCinderella.Data", "ProjectCinderella.Data\ProjectCinderella.Data.csproj", "{CA23756B-6882-4475-8F9F-455DACBE622B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectCinderella.Web", "ProjectCinderella.Web\ProjectCinderella.Web.csproj", "{475412F4-B6C0-4F28-B7C4-3829BF55AB78}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectCinderella.UI", "ProjectCinderella.UI\ProjectCinderella.UI.csproj", "{3DFF8DBF-7638-407E-9145-0F1B96BAE217}"
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "ProjectCinderellaCore", "ProjectCinderellaCore\ProjectCinderellaCore.csproj", "{58AA9C12-9996-4CCB-8D37-A9784E11D63C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectCinderella.Web", "ProjectCinderella.Web\ProjectCinderella.Web.csproj", "{475412F4-B6C0-4F28-B7C4-3829BF55AB78}"
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "ProjectCinderella.UnitTests", "ProjectCinderella.UnitTests\ProjectCinderella.UnitTests.csproj", "{29D53E2C-BDAF-4B17-B70A-6C2DE47F91BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D32D855F-C940-4D89-AA66-CB9B3FA18535}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D32D855F-C940-4D89-AA66-CB9B3FA18535}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D32D855F-C940-4D89-AA66-CB9B3FA18535}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D32D855F-C940-4D89-AA66-CB9B3FA18535}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ADE17C96-EF3B-48CA-BFBF-D4F4C83037B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ADE17C96-EF3B-48CA-BFBF-D4F4C83037B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADE17C96-EF3B-48CA-BFBF-D4F4C83037B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,10 +31,6 @@ Global
 		{D815ADA4-3CC2-47E1-974F-10C0BCF9C88C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D815ADA4-3CC2-47E1-974F-10C0BCF9C88C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D815ADA4-3CC2-47E1-974F-10C0BCF9C88C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5C63383F-97F5-4774-A006-08ED3F01EB70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C63383F-97F5-4774-A006-08ED3F01EB70}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5C63383F-97F5-4774-A006-08ED3F01EB70}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5C63383F-97F5-4774-A006-08ED3F01EB70}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CA23756B-6882-4475-8F9F-455DACBE622B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CA23756B-6882-4475-8F9F-455DACBE622B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA23756B-6882-4475-8F9F-455DACBE622B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +43,14 @@ Global
 		{475412F4-B6C0-4F28-B7C4-3829BF55AB78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{475412F4-B6C0-4F28-B7C4-3829BF55AB78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{475412F4-B6C0-4F28-B7C4-3829BF55AB78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58AA9C12-9996-4CCB-8D37-A9784E11D63C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58AA9C12-9996-4CCB-8D37-A9784E11D63C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58AA9C12-9996-4CCB-8D37-A9784E11D63C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58AA9C12-9996-4CCB-8D37-A9784E11D63C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29D53E2C-BDAF-4B17-B70A-6C2DE47F91BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29D53E2C-BDAF-4B17-B70A-6C2DE47F91BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29D53E2C-BDAF-4B17-B70A-6C2DE47F91BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29D53E2C-BDAF-4B17-B70A-6C2DE47F91BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
