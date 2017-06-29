@@ -1,8 +1,8 @@
-﻿@model UI.Models.BookStatsViewModel
+﻿@model ProjectCinderella.Model.UI.BookStatsViewModel
 
-@Styles.Render(Links.Content.c3_min_css)
-@Scripts.Render(Links.Scripts.d3.d3_min_js)
-@Scripts.Render(Links.Scripts.c3_min_js)
+@Styles.Render("~/css/c3.min.css")
+@Scripts.Render("~/js/d3/d3.min.js")
+@Scripts.Render("~/css/c3.min.js")
 
 <div data-toggle="collapse" data-parent="#accordion" href="#collection-info" style="padding-top: 1em;">
 	<div class="row panel panel-primary panel-collapse">
@@ -30,10 +30,10 @@
 			</h4>
 		}
 		</div>
-		<div class="col-md-6">@Html.Partial(MVC.Statistics.Views._BookStatsTable, Model.Global)</div>
+		<div class="col-md-6">@Html.Partial("~/Views/Statistics/_BookStatsTable.cshtml", Model.Global)</div>
 		@if (User.Identity.IsAuthenticated)
 		{
-			<div class="col-md-6">@Html.Partial(MVC.Statistics.Views._BookStatsTable, Model.User)</div>
+			<div class="col-md-6">@Html.Partial("~/Views/Statistics/_BookStatsTable.cshtml", Model.User)</div>
 		}
 	</div>
 </div>
@@ -62,8 +62,8 @@
 	</div>
 </div>
 
-@Html.Partial(MVC.Statistics.Views.Charts._BookTypeChart, Model.Global.Types)
+@Html.Partial("~/Views/Statistics/Charts/_BookTypeChart.cshtml", Model.Global.Types)
 @if (User.Identity.IsAuthenticated)
 {
-	@Html.Partial(MVC.Statistics.Views.Charts._BookTypeChart, Model.User.Types)
+	@Html.Partial("~/Views/Statistics/Charts/_BookTypeChart.cshtml", Model.User.Types)
 }

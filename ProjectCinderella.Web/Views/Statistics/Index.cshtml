@@ -1,27 +1,27 @@
-﻿@model UI.Models.StatisticsViewModel
+﻿@model ProjectCinderella.Model.UI.StatisticsViewModel
 
 <h2>
 	Collection Statistics
 </h2>
 
-@Styles.Render(Links.Content.c3_min_css)
-@Scripts.Render(Links.Scripts.d3.d3_min_js)
-@Scripts.Render(Links.Scripts.c3_min_js)
+@Styles.Render("~/css/c3.min.css")
+@Scripts.Render("~/js/d3/d3.min.js")
+@Scripts.Render("~/js/c3.min.js")
 
 <div>
-	<a href="@Url.Action(MVC.Statistics.AlbumStats())"><span class="fa fa-music"></span> Album Stats</a>
+	<a href="@Url.Action("AlbumStats","Statistics")"><span class="fa fa-music"></span> Album Stats</a>
 </div>
 <div>
-	<a href="@Url.Action(MVC.Statistics.BookStats())"><span class="fa fa-book"></span> Book Stats</a>
+	<a href="@Url.Action("BookStats", "Statistics")"><span class="fa fa-book"></span> Book Stats</a>
 </div>
 <div>
-	<a href="@Url.Action(MVC.Statistics.MovieStats())"><span class="fa fa-film"></span>/<span class="fa fa-television"></span> Movie Stats</a>
+	<a href="@Url.Action("MovieStats","Statistics")"><span class="fa fa-film"></span>/<span class="fa fa-television"></span> Movie Stats</a>
 </div>
 <div>
-	<a href="@Url.Action(MVC.Statistics.GameStats())"><span class="fa fa-gamepad"></span> Game Stats</a>
+	<a href="@Url.Action("GameStats", "Statistics")"><span class="fa fa-gamepad"></span> Game Stats</a>
 </div>
 <div>
-	<a href="@Url.Action(MVC.Statistics.PopStats())"><span class="fa fa-user"></span> Pop Stats</a>
+	<a href="@Url.Action("PopStats", "Statistics")"><span class="fa fa-user"></span> Pop Stats</a>
 </div>
 
 <div data-toggle="collapse" data-parent="#accordion" href="#collection-info" style="padding-top: 1em;">
@@ -37,10 +37,10 @@
 
 <div id="collection-info" class="collapse in">
 	<div class="panel-body">
-		@Html.Partial(MVC.Statistics.Views._StatsTable, Model.Universal)
+		@Html.Partial("~/Views/Statistics/_StatsTable.cshtml", Model.Universal)
 		@if (Model.User != null)
 		{
-			@Html.Partial(MVC.Statistics.Views._StatsTable, Model.User)
+			@Html.Partial("~/Views/Statistics/_StatsTable.cshtml", Model.User)
 		}
 	</div>
 </div>
@@ -277,18 +277,18 @@
 		</div>
 	</div>
 </div>
-@Html.Partial(MVC.Statistics.Views.Charts._MediaTypesChart, Model.Universal.MediaTypes)
-@Html.Partial(MVC.Statistics.Views.Charts._ItemTypeChart, Model.Universal.ItemTypes)
-@Html.Partial(MVC.Statistics.Views.Charts._ConditionCharts, Model.Universal.Condition)
-@Html.Partial(MVC.Statistics.Views.Charts._CompletionStatusChart, Model.Universal.CompletionStatus)
+@Html.Partial("~/Views/Statistics/Charts/_MediaTypesChart.cshtml", Model.Universal.MediaTypes)
+@Html.Partial("~/Views/Statistics/Charts/_ItemTypeChart.cshtml", Model.Universal.ItemTypes)
+@Html.Partial("~/Views/Statistics/Charts/_ConditionCharts.cshtml", Model.Universal.Condition)
+@Html.Partial("~/Views/Statistics/Charts/_CompletionStatusChart.cshtml", Model.Universal.CompletionStatus)
 
 @if (Model.User != null)
 {
-	@Html.Partial(MVC.Statistics.Views.Charts._MediaTypesChart, Model.User.MediaTypes)
+	@Html.Partial("~/Views/Statistics/Charts/_MediaTypesChart.cshtml", Model.User.MediaTypes)
 
-	@Html.Partial(MVC.Statistics.Views.Charts._ItemTypeChart, Model.User.ItemTypes)
+	@Html.Partial("~/Views/Statistics/Charts/_ItemTypeChart.cshtml", Model.User.ItemTypes)
 
-	@Html.Partial(MVC.Statistics.Views.Charts._ConditionCharts, Model.User.Condition)
+	@Html.Partial("~/Views/Statistics/Charts/_ConditionCharts.cshtml", Model.User.Condition)
 
-	@Html.Partial(MVC.Statistics.Views.Charts._CompletionStatusChart, Model.User.CompletionStatus)
+	@Html.Partial("~/Views/Statistics/Charts/_CompletionStatusChart.cshtml", Model.User.CompletionStatus)
 }

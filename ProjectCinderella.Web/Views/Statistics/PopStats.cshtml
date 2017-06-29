@@ -1,4 +1,4 @@
-﻿@model UI.Models.PopStatsViewModel
+﻿@model ProjectCinderella.Model.UI.PopStatsViewModel
 
 <div data-toggle="collapse" data-parent="#accordion" href="#collection-info" style="padding-top: 1em;">
     <div class="row panel panel-primary panel-collapse">
@@ -26,10 +26,10 @@
 	        </h4>
         }
         </div>
-        <div class="col-md-6">@Html.Partial(MVC.Statistics.Views._PopStatsTable, Model.Global)</div>
+        <div class="col-md-6">@Html.Partial("~/Views/Statistics/_PopStatsTable.cshtml", Model.Global)</div>
 	    @if (User.Identity.IsAuthenticated)
 	    {
-            <div class="col-md-6">@Html.Partial(MVC.Statistics.Views._PopStatsTable, Model.User)</div>
+            <div class="col-md-6">@Html.Partial("~/Views/Statistics/_PopStatsTable.cshtml", Model.User)</div>
         }
     </div>
 </div>
