@@ -1,4 +1,4 @@
-﻿@using BusinessLogic.Enums
+﻿@using ProjectCinderella.Model.Enums
 @using ProjectCinderella.Web.Common
 @using ProjectCinderellaCore.Common
 
@@ -7,7 +7,7 @@
 </h2>
 
 <div class="text-xs-center">
-    @using (Html.BeginForm(MVC.Showcase.SearchItems(), FormMethod.Get, new { @style = "display:inline-flex;" }))
+    @using (Html.BeginForm("SearchItems", "Showcase", FormMethod.Get, new { @style = "display:inline-flex;" }))
     {
         @Html.TextBox("query", null, new { @class = "form-control", @placeholder = "Search" })
 

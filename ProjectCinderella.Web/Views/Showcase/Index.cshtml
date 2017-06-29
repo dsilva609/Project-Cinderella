@@ -1,4 +1,4 @@
-﻿@model UI.Models.ShowcaseViewModel
+﻿@model ProjectCinderella.Model.UI.Models
 @{
 	ViewBag.Title = Model.ViewTitle;
 }
@@ -8,7 +8,7 @@
 		Item Showcase
 		@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
 		{
-			<a class="btn btn-default" href="@Url.Action(MVC.Showcase.Add())" style="padding-top: 1.25em;" contenteditable="false">
+			<a class="btn btn-default" href="@Url.Action("Add", "Showcase")" style="padding-top: 1.25em;" contenteditable="false">
 				<span class="fa fa-plus"></span>
 			</a>
 		}
@@ -29,14 +29,14 @@
 				<div id="albumCarousel" class="carousel slide carousel-fade" data-ride="carousel">
 					<div class="carousel-inner" role="listbox">
 						<div class="item active">
-							<a href="@Url.Action(MVC.Album.Details(Model.Albums[0].ID))">
+							<a href="@Url.Action("Detalis","Album",Model.Albums[0].ID)">
 								<img class="d-block img-fluid" src="@Model.Albums[0].ImageUrl" alt="@(Model.Albums[0].Artist + "-" + Model.Albums[0].Title)">
 							</a>
 						</div>
 						@for (var i = 1; i < Model.Albums.Count; i++)
 						{
 							<div class="item">
-								<a href="@Url.Action(MVC.Album.Details(Model.Albums[i].ID))">
+								<a href="@Url.Action("Details", "Album",Model.Albums[i].ID)">
 									<img class="d-block img-fluid" src="@Model.Albums[i].ImageUrl" alt="@(Model.Albums[i].Artist + "-" + Model.Albums[i].Title)">
 								</a>
 							</div>
@@ -59,14 +59,14 @@
 				<div id="bookCarousel" class="carousel slide carousel-fade" data-ride="carousel">
 					<div class="carousel-inner" role="listbox">
 						<div class="item active">
-							<a href="@Url.Action(MVC.Book.Details(Model.Books[0].ID))">
+							<a href="@Url.Action("Details", "Book",Model.Books[0].ID)">
 								<img class="d-block img-fluid" src="@Model.Books[0].ImageUrl" alt="@(Model.Books[0].Author + "-" + Model.Books[0].Title)">
 							</a>
 						</div>
 						@for (var i = 1; i < Model.Books.Count; i++)
 						{
 							<div class="item">
-								<a href="@Url.Action(MVC.Book.Details(Model.Books[i].ID))">
+								<a href="@Url.Action("Details","Book", Model.Books[i].ID)">
 									<img class="d-block img-fluid" src="@Model.Books[i].ImageUrl" alt="@(Model.Books[i].Author + "-" + Model.Books[i].Title)">
 								</a>
 							</div>
@@ -89,14 +89,14 @@
 				<div id="gameCarousel" class="carousel slide carousel-fade" data-ride="carousel">
 					<div class="carousel-inner" role="listbox">
 						<div class="item active">
-							<a href="@Url.Action(MVC.Game.Details(Model.Games[0].ID))">
+							<a href="@Url.Action("Details", "Game",Model.Games[0].ID)">
 								<img class="d-block img-fluid" src="@Model.Games[0].ImageUrl" alt="@Model.Games[0].Title">
 							</a>
 						</div>
 						@for (var i = 1; i < Model.Games.Count; i++)
 						{
 							<div class="item">
-								<a href="@Url.Action(MVC.Game.Details(Model.Games[i].ID))">
+								<a href="@Url.Action("Details","Game",Model.Games[i].ID)">
 									<img class="d-block img-fluid" src="@Model.Games[i].ImageUrl" alt="@Model.Games[i].Title">
 								</a>
 							</div>
@@ -120,14 +120,14 @@
 				<div id="movieCarousel" class="carousel slide carousel-fade" data-ride="carousel">
 					<div class="carousel-inner" role="listbox">
 						<div class="item active">
-							<a href="@Url.Action(MVC.Movie.Details(Model.Movies[0].ID))">
+							<a href="@Url.Action("Details", "Movie",Model.Movies[0].ID)">
 								<img class="d-block img-fluid" src="@Model.Movies[0].ImageUrl" alt="@Model.Movies[0].Title">
 							</a>
 						</div>
 						@for (var i = 1; i < Model.Movies.Count; i++)
 						{
 							<div class="item">
-								<a href="@Url.Action(MVC.Movie.Details(Model.Movies[i].ID))">
+								<a href="@Url.Action("Details", "Movie",Model.Movies[i].ID)">
 									<img class="d-block img-fluid" src="@Model.Movies[i].ImageUrl" alt="@Model.Movies[i].Title">
 								</a>
 							</div>
@@ -150,14 +150,14 @@
 				<div id="popCarousel" class="carousel slide carousel-fade" data-ride="carousel">
 					<div class="carousel-inner" role="listbox">
 						<div class="item active">
-							<a href="@Url.Action(MVC.Pop.Details(Model.Pops[0].ID))">
+							<a href="@Url.Action("Details", "Pop",Model.Pops[0].ID)">
 								<img class="d-block img-fluid" src="@Model.Pops[0].ImageUrl" alt="@(Model.Pops[0].Title + "-" + Model.Pops[0].Series)">
 							</a>
 						</div>
 						@for (var i = 1; i < Model.Pops.Count; i++)
 						{
 							<div class="item">
-								<a href="@Url.Action(MVC.Pop.Details(Model.Pops[i].ID))">
+								<a href="@Url.Action("Details", "Pop",Model.Pops[i].ID)">
 									<img class="d-block img-fluid" src="@Model.Pops[i].ImageUrl" alt="@(Model.Pops[i].Title + "-" + Model.Pops[i].Series)">
 								</a>
 							</div>
