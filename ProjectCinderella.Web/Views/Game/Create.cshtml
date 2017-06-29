@@ -1,9 +1,10 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Rendering
 @model ProjectCinderella.Model.Common.Game
-	<h2>@ViewBag.Title</h2>
 
-	@using (Html.BeginForm(MVC.Game.Create(), FormMethod.Post))
-	{
-		Html.RenderPartial(MVC.Game.Views._GameFormPartial, Model);
-	}
-	@Html.ActionLink("Back to List", MVC.Game.Index())
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Create", "Game", FormMethod.Post))
+{
+	Html.RenderPartial("~/Views/Game/_GameFormPartial", Model);
+}
+@Html.ActionLink("Back to List", "Index","Game")

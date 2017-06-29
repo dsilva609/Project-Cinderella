@@ -9,13 +9,13 @@
             Game Information
         </h4>
     </div>
-    @using (Html.BeginForm(MVC.Game.Search(), FormMethod.Get))
+    @using (Html.BeginForm("Search", "Game", FormMethod.Get))
     {
         <div class="panel-body">
             <div class="col-xs-6">
-	            @Html.LabelFor<>(m => m.Title)
-	            @Html.TextBoxFor<>(m => m.Title, new { @class = "form-control" })
-	            @Html.ValidationMessageFor<>(m => m.Title, "", new { @class = "text-danger" })
+	            @Html.LabelFor(m => m.Title)
+	            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+	            @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -39,18 +39,18 @@
             {
                 foreach (var game in Model.GiantBombResult.results)
                 {
-                    using (Html.BeginForm(MVC.Game.CreateFromSearchModel(game.id, false), FormMethod.Get))
+                    using (Html.BeginForm("CreateFromSearchModel", "Game", (game.id, false), FormMethod.Get))
                     {
                         <div id="game" class="row info" style="padding-bottom: 1em;" data-id="@game.id">
                             <div class="col-xs-2">
                                 <img src="@game.image.thumb_url" style="width: 100%; height: 100%;" />
                             </div>
                             <div class="col-xs-3">
-	                            @Html.DisplayFor<>(x => game.name)
+	                            @Html.DisplayFor(x => game.name)
                             </div>
 
                             <div class="col-xs-2">
-	                            @Html.DisplayFor<>(x => game.original_release_date)
+	                            @Html.DisplayFor(x => game.original_release_date)
                             </div>
                             @Html.Hidden("id", game.id)
                             @Html.Hidden("isBGG", false)
@@ -65,18 +65,18 @@
             {
                 foreach (var game in Model.BGGResult.Items)
                 {
-                    using (Html.BeginForm(MVC.Game.CreateFromSearchModel(game.ID, true), FormMethod.Get))
+                    using (Html.BeginForm("CreateFromSearchModel", "Game",(game.ID, true), FormMethod.Get))
                     {
                         <div id="game" class="row info" style="padding-bottom: 1em;" data-id="@game.ID">
                             <div class="col-xs-2">
                                 <img src="@game.Thumbnail" style="width: 100%; height: 100%;" />
                             </div>
                             <div class="col-xs-3">
-	                            @Html.DisplayFor<>(x => game.name.value)
+	                            @Html.DisplayFor(x => game.name.value)
                             </div>
 
                             <div class="col-xs-2">
-	                            @Html.DisplayFor<>(x => game.yearpublished.value)
+	                            @Html.DisplayFor(x => game.yearpublished.value)
                             </div>
                             @Html.Hidden("id", game.ID)
 
@@ -91,8 +91,8 @@
     </div>
 }
 
-@Html.ActionLink("Back to List", MVC.Game.Index())
+@Html.ActionLink("Back to List", "Index", "Game")
 
-@Html.Partial(MVC.Shared.Views._GiantBombDisclaimer)
+@Html.Partial("_GiantBombDisclaimer")
 
-@Html.Partial(MVC.Shared.Views._BGGDisclaimer)
+@Html.Partial("_BGGDisclaimer")
