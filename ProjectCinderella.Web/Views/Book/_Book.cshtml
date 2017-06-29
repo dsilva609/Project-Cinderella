@@ -2,21 +2,22 @@
 @using ProjectCinderella.Web.Common
 @using ProjectCinderellaCore.Common
 @using UI.Enums
+
 <div id="fh5co-board" data-columns>
     <div class="item">
         <div class="flip-container @Model.CompletionStatus.ToString()" ontouchstart="this.classList.toggle('hover');">
             <div class="flipper book">
                 <div class="front">
                     <div class="animate-box text-center">
-                        <a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Book_jpg : Model.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@Model.Author - @Model.Title (@Model.YearReleased)">
-                            <img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Book_jpg : Model.ImageUrl)" alt="@Model.Title">
+                        <a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? "~/Images/Book.jpg" : Model.ImageUrl)" class="image-popup img-thumbnail img-fluid fh5co-board-img" title="@Model.Author - @Model.Title (@Model.YearReleased)">
+                            <img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? "~/Images/Book.jpg" : Model.ImageUrl)" alt="@Model.Title">
                         </a>
                     </div>
                 </div>
                 <div class="back">
-                    <img src="@Links.Content.Images.Book_jpg" alt="Book" />
+                    <img src="~/Images/Book.jpg" alt="Book" />
                     <div class="info fh5co-desc @Model.CompletionStatus.ToString()" data-id="@Model.ID">
-                        <a href="@Url.Action(User.Identity.IsAuthenticated && Model.UserNum == User.Identity.GetUserNum() ? MVC.Book.Edit(Model.ID) : MVC.Book.Details(Model.ID))">
+                        <a href="@Url.Action(User.Identity.IsAuthenticated && Model.UserNum == User.Identity.GetUserNum() ? "Edit" : "Details")/@Model.ID">
                             <div class="row">
                                 @Html.DisplayFor(modelItem => Model.Author)
                             </div>

@@ -2,8 +2,8 @@
 @model ProjectCinderella.Model.Common.Book
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm(MVC.Book.Edit(), FormMethod.Post))
+@using (Html.BeginForm("Edit", "Book", FormMethod.Post))
 {
-	Html.RenderPartial(MVC.Book.Views._BookFormPartial, Model);
+	Html.RenderPartial("~/Views/Book/_BookFormPartial", Model);
 }
-@Html.ActionLink("Back to List", MVC.Book.Index())
+@Html.ActionLink("Back to List", "Index", "Book")

@@ -3,8 +3,8 @@
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm(MVC.Book.Create(), FormMethod.Post))
+@using (Html.BeginForm("Create", "Book", FormMethod.Post))
 {
-	Html.RenderPartial(MVC.Book.Views._BookFormPartial, Model);
+	Html.RenderPartial("~/Views/Book/_BookFormPartial", Model);
 }
-@Html.ActionLink("Back to List", MVC.Book.Index())
+@Html.ActionLink("Back to List", "Index", "Book")

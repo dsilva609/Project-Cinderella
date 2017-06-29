@@ -10,19 +10,19 @@
             Book Information
         </h4>
     </div>
-    @using (Html.BeginForm(MVC.Book.Search(), FormMethod.Get))
+    @using (Html.BeginForm("Search", "Book", FormMethod.Get))
     {
         <div class="panel-body">
             <div class="col-sm-6">
-	            @Html.LabelFor<>(m => m.Author)
-	            @Html.TextBoxFor<>(m => m.Author, new { @class = "form-control" })
-	            @Html.ValidationMessageFor<>(m => m.Author, "", new { @class = "text-danger" })
+	            @Html.LabelFor(m => m.Author)
+	            @Html.TextBoxFor(m => m.Author, new { @class = "form-control" })
+	            @Html.ValidationMessageFor(m => m.Author, "", new { @class = "text-danger" })
             </div>
 
             <div class="col-sm-6">
-	            @Html.LabelFor<>(m => m.Title)
-	            @Html.TextBoxFor<>(m => m.Title, new { @class = "form-control" })
-	            @Html.ValidationMessageFor<>(m => m.Title, "", new { @class = "text-danger" })
+	            @Html.LabelFor(m => m.Title)
+	            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+	            @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -45,28 +45,28 @@
         <div class="panel-body">
             @foreach (var book in Model.Volumes)
                  {
-                     using (Html.BeginForm(MVC.Book.CreateFromSearchModel(book.GoogleBookID, false), FormMethod.Get))
+                     using (Html.BeginForm("CreateFromSearchModel", "Book", (book.GoogleBookID, false), FormMethod.Get))
                      {
                          <div id="book" class="row info" style="padding-bottom: 1em;" data-id="@book.ID">
                              <div class="col-xs-2">
                                  <img src="@book.ImageUrl" style="width: 100%; height: 100%;" />
                              </div>
                              <div class="col-xs-3">
-	                             @Html.DisplayFor<>(x => book.Author)
-	                             @Html.HiddenFor<>(x => book.Author)
+	                             @Html.DisplayFo(x => book.Author)
+	                             @Html.HiddenFor(x => book.Author)
                              </div>
                              <div class="col-xs-3">
-	                             @Html.DisplayFor<>(x => book.Title)
-	                             @Html.HiddenFor<>(x => book.Title)
+	                             @Html.DisplayFor(x => book.Title)
+	                             @Html.HiddenFor(x => book.Title)
                              </div>
                              <div class="col-xs-3">
-	                             @Html.DisplayFor<>(x => book.Publisher)
-	                             @Html.HiddenFor<>(x => book.Publisher)
+	                             @Html.DisplayFor(x => book.Publisher)
+	                             @Html.HiddenFor(x => book.Publisher)
                              </div>
 
                              <div class="col-xs-2">
-	                             @Html.DisplayFor<>(x => book.YearReleased)
-	                             @Html.HiddenFor<>(x => book.YearReleased)
+	                             @Html.DisplayFor(x => book.YearReleased)
+	                             @Html.HiddenFor(x => book.YearReleased)
                              </div>
                              @Html.Hidden("id", book.GoogleBookID)
                              @Html.Hidden("isComic", false)
@@ -78,7 +78,7 @@
 
             @foreach (var comic in Model.ComicsVineResult.results)
             {
-                using (Html.BeginForm(MVC.Book.CreateFromSearchModel(comic.id, true), FormMethod.Get))
+                using (Html.BeginForm("CreateFromSearchModel","Book",(comic.id, true), FormMethod.Get))
                 {
                     <div id="book" class="row info" style="padding-bottom: 1em;" data-id="@comic.id">
                         <div class="col-xs-2">
@@ -89,17 +89,17 @@
                             @Html.HiddenFor(x => comic.Author)
                         </div>*@
                         <div class="col-xs-3">
-	                        @Html.DisplayFor<>(x => comic.name)
-	                        @Html.HiddenFor<>(x => comic.name)
+	                        @Html.DisplayFor(x => comic.name)
+	                        @Html.HiddenFor(x => comic.name)
                         </div>
                         <div class="col-xs-3">
-	                        @Html.DisplayFor<>(x => comic.issue_number)
-	                        @Html.HiddenFor<>(x => comic.issue_number)
+	                        @Html.DisplayFor(x => comic.issue_number)
+	                        @Html.HiddenFor(x => comic.issue_number)
                         </div>
 
                         <div class="col-xs-2">
-	                        @Html.DisplayFor<>(x => comic.cover_date)
-	                        @Html.HiddenFor<>(x => comic.cover_date)
+	                        @Html.DisplayFor(x => comic.cover_date)
+	                        @Html.HiddenFor(x => comic.cover_date)
                         </div>
                         @Html.Hidden("id", comic.id)
                         @Html.Hidden("isComic", true)
@@ -111,8 +111,8 @@
     </div>
 }
 
-@Html.ActionLink("Back to List", MVC.Book.Index())
+@Html.ActionLink("Back to List", "Index", "Book")
 
-@Html.Partial(MVC.Shared.Views._GoogleBooksDisclaimer)
+@Html.Partial("_GoogleBooksDisclaimer")
 
-@Html.Partial(MVC.Shared.Views._ComicVineDisclaimer)
+@Html.Partial("_ComicVineDisclaimer")
