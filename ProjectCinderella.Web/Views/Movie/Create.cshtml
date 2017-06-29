@@ -5,6 +5,6 @@
 
 @using (Html.BeginForm("Create","Movie", FormMethod.Post))
 {
-	Html.RenderPartial("~/Views/Movie/_MovieFormPartial", Model);
+	Html.RenderPartial("~/Views/Movie/_MovieFormPartial.cshtml", Model);
 }
 @Html.ActionLink("Back to List", "Index","Movie")

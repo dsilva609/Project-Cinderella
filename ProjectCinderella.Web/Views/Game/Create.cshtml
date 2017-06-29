@@ -5,6 +5,6 @@
 
 @using (Html.BeginForm("Create", "Game", FormMethod.Post))
 {
-	Html.RenderPartial("~/Views/Game/_GameFormPartial", Model);
+	Html.RenderPartial("~/Views/Game/_GameFormPartial.cshtml", Model);
 }
 @Html.ActionLink("Back to List", "Index","Game")

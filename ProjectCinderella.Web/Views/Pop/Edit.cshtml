@@ -4,6 +4,6 @@
 
 @using (Html.BeginForm("Edit", "Pop",Model.ID, FormMethod.Post))
 {
-	Html.RenderPartial("~/Views/Pop/_PopFormPartial", Model);
+	Html.RenderPartial("~/Views/Pop/_PopFormPartial.cshtml", Model);
 }
 @Html.ActionLink("Back to List", "Index", "Pop")

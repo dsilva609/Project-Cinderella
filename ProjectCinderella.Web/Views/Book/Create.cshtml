@@ -5,6 +5,6 @@
 
 @using (Html.BeginForm("Create", "Book", FormMethod.Post))
 {
-	Html.RenderPartial("~/Views/Book/_BookFormPartial", Model);
+	Html.RenderPartial("~/Views/Book/_BookFormPartial.cshtml", Model);
 }
 @Html.ActionLink("Back to List", "Index", "Book")

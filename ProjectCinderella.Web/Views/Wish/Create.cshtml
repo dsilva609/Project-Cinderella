@@ -4,6 +4,6 @@
 
 @using (Html.BeginForm("Create", "Wish", FormMethod.Post))
 {
-	Html.RenderPartial("~/Views/Wish/_WishFormPartial", Model);
+	Html.RenderPartial("~/Views/Wish/_WishFormPartial.cshtml", Model);
 }
 @Html.ActionLink("Back to List", "Index", "Wish")
