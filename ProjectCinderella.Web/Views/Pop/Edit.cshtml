@@ -2,8 +2,8 @@
 @model ProjectCinderella.Model.Common.FunkoModel
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm(MVC.Pop.Edit(Model.ID), FormMethod.Post))
+@using (Html.BeginForm("Edit", "Pop",Model.ID, FormMethod.Post))
 {
-	Html.RenderPartial(MVC.Pop.Views._PopFormPartial, Model);
+	Html.RenderPartial("~/Views/Pop/_PopFormPartial", Model);
 }
-@Html.ActionLink("Back to List", MVC.Pop.Index())
+@Html.ActionLink("Back to List", "Index", "Pop")

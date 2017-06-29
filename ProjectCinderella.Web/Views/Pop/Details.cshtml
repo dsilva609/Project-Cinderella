@@ -3,7 +3,7 @@
 @model ProjectCinderella.Model.Common.FunkoModel
 
 <script>
-    var deleteUrl = '@Url.Action(MVC.Pop.Delete())';
+    var deleteUrl = '@Url.Action("Delete", "Pop")';
     $("#main-body").removeClass("container");
 </script>
 
@@ -12,23 +12,23 @@
         Details
         @if (User.IsInRole("Admin") && Model.IsShowcased)
 		{
-            @Html.ActionLink("Remove From showcase", MVC.Pop.RemoveFromShowcase(Model.ID), new { @class = "btn btn-danger" })
+            @Html.ActionLink("Remove From showcase", "RemoveFromShowcase", "Pop", null, null, null,Model.ID, new { @class = "btn btn-danger" })
 		}
     </h2>
     @if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
 	{
-        <div class="">Last Updated: @Model.DateUpdated</div>
+        <div>Last Updated: @Model.DateUpdated</div>
     }
 
     <div>
-        <a href="@Url.Action(MVC.Pop.Index())"><span class="fa fa-list"></span> Back to List</a>
+        <a href="@Url.Action("Index", "Pop")"><span class="fa fa-list"></span> Back to List</a>
 
         @if (User.Identity.IsAuthenticated && Model.UserID == User.Identity.GetUserId())
         {
             <span> | </span>
-            <a href="@Url.Action(MVC.Pop.Edit(Model.ID))"><span class="fa fa-pencil"></span> Edit</a>
+            <a href="@Url.Action("Edit", "Pop")/@Model.ID"><span class="fa fa-pencil"></span> Edit</a>
             <span> | </span>
-            <a href="@Url.Action(MVC.Pop.Delete(Model.ID))" class="deleteBtn"><span class="fa fa-trash"></span> Delete</a>}
+            <a href="@Url.Action("Delete", "Pop")/@Model.ID" class="deleteBtn"><span class="fa fa-trash"></span> Delete</a>}
     </div>
 </div>
 

@@ -2,7 +2,7 @@
 @model ProjectCinderella.Model.Common.FunkoModel
 
 <script>
-	var deleteUrl = '@Url.Action(MVC.Pop.Delete())';
+	var deleteUrl = '@Url.Action("Delete", "Pop")';
 </script>
 
 @Html.AntiForgeryToken()
@@ -14,11 +14,11 @@
 <div class="row panel-body">
 	@if (Model.DateAdded != Convert.ToDateTime("1/1/1900") && Model.DateAdded != DateTime.MinValue)
 	{
-		<div>Date Added: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateAdded)</div>
+		<div>Date Added: @Html.Partial("_Timespan", Model.DateAdded)</div>
 	}
 	@if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
 	{
-		<div class="">Last Updated: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateUpdated)</div>
+		<div>Last Updated: @Html.Partial("_Timespan", Model.DateUpdated)</div>
 	}
 
 	<div class="row">
@@ -27,13 +27,13 @@
 			if (!Model.IsShowcased)
 			{
 				<div class="col-md-6">
-					@Html.ActionLink("Add to Showcase", MVC.Pop.AddToShowcase(Model.ID), new { @class = "btn btn-default" })
+					@Html.ActionLink("Add to Showcase", "AddToShowcase", "Pop", Model.ID, new { @class = "btn btn-default" })
 				</div>
 			}
 			else
 			{
 				<div class="col-md-6">
-					@Html.ActionLink("Remove from Showcase", MVC.Pop.RemoveFromShowcase(Model.ID), new { @class = "btn btn-danger" })
+					@Html.ActionLink("Remove from Showcase", "RemoveFromShowcase", "Pop", Model.ID, new { @class = "btn btn-danger" })
 				</div>
 			}
 		}
@@ -138,14 +138,9 @@
 
 		<div class="col-sm-6">
 			@Html.LabelFor(m => m.DatePurchased)
-			@if (Request.Browser.Browser == "IE" || !Request.Browser.IsMobileDevice)
-			{
-				@Html.EditorFor(m => m.DatePurchased, new { htmlattributes = new { type = "text", Value = Model.DatePurchased.ToShortDateString(), @class = "form-control datepicker" } })
-			}
-			else
-			{
-				@Html.EditorFor(m => m.DatePurchased, new { htmlattributes = new { type = "date", Value = Model.DatePurchased.ToString("yyyy-MM-dd"), @class = "form-control" } })
-			}
+			@(!Context.Request.Headers["User-Agent"].Contains("Mobi")
+				? Html.EditorFor(m => m.DatePurchased, new { htmlattributes = new { type = "text", Value = Model.DatePurchased.ToShortDateString(), @class = "form-control datepicker" } })
+                : Html.EditorFor(m => m.DatePurchased, new { htmlattributes = new { type = "date", Value = Model.DatePurchased.ToString("yyyy-MM-dd"), @class = "form-control" }}))
 			@Html.ValidationMessageFor(m => m.DatePurchased, "", new { @class = "text-danger" })
 		</div>
 
@@ -171,13 +166,13 @@
 
 <div class="row panel-body">
 	<div class="col-xs-6 col-md-4">
-		<input id="btnSubmit" type="submit" value=@(Model.ID > 0 ? "Save" : "Create") class="btn btn-default btn-block btn-lg" />
+		<input id="btnSubmit" type="submit" value="@(Model.ID > 0 ? "Save" : "Create")" class="btn btn-default btn-block btn-lg" />
 	</div>
 
 	@if (Model.ID > 0)
 	{
 		<div class="col-md-4 offset-md-4 col-xs-6">
-			@Html.ActionLink("Delete", MVC.Pop.Delete(Model.ID), new { @class = "deleteBtn btn btn-danger btn-block btn-lg", data_id = Model.ID, data_deleteUrl = Url.Action(MVC.Pop.Delete()) })
+			@Html.ActionLink("Delete", "Delete", "Pop",null,null,null,Model.ID, new { @class = "deleteBtn btn btn-danger btn-block btn-lg", data_id = Model.ID, data_deleteUrl = Url.Action(MVC.Pop.Delete()) })
 		</div>
 	}
 </div>

@@ -1,6 +1,7 @@
 ﻿@using ProjectCinderella.Web.Common
 @using ProjectCinderellaCore.Common
 @model ProjectCinderella.Model.Common.FunkoModel
+
 <div id="fh5co-board" data-columns>
     <div class="item">
         <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
@@ -15,7 +16,7 @@
                 <div class="back">
                     <img src="@Links.Content.Images.action_figures_jpg" alt="Turntable" />
                     <div class="info fh5co-desc @Model.CompletionStatus.ToString()" data-id="@Model.ID">
-                        <a href="@Url.Action(User.Identity.IsAuthenticated && Model.UserNum == User.Identity.GetUserNum() ? MVC.Pop.Edit(Model.ID) : MVC.Pop.Details(Model.ID))">
+                        <a href="@Url.Action(User.Identity.IsAuthenticated && Model.UserNum == User.Identity.GetUserNum() ? "Edit": "Details", "Pop")/@Model.ID">
                             <div class="row">
                                 @Html.DisplayFor(modelItem => Model.Title)
                             </div>

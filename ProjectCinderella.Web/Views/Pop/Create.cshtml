@@ -3,8 +3,8 @@
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm(MVC.Pop.Create(), FormMethod.Post))
+@using (Html.BeginForm("Create", "Pop", FormMethod.Post))
 {
-	Html.RenderPartial(MVC.Pop.Views._PopFormPartial, Model);
+	Html.RenderPartial("~/Views/Pop/_PopFormPartial", Model);
 }
-@Html.ActionLink("Back to list", MVC.Pop.Index())
+@Html.ActionLink("Back to list", "Index", "Pop")
