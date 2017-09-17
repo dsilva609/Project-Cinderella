@@ -146,8 +146,7 @@ namespace UI.Controllers
 			model.YearReleased = release.YearReleased;
 			model.RecordLabel = release.RecordLabel;
 			model.Genre = release.Genre;
-			if (string.IsNullOrWhiteSpace(model.ImageUrl))
-				model.ImageUrl = release.ImageUrl;
+			model.ImageUrl = release.ImageUrl;
 			//model.Tracklist = release.Tracklist;
 			//model.Tracklist.ForEach(x => x.AlbumID = model.ID);
 
