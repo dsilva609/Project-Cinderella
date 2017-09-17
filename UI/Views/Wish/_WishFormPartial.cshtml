@@ -68,7 +68,7 @@
 
 	<div class="col-sm-6">
 		@Html.LabelFor(m => m.Wish.Owned)
-		@Html.CheckBoxFor(m => m.Wish.Owned, new { @class = "form-control" })
+		@Html.CheckBoxFor(m => m.Wish.Owned)
 		@Html.ValidationMessageFor(m => m.Wish.Owned, "", new { @class = "text-danger" })
 	</div>
 </div>

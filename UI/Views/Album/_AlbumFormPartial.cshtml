@@ -229,7 +229,7 @@
 
 		<div class="col-md-6">
 			@Html.LabelFor(m => m.IsPhysical)
-			@Html.CheckBoxFor(m => m.IsPhysical, new { @class = "form-control" })
+			@Html.CheckBoxFor(m => m.IsPhysical)
 			@Html.ValidationMessageFor(m => m.IsPhysical, "", new { @class = "text-danger" })
 		</div>
 		<div id="vinylInfo" class="@(Model.MediaType == AlbumMediaTypeEnum.Vinyl ? "" : "hidden")">
@@ -285,7 +285,7 @@
 
 		<div class="col-md-2">
 			@Html.LabelFor(m => m.IsNew)
-			@Html.CheckBoxFor(m => m.IsNew, new { @class = "form-control" })
+			@Html.CheckBoxFor(m => m.IsNew)
 			@Html.ValidationMessageFor(m => m.IsNew, "", new { @class = "text-danger" })
 		</div>
 

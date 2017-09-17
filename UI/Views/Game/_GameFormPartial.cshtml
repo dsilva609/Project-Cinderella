@@ -185,7 +185,7 @@
 
 		<div class="col-sm-6">
 			@Html.LabelFor(m => m.IsPhysical)
-			@Html.CheckBoxFor(m => m.IsPhysical, new { @class = "form-control" })
+			@Html.CheckBoxFor(m => m.IsPhysical)
 			@Html.ValidationMessageFor(m => m.IsPhysical, "", new { @class = "text-danger" })
 		</div>
 
@@ -197,13 +197,13 @@
 
 		<div class="col-sm-6">
 			@Html.LabelFor(m => m.IsDLC)
-			@Html.CheckBoxFor(m => m.IsDLC, new { @class = "form-control" })
+			@Html.CheckBoxFor(m => m.IsDLC)
 			@Html.ValidationMessageFor(m => m.IsDLC, "", new { @class = "text-danger" })
 		</div>
 
 		<div class="col-sm-6">
 			@Html.LabelFor(m => m.PartOfSeries)
-			@Html.CheckBoxFor(m => m.PartOfSeries, new { @class = "form-control" })
+			@Html.CheckBoxFor(m => m.PartOfSeries)
 			@Html.ValidationMessageFor(m => m.PartOfSeries, "", new { @class = "text-danger" })
 		</div>
 
@@ -253,7 +253,7 @@
 
 		<div class="col-sm-6">
 			@Html.LabelFor(m => m.IsNew)
-			@Html.CheckBoxFor(m => m.IsNew, new { @class = "form-control" })
+			@Html.CheckBoxFor(m => m.IsNew)
 			@Html.ValidationMessageFor(m => m.IsNew, "", new { @class = "text-danger" })
 		</div>
 

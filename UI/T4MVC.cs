@@ -109,6 +109,21 @@ namespace Links
             public static readonly string LICENSE = Url("LICENSE");
         }
     
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class esm {
+            public const string UrlPath = "~/Scripts/esm";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string popper_utils_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/popper-utils.min.js") ? Url("popper-utils.min.js") : Url("popper-utils.js");
+            public static readonly string popper_utils_js_map = Url("popper-utils.js.map");
+            public static readonly string popper_utils_min_js = Url("popper-utils.min.js");
+            public static readonly string popper_utils_min_js_map = Url("popper-utils.min.js.map");
+            public static readonly string popper_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/popper.min.js") ? Url("popper.min.js") : Url("popper.js");
+            public static readonly string popper_js_map = Url("popper.js.map");
+            public static readonly string popper_min_js = Url("popper.min.js");
+            public static readonly string popper_min_js_map = Url("popper.min.js.map");
+        }
+    
         public static readonly string flipclock_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/flipclock.min.js") ? Url("flipclock.min.js") : Url("flipclock.js");
         public static readonly string flipclock_min_js = Url("flipclock.min.js");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -183,13 +198,13 @@ namespace Links
             public static readonly string zh_TW_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/zh-TW.min.js") ? Url("zh-TW.min.js") : Url("zh-TW.js");
         }
     
-        public static readonly string jquery_3_1_1_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-3.1.1.intellisense.min.js") ? Url("jquery-3.1.1.intellisense.min.js") : Url("jquery-3.1.1.intellisense.js");
-        public static readonly string jquery_3_1_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-3.1.1.min.js") ? Url("jquery-3.1.1.min.js") : Url("jquery-3.1.1.js");
-        public static readonly string jquery_3_1_1_min_js = Url("jquery-3.1.1.min.js");
-        public static readonly string jquery_3_1_1_min_map = Url("jquery-3.1.1.min.map");
-        public static readonly string jquery_3_1_1_slim_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-3.1.1.slim.min.js") ? Url("jquery-3.1.1.slim.min.js") : Url("jquery-3.1.1.slim.js");
-        public static readonly string jquery_3_1_1_slim_min_js = Url("jquery-3.1.1.slim.min.js");
-        public static readonly string jquery_3_1_1_slim_min_map = Url("jquery-3.1.1.slim.min.map");
+        public static readonly string jquery_3_2_1_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-3.2.1.intellisense.min.js") ? Url("jquery-3.2.1.intellisense.min.js") : Url("jquery-3.2.1.intellisense.js");
+        public static readonly string jquery_3_2_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-3.2.1.min.js") ? Url("jquery-3.2.1.min.js") : Url("jquery-3.2.1.js");
+        public static readonly string jquery_3_2_1_min_js = Url("jquery-3.2.1.min.js");
+        public static readonly string jquery_3_2_1_min_map = Url("jquery-3.2.1.min.map");
+        public static readonly string jquery_3_2_1_slim_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-3.2.1.slim.min.js") ? Url("jquery-3.2.1.slim.min.js") : Url("jquery-3.2.1.slim.js");
+        public static readonly string jquery_3_2_1_slim_min_js = Url("jquery-3.2.1.slim.min.js");
+        public static readonly string jquery_3_2_1_slim_min_map = Url("jquery-3.2.1.slim.min.map");
         public static readonly string jquery_ui_1_11_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-ui-1.11.2.min.js") ? Url("jquery-ui-1.11.2.min.js") : Url("jquery-ui-1.11.2.js");
         public static readonly string jquery_ui_1_11_2_min_js = Url("jquery-ui-1.11.2.min.js");
         public static readonly string jquery_ui_1_11_2_min_js_map = Url("jquery-ui-1.11.2.min.js.map");
@@ -301,6 +316,14 @@ namespace Links
             public static readonly string AlbumEdit_min_js = Url("AlbumEdit.min.js");
         }
     
+        public static readonly string popper_utils_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/popper-utils.min.js") ? Url("popper-utils.min.js") : Url("popper-utils.js");
+        public static readonly string popper_utils_js_map = Url("popper-utils.js.map");
+        public static readonly string popper_utils_min_js = Url("popper-utils.min.js");
+        public static readonly string popper_utils_min_js_map = Url("popper-utils.min.js.map");
+        public static readonly string popper_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/popper.min.js") ? Url("popper.min.js") : Url("popper.js");
+        public static readonly string popper_js_map = Url("popper.js.map");
+        public static readonly string popper_min_js = Url("popper.min.js");
+        public static readonly string popper_min_js_map = Url("popper.min.js.map");
         public static readonly string respond_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/respond.min.js") ? Url("respond.min.js") : Url("respond.js");
         public static readonly string respond_min_js = Url("respond.min.js");
         public static readonly string respond_matchmedia_addListener_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/respond.matchmedia.addListener.min.js") ? Url("respond.matchmedia.addListener.min.js") : Url("respond.matchmedia.addListener.js");
@@ -334,6 +357,21 @@ namespace Links
     
         public static readonly string toastr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/toastr.min.js") ? Url("toastr.min.js") : Url("toastr.js");
         public static readonly string toastr_min_js = Url("toastr.min.js");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class umd {
+            public const string UrlPath = "~/Scripts/umd";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            public static readonly string popper_utils_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/popper-utils.min.js") ? Url("popper-utils.min.js") : Url("popper-utils.js");
+            public static readonly string popper_utils_js_map = Url("popper-utils.js.map");
+            public static readonly string popper_utils_min_js = Url("popper-utils.min.js");
+            public static readonly string popper_utils_min_js_map = Url("popper-utils.min.js.map");
+            public static readonly string popper_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/popper.min.js") ? Url("popper.min.js") : Url("popper.js");
+            public static readonly string popper_js_map = Url("popper.js.map");
+            public static readonly string popper_min_js = Url("popper.min.js");
+            public static readonly string popper_min_js_map = Url("popper.min.js.map");
+        }
+    
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -630,6 +668,16 @@ namespace Links
                     public const string d3_js = "~/Scripts/d3/d3.js"; 
                 }
             }
+            public static partial class esm 
+            {
+                public static class Assets
+                {
+                    public const string popper_utils_js = "~/Scripts/esm/popper-utils.js"; 
+                    public const string popper_utils_min_js = "~/Scripts/esm/popper-utils.min.js"; 
+                    public const string popper_js = "~/Scripts/esm/popper.js"; 
+                    public const string popper_min_js = "~/Scripts/esm/popper.min.js"; 
+                }
+            }
             public static partial class Hydrogen 
             {
                 public static class Assets
@@ -789,6 +837,16 @@ namespace Links
                     public const string tether_js = "~/Scripts/tether/tether.js"; 
                 }
             }
+            public static partial class umd 
+            {
+                public static class Assets
+                {
+                    public const string popper_utils_js = "~/Scripts/umd/popper-utils.js"; 
+                    public const string popper_utils_min_js = "~/Scripts/umd/popper-utils.min.js"; 
+                    public const string popper_js = "~/Scripts/umd/popper.js"; 
+                    public const string popper_min_js = "~/Scripts/umd/popper.min.js"; 
+                }
+            }
             public static class Assets
             {
                 public const string _references_js = "~/Scripts/_references.js"; 
@@ -802,11 +860,11 @@ namespace Links
                 public const string c3_min_js = "~/Scripts/c3.min.js"; 
                 public const string Chart_js = "~/Scripts/Chart.js"; 
                 public const string flipclock_js = "~/Scripts/flipclock.js"; 
-                public const string jquery_3_1_1_intellisense_js = "~/Scripts/jquery-3.1.1.intellisense.js"; 
-                public const string jquery_3_1_1_js = "~/Scripts/jquery-3.1.1.js"; 
-                public const string jquery_3_1_1_min_js = "~/Scripts/jquery-3.1.1.min.js"; 
-                public const string jquery_3_1_1_slim_js = "~/Scripts/jquery-3.1.1.slim.js"; 
-                public const string jquery_3_1_1_slim_min_js = "~/Scripts/jquery-3.1.1.slim.min.js"; 
+                public const string jquery_3_2_1_intellisense_js = "~/Scripts/jquery-3.2.1.intellisense.js"; 
+                public const string jquery_3_2_1_js = "~/Scripts/jquery-3.2.1.js"; 
+                public const string jquery_3_2_1_min_js = "~/Scripts/jquery-3.2.1.min.js"; 
+                public const string jquery_3_2_1_slim_js = "~/Scripts/jquery-3.2.1.slim.js"; 
+                public const string jquery_3_2_1_slim_min_js = "~/Scripts/jquery-3.2.1.slim.min.js"; 
                 public const string jquery_ui_1_11_2_js = "~/Scripts/jquery-ui-1.11.2.js"; 
                 public const string jquery_ui_1_11_2_min_js = "~/Scripts/jquery-ui-1.11.2.min.js"; 
                 public const string jquery_ui_1_11_3_js = "~/Scripts/jquery-ui-1.11.3.js"; 
@@ -827,7 +885,12 @@ namespace Links
                 public const string moment_with_locales_js = "~/Scripts/moment-with-locales.js"; 
                 public const string moment_with_locales_min_js = "~/Scripts/moment-with-locales.min.js"; 
                 public const string moment_js = "~/Scripts/moment.js"; 
+                public const string moment_min_js = "~/Scripts/moment.min.js"; 
                 public const string Namespace_js = "~/Scripts/Namespace.js"; 
+                public const string popper_utils_js = "~/Scripts/popper-utils.js"; 
+                public const string popper_utils_min_js = "~/Scripts/popper-utils.min.js"; 
+                public const string popper_js = "~/Scripts/popper.js"; 
+                public const string popper_min_js = "~/Scripts/popper.min.js"; 
                 public const string respond_js = "~/Scripts/respond.js"; 
                 public const string respond_matchmedia_addListener_js = "~/Scripts/respond.matchmedia.addListener.js"; 
                 public const string respond_matchmedia_addListener_min_js = "~/Scripts/respond.matchmedia.addListener.min.js"; 
