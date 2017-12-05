@@ -12,20 +12,28 @@
 		Details
 		@if (User.IsInRole("Admin") && Model.IsShowcased)
 		{
-			@Html.ActionLink("Remove From showcase", MVC.Game.RemoveFromShowcase(Model.ID), new {@class = "btn btn-danger"})
+			@Html.ActionLink("Remove From showcase", MVC.Game.RemoveFromShowcase(Model.ID), new { @class = "btn btn-danger" })
 		}
 	</h2>
+	@if (Model.DateAdded != Convert.ToDateTime("1/1/1900") && Model.DateAdded != DateTime.MinValue)
+	{
+		<div>Date Added: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateAdded)</div>
+	}
+	@if (Model.LastCompleted != Convert.ToDateTime("1/1/1900") && Model.LastCompleted != DateTime.MinValue)
+	{
+		<div>Last Played: @Html.Partial(MVC.Shared.Views._Timespan, Model.LastCompleted)</div>
+	}
 	@if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
 	{
-		<div class="">Last Updated: @Model.DateUpdated</div>
+		<div>Last Updated: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateUpdated)</div>
 	}
 	<div>
 		<a href="@Url.Action(MVC.Game.Index())"><span class="fa fa-list"></span> Back to List</a>
-		
+
 		@if (User.Identity.IsAuthenticated && Model.UserID == User.Identity.GetUserId())
 		{
-		    <span> | </span>
-            <a href="@Url.Action(MVC.Game.Edit(Model.ID))"><span class="fa fa-pencil"></span> Edit</a>
+			<span> | </span>
+			<a href="@Url.Action(MVC.Game.Edit(Model.ID))"><span class="fa fa-pencil"></span> Edit</a>
 			<span> | </span>
 			<a href="@Url.Action(MVC.Game.Delete(Model.ID))" class="deleteBtn"><span class="fa fa-trash"></span> Delete</a>
 		}

@@ -15,10 +15,18 @@
             @Html.ActionLink("Remove From showcase", MVC.Movie.RemoveFromShowcase(Model.ID), new { @class = "btn btn-danger" })
 		}
     </h2>
-    @if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
+	@if (Model.DateAdded != Convert.ToDateTime("1/1/1900") && Model.DateAdded != DateTime.MinValue)
 	{
-        <div class="">Last Updated: @Model.DateUpdated</div>
-    }
+		<div>Date Added: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateAdded)</div>
+	}
+	@if (Model.LastCompleted != Convert.ToDateTime("1/1/1900") && Model.LastCompleted != DateTime.MinValue)
+	{
+		<div>Last Watched: @Html.Partial(MVC.Shared.Views._Timespan, Model.LastCompleted)</div>
+	}
+	@if (Model.DateUpdated != Convert.ToDateTime("1/1/1900") && Model.DateUpdated != DateTime.MinValue)
+	{
+		<div>Last Updated: @Html.Partial(MVC.Shared.Views._Timespan, Model.DateUpdated)</div>
+	}
 
     <div>
         <a href="@Url.Action(MVC.Movie.Index())"><span class="fa fa-list"></span> Back to List</a>

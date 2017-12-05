@@ -45,6 +45,7 @@ namespace BusinessLogic.Models
 
 		public DateTime DateAdded { get; set; }
 		public DateTime DateUpdated { get; set; } = Convert.ToDateTime("1/1/1900");
+		public DateTime LastCompleted { get; set; } = Convert.ToDateTime("1/1/1900");
 
 		[DisplayName("Completion Status")]
 		public CompletionStatus CompletionStatus { get; set; }

@@ -135,6 +135,9 @@ namespace UI.Controllers
 			if (movie.TimesCompleted > 0) movie.CompletionStatus = CompletionStatus.Completed;
 			SetTimeStamps(movie);
 			//TODO: make sure user id is the same so as not to change other users data
+			var previous = _service.GetByID(movie.ID, _user.GetUserID());
+			if (movie.TimesCompleted > previous.TimesCompleted)
+				movie.LastCompleted = movie.DateCompleted;
 			movie.DateUpdated = DateTime.UtcNow;
 			_service.Edit(movie);
 
@@ -244,6 +247,7 @@ namespace UI.Controllers
 
 			movie.TimesCompleted += 1;
 			movie.CompletionStatus = CompletionStatus.Completed;
+			movie.LastCompleted = DateTime.UtcNow;
 			movie.DateUpdated = DateTime.UtcNow;
 			_service.Edit(movie);
 

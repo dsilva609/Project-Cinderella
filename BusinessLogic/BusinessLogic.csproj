@@ -21,6 +21,7 @@
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -362,6 +363,10 @@
     <Compile Include="Migrations\201705241605051_added image url to wish midel.Designer.cs">
       <DependentUpon>201705241605051_added image url to wish midel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712050214164_added last updated to base item.cs" />
+    <Compile Include="Migrations\201712050214164_added last updated to base item.Designer.cs">
+      <DependentUpon>201712050214164_added last updated to base item.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseItem.cs" />
     <Compile Include="Models\BGGModels\BGGGame.cs" />
@@ -600,6 +605,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705241605051_added image url to wish midel.resx">
       <DependentUpon>201705241605051_added image url to wish midel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712050214164_added last updated to base item.resx">
+      <DependentUpon>201712050214164_added last updated to base item.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

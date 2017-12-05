@@ -134,6 +134,9 @@ namespace UI.Controllers
 			SetTimeStamps(book);
 
 			//TODO: make sure user id is the same so as not to change other users data
+			var previous = _service.GetByID(book.ID, _user.GetUserID());
+			if (book.TimesCompleted > previous.TimesCompleted)
+				book.LastCompleted = book.DateCompleted;
 			book.DateUpdated = DateTime.UtcNow;
 			_service.Edit(book);
 
@@ -241,6 +244,7 @@ namespace UI.Controllers
 
 			book.TimesCompleted += 1;
 			book.CompletionStatus = CompletionStatus.Completed;
+			book.LastCompleted = DateTime.UtcNow;
 			book.DateUpdated = DateTime.UtcNow;
 			_service.Edit(book);
 

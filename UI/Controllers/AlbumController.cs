@@ -172,6 +172,9 @@ namespace UI.Controllers
 			if (model.TimesCompleted > 0) model.CompletionStatus = CompletionStatus.Completed;
 			SetTimeStamps(model);
 			//TODO: make sure user id is the same so as not to change other users data
+			var previous = _service.GetByID(model.ID, _user.GetUserID());
+			if( model.TimesCompleted > previous.TimesCompleted)
+				model.LastCompleted = model.DateCompleted;
 			model.DateUpdated = DateTime.UtcNow;
 
 			_service.Edit(model);
@@ -274,6 +277,7 @@ namespace UI.Controllers
 
 			album.TimesCompleted += 1;
 			album.CompletionStatus = CompletionStatus.Completed;
+			album.LastCompleted = DateTime.UtcNow;
 			album.DateUpdated = DateTime.UtcNow;
 			_service.Edit(album);
 

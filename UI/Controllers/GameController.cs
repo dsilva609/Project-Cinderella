@@ -138,6 +138,9 @@ namespace UI.Controllers
 			SetTimeStamps(game);
 
 			//TODO: make sure user id is the same so as not to change other users data
+			var previous = _service.GetByID(game.ID, _user.GetUserID());
+			if (game.TimesCompleted > previous.TimesCompleted)
+				game.LastCompleted = game.DateCompleted;
 			game.DateUpdated = DateTime.UtcNow;
 			_service.Edit(game);
 
@@ -243,6 +246,7 @@ namespace UI.Controllers
 
 			game.TimesCompleted += 1;
 			game.CompletionStatus = CompletionStatus.Completed;
+			game.LastCompleted = DateTime.UtcNow;
 			game.DateUpdated = DateTime.UtcNow;
 			_service.Edit(game);
 
