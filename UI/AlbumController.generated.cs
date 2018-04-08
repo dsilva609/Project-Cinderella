@@ -313,6 +313,7 @@ namespace UI.Controllers
             {
                 public readonly string _Album = "_Album";
                 public readonly string _AlbumFormPartial = "_AlbumFormPartial";
+                public readonly string _DetailsInfo = "_DetailsInfo";
                 public readonly string _Recents = "_Recents";
                 public readonly string Create = "Create";
                 public readonly string Details = "Details";
@@ -322,6 +323,7 @@ namespace UI.Controllers
             }
             public readonly string _Album = "~/Views/Album/_Album.cshtml";
             public readonly string _AlbumFormPartial = "~/Views/Album/_AlbumFormPartial.cshtml";
+            public readonly string _DetailsInfo = "~/Views/Album/_DetailsInfo.cshtml";
             public readonly string _Recents = "~/Views/Album/_Recents.cshtml";
             public readonly string Create = "~/Views/Album/Create.cshtml";
             public readonly string Details = "~/Views/Album/Details.cshtml";

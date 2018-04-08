@@ -1,0 +1,49 @@
+﻿@model BusinessLogic.Models.Album
+
+<div data-toggle="collapse" data-parent="#accordion" href="#album-info">
+	<div class="row panel panel-primary panel-collapse text-center">
+		<div class="panel-heading">
+			<h4>
+				@Model.Artist - @Model.Title
+				<span class="fa fa-chevron-circle-down"></span>
+				<span class="pull-xs-left">Play Count: @Model.TimesCompleted</span>
+			</h4>
+		</div>
+	</div>
+</div>
+<div id="album-info" class="collapse in">
+	<div class="panel-body">
+		<div class="animate-box item col-sm-6">
+			<a href="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="image-popup img-fluid fh5co-board-img" title="@Model.Artist - @Model.Title (@Model.YearReleased)">
+				<img src="@(string.IsNullOrWhiteSpace(Model.ImageUrl) ? Links.Content.Images.Turntable_jpg : Model.ImageUrl)" class="img-rounded" style="height: 200px; width: 200px;">
+			</a>
+		</div>
+		<div>
+			@Html.LabelFor(m => m.Genre):
+			@Html.DisplayFor(m => m.Genre)
+		</div>
+		<div>
+			@Html.LabelFor(m => m.Style):
+			@Html.DisplayFor(m => m.Style)
+		</div>
+		<div>
+			@Html.LabelFor(m => m.YearReleased):
+			@Html.DisplayFor(m => m.YearReleased)
+		</div>
+
+		<div>
+			@Html.LabelFor(m => m.RecordLabel):
+			@Html.DisplayFor(m => m.RecordLabel)
+		</div>
+
+		<div>
+			@Html.LabelFor(m => m.Notes):
+			@Html.DisplayFor(m => m.Notes)
+		</div>
+
+		<div>
+			@Html.LabelFor(m => m.Category):
+			@Html.DisplayFor(m => m.Category)
+		</div>
+	</div>
+</div>

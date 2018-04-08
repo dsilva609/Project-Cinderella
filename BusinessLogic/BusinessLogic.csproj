@@ -159,6 +159,7 @@
     <Compile Include="Enums\MovieRatingEnum.cs" />
     <Compile Include="Enums\SizeEnum.cs" />
     <Compile Include="Enums\SpeedEnum.cs" />
+    <Compile Include="Helpers\ListHelpers.cs" />
     <Compile Include="Migrations\201603160133505_Initial Create.cs" />
     <Compile Include="Migrations\201603160133505_Initial Create.Designer.cs">
       <DependentUpon>201603160133505_Initial Create.cs</DependentUpon>

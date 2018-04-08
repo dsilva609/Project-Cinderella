@@ -18,5 +18,7 @@ namespace BusinessLogic.Services.Interfaces
 		int GetCount();
 
 		int GetHighestQueueRank(string userID);
+
+		List<Album> GetRandomAlbums(string userID, int count);
 	}
 }

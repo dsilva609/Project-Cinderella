@@ -269,13 +269,35 @@
 					</h4>
 				</li>
 			}
-			<li id="Showcase" class="panel-heading">
-				<h4 class="panel-title">
-					<a href="@Url.Action(MVC.Showcase.Index(User.Identity.IsAuthenticated ? User.Identity.GetUserNum() : 1))">
-						<span class="fa fa-certificate"></span> Showcase
-					</a>
-				</h4>
-			</li>
+		<li id="Showcase" class="panel-heading">
+			<h4 class="panel-title">
+				<a href="@Url.Action(MVC.Showcase.Index(User.Identity.IsAuthenticated ? User.Identity.GetUserNum() : 1))">
+					<span class="fa fa-certificate"></span> Showcase
+				</a>
+			</h4>
+		</li>
+		<li class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#Pops">
+					<span class="fa fa-user"></span> Other Vinyl
+				</a>
+			</h4>
+		</li>
+		
+		<li class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#Random">
+					<span class="fa fa-random"></span> Random
+				</a>
+			</h4>
+		</li>
+		<li id="Random" class="panel-collapse collapse">
+			<div class="panel-body">
+				<div class="table">
+					<div>@Html.ActionLink("Albums", MVC.Random.RandomizeAlbums(4))</div>
+				</div>
+			</div>
+		</li>
 			@if (User.Identity.IsAuthenticated)
 			{
 				<li id="Queue" class="panel-heading">

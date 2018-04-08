@@ -1,0 +1,27 @@
+﻿@model List<BusinessLogic.Models.Album>
+	
+@{
+	ViewBag.Title = "Random Albums";
+}
+<script>
+	$("#main-body").removeClass("container");
+</script>
+
+
+@foreach (var album in Model)
+{
+	<div class="detailsContainer">
+		<div class="background-image" style="background: url('@album.ImageUrl');"></div>
+		<div class="contentContainer">
+		
+			<div class="container" style="padding-top: 1em;">
+				@Html.Partial(MVC.Album.Views._DetailsInfo, album)
+				@if (User.IsInRole("Admin"))
+				{
+					@(album.IsShowcased ? Html.ActionLink("Remove From showcase", MVC.Album.RemoveFromShowcase(album.ID), new { @class = "btn btn-danger" }) : Html.ActionLink("Add to Showcase", MVC.Album.AddToShowcase(album.ID), new { @class = "btn btn-default" }))
+				}
+			</div>
+		</div>
+	</div>
+	<br/>
+}

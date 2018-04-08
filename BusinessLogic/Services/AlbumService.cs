@@ -7,6 +7,7 @@ using BusinessLogic.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using BusinessLogic.Helpers;
 
 namespace BusinessLogic.Services
 {
@@ -115,5 +116,7 @@ namespace BusinessLogic.Services
 
             return !albums.Any() ? 0 : albums.FirstOrDefault().QueueRank;
         }
+
+	    public List<Album> GetRandomAlbums(string userID, int count) => GetAll(userID).GetRandom(count);
     }
 }

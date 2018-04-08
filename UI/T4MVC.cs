@@ -37,6 +37,7 @@ public static partial class MVC
     public static UI.Controllers.MovieController Movie = new UI.Controllers.T4MVC_MovieController();
     public static UI.Controllers.PopController Pop = new UI.Controllers.T4MVC_PopController();
     public static UI.Controllers.QueueController Queue = new UI.Controllers.T4MVC_QueueController();
+    public static UI.Controllers.RandomController Random = new UI.Controllers.T4MVC_RandomController();
     public static UI.Controllers.ShowcaseController Showcase = new UI.Controllers.T4MVC_ShowcaseController();
     public static UI.Controllers.StatisticsController Statistics = new UI.Controllers.T4MVC_StatisticsController();
     public static UI.Controllers.WishController Wish = new UI.Controllers.T4MVC_WishController();
