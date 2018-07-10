@@ -886,6 +886,8 @@
     <Content Include="Views\Album\_Recents.cshtml" />
     <Content Include="Views\Random\RandomAlbums.cshtml" />
     <Content Include="Views\Album\_DetailsInfo.cshtml" />
+    <Content Include="Views\Export\Index.cshtml" />
+    <Content Include="Views\Export\AlbumExport.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -935,6 +937,7 @@
     <Compile Include="Common\ViewHelpers.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Controllers\ExportController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\PopController.cs" />
@@ -955,6 +958,9 @@
     <Compile Include="Enums\CompletionStatusHelper.cs" />
     <Compile Include="Enums\EnumHelpers.cs" />
     <Compile Include="Enums\MessageTypeEnum.cs" />
+    <Compile Include="ExportController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="GameController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -989,6 +995,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AlbumExportModel.cs" />
     <Compile Include="Models\AlbumStatsModel.cs" />
     <Compile Include="Models\AlbumStatsViewModel.cs" />
     <Compile Include="Models\BaseViewModel.cs" />

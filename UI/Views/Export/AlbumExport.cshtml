@@ -1,0 +1,10 @@
+﻿@model UI.Models.AlbumExportModel
+	
+<div class="row">
+	@Html.LabelFor(x => x.NumToExport)
+	@Html.DisplayFor(x => x.NumToExport)
+</div>
+
+<div class="row">
+	<pre>@Model.Json</pre>
+</div>
