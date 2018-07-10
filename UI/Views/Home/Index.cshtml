@@ -9,16 +9,6 @@
 <script>
 	$("#main-body").removeClass("container");
 </script>
-@if (TimeSpan.Parse((DateTime.UtcNow - new DateTime(Model.RecordStoreDayTimer.Year, Model.RecordStoreDayTimer.Month, Model.RecordStoreDayTimer.Day)).ToString()).TotalDays < 40)
-{
-	<div class="row text-center">
-		<h2>
-			Time until <a href="http://recordstoreday.com" target="_blank">Record Store Day</a> @Model.RecordStoreDayTimer.Year
-		</h2>
-
-		@Html.Partial(MVC.Shared.Views._TimerPartial, Model.RecordStoreDayTimer)
-	</div>
-}
 
 <div class="jumbotron img-fluid">
 	<div class="h3 ">
@@ -81,16 +71,18 @@
 	</div>
 }
 
-@if (TimeSpan.Parse((DateTime.UtcNow - new DateTime(Model.RecordStoreDayTimer.Year, Model.RecordStoreDayTimer.Month, Model.RecordStoreDayTimer.Day)).ToString()).TotalDays > 40)
-{
-	<div class="row text-center">
-		<h2>
-			Time until <a href="http://recordstoreday.com" target="_blank">Record Store Day</a> @Model.RecordStoreDayTimer.Year
-		</h2>
+@*@if (TimeSpan.Parse((DateTime.UtcNow - new DateTime(Model.RecordStoreDayTimer.Year, Model.RecordStoreDayTimer.Month, Model.RecordStoreDayTimer.Day)).ToString()).TotalDays < 40)
+{*@
+	
+@* } *@
 
-		@Html.Partial(MVC.Shared.Views._TimerPartial, Model.RecordStoreDayTimer)
-	</div>
-}
+<div class="row text-center">
+	<h2>
+		Time until <a href="http://recordstoreday.com" target="_blank">Record Store Day</a> @Model.RecordStoreDayTimer.Year
+	</h2>
+
+	@Html.Partial(MVC.Shared.Views._TimerPartial, Model.RecordStoreDayTimer)
+</div>
 
 <div class="row text-center">
 	<h2>
