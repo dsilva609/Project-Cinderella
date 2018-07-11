@@ -156,6 +156,9 @@
       <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="RestSharp, Version=106.3.1.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.3.1\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="SimpleInjector, Version=4.1.1.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
       <HintPath>..\packages\SimpleInjector.4.1.1\lib\net45\SimpleInjector.dll</HintPath>
     </Reference>
@@ -493,7 +496,6 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <None Include="Properties\PublishProfiles\ProjectCinderella - Web Deploy.pubxml" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -532,6 +534,7 @@
     <Content Include="Scripts\Hydrogen\respond.min.js" />
     <Content Include="Scripts\Hydrogen\salvattore.min.js" />
     <Content Include="Scripts\d3\LICENSE" />
+    <None Include="Properties\PublishProfiles\ProjectCinderella - Web Deploy.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -887,7 +890,7 @@
     <Content Include="Views\Random\RandomAlbums.cshtml" />
     <Content Include="Views\Album\_DetailsInfo.cshtml" />
     <Content Include="Views\Export\Index.cshtml" />
-    <Content Include="Views\Export\AlbumExport.cshtml" />
+    <Content Include="Views\Export\Export.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -995,7 +998,9 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AlbumExportModel.cs" />
+    <Compile Include="Models\BookImportRequest.cs" />
+    <Compile Include="Models\ExportModel.cs" />
+    <Compile Include="Models\AlbumImportRequest.cs" />
     <Compile Include="Models\AlbumStatsModel.cs" />
     <Compile Include="Models\AlbumStatsViewModel.cs" />
     <Compile Include="Models\BaseViewModel.cs" />

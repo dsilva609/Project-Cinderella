@@ -74,6 +74,15 @@ namespace UI.Controllers
         {
             public readonly string Index = "Index";
             public readonly string GetAlbumsForExport = "GetAlbumsForExport";
+            public readonly string GetBooksForExport = "GetBooksForExport";
+            public readonly string GetGamesForExport = "GetGamesForExport";
+            public readonly string GetMoviesForExport = "GetMoviesForExport";
+            public readonly string GetPopsForExport = "GetPopsForExport";
+            public readonly string ExportAlbums = "ExportAlbums";
+            public readonly string ExportBooks = "ExportBooks";
+            public readonly string ExportGames = "ExportGames";
+            public readonly string ExportMovies = "ExportMovies";
+            public readonly string ExportPops = "ExportPops";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -81,6 +90,15 @@ namespace UI.Controllers
         {
             public const string Index = "Index";
             public const string GetAlbumsForExport = "GetAlbumsForExport";
+            public const string GetBooksForExport = "GetBooksForExport";
+            public const string GetGamesForExport = "GetGamesForExport";
+            public const string GetMoviesForExport = "GetMoviesForExport";
+            public const string GetPopsForExport = "GetPopsForExport";
+            public const string ExportAlbums = "ExportAlbums";
+            public const string ExportBooks = "ExportBooks";
+            public const string ExportGames = "ExportGames";
+            public const string ExportMovies = "ExportMovies";
+            public const string ExportPops = "ExportPops";
         }
 
 
@@ -94,10 +112,10 @@ namespace UI.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string AlbumExport = "AlbumExport";
+                public readonly string Export = "Export";
                 public readonly string Index = "Index";
             }
-            public readonly string AlbumExport = "~/Views/Export/AlbumExport.cshtml";
+            public readonly string Export = "~/Views/Export/Export.cshtml";
             public readonly string Index = "~/Views/Export/Index.cshtml";
         }
     }
@@ -126,6 +144,105 @@ namespace UI.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetAlbumsForExport);
             GetAlbumsForExportOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void GetBooksForExportOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult GetBooksForExport()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetBooksForExport);
+            GetBooksForExportOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void GetGamesForExportOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult GetGamesForExport()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetGamesForExport);
+            GetGamesForExportOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void GetMoviesForExportOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult GetMoviesForExport()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetMoviesForExport);
+            GetMoviesForExportOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void GetPopsForExportOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult GetPopsForExport()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetPopsForExport);
+            GetPopsForExportOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void ExportAlbumsOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult ExportAlbums()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ExportAlbums);
+            ExportAlbumsOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void ExportBooksOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult ExportBooks()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ExportBooks);
+            ExportBooksOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void ExportGamesOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult ExportGames()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ExportGames);
+            ExportGamesOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void ExportMoviesOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult ExportMovies()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ExportMovies);
+            ExportMoviesOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void ExportPopsOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult ExportPops()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ExportPops);
+            ExportPopsOverride(callInfo);
             return callInfo;
         }
 
